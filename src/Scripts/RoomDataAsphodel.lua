@@ -458,7 +458,7 @@ local roomModifications = {
 	-- GENERIC
 	BaseAsphodel = {
 		-- These are loaded in LoadCurrentRoomResources, which is called OnAnyLoad
-		LoadModdedAudioBanks = { "EnemiesModsNikkelMHadesBiomes", "SoundsModsNikkelMHadesBiomes", "ModsNikkelMHadesBiomesMusicModded", "ModsNikkelMHadesBiomesMusicAsphodelModded", },
+		LoadModdedAudioBanks = { "EnemiesModsNikkelMHadesBiomes", "SoundsModsNikkelMHadesBiomes", "ModsNikkelMHadesBiomesMusicModded", "ModsNikkelMHadesBiomesMusicAsphodelModded", "ModsNikkelMHadesBiomesAmbienceModded", },
 		LoadModdedPackages = { "BiomeB" },
 
 		NarrativeContextArt = "ModsNikkelMHadesBiomes_DialogueBackground_Asphodel",

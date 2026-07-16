@@ -104,9 +104,7 @@ local function checkFilesExist(fileMappings, rootPath, basePath, extension, fail
 	for src, dest in pairs(fileMappings) do
 		local destPath = rom.path.combine(rootPath, basePath .. dest .. extension)
 		if not checkFileExistsWithRetry(destPath, 3, 0.2, failFast) then
-			if not failFast then
-				mod.DebugPrint("Missing file: " .. destPath, 1)
-			end
+			mod.DebugPrint("Missing file: " .. destPath, 1)
 			missingFiles = missingFiles + 1
 			if failFast then return missingFiles end
 		end
@@ -166,25 +164,38 @@ function mod.CheckRequiredFiles(failFast)
 	local pluginsDataContentRoot = rom.path.combine(rom.paths.plugins_data(), _PLUGIN.guid, "Content")
 
 	-- Non-SJSON files: checked in the game install directory
-	missingFiles = missingFiles + checkFilesExist(mod.AudioFileMappings, pluginsDataContentRoot, "Audio\\Desktop\\", ".bank", failFast)
+	missingFiles = missingFiles +
+			checkFilesExist(mod.AudioFileMappings, pluginsDataContentRoot, "Audio\\Desktop\\", ".bank", failFast)
 	-- We only check once, since with a successful uninstall, there will be at least one missing file here already
 	if failFast and missingFiles > 0 then return missingFiles end
 
-	missingFiles = missingFiles + checkFilesExist(mod.BikFileNames, pluginsDataContentRoot, "Movies\\1080p\\", ".bik", failFast)
-	missingFiles = missingFiles + checkFilesExist(mod.BikFileNames, pluginsDataContentRoot, "Movies\\1080p\\", ".bik_atlas", failFast)
-	missingFiles = missingFiles + checkFilesExist(mod.BikFileNames, pluginsDataContentRoot, "Movies\\720p\\", ".bik", failFast)
-	missingFiles = missingFiles + checkFilesExist(mod.BikFileNames, pluginsDataContentRoot, "Movies\\720p\\", ".bik_atlas", failFast)
+	missingFiles = missingFiles +
+			checkFilesExist(mod.BikFileNames, pluginsDataContentRoot, "Movies\\1080p\\", ".bik", failFast)
+	missingFiles = missingFiles +
+			checkFilesExist(mod.BikFileNames, pluginsDataContentRoot, "Movies\\1080p\\", ".bik_atlas", failFast)
+	missingFiles = missingFiles +
+			checkFilesExist(mod.BikFileNames, pluginsDataContentRoot, "Movies\\720p\\", ".bik", failFast)
+	missingFiles = missingFiles +
+			checkFilesExist(mod.BikFileNames, pluginsDataContentRoot, "Movies\\720p\\", ".bik_atlas", failFast)
 
-	missingFiles = missingFiles + checkFilesExist(mod.CustomBikFileNames, pluginsDataContentRoot, "Movies\\1080p\\", ".bik", failFast)
-	missingFiles = missingFiles + checkFilesExist(mod.CustomBikFileNames, pluginsDataContentRoot, "Movies\\1080p\\", ".bik_atlas", failFast)
-	missingFiles = missingFiles + checkFilesExist(mod.CustomBikFileNames, pluginsDataContentRoot, "Movies\\720p\\", ".bik", failFast)
-	missingFiles = missingFiles + checkFilesExist(mod.CustomBikFileNames, pluginsDataContentRoot, "Movies\\720p\\", ".bik_atlas", failFast)
+	missingFiles = missingFiles +
+			checkFilesExist(mod.CustomBikFileNames, pluginsDataContentRoot, "Movies\\1080p\\", ".bik", failFast)
+	missingFiles = missingFiles +
+			checkFilesExist(mod.CustomBikFileNames, pluginsDataContentRoot, "Movies\\1080p\\", ".bik_atlas", failFast)
+	missingFiles = missingFiles +
+			checkFilesExist(mod.CustomBikFileNames, pluginsDataContentRoot, "Movies\\720p\\", ".bik", failFast)
+	missingFiles = missingFiles +
+			checkFilesExist(mod.CustomBikFileNames, pluginsDataContentRoot, "Movies\\720p\\", ".bik_atlas", failFast)
 
-	missingFiles = missingFiles + checkFilesExist(mod.MapFileMappings, pluginsDataContentRoot, "Maps\\", ".map_text", failFast)
-	missingFiles = missingFiles + checkFilesExist(mod.MapFileMappings, pluginsDataContentRoot, "Maps\\bin\\", ".thing_bin", failFast)
+	missingFiles = missingFiles +
+			checkFilesExist(mod.MapFileMappings, pluginsDataContentRoot, "Maps\\", ".map_text", failFast)
+	missingFiles = missingFiles +
+			checkFilesExist(mod.MapFileMappings, pluginsDataContentRoot, "Maps\\bin\\", ".thing_bin", failFast)
 
-	missingFiles = missingFiles + checkFilesExist(mod.VoiceoverFileNames, pluginsDataContentRoot, "Audio\\Desktop\\VO\\", ".txt", failFast)
-	missingFiles = missingFiles + checkFilesExist(mod.VoiceoverFileNames, pluginsDataContentRoot, "Audio\\Desktop\\VO\\", ".fsb", failFast)
+	missingFiles = missingFiles +
+			checkFilesExist(mod.VoiceoverFileNames, pluginsDataContentRoot, "Audio\\Desktop\\VO\\", ".txt", failFast)
+	missingFiles = missingFiles +
+			checkFilesExist(mod.VoiceoverFileNames, pluginsDataContentRoot, "Audio\\Desktop\\VO\\", ".fsb", failFast)
 
 	-- SJSON files: placed in the SJSON data directory in plugins_data
 	missingFiles = missingFiles + checkFilesExist(mod.SjsonFileMappings, sjsonDataRoot, "", ".sjson", failFast)
@@ -208,7 +219,8 @@ function mod.CheckRequiredFiles(failFast)
 	for _, fileName in ipairs(getAllHelpAndNPCTextFileNames()) do
 		for _, language in ipairs(mod.HelpTextLanguages) do
 			if not (mod.HadesHelpTextFileSkipMap[fileName] and mod.HadesHelpTextFileSkipMap[fileName][language]) then
-				local sjsonDataRelativePath = "Text\\" .. language .. "\\Z_" .. fileName .. "ModsNikkelMHadesBiomes." .. language .. ".sjson"
+				local sjsonDataRelativePath = "Text\\" ..
+						language .. "\\Z_" .. fileName .. "ModsNikkelMHadesBiomes." .. language .. ".sjson"
 				if not rom.path.exists(rom.path.combine(_PLUGIN.sjson_data_path, sjsonDataRelativePath)) then
 					mod.DebugPrint("Missing SJSON data file: " .. sjsonDataRelativePath, 1)
 					missingFiles = missingFiles + 1
