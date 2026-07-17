@@ -1259,6 +1259,7 @@ local weaponModifications = {
 			WaitForAngleTowardTarget = true,
 			WaitForAngleTowardTargetTimeOut = 0.3,
 			PostAttackAnimation = "MinotaurAttackSwings_AttackLeap",
+			FireAnimation = "MinotaurAttackSwings_AirLoop",
 			-- Increased velocity to allow him to go further, but not too high
 			FireSelfVelocity = 2500,
 			FireSelfUpwardVelocity = 2000,
@@ -1278,6 +1279,7 @@ local weaponModifications = {
 	MinotaurArmored5AxeCombo3 = {
 		AIData = {
 			PostAttackAnimation = "MinotaurArmoredAttackSwings_AttackLeap",
+			FireAnimation = "MinotaurArmoredAttackSwings_AirLoop",
 		},
 	},
 	Minotaur5AxeCombo4 = {
@@ -1304,6 +1306,7 @@ local weaponModifications = {
 			WaitForAngleTowardTargetTimeOut = 0.7,
 			FireRotationDampening = 0.001,
 			-- Should be the same as Minotaur5AxeCombo3
+			FireAnimation = "MinotaurAttackSwings_AirLoop",
 			FireSelfVelocity = 2500,
 			FireSelfUpwardVelocity = 2000,
 			FireDuration = 0.28,
@@ -1317,6 +1320,7 @@ local weaponModifications = {
 			WaitForAngleTowardTargetTimeOut = 0.7,
 			FireRotationDampening = 0.001,
 			-- Should be the same as Minotaur5AxeCombo3
+			FireAnimation = "MinotaurAttackSwings_AirLoop",
 			FireSelfVelocity = 2500,
 			FireSelfUpwardVelocity = 2000,
 			FireDuration = 0.28,
@@ -1331,6 +1335,7 @@ local weaponModifications = {
 			FireRotationDampening = 0.001,
 			-- Should be the same as Minotaur5AxeCombo3
 			PostAttackAnimation = "MinotaurAttackSwings_AttackLeap",
+			FireAnimation = "MinotaurAttackSwings_AirLoop",
 			FireSelfVelocity = 2500,
 			FireSelfUpwardVelocity = 2000,
 			StopBeforeFire = true,
@@ -1344,12 +1349,14 @@ local weaponModifications = {
 	MinotaurArmoredLeapCombo5 = {
 		AIData = {
 			PostAttackAnimation = "MinotaurArmoredAttackSwings_AttackLeap",
+			FireAnimation = "MinotaurArmoredAttackSwings_AirLoop",
 		},
 	},
 	MinotaurAxeOverhead = {
 		AIData = {
 			-- Should be the same as Minotaur5AxeCombo3
 			PostAttackAnimation = "MinotaurAttackSwings_AttackLeap",
+			FireAnimation = "MinotaurAttackSwings_AirLoop",
 			FireSelfVelocity = 2500,
 			FireSelfUpwardVelocity = 2000,
 			StopBeforeFire = true,
@@ -1363,6 +1370,7 @@ local weaponModifications = {
 	MinotaurArmoredAxeOverhead = {
 		AIData = {
 			PostAttackAnimation = "MinotaurArmoredAttackSwings_AttackLeap",
+			FireAnimation = "MinotaurArmoredAttackSwings_AirLoop",
 		},
 	},
 	MinotaurCrescentCombo3 = {
