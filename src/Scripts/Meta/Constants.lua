@@ -467,6 +467,7 @@ mod.AllNewResourceNames = game.ConcatTableValuesIPairs(game.DeepCopyTable(mod.No
 mod.ModdedCosmeticIds = {}
 
 -- Song names/Ids from Hades OST for the Music Maker
+-- Note: Unseen Ones is not part of this, as it is also a vanilla song
 mod.HadesOstSongNames = hadesOSTModReference.HadesOstSongNames
 
 -- Keepsake names from SharedKeepsakePort

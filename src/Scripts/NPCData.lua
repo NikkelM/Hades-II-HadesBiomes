@@ -1513,6 +1513,7 @@ local npcModifications = {
 		-- "Songs of Orpheus",
 		BoonInfoTitleText = "ModsNikkelMHadesBiomes_Codex_BoonInfo_Orpheus",
 		Traits = {
+			-- Note: Unseen Ones is not part of the modded bank, but the vanilla bank
 			"ModsNikkelMHadesBiomesOrpheusChaosThemeBoon",
 			"ModsNikkelMHadesBiomesOrpheusBossFightMusicBoon",
 			"ModsNikkelMHadesBiomesOrpheusCharonShopThemeBoon",
