@@ -389,6 +389,90 @@ local roomReplacements = {
 				FunctionName = "CheckObjectiveSetSource",
 				Args = { ObjectiveSetName = "BountyAdvancedTooltip" },
 			},
+			-- Copied from the original ThreadedEvents but needed to move due to the additional entries above
+			{
+				FunctionName = _PLUGIN.guid .. "." .. "PatrolPath",
+				Args = {
+					GroupName = "GhostPatrols",
+					NewGroupName = "ActiveGhosts",
+					RemoveFromGroup = true,
+					AddToGroup = true,
+					MaxPatrols = 10,
+					SendPatrolInterval = 1.0,
+					SpeedMin = 30,
+					SpeedMax = 80,
+					Path = {
+						{ Id = 410943, OffsetRadius = 10, },
+						{
+							Branch = {
+								{
+									{ Id = 410940, OffsetRadius = 10 },
+								},
+								{
+									{ Id = 410957, OffsetRadius = 10, AngleTowardIdOnStop = 410959, PostArriveWait = 5 },
+								},
+								{
+									{ Id = 410956, OffsetRadius = 10, AngleTowardIdOnStop = 410960, PostArriveWait = 5 },
+								},
+								{
+									{ Id = 410958, OffsetRadius = 10 },
+									{ Id = 410951, OffsetRadius = 10 },
+									{
+										Branch = {
+											{
+												{ Id = 410955, OffsetRadius = 10, PostArriveWait = 15, MinUseInterval = 15 },
+												{ Id = 410951, OffsetRadius = 10 },
+											},
+											{
+												{ Id = 410954, OffsetRadius = 10, PostArriveWait = 13, MinUseInterval = 13 },
+												{ Id = 410951, OffsetRadius = 10 },
+											},
+										},
+									},
+									{ Id = 410944, OffsetRadius = 10 },
+									{
+										Branch = {
+											{
+												{ Id = 410945, OffsetRadius = 10, PostArriveWait = 15, MinUseInterval = 15 },
+												{ Id = 410944, OffsetRadius = 10 },
+												{ Id = 410951, OffsetRadius = 10 },
+												{ Id = 410958, OffsetRadius = 10 },
+											},
+											{
+												{ Id = 410961, OffsetRadius = 10, PostArriveWait = 13, MinUseInterval = 13 },
+												{ Id = 410944, OffsetRadius = 10 },
+												{ Id = 410951, OffsetRadius = 10 },
+												{ Id = 410958, OffsetRadius = 10 },
+											},
+										},
+									},
+								},
+								{
+									{ Id = 410941, OffsetRadius = 10 },
+									{
+										Branch = {
+											{
+												{ Id = 410942, OffsetRadius = 10, PostArriveWait = 15, MinUseInterval = 15 },
+												{ Id = 410941, OffsetRadius = 10 },
+											},
+											{
+												{ Id = 410953, OffsetRadius = 10, PostArriveWait = 13, MinUseInterval = 13 },
+												{ Id = 410941, OffsetRadius = 10 },
+											},
+											{
+												{ Id = 410946, OffsetRadius = 10 },
+												{ Id = 410947, OffsetRadius = 10, PostArriveWait = 13, MinUseInterval = 13 },
+												{ Id = 410946, OffsetRadius = 10 },
+												{ Id = 410941, OffsetRadius = 10 },
+											},
+										},
+									},
+								},
+							},
+						},
+					},
+				},
+			},
 		},
 
 		EnterVoiceLines = {
@@ -700,9 +784,8 @@ local roomModifications = {
 	A_Shop01 = {
 		LoadModdedVoiceBanks = { "Modsnikkelmhadesbiomescharon" },
 		ThreadedEvents = {
-			-- To get PatrolPath working, see RoomOpening
-			[1] = mod.NilValue,
-			[2] = mod.NilValue
+			[1] = { FunctionName = _PLUGIN.guid .. "." .. "PatrolPath" },
+			[2] = { FunctionName = _PLUGIN.guid .. "." .. "PatrolPath" },
 		},
 		StoreDataName = "WorldShop",
 		StartUnthreadedEvents = game.EncounterSets.ShopRoomEvents,
@@ -933,6 +1016,9 @@ local roomModifications = {
 		GameStateRequirements = {
 			NamedRequirementsFalse = { "StandardPackageBountyActive" },
 		},
+		ThreadedEvents = {
+			[1] = { FunctionName = _PLUGIN.guid .. "." .. "PatrolPath" },
+		},
 
 		LegalEncounters = {
 			"Story_Sisyphus_01",
@@ -950,10 +1036,6 @@ local roomModifications = {
 		IgnoreMusic = true,
 		SecretMusic = mod.NilValue,
 
-		ThreadedEvents = {
-			[1] = mod.NilValue
-		},
-
 		InspectPoints = {
 			[506297] = {
 				RequiredEncounters = { "Story_Sisyphus_01" },
@@ -965,7 +1047,6 @@ local roomModifications = {
 		ShovelPointChance = 0.35,
 		PickaxePointChance = 0.35,
 		ExorcismPointChance = 0.35,
-
 		HarvestPointRequirements = {
 			OrRequirements = {
 				-- collection

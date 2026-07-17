@@ -485,6 +485,7 @@ local function on_ready()
 			import "Scripts/FunctionMappings/Crawler.lua"
 			import "Scripts/FunctionMappings/CrusherUnit.lua"
 			import "Scripts/FunctionMappings/Environment.lua"
+			import "Scripts/FunctionMappings/GhostLogic.lua"
 			import "Scripts/FunctionMappings/HeavyRanged.lua"
 			import "Scripts/FunctionMappings/LightSpawner.lua"
 			import "Scripts/FunctionMappings/MiniBossTartarus.lua"
