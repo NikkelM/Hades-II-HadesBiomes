@@ -72,6 +72,10 @@ local hadesWeaponsModifications = {
 	MinotaurArmoredBullRush = {
 		Effects = mod.NilValue,
 	},
+	MinotaurOverheadShockwave = {
+		ProjectileAngleOffset = 90,
+		ProjectileAngleStartOffset = 0,
+	},
 	-- Not used?
 	TheseusChariotRam = {
 		Effect = mod.NilValue,
