@@ -1154,3 +1154,6 @@ local roomModifications = {
 }
 
 mod.ApplyModificationsAndInheritRoomData(mod.RoomData.Styx, roomModifications, roomReplacements, "Styx")
+
+-- Can't set it inline as it affects the global game.Color.White for some reason
+game.RoomData.D_Boss01.LoadBackgroundColor = mod.ExitToHadesFadeColour

@@ -10,6 +10,7 @@
 
 Other fixes and improvements:
 - If boons offered by NPCs have specific requirements before they can be offered, these will now be shown in the Codex (Patroclus, Orpheus).
+- Accessibility: Added a config option to fade to black instead of white when exiting the Styx hub room to Hades' boss arena.
 - Accessibility: Added support for the "Zoom In" accessibility option. A blanket 13% zoom will be applied to all rooms. If you use this option and find certain rooms to be too zoomed in, or still too zoomed out, please report this.
 - Balancing: Trap damage now scales in Dream Dives.
 - Fixed: Ghosts in Tartarus' opening room, mid-shop and Sisyphus' chamber do not move around the room, instead staying where they spawn.
