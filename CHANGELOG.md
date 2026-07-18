@@ -1,6 +1,6 @@
 # Changelog
 
-## v1.1.4
+## v1.2.0
 
 <!--Releasenotes start-->
 ### Patch Highlights:
