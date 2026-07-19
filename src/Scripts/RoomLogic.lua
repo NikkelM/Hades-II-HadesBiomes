@@ -103,7 +103,7 @@ modutil.mod.Path.Wrap("SetupUnit", function(base, unit, currentRun, args)
 		end
 
 		-- Increase the unit's health and armour, if it shouldn't be excluded from the modded modifiers
-		if not unit.ModsNikkelMHadesBiomesIgnoreModdedHealthModifiers then
+		if not unit.ModsNikkelMHadesBiomesIgnoreModdedHealthModifiers and not config.z_GoddessMode then
 			local scalingBiome = mod.EnemyBelongsToBiome[unit.Name or ""] or currentRun.CurrentRoom.RoomSetName
 			local healthBufferBonus = mod.ModdedUnitHealthBufferMultiplierBonus[scalingBiome] or
 					mod.ModdedUnitHealthBufferMultiplierBonus.Default

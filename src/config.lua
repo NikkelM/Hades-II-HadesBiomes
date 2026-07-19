@@ -10,6 +10,7 @@ local config = {
   z_SpeedrunSkipOpeningThanatos = false,
   z_SpeedrunFreshFileZagreusJourneyRun = false,
   z_FadeToBlackEnteringHades = false,
+  z_GoddessMode = false,
 }
 
 local configDesc = {
@@ -31,6 +32,7 @@ local configDesc = {
   "If set to \"true\", the reward in the first room of the run will always spawn immediately and allow skipping dialogue with Thanatos, even if he has a unique dialogue queued.",
   z_SpeedrunFreshFileZagreusJourneyRun = "If set to \"true\", starting a fresh save file will force the first run to be a Zagreus' Journey run. This will follow all rules of a classic fresh file run. It may break some progression past the first run, so is only recommended for Fresh File speedrun attempts, not actual main save files.",
   z_FadeToBlackEnteringHades = "If set to \"true\", exiting the Temple of Styx towards Hades' boss arena will fade the screen to black instead of white.",
+  z_GoddessMode = "If set to \"true\", enemy health and armour scaling added by the mod will be disabled. Enemies will have 30-45% less health and 10-20% less armour. Note that this significantly changes the balancing of the mod.",
 }
 
 return config, configDesc

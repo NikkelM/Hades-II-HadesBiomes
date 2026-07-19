@@ -7,6 +7,7 @@
 - Added new dialogues between Zagreus and various Gods, delivered by Hermes via his boons in Zagreus' Journey runs. This unblocks a number of NPC dialogues as well.
 - Improved visual fidelity across all biomes, and Elysium especially, by adding a group of previously missing environmental lighting elements.
 - Added four new cosmetics: Two stages for the Music Maker, a set of pillars near the Cauldron, and a set of pillarets surrounding Hypnos.
+- Accessibility: Added a "Goddess Mode" config option that disables enemy health and armour scaling added by the mod. Across all biomes, enemies will have 30-45% less health and 10-20% less armour if this is enabled. *Please note that enemy health scaling was added to compensate for Melinoë's increased damage output, and you may find the mod too easy when enabling Goddess Mode.*
 
 Other fixes and improvements:
 - If boons offered by NPCs have specific requirements before they can be offered, these will now be shown in the Codex (Patroclus, Orpheus).
