@@ -680,6 +680,30 @@ local function ancestorIsUndestroyable(projectile)
 	return false
 end
 
+-- Snapshot of projectiles that explicitly set CanBeProjectileDefenseDestroyedByName2 before the loop below runs
+-- Captured pre-loop so it is not polluted by the values the loop itself sets
+local explicitDefenseDestroyedByName2 = {}
+for _, projectile in ipairs(hadesProjectilesTable.Projectiles) do
+	if projectile.Name and projectile.CanBeProjectileDefenseDestroyedByName2 ~= nil then
+		explicitDefenseDestroyedByName2[projectile.Name] = true
+	end
+end
+
+-- Returns true if any ancestor in the InheritFrom chain explicitly set CanBeProjectileDefenseDestroyedByName2
+local function ancestorHasDefenseDestroyedByName2(projectile)
+	local visited = {}
+	local current = projectilesByName[projectile.InheritFrom]
+	while current do
+		if visited[current.Name] then break end
+		visited[current.Name] = true
+		if explicitDefenseDestroyedByName2[current.Name] then
+			return true
+		end
+		current = projectilesByName[current.InheritFrom]
+	end
+	return false
+end
+
 -- Skip projectiles whose inheritance chain reaches an H2 enemy base class, as the engine resolves these from inheritance.
 for _, projectile in ipairs(hadesProjectilesTable.Projectiles) do
 	if not inheritsFromH2Base(projectile) then
@@ -687,7 +711,7 @@ for _, projectile in ipairs(hadesProjectilesTable.Projectiles) do
 			projectile.CanBeProjectileDefenseDestroyed = false
 			mod.DebugPrint("Set CanBeProjectileDefenseDestroyed to false for " .. projectile.Name, 4)
 		end
-		if projectile.CanBeProjectileDefenseDestroyedByName2 == nil then
+		if projectile.CanBeProjectileDefenseDestroyedByName2 == nil and not ancestorHasDefenseDestroyedByName2(projectile) then
 			if undestroyableProjectiles[projectile.Name] or ancestorIsUndestroyable(projectile) then
 				projectile.CanBeProjectileDefenseDestroyedByName2 = "null"
 				mod.DebugPrint("Set CanBeProjectileDefenseDestroyedByName2 to null for " .. projectile.Name, 4)
