@@ -181,6 +181,7 @@ local hadesTwoObstacleModifications = {
 	StyxPillar01 = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
 	StyxPillarBase02 = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
 	StyxPillarBase01 = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
+	StyxPillar04 = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
 	StyxTent01 = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
 	StyxShrine01 = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
 	StyxRubble01 = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
@@ -194,6 +195,18 @@ local hadesTwoObstacleModifications = {
 	StyxWallBrick01b = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
 	StyxWallBrick01c = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
 	StyxWallBrick01d = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
+	StyxGate01 = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
+	StyxWallDecor01 = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
+	StyxWallDecor01a = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
+	StyxWallRoots01 = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
+	StyxWallRoots02 = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
+	StyxWallRoots03 = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
+	StyxWallRoots04 = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
+	StyxWallRoots05 = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
+	StyxWallRoots06 = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
+	StyxWallRoots07 = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
+	Styx_Door_01a = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
+	Styx_Door_01b = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
 }
 
 sjson.hook(hadesTwoStyxObstacleFile, function(data)
