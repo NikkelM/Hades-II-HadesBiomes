@@ -259,6 +259,21 @@ local newData = {
 		Description = "{#UpgradeFormat}-{$TooltipData.StatDisplay1}",
 	},
 	-- #endregion
+
+	-- #region Mod Config (Goddess Mode)
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomesGoddessMode",
+	-- 	DisplayName = "Goddess Mode",
+	-- 	Description =
+	-- 	"A state in which you will find enemies in the {$Keywords.ModsNikkelMHadesBiomesModdedRoute} easier to slay.",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomesGoddessModeTrait",
+	-- 	DisplayName = "Dea Ex Machina",
+	-- 	Description =
+	-- 	"Enemies in the {$Keywords.ModsNikkelMHadesBiomesModdedRoute} have less {$Keywords.EnemyHealth} and {$Keywords.Armor} while you are in {$Keywords.ModsNikkelMHadesBiomesGoddessMode}.",
+	-- },
+	-- #endregion
 }
 
 sjson.hook(traitTextFile, function(data)

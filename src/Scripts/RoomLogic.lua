@@ -379,6 +379,22 @@ modutil.mod.Path.Wrap("LoadVoiceBanks", function(base, characters, persist, igno
 	return base(characters, persist, ignoreAssert)
 end)
 
+modutil.mod.Path.Wrap("SetupHeroObject", function(base, room, applyLuaUpgrades)
+	base(room, applyLuaUpgrades)
+
+	-- Add the Goddess Mode boon if in a modded run and the config is turned on
+	if config.z_GoddessMode and game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and game.CurrentHubRoom == nil then
+		if not game.HeroHasTrait("ModsNikkelMHadesBiomesGoddessModeTrait") then
+			game.AddTraitToHero({ TraitName = "ModsNikkelMHadesBiomesGoddessModeTrait", SkipUIUpdate = true })
+			game.UpdateHeroTraitDictionary()
+		end
+		-- Else, if the player has the trait, remove it (either config turned off, or no longer in a modded biome)
+	elseif game.HeroHasTrait("ModsNikkelMHadesBiomesGoddessModeTrait") then
+		game.RemoveTrait(game.CurrentRun.Hero, "ModsNikkelMHadesBiomesGoddessModeTrait")
+		game.UpdateHeroTraitDictionary()
+	end
+end)
+
 -- This is essentially the same function as vanilla, and only inserts the logic to upgrade consumable rewards for Styx miniboss rooms and ShrineChallenge/Erebus rooms
 function mod.ModsNikkelMHadesBiomesDoUnlockRoomExits(run, room)
 	-- Synchronize the RNG to its initial state. Makes room reward choices deterministic on save/load
