@@ -69,6 +69,12 @@ function mod.Uninstall()
 			mod.RemoveFile(rom.path.combine(pluginsDataContentRoot, "Maps\\" .. dest .. ".map_text"))
 		end
 	end
+	-- Map files: also remove map files that used to be copied for the mod, but are no longer needed
+	for src, dest in pairs(mod.UninstallOnlyMapFileMappings) do
+		if not mod.MapTextFileNames[src] then
+			mod.RemoveFile(rom.path.combine(pluginsDataContentRoot, "Maps\\" .. dest .. ".map_text"))
+		end
+	end
 
 	-- SJSON files: remove from SJSON data (current location)
 	removeSjsonDataFiles()

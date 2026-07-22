@@ -726,6 +726,13 @@ mod.MapFileMappings = {
 	["CharonFight01"] = "CharonFight01",
 }
 
+-- Previously installed with the mod, but no longer - if uninstalling, ensure these are removed properly as well
+mod.UninstallOnlyMapFileMappings = {
+	["C_MiniBoss03"] = "Y_MiniBoss03",
+	["C_Combat07"] = "Y_Combat07",
+	["C_Combat15"] = "Y_Combat15",
+}
+
 -- .map_text files that should be copied from the plugins_data folder instead of the Hades installation, as they have modifications from the original
 mod.MapTextFileNames = {
 	-- A new Terrain group was added to resolve flickering tiles next to where the player spawns
