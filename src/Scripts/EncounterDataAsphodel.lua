@@ -30,8 +30,6 @@ local encounterDataAsphodel = {
 	EliteChallengeAsphodel = game.DeepCopyTable(encounterData.EliteChallengeF),
 
 	-- Intro encounters
-	SpreadShotIntro = encounterData.SpreadShotIntro,
-	ShieldRangedIntro = encounterData.ShieldRangedIntro,
 	CrusherIntro = encounterData.CrusherIntro,
 	FreezeShotIntro = encounterData.FreezeShotIntro,
 	RangedBurrowerIntro = encounterData.RangedBurrowerIntro,

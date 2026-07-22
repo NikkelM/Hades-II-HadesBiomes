@@ -1,6 +1,11 @@
 -- Applies modifications to base weapon objects, and then adds the new weapon objects to the game
 local function applyModificationsAndInheritWeaponData(base, modifications, replacements, weaponKeyReplacements,
 																											sjsonToAIDataPropertyMappings)
+	-- Remove data from Hades that we don't want to use (e.g. player weapons)
+	for _, name in ipairs(mod.EnemyWeaponRemovals) do
+		base[name] = nil
+	end
+
 	for oldName, newName in pairs(mod.EnemyWeaponMappings) do
 		mod.UpdatePropertyName(modifications, oldName, newName, {}, "WeaponDataHandler modifications")
 		mod.UpdatePropertyName(replacements, oldName, newName, {}, "WeaponDataHandler replacements")

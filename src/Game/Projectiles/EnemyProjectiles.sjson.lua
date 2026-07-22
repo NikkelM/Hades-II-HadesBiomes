@@ -595,6 +595,9 @@ end
 
 mod.ApplyNestedSjsonModifications(hadesProjectilesTable.Projectiles, hadesProjectilesModifications)
 
+-- Remove duplicates we don't want at all, as there is one defined in Hades II already or we just don't need it
+mod.RemoveSjsonEntries(hadesProjectilesTable.Projectiles, mod.EnemyProjectileRemovals, "Name", "EnemyProjectiles.sjson")
+
 -- Build a name-to-projectile lookup for inheritance chain walking
 local projectilesByName = {}
 for _, projectile in ipairs(hadesProjectilesTable.Projectiles) do

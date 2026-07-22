@@ -655,14 +655,13 @@ mod.MapFileMappings = {
 	["B_Combat21"] = "X_Combat21",
 	["B_Combat22"] = "X_Combat22",
 	["B_Story01"] = "X_Story01",
-	-- Elysium - C_ is also used for Zagreus/Charon fight in Hades II
+	-- Elysium - C_ is also used for Zagreus secret boss fight in Hades II
 	["C_Intro"] = "Y_Intro",
 	["C_PreBoss01"] = "Y_PreBoss01",
 	["C_Boss01"] = "Y_Boss01",
 	["C_PostBoss01"] = "Y_PostBoss01",
 	["C_MiniBoss01"] = "Y_MiniBoss01",
 	["C_MiniBoss02"] = "Y_MiniBoss02",
-	["C_MiniBoss03"] = "Y_MiniBoss03",
 	["C_Shop01"] = "Y_Shop01",
 	["C_Story01"] = "Y_Story01",
 	["C_Reprieve01"] = "Y_Reprieve01",
@@ -672,7 +671,6 @@ mod.MapFileMappings = {
 	["C_Combat04"] = "Y_Combat04",
 	["C_Combat05"] = "Y_Combat05",
 	["C_Combat06"] = "Y_Combat06",
-	["C_Combat07"] = "Y_Combat07",
 	["C_Combat08"] = "Y_Combat08",
 	["C_Combat09"] = "Y_Combat09",
 	["C_Combat10"] = "Y_Combat10",
@@ -680,7 +678,6 @@ mod.MapFileMappings = {
 	["C_Combat12"] = "Y_Combat12",
 	["C_Combat13"] = "Y_Combat13",
 	["C_Combat14"] = "Y_Combat14",
-	["C_Combat15"] = "Y_Combat15",
 	-- Styx
 	["D_Intro"] = "D_Intro",
 	["D_Hub"] = "D_Hub",

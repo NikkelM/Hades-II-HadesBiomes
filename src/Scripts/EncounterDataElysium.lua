@@ -26,7 +26,6 @@ local encounterDataElysium = {
 	ShadeShieldUnitIntro = encounterData.ShadeShieldUnitIntro,
 	ShadeBowUnitIntro = encounterData.ShadeBowUnitIntro,
 	FlurrySpawnerUnitIntro = encounterData.FlurrySpawnerUnitIntro,
-	IllusionistIntro = encounterData.IllusionistIntro,
 	ChariotIntro = encounterData.ChariotIntro,
 	ChariotSuicideIntro = encounterData.ChariotSuicideIntro,
 }

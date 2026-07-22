@@ -958,7 +958,7 @@ function mod.DoHadesAssistPresentation(assistData, enemyId)
 	CreateAnimation({
 		Name = "WrathPresentationBottomDivider",
 		DestinationId = wrathStreakFront,
-		Scale = "1.25",
+		Scale = 1.25,
 		Color = assistData.AssistPresentationColor or game.Color.Red
 	})
 

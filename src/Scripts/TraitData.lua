@@ -31,3 +31,10 @@ game.TraitData.ModsNikkelMHadesBiomesPlayerScaleTrait = {
 		RunOnce = false,
 	},
 }
+
+-- Indicator boon shown in the trait tray while Goddess Mode is active during a modded run
+-- Mirrors vanilla's God Mode indicator (GodModeTrait), it has no gameplay effect of its own, the health/armour scaling is disabled in RoomLogic
+game.TraitData.ModsNikkelMHadesBiomesGoddessModeTrait = {
+	Icon = "GodMode",
+	HideInRunHistory = true,
+}

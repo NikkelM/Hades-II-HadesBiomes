@@ -703,6 +703,8 @@ local roomReplacements = {
 			},
 		},
 	},
+
+	A_Combat25 = mod.NilValue,
 }
 
 local roomModifications = {
