@@ -1381,6 +1381,12 @@ For ID `514635`, change the `GroupNames` property to `FX_Terrain`.
 For ID `545712`, change the `GroupNames` property to `FX_Terrain`.
 For ID `545714`, change the `GroupNames` property to `FX_Terrain`.
 
+
+#### X_Story01
+
+AsphodelArch01b:
+Delete ID `520924`.
+
 #### X_Reprieve01
 
 TartarusBrazier02b:

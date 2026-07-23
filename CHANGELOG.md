@@ -40,6 +40,7 @@ Other fixes and improvements:
 - Fixed: The cloud VFX added above enemies that are afflicted by Blitz is misaligned for enemies using Hades II models, if enemies using Hades models are also present in the room.
 - Fixed: The VFX added by Blitz and the "Skyfall" Hex are misaligned for many enemies from the first game.
 - Fixed: Dialogue background animations run on a lower frame rate that makes them appear more staggered during transitions.
+- Fixed: Some textures flicker in Eurydice's chamber.
 - Fixed: The intro video before the very first run of a new save does not play if Zagreus' Journey is installed.
 - Fixed: When opening the statistics screen while the mod is disabled and if the previously selected sort column was a modded column, the game crashes if the statistics had not been viewed since version 1.1.0 of the mod.
 - Fixed: Some ambient music is influenced by the music volume slider, instead of the ambience slider. *Note that due to engine quirks, both the SFX and the Ambience slider influence ambience volume*.
