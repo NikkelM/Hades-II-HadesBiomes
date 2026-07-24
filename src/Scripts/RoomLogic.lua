@@ -103,7 +103,7 @@ modutil.mod.Path.Wrap("SetupUnit", function(base, unit, currentRun, args)
 		end
 
 		-- Increase the unit's health and armour, if it shouldn't be excluded from the modded modifiers
-		if not unit.ModsNikkelMHadesBiomesIgnoreModdedHealthModifiers and not config.z_GoddessMode then
+		if not unit.ModsNikkelMHadesBiomesIgnoreModdedHealthModifiers and not config.accessibility.z_GoddessMode then
 			local scalingBiome = mod.EnemyBelongsToBiome[unit.Name or ""] or currentRun.CurrentRoom.RoomSetName
 			local healthBufferBonus = mod.ModdedUnitHealthBufferMultiplierBonus[scalingBiome] or
 					mod.ModdedUnitHealthBufferMultiplierBonus.Default
@@ -383,7 +383,7 @@ modutil.mod.Path.Wrap("SetupHeroObject", function(base, room, applyLuaUpgrades)
 	base(room, applyLuaUpgrades)
 
 	-- Add the Goddess Mode boon if in a modded run and the config is turned on
-	if config.z_GoddessMode and game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and game.CurrentHubRoom == nil then
+	if config.accessibility.z_GoddessMode and game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and game.CurrentHubRoom == nil then
 		if not game.HeroHasTrait("ModsNikkelMHadesBiomesGoddessModeTrait") then
 			game.AddTraitToHero({ TraitName = "ModsNikkelMHadesBiomesGoddessModeTrait", SkipUIUpdate = true })
 			game.UpdateHeroTraitDictionary()

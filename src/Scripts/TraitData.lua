@@ -11,7 +11,7 @@ table.insert(game.TraitData.TemporaryForcedSecretDoorTrait.GameStateRequirements
 -- Enable Hades' final boss damage boon in modded runs
 table.insert(game.TraitData.HadesPreDamageBoon.EncounterPreDamage.ValidRooms, "D_Boss01")
 -- Point Dream Run text to modded versions that include Hades as a valid target
-if not config.z_ExcludeFromDreamDives then
+if not config.gameplay.z_ExcludeFromDreamDives then
 	game.TraitData.HadesPreDamageBoon.CustomNameWithRequirements.Name =
 	"ModsNikkelMHadesBiomes_HadesPreDamageBoon_DreamRun"
 	game.TraitData.HadesPreDamageBoon.DreamRunStatLines = { "ModsNikkelMHadesBiomes_ChronosDamageStatDisplay_DreamRun" }

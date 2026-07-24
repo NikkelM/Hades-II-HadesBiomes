@@ -1,5 +1,5 @@
 function mod.ConfirmHadesInstallation()
-	mod.hadesGameFolder = config.hadesGameFolder
+	mod.hadesGameFolder = config.debugging.hadesGameFolder
 
 	-- Clean leading/trailing quotes, spaces and apostrophes from user-provided path
 	if mod.hadesGameFolder ~= nil then

@@ -122,7 +122,7 @@ function mod.StartStyxPoisonPresentation(unit)
 
 	-- The "Poison will wear off automatically!" message applies outside of Styx only, on the first poison of the run, unless disabled via config
 	local showElysiumPoisonMessage = game.CurrentRun.CurrentRoom.RoomSetName ~= "Styx" and
-			game.CurrentRun.ModsNikkelMHadesBiomesTimesPoisonedInElysium == 1 and not config.z_HideElysiumPoisonMessage
+			game.CurrentRun.ModsNikkelMHadesBiomesTimesPoisonedInElysium == 1 and not config.gameplay.z_HideElysiumPoisonMessage
 
 	-- Only show this text if we won't show the custom text
 	if game.CheckCooldown("PoisonAppliedTextCooldown", 1.5) and not showElysiumPoisonMessage then
@@ -173,7 +173,7 @@ function mod.SpawnConsumables(eventSource, args)
 		game.MapState.RoomRequiredObjects[consumable.ObjectId] = consumable
 	end
 
-	if config.z_SpeedrunForceTwoSack and game.CurrentRun.CurrentRoom.Name == "D_Reprieve01" then
+	if config.speedrunning.z_SpeedrunForceTwoSack and game.CurrentRun.CurrentRoom.Name == "D_Reprieve01" then
 		game.thread(game.InCombatTextArgs,
 			{ TargetHero = true, Text = "ModsNikkelMHadesBiomesStyxFountainForcedThroughConfig", Duration = 3, PreDelay = 2 })
 	end

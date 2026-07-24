@@ -100,7 +100,7 @@ function mod.Uninstall()
 		mod.RemoveFile(rom.path.combine(rom.paths.plugins_data(), _PLUGIN.guid, "checksums.txt"))
 	end
 
-	config.uninstall = false
+	config.debugging.uninstall = false
 	mod.DebugPrint("Uninstallation complete.", 3)
 
 	return true

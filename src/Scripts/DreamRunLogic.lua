@@ -1,5 +1,5 @@
 modutil.mod.Path.Wrap("SelectNextDreamBiome", function(base, source, args)
-	if config.z_ExcludeFromDreamDives then
+	if config.gameplay.z_ExcludeFromDreamDives then
 		return base(source, args)
 	end
 

@@ -298,7 +298,7 @@ modutil.mod.Path.Wrap("IsRoomForced", function(base, currentRun, currentRoom, ne
 
 		-- Randomly force the next room to be a fountain room, with a 100% chance if this is the last wing
 		if nextRoomData.ForceChanceByRemainingWings then
-			if config.z_SpeedrunForceTwoSack and not currentRun.ModsNikkelMHadesBiomesForceStyxFountainDepth then
+			if config.speedrunning.z_SpeedrunForceTwoSack and not currentRun.ModsNikkelMHadesBiomesForceStyxFountainDepth then
 				-- If the config option is enabled, always force the fountain room in the second wing
 				if currentRun.CompletedStyxWings == 1 then
 					mod.DebugPrint("Forcing fountain room in Styx wing 2 due to config option.", 2)
@@ -339,7 +339,7 @@ mod.ForceFreshFileNewGame = false
 mod.NeedsFreshFileMapReload = false
 
 modutil.mod.Path.Wrap("StartNewGame", function(base, mapName)
-	mod.ForceFreshFileNewGame = config.z_SpeedrunFreshFileZagreusJourneyRun
+	mod.ForceFreshFileNewGame = config.speedrunning.z_SpeedrunFreshFileZagreusJourneyRun
 	mod.NeedsFreshFileMapReload = mod.ForceFreshFileNewGame
 	local result = base(mapName)
 	mod.ForceFreshFileNewGame = false

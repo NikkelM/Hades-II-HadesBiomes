@@ -379,7 +379,7 @@ function mod.CheckThanatosOrSpawnRoomReward(eventSource, args)
 	if thanatosId ~= nil then
 		local thanatos = game.ActiveEnemies[thanatosId]
 		-- Thanatos has a conversation queued, or the config option to skip him is enabled (and we don't have the romance scene queued)
-		if (thanatos and thanatos.NextInteractLines and not thanatos.NextInteractLines.PlayOnce) or (config.z_SpeedrunSkipOpeningThanatos and not (thanatos.NextInteractLines.Name == "ModsNikkelMHadesBiomes_BecameCloseWithThanatos01_Trigger" or thanatos.NextInteractLines.Name == "ModsNikkelMHadesBiomes_BecameCloseWithThanatos01_B_Trigger")) then
+		if (thanatos and thanatos.NextInteractLines and not thanatos.NextInteractLines.PlayOnce) or (config.speedrunning.z_SpeedrunSkipOpeningThanatos and not (thanatos.NextInteractLines.Name == "ModsNikkelMHadesBiomes_BecameCloseWithThanatos01_Trigger" or thanatos.NextInteractLines.Name == "ModsNikkelMHadesBiomes_BecameCloseWithThanatos01_B_Trigger")) then
 			-- Reward spawns immediately
 		else
 			-- Wait until his conversation is done

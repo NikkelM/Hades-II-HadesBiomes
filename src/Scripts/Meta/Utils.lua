@@ -19,7 +19,7 @@ end
 ---@param level number|nil The verbosity level required to print the message. 0 = Off/Always printed, 1 = Errors, 2 = Warnings, 3 = Info, 4 = Debug
 function mod.DebugPrint(t, level)
 	level = level or 0
-	if config.logLevel >= level then
+	if config.debugging.logLevel >= level then
 		if type(t) == "table" then
 			-- Tables are always logged without a level display
 			mod.PrintTable(t, nil, nil)
@@ -567,8 +567,8 @@ function mod.AreHadesModsInstalled()
 				public.IsValidInstallation = false
 
 				-- Ensure we get a new clean install next time
-				config.uninstall = true
-				config.firstTimeSetup = true
+				config.debugging.uninstall = true
+				config.debugging.firstTimeSetup = true
 
 				return true
 			end
@@ -668,7 +668,9 @@ function mod.IsOtherModActive(modIdentifier)
 	return modReference
 end
 
-modutil.mod.Path.Wrap("DebugPrint", function(base, args)
-	mod.DebugPrint(args.Text, 4)
-	return base(args)
-end)
+if config.debugging.enableVanillaDebugPrint then
+	modutil.mod.Path.Wrap("DebugPrint", function(base, args)
+		mod.DebugPrint(args.Text, 4)
+		return base(args)
+	end)
+end

@@ -542,8 +542,8 @@ function mod.CreateRequiredHookTargetFiles()
 		public.IsValidInstallation = false
 
 		-- Ensure we get a new clean install next time
-		config.uninstall = true
-		config.firstTimeSetup = true
+		config.debugging.uninstall = true
+		config.debugging.firstTimeSetup = true
 		mod.InstallationPending = false
 		return false
 	end
@@ -752,8 +752,8 @@ function mod.FinalizeInstallation()
 		public.IsValidInstallation = false
 
 		-- Ensure we get a new clean install next time
-		config.uninstall = true
-		config.firstTimeSetup = true
+		config.debugging.uninstall = true
+		config.debugging.firstTimeSetup = true
 		mod.InstallationPending = false
 		return
 	end
@@ -766,7 +766,7 @@ function mod.FinalizeInstallation()
 	---@diagnostic disable-next-line: undefined-global
 	public.IsValidInstallation = true
 
-	config.firstTimeSetup = false
+	config.debugging.firstTimeSetup = false
 	mod.InstallationPending = false
 	mod.DebugPrint("Finished mod installation and first time setup.", 3)
 end
