@@ -13,7 +13,7 @@ function public.IsModEnabledAndInstallationValid() end
 
 --- Returns the current value of a given config leaf key, or nil if the key does not exist or the mod is not enabled or the installation is invalid.
 --- This allows to check for a config key no matter where in the mod config it lives.
----@param leafKey string The config key to check. Only supply the leaf key value, e.g. for the config.gameplay.z_ExcludeFromDreamDives config, supply z_ExcludeFromDreamDives.
+---@param leafKey string The config key to check. Only pass the leaf key value, e.g. to get the value of config.gameplay.z_ExcludeFromDreamDives, pass "z_ExcludeFromDreamDives".
 ---@return any keyValue The current value of this key, or nil if the key does not exist or the mod is not enabled or the installation is invalid.
 function public.GetModConfigValueByLeafKey(leafKey) end
 
