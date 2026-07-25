@@ -668,6 +668,47 @@ function mod.IsOtherModActive(modIdentifier)
 	return modReference
 end
 
+--- Returns whether the mod is both enabled in the config and the installation is valid.
+---@return boolean isEnabledAndValid True only if the mod is enabled and the installation is valid.
+---@diagnostic disable-next-line: undefined-global
+public.IsModEnabledAndInstallationValid = function()
+	---@diagnostic disable-next-line: undefined-global
+	return config.enabled == true and public.IsValidInstallation == true
+end
+
+--- Returns the current value of a given config leaf key, or nil if the key does not exist or the mod is not enabled or the installation is invalid.
+--- This allows to check for a config key no matter where in the mod config it lives.
+---@param leafKey string The config key to check. Only pass the leaf key value, e.g. to get the value of config.gameplay.z_ExcludeFromDreamDives, pass "z_ExcludeFromDreamDives".
+---@return any keyValue Returns the current value of this key, or nil of the key does not exist or the mod is not enabled or the installation is invalid.
+---@diagnostic disable-next-line: undefined-global
+public.GetModConfigValueByLeafKey = function(leafKey)
+	local function findConfigLeaf(configGroup)
+		for key, value in pairs(configGroup) do
+			if key == leafKey then
+				return value
+			end
+
+			-- Descend into a nested group
+			if type(value) == "table" then
+				local nestedValue = findConfigLeaf(value)
+				-- The key exists in this nested group, return it
+				if nestedValue ~= nil then
+					return nestedValue
+				end
+			end
+		end
+
+		return nil
+	end
+
+	---@diagnostic disable-next-line: undefined-global
+	if not public.IsModEnabledAndInstallationValid() then
+		return nil
+	end
+
+	return findConfigLeaf(config)
+end
+
 if config.debugging.enableVanillaDebugPrint then
 	modutil.mod.Path.Wrap("DebugPrint", function(base, args)
 		mod.DebugPrint(args.Text, 4)
