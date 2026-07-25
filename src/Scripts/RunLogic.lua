@@ -324,6 +324,15 @@ modutil.mod.Path.Wrap("IsRoomForced", function(base, currentRun, currentRoom, ne
 	return isForced
 end)
 
+modutil.mod.Path.Wrap("InvalidateCheckpoint", function(base)
+	-- Don't invalidate in Tisiphone's room as we have the random crashes for some people
+	if game.CurrentRun and game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and game.CurrentRoom and game.CurrentRoom.Name == "A_Boss03" then
+		return
+	end
+
+	return base()
+end)
+
 -- OnUsedFunctionName passes the obstacle table, but CannotUseKeepsakeRackPresentation expects an ObjectId
 function mod.LockedGiftRackPresentation(usee)
 	game.thread(game.PlayVoiceLines, game.HeroVoiceLines.ModsNikkelMHadesBiomes_GiftRackLockedVoiceLines, true)
