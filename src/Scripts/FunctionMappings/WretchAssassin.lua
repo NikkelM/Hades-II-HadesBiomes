@@ -13,6 +13,9 @@ function mod.EnemyHandleInvisibleAttack(enemy, weaponAIData, args)
 			PlaySound({ Name = enemy.InvisibilityEndSound })
 		end
 		game.SetUnitVulnerable(enemy, "EnemyInvisibility")
+		-- Custom start
+		SetTargetable({ Id = enemy.ObjectId })
+		-- Custom end
 		SetAlpha({ Id = enemy.ObjectId, Fraction = 1.0, Duration = weaponAIData.InvisibilityFadeInDuration })
 		SetColor({ Id = enemy.ObjectId, Color = { 255, 255, 255, 255 }, Duration = weaponAIData.InvisibilityFadeInDuration })
 		if args.CreateAnimation then
@@ -64,6 +67,10 @@ function mod.EnemyInvisibility(enemy, weaponAIData, args)
 		enemy.PreInvisibilityImmuneToStun = GetUnitDataValue({ Id = enemy.ObjectId, Property = "ImmuneToStun" })
 		SetUnitProperty({ DestinationId = enemy.ObjectId, Property = "ImmuneToStun", Value = true })
 		game.SetUnitInvulnerable(enemy, "EnemyInvisibility", { Silent = true })
+		-- Custom start
+		SetUntargetable({ Id = enemy.ObjectId })
+		game.ClearEnemySeekStatus(enemy)
+		-- Custom end
 		game.wait(weaponAIData.InvisibilityFadeOutDuration, enemy.AIThreadName)
 		if enemy.Phase2VFX ~= nil then
 			StopAnimation({ Name = enemy.Phase2VFX, DestinationId = enemy.ObjectId })

@@ -221,6 +221,9 @@ function mod.HadesPhaseTransition(boss, currentRun, aiStage)
 	if boss.IsInvisible then
 		boss.IsInvisible = false
 
+		-- Custom start
+		SetTargetable({ Id = boss.ObjectId })
+		-- Custom end
 		SetLifeProperty({ DestinationId = boss.ObjectId, Property = "InvulnerableFx", Value = "Invincibubble_Hades" })
 		SetAlpha({ Id = boss.ObjectId, Fraction = 1.0 })
 	end

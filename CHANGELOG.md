@@ -35,6 +35,7 @@ Other fixes and improvements:
 - Fixed: The Tiny Vermin is damaged by Medea's "Suffering on Sight" boon.
 - Fixed: The "Poison will wear off automatically" message can incorrectly show in Styx, where this is not the case.
 - Fixed: Moving close to certain walls and other obstacles in Styx can make Melinoë appear behind them.
+- Fixed: If an enemy goes invisible as part of its attack, the Black Coat's Omega Special's lock-on effect remains active, revealing its location.
 - Fixed: Rewards from Shrines of Hermes and Icarus' "Supply Chain" boon can be delivered after defeating Charon, which softlocks the player if picked up.
 - Fixed: If deliveries from a Shrine of Hermes are pending after giving the Satyr Sack to Cerberus in a Dream Dive, they will not be auto-delivered.
 - Fixed: In rare cases, the game may crash after Melinoë exits "Unseen Ire" while an enemy is performing a certain type of attack.
