@@ -126,6 +126,33 @@ modutil.mod.Path.Wrap("GetRandomEligibleTextLines", function(base, source, textL
 	end
 end)
 
+modutil.mod.Path.Wrap("CheckAvailableTextLines", function(base, source, args)
+	base(source, args)
+
+	-- Didn't get a textline set through base, check if a modded enemy might have a RepeatableTextLine available instead
+	if source.NextInteractLines == nil and not game.NeedsUseableOff(source) and game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and source.ModsNikkelMHadesBiomesIsModdedEnemy and source.RepeatableTextLineSets ~= nil then
+		args = args or {}
+
+		source.NextInteractLines = game.GetRandomEligibleTextLines(source, source.RepeatableTextLineSets, nil, args) or {}
+		if source.NextInteractLines ~= nil then
+			if source.NextInteractLines.Partner ~= nil then
+				local partnerUnit = game.CheckPartnerConversations(source)
+				if partnerUnit ~= nil then
+					-- Fill in the stub except for the lines themselves
+					if source.NextInteractLines.CopyDataFromPartner then
+						for i, key in ipairs(game.PartnerConversationDataShare) do
+							if source.NextInteractLines[key] == nil then
+								source.NextInteractLines[key] = partnerUnit.NextInteractLines[key]
+							end
+						end
+					end
+				end
+			end
+			game.SetNextInteractLines(source, source.NextInteractLines)
+		end
+	end
+end)
+
 -- Reimplementation of Hades II's PlayRandomRemainingTextLines before it was removed in Post-Launch Patch 2
 -- Also adds custom logic to respect SuperPriority and Priority flags in modded runs
 function mod.PlayRandomRemainingTextLines(source, textLineSets, args)

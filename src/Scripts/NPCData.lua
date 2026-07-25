@@ -146,12 +146,6 @@ end
 
 local function applyNPCGlobalModifications(base, npcModifications)
 	for npcName, npcData in pairs(base) do
-		if npcModifications[npcName] and npcModifications[npcName].RepeatableTextLineSets ~= nil then
-			mod.DebugPrint(
-				"Modifications to RepeatableTextLineSets for NPCs must be made under InteractTextLineSets, as the will be moved there before modifications are applied: " ..
-				npcName, 1)
-		end
-
 		-- Hades II has more gift options, make every gift cost 1 Nectar
 		for textlineName, textline in pairs(npcData.GiftTextLineSets or {}) do
 			textline.Cost = { GiftPoints = 1, }
@@ -167,17 +161,9 @@ local function applyNPCGlobalModifications(base, npcModifications)
 			end
 		end
 
-		-- Move all interaction textlines into the InteractTextLineSets, out of the RepeatableTextLineSets
-		if npcData.InteractTextLineSets and npcData.RepeatableTextLineSets then
-			for key, textLineSet in pairs(npcData.RepeatableTextLineSets or {}) do
-				if npcData.InteractTextLineSets[key] ~= nil then
-					mod.DebugPrint(
-						"The key for the RepeatableTextLineSet " ..
-						key .. " already exists in the InteractTextLineSets for " .. npcName .. " and will be overwritten.", 4)
-				end
-				npcData.InteractTextLineSets[key] = textLineSet
-			end
-			npcData.RepeatableTextLineSets = nil
+		-- Vanilla H2 doesn't run ProcessTextLines over RepeatableTextLineSets as they don't exist there
+		if npcData.RepeatableTextLineSets then
+			game.ProcessTextLines(npcData, npcData.RepeatableTextLineSets)
 		end
 
 		-- Fix up the CharacterInteractions voicelines to allow them to play after choosing a boon
@@ -1247,6 +1233,8 @@ local npcModifications = {
 				RequiredCosmetics = mod.NilValue,
 				RequiredTextLines = { "MorosGrantsQuestLog" },
 			},
+		},
+		RepeatableTextLineSets = {
 			-- #region Repeatable Romance
 			ThanatosHomeIntermissionChat01 = {
 				AreIdsAlive = mod.NilValue,
@@ -1607,6 +1595,8 @@ local npcModifications = {
 			OrpheusWithHades03 = {
 				RequiredFalseCosmetics = { "ModsNikkelMHadesBiomes_OrpheusEurydiceQuestItem", },
 			},
+		},
+		RepeatableTextLineSets = {
 			OrpheusNonSingingChat08 = {
 				RequiredFalseCosmetics = { "ModsNikkelMHadesBiomes_OrpheusEurydiceQuestItem", },
 			},
@@ -2659,8 +2649,8 @@ local npcModifications = {
 			MegaeraAboutDusaLegendary01 = {
 				RequiredAnyPlayedThisRun = mod.NilValue,
 			},
-
-			-- RepeatableTextLineSets
+		},
+		RepeatableTextLineSets = {
 			MegChat02_Alt = {
 				TeleportToId = mod.NilValue,
 			},
