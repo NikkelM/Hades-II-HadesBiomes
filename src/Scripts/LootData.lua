@@ -247,8 +247,9 @@ end
 ---@param cueMappings table<string, string> Cue prefix mapping, applied to `/VO/<Find>` -> `/VO/<ReplaceWith>`
 ---@param portraitMappings table<string, string>  Mappings of Cue prefixes to Portrait names
 ---@param preDeliverySoundCue string|nil If set, this cue is played as the delivered character's portrait transitions in
+---@param additionalSpeakerProperties table<string, table> Mappings of Cue prefixes (without the trailing _) to additional properties to set on the line
 function mod.AddHermesDeliveredDialogues(deliveries, voiceBankMappings, cueMappings, portraitMappings,
-																				 preDeliverySoundCue)
+																				 preDeliverySoundCue, additionalSpeakerProperties)
 	local hermesDeliveryIntroLines = {
 		{
 			Cue = "/VO/Modsnikkelmhadesbiomeshermes_90013",
@@ -315,12 +316,15 @@ function mod.AddHermesDeliveredDialogues(deliveries, voiceBankMappings, cueMappi
 		delivery.ModsNikkelMHadesBiomes_TextLineMetadata = delivery.ModsNikkelMHadesBiomes_TextLineMetadata or {}
 
 		for _, deliveredLine in ipairs(delivery) do
+			-- An explicit NarrativeContextArt in the additionalSpeakerProperties will take precedence over this, so we can always set it
 			deliveredLine.UseRoomContextArt = true
-			-- By default the speaker name is Hermes if nothing else is set, so determine what speaker we need from the Cue if required
-			if deliveredLine.Speaker == nil and deliveredLine.Source == nil and not deliveredLine.UsePlayerSource then
-				local character = string.match(deliveredLine.Cue, "^/VO/(%a+)_")
-				if character then
-					deliveredLine.Speaker = "NPC_" .. character .. "_01"
+
+			-- For some characters/speakers, we want to set additional properties on their lines
+			-- character is the speaker name without the trailing underscore
+			local character = string.match(deliveredLine.Cue, "^/VO/(%a+)_")
+			if additionalSpeakerProperties[character] ~= nil then
+				for key, value in pairs(additionalSpeakerProperties[character]) do
+					deliveredLine[key] = value
 				end
 			end
 		end
@@ -340,7 +344,7 @@ function mod.AddHermesDeliveredDialogues(deliveries, voiceBankMappings, cueMappi
 			if #hermesDeliveryIntroLinesRemoveFrom <= 0 then
 				hermesDeliveryIntroLinesRemoveFrom = game.DeepCopyTable(hermesDeliveryIntroLines)
 			end
-			local introLine = game.DeepCopyTable(game.RemoveRandomValue(hermesDeliveryIntroLinesRemoveFrom))
+			local introLine = game.DeepCopyTable(game.RemoveRandomValue(hermesDeliveryIntroLinesRemoveFrom)) or {}
 
 			introLine.Portrait = "ModsNikkelMHadesBiomes_Portrait_Hermes_Default_01"
 			introLine.StartSound = "/Leftovers/World Sounds/MapZoomInShort"

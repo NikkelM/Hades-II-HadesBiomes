@@ -67,5 +67,6 @@ local newHermesDeliveredDialogues = {
 
 mod.AddHermesDeliveredDialogues(newHermesDeliveredDialogues,
 	{ Hermes = { "Modsnikkelmhadesbiomesdionysus", "ZagreusField" } }, { Dionysus_ = "Modsnikkelmhadesbiomesdionysus_" },
-	{ Dionysus_ = "ModsNikkelMHadesBiomes_Portrait_Dionysus_Default_01" }, "/SFX/DionysusBoonWineLaugh")
+	{ Dionysus_ = "ModsNikkelMHadesBiomes_Portrait_Dionysus_Default_01" }, "/SFX/DionysusBoonWineLaugh",
+	{ Dionysus = { Speaker = "NPC_Dionysus_01", NarrativeContextArt = "DialogueBackground_Olympus" } })
 -- #endregion

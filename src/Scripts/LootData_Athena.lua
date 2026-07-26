@@ -57,7 +57,8 @@ local newExclusiveHermesDeliveredDialogues = {
 
 mod.AddHermesDeliveredDialogues(newExclusiveHermesDeliveredDialogues,
 	{ Hermes = { "Modsnikkelmhadesbiomesathena", "ZagreusField" } }, { Athena_ = "Modsnikkelmhadesbiomesathena_" },
-	{ Athena_ = "ModsNikkelMHadesBiomes_Portrait_Athena_Default_01" }, "/SFX/AthenaBoonHolyShield")
+	{ Athena_ = "ModsNikkelMHadesBiomes_Portrait_Athena_Default_01" }, "/SFX/AthenaBoonHolyShield",
+	{ Athena = { Speaker = "NPC_Athena_01", NarrativeContextArt = "DialogueBackground_Olympus"} })
 -- #endregion
 
 -- #region These can play either when picking up a Hermes boon, or meeting Athena in a modded run

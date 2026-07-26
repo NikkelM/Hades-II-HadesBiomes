@@ -59,5 +59,6 @@ local newHermesDeliveredDialogues = {
 
 mod.AddHermesDeliveredDialogues(newHermesDeliveredDialogues,
 	{ Hermes = { "Modsnikkelmhadesbiomesares", "ZagreusField" } }, { Ares_ = "Modsnikkelmhadesbiomesares_" },
-	{ Ares_ = "ModsNikkelMHadesBiomes_Portrait_Ares_Default_01" }, "/SFX/AresBoonBattle")
+	{ Ares_ = "ModsNikkelMHadesBiomes_Portrait_Ares_Default_01" }, "/SFX/AresBoonBattle",
+	{ Ares = { Speaker = "NPC_Ares_01", NarrativeContextArt = "DialogueBackground_Olympus" } })
 -- #endregion
