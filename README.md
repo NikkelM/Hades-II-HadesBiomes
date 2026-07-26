@@ -94,12 +94,17 @@ For more information or troubleshooting, see the [Installation wiki page](https:
 
 ![Configuration](./img/Readme/ConfigurationElysium.png)
 
+The mod offers a number of configuration options to allow you to customize your way of experiencing *Zagreus' Journey*, such as:
+- **Goddess Mode**, which disables the health and armour scaling the mod adds. This is done to rebalance enemies to counter Melinoë's increased damage compared to Zagreus, but you may use Goddess Mode to make the mod a little easier (*no judgement!*)
+- Other **Accessibility Settings**, such as changing the fade between the Temple of Styx and Hades' boss chamber from a bright white to black (no more flashbangs!)
+- **Speedrunning Support** - there are a number of settings aimed at making speedrunning *Zagreus' Journey* easier, such as forcing the Satyr Sack in Styx to always spawn in the second chamber, or making fresh file runs be in *Zagreus' Journey* instead of the Hades II Underworld.
+
+You can find an explanation of all configuration options [on this wiki page](https://github.com/NikkelM/Hades-II-HadesBiomes/wiki/Configuration).
+
 Note that the configuration file is only created after the first game start with the mod enabled in your mod manager.
 
 If you are using r2modman or the Thunderstore Mod Manager, you can modify the config directly through the mod manager, in the `Config editor` tab.
-Make sure to save the file once done.
-
-You can find an explanation of all configuration options [on this wiki page](https://github.com/NikkelM/Hades-II-HadesBiomes/wiki/Configuration).
+Make sure to save your changes once done.
 
 ### Feedback & Bug Reports
 
