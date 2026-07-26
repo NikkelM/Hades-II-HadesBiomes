@@ -254,6 +254,8 @@ local hadesProjectilesModifications = {
 	},
 	TheseusSpearThrowReturn = {
 		SpawnOnDissipate = "null",
+		-- Can't be blocked by the Coat Omega Attack
+		IgnoreCoverageAngles = true,
 	},
 	TheseusChariotMortar = {
 		InheritFrom = "1_BaseEnemyProjectileUndestroyable",
