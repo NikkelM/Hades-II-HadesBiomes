@@ -29,6 +29,7 @@ Other fixes and improvements:
 - Fixed: If a Flame Wheel or Nemean Chariot is morphed by "Twilight Curse" while attacking, the sheep will continue performing the attack.
 - Fixed: Asterius sometimes skips his jump animation.
 - Fixed: Asterius' shockwave projectiles are created in front of instead of behind him during some attacks in his second phase.
+- Fixed: Theseus' and Hades' spear throws do not damage Melinoë if she is using the Black Coat's Omega attack when they pierce her.
 - Fixed: The Good Shade in Elysium can be saluted when Theseus was defeated, but Asterius is still alive.
 - Fixed: Megaera greets Melinoë each time she returns to the Styx Hub.
 - Fixed: If the Tiny Vermin in Styx is met before meeting King Vermin in Oceanus, the game crashes.

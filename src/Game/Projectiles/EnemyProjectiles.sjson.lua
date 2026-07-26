@@ -249,6 +249,8 @@ local hadesProjectilesModifications = {
 	TheseusSpearThrow = {
 		InheritFrom = "1_BaseEnemyProjectileReflectable",
 		SpawnOnDissipate = "TheseusSpearReturnPoint",
+		-- Can't be blocked by the Coat Omega Attack
+		IgnoreCoverageAngles = true,
 	},
 	TheseusSpearThrowReturn = {
 		SpawnOnDissipate = "null",
@@ -337,6 +339,10 @@ local hadesProjectilesModifications = {
 	CrawlerReburrowShockwaveTouchdown = {
 		InheritFrom = "CrusherUnitTouchdown",
 		DetonateGraphic = "nil",
+	},
+	HadesBidentThrow = {
+		-- Can't be blocked by the Coat Omega Attack
+		IgnoreCoverageAngles = true,
 	},
 	HadesBidentStrike = {
 		Range = 900,
