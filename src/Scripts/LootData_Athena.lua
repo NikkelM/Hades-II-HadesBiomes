@@ -62,5 +62,5 @@ mod.AddHermesDeliveredDialogues(newExclusiveHermesDeliveredDialogues,
 -- #endregion
 
 -- #region These can play either when picking up a Hermes boon, or meeting Athena in a modded run
--- TODO: Also add new non-exclusive Hermes-delivered dialogues to Athena herself as she can be summoned during modded runs
+-- TODO: Also add all new non-exclusive Hermes-delivered dialogues to Athena herself as she can be summoned during modded runs
 -- #endregion
