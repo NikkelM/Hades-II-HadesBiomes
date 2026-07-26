@@ -1,9 +1,10 @@
--- #region These are played when picking up a Hermes boon in a modded run
-local newHermesDeliveredDialogues = {
+-- TODO: More lines
+local newPortedInteractTextLines = {
+	-- #region Storylines (Inserted in a group after AresPostTrueEndingAboutTyphon01)
 	{
 		Name = "AresAboutThanatos01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterTextLineGroupContaining = "HermesAboutApolloKeepsake01",
+			InsertAfterNarrativeTextLine = "AresPostTrueEndingAboutTyphon01",
 			CreateNewPriorityGroup = true,
 		},
 		PlayOnce = true,
@@ -55,10 +56,12 @@ local newHermesDeliveredDialogues = {
 			"It is my understanding that you have grown rather close with Thanatos, my kin? A perfect choice of mate; though I confess I'd not expected Death to have affection for another save himself."
 		},
 	},
+	-- #endregion
+	-- #region Misc (Inserted in a group after priority dialogues above)
+	-- #endregion
 }
-
-mod.AddHermesDeliveredDialogues(newHermesDeliveredDialogues,
-	{ Hermes = { "Modsnikkelmhadesbiomesares", "ZagreusField" } }, { Ares_ = "Modsnikkelmhadesbiomesares_" },
-	{ Ares_ = "ModsNikkelMHadesBiomes_Portrait_Ares_Default_01" }, "/SFX/AresBoonBattle",
-	{ Ares = { Speaker = "NPC_Ares_01", NarrativeContextArt = "DialogueBackground_Olympus" } })
--- #endregion
+mod.AddNarrativeDataEntries(
+	newPortedInteractTextLines, "AresUpgrade", "InteractTextLineSets", "InteractTextLinePriorities",
+	{ Ares = { "Modsnikkelmhadesbiomesares", "ZagreusField" } }, { Ares_ = "Modsnikkelmhadesbiomesares_" },
+	{ Ares_ = "ModsNikkelMHadesBiomes_Portrait_Ares_Default_01" }
+)
