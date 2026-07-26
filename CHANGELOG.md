@@ -50,6 +50,7 @@ Other fixes and improvements:
 - Fixed: Some ambient music is influenced by the music volume slider, instead of the ambience slider. *Note that due to engine quirks, both the SFX and the Ambience slider influence ambience volume*.
 - Fixed: If certain mods that integrate with Zagreus' Journey are active in the mod manager, but disabled through the mod configuration file, Zagreus' Journey still thinks they are active.
 - Fixed: Added a tentative fix for the Chaos Gate in the Training Grounds sometimes not spawning after returning from a run. Please report if this still happens.
+- Fixed: If the "x64" or "x86" sub-path is provided as part of the "hadesGameFolder" config setting, the game crashes instead of gracefully correcting the path internally.
 <!--Releasenotes end-->
 
 ## v1.1.3
