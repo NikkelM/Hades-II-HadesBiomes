@@ -409,6 +409,3 @@ mod.AddHermesDeliveredDialogues(newHermesDeliveredDialogues,
 	{ Dionysus_ = "ModsNikkelMHadesBiomes_Portrait_Dionysus_Default_01" }, "/SFX/DionysusBoonWineLaugh",
 	{ Dionysus = { Speaker = "NPC_Dionysus_01", NarrativeContextArt = "DialogueBackground_Olympus" } })
 -- #endregion
-
--- TODO: Debugging
-mod.PrintTable(game.NarrativeData.HermesUpgrade)
