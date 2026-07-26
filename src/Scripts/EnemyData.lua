@@ -250,13 +250,14 @@ function mod.ApplyModificationsAndInheritEnemyData(base, modifications, replacem
 							performTextLineModifications(entry)
 						end
 					end
-					if textLineSet.EndVoiceLines then
-						for _, endVoiceLineSet in ipairs(textLineSet.EndVoiceLines) do
-							for endIndex, endVoiceLine in ipairs(endVoiceLineSet) do
-								if type(endIndex) == "number" and type(endVoiceLine) == "table" then
-									performTextLineModifications(endVoiceLine)
-								end
+					-- EndVoiceLines is either a single table, or an array of sub-tables
+					for _, endVoiceLineSet in ipairs(textLineSet.EndVoiceLines or {}) do
+						if type(endVoiceLineSet[1]) == "table" then
+							for _, endVoiceLine in ipairs(endVoiceLineSet) do
+								performTextLineModifications(endVoiceLine)
 							end
+						else
+							performTextLineModifications(endVoiceLineSet)
 						end
 					end
 				end
