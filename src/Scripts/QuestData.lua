@@ -1406,7 +1406,7 @@ local newQuestData = {
 		},
 		CompleteGameStateRequirements = {
 			{
-				PathTrue = { "GameState", "ModsNikkelMHadesBiomes_DreamDiveDefeatedCharonAndZagreus" },
+				PathTrue = { "GameState", "ModsNikkelMHadesBiomesCustomFlags", "ModsNikkelMHadesBiomes_DreamDiveDefeatedCharonAndZagreus" },
 			},
 		},
 		CustomIncompleteString = "ModsNikkelMHadesBiomes_QuestDreamDiveCharonAndZagreus_Condition",
@@ -1439,7 +1439,7 @@ local newQuestData = {
 		},
 		CompleteGameStateRequirements = {
 			{
-				PathTrue = { "GameState", "ModsNikkelMHadesBiomes_DreamDiveDefeatedEMChronosTyphonHades" },
+				PathTrue = { "GameState", "ModsNikkelMHadesBiomesCustomFlags", "ModsNikkelMHadesBiomes_DreamDiveDefeatedEMChronosTyphonHades" },
 			},
 		},
 		CustomIncompleteString = "ModsNikkelMHadesBiomes_QuestDreamDiveEMBosses_Condition",

@@ -99,8 +99,7 @@ modutil.mod.Path.Wrap("DoPatches", function(base)
 			game.GameState.ModsNikkelMHadesBiomes_ClearedFullRunWithKeepsakes = game.GameState
 					.ModsNikkelMHadesBiomes_ClearedFullRunWithKeepsakes or {}
 			-- To track some custom misc flag, e.g. for certain Quest progress
-			game.GameState.ModsNikkelMHadesBiomesCustomFlags = game.GameState
-					.ModsNikkelMHadesBiomesCustomFlags or {}
+			game.GameState.ModsNikkelMHadesBiomesCustomFlags = game.GameState.ModsNikkelMHadesBiomesCustomFlags or {}
 			-- Ensure LordHadesDefeated01 is true in case it was skipped before due to the Extreme Measure conversation having played instead
 			if game.GameState.TextLinesRecord["LordHadesExtremeMeasuresDefeat01"] == true and game.GameState.TextLinesRecord["PersephoneFirstMeeting"] == true and game.GameState.TextLinesRecord["LordHadesDefeated01"] == nil then
 				game.GameState.TextLinesRecord["LordHadesDefeated01"] = true
@@ -232,8 +231,19 @@ modutil.mod.Path.Wrap("DoPatches", function(base)
 			end
 		end
 
+		-- Migrate Quest flags to CustomFlags table
+		if game.GameState.ModsNikkelMHadesBiomesPatchRevision < 11 then
+			game.GameState.ModsNikkelMHadesBiomesCustomFlags.ModsNikkelMHadesBiomes_DreamDiveDefeatedCharonAndZagreus = game
+					.GameState.ModsNikkelMHadesBiomes_DreamDiveDefeatedCharonAndZagreus
+			game.GameState.ModsNikkelMHadesBiomes_DreamDiveDefeatedCharonAndZagreus = nil
+
+			game.GameState.ModsNikkelMHadesBiomesCustomFlags.ModsNikkelMHadesBiomes_DreamDiveDefeatedEMChronosTyphonHades =
+					game.GameState.ModsNikkelMHadesBiomes_DreamDiveDefeatedEMChronosTyphonHades
+			game.GameState.ModsNikkelMHadesBiomes_DreamDiveDefeatedEMChronosTyphonHades = nil
+		end
+
 		-- IMPORTANT: This must be incremented every time this function is changed
-		game.GameState.ModsNikkelMHadesBiomesPatchRevision = 10
+		game.GameState.ModsNikkelMHadesBiomesPatchRevision = 11
 	end
 
 	return base()

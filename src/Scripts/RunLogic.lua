@@ -171,11 +171,11 @@ modutil.mod.Path.Wrap("RecordRunCleared", function(base)
 	if game.CurrentRun.IsDreamRun then
 		-- Defeated Charon + Zagreus in a single Dream Dive
 		if game.CurrentRun.ModsNikkelMHadesBiomes_DreamDiveDefeatedCharon and game.CurrentRun.ModsNikkelMHadesBiomes_DreamDiveDefeatedZagreus then
-			game.GameState.ModsNikkelMHadesBiomes_DreamDiveDefeatedCharonAndZagreus = true
+			game.GameState.ModsNikkelMHadesBiomesCustomFlags.ModsNikkelMHadesBiomes_DreamDiveDefeatedCharonAndZagreus = true
 		end
 		-- Defeated EM Chronos, Typhon + Hades in a single Dream Dive
 		if game.CurrentRun.ModsNikkelMHadesBiomes_DreamDiveDefeatedEMChronos and game.CurrentRun.ModsNikkelMHadesBiomes_DreamDiveDefeatedEMTyphon and game.CurrentRun.ModsNikkelMHadesBiomes_DreamDiveDefeatedEMHades then
-			game.GameState.ModsNikkelMHadesBiomes_DreamDiveDefeatedEMChronosTyphonHades = true
+			game.GameState.ModsNikkelMHadesBiomesCustomFlags.ModsNikkelMHadesBiomes_DreamDiveDefeatedEMChronosTyphonHades = true
 		end
 	end
 

@@ -31,9 +31,10 @@ modutil.mod.Path.Wrap("KillPresentation", function(base, victim, killer, args)
 	return base(victim, killer, args)
 end)
 
--- For the Alecto bossfight, if dying while the enemy is permanently enraged
+-- For the Alecto bossfight, if dying while she is permanently enraged
 modutil.mod.Path.Wrap("PlayerLastStandPresentationEnd", function(base)
 	base()
+
 	if not game.IsEmpty(game.ActiveEnemies) then
 		local colorGrade = "None"
 		for id, enemy in pairs(game.ActiveEnemies) do
@@ -59,10 +60,10 @@ function mod.CheckDreamDiveQuestCompletion()
 		return
 	end
 	if game.CurrentRun.ModsNikkelMHadesBiomes_DreamDiveDefeatedCharon and game.CurrentRun.ModsNikkelMHadesBiomes_DreamDiveDefeatedZagreus then
-		game.GameState.ModsNikkelMHadesBiomes_DreamDiveDefeatedCharonAndZagreus = true
+		game.GameState.ModsNikkelMHadesBiomesCustomFlags.ModsNikkelMHadesBiomes_DreamDiveDefeatedCharonAndZagreus = true
 	end
 	if game.CurrentRun.ModsNikkelMHadesBiomes_DreamDiveDefeatedEMChronos and game.CurrentRun.ModsNikkelMHadesBiomes_DreamDiveDefeatedEMTyphon and game.CurrentRun.ModsNikkelMHadesBiomes_DreamDiveDefeatedEMHades then
-		game.GameState.ModsNikkelMHadesBiomes_DreamDiveDefeatedEMChronosTyphonHades = true
+		game.GameState.ModsNikkelMHadesBiomesCustomFlags.ModsNikkelMHadesBiomes_DreamDiveDefeatedEMChronosTyphonHades = true
 	end
 end
 
