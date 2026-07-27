@@ -17,6 +17,8 @@ Other fixes and improvements:
 - Balancing: Trap damage now scales in Dream Dives.
 - Fixed: Ghosts in Tartarus' opening room, mid-shop and Sisyphus' chamber do not move around the room, instead staying where they spawn.
 - Fixed: Some of the Furies' unblockable attacks can be blocked by the Coat's Omega Attack block.
+- Fixed: Familiars and some obstacles such as Zeus' Mana Fountain can end up in an unreachable location if they are outside of the new playable area after one of Tisiphone's phase transitions.
+- Fixed: The game can crash during the Tisiphone's phase transition if certain Gods aid her through the "Vow of Betrayal" added by the [Nightmare Fear](https://thunderstore.io/c/hades-ii/p/ReadEmAndWeep/Nightmare_Fear/) mod.
 - Fixed: The boat in Asphodel sometimes enters a new room from an incorrect direction, in relation to the direction it exited the previous room.
 - Fixed: Some animations and textures are missing when loading a save in non-combat rooms in Asphodel.
 - Fixed: Eurydice's "Pom Porridge" only upgrades boons by one instead of two levels (fix by zerp).
