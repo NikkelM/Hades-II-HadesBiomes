@@ -1020,6 +1020,10 @@ local enemyModifications = {
 		ModsNikkelMHadesBiomesEffectVfxOffsetZ = 110,
 		DreamBiomeData = tartarusEnemyDreamBiomeData,
 	},
+	HeavyRangedElite = {
+		-- The tethers don't teleport and instead float over to the new location
+		BlockAttributes = { "Blink" },
+	},
 	Swarmer = {
 		StunAnimations = { Default = "EnemyWretchSwarmerAlert", },
 		WeaponOptions = { "HadesSwarmerMelee" },
@@ -2224,7 +2228,7 @@ local enemyModifications = {
 		},
 	},
 	ShieldRangedElite = {
-		BlockAttributes = { "ExtraDamage", "Vacuuming", "Unflinching" },
+		BlockAttributes = { "ExtraDamage", "Vacuuming", "Unflinching", "Blink" },
 		DreamBiomeData = elysiumEnemyDreamBiomeData,
 	},
 	SplitShotUnit = {
