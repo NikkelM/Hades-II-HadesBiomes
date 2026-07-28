@@ -59,9 +59,8 @@ modutil.mod.Path.Wrap("LoadCurrentRoomResources", function(base, currentRoom)
 
 		-- For the vow that gives a chance for enemies to be from the next biome
 		if game.GetShrineUpgradeChangeValue("NextBiomeEnemyShrineUpgrade") > 0 then
-			local nextRoomSet = game.NextRoomSets[currentRoom.RoomSetName]
-			if nextRoomSet ~= nil then
-				LoadPackages({ Name = nextRoomSet })
+			if currentRoom.RoomSetName == "Tartarus" then
+				LoadPackages({ Name = "BiomeB" })
 			end
 		end
 

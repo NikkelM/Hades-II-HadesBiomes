@@ -47,6 +47,9 @@ Other fixes and improvements:
 - Fixed: In rare cases, the game may crash after Melinoë exits "Unseen Ire" while an enemy is performing a certain type of attack.
 - Fixed: The cloud VFX added above enemies that are afflicted by Blitz is misaligned for enemies using Hades II models, if enemies using Hades models are also present in the room.
 - Fixed: The VFX added by Blitz and the "Skyfall" Hex are misaligned for many enemies from the first game.
+- Fixed: Zagreus' Journey regions can occur in their natural order (e.g. Asphodel after Tartarus) in Dream Dives.
+- Fixed: The "Vow of Menace" can spawn enemies from regions you have not seen yet.
+- Fixed: The game may briefly stutter when the first enemy from the respective next region is spawned in a region through the "Vow of Menace".
 - Fixed: Dialogue background animations run on a lower frame rate that makes them appear more staggered during transitions.
 - Fixed: Some NPC voicelines that should run after a dialogue completes do not play.
 - Fixed: Some textures flicker in Eurydice's chamber.
