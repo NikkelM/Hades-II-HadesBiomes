@@ -4,7 +4,8 @@
 
 <!--Releasenotes start-->
 ### Patch Highlights:
-- Added new dialogues between Zagreus and various Gods, some of them delivered by Hermes via his boons in Zagreus' Journey runs. This unblocks a number of NPC dialogues as well.
+- Ported (almost) all of Ares' dialogues with Zagreus from the first game. Some of these are still blocked by missing dialogues from other Gods, which will be added in subsequent updates.
+- Ported additional dialogues between Zagreus and various other Gods, delivered by Hermes via his boons in the Nightmare Realm (Athena, Dionysus).
 - Improved visual fidelity across all biomes, and Elysium especially, by adding a group of previously missing environmental lighting elements.
 - Added four new cosmetics: Two stages for the Music Maker, a set of pillars near the Cauldron, and a set of pillarets surrounding Hypnos.
 - Accessibility: Added a "Goddess Mode" config option that disables enemy health and armour scaling added by the mod. Across all biomes, enemies will have 30-45% less health and 10-20% less armour if this is enabled. *Please note that enemy health scaling was added to compensate for Melinoë's increased damage output, and you may find the mod too easy when enabling Goddess Mode.*
@@ -12,13 +13,14 @@
 
 Other fixes and improvements:
 - If boons offered by NPCs have specific requirements before they can be offered, these will now be shown in the Codex (Patroclus, Orpheus).
+- Added a new Minor Prophecy unlocked by talking to Ares in the Nightmare Realm (*more will follow*).
 - Accessibility: Added a config option to fade to black instead of white when exiting the Styx hub room to Hades' boss arena.
 - Accessibility: Added support for the "Zoom In" accessibility option. A blanket 13% zoom will be applied to all rooms. If you use this option and find certain rooms to be too zoomed in, or still too zoomed out, please report this.
 - Balancing: Trap damage now scales in Dream Dives.
 - Fixed: Ghosts in Tartarus' opening room, mid-shop and Sisyphus' chamber do not move around the room, instead staying where they spawn.
-- Fixed: Some of the Furies' unblockable attacks can be blocked by the Coat's Omega Attack block.
+- Fixed: Some of the Furies' unblockable attacks can be blocked by the Black Coat's Omega attack block.
 - Fixed: Familiars and some obstacles such as Zeus' Mana Fountain can end up in an unreachable location if they are outside of the new playable area after one of Tisiphone's phase transitions.
-- Fixed: The game can crash during the Tisiphone's phase transition if certain Gods aid her through the "Vow of Betrayal" added by the [Nightmare Fear](https://thunderstore.io/c/hades-ii/p/ReadEmAndWeep/Nightmare_Fear/) mod.
+- Fixed: The game can crash during Tisiphone's phase transition if certain Gods aid her through the "Vow of Betrayal" added by the [Nightmare Fear](https://thunderstore.io/c/hades-ii/p/ReadEmAndWeep/Nightmare_Fear/) mod.
 - Fixed: The boat in Asphodel sometimes enters a new room from an incorrect direction, in relation to the direction it exited the previous room.
 - Fixed: Some animations and textures are missing when loading a save in non-combat rooms in Asphodel.
 - Fixed: Eurydice's "Pom Porridge" only upgrades boons by one instead of two levels (fix by zerp).
@@ -27,7 +29,7 @@ Other fixes and improvements:
 - Fixed: The Brightsword's dash does not have its direction randomized.
 - Fixed: If a Shade enemy in Elysium dies while polymorphed, it drops a weapon that is able to be picked up by Exalted Shades.
 - Fixed: If a Shade enemy in Elysium has both the "Massive" and "Popper" elite perks, the additional Exalted Shades produced by the "Popper" perk are enlarged until they land.
-- Fixed: The explosion from the fake Exalted Shades created by the "Popper" elite perk can be blocked by the Coat's Omega Attack block.
+- Fixed: The explosion from the fake Exalted Shades created by the "Popper" elite perk can be blocked by the Black Coat's Omega attack block.
 - Fixed: If a Flame Wheel or Nemean Chariot is morphed by "Twilight Curse" while attacking, the sheep will continue performing the attack.
 - Fixed: Asterius sometimes skips his jump animation.
 - Fixed: Asterius' shockwave projectiles are created in front of instead of behind him during some attacks in his second phase.
@@ -38,7 +40,7 @@ Other fixes and improvements:
 - Fixed: The Tiny Vermin is damaged by Medea's "Suffering on Sight" boon.
 - Fixed: The "Poison will wear off automatically" message can incorrectly show in Styx, where this is not the case.
 - Fixed: Moving close to certain walls and other obstacles in Styx can make Melinoë appear behind them.
-- Fixed: If an enemy goes invisible as part of its attack, the Black Coat's Omega Special's lock-on effect remains active, revealing its location.
+- Fixed: If an enemy goes invisible as part of its attack, the Black Coat's Omega special's lock-on effect remains active, revealing its location.
 - Fixed: Rewards from Shrines of Hermes and Icarus' "Supply Chain" boon can be delivered after defeating Charon, which softlocks the player if picked up.
 - Fixed: If deliveries from a Shrine of Hermes are pending after giving the Satyr Sack to Cerberus in a Dream Dive, they will not be auto-delivered.
 - Fixed: In rare cases, the game may crash after Melinoë exits "Unseen Ire" while an enemy is performing a certain type of attack.

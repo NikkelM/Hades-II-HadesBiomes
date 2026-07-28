@@ -400,6 +400,10 @@ function mod.ApplyModificationsAndInheritEnemyData(base, modifications, replacem
 
 		game.ProcessDataInheritance(enemyData, game.EnemyData)
 		base[enemyName] = enemyData
+
+		if enemyData.RequiredKill then
+			table.insert(mod.AllRequiredKillModdedEnemyNames, enemyName)
+		end
 	end
 
 	-- Don't skip duplicates, since we have already added all the new data before

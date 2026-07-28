@@ -8,6 +8,7 @@ local flippedArcanaActive = mod.IsOtherModActive("ReadEmAndWeep-Flip_the_Arcana_
 local nighmareFearActive = mod.IsOtherModActive("ReadEmAndWeep-Nightmare_Fear")
 
 -- #region The order of the quests in the Quest log, these will be appended to the end of the vanilla list
+-- Current number of quests: 42 (40 base + one flipped + one nightmare)
 local newQuestOrderData = {
 	-- key / mission-critical
 	"ModsNikkelMHadesBiomes_QuestSisyphusLiberation",
@@ -47,6 +48,7 @@ local newQuestOrderData = {
 	"ModsNikkelMHadesBiomes_QuestEliteAttributeKills",
 	"ModsNikkelMHadesBiomes_QuestMiniBossKills",
 	"ModsNikkelMHadesBiomes_QuestClearedExtremeMeasuresRun",
+	"ModsNikkelMHadesBiomes_AresEarnKills",
 	"ModsNikkelMHadesBiomes_QuestShutdownThanatos",
 	"ModsNikkelMHadesBiomes_QuestThanatosKeepsakeHighPercentage",
 	"ModsNikkelMHadesBiomes_QuestHitlessErebusEncounters",
@@ -523,6 +525,22 @@ local newQuestData = {
 			"WeaponAxe",
 			"WeaponLob",
 			"WeaponSuit",
+		},
+	},
+	-- Kill 10000 (modded) enemies
+	ModsNikkelMHadesBiomes_AresEarnKills = {
+		InheritFrom = { "DefaultQuestItem", "DefaultKillQuest" },
+		RewardResourceName = "WeaponPointsRare",
+		RewardResourceAmount = 2,
+		UnlockGameStateRequirements = {
+			{
+				PathTrue = { "GameState", "TextLinesRecord", "AresKillQuest01" },
+			},
+		},
+		CompleteGameStateRequirements = {
+			{
+				PathTrue = { "GameState", "TextLinesRecord", "AresKillQuestComplete" },
+			},
 		},
 	},
 	-- #endregion

@@ -594,3 +594,6 @@ mod.ModdedPlayerScaleMultiplier = 0.9
 mod.IncreasedZoomFractionOffset = 0.13
 
 mod.ExitToHadesFadeColour = config.accessibility.z_FadeToBlackEnteringHades and game.Color.Black or game.Color.White
+
+-- Populated in ApplyModificationsAndInheritEnemyData()
+mod.AllRequiredKillModdedEnemyNames = {}

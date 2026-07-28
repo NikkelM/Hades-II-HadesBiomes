@@ -1233,6 +1233,9 @@ local npcModifications = {
 				RequiredCosmetics = mod.NilValue,
 				RequiredTextLines = { "MorosGrantsQuestLog" },
 			},
+			ThanatosAboutNyxAndAres01 = {
+				RequiredAnyTextLines = { "ModsNikkelMHadesBiomes_AresAboutNyx01", "ModsNikkelMHadesBiomes_AresAboutNyx01_B" },
+			},
 		},
 		RepeatableTextLineSets = {
 			-- #region Repeatable Romance

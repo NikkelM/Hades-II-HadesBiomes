@@ -1,9 +1,81 @@
 -- #region New/Imported text lines
+
+-- #region Helper functions for AddNarrativeDataEntries
+local function dialogueNameExistsInHadesTwo(name)
+	-- These tables don't contain dialogues (in NarrativeData) and should not be checked
+	local nonDialogueNarrativeFields = {
+		BonusGiftHeartRequirements = true,
+		SpecialGiftTrackHintRequirements = true,
+		SpecialKeepsakeEventRequirements = true,
+		ChoiceButtons = true,
+	}
+
+	for _, source in pairs(game.NarrativeData) do
+		if type(source) == "table" then
+			for key, childTable in pairs(source) do
+				if type(childTable) == "table" and not nonDialogueNarrativeFields[key] then
+					for _, entry in pairs(childTable) do
+						-- Entries are either a dialogue name or a group (table) of dialogue names
+						if entry == name or (type(entry) == "table" and game.Contains(entry, name)) then
+							return true
+						end
+					end
+				end
+			end
+		end
+	end
+	return false
+end
+
+local function insertAfterGroup(priorityTable, target, entry, textLineKey)
+	for i, group in ipairs(priorityTable) do
+		if type(group) == "table" then
+			for _, lineName in ipairs(group) do
+				if lineName == target then
+					table.insert(priorityTable, i + 1, entry)
+					mod.DebugPrint("Inserted " .. textLineKey .. " after group containing " .. target, 4)
+					return true
+				end
+			end
+		end
+	end
+	mod.DebugPrint(
+		"InsertAfterTextLineGroupContaining target '" .. tostring(target) .. "' not found for " .. textLineKey, 1)
+	return false
+end
+
+local function insertAfterLine(priorityTable, target, entry, textLineKey, createNewGroup)
+	for i, val in ipairs(priorityTable) do
+		if type(val) == "string" then
+			if val == target then
+				table.insert(priorityTable, i + 1, entry)
+				mod.DebugPrint("Inserted " .. textLineKey .. " after line " .. target, 4)
+				return true
+			end
+		elseif type(val) == "table" then
+			for j, lineName in ipairs(val) do
+				if lineName == target then
+					if createNewGroup then
+						mod.DebugPrint("Cannot create new group after line inside group for " .. textLineKey, 1)
+						return false
+					end
+					table.insert(val, j + 1, textLineKey)
+					mod.DebugPrint("Inserted " .. textLineKey .. " after line " .. target .. " inside its group", 4)
+					return true
+				end
+			end
+		end
+	end
+	mod.DebugPrint("InsertAfterNarrativeTextLine target '" .. tostring(target) .. "' not found for " .. textLineKey, 1)
+	return false
+end
+-- #endregion
+
 ---Add modded narrative text lines into NarrativeData and LootData/EnemyData with priority placement and voicebank mapping.
 ---@param newTextLines table<integer, table> Text line sets keyed by text line id, each including `ModsNikkelMHadesBiomes_TextLineMetadata`
 ---@param narrativeDataKey string Key in `game.NarrativeData` and `game.LootData`/`game.EnemyData`
 ---@param textLineType string Field name on LootData/EnemyData to store sets (e.g. "InteractTextLineSets")
----@param textLinePriorityType string Field name on NarrativeData priority table (e.g. "InteractTextLinePriorities")
+---@param textLinePriorityType string|nil Field name on NarrativeData priority table (e.g. "InteractTextLinePriorities")
 ---@param voiceBankMappings table<string, table<string>> Voicebank mapping to load modded voicebanks with vanilla loads
 ---@param cueMappings table<string, string> Cue prefix mapping, applied to `/VO/<Find>` -> `/VO/<ReplaceWith>`
 ---@param portraitMappings table<string, string> Mappings of Cue prefixes to Portrait names
@@ -11,12 +83,14 @@
 ---@param dummyVoiceBank string|nil If `dummyCues` is set, this voicebank will be loaded for it
 function mod.AddNarrativeDataEntries(newTextLines, narrativeDataKey, textLineType, textLinePriorityType,
 																		 voiceBankMappings, cueMappings, portraitMappings, dummyCues, dummyVoiceBank)
-	if narrativeDataKey == nil or textLineType == nil or textLinePriorityType == nil or voiceBankMappings == nil or cueMappings == nil or portraitMappings == nil then
+	if narrativeDataKey == nil or textLineType == nil or voiceBankMappings == nil or cueMappings == nil or portraitMappings == nil then
 		mod.DebugPrint("A required parameter is missing!", 1)
 		return
 	end
 	if dummyCues ~= nil and dummyVoiceBank == nil then
-		mod.DebugPrint("dummyCues is set but dummyVoiceBank is nil, both must be set to use a dummy cue!", 1)
+		mod.DebugPrint(
+			"dummyCues is set but dummyVoiceBank is nil, both must be set to use a dummy cue! For " ..
+			narrativeDataKey ", " .. textLineType, 1)
 		return
 	end
 
@@ -32,6 +106,32 @@ function mod.AddNarrativeDataEntries(newTextLines, narrativeDataKey, textLineTyp
 		return
 	end
 
+	local priorityTable = nil
+	if textLinePriorityType ~= nil then
+		priorityTable = narrativeData[textLinePriorityType]
+		if priorityTable == nil then
+			mod.DebugPrint("Priority table " .. textLinePriorityType .. " not found for " .. narrativeDataKey, 1)
+			return
+		end
+	end
+
+	local textLineSetsTable = textLineSetsOwner[textLineType]
+	if textLineSetsTable == nil then
+		mod.DebugPrint("Sets table " .. tostring(textLineType) .. " not found for " .. narrativeDataKey, 1)
+		return
+	end
+
+	-- Update the vanilla dialogues to NOT play in modded runs, since these don't have priority tables
+	-- Only do this for Gods for which we add modded dialogues, so others still fall back to using the vanilla H2 ones
+	local devotionTextLines = { "RejectionTextLines", "MakeUpTextLines" }
+	if game.Contains(devotionTextLines, textLineType) then
+		for _, textLineData in pairs(game.LootData[narrativeDataKey][textLineType]) do
+			textLineData.GameStateRequirements = textLineData.GameStateRequirements or {}
+			table.insert(textLineData.GameStateRequirements,
+				{ PathFalse = { "CurrentRun", "ModsNikkelMHadesBiomesIsModdedRun" } })
+		end
+	end
+
 	-- To load the new required voicebanks whenever this loot's voicebank is loaded
 	for vanillaVoiceBank, mappedVoiceBanks in pairs(voiceBankMappings) do
 		mod.LootVoiceBankMappings[vanillaVoiceBank] = mod.LootVoiceBankMappings[vanillaVoiceBank] or {}
@@ -41,77 +141,6 @@ function mod.AddNarrativeDataEntries(newTextLines, narrativeDataKey, textLineTyp
 			end
 		end
 	end
-
-	-- #region Helper functions
-	local function dialogueNameExistsInHadesTwo(name)
-		-- These tables don't contain dialogues (in NarrativeData) and should not be checked
-		local nonDialogueNarrativeFields = {
-			BonusGiftHeartRequirements = true,
-			SpecialGiftTrackHintRequirements = true,
-			SpecialKeepsakeEventRequirements = true,
-			ChoiceButtons = true,
-		}
-
-		for _, source in pairs(game.NarrativeData) do
-			if type(source) == "table" then
-				for key, childTable in pairs(source) do
-					if type(childTable) == "table" and not nonDialogueNarrativeFields[key] then
-						for _, entry in pairs(childTable) do
-							-- Entries are either a dialogue name or a group (table) of dialogue names
-							if entry == name or (type(entry) == "table" and game.Contains(entry, name)) then
-								return true
-							end
-						end
-					end
-				end
-			end
-		end
-		return false
-	end
-
-	local function insertAfterGroup(priorityTable, target, entry, textLineKey)
-		for i, group in ipairs(priorityTable) do
-			if type(group) == "table" then
-				for _, lineName in ipairs(group) do
-					if lineName == target then
-						table.insert(priorityTable, i + 1, entry)
-						mod.DebugPrint("Inserted " .. textLineKey .. " after group containing " .. target, 4)
-						return true
-					end
-				end
-			end
-		end
-		mod.DebugPrint(
-			"InsertAfterTextLineGroupContaining target '" .. tostring(target) .. "' not found for " .. textLineKey, 1)
-		return false
-	end
-
-	local function insertAfterLine(priorityTable, target, entry, textLineKey, createNewGroup)
-		for i, val in ipairs(priorityTable) do
-			if type(val) == "string" then
-				if val == target then
-					table.insert(priorityTable, i + 1, entry)
-					mod.DebugPrint("Inserted " .. textLineKey .. " after line " .. target, 4)
-					return true
-				end
-			elseif type(val) == "table" then
-				for j, lineName in ipairs(val) do
-					if lineName == target then
-						if createNewGroup then
-							mod.DebugPrint("Cannot create new group after line inside group for " .. textLineKey, 1)
-							return false
-						end
-						table.insert(val, j + 1, textLineKey)
-						mod.DebugPrint("Inserted " .. textLineKey .. " after line " .. target .. " inside its group", 4)
-						return true
-					end
-				end
-			end
-		end
-		mod.DebugPrint("InsertAfterNarrativeTextLine target '" .. tostring(target) .. "' not found for " .. textLineKey, 1)
-		return false
-	end
-	-- #endregion
 
 	for index, data in ipairs(newTextLines) do
 		local key = data.Name
@@ -125,11 +154,11 @@ function mod.AddNarrativeDataEntries(newTextLines, narrativeDataKey, textLineTyp
 			mod.DebugPrint("Text line set '" .. key .. "' already exists in Hades II.", 1)
 		end
 
-		local metadata = data.ModsNikkelMHadesBiomes_TextLineMetadata
+		local metadata = data.ModsNikkelMHadesBiomes_TextLineMetadata or {}
 		-- #region Required modifications to all text lines
 		-- Mark as modded textline
 		data.ModsNikkelMHadesBiomesIsModdedTextLine = true
-		if narrativeDataKey == "TrialUpgrade" then
+		if narrativeDataKey == "TrialUpgrade" or textLineType == "MakeUpTextLines" then
 			-- This will prevent using the Chaos effects on boon pickup, which would double up
 			data.ModsNikkelMHadesBiomesIsModdedTrialUpgradeTextLine = true
 		end
@@ -140,7 +169,7 @@ function mod.AddNarrativeDataEntries(newTextLines, narrativeDataKey, textLineTyp
 		-- This requirement was missing in Hades' textlines
 		table.insert(data.GameStateRequirements, { PathFalse = { "CurrentRun", "UseRecord", narrativeDataKey } })
 
-		local insertedDummyCue = (not dummyCues) or false
+		local insertedDummyCue = not dummyCues
 		for _, line in ipairs(data) do
 			if not insertedDummyCue and not line.UserPlayerSource then
 				if line.PreLineThreadedFunctionName ~= nil then
@@ -179,48 +208,33 @@ function mod.AddNarrativeDataEntries(newTextLines, narrativeDataKey, textLineTyp
 			if line.Text then
 				line.Text = string.gsub(line.Text, "{#PreviousFormat}", "{#Prev}")
 			end
+
+			-- Insert PresetEventArgs
+			if textLineType == "RejectionTextLines" then
+				line.PreLineFunctionArgs = game.PresetEventArgs.RejectionBoonInteract
+			end
 		end
 		-- #endregion
 
 		-- #region Insert into LootData/EnemyData & NarrativeData priority table
-		local priorityTable = narrativeData[textLinePriorityType]
-		if priorityTable == nil then
-			mod.DebugPrint(
-				"Priority table " .. textLinePriorityType .. " not found for " .. narrativeDataKey .. ", cannot insert " .. key,
-				1)
-			return
-		end
-
-		local textLineSetsTable = textLineSetsOwner[textLineType]
-		if textLineSetsTable == nil then
-			mod.DebugPrint("Sets table " .. tostring(textLineType) .. " not found for " .. narrativeDataKey, 1)
-			return
-		else
-			-- Make sure this textline key doesn't already exist
-			if textLineSetsTable[key] ~= nil then
-				mod.DebugPrint("Text line set with name " .. key .. " already exists in " .. narrativeDataKey ..
-					" loot/enemy data, cannot add new text lines!", 1)
-				return
-			end
-		end
-
 		data.ModsNikkelMHadesBiomes_TextLineMetadata = nil
 		textLineSetsTable[key] = data
 
-		-- Is this a new sub-table, or just the key itself
-		local entry = metadata.CreateNewPriorityGroup and { key } or key
-
-		if metadata.InsertAfterTextLineGroupContaining ~= nil then
-			insertAfterGroup(priorityTable, metadata.InsertAfterTextLineGroupContaining, entry, key)
-		elseif metadata.InsertAfterNarrativeTextLine ~= nil then
-			insertAfterLine(priorityTable, metadata.InsertAfterNarrativeTextLine, entry, key,
-				metadata.CreateNewPriorityGroup)
-		elseif metadata.InsertAtFirstPriority ~= nil then
-			-- Insert at the very top of the priorityTable
-			table.insert(priorityTable, 1, entry)
-		else
-			mod.DebugPrint("No insertion target specified for " .. key .. " in " .. narrativeDataKey, 1)
-			return
+		if priorityTable ~= nil then
+			-- Is this a new sub-table, or just the key itself
+			local entry = metadata.CreateNewPriorityGroup and { key } or key
+			if metadata.InsertAfterTextLineGroupContaining ~= nil then
+				insertAfterGroup(priorityTable, metadata.InsertAfterTextLineGroupContaining, entry, key)
+			elseif metadata.InsertAfterNarrativeTextLine ~= nil then
+				insertAfterLine(priorityTable, metadata.InsertAfterNarrativeTextLine, entry, key,
+					metadata.CreateNewPriorityGroup)
+			elseif metadata.InsertAtFirstPriority ~= nil then
+				-- Insert at the very top of the priorityTable
+				table.insert(priorityTable, 1, entry)
+			else
+				mod.DebugPrint("No insertion target specified for " .. key .. " in " .. narrativeDataKey, 1)
+				return
+			end
 		end
 		-- #endregion
 	end
@@ -239,6 +253,7 @@ function mod.PlayDummyLootPickupCue(source, args)
 end
 
 -- #region Hermes-delivered voicelines
+
 ---Adds Hermes-delivered dialogues to the vanilla HermesUpgrade textlines.
 ---Hermes speaks a random intro line, then starts the dialogue originally spoken by another character.
 ---Should be used for characters that can't appear in modded runs (e.g. Dionysus, Athena).

@@ -403,8 +403,9 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 	end
 
 	if requirements.RequiredTrait then
-		-- Replace Shout/Wrath/Hex/Spell trait names with Hades II equivalents
-		local shoutTraitMappings = {
+		-- Replace Hades trait names with Hades II equivalents
+		local traitMappings = {
+			-- #region Shout/Wrath/Hex/Spell
 			ZeusShoutTrait = "PolymorphZeusTalent",
 			PoseidonShoutTrait = "PotionPoseidonTalent",
 			AphroditeShoutTrait = "TransformAphroditeTalent",
@@ -412,9 +413,38 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 			DemeterShoutTrait = "TimeSlowDemeterTalent",
 			-- Unused H2 traits: LaserApolloTalent, LeapHephaestusTalent, SummonHeraTalent, MeteorHestiaTalent,
 			-- Unused H1 shouts: HadesShoutTrait, AthenaShoutTrait, ArtemisShoutTrait, DionysusShoutTrait
+			-- #endregion
+			-- #region Keepsakes
+			ShopDurationTrait = "BonusMoneyKeepsake",
+			ReincarnationTrait = "ReincarnationKeepsake",
+			ForceZeusBoonTrait = "ForceZeusBoonKeepsake",
+			ForcePoseidonBoonTrait = "ForcePoseidonBoonKeepsake",
+			ForceAthenaBoonTrait = "AthenaEncounterKeepsake",
+			ForceAphroditeBoonTrait = "ForceAphroditeBoonKeepsake",
+			ForceAresBoonTrait = "ForceAresBoonKeepsake",
+			ForceArtemisBoonTrait = "LowHealthCritKeepsake",
+			ForceDionysusBoonTrait = "SkipEncounterKeepsake",
+			FastClearDodgeBonusTrait = "TimedBuffKeepsake",
+			ForceDemeterBoonTrait = "ForceDemeterBoonKeepsake",
+			ChaosBoonTrait = "RandomBlessingKeepsake",
+			HadesShoutKeepsake = "HadesAndPersephoneKeepsake",
+			-- #endregion
 		}
-		if shoutTraitMappings[requirements.RequiredTrait] ~= nil then
-			requirements.RequiredTrait = shoutTraitMappings[requirements.RequiredTrait]
+		if traitMappings[requirements.RequiredTrait] ~= nil then
+			requirements.RequiredTrait = traitMappings[requirements.RequiredTrait]
+		end
+	end
+
+	if requirements.RequiredMinNPCInteractions then
+		-- Replace Hades NPC names with Hades II equivalents
+		local npcNameMappings = {
+			NPC_Hades_01 = "NPC_Hades_Field_01",
+		}
+		for npcName, interactCount in pairs(requirements.RequiredMinNPCInteractions) do
+			if npcNameMappings[npcName] ~= nil then
+				requirements.RequiredMinNPCInteractions[npcNameMappings[npcName]] = interactCount
+				requirements.RequiredMinNPCInteractions[npcName] = nil
+			end
 		end
 	end
 
@@ -688,7 +718,21 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 		end
 	end
 
-	if requirements.RequiredGodLoot ~= nil then --
+	if requirements.RequiredGodLoot ~= nil then
+		-- Custom - Gods in H1 that are NPCs in H2
+		if game.Contains({ "ArtemisUpgrade", "AthenaUpgrade", "DionysusUpgrade" }, requirements.RequiredGodLoot) then
+			if requirements.RequiredGodLoot == "ArtemisUpgrade" and not game.CurrentRun.UseRecord["NPC_Artemis_Field_01"] then
+				return false
+			end
+			if requirements.RequiredGodLoot == "AthenaUpgrade" and not game.CurrentRun.UseRecord["NPC_Athena_01"] then
+				return false
+			end
+			if requirements.RequiredGodLoot == "DionysusUpgrade" and not game.CurrentRun.UseRecord["NPC_Dionysus_01"] then
+				return false
+			end
+		end
+		-- Custom end
+
 		if not game.LootData[requirements.RequiredGodLoot] then
 			return false
 		end
@@ -705,11 +749,11 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 		end
 	end
 
-	if requirements.RequiredLootThisRun ~= nil and not game.CurrentRun.LootTypeHistory[requirements.RequiredLootThisRun] then --
+	if requirements.RequiredLootThisRun ~= nil and not game.CurrentRun.LootTypeHistory[requirements.RequiredLootThisRun] then
 		return false
 	end
 
-	if requirements.RequiredFalseGodLoot ~= nil and game.CurrentRun.LootTypeHistory[requirements.RequiredFalseGodLoot] then --
+	if requirements.RequiredFalseGodLoot ~= nil and game.CurrentRun.LootTypeHistory[requirements.RequiredFalseGodLoot] then
 		return false
 	end
 	if requirements.RequiredFalseGodLoots ~= nil then --
@@ -1687,41 +1731,61 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 	end
 
 	if requirements.RequiredMinUnlockedWeaponEnchantments ~= nil then -- and GetNumUnlockedWeaponUpgrades() < requirements.RequiredMinUnlockedWeaponEnchantments then
-		return false
+		local unlockedNonBaseAspects = 0
+		for _, aspect in ipairs(game.GameData.AllWeaponAspects) do
+			if game.GameState.WeaponsUnlocked[aspect] then
+				unlockedNonBaseAspects = unlockedNonBaseAspects + 1
+			end
+		end
+		if unlockedNonBaseAspects < requirements.RequiredMinUnlockedWeaponEnchantments then
+			return false
+		end
 	end
 	if requirements.RequiredMaxUnlockedWeaponEnchantments ~= nil then -- and GetNumUnlockedWeaponUpgrades() > requirements.RequiredMaxUnlockedWeaponEnchantments then
-		return false
+		local unlockedNonBaseAspects = 0
+		for _, aspect in ipairs(game.GameData.AllWeaponAspects) do
+			if game.GameState.WeaponsUnlocked[aspect] then
+				unlockedNonBaseAspects = unlockedNonBaseAspects + 1
+			end
+		end
+		if unlockedNonBaseAspects > requirements.RequiredMaxUnlockedWeaponEnchantments then
+			return false
+		end
 	end
-	if requirements.RequiredMinMaxedWeaponEnchantments then -- and GetNumMaxedWeaponUpgrades() < requirements.RequiredMinMaxedWeaponEnchantments then
-		return false
-	end
-	if requirements.RequiredMaxMaxedWeaponEnchantments then -- and GetNumMaxedWeaponUpgrades() > requirements.RequiredMinMaxedWeaponEnchantments then
-		return false
-	end
+	-- Only used for achievements
+	-- if requirements.RequiredMinMaxedWeaponEnchantments then -- and GetNumMaxedWeaponUpgrades() < requirements.RequiredMinMaxedWeaponEnchantments then
+	-- 	return false
+	-- end
+	-- Never used anywhere
+	-- if requirements.RequiredMaxMaxedWeaponEnchantments then -- and GetNumMaxedWeaponUpgrades() > requirements.RequiredMinMaxedWeaponEnchantments then
+	-- 	return false
+	-- end
 
-	if requirements.RequiredUniqueGodTraitsTaken ~= nil then -- and GetNumUniqueGodTraitsTaken() < requirements.RequiredUniqueGodTraitsTaken then
-		return false
-	end
+	-- Only used for achievements
+	-- if requirements.RequiredUniqueGodTraitsTaken ~= nil then -- and GetNumUniqueGodTraitsTaken() < requirements.RequiredUniqueGodTraitsTaken then
+	-- 	return false
+	-- end
 
-	if requirements.RequiredUniqueWeaponUpgradesTaken ~= nil then -- and GetNumUniqueWeaponUpgradesTaken() < requirements.RequiredUniqueWeaponUpgradesTaken then
-		return false
-	end
+	-- Only used for achievements
+	-- if requirements.RequiredUniqueWeaponUpgradesTaken ~= nil then -- and GetNumUniqueWeaponUpgradesTaken() < requirements.RequiredUniqueWeaponUpgradesTaken then
+	-- 	return false
+	-- end
 
+	-- Only used for hidden aspect reveal
 	if requirements.RequiredMinSuperLockKeysSpentOnWeapon ~= nil then
 		return false
+		-- 	local totalInvestment = 0
+		-- 	local weaponName = requirements.RequiredMinSuperLockKeysSpentOnWeapon.Name
+		-- 	for index in pairs(WeaponUpgradeData[weaponName]) do
+		-- 		for level = 1, (GetWeaponUpgradeLevel(weaponName, index)) do
+		-- 			totalInvestment = totalInvestment + (WeaponUpgradeData[weaponName][index].Costs[level] or 0)
+		-- 		end
+		-- 	end
+		-- 	if totalInvestment < requirements.RequiredMinSuperLockKeysSpentOnWeapon.Count then
+		-- 		return false
+		-- 	end
+		-- end
 	end
-	-- if requirements.RequiredMinSuperLockKeysSpentOnWeapon ~= nil then
-	-- 	local totalInvestment = 0
-	-- 	local weaponName = requirements.RequiredMinSuperLockKeysSpentOnWeapon.Name
-	-- 	for index in pairs(WeaponUpgradeData[weaponName]) do
-	-- 		for level = 1, (GetWeaponUpgradeLevel(weaponName, index)) do
-	-- 			totalInvestment = totalInvestment + (WeaponUpgradeData[weaponName][index].Costs[level] or 0)
-	-- 		end
-	-- 	end
-	-- 	if totalInvestment < requirements.RequiredMinSuperLockKeysSpentOnWeapon.Count then
-	-- 		return false
-	-- 	end
-	-- end
 
 	if requirements.RequiredMaxWeaponUpgrade ~= nil and requirements.RequiredMaxWeaponUpgradeIndex ~= nil then
 		if not IsWeaponUpgradeAtMax(requirements.RequiredMaxWeaponUpgrade) then
@@ -1734,12 +1798,9 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 		end
 	end
 
-	if requirements.RequiredLastInteractedWeaponUpgrade ~= nil then
+	if requirements.RequiredLastInteractedWeaponUpgrade ~= nil then -- and (game.GameState.LastWeaponUpgradeName == nil or GetWeaponUpgradeTrait(game.GameState.LastWeaponUpgradeName.WeaponName) ~= requirements.RequiredLastInteractedWeaponUpgrade) then
 		return false
 	end
-	-- if requirements.RequiredLastInteractedWeaponUpgrade ~= nil and (game.GameState.LastWeaponUpgradeName == nil or GetWeaponUpgradeTrait(game.GameState.LastWeaponUpgradeName.WeaponName) ~= requirements.RequiredLastInteractedWeaponUpgrade) then
-	-- 	return false
-	-- end
 
 	if requirements.RequiredLastInteractedWeaponName ~= nil and (game.GameState.LastWeaponUpgradeName == nil or game.GameState.LastWeaponUpgradeName.WeaponName ~= requirements.RequiredLastInteractedWeaponName) then
 		return false
@@ -1759,16 +1820,15 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 
 	if requirements.RequiredLastInteractedWeaponUpgradeMaxed ~= nil then
 		return false
-	end
-	-- if requirements.RequiredLastInteractedWeaponUpgradeMaxed ~= nil then
-	-- 	if game.GameState.LastWeaponUpgradeName == nil then
-	-- 		return false
-	-- 	end
+		-- 	if game.GameState.LastWeaponUpgradeName == nil then
+		-- 		return false
+		-- 	end
 
-	-- 	if GetWeaponUpgradeLevel(game.GameState.LastWeaponUpgradeName.WeaponName, game.GameState.LastWeaponUpgradeName.ItemIndex) < WeaponUpgradeData[game.GameState.LastWeaponUpgradeName.WeaponName][game.GameState.LastWeaponUpgradeName.ItemIndex].MaxUpgradeLevel then
-	-- 		return false
-	-- 	end
-	-- end
+		-- 	if GetWeaponUpgradeLevel(game.GameState.LastWeaponUpgradeName.WeaponName, game.GameState.LastWeaponUpgradeName.ItemIndex) < WeaponUpgradeData[game.GameState.LastWeaponUpgradeName.WeaponName][game.GameState.LastWeaponUpgradeName.ItemIndex].MaxUpgradeLevel then
+		-- 		return false
+		-- 	end
+		-- end
+	end
 
 	if requirements.RequiredInactiveMetaUpgrade ~= nil and GetNumShrineUpgrades(requirements.RequiredInactiveMetaUpgrade) > 0 then
 		return false
@@ -1779,26 +1839,25 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 
 	if requirements.RequiredMetaUpgradeSelected ~= nil then
 		return false
-	end
-	-- if requirements.RequiredMetaUpgradeSelected ~= nil then
-	-- 	local upgradeName = requirements.RequiredMetaUpgradeSelected
-	-- 	local metaUpgradeFound = false
+		-- 	local upgradeName = requirements.RequiredMetaUpgradeSelected
+		-- 	local metaUpgradeFound = false
 
-	-- 	local nulledMetaUpgradeCount = GetNulledMetaUpgradeCount()
-	-- 	for k, selectedUpgradeName in pairs(game.GameState.MetaUpgradesSelected) do
-	-- 		if k > (#MetaUpgradeOrder - nulledMetaUpgradeCount) then
-	-- 			if MetaUpgradeOrder[k][1] == upgradeName then
-	-- 				metaUpgradeFound = true
-	-- 			end
-	-- 		elseif selectedUpgradeName == upgradeName then
-	-- 			metaUpgradeFound = true
-	-- 			break
-	-- 		end
-	-- 	end
-	-- 	if not metaUpgradeFound then
-	-- 		return false
-	-- 	end
-	-- end
+		-- 	local nulledMetaUpgradeCount = GetNulledMetaUpgradeCount()
+		-- 	for k, selectedUpgradeName in pairs(game.GameState.MetaUpgradesSelected) do
+		-- 		if k > (#MetaUpgradeOrder - nulledMetaUpgradeCount) then
+		-- 			if MetaUpgradeOrder[k][1] == upgradeName then
+		-- 				metaUpgradeFound = true
+		-- 			end
+		-- 		elseif selectedUpgradeName == upgradeName then
+		-- 			metaUpgradeFound = true
+		-- 			break
+		-- 		end
+		-- 	end
+		-- 	if not metaUpgradeFound then
+		-- 		return false
+		-- 	end
+		-- end
+	end
 
 	if requirements.RequiredMinActiveMetaUpgradeLevel ~= nil then
 		-- For BossDifficultyShrineUpgrade in Dream Runs, use the depth-aware check
@@ -1833,6 +1892,7 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 		end
 	end
 
+	-- Only used for achievements
 	-- if requirements.RequiredAllMetaUpgradesInvestment ~= nil then
 	-- 	if not game.GameState.MetaUpgradeState then
 	-- 		return false
@@ -1855,33 +1915,33 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 	-- 	-- end
 	-- end
 
-	-- if requirements.RequiredAllMetaUpgradesMaxed ~= nil then
-	-- 	if not game.GameState.MetaUpgradeState then
-	-- 		return false
-	-- 	end
+	if requirements.RequiredAllMetaUpgradesMaxed ~= nil then
+		return false
+		-- if not game.GameState.MetaUpgradeState then
+		-- 	return false
+		-- end
 
-	-- 	for metaupgradeName, data in pairs(game.MetaUpgradeData) do
-	-- 		-- for s, metaupgradeName in pairs(data) do
-	-- 		if not game.GameState.MetaUpgradeState[metaupgradeName] and not game.GameState.MetaUpgrades[metaupgradeName] then
-	-- 			return false
-	-- 		end
-	-- 		local investment = game.GameState.MetaUpgradeState[metaupgradeName] or 0
-	-- 		if mod.IsMetaUpgradeActive(metaupgradeName) then
-	-- 			investment = game.GameState.MetaUpgrades[metaupgradeName] or 0
-	-- 		end
+		-- for metaupgradeName, data in pairs(game.MetaUpgradeData) do
+		-- 	-- for s, metaupgradeName in pairs(data) do
+		-- 	if not game.GameState.MetaUpgradeState[metaupgradeName] and not game.GameState.MetaUpgrades[metaupgradeName] then
+		-- 		return false
+		-- 	end
+		-- 	local investment = game.GameState.MetaUpgradeState[metaupgradeName] or 0
+		-- 	if mod.IsMetaUpgradeActive(metaupgradeName) then
+		-- 		investment = game.GameState.MetaUpgrades[metaupgradeName] or 0
+		-- 	end
 
-	-- 		if MetaUpgradeData[metaupgradeName].MaxInvestment then
-	-- 			if investment < MetaUpgradeData[metaupgradeName].MaxInvestment then
-	-- 				return false
-	-- 			end
-	-- 		elseif MetaUpgradeData[metaupgradeName].CostTable then
-	-- 			if MetaUpgradeData[metaupgradeName].CostTable[investment + 1] then
-	-- 				return false
-	-- 			end
-	-- 		end
-	-- 	end
-	-- 	-- end
-	-- end
+		-- 	if MetaUpgradeData[metaupgradeName].MaxInvestment then
+		-- 		if investment < MetaUpgradeData[metaupgradeName].MaxInvestment then
+		-- 			return false
+		-- 		end
+		-- 	elseif MetaUpgradeData[metaupgradeName].CostTable then
+		-- 		if MetaUpgradeData[metaupgradeName].CostTable[investment + 1] then
+		-- 			return false
+		-- 		end
+		-- 	end
+		-- end
+	end
 
 	if requirements.RequiredTextLinesPerMetaUpgradeLevel ~= nil then
 		if GetNumShrineUpgrades(requirements.RequiredTextLinesPerMetaUpgradeLevel.MetaUpgradeName) >= requirements.RequiredTextLinesPerMetaUpgradeLevel.Count then
@@ -2376,8 +2436,16 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 		return false
 	end
 
-	if requirements.RequiredMinTotalKills ~= nil and (game.GameState.TotalRequiredEnemyKills == nil or game.GameState.TotalRequiredEnemyKills < requirements.RequiredMinTotalKills) then
-		return false
+	if requirements.RequiredMinTotalKills ~= nil then --and (game.GameState.TotalRequiredEnemyKills == nil or game.GameState.TotalRequiredEnemyKills < requirements.RequiredMinTotalKills) then
+		-- Custom: Sum only modded enemies
+		local totalModdedKills = 0
+		for _, enemyName in ipairs(mod.AllRequiredKillModdedEnemyNames) do
+			totalModdedKills = totalModdedKills + (game.GameState.EnemyKills[enemyName] or 0)
+		end
+		if totalModdedKills < requirements.RequiredMinTotalKills then
+			return false
+		end
+		-- Custom end
 	end
 
 	if requirements.RequiredKills ~= nil then
