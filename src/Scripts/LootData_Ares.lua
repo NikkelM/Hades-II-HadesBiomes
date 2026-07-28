@@ -1,9 +1,95 @@
 local newPortedInteractTextLines = {
 	-- #region High-Priority Storylines/Quests (Inserted in a group after AresPostTrueEndingAboutTyphon01)
 	{
-		Name = "AresAboutThanatos01",
+		Name = "AresKillQuest01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
 			InsertAfterNarrativeTextLine = "AresPostTrueEndingAboutTyphon01",
+			CreateNewPriorityGroup = true,
+		},
+		PlayOnce = true,
+		PreEventFunctionName = "BoonInteractPresentation",
+		PreEventFunctionArgs = { PickupWait = 1.0, },
+		RequiredTextLines = { "AresGift03" },
+		RequiredFalseTextLinesLastRun = { "AresKillProgress02" },
+		RequiredMinTotalKills = 2000,
+		{
+			Cue = "/VO/Ares_0193",
+			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+			UseEventEndSound = true,
+			Text =
+			"I know that you have many aspirations, my good kin. To be plain with you about my own motive for a moment: As long as you continue bringing swift and steady death, you shall have my unyielding support."
+		},
+	},
+	{
+		Name = "AresKillQuestComplete",
+		ModsNikkelMHadesBiomes_TextLineMetadata = {
+			InsertAfterNarrativeTextLine = "AresKillQuest01",
+		},
+		PlayOnce = true,
+		PreEventFunctionName = "BoonInteractPresentation",
+		PreEventFunctionArgs = { PickupWait = 1.0, },
+		RequiredTextLines = { "AresKillQuest01", },
+		MinRunsSinceAnyTextLines = { TextLines = { "AresKillProgress01", "AresKillProgress02" }, Count = 2 },
+		RequiredMinTotalKills = 10000,
+		{
+			Cue = "/VO/Ares_0121",
+			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+			UseEventEndSound = true,
+			Text =
+			"Ten thousand souls have fallen to you, now, my hellborn kin. I am rather beside myself, I must admit. Fine work."
+		},
+	},
+	{
+		Name = "AresAboutOlympianReunionQuest01",
+		ModsNikkelMHadesBiomes_TextLineMetadata = {
+			InsertAfterNarrativeTextLine = "AresKillQuest01",
+		},
+		PlayOnce = true,
+		RequiredTextLines = { "AresFirstPickUp", "PersephoneAboutOlympianReunionQuest01", },
+		{
+			Cue = "/VO/ZagreusField_4340",
+			Portrait = "Portrait_Zag_Default_01",
+			Speaker = "CharProtag",
+			PreLineThreadedFunctionName = "PowerWordPresentation",
+			PreLineThreadedFunctionArgs = { WaitTime = 2.15 },
+			PostLineAnim = "ZagreusInteractEquip",
+			PostLineAnimTarget = "Hero",
+			PostLineFunctionName = "BoonInteractPresentation",
+			Text =
+			"Here goes, then. In the name of Hades! Olympus, this is an official message! Lord Ares, please consider our proposal... once you're able to decipher it."
+		},
+		{
+			Cue = "/VO/Ares_0229",
+			PortraitExitWait = 1.25,
+			PreContentSound = "/Leftovers/Menu Sounds/TextReveal2",
+			UseEventEndSound = true,
+			Text =
+			"My, what is this, my kin? Some sort of invitation for me, I presume. Not just for me... this symbolizes all the others, here? Most intriguing. I shall investigate the meaning of this as quickly as I'm able, then. But first!"
+		},
+	},
+	{
+		Name = "ModsNikkelMHadesBiomes_AresPostEpilogue01",
+		ModsNikkelMHadesBiomes_TextLineMetadata = {
+			InsertAfterNarrativeTextLine = "AresKillQuest01",
+		},
+		PlayOnce = true,
+		RequiredTextLines = { "OlympianReunionQuestComplete" },
+		PreEventFunctionName = "BoonInteractPresentation",
+		PreEventFunctionArgs = { PickupWait = 1.0, },
+		{
+			Cue = "/VO/Ares_0230",
+			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+			UseEventEndSound = true,
+			Text =
+			"I wish to tell you once again I had a splendid time during our recent shared festivities, my kin. At last, I've finally seen your death-filled realm firsthand! I learned a great deal. And I look forward to learning more from our successful collaboration, hm?"
+		},
+	},
+	-- #endregion
+	-- #region Storylines (Inserted in a group after the priority dialogues above)
+	{
+		Name = "AresAboutThanatos01",
+		ModsNikkelMHadesBiomes_TextLineMetadata = {
+			InsertAfterTextLineGroupContaining = "AresAboutThanatos01",
 			CreateNewPriorityGroup = true,
 		},
 		PlayOnce = true,
@@ -37,95 +123,9 @@ local newPortedInteractTextLines = {
 		},
 	},
 	{
-		Name = "AresKillQuest01",
-		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AresAboutThanatos01",
-		},
-		PlayOnce = true,
-		PreEventFunctionName = "BoonInteractPresentation",
-		PreEventFunctionArgs = { PickupWait = 1.0, },
-		RequiredTextLines = { "AresGift03" },
-		RequiredFalseTextLinesLastRun = { "AresKillProgress02" },
-		RequiredMinTotalKills = 2000,
-		{
-			Cue = "/VO/Ares_0193",
-			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
-			Text =
-			"I know that you have many aspirations, my good kin. To be plain with you about my own motive for a moment: As long as you continue bringing swift and steady death, you shall have my unyielding support."
-		},
-	},
-	{
-		Name = "AresKillQuestComplete",
-		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AresAboutThanatos01",
-		},
-		PlayOnce = true,
-		PreEventFunctionName = "BoonInteractPresentation",
-		PreEventFunctionArgs = { PickupWait = 1.0, },
-		RequiredTextLines = { "AresKillQuest01", },
-		MinRunsSinceAnyTextLines = { TextLines = { "AresKillProgress01", "AresKillProgress02" }, Count = 2 },
-		RequiredMinTotalKills = 10000,
-		{
-			Cue = "/VO/Ares_0121",
-			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
-			Text =
-			"Ten thousand souls have fallen to you, now, my hellborn kin. I am rather beside myself, I must admit. Fine work."
-		},
-	},
-	{
-		Name = "AresAboutOlympianReunionQuest01",
-		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AresAboutThanatos01",
-		},
-		PlayOnce = true,
-		RequiredTextLines = { "AresFirstPickUp", "PersephoneAboutOlympianReunionQuest01", },
-		{
-			Cue = "/VO/ZagreusField_4340",
-			Portrait = "Portrait_Zag_Default_01",
-			Speaker = "CharProtag",
-			PreLineThreadedFunctionName = "PowerWordPresentation",
-			PreLineThreadedFunctionArgs = { WaitTime = 2.15 },
-			PostLineAnim = "ZagreusInteractEquip",
-			PostLineAnimTarget = "Hero",
-			PostLineFunctionName = "BoonInteractPresentation",
-			Text =
-			"Here goes, then. In the name of Hades! Olympus, this is an official message! Lord Ares, please consider our proposal... once you're able to decipher it."
-		},
-		{
-			Cue = "/VO/Ares_0229",
-			PortraitExitWait = 1.25,
-			PreContentSound = "/Leftovers/Menu Sounds/TextReveal2",
-			UseEventEndSound = true,
-			Text =
-			"My, what is this, my kin? Some sort of invitation for me, I presume. Not just for me... this symbolizes all the others, here? Most intriguing. I shall investigate the meaning of this as quickly as I'm able, then. But first!"
-		},
-	},
-	{
-		Name = "ModsNikkelMHadesBiomes_AresPostEpilogue01",
-		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AresAboutThanatos01",
-		},
-		PlayOnce = true,
-		RequiredTextLines = { "OlympianReunionQuestComplete" },
-		PreEventFunctionName = "BoonInteractPresentation",
-		PreEventFunctionArgs = { PickupWait = 1.0, },
-		{
-			Cue = "/VO/Ares_0230",
-			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
-			Text =
-			"I wish to tell you once again I had a splendid time during our recent shared festivities, my kin. At last, I've finally seen your death-filled realm firsthand! I learned a great deal. And I look forward to learning more from our successful collaboration, hm?"
-		},
-	},
-	-- #endregion
-	-- #region Storylines (Inserted in a group after the priority dialogues above)
-	{
 		Name = "AresAboutThanatos03",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterTextLineGroupContaining = "AresAboutThanatos01",
-			CreateNewPriorityGroup = true,
+			InsertAfterNarrativeTextLine = "AresAboutThanatos01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -144,7 +144,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "AresKillProgress01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AresAboutThanatos03",
+			InsertAfterNarrativeTextLine = "AresAboutThanatos01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -163,7 +163,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "AresKillProgress02",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AresAboutThanatos03",
+			InsertAfterNarrativeTextLine = "AresAboutThanatos01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -182,7 +182,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "AresKillQuestAftermath01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AresAboutThanatos03",
+			InsertAfterNarrativeTextLine = "AresAboutThanatos01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -202,7 +202,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "AresPostFlashback01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AresAboutThanatos03",
+			InsertAfterNarrativeTextLine = "AresAboutThanatos01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -221,7 +221,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "AresAboutNyxIntro01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AresAboutThanatos03",
+			InsertAfterNarrativeTextLine = "AresAboutThanatos01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -239,7 +239,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "ModsNikkelMHadesBiomes_AresAboutNyx01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AresAboutThanatos03",
+			InsertAfterNarrativeTextLine = "AresAboutThanatos01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -258,7 +258,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "ModsNikkelMHadesBiomes_AresAboutNyx01_B",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AresAboutThanatos03",
+			InsertAfterNarrativeTextLine = "AresAboutThanatos01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -277,7 +277,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "ModsNikkelMHadesBiomes_AresAboutNyx02",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AresAboutThanatos03",
+			InsertAfterNarrativeTextLine = "AresAboutThanatos01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -296,7 +296,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "ModsNikkelMHadesBiomes_AresAboutNyx02_B",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AresAboutThanatos03",
+			InsertAfterNarrativeTextLine = "AresAboutThanatos01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -316,7 +316,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "AresAboutNyx03",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AresAboutThanatos03",
+			InsertAfterNarrativeTextLine = "AresAboutThanatos01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -335,7 +335,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "AresAboutNyx03_B",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AresAboutThanatos03",
+			InsertAfterNarrativeTextLine = "AresAboutThanatos01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -355,7 +355,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "AresAboutNyx04",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AresAboutThanatos03",
+			InsertAfterNarrativeTextLine = "AresAboutThanatos01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -374,7 +374,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "AresAboutNyx04_B",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AresAboutThanatos03",
+			InsertAfterNarrativeTextLine = "AresAboutThanatos01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -393,7 +393,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "AresAboutNyx05",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AresAboutThanatos03",
+			InsertAfterNarrativeTextLine = "AresAboutThanatos01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -413,7 +413,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "AresAboutNyx05_B",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AresAboutThanatos03",
+			InsertAfterNarrativeTextLine = "AresAboutThanatos01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -433,7 +433,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "AresAboutNyx06",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AresAboutThanatos03",
+			InsertAfterNarrativeTextLine = "AresAboutThanatos01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -452,7 +452,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "AresAboutNyx06_B",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AresAboutThanatos03",
+			InsertAfterNarrativeTextLine = "AresAboutThanatos01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -475,7 +475,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "ModsNikkelMHadesBiomes_AresAboutZeus01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterTextLineGroupContaining = "AresAboutThanatos03",
+			InsertAfterTextLineGroupContaining = "AresAboutThanatos01",
 			CreateNewPriorityGroup = true,
 		},
 		PlayOnce = true,
