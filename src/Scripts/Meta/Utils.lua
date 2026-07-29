@@ -555,10 +555,11 @@ function mod.AreHadesModsInstalled()
 		if file then
 			local content = file:read("*all")
 			file:close()
-			if content and content:find("base files import a total of") and not content:find("0 base files import a total of 0 mod files") then
+			if content and (content:find("base files import a total of") and not content:find("0 base files import a total of 0 mod files")) or content:find("1 base file imports a total of") then
 				mod.DebugPrint(
-					"Hades mods detected! You must uninstall all mods for Hades before installing Zagreus' Journey. Aborting mod installation to prevent conflicts.",
+					"Hades mods detected! You must uninstall all mods for Hades before installing Zagreus' Journey. Aborting mod installation to prevent conflicts. modimporter.log content:",
 					1)
+				mod.DebugPrint("\n" .. content, 1)
 
 				mod.HiddenConfig.IsValidInstallation = false
 				mod.HiddenConfig.InstallationFailReason = "HadesModsInstalled"

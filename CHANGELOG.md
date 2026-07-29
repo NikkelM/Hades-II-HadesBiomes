@@ -59,6 +59,7 @@ Other fixes and improvements:
 - Fixed: If certain mods that integrate with Zagreus' Journey are active in the mod manager, but disabled through the mod configuration file, Zagreus' Journey still thinks they are active.
 - Fixed: Added a tentative fix for the Chaos Gate in the Training Grounds sometimes not spawning after returning from a run. Please report if this still happens.
 - Fixed: If the "x64" or "x86" sub-path is provided as part of the "hadesGameFolder" config setting, the game crashes instead of gracefully correcting the path internally.
+- Fixed: If only a single Hades base game file is modified by installed mods, this mod's check will not recognize that Hades is modded.
 <!--Releasenotes end-->
 
 ## v1.1.3
