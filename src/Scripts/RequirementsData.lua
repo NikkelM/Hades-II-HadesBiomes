@@ -20,6 +20,10 @@ game.NamedRequirementsData.StandardPackageBountyActive[2].IsNone = game.ConcatTa
 -- #endregion
 
 -- #region Field NPC encounters
+table.insert(game.NamedRequirementsData.NoRecentFieldNPCEncounter[1].TableValuesToCount, "ThanatosTartarus")
+table.insert(game.NamedRequirementsData.NoRecentFieldNPCEncounter[1].TableValuesToCount, "ThanatosAsphodel")
+table.insert(game.NamedRequirementsData.NoRecentFieldNPCEncounter[1].TableValuesToCount, "ThanatosElysium")
+table.insert(game.NamedRequirementsData.NoRecentFieldNPCEncounter[1].TableValuesToCount, "ThanatosElysiumIntro")
 table.insert(game.NamedRequirementsData.NoRecentFieldNPCEncounter[1].TableValuesToCount, "ArtemisCombatTartarus")
 table.insert(game.NamedRequirementsData.NoRecentFieldNPCEncounter[1].TableValuesToCount, "ArtemisCombatElysium")
 -- #endregion
