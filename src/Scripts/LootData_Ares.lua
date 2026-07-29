@@ -89,7 +89,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "AresAboutThanatos01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterTextLineGroupContaining = "AresAboutThanatos01",
+			InsertAfterTextLineGroupContaining = "AresKillQuest01",
 			CreateNewPriorityGroup = true,
 		},
 		PlayOnce = true,
