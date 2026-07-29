@@ -207,8 +207,7 @@ local newPortedInteractTextLines = {
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
 		PreEventFunctionArgs = { PickupWait = 1.0, },
-		RequiredTextLines = { "AresFirstPickUp" }, -- Removed Flashback_Mother_01, added RequiredMinRunsCleared = 1
-		RequiredMinRunsCleared = 1,
+		RequiredTextLines = { "AresFirstPickUp", "Flashback_Mother_01" },
 		RequiredFalseTextLines = { "AresAboutNyx04", "AresAboutNyx04_B", "OlympianReunionQuestComplete" },
 		{
 			Cue = "/VO/Ares_0040",
@@ -482,7 +481,6 @@ local newPortedInteractTextLines = {
 		RequiredFalseTextLinesThisRun = game.GameData.GodAboutGodVoiceLines,
 		PreEventFunctionName = "BoonInteractPresentation",
 		PreEventFunctionArgs = { PickupWait = 1.0, },
-		-- TODO: Currently these are blocked on ArtemisFirstPickUp (needs adding through the mod)
 		RequiredTextLines = { "ZeusFirstPickUp", "PoseidonFirstPickUp", "AthenaFirstPickUp", "AphroditeFirstPickUp", "AresFirstPickUp", "ArtemisFirstPickUp", "DionysusFirstPickUp" },
 		RequiredGodLoot = "ZeusUpgrade",
 		{

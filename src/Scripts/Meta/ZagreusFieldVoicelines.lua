@@ -1532,5 +1532,13 @@ mod.ZagreusFieldVoicelines = {
 	-- #region Chaos/TrialUpgrade
 	ZagreusField_3804 = true,
 	-- #endregion
+
+	-- #region Ares/AresUpgrade
+	ZagreusField_4340 = true,
+	-- #endregion
+
+	-- #region Artemis/ArtemisUpgrade
+	ZagreusField_4341 = true,
+	-- #endregion
 	-- #endregion
 }

@@ -242,8 +242,14 @@ modutil.mod.Path.Wrap("DoPatches", function(base)
 			game.GameState.ModsNikkelMHadesBiomes_DreamDiveDefeatedEMChronosTyphonHades = nil
 		end
 
+		-- Add flashback dialogues from H1 to the TextLinesRecord to easily unblock dialogues
+		if game.GameState.ModsNikkelMHadesBiomesPatchRevision < 12 then
+			game.GameState.TextLinesRecord["Flashback_Mother_01"] = true
+			game.GameState.TextLinesRecord["Flashback_DayNightJob_01"] = true
+		end
+
 		-- IMPORTANT: This must be incremented every time this function is changed
-		game.GameState.ModsNikkelMHadesBiomesPatchRevision = 11
+		game.GameState.ModsNikkelMHadesBiomesPatchRevision = 12
 	end
 
 	return base()
