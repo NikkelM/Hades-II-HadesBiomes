@@ -49,7 +49,7 @@ game.GameData.GodAboutGodVoiceLines = {
 
 	"ArtemisAboutZeus01",
 	"ArtemisAboutPoseidon01",
-	"ArtemisAboutAthena01",
+	"ModsNikkelMHadesBiomes_ArtemisAboutAthena01",
 	"ArtemisAboutAres01",
 	"ArtemisAboutAphrodite01",
 	"ArtemisAboutDionysus01",
@@ -115,6 +115,15 @@ game.GameData.AresBasicPickUpTextLines = {
 	"AresMiscPickup15",
 	"AresMiscPickup16",
 	"AresMiscPickup17",
+}
+
+game.GameData.ArtemisAboutCallistoTextLines = {
+	"ArtemisAboutCallisto01",
+	"ArtemisAboutCallisto02",
+	"ArtemisAboutCallisto03",
+	"ArtemisAboutCallisto04",
+	"ArtemisAboutCallisto05",
+	"ArtemisAboutCallisto06",
 }
 --#endregion
 

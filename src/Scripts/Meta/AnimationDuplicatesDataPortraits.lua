@@ -85,6 +85,7 @@ mod.HadesPortraitAnimationAdditionsParents = {
 		FilePath = "Portraits\\Portraits_Artemis_01",
 		EndFrame = 1,
 		StartFrame = 1,
+		OffsetY = -8.0,
 	},
 	{
 		Name = "ModsNikkelMHadesBiomes_Portrait_Demeter_Default_01",
@@ -345,6 +346,7 @@ mod.HadesPortraitAnimationAdditions = {
 		FilePath = "Portraits\\Portraits_Artemis_01",
 		EndFrame = 1,
 		StartFrame = 1,
+		OffsetY = -8.0,
 	},
 	{
 		Name = "ModsNikkelMHadesBiomes_Portrait_Chaos_Default_01",

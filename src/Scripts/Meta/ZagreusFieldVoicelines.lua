@@ -1538,6 +1538,7 @@ mod.ZagreusFieldVoicelines = {
 	-- #endregion
 
 	-- #region Artemis/ArtemisUpgrade
+	-- ZagreusField_0786 = true, -- ArtemisFirstPickUp, but this cue is disabled
 	ZagreusField_4341 = true,
 	-- #endregion
 	-- #endregion

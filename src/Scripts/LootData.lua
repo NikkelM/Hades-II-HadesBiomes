@@ -122,7 +122,6 @@ function mod.AddNarrativeDataEntries(newTextLines, narrativeDataKey, textLineTyp
 	end
 
 	-- Update the vanilla dialogues to NOT play in modded runs, since these don't have priority tables
-	-- Only do this for Gods for which we add modded dialogues, so others still fall back to using the vanilla H2 ones
 	local devotionTextLines = { "RejectionTextLines", "MakeUpTextLines" }
 	if game.Contains(devotionTextLines, textLineType) then
 		for _, textLineData in pairs(game.LootData[narrativeDataKey][textLineType]) do
@@ -158,7 +157,8 @@ function mod.AddNarrativeDataEntries(newTextLines, narrativeDataKey, textLineTyp
 		-- #region Required modifications to all text lines
 		-- Mark as modded textline
 		data.ModsNikkelMHadesBiomesIsModdedTextLine = true
-		if narrativeDataKey == "TrialUpgrade" or textLineType == "MakeUpTextLines" then
+		-- Don't play the Chaos effect on Chaos own boons, Devotion make up voicelines, and NPCs in the world (not by boon)
+		if narrativeDataKey == "TrialUpgrade" or textLineType == "MakeUpTextLines" or narrativeDataKey == "NPC_Artemis_Field_01" or narrativeDataKey == "NPC_Athena_01" then
 			-- This will prevent using the Chaos effects on boon pickup, which would double up
 			data.ModsNikkelMHadesBiomesIsModdedTrialUpgradeTextLine = true
 		end
