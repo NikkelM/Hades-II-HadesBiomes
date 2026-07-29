@@ -19,6 +19,13 @@ game.NamedRequirementsData.StandardPackageBountyActive[2].IsNone = game.ConcatTa
 	game.NamedRequirementsData.StandardPackageBountyActive[2].IsNone, mod.RandomizedChaosTrialBountyNames)
 -- #endregion
 
+-- #region Field NPC encounters
+table.insert(game.NamedRequirementsData.NoRecentFieldNPCEncounter[1].TableValuesToCount, "ThanatosTartarus")
+table.insert(game.NamedRequirementsData.NoRecentFieldNPCEncounter[1].TableValuesToCount, "ThanatosAsphodel")
+table.insert(game.NamedRequirementsData.NoRecentFieldNPCEncounter[1].TableValuesToCount, "ThanatosElysium")
+table.insert(game.NamedRequirementsData.NoRecentFieldNPCEncounter[1].TableValuesToCount, "ThanatosElysiumIntro")
+-- #endregion
+
 -- #region DreamRuns/Dream Dives
 -- Correctly guessing the next biome, known and reverse paths
 game.NamedRequirementsData.DreamRunCorrectBiomeGuess.OrRequirements[4][2].IsAny = { "I", "Tartarus" }
