@@ -96,6 +96,15 @@ local encounterReplacements = {
 		EnemySet = game.EnemySets.EnemiesBiome3_EliteChallenge,
 		DreamBiomeData = "nil",
 	},
+
+	-- New encounters
+	ArtemisCombatElysium = {
+		InheritFrom = { "BaseArtemisCombat", "GeneratedElysium" },
+		CanEncounterSkip = false,
+		DifficultyModifier = 150,
+		-- Feels weird in the mod if turned off
+		PreSpawnEnemies = true,
+	},
 }
 
 local encounterModifications = {

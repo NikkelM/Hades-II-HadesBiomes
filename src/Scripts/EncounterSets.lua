@@ -3,7 +3,9 @@ game.EncounterSets.TartarusEncountersDefault = {
 	"GeneratedTartarus", "GeneratedTartarus", "GeneratedTartarus",
 	"GeneratedTartarus", "GeneratedTartarus", "GeneratedTartarus", "SurvivalTartarus",
 	"GeneratedTartarus", "GeneratedTartarus", "GeneratedTartarus", "SurvivalTartarus",
-	"ThanatosTartarus"
+	"ThanatosTartarus",
+	-- Custom
+	"ArtemisCombatTartarus",
 }
 game.EncounterSets.TartarusEncountersNoSurvival = { "GeneratedTartarus" }
 -- #endregion
@@ -37,7 +39,9 @@ game.EncounterSets.ElysiumEncountersDefault = {
 	"GeneratedElysium", "GeneratedElysium", "GeneratedElysium",
 	"GeneratedElysium", "GeneratedElysium", "GeneratedElysium",
 	"GeneratedElysium", "GeneratedElysium", "GeneratedElysium", "ThanatosElysium",
-	"ThanatosElysiumIntro", "ThanatosElysiumIntro", "ThanatosElysiumIntro"
+	"ThanatosElysiumIntro", "ThanatosElysiumIntro", "ThanatosElysiumIntro",
+	-- Custom
+	"ArtemisCombatElysium",
 }
 -- #endregion
 
