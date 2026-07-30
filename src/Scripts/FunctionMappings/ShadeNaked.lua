@@ -24,7 +24,9 @@ end
 -- Based on ProjectileSpawnUnitOnDeath, but skips the ActiveEnemyCap check
 -- ShadeNaked respawns should always succeed - they're not new spawns
 function mod.ShadeDeathSpawnOnDeath(projectileData, triggerArgs)
-	if game.SessionMapState.HandlingDeath or (triggerArgs and triggerArgs.BlockSpawns) then
+	triggerArgs = triggerArgs or {}
+
+	if game.SessionMapState.HandlingDeath or game.MapState.BlockSpawns or triggerArgs.BlockSpawns then
 		mod.CleanupPendingShadeSpawn()
 		return
 	end

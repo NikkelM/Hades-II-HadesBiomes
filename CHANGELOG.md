@@ -38,6 +38,7 @@ Other fixes and improvements:
 - Fixed: The Brightsword's dash does not have its direction randomized.
 - Fixed: If a Shade enemy in Elysium dies while polymorphed, it drops a weapon that is able to be picked up by Exalted Shades.
 - Fixed: If a Shade enemy in Elysium has both the "Massive" and "Popper" elite perks, the additional Exalted Shades produced by the "Popper" perk are enlarged until they land.
+- Fixed: Shade enemies in Elysium start spawning an Exalted Shade that then immediately disappears if they are killed by Athena.
 - Fixed: The explosion from the fake Exalted Shades created by the "Popper" elite perk can be blocked by the Black Coat's Omega attack block.
 - Fixed: If a Flame Wheel or Nemean Chariot is morphed by "Twilight Curse" while attacking, the sheep will continue performing the attack.
 - Fixed: Asterius sometimes skips his jump animation.

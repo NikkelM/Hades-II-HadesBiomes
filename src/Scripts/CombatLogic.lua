@@ -90,6 +90,11 @@ modutil.mod.Path.Wrap("KillEnemy", function(base, victim, triggerArgs)
 			end
 		end
 
+		-- For Athena's insta-kill clear, to prevent the projectiles from spawning from dying shades
+		if game.MapState.BlockSpawns and victim.OnDeathFireWeapons and game.ContainsAny(victim.OnDeathFireWeapons, { "ShadeDeathSpawn", "ShadeDeathSpawnElite", "ShadeDeathSpawnSuperElite" }) then
+			victim.OnDeathFireWeapons = nil
+		end
+
 		-- Prevent early encounter completion while ShadeDeathSpawn projectile is in flight
 		-- The projectile spawns a ShadeNaked on landing, but between the shade dying and the projectile landing, the active enemy count may drop to 0 which would end the encounter and expire the projectile
 		if victim.OnDeathFireWeapons and game.ContainsAny(victim.OnDeathFireWeapons, { "ShadeDeathSpawn", "ShadeDeathSpawnElite", "ShadeDeathSpawnSuperElite" }) then
