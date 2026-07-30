@@ -80,6 +80,7 @@ local encounterReplacements = {
 			[3] = { DataOverrides = { MoneyDropCapMin = 25, MoneyDropCapMax = 30 } },
 			[4] = { DataOverrides = { MoneyDropCapMin = 30, MoneyDropCapMax = 45 } },
 		},
+		CheckAthenaEncounterKeepsakeOnSkipEncounterStart = true,
 	},
 
 	Story_Patroclus_01 = {
@@ -102,6 +103,14 @@ local encounterReplacements = {
 		InheritFrom = { "BaseArtemisCombat", "GeneratedElysium" },
 		CanEncounterSkip = false,
 		DifficultyModifier = 150,
+		-- Feels weird in the mod if turned off
+		PreSpawnEnemies = true,
+	},
+	AthenaCombatElysium = {
+		InheritFrom = { "BaseAthenaCombat", "GeneratedElysium" },
+		CanEncounterSkip = false,
+		BaseDifficulty = 650,
+		DepthDifficultyRamp = 120,
 		-- Feels weird in the mod if turned off
 		PreSpawnEnemies = true,
 	},

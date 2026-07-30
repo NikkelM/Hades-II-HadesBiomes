@@ -4,9 +4,11 @@
 
 <!--Releasenotes start-->
 ### Patch Highlights:
-- You may now encounter Artemis in Tartarus or Elysium, and she will use her dialogues from the first game when you speak to her.
+- You may now encounter Artemis in Tartarus and Elysium, and she will use her dialogues from the first game when you speak to her.
+- You may now encounter Athena in Elysium and Styx, and she will use her dialogues from the first game when you speak to her.
 
 Other fixes and improvements:
+- Balancing: Slightly reduced the base encounter difficulty of wing-end combat rooms in the Temple of Styx.
 <!--Releasenotes end-->
 
 ## v1.2.0

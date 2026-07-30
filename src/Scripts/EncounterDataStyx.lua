@@ -39,7 +39,7 @@ local encounterReplacements = {
 		-- The original from Hades is 8
 		-- ActiveEnemyCapMax = 8,
 		-- The original from Hades is 900
-		BaseDifficulty = 1000,
+		BaseDifficulty = 950,
 		StartRoomUnthreadedEvents = {
 			{ FunctionName = "HandleEncounterPreSpawns" },
 		},
@@ -58,6 +58,7 @@ local encounterReplacements = {
 			[3] = { DataOverrides = { MoneyDropCapMin = 35, MoneyDropCapMax = 55 } },
 			[4] = { DataOverrides = { MoneyDropCapMin = 35, MoneyDropCapMax = 55 } },
 		},
+		CheckAthenaEncounterKeepsakeOnSkipEncounterStart = true,
 	},
 	GeneratedStyxMini = {
 		CanEncounterSkip = false,
@@ -86,6 +87,16 @@ local encounterReplacements = {
 	-- New encounter for the D_Hub, to spawn Megaera there
 	ModsNikkelMHadesBiomes_StyxHubShop = {
 		InheritFrom = { "Shop" },
+	},
+
+	-- New encounters
+	AthenaCombatStyx = {
+		InheritFrom = { "BaseAthenaCombat", "GeneratedStyx" },
+		CanEncounterSkip = false,
+		BaseDifficulty = 1400,
+		DepthDifficultyRamp = 0,
+		-- Feels weird in the mod if turned off
+		PreSpawnEnemies = true,
 	},
 }
 

@@ -38,16 +38,25 @@ game.EncounterSets.EncounterEventsHydraPhase = {
 game.EncounterSets.ElysiumEncountersDefault = {
 	"GeneratedElysium", "GeneratedElysium", "GeneratedElysium",
 	"GeneratedElysium", "GeneratedElysium", "GeneratedElysium",
-	"GeneratedElysium", "GeneratedElysium", "GeneratedElysium", "ThanatosElysium",
-	"ThanatosElysiumIntro", "ThanatosElysiumIntro", "ThanatosElysiumIntro",
+	"GeneratedElysium", "GeneratedElysium", "GeneratedElysium",
+	"GeneratedElysium", "GeneratedElysium", "GeneratedElysium",
+	"ThanatosElysium", "ThanatosElysium",
+	"ThanatosElysiumIntro", "ThanatosElysiumIntro", "ThanatosElysiumIntro", "ThanatosElysiumIntro",
 	-- Custom
 	"ArtemisCombatElysium",
+	"AthenaCombatElysium",
 }
 -- #endregion
 
 -- #region STYX
 game.EncounterSets.StyxEncountersMini = {
 	"GeneratedStyxMini", "GeneratedStyxMini", "GeneratedStyxMini", "GeneratedStyxMini",
+}
+game.EncounterSets.StyxEncountersWingEnd = {
+	"GeneratedStyx", "GeneratedStyx", "GeneratedStyx",
+	"GeneratedStyx",
+	-- Custom
+	"AthenaCombatStyx",
 }
 -- #endregion
 
