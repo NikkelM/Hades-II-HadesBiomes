@@ -60,7 +60,9 @@ Other fixes and improvements:
 - Fixed: The game may briefly stutter when the first enemy from the respective next region is spawned in a region through the "Vow of Menace".
 - Fixed: Dialogue background animations run on a lower frame rate that makes them appear more staggered during transitions.
 - Fixed: Some NPC voicelines that should run after a dialogue completes do not play.
+- Fixed: If all dialogue for a boon-giving NPC is exhausted and it plays a repeatable dialogue, the player can keep interacting with the NPC and gain multiple boons.
 - Fixed: Some textures flicker in Eurydice's chamber.
+- Fixed: Icons for Well of Charon items added through the mod disappear if they are still active when entering a non-modded region during Dream Dives.
 - Fixed: The intro video before the very first run of a new save does not play if Zagreus' Journey is installed.
 - Fixed: When opening the statistics screen while the mod is disabled and if the previously selected sort column was a modded column, the game crashes if the statistics had not been viewed since version 1.1.0 of the mod.
 - Fixed: Some ambient music is influenced by the music volume slider, instead of the ambience slider. *Note that due to engine quirks, both the SFX and the Ambience slider influence ambience volume*.
