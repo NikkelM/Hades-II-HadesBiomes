@@ -4,7 +4,7 @@
 
 <!--Releasenotes start-->
 ### Patch Highlights:
-- You may now encounter Artemis in Tartarus or Elysium
+- You may now encounter Artemis in Tartarus or Elysium, and she will use her dialogues from the first game when you speak to her.
 
 Other fixes and improvements:
 <!--Releasenotes end-->
