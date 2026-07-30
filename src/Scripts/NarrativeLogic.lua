@@ -153,6 +153,32 @@ modutil.mod.Path.Wrap("CheckAvailableTextLines", function(base, source, args)
 	end
 end)
 
+modutil.mod.Path.Wrap("NeedsUseableOff", function(base, source, textLineSets)
+	if base(source, textLineSets) then
+		return true
+	end
+
+	-- textLineSets ~= nil is already handled by the base call, which falls back to InteractTextLineSets, but doesn't check RepeatableTextLineSets
+	if textLineSets == nil and source.RepeatableTextLineSets ~= nil then
+		for _, textLineSet in pairs(source.RepeatableTextLineSets) do
+			if textLineSet.UseableOffSource or (textLineSet.UseableOffSourceRequirements ~= nil and game.IsGameStateEligible(source, textLineSet.UseableOffSourceRequirements)) then
+				if source.SplitHubUseableOffSource and game.CurrentHubRoom ~= nil then
+					if game.CurrentRun.HubTextLinesRecord[textLineSet.Name] then
+						return true
+					end
+				elseif game.CurrentRun.TextLinesRecord[textLineSet.Name] then
+					return true
+				end
+			end
+			if textLineSet.RoomUseableOffSource and game.CurrentRun.CurrentRoom.TextLinesRecord[textLineSet.Name] then
+				return true
+			end
+		end
+	end
+
+	return false
+end)
+
 -- Reimplementation of Hades II's PlayRandomRemainingTextLines before it was removed in Post-Launch Patch 2
 -- Also adds custom logic to respect SuperPriority and Priority flags in modded runs
 function mod.PlayRandomRemainingTextLines(source, textLineSets, args)
