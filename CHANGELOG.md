@@ -9,6 +9,7 @@
 
 Other fixes and improvements:
 - Balancing: Slightly reduced the base encounter difficulty of wing-end combat rooms in the Temple of Styx.
+- Fixed: There is a typo in the description of Orpheus' "Hymn to Zagreus" boon.
 <!--Releasenotes end-->
 
 ## v1.2.0
