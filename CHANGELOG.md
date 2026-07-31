@@ -10,6 +10,7 @@
 Other fixes and improvements:
 - Balancing: Slightly reduced the base encounter difficulty of wing-end combat rooms in the Temple of Styx.
 - Fixed: Shells fired by the Argent Skull can become irretrievable if they were supposed to return to Melinoë during dialogue playing between phases in Hades' boss fight.
+- Fixed: The voiceline that is supposed to play when attempting to interact with the locked Keepsake Cabinet in post-boss rooms may not play in some cases.
 - Fixed: There is a typo in the description of Orpheus' "Hymn to Zagreus" boon.
 <!--Releasenotes end-->
 
