@@ -16,6 +16,8 @@ Other fixes and improvements:
 - Added a new Minor Prophecy unlocked by talking to Ares in the Nightmare Realm (*more will follow*).
 - Accessibility: Added a config option to fade to black instead of white when exiting the Styx hub room to Hades' boss arena.
 - Accessibility: Added support for the "Zoom In" accessibility option. A blanket 13% zoom will be applied to all rooms. If you use this option and find certain rooms to be too zoomed in, or still too zoomed out, please report this.
+- Balancing: Elite enemies that have jumping attacks can no longer be imbued with the "Spiller" Elite perk.
+- Balancing: More Elite enemies in Asphodel can now be imbued with the "Spinner" Elite perk.
 - Balancing: Trap damage now scales in Dream Dives.
 - Fixed: Ghosts in Tartarus' opening room, mid-shop and Sisyphus' chamber do not move around the room, instead staying where they spawn.
 - Fixed: Chaos Gates may be offered in Tartarus during the first run, where you already receive a Chaos boon in the first room through the forced story event.

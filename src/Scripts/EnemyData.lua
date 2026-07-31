@@ -1514,12 +1514,12 @@ local enemyModifications = {
 		GeneratorData = {
 			BlockEnemyTypes = { "HadesBloodlessNaked" },
 		},
-		BlockAttributes = { "Blink", "Orbit", },
+		BlockAttributes = { "Blink", "Fog", },
 		EliteAttributeOptions = game.CombineTables(game.EnemySets.GenericEliteAttributes, { "Rifts", }),
 	},
 	HadesBloodlessNakedEliteSuperElite = {
 		GenusName = "BloodlessNaked_Elite",
-		BlockAttributes = { "Blink", "Orbit", },
+		BlockAttributes = { "Blink", "Fog", },
 		EliteAttributeOptions = game.CombineTables(game.EnemySets.GenericEliteAttributes, { "Rifts", }),
 	},
 	BloodlessNakedBerserker = {
@@ -1544,7 +1544,7 @@ local enemyModifications = {
 		GeneratorData = {
 			BlockEnemyTypes = { "BloodlessNakedBerserker" },
 		},
-		BlockAttributes = { "Blink", "Orbit", },
+		BlockAttributes = { "Blink", "Fog", },
 		EliteAttributeOptions = game.CombineTables(game.EnemySets.GenericEliteAttributes, { "Metallic", }),
 	},
 	HadesBloodlessWaveFist = {
@@ -1568,7 +1568,7 @@ local enemyModifications = {
 		GeneratorData = {
 			BlockEnemyTypes = { "HadesBloodlessWaveFist" },
 		},
-		BlockAttributes = { "Blink", "Orbit", },
+		BlockAttributes = { "Blink", "Fog", },
 	},
 	HadesBloodlessGrenadier = {
 		ModsNikkelMHadesBiomesOriginalHadesTwoEnemy = true,
@@ -1590,7 +1590,7 @@ local enemyModifications = {
 		GeneratorData = {
 			BlockEnemyTypes = { "HadesBloodlessGrenadier" },
 		},
-		BlockAttributes = { "Blink", "Orbit", },
+		BlockAttributes = { "Blink", "Fog", },
 	},
 	HadesBloodlessSelfDestruct = {
 		ModsNikkelMHadesBiomesOriginalHadesTwoEnemy = true,
@@ -1613,7 +1613,7 @@ local enemyModifications = {
 		GeneratorData = {
 			BlockEnemyTypes = { "HadesBloodlessSelfDestruct" },
 		},
-		BlockAttributes = { "Blink", "Orbit", },
+		BlockAttributes = { "Blink", "Fog", },
 	},
 	HadesBloodlessPitcher = {
 		ModsNikkelMHadesBiomesOriginalHadesTwoEnemy = true,
@@ -1636,12 +1636,12 @@ local enemyModifications = {
 		GeneratorData = {
 			BlockEnemyTypes = { "HadesBloodlessPitcher" },
 		},
-		BlockAttributes = { "Blink", "Orbit", },
+		BlockAttributes = { "Blink", "Fog", },
 		EliteAttributeOptions = game.CombineTables(game.EnemySets.GenericEliteAttributes, { "Hex", "Metallic", }),
 	},
 	HadesBloodlessPitcherSuperElite = {
 		GenusName = "BloodlessPitcher_Elite",
-		BlockAttributes = { "Blink", "Orbit", },
+		BlockAttributes = { "Blink", "Fog", },
 		EliteAttributeOptions = game.CombineTables(game.EnemySets.GenericEliteAttributes, { "Hex", "Metallic", }),
 	},
 	HadesSpreadShotUnit = {
@@ -2120,6 +2120,7 @@ local enemyModifications = {
 		SpellSummonDataOverrides = {
 			OnDeathFireWeapons = {},
 		},
+		BlockAttributes = { "Fog", },
 	},
 	ShadeSpearUnitSuperElite = {
 		OnDeathFireWeapons = { "ShadeDeathSpawnSuperElite" },
@@ -2130,6 +2131,7 @@ local enemyModifications = {
 		SpellSummonDataOverrides = {
 			OnDeathFireWeapons = {},
 		},
+		BlockAttributes = { "Fog", },
 	},
 	ShadeBowUnit = {
 		StunAnimations = { Default = "ShadeBow_OnHit" },
