@@ -81,8 +81,11 @@ end
 ---@param portraitMappings table<string, string> Mappings of Cue prefixes to Portrait names
 ---@param dummyCues table<integer, string>|nil If not nil, a random cue from this table will be played when the loot is picked up, in place of an actual voiced dialogue
 ---@param dummyVoiceBank string|nil If `dummyCues` is set, this voicebank will be loaded for it
+---@param ignoreDuplicates boolean|nil If true, the duplicates check will ignore these textlines. Only use for tables where you knowingly add duplicates
+---@param stripProperties table|nil A list of property keys within each TextLineSet that should be set to nil
 function mod.AddNarrativeDataEntries(newTextLines, narrativeDataKey, textLineType, textLinePriorityType,
-																		 voiceBankMappings, cueMappings, portraitMappings, dummyCues, dummyVoiceBank)
+																		 voiceBankMappings, cueMappings, portraitMappings, dummyCues, dummyVoiceBank,
+																		 ignoreDuplicates, stripProperties)
 	if narrativeDataKey == nil or textLineType == nil or voiceBankMappings == nil or cueMappings == nil or portraitMappings == nil then
 		mod.DebugPrint("A required parameter is missing!", 1)
 		return
@@ -122,7 +125,6 @@ function mod.AddNarrativeDataEntries(newTextLines, narrativeDataKey, textLineTyp
 	end
 
 	-- Update the vanilla dialogues to NOT play in modded runs, since these don't have priority tables
-	-- Only do this for Gods for which we add modded dialogues, so others still fall back to using the vanilla H2 ones
 	local devotionTextLines = { "RejectionTextLines", "MakeUpTextLines" }
 	if game.Contains(devotionTextLines, textLineType) then
 		for _, textLineData in pairs(game.LootData[narrativeDataKey][textLineType]) do
@@ -150,7 +152,7 @@ function mod.AddNarrativeDataEntries(newTextLines, narrativeDataKey, textLineTyp
 		end
 
 		-- Check if this name collides with an existing Hades II dialogue
-		if mod.HiddenConfig.DeveloperMode and dialogueNameExistsInHadesTwo(key) then
+		if mod.HiddenConfig.DeveloperMode and not ignoreDuplicates and dialogueNameExistsInHadesTwo(key) then
 			mod.DebugPrint("Text line set '" .. key .. "' already exists in Hades II.", 1)
 		end
 
@@ -158,7 +160,8 @@ function mod.AddNarrativeDataEntries(newTextLines, narrativeDataKey, textLineTyp
 		-- #region Required modifications to all text lines
 		-- Mark as modded textline
 		data.ModsNikkelMHadesBiomesIsModdedTextLine = true
-		if narrativeDataKey == "TrialUpgrade" or textLineType == "MakeUpTextLines" then
+		-- Don't play the Chaos effect on Chaos' own boons, Devotion MakeUp voicelines, and NPCs in the world (not by boon)
+		if narrativeDataKey == "TrialUpgrade" or textLineType == "MakeUpTextLines" or narrativeDataKey == "NPC_Artemis_Field_01" or narrativeDataKey == "NPC_Athena_01" then
 			-- This will prevent using the Chaos effects on boon pickup, which would double up
 			data.ModsNikkelMHadesBiomesIsModdedTrialUpgradeTextLine = true
 		end
@@ -168,6 +171,11 @@ function mod.AddNarrativeDataEntries(newTextLines, narrativeDataKey, textLineTyp
 		table.insert(data.GameStateRequirements, { PathTrue = { "CurrentRun", "ModsNikkelMHadesBiomesIsModdedRun" } })
 		-- This requirement was missing in Hades' textlines
 		table.insert(data.GameStateRequirements, { PathFalse = { "CurrentRun", "UseRecord", narrativeDataKey } })
+
+		-- Strip keys
+		for _, stripProperty in ipairs(stripProperties or {}) do
+			data[stripProperty] = nil
+		end
 
 		local insertedDummyCue = not dummyCues
 		for _, line in ipairs(data) do

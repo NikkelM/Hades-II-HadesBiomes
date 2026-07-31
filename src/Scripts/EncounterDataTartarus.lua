@@ -301,6 +301,15 @@ local encounterReplacements = {
 			},
 		},
 	},
+
+	-- New encounters
+	ArtemisCombatTartarus = {
+		InheritFrom = { "BaseArtemisCombat", "GeneratedTartarus" },
+		CanEncounterSkip = false,
+		DifficultyModifier = 120,
+		-- Feels weird in the mod if turned off
+		PreSpawnEnemies = true,
+	},
 }
 
 local encounterModifications = {

@@ -1,8 +1,19 @@
 # Changelog
 
-## v1.2.0
+## v2.0.0
 
 <!--Releasenotes start-->
+### Patch Highlights:
+- You may now encounter Artemis in Tartarus and Elysium, and she will use her dialogues from the first game when you speak to her.
+- You may now encounter Athena in Elysium and Styx, and she will use her dialogues from the first game when you speak to her.
+
+Other fixes and improvements:
+- Balancing: Slightly reduced the base encounter difficulty of wing-end combat rooms in the Temple of Styx.
+- Fixed: There is a typo in the description of Orpheus' "Hymn to Zagreus" boon.
+<!--Releasenotes end-->
+
+## v1.2.0
+
 ### Patch Highlights:
 - Ported (almost) all of Ares' dialogues with Zagreus from the first game. Some of these are still blocked by missing dialogues from other Gods, which will be added in subsequent updates.
 - Ported additional dialogues between Zagreus and various other Gods, delivered by Hermes via his boons in the Nightmare Realm (Athena, Dionysus).
@@ -66,7 +77,6 @@ Other fixes and improvements:
 - Fixed: Added a tentative fix for the Chaos Gate in the Training Grounds sometimes not spawning after returning from a run. Please report if this still happens.
 - Fixed: If the "x64" or "x86" sub-path is provided as part of the "hadesGameFolder" config setting, the game crashes instead of gracefully correcting the path internally.
 - Fixed: If only a single Hades base game file is modified by installed mods, this mod's check will not recognize that Hades is modded.
-<!--Releasenotes end-->
 
 ## v1.1.3
 

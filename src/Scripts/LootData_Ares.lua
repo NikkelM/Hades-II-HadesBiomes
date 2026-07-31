@@ -625,6 +625,25 @@ local newPortedInteractTextLines = {
 		},
 	},
 	{
+		Name = "AresAboutHadesKeepsake01",
+		ModsNikkelMHadesBiomes_TextLineMetadata = {
+			InsertAfterNarrativeTextLine = "ModsNikkelMHadesBiomes_AresAboutZeus01",
+		},
+		PlayOnce = true,
+		RequiredFalseTextLinesThisRun = game.GameData.GodAboutGodVoiceLines,
+		PreEventFunctionName = "BoonInteractPresentation",
+		PreEventFunctionArgs = { PickupWait = 1.0, },
+		RequiredTextLines = { "OlympianReunionQuestComplete" },
+		RequiredTrait = "HadesShoutTrait",
+		{
+			Cue = "/VO/Ares_0233",
+			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+			UseEventEndSound = true,
+			Text =
+			"Ah, you bear your own father's blessing, my kin? Such a surprise... I know the two of you are now in league, and yet... I am still quite accustomed to the thought that you harbor war-like hatred for one another. Perhaps there's still a trace of that, though, hm?"
+		},
+	},
+	{
 		Name = "AresRunProgress01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
 			InsertAfterNarrativeTextLine = "ModsNikkelMHadesBiomes_AresAboutZeus01",

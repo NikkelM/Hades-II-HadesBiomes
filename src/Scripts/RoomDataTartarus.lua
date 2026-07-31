@@ -764,7 +764,6 @@ local roomModifications = {
 		PlayBiomeMusic = true,
 		MusicSection = 0,
 		MusicStartDelay = 1.75,
-		-- Requires AthenaFirstPickup voiceline, which is not implemented
 		ChooseRewardRequirements = mod.NilValue,
 		IneligibleRewards = game.RewardSets.OpeningRoomBans,
 		MaxAppearancesThisBiome = 1,

@@ -24,6 +24,10 @@ table.insert(game.NamedRequirementsData.NoRecentFieldNPCEncounter[1].TableValues
 table.insert(game.NamedRequirementsData.NoRecentFieldNPCEncounter[1].TableValuesToCount, "ThanatosAsphodel")
 table.insert(game.NamedRequirementsData.NoRecentFieldNPCEncounter[1].TableValuesToCount, "ThanatosElysium")
 table.insert(game.NamedRequirementsData.NoRecentFieldNPCEncounter[1].TableValuesToCount, "ThanatosElysiumIntro")
+table.insert(game.NamedRequirementsData.NoRecentFieldNPCEncounter[1].TableValuesToCount, "ArtemisCombatTartarus")
+table.insert(game.NamedRequirementsData.NoRecentFieldNPCEncounter[1].TableValuesToCount, "ArtemisCombatElysium")
+table.insert(game.NamedRequirementsData.NoRecentFieldNPCEncounter[1].TableValuesToCount, "AthenaCombatElysium")
+table.insert(game.NamedRequirementsData.NoRecentFieldNPCEncounter[1].TableValuesToCount, "AthenaCombatStyx")
 -- #endregion
 
 -- #region DreamRuns/Dream Dives

@@ -360,6 +360,7 @@ modutil.mod.Path.Wrap("EndEncounterEffects", function(base, currentRun, currentR
 	end
 end)
 
+-- Wrapping both LoadVoiceBanks and LoadPackages as some characters only call one or the other, to ensure we always have the required modded voicebanks available
 modutil.mod.Path.Wrap("LoadVoiceBanks", function(base, characters, persist, ignoreAssert)
 	if game.CurrentRun and game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun then
 		if type(characters) == "table" then
@@ -376,6 +377,25 @@ modutil.mod.Path.Wrap("LoadVoiceBanks", function(base, characters, persist, igno
 	end
 
 	return base(characters, persist, ignoreAssert)
+end)
+
+-- Wrapping both LoadVoiceBanks and LoadPackages as some characters only call one or the other, to ensure we always have the required modded voicebanks available
+modutil.mod.Path.Wrap("LoadPackages", function(base, args)
+	if game.CurrentRun and game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun then
+		if args.Names then
+			for _, character in ipairs(args.Names) do
+				if mod.LootVoiceBankMappings[character] ~= nil then
+					game.LoadVoiceBanks(mod.LootVoiceBankMappings[character])
+				end
+			end
+		else
+			if mod.LootVoiceBankMappings[args.Name or "nil"] ~= nil then
+				game.LoadVoiceBanks(mod.LootVoiceBankMappings[mod.LootVoiceBankMappings[args.Name]])
+			end
+		end
+	end
+
+	return base(args)
 end)
 
 modutil.mod.Path.Wrap("SetupHeroObject", function(base, room, applyLuaUpgrades)
