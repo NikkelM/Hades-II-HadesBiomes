@@ -2992,9 +2992,9 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 
 	if requirements.RequiredAnyCaughtFishTypesThisRun ~= nil then
 		local anyTrue = false
-		if game.CurrentRun.CaughtFish ~= nil then
+		if game.CurrentRun.FishCaught ~= nil then
 			for k, fishType in pairs(requirements.RequiredAnyCaughtFishTypesThisRun) do
-				if game.CurrentRun.CaughtFish[fishType] then
+				if game.CurrentRun.FishCaught[fishType] then
 					anyTrue = true
 					break
 				end
