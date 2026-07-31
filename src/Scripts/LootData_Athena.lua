@@ -633,7 +633,6 @@ local newAthenaExclusivePortedInteractTextLines = {
 		},
 		PreEventFunctionName = "BoonInteractPresentation",
 		PreEventFunctionArgs = { PickupWait = 1.0, },
-		-- TODO
 		RequiredTextLines = game.GameData.AthenaBasicPickUpTextLines,
 		RequiredLootChoices = 3,
 		RequiredInactiveMetaUpgrade = "ReducedLootChoicesShrineUpgrade",
