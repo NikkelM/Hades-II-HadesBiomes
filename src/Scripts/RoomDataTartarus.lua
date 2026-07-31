@@ -15,6 +15,12 @@ local roomReplacements = {
 				Path = { "CurrentRun", "CurrentRoom", "RoomSetName" },
 				IsNone = { "Styx", "Challenge", "Surface" },
 			},
+			{
+				-- Don't allow any natural Chaos Gates in Tartarus in the first run, since we force one in RoomOpening
+				Path = { "GameState", "ModsNikkelMHadesBiomesCompletedRunsCache" },
+				Comparison = ">=",
+				Value = 1,
+			},
 			NamedRequirements = { "ChaosUnlocked", "NoRecentChaosEncounter" },
 		},
 		-- The Asphodel teleport in Hades II - we don't want it in Zagreus' Journey

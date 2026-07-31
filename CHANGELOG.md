@@ -18,6 +18,7 @@ Other fixes and improvements:
 - Accessibility: Added support for the "Zoom In" accessibility option. A blanket 13% zoom will be applied to all rooms. If you use this option and find certain rooms to be too zoomed in, or still too zoomed out, please report this.
 - Balancing: Trap damage now scales in Dream Dives.
 - Fixed: Ghosts in Tartarus' opening room, mid-shop and Sisyphus' chamber do not move around the room, instead staying where they spawn.
+- Fixed: Chaos Gates may be offered in Tartarus during the first run, where you already receive a Chaos boon in the first room through the forced story event.
 - Fixed: Dire Brimstones and Dire Voidstones can be imbued with the "Shifter" Elite perk, but their small floating crystals to not teleport with them.
 - Fixed: Some of the Furies' unblockable attacks can be blocked by the Black Coat's Omega attack block.
 - Fixed: Familiars and some obstacles such as Zeus' Mana Fountain can end up in an unreachable location if they are outside of the new playable area after one of Tisiphone's phase transitions.
