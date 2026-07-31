@@ -81,8 +81,11 @@ end
 ---@param portraitMappings table<string, string> Mappings of Cue prefixes to Portrait names
 ---@param dummyCues table<integer, string>|nil If not nil, a random cue from this table will be played when the loot is picked up, in place of an actual voiced dialogue
 ---@param dummyVoiceBank string|nil If `dummyCues` is set, this voicebank will be loaded for it
+---@param ignoreDuplicates boolean|nil If true, the duplicates check will ignore these textlines. Only use for tables where you knowingly add duplicates
+---@param stripProperties table|nil A list of property keys within each TextLineSet that should be set to nil
 function mod.AddNarrativeDataEntries(newTextLines, narrativeDataKey, textLineType, textLinePriorityType,
-																		 voiceBankMappings, cueMappings, portraitMappings, dummyCues, dummyVoiceBank)
+																		 voiceBankMappings, cueMappings, portraitMappings, dummyCues, dummyVoiceBank,
+																		 ignoreDuplicates, stripProperties)
 	if narrativeDataKey == nil or textLineType == nil or voiceBankMappings == nil or cueMappings == nil or portraitMappings == nil then
 		mod.DebugPrint("A required parameter is missing!", 1)
 		return
@@ -149,7 +152,7 @@ function mod.AddNarrativeDataEntries(newTextLines, narrativeDataKey, textLineTyp
 		end
 
 		-- Check if this name collides with an existing Hades II dialogue
-		if mod.HiddenConfig.DeveloperMode and dialogueNameExistsInHadesTwo(key) then
+		if mod.HiddenConfig.DeveloperMode and not ignoreDuplicates and dialogueNameExistsInHadesTwo(key) then
 			mod.DebugPrint("Text line set '" .. key .. "' already exists in Hades II.", 1)
 		end
 
@@ -168,6 +171,11 @@ function mod.AddNarrativeDataEntries(newTextLines, narrativeDataKey, textLineTyp
 		table.insert(data.GameStateRequirements, { PathTrue = { "CurrentRun", "ModsNikkelMHadesBiomesIsModdedRun" } })
 		-- This requirement was missing in Hades' textlines
 		table.insert(data.GameStateRequirements, { PathFalse = { "CurrentRun", "UseRecord", narrativeDataKey } })
+
+		-- Strip keys
+		for _, stripProperty in ipairs(stripProperties or {}) do
+			data[stripProperty] = nil
+		end
 
 		local insertedDummyCue = not dummyCues
 		for _, line in ipairs(data) do

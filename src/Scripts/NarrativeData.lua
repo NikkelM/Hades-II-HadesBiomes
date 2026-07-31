@@ -21,12 +21,12 @@ game.GameData.GodAboutGodVoiceLines = {
 	"PoseidonAboutHermes02",
 	"PoseidonAboutDemeter01",
 
-	"AthenaAboutZeus01",
+	"ModsNikkelMHadesBiomes_AthenaAboutZeus01",
 	"AthenaAboutPoseidon01",
 	"AthenaAboutAphrodite01",
-	"AthenaAboutAres01",
+	"ModsNikkelMHadesBiomes_AthenaAboutAres01",
 	"AthenaAboutArtemis01",
-	"AthenaAboutDionysus01",
+	"ModsNikkelMHadesBiomes_AthenaAboutDionysus01",
 	"AthenaAboutHermes01",
 	"AthenaAboutDemeter01",
 
@@ -124,6 +124,23 @@ game.GameData.ArtemisAboutCallistoTextLines = {
 	"ArtemisAboutCallisto04",
 	"ArtemisAboutCallisto05",
 	"ArtemisAboutCallisto06",
+}
+
+game.GameData.AthenaBasicPickUpTextLines = {
+	"AthenaFirstPickUp",
+	"AthenaMiscPickup02",
+	"AthenaMiscPickup03",
+	"AthenaMiscPickup04",
+	"AthenaMiscPickup05",
+	"AthenaMiscPickup07",
+	"AthenaMiscPickup08",
+	"AthenaMiscPickup09",
+	"AthenaMiscPickup14",
+	"AthenaMiscPickup15",
+	"AthenaMiscPickup17",
+	"AthenaMiscPickup18",
+	"AthenaMiscPickup19",
+	"AthenaMiscPickup20",
 }
 --#endregion
 

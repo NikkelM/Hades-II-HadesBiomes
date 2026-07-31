@@ -439,6 +439,7 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 		-- Replace Hades NPC names with Hades II equivalents
 		local npcNameMappings = {
 			NPC_Hades_01 = "NPC_Hades_Field_01",
+			NPC_Nyx_01 = "NPC_Nyx_Story_01",
 		}
 		for npcName, interactCount in pairs(requirements.RequiredMinNPCInteractions) do
 			if npcNameMappings[npcName] ~= nil then
@@ -730,22 +731,22 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 			if requirements.RequiredGodLoot == "DionysusUpgrade" and not game.CurrentRun.UseRecord["NPC_Dionysus_01"] then
 				return false
 			end
-		end
-		-- Custom end
-
-		if not game.LootData[requirements.RequiredGodLoot] then
-			return false
-		end
-
-		local hasTrait = false
-		for i, traitData in pairs(game.CurrentRun.Hero.Traits) do
-			if game.LootData[requirements.RequiredGodLoot].TraitIndex[traitData.Name] then
-				hasTrait = true
-				break
+		else
+			-- Custom end: If none of these, normal check
+			if not game.LootData[requirements.RequiredGodLoot] then
+				return false
 			end
-		end
-		if not hasTrait then
-			return false
+
+			local hasTrait = false
+			for i, traitData in pairs(game.CurrentRun.Hero.Traits) do
+				if game.LootData[requirements.RequiredGodLoot].TraitIndex[traitData.Name] then
+					hasTrait = true
+					break
+				end
+			end
+			if not hasTrait then
+				return false
+			end
 		end
 	end
 
@@ -2428,7 +2429,8 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 		end
 	end
 
-	if requirements.RequiredLootChoices ~= nil and requirements.RequiredLootChoices ~= CalcNumLootChoices() then
+	-- RequiredLootChoices is only ever called with "= 3", so by checking if we are unrestricted we get the same result
+	if requirements.RequiredLootChoices ~= nil and requirements.RequiredLootChoices ~= game.RequireUnrestrictedBoonChoices() then
 		return false
 	end
 
