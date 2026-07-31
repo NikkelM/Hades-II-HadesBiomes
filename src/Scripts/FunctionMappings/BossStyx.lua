@@ -254,17 +254,7 @@ function mod.HadesPhaseTransition(boss, currentRun, aiStage)
 
 	SetAnimation({ Name = "HadesBattleKnockDown", DestinationId = boss.ObjectId })
 	SetGoalAngle({ Id = boss.ObjectId, Angle = 270 })
-	mod.ClearShadeWeapons()
 	game.thread(game.LastKillPresentation, boss)
-
-	local ammoIds = GetIdsByType({ Name = "LobAmmoPack" })
-	SetObstacleProperty({ Property = "Magnetism", Value = 3000, DestinationIds = ammoIds })
-	SetObstacleProperty({
-		Property = "MagnetismSpeedMax",
-		Value = currentRun.Hero.LeaveRoomAmmoMangetismSpeed,
-		DestinationIds = ammoIds
-	})
-	StopAnimation({ DestinationIds = ammoIds, Name = "AmmoReturnTimer" })
 
 	-- Do it again, just in case there was some desync
 	mod.DestroyHadesFightObstacles()
