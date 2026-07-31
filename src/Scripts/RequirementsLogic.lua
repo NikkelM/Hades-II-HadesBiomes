@@ -2445,8 +2445,8 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 		end
 	end
 
-	-- RequiredLootChoices is only ever called with "= 3", so by checking if we are unrestricted we get the same result
-	if requirements.RequiredLootChoices ~= nil and requirements.RequiredLootChoices ~= game.RequireUnrestrictedBoonChoices() then
+	-- RequiredLootChoices is only ever called with "== 3", so by checking if we are unrestricted we get the same result
+	if requirements.RequiredLootChoices ~= nil and not game.RequireUnrestrictedBoonChoices() then
 		return false
 	end
 

@@ -160,7 +160,7 @@ function mod.AddNarrativeDataEntries(newTextLines, narrativeDataKey, textLineTyp
 		-- #region Required modifications to all text lines
 		-- Mark as modded textline
 		data.ModsNikkelMHadesBiomesIsModdedTextLine = true
-		-- Don't play the Chaos effect on Chaos own boons, Devotion make up voicelines, and NPCs in the world (not by boon)
+		-- Don't play the Chaos effect on Chaos' own boons, Devotion MakeUp voicelines, and NPCs in the world (not by boon)
 		if narrativeDataKey == "TrialUpgrade" or textLineType == "MakeUpTextLines" or narrativeDataKey == "NPC_Artemis_Field_01" or narrativeDataKey == "NPC_Athena_01" then
 			-- This will prevent using the Chaos effects on boon pickup, which would double up
 			data.ModsNikkelMHadesBiomesIsModdedTrialUpgradeTextLine = true
