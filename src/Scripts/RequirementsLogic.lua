@@ -301,6 +301,15 @@ function mod.IsMetaUpgradeActive(upgradeName, args)
 	return false
 end
 
+function mod.GetAssistKeepsakeLevel(giftName)
+	local level = 1
+	if game.GameState.AssistUnlocks and game.GameState.AssistUnlocks[giftName] then
+		level = game.GameState.AssistUnlocks[giftName] + 1
+	end
+
+	return level
+end
+
 function mod.GetPreviousModdedRun()
 	for i = #game.GameState.RunHistory, 1, -1 do
 		local run = game.GameState.RunHistory[i]
@@ -466,13 +475,15 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 	end
 
 	if requirements.RequiredGiftLevel ~= nil then
-		if GetGiftLevel(requirements.RequiredGiftLevel.NPCName) < requirements.RequiredGiftLevel.MinLevel then
+		-- if GetGiftLevel(requirements.RequiredGiftLevel.NPCName) < requirements.RequiredGiftLevel.MinLevel then
+		local giftRecord = game.GameState.GiftRecord[requirements.RequiredGiftLevel.NPCName]
+		if (giftRecord and #giftRecord or 0) < requirements.RequiredGiftLevel.MinLevel then
 			return false
 		end
 	end
 
 	if requirements.AssistUpgradeLevel ~= nil then
-		if not game.GameState.AssistUnlocks[requirements.AssistUpgradeLevel.Name] or game.GameState.AssistUnlocks[requirements.AssistUpgradeLevel.Name] < requirements.AssistUpgradeLevel.Level then
+		if game.GameState.AssistUnlocks == nil or not game.GameState.AssistUnlocks[requirements.AssistUpgradeLevel.Name] or game.GameState.AssistUnlocks[requirements.AssistUpgradeLevel.Name] < requirements.AssistUpgradeLevel.Level then
 			return false
 		end
 	end
@@ -1086,15 +1097,15 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 		return false
 	end
 
-	if requirements.RequiredAssistKeepsake ~= nil and game.GameState.LastAssistTrait ~= requirements.RequiredAssistKeepsake then -- not implemented in mod
+	if requirements.RequiredAssistKeepsake ~= nil and game.GameState.LastAssistTrait ~= requirements.RequiredAssistKeepsake then
 		return false
 	end
 
-	if requirements.RequiredAnyAssistKeepsake ~= nil and game.GameState.LastAssistTrait == nil then -- not implemented in mod
+	if requirements.RequiredAnyAssistKeepsake ~= nil and game.GameState.LastAssistTrait == nil then
 		return false
 	end
 
-	if requirements.RequiresMaxAssistTrait ~= nil and (game.GameState.LastAssistTrait ~= requirements.RequiresMaxAssistTrait or GetAssistKeepsakeLevel(requirements.RequiresMaxAssistTrait) < 5) then -- not implemented in mod
+	if requirements.RequiresMaxAssistTrait ~= nil and (game.GameState.LastAssistTrait ~= requirements.RequiresMaxAssistTrait or mod.GetAssistKeepsakeLevel(requirements.RequiresMaxAssistTrait) < 5) then
 		return false
 	end
 
@@ -1787,15 +1798,17 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 		-- end
 	end
 
-	if requirements.RequiredMaxWeaponUpgrade ~= nil and requirements.RequiredMaxWeaponUpgradeIndex ~= nil then
-		if not IsWeaponUpgradeAtMax(requirements.RequiredMaxWeaponUpgrade) then
-			return false
-		end
+	-- Not used in any dialogues
+	if requirements.RequiredMaxWeaponUpgrade ~= nil then -- and requirements.RequiredMaxWeaponUpgradeIndex ~= nil then
+		-- if not IsWeaponUpgradeAtMax(requirements.RequiredMaxWeaponUpgrade) then
+		return false
+		-- end
 	end
-	if requirements.RequiredFalseMaxWeaponUpgrade ~= nil and requirements.RequiredFalseMaxWeaponUpgradeIndex ~= nil then
-		if IsWeaponUpgradeAtMax(requirements.RequiredFalseMaxWeaponUpgrade) then
-			return false
-		end
+	-- Not used in any dialogues
+	if requirements.RequiredFalseMaxWeaponUpgrade ~= nil then -- and requirements.RequiredFalseMaxWeaponUpgradeIndex ~= nil then
+		-- if IsWeaponUpgradeAtMax(requirements.RequiredFalseMaxWeaponUpgrade) then
+		return false
+		-- end
 	end
 
 	if requirements.RequiredLastInteractedWeaponUpgrade ~= nil then -- and (game.GameState.LastWeaponUpgradeName == nil or GetWeaponUpgradeTrait(game.GameState.LastWeaponUpgradeName.WeaponName) ~= requirements.RequiredLastInteractedWeaponUpgrade) then
@@ -2348,10 +2361,13 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 		return false
 	end
 
-	if requirements.RequiredMetaUpgradeUnlocked ~= nil and not game.GameState.MetaUpgradesUnlocked[requirements.RequiredMetaUpgradeUnlocked] then
+	-- Not used for any dialogues
+	if requirements.RequiredMetaUpgradeUnlocked ~= nil then -- and not game.GameState.MetaUpgradesUnlocked[requirements.RequiredMetaUpgradeUnlocked] then
 		return false
 	end
-	if requirements.RequiredMetaUpgradeStageUnlocked ~= nil and game.GameState.MetaUpgradeStagesUnlocked < requirements.RequiredMetaUpgradeStageUnlocked then
+
+	-- Not used for any dialogues
+	if requirements.RequiredMetaUpgradeStageUnlocked ~= nil then -- and game.GameState.MetaUpgradeStagesUnlocked < requirements.RequiredMetaUpgradeStageUnlocked then
 		return false
 	end
 
@@ -2432,7 +2448,8 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 		return false
 	end
 
-	if requirements.RequiredMinNumLockedWeapons ~= nil and GetNumLockedWeapons() < requirements.RequiredMinNumLockedWeapons then
+	-- Not used for any dialogues
+	if requirements.RequiredMinNumLockedWeapons ~= nil then -- and GetNumLockedWeapons() < requirements.RequiredMinNumLockedWeapons then
 		return false
 	end
 
@@ -2610,7 +2627,8 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 			return false
 		end
 
-		if requirements.HasAnyTraitNamesInRoom and not HasTraitsOnLoot(game.CurrentLootData, requirements.HasAnyTraitNamesInRoom) then
+		-- Not used in any dialogues
+		if requirements.HasAnyTraitNamesInRoom then -- and not HasTraitsOnLoot(game.CurrentLootData, requirements.HasAnyTraitNamesInRoom) then
 			return false
 		end
 
@@ -2822,21 +2840,27 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 	-- 		end
 	-- 	end
 	-- end
+
+	-- Not used anywhere (removed from the one dialogue that did use it)
 	if requirements.ObjectiveCompletedLastOffer ~= nil then
-		if (game.GameState.LastObjectiveCompletedRun[requirements.ObjectiveCompletedLastOffer] or 0) < (game.GameState.LastObjectiveFailedRun[requirements.ObjectiveCompletedLastOffer] or 0) then
-			return false
-		end
-	end
-	if requirements.ObjectiveFailedLastOffer ~= nil then
-		if (game.GameState.LastObjectiveFailedRun[requirements.ObjectiveFailedLastOffer] or 0) < (game.GameState.LastObjectiveCompletedRun[requirements.ObjectiveFailedLastOffer] or 0) then
-			return false
-		end
+		-- if (game.GameState.LastObjectiveCompletedRun[requirements.ObjectiveCompletedLastOffer] or 0) < (game.GameState.LastObjectiveFailedRun[requirements.ObjectiveCompletedLastOffer] or 0) then
+		return false
+		-- end
 	end
 
-	if requirements.AnyQuestWithStatus ~= nil and not HasAnyQuestWithStatus(requirements.AnyQuestWithStatus) then
+	-- Not used anywhere
+	if requirements.ObjectiveFailedLastOffer ~= nil then
+		-- if (game.GameState.LastObjectiveFailedRun[requirements.ObjectiveFailedLastOffer] or 0) < (game.GameState.LastObjectiveCompletedRun[requirements.ObjectiveFailedLastOffer] or 0) then
+		return false
+		-- end
+	end
+
+	-- Not used for any dialogues
+	if requirements.AnyQuestWithStatus ~= nil then -- and not HasAnyQuestWithStatus(requirements.AnyQuestWithStatus) then
 		return false
 	end
-	if requirements.AllQuestsWithStatus ~= nil and not HasAllQuestsWithStatus(requirements.AllQuestsWithStatus) then
+	-- Not used for any dialogues
+	if requirements.AllQuestsWithStatus ~= nil then -- and not HasAllQuestsWithStatus(requirements.AllQuestsWithStatus) then
 		return false
 	end
 
@@ -2890,7 +2914,8 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 	if requirements.AnyAffordableGhostAdminItem ~= nil then
 		local canAffordAny = false
 		for itemName, itemData in pairs(game.WorldUpgradeData) do
-			if not itemData.DebugOnly and itemData.ResourceCost ~= nil and not game.GameState.CosmeticsAdded[itemName] and not itemData.IgnoreAffordable then
+			-- if not itemData.DebugOnly and itemData.ResourceCost ~= nil and not game.GameState.CosmeticsAdded[itemName] and not itemData.IgnoreAffordable then
+			if not itemData.DebugOnly and itemData.ResourceCost ~= nil and not game.GameState.WorldUpgradesAdded[itemName] and not itemData.IgnoreAffordable then
 				if itemData.Slot == requirements.AnyAffordableGhostAdminItem and HasResource(itemData.ResourceName, itemData.ResourceCost) then
 					if itemData.GameStateRequirements == nil or game.IsGameStateEligible(itemData, itemData.GameStateRequirements) then
 						canAffordAny = true
@@ -2910,11 +2935,11 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 	-- 	return false
 	-- end
 
-	if requirements.RequiredHasFish ~= nil and IsEmpty(game.GameState.CaughtFish) then
+	if requirements.RequiredHasFish ~= nil and IsEmpty(game.GameState.FishCaught) then
 		return false
 	end
 
-	if requirements.RequiredHasNoFish ~= nil and not IsEmpty(game.GameState.CaughtFish) then
+	if requirements.RequiredHasNoFish ~= nil and not IsEmpty(game.GameState.FishCaught) then
 		return false
 	end
 
@@ -2938,7 +2963,7 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 	if requirements.RequiredAnyCaughtFishTypes ~= nil then
 		local anyTrue = false
 		for k, fishType in pairs(requirements.RequiredAnyCaughtFishTypes) do
-			if game.GameState.TotalCaughtFish and game.GameState.TotalCaughtFish[fishType] then
+			if game.GameState.FishCaught[fishType] then
 				anyTrue = true
 				break
 			end
@@ -2952,7 +2977,7 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 		for k, subTable in pairs(requirements.RequiredAnyCaughtFishTypesOfEach) do
 			local anyTrue = false
 			for k, fishType in pairs(subTable) do
-				if game.GameState.TotalCaughtFish and game.GameState.TotalCaughtFish[fishType] then
+				if game.GameState.FishCaught[fishType] then
 					anyTrue = true
 					break
 				end
@@ -3104,7 +3129,7 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 
 	if requirements.RequiredCosmeticsAdded ~= nil then
 		for k, name in pairs(requirements.RequiredCosmeticsAdded) do
-			if not game.GameState.CosmeticsAdded[name] then
+			if not game.GameState.WorldUpgradesAdded[name] then
 				return false
 			end
 		end
@@ -3193,7 +3218,7 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 	end
 
 	if requirements.RequiredNumCosmeticsMin ~= nil then
-		if TableLength(game.GameState.CosmeticsAdded) < requirements.RequiredNumCosmeticsMin then
+		if game.GameState.CosmeticsPurchasedCountCache ~= nil and game.GameState.CosmeticsPurchasedCountCache.Total < requirements.RequiredNumCosmeticsMin then
 			return false
 		end
 	end
