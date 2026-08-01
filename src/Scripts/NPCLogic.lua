@@ -191,6 +191,16 @@ function mod.SetUpBouldyConversation()
 	game.SetAvailableUseText(source)
 end
 
+function mod.GiveRandomConsumablesWithDynamicDestinationId(args)
+	args = args or {}
+	local source = game.ActiveEnemies[args.ModsNikkelMHadesBiomesPreferredDestinationId or 0]
+	if source ~= nil then
+		args.DestinationId = args.ModsNikkelMHadesBiomesPreferredDestinationId
+	end
+
+	return game.GiveRandomConsumables(args)
+end
+
 function mod.ModsNikkelMHadesBiomesSisyphusBuff(args, source)
 	args = args or {}
 	if args.FunctionName == "GiveRandomConsumables" then
@@ -209,7 +219,9 @@ end
 function mod.ModsNikkelMHadesBiomesSisyphusDropPresentation(consumable, args)
 	local source = game.ActiveEnemies[370001] or game.ActiveEnemies
 			[GetClosestUnitOfType({ Id = game.CurrentRun.Hero.ObjectId, DestinationName = "NPC_Sisyphus_01", Distance = 9999 })]
-	SetAnimation({ DestinationId = source.ObjectId, Name = "SisyphusElbowing" })
+	if source ~= nil then
+		SetAnimation({ DestinationId = source.ObjectId, Name = "SisyphusElbowing" })
+	end
 end
 
 -- #endregion
