@@ -182,10 +182,13 @@ local newQuestData = {
 		RewardResourceName = "SuperGiftPoints",
 		RewardResourceAmount = 2,
 		UnlockGameStateRequirements = {
-			-- Has met any of the new NPCs
+			-- Has met any two of the new NPCs
+			-- TODO: Once implemented, Achilles, Dusa
 			{
 				Path = { "GameState", "UseRecord" },
-				HasAny = { "NPC_Sisyphus_01", "NPC_Eurydice_01", "NPC_Patroclus_01", "NPC_Thanatos_01", "NPC_Thanatos_Field_01" }
+				CountOf = { "NPC_Sisyphus_01", "NPC_Eurydice_01", "NPC_Patroclus_01", "NPC_Thanatos_01", "NPC_Thanatos_Field_01", "NPC_Orpheus_01", },
+				Comparison = ">=",
+				Value = 2,
 			},
 		},
 		CompleteGameStateRequirements = {
