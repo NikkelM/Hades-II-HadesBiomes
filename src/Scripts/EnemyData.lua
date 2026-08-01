@@ -1000,7 +1000,7 @@ local enemyModifications = {
 			PostAttackDuration = 0.5,
 		},
 		EliteAttributeOptions = game.CombineTables(game.EnemySets.GenericEliteAttributes, { "Hex", }),
-		BlockAttributes = { "Blink" },
+		BlockAttributes = { "Blink", "HeavyArmor" },
 	},
 	HeavyRanged = {
 		StunAnimations = { Default = "HeavyRangedCrystal4" },
@@ -1683,7 +1683,7 @@ local enemyModifications = {
 		DreamBiomeData = asphodelEnemyDreamBiomeData,
 	},
 	RangedBurrowerElite = {
-		BlockAttributes = { "Blink", "Orbit", "Beams" },
+		BlockAttributes = { "Blink", "Orbit", "Beams", "Frenzy" },
 		EliteAttributeOptions = game.CombineTables(game.EnemySets.GenericEliteAttributes, { "Hex", }),
 	},
 	RangedBurrowerSuperElite = {
@@ -2120,7 +2120,7 @@ local enemyModifications = {
 		SpellSummonDataOverrides = {
 			OnDeathFireWeapons = {},
 		},
-		BlockAttributes = { "Fog", },
+		BlockAttributes = { "Fog", "Blink" },
 	},
 	ShadeSpearUnitSuperElite = {
 		OnDeathFireWeapons = { "ShadeDeathSpawnSuperElite" },
@@ -2332,6 +2332,9 @@ local enemyModifications = {
 		},
 		WeaponOptions = { "ChariotRamDeathWeapon" },
 		ModsNikkelMHadesBiomesEffectVfxOffsetZ = 50,
+	},
+	ChariotSuicideElite = {
+		BlockAttributes = { "ExtraDamage", "HeavyArmor", "SpreadHitShields", "Massive" },
 	},
 	FlurrySpawner = {
 		StunAnimations = { Default = "SoulSpawnerIdle" },
