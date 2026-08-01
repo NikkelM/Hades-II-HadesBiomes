@@ -2919,6 +2919,7 @@ local enemyModifications = {
 	CrawlerMiniBoss = {
 		MaxHealth = 14000,
 		RunHistoryKilledByName = "HadesCrawlerMiniBoss",
+		GenusName = "CrawlerMiniBoss_Full",
 		AltHealthBarTextIds = {
 			{
 				TextId = "ModsNikkelMHadesBiomes_CrawlerMiniBoss_DreamRun01",

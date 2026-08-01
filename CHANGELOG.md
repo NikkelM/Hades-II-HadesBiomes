@@ -11,6 +11,7 @@ Other fixes and improvements:
 - Balancing: Slightly reduced the base encounter difficulty of wing-end combat rooms in the Temple of Styx.
 - Balancing: Blocked a number of additional Elite perks from certain enemy types.
 - Fixed: Shells fired by the Argent Skull can become irretrievable if they were supposed to return to Melinoë during dialogue playing between phases in Hades' boss fight.
+- Fixed: Damage taken from the Tiny Vermin is categorized as damage taken from Crawlers in the Damage Taken record in the run clear screen.
 - Fixed: The voiceline that is supposed to play when attempting to interact with the locked Keepsake Cabinet in post-boss rooms may not play in some cases.
 - Fixed: There is a typo in the description of Orpheus' "Hymn to Zagreus" boon.
 <!--Releasenotes end-->
