@@ -406,7 +406,7 @@ function mod.ModsNikkelMHadesBiomesOrpheusBuff(args, source)
 	end
 
 	-- If Orpheus sings again, start playing the selected boon's song
-	if game.IsGameStateEligible(orpheus, orpheus.OrpheusSingsAgainRequirements) then
+	if orpheus and game.IsGameStateEligible(orpheus, orpheus.OrpheusSingsAgainRequirements) then
 		mod.ModsNikkelMHadesBiomesEurydiceMusic(orpheus,
 			{ TrackName = args.TrackName, StartDelay = 1.5, Duration = 2 })
 		game.GameState.ModsNikkelMHadesBiomesLastPlayedOrpheusTrack = args.TrackName
@@ -615,22 +615,23 @@ function mod.OrpheusApplyRoot(victim, functionArgs, triggerArgs)
 		return
 	end
 
-	local retaliateRootedEnemyAlive = false
-	for _, enemy in pairs(game.ShallowCopyTable(game.ActiveEnemies) or {}) do
-		if enemy.ModsNikkelMHadesBiomesRetaliateRooted then
-			retaliateRootedEnemyAlive = true
-			break
-		end
-	end
-	if retaliateRootedEnemyAlive then
-		return
-	end
+	-- Uncommenting this would require the previously rooted enemy to be dead to be able to reapply this
+	-- local retaliateRootedEnemyAlive = false
+	-- for _, enemy in pairs(game.ShallowCopyTable(game.ActiveEnemies) or {}) do
+	-- 	if enemy.ModsNikkelMHadesBiomesRetaliateRooted then
+	-- 		retaliateRootedEnemyAlive = true
+	-- 		break
+	-- 	end
+	-- end
+	-- if retaliateRootedEnemyAlive then
+	-- 	return
+	-- end
 
 	if not victim or victim.SkipModifiers or not game.CheckCooldown("ModsNikkelMHadesBiomesOrpheusRetaliateRoot", functionArgs.Cooldown) then
 		return
 	end
 
-	victim.ModsNikkelMHadesBiomesRetaliateRooted = true
+	-- victim.ModsNikkelMHadesBiomesRetaliateRooted = true
 
 	local traitData = game.GetHeroTrait("ModsNikkelMHadesBiomesOrpheusOrpheusSong1Boon") or {}
 	if traitData then
@@ -640,6 +641,8 @@ function mod.OrpheusApplyRoot(victim, functionArgs, triggerArgs)
 	-- Apply Root to all enemies in the room
 	for _, enemy in pairs(game.ActiveEnemies) do
 		if not enemy.IsDead and not enemy.SkipModifiers then
+			-- Clear the effect before applying so that enemies on freeze-cooldown can also be frozen
+			ClearEffect({ Id = enemy.ObjectId, Name = "ChillEffect" })
 			game.ApplyRoot(enemy, functionArgs, triggerArgs)
 		end
 	end

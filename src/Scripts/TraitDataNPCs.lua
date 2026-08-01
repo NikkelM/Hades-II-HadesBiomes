@@ -845,6 +845,9 @@ local newTraitData = {
 				},
 			},
 		},
+		StatLines = {
+			"ModsNikkelMHadesBiomesOrpheusOrpheusSong1BoonCooldownStatDisplay",
+		},
 		ExtractValues = {
 			{
 				Key = "Cooldown",

@@ -195,7 +195,13 @@ local newData = {
 	-- 	Id = "ModsNikkelMHadesBiomesOrpheusOrpheusSong1Boon",
 	-- 	InheritFrom = "MusicMusicPlayerOrpheusSong1MusicPlayer",
 	-- 	Description =
-	-- 	"After you take damage, inflict {$Keywords.Root} on {#BoldFormat}ALL {#Prev}foes. After {#BoldFormatGraft}{$TooltipData.ExtractData.Cooldown} Sec. {#Prev}and once the foe that damaged you has been slain, this can repeat.",
+	-- 	"After you take damage, immediately inflict {$Keywords.Root} on {#BoldFormat}ALL {#Prev}foes.",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomesOrpheusOrpheusSong1BoonCooldownStatDisplay",
+	-- 	InheritFrom = "BaseStatLine",
+	-- 	DisplayName = "{!Icons.Bullet}{#PropertyFormat}Cooldown:",
+	-- 	Description = "{#UpgradeFormat}{$TooltipData.ExtractData.Cooldown} Sec.{#Prev}",
 	-- },
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomesOrpheusOrpheusSong2Boon",
