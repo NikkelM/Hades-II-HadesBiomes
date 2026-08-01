@@ -8,6 +8,7 @@
 - You may now encounter Athena in Elysium and Styx, and she will use her dialogues from the first game when you speak to her.
 
 Other fixes and improvements:
+- Balancing: You can now destroy the butterflies created by Soul Spawners with your attacks and specials.
 - Balancing: Slightly reduced the base encounter difficulty of wing-end combat rooms in the Temple of Styx.
 - Balancing: Blocked a number of additional Elite perks from certain enemy types.
 - Fixed: Shells fired by the Argent Skull can become irretrievable if they were supposed to return to Melinoë during dialogue playing between phases in Hades' boss fight.

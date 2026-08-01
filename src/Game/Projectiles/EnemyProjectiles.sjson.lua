@@ -232,6 +232,12 @@ local hadesProjectilesModifications = {
 	ChariotRamSelfDestruct = {
 		AffectsEnemies = true,
 	},
+	FlurrySpawnerWeapon = {
+		CanBeProjectileDefenseDestroyed = true,
+	},
+	FlurrySpawnerWeaponElite = {
+		CanBeProjectileDefenseDestroyed = true,
+	},
 	MinotaurOverheadTouchdown = {
 		AttachToOwner = false,
 		DamageRadius = 400,
