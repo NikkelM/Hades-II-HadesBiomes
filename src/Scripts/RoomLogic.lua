@@ -388,7 +388,7 @@ modutil.mod.Path.Wrap("LoadPackages", function(base, args)
 				args.Names = args.Name
 				args.Name = nil
 			elseif mod.LootVoiceBankMappings[args.Name or "nil"] ~= nil then
-				game.LoadVoiceBanks(mod.LootVoiceBankMappings[mod.LootVoiceBankMappings[args.Name]])
+				game.LoadVoiceBanks(mod.LootVoiceBankMappings[args.Name])
 			end
 		end
 		-- Explicitly not an elseif so we catch the case where we moved args.Name into args.Names above
