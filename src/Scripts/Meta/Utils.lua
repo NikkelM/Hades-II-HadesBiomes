@@ -710,6 +710,20 @@ public.GetModConfigValueByLeafKey = function(leafKey)
 	return findConfigLeaf(config)
 end
 
+--- Returns true if the given config leaf key has the expected value, false otherwise, including if the key does not exist.
+---@param source table
+---@param args table Must contain LeafKey and ExpectedValue.
+function mod.ModConfigLeafKeyHasValue(source, args)
+	args = args or {}
+	if args.LeafKey == nil or args.ExpectedValue == nil then
+		mod.DebugPrint("mod.ModConfigLeafKeyHasValue was called with missing arguments!", 1)
+		mod.PrintTable(args)
+	end
+
+	---@diagnostic disable-next-line: undefined-global
+	return public.GetModConfigValueByLeafKey(args.LeafKey) == args.ExpectedValue
+end
+
 if config.debugging.enableVanillaDebugPrint then
 	modutil.mod.Path.Wrap("DebugPrint", function(base, args)
 		mod.DebugPrint(args.Text, 4)
