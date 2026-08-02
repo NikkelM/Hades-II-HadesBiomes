@@ -5283,6 +5283,14 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 				{
 					PathFalse = { "CurrentRun", "RoomsEntered", "I_Boss01" },
 				},
+				{
+					Path = { "CurrentRun", "TextLinesRecord" },
+					HasNone = {
+						"MorosPostRunAboutMorosKeepsake01",
+						"MorosPostRunAboutMorosKeepsake02",
+						"MorosPostRunAboutMorosAspect01",
+					},
+				},
 			},
 			RandomRemaining = true,
 			BreakIfPlayed = true,
@@ -6839,11 +6847,13 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 	ModsNikkelMHadesBiomes_GiftRackLockedVoiceLines = {
 		BreakIfPlayed = true,
 		RandomRemaining = true,
+		Queue = "Interrupt",
 		PreLineWait = 0.35,
 		GameStateRequirements = {},
 		Cooldowns = {
-			{ Name = "MelinoeAnyQuipSpeech" },
+			{ Name = "ModsNikkelMHadesBiomes_GiftRackLockedQuip" },
 		},
+		TriggerCooldowns = { "MelinoeAnyQuipSpeech" },
 		{ Cue = "/VO/Melinoe_5558",      Text = "Have to complete an incantation first..." },
 		{ Cue = "/VO/MelinoeField_1063", Text = "Should try an incantation back home..." },
 		{ Cue = "/VO/MelinoeField_1061", Text = "I'll have to use the cauldron first." },

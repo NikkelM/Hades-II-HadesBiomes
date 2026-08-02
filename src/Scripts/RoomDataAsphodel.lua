@@ -458,7 +458,8 @@ local roomModifications = {
 	-- GENERIC
 	BaseAsphodel = {
 		-- These are loaded in LoadCurrentRoomResources, which is called OnAnyLoad
-		LoadModdedAudioBanks = { "EnemiesModsNikkelMHadesBiomes", "SoundsModsNikkelMHadesBiomes", "ModsNikkelMHadesBiomesMusicModded", "ModsNikkelMHadesBiomesMusicAsphodelModded", },
+		LoadModdedAudioBanks = { "EnemiesModsNikkelMHadesBiomes", "SoundsModsNikkelMHadesBiomes", "ModsNikkelMHadesBiomesMusicModded", "ModsNikkelMHadesBiomesMusicAsphodelModded", "ModsNikkelMHadesBiomesAmbienceModded", },
+		LoadModdedPackages = { "BiomeB" },
 
 		NarrativeContextArt = "ModsNikkelMHadesBiomes_DialogueBackground_Asphodel",
 
@@ -583,6 +584,7 @@ local roomModifications = {
 		MusicMutedStems = { "Drums", "Bass", "Guitar", },
 
 		ZagContractRewardDestinationId = 776332,
+		AutocompleteSurfaceShopDelivery = true,
 
 		ShovelPointChance = 0.35,
 		PickaxePointChance = 0.35,
@@ -661,7 +663,7 @@ local roomModifications = {
 			NamedRequirementsFalse = { "StandardPackageBountyActive" },
 			-- Since Orpheus is now appearing during the current run instead of in the house (previous run), fix the requirement
 			RequiredFalseTextLinesLastRun = mod.NilValue,
-			RequiredFalseTextLinesThisRun = { "OrpheusAboutSingersReunionQuest01" },
+			RequiredFalseTextLinesThisRun = { "HermesFirstPickUp", "SisyphusFirstMeeting", "Fury2FirstAppearance", "Fury3FirstAppearance", "OrpheusAboutSingersReunionQuest01" },
 		},
 
 		HarvestPointChances = { 0.4, 0.1, },

@@ -471,6 +471,5 @@ mod.RoomData.Base = {
 				},
 			},
 		},
-
 	},
 }

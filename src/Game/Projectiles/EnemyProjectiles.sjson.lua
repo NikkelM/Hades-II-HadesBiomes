@@ -209,13 +209,13 @@ local hadesProjectilesModifications = {
 		InheritFrom = "1_BaseEnemyProjectileReflectable",
 		ImpactFx = "EnemyProjectileImpact",
 		DissipateFx = "EnemyProjectileMultiBreak",
-		-- Removing this, as otherwise the small projectiles all hit the player when spawning
-		SpawnOnDeath = "null",
-		SpawnOnDissipate = "SplitShotWeaponSmall",
 		UnpauseResetLocation = true,
 		AffectsSelf = false,
 		Fuse = 1.65,
 		Speed = 530,
+		-- After a big projectile hits the player, make them immune to being hit by the small projectile that splits off to prevent them from immediately damaging
+		ImmunityKey = "ModsNikkelMHadesBiomes_SplitShot",
+		ImmunityDuration = 0.4,
 	},
 	SplitShotWeaponSmall = {
 		InheritFrom = "1_BaseEnemyProjectileReflectable",
@@ -226,9 +226,17 @@ local hadesProjectilesModifications = {
 		Thing = {
 			Graphic = "EnemyProjectileIn",
 		},
+		ImmunityKey = "ModsNikkelMHadesBiomes_SplitShot",
+		ImmunityDuration = 0.4,
 	},
 	ChariotRamSelfDestruct = {
 		AffectsEnemies = true,
+	},
+	FlurrySpawnerWeapon = {
+		CanBeProjectileDefenseDestroyed = true,
+	},
+	FlurrySpawnerWeaponElite = {
+		CanBeProjectileDefenseDestroyed = true,
 	},
 	MinotaurOverheadTouchdown = {
 		AttachToOwner = false,
@@ -247,9 +255,13 @@ local hadesProjectilesModifications = {
 	TheseusSpearThrow = {
 		InheritFrom = "1_BaseEnemyProjectileReflectable",
 		SpawnOnDissipate = "TheseusSpearReturnPoint",
+		-- Can't be blocked by the Coat Omega Attack
+		IgnoreCoverageAngles = true,
 	},
 	TheseusSpearThrowReturn = {
 		SpawnOnDissipate = "null",
+		-- Can't be blocked by the Coat Omega Attack
+		IgnoreCoverageAngles = true,
 	},
 	TheseusChariotMortar = {
 		InheritFrom = "1_BaseEnemyProjectileUndestroyable",
@@ -335,6 +347,10 @@ local hadesProjectilesModifications = {
 	CrawlerReburrowShockwaveTouchdown = {
 		InheritFrom = "CrusherUnitTouchdown",
 		DetonateGraphic = "nil",
+	},
+	HadesBidentThrow = {
+		-- Can't be blocked by the Coat Omega Attack
+		IgnoreCoverageAngles = true,
 	},
 	HadesBidentStrike = {
 		Range = 900,
@@ -593,6 +609,9 @@ end
 
 mod.ApplyNestedSjsonModifications(hadesProjectilesTable.Projectiles, hadesProjectilesModifications)
 
+-- Remove duplicates we don't want at all, as there is one defined in Hades II already or we just don't need it
+mod.RemoveSjsonEntries(hadesProjectilesTable.Projectiles, mod.EnemyProjectileRemovals, "Name", "EnemyProjectiles.sjson")
+
 -- Build a name-to-projectile lookup for inheritance chain walking
 local projectilesByName = {}
 for _, projectile in ipairs(hadesProjectilesTable.Projectiles) do
@@ -678,6 +697,30 @@ local function ancestorIsUndestroyable(projectile)
 	return false
 end
 
+-- Snapshot of projectiles that explicitly set CanBeProjectileDefenseDestroyedByName2 before the loop below runs
+-- Captured pre-loop so it is not polluted by the values the loop itself sets
+local explicitDefenseDestroyedByName2 = {}
+for _, projectile in ipairs(hadesProjectilesTable.Projectiles) do
+	if projectile.Name and projectile.CanBeProjectileDefenseDestroyedByName2 ~= nil then
+		explicitDefenseDestroyedByName2[projectile.Name] = true
+	end
+end
+
+-- Returns true if any ancestor in the InheritFrom chain explicitly set CanBeProjectileDefenseDestroyedByName2
+local function ancestorHasDefenseDestroyedByName2(projectile)
+	local visited = {}
+	local current = projectilesByName[projectile.InheritFrom]
+	while current do
+		if visited[current.Name] then break end
+		visited[current.Name] = true
+		if explicitDefenseDestroyedByName2[current.Name] then
+			return true
+		end
+		current = projectilesByName[current.InheritFrom]
+	end
+	return false
+end
+
 -- Skip projectiles whose inheritance chain reaches an H2 enemy base class, as the engine resolves these from inheritance.
 for _, projectile in ipairs(hadesProjectilesTable.Projectiles) do
 	if not inheritsFromH2Base(projectile) then
@@ -685,7 +728,7 @@ for _, projectile in ipairs(hadesProjectilesTable.Projectiles) do
 			projectile.CanBeProjectileDefenseDestroyed = false
 			mod.DebugPrint("Set CanBeProjectileDefenseDestroyed to false for " .. projectile.Name, 4)
 		end
-		if projectile.CanBeProjectileDefenseDestroyedByName2 == nil then
+		if projectile.CanBeProjectileDefenseDestroyedByName2 == nil and not ancestorHasDefenseDestroyedByName2(projectile) then
 			if undestroyableProjectiles[projectile.Name] or ancestorIsUndestroyable(projectile) then
 				projectile.CanBeProjectileDefenseDestroyedByName2 = "null"
 				mod.DebugPrint("Set CanBeProjectileDefenseDestroyedByName2 to null for " .. projectile.Name, 4)

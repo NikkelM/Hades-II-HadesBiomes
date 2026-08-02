@@ -830,7 +830,7 @@ local roomModifications = {
 	-- GENERIC
 	BaseStyx = {
 		-- These are loaded in LoadCurrentRoomResources, which is called OnAnyLoad
-		LoadModdedAudioBanks = { "EnemiesModsNikkelMHadesBiomes", "SoundsModsNikkelMHadesBiomes", "ModsNikkelMHadesBiomesMusicModded", "ModsNikkelMHadesBiomesMusicStyxModded", },
+		LoadModdedAudioBanks = { "EnemiesModsNikkelMHadesBiomes", "SoundsModsNikkelMHadesBiomes", "ModsNikkelMHadesBiomesMusicModded", "ModsNikkelMHadesBiomesMusicStyxModded", "ModsNikkelMHadesBiomesAmbienceModded", },
 
 		NarrativeContextArt = "ModsNikkelMHadesBiomes_DialogueBackground_Styx",
 
@@ -886,6 +886,7 @@ local roomModifications = {
 		HasExorcismPoint = false,
 	},
 	BaseStyxWingEnd = {
+		LegalEncounters = game.EncounterSets.StyxEncountersWingEnd,
 		NextRoomEntranceFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesReturnToStyxHubPresentation",
 		IneligibleRewards = { "Devotion" },
 		-- Turn on the Bass stem, and play the outro music from the Drums section after the end combat rooms
@@ -1154,3 +1155,6 @@ local roomModifications = {
 }
 
 mod.ApplyModificationsAndInheritRoomData(mod.RoomData.Styx, roomModifications, roomReplacements, "Styx")
+
+-- Can't set it inline as it affects the global game.Color.White for some reason
+game.RoomData.D_Boss01.LoadBackgroundColor = mod.ExitToHadesFadeColour

@@ -65,6 +65,8 @@ function mod.ModsNikkelMHadesBiomesRamAILoop(enemy, aiData)
 
 			-- Adds the speedup during ram
 			if aiData.RamEffectProperties ~= nil and aiData.RamEffectResetProperties ~= nil then
+				enemy.ModsNikkelMHadesBiomesRamming = true
+				enemy.ModsNikkelMHadesBiomesRamResetProperties = aiData.RamEffectResetProperties
 				for _, property in ipairs(aiData.RamEffectProperties) do
 					SetUnitProperty({
 						DestinationId = enemy.ObjectId,
@@ -89,7 +91,8 @@ function mod.ModsNikkelMHadesBiomesRamAILoop(enemy, aiData)
 			aiData.AttackDistance = aiData.RamDistance
 			aiData.MoveWithinRangeTimeout = aiData.RamTimeout
 			local moveSuccess = game.MoveWithinRange(enemy, aiData.TargetId, aiData)
-			if aiData.RamEffectProperties ~= nil and aiData.RamEffectResetProperties ~= nil then
+			-- Reset the ram speed boost, unless an interrupt (e.g. polymorph, see PolymorphStunApply) already reset it
+			if aiData.RamEffectProperties ~= nil and aiData.RamEffectResetProperties ~= nil and enemy.ModsNikkelMHadesBiomesRamming then
 				for _, property in ipairs(aiData.RamEffectResetProperties) do
 					SetUnitProperty({
 						DestinationId = enemy.ObjectId,
@@ -97,15 +100,18 @@ function mod.ModsNikkelMHadesBiomesRamAILoop(enemy, aiData)
 						Property = property.Property,
 					})
 				end
+				enemy.ModsNikkelMHadesBiomesRamming = false
+				enemy.ModsNikkelMHadesBiomesRamResetProperties = nil
 			end
-			-- Added: Fires the weapon after a successful ram
-			if moveSuccess ~= false then
+			-- Added: Fires the weapon after a successful ram, unless the ram was interrupted (e.g. by polymorph)
+			if moveSuccess ~= false and not enemy.ModsNikkelMHadesBiomesRamInterrupted then
 				game.AIFireProjectile(enemy, aiData)
 				-- To destroy the ChariotSuicide
 				if aiData.OnFiredFunctionName ~= nil then
 					game.CallFunctionName(aiData.OnFiredFunctionName, enemy, aiData)
 				end
 			end
+			enemy.ModsNikkelMHadesBiomesRamInterrupted = nil
 
 			Stop({ Id = enemy.ObjectId })
 			if aiData.PostAttackAnimation ~= nil then

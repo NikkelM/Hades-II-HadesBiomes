@@ -1,0 +1,30 @@
+local NPCDataFile = rom.path.combine(rom.paths.Content(), "Game\\Text\\de\\_NPCData_Skelly.de.sjson")
+
+local order = {
+	"Id",
+	"InheritFrom",
+	"DisplayName",
+}
+
+local newData = {
+	-- #region Goddess Mode intro (updated base game text, changing God Mode to Goddess Mode)
+	-- {
+	-- 	Id = "Modsnikkelmhadesbiomesskelly_0367",
+	-- 	InheritFrom = "BaseNarrative",
+  -- --  DisplayName = "Jeśli jest ci ciężko tam w terenie, młody, to zapamiętaj coś sobie: Jesteś {#DialogueItalicFormat}bogiem{#PreviousFormat}, co nie?! O wiele mocniejszym, niż ci się wydaje. Sprawiają ci kłopoty, włączasz {#DialogueItalicFormat}Tryb Boski {#PreviousFormat}i dajesz im wycisk w moim imieniu!"
+	-- 	DisplayName =
+	-- 	"If you're having a rough time out there, boyo, you just remember something: You're a {#DialogueItalicFormat}god{#Prev}, all right?! Way tougher than you think. They give you trouble, you just turn on {#DialogLegendaryFormat}Goddess Mode {#Prev}{#DialogueItalicFormat}(in the mod config){#Prev}, and you let 'em have it for me!"
+	-- },
+	-- {
+	-- 	Id = "Modsnikkelmhadesbiomeszagreushome_1506",
+	-- 	InheritFrom = "BaseNarrative",
+  -- --  DisplayName = "Zachowujesz się tak, jakby ten {#DialogueItalicFormat}Tryb Boski {#PreviousFormat}był jakimś przełącznikiem, który mogę przełączyć, kiedy tylko zechcę obudzić moją uśpioną moc, kolego."
+	-- 	DisplayName =
+	-- 	"You act as though this {#DialogueItalicFormat}Goddess Mode {#Prev}is some sort of lever I can simply switch at will if ever I wish to unlock my latent strength, there, mate."
+	-- },
+	-- #endregion
+}
+
+sjson.hook(NPCDataFile, function(data)
+	mod.AddTableKeysSkipDupes(data.Texts, newData, "Id", order)
+end)

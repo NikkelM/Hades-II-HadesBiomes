@@ -128,7 +128,7 @@ local addAnimations = {
 	ModsNikkelMHadesBiomes_Shop_FlameWheels = {
 		Name = "ModsNikkelMHadesBiomes_Shop_FlameWheels",
 		InheritFrom = "BoonIcon",
-		FilePath = "NikkelM-HadesBiomesGUIModded\\GUIModded\\Screens\\ShopIcons\\release_parchment_23",
+		FilePath = "GUIModded\\Screens\\ShopIcons\\release_parchment_23",
 		EndFrame = 1,
 		StartFrame = 1,
 	},

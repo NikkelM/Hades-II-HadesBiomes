@@ -68,6 +68,7 @@ end
 function mod.PlayPreLineTauntAnimFromSource(source, args)
 	if source ~= nil and source.TauntAnimation ~= nil then
 		SetAnimation({ Name = source.TauntAnimation, DestinationId = source.ObjectId })
+		AngleTowardTarget({ Id = source.ObjectId, DestinationId = game.CurrentRun.Hero.ObjectId, Duration = 0.07 })
 	end
 end
 
@@ -179,8 +180,10 @@ function mod.MinotaurEarlyExitPresentation(boss, currentRun)
 		game.wait(2.0, game.RoomThreadName)
 	end
 
-	if not mod.PlayRandomRemainingTextLines(boss, boss.BossPresentationOutroTextLineSets) then
-		mod.PlayRandomRemainingTextLines(boss, boss.BossPresentationOutroRepeatableTextLineSets)
+	if not game.CurrentRun.IsDreamRun then
+		if not mod.PlayRandomRemainingTextLines(boss, boss.BossPresentationOutroTextLineSets) then
+			mod.PlayRandomRemainingTextLines(boss, boss.BossPresentationOutroRepeatableTextLineSets)
+		end
 	end
 
 	game.wait(1.5, game.RoomThreadName)
@@ -300,9 +303,8 @@ end
 
 function mod.SelectTheseusGod(enemy, run, args)
 	enemy.TheseusGodName = mod.GetUninteractedGodThisRunForTheseus() or "Artemis"
-	LoadPackages({ Names = enemy.TheseusGodName })
 	-- Contains some necessary Fx that were in various GodUpgrade packages in Hades
-	LoadPackages({ Names = "ModsNikkelMHadesBiomesTheseusGodFxOriginal" })
+	LoadPackages({ Names = { enemy.TheseusGodName, "ModsNikkelMHadesBiomesTheseusGodFxOriginal" } })
 end
 
 function mod.TheseusGodAI(enemy, currentRun)

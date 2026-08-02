@@ -82,3 +82,11 @@ for formatName, formatData in pairs(newTextFormats) do
 	CreateFormatContainer(formatData)
 end
 -- #endregion
+
+-- #region RunIntroData
+-- Prevent the RunIntroData from playing if the fresh file run is a modded run
+table.insert(game.RunIntroData[1].GameStateRequirements, {
+	FunctionName = _PLUGIN.guid .. "." .. "ModConfigLeafKeyHasValue",
+	FunctionArgs = { LeafKey = "z_SpeedrunFreshFileZagreusJourneyRun", ExpectedValue = false }
+})
+-- #endregion

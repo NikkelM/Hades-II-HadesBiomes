@@ -74,7 +74,7 @@ local roomModifications = {
 	-- GENERIC
 	BaseSurface = {
 		LoadModdedPackages = { "RoomManagerModsNikkelMHadesBiomes", "NikkelM-HadesBiomesFxModded", "NikkelM-HadesBiomesGUIModded", "ModsNikkelMHadesBiomesGUIOriginal", },
-		LoadModdedAudioBanks = { "EnemiesModsNikkelMHadesBiomes", "SoundsModsNikkelMHadesBiomes", "ModsNikkelMHadesBiomesMusicModded", "ModsNikkelMHadesBiomesMusicSurfaceModded", },
+		LoadModdedAudioBanks = { "EnemiesModsNikkelMHadesBiomes", "SoundsModsNikkelMHadesBiomes", "ModsNikkelMHadesBiomesMusicModded", "ModsNikkelMHadesBiomesMusicSurfaceModded", "ModsNikkelMHadesBiomesAmbienceModded", },
 		LoadModdedVoiceBanks = { "Modsnikkelmhadesbiomespersephone", "ZagreusField" },
 
 		SaveProfileLocationText = "ModsNikkelMHadesBiomesLocation_Hades_Surface",

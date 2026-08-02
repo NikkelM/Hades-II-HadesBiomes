@@ -42,6 +42,206 @@ config = chalk.auto "config.lua"
 ---@diagnostic disable-next-line: undefined-global
 public.config = config -- so other mods can access our config
 
+-- #region Config migration
+-- Version for mod_settings config handling
+--[==[
+local function snapshotConfigSections()
+	local sections = {}
+	local ok, configFolder = pcall(rom.paths.config)
+	if not ok or configFolder == nil then
+		return sections
+	end
+	local file = io.open(rom.path.combine(configFolder, _PLUGIN.guid .. ".cfg"), "r")
+	if file == nil then
+		return sections
+	end
+	local currentSection = nil
+	for line in file:lines() do
+		-- Strip a leading UTF-8 BOM and surrounding whitespace, then ignore blank lines and comments
+		local trimmed = line:gsub("^\239\187\191", ""):match("^%s*(.-)%s*$")
+		if trimmed ~= "" and trimmed:sub(1, 1) ~= "#" then
+			local section = trimmed:match("^%[(.+)%]$")
+			if section ~= nil then
+				currentSection = section
+				sections[currentSection] = sections[currentSection] or {}
+			elseif currentSection ~= nil then
+				local key = trimmed:match("^(.-)%s*=")
+				if key ~= nil and key ~= "" then
+					sections[currentSection][key] = true
+				end
+			end
+		end
+	end
+	file:close()
+	return sections
+end
+
+local function migrateFlatConfigToNested(preMigrationSections)
+	if not config.enabled then
+		return
+	end
+
+	local configFile = nil
+	for _, candidate in pairs(rom.config.config_files) do
+		if candidate.owner_guid == _PLUGIN.guid then
+			configFile = candidate
+			break
+		end
+	end
+	if configFile == nil then
+		rom.log.warning(
+			"Config file could not be loaded during config migration, config is likely outdated, please manually set the correct values again and report this issue!")
+		return
+	end
+
+	-- Maps each old flat key to the nested path it moved to
+	-- Ensure to update this when updating where these keys live in the nested structure for players updating later on!
+	local migrations = {
+		hadesGameFolder = { "debugging", "hadesGameFolder" },
+		logLevel = { "debugging", "logLevel" },
+		enableVanillaDebugPrint = { "debugging", "enableVanillaDebugPrint" },
+		firstTimeSetup = { "debugging", "firstTimeSetup" },
+		uninstall = { "debugging", "uninstall" },
+		z_ExcludeFromDreamDives = { "gameplay", "z_ExcludeFromDreamDives" },
+		z_HideElysiumPoisonMessage = { "gameplay", "z_HideElysiumPoisonMessage" },
+		z_GoddessMode = { "accessibility", "z_GoddessMode" },
+		z_FadeToBlackEnteringHades = { "accessibility", "z_FadeToBlackEnteringHades" },
+		z_SpeedrunForceTwoSack = { "speedrunning", "z_SpeedrunForceTwoSack" },
+		z_SpeedrunSkipOpeningThanatos = { "speedrunning", "z_SpeedrunSkipOpeningThanatos" },
+		z_SpeedrunFreshFileZagreusJourneyRun = { "speedrunning", "z_SpeedrunFreshFileZagreusJourneyRun" },
+	}
+
+	local flatSection = preMigrationSections["config"] or {}
+	local didMigrate = false
+	for oldKey, newPath in pairs(migrations) do
+		-- Only act while the old flat key still exists as an orphan in the user's .cfg
+		if flatSection[oldKey] then
+			-- rom.mod_settings exposes each config section as a userdata proxy, so a navigable container is userdata (a scalar or nil means the path is wrong)
+			local node = config
+			for i = 1, #newPath - 1 do
+				if type(node) ~= "userdata" then
+					break
+				end
+				---@diagnostic disable-next-line: cast-local-type
+				node = node[newPath[i]]
+			end
+			local leafKey = newPath[#newPath]
+			-- Only migrate when the whole destination path resolves and the target key already exists (a non-existent target means the migration map is wrong)
+			if type(node) == "userdata" and node[leafKey] ~= nil then
+				node[leafKey] = configFile:bind("config", oldKey, node[leafKey], ""):get()
+				configFile:remove("config", oldKey)
+				didMigrate = true
+				rom.log.info("Migrated config '" .. oldKey .. "' to '" .. table.concat(newPath, ".") .. "'")
+			else
+				rom.log.warning("Skipped migrating config '" ..
+					oldKey .. "' to '" .. table.concat(newPath, ".") .. "': destination not found.")
+			end
+		end
+	end
+
+	if didMigrate then
+		configFile:save()
+	end
+end
+migrateFlatConfigToNested(snapshotConfigSections())
+]==]
+
+-- Reads the raw .cfg text to capture which keys exist under each section before the migration touches anything
+local function snapshotConfigSections()
+	local sections = {}
+	local ok, configFolder = pcall(rom.paths.config)
+	if not ok or configFolder == nil then
+		return sections
+	end
+	local file = io.open(rom.path.combine(configFolder, _PLUGIN.guid .. ".cfg"), "r")
+	if file == nil then
+		return sections
+	end
+	local currentSection = nil
+	for line in file:lines() do
+		-- Strip a leading UTF-8 BOM and surrounding whitespace, then ignore blank lines and comments
+		local trimmed = line:gsub("^\239\187\191", ""):match("^%s*(.-)%s*$")
+		if trimmed ~= "" and trimmed:sub(1, 1) ~= "#" then
+			local section = trimmed:match("^%[(.+)%]$")
+			if section ~= nil then
+				currentSection = section
+				sections[currentSection] = sections[currentSection] or {}
+			elseif currentSection ~= nil then
+				local key = trimmed:match("^(.-)%s*=")
+				if key ~= nil and key ~= "" then
+					sections[currentSection][key] = true
+				end
+			end
+		end
+	end
+	file:close()
+	return sections
+end
+
+local function migrateFlatConfigToNested(preMigrationSections)
+	if not config.enabled then
+		return
+	end
+
+	local configFile = chalk.original(config)
+	if configFile == nil then
+		rom.log.warning(
+			"Config file could not be loaded during config migration, config is likely outdated, please manually set the correct values again and report this issue!")
+		return
+	end
+
+	-- Maps each old flat key to the nested path it moved to
+	-- Ensure to update this when updating where these keys live in the nested structure for players updating later on!
+	local migrations = {
+		hadesGameFolder = { "debugging", "hadesGameFolder" },
+		logLevel = { "debugging", "logLevel" },
+		enableVanillaDebugPrint = { "debugging", "enableVanillaDebugPrint" },
+		firstTimeSetup = { "debugging", "firstTimeSetup" },
+		uninstall = { "debugging", "uninstall" },
+		z_ExcludeFromDreamDives = { "gameplay", "z_ExcludeFromDreamDives" },
+		z_HideElysiumPoisonMessage = { "gameplay", "z_HideElysiumPoisonMessage" },
+		z_GoddessMode = { "accessibility", "z_GoddessMode" },
+		z_FadeToBlackEnteringHades = { "accessibility", "z_FadeToBlackEnteringHades" },
+		z_SpeedrunForceTwoSack = { "speedrunning", "z_SpeedrunForceTwoSack" },
+		z_SpeedrunSkipOpeningThanatos = { "speedrunning", "z_SpeedrunSkipOpeningThanatos" },
+		z_SpeedrunFreshFileZagreusJourneyRun = { "speedrunning", "z_SpeedrunFreshFileZagreusJourneyRun" },
+	}
+
+	local flatSection = preMigrationSections["config"] or {}
+	local didMigrate = false
+	for oldKey, newPath in pairs(migrations) do
+		-- Only act while the old flat key still exists as an orphan in the user's .cfg
+		if flatSection[oldKey] then
+			local node = config
+			for i = 1, #newPath - 1 do
+				if type(node) ~= "table" then
+					break
+				end
+				---@diagnostic disable-next-line: cast-local-type
+				node = node[newPath[i]]
+			end
+			local leafKey = newPath[#newPath]
+			-- Only migrate when the whole destination path resolves and the target key already exists (a non-existent target means the migration map is wrong)
+			if type(node) == "table" and node[leafKey] ~= nil then
+				node[leafKey] = configFile:bind("config", oldKey, node[leafKey], ""):get()
+				configFile:remove("config", oldKey)
+				didMigrate = true
+				rom.log.info("Migrated config '" .. oldKey .. "' to '" .. table.concat(newPath, ".") .. "'")
+			else
+				rom.log.warning("Skipped migrating config '" ..
+					oldKey .. "' to '" .. table.concat(newPath, ".") .. "': destination not found.")
+			end
+		end
+	end
+
+	if didMigrate then
+		configFile:save()
+	end
+end
+
+migrateFlatConfigToNested(snapshotConfigSections())
+-- #endregion
+
 ---@module "NikkelM-Cosmetics_API"
 CosmeticsAPI = mods["NikkelM-Cosmetics_API"]
 
@@ -131,7 +331,7 @@ local function on_ready()
 	DebugLogScriptImportProgress("additional meta")
 
 	-- If we should proceed after confirming the installation - if not, we don't confirm, as we only want to uninstall anyways
-	local shouldProceed = config.enabled and (not config.uninstall or config.firstTimeSetup)
+	local shouldProceed = config.enabled and (not config.debugging.uninstall or config.debugging.firstTimeSetup)
 	-- Always confirm the installation, as we might need the path if this is a weird first-install-with-uninstall-set situation
 	if not mod.ConfirmHadesInstallation() and shouldProceed then return end
 	-- If the user has installed mods for Hades, we cannot proceed with either the installation or loading the mod
@@ -147,23 +347,23 @@ local function on_ready()
 		mod.DebugPrint(
 			"Mod version changed: " .. (mod.HiddenConfig.InstalledModVersion or "Not installed") ..
 			" -> " .. _PLUGIN.version .. ". The mod will be (re)-installed.", 2)
-		config.uninstall = true
-		config.firstTimeSetup = true
+		config.debugging.uninstall = true
+		config.debugging.firstTimeSetup = true
 	end
 
 	-- If the mod is enabled but firstTimeSetup is false and required files are missing, the mod was likely uninstalled and reinstalled without the config being reset
 	local numMissingFiles = -1
-	if config.enabled and not config.firstTimeSetup and not config.uninstall then
+	if config.enabled and not config.debugging.firstTimeSetup and not config.debugging.uninstall then
 		numMissingFiles = mod.CheckRequiredFiles(true)
 		if numMissingFiles > 0 then
 			mod.DebugPrint("Required files are missing but firstTimeSetup is false. Triggering reinstall.", 2)
-			config.uninstall = true
-			config.firstTimeSetup = true
+			config.debugging.uninstall = true
+			config.debugging.firstTimeSetup = true
 		end
 	end
 
 	-- If the mod is disabled, we also want to uninstall it and set the firstTimeSetup flag to true for the next time the mod is enabled again
-	if not config.enabled or config.uninstall then
+	if not config.enabled or config.debugging.uninstall then
 		local uninstallSuccessful = mod.Uninstall()
 
 		if not config.enabled then
@@ -172,7 +372,7 @@ local function on_ready()
 				mod.DebugPrint(
 					"The mod is disabled and was uninstalled successfully. It will be installed again when enabled the next time.",
 					3)
-				config.firstTimeSetup = true
+				config.debugging.firstTimeSetup = true
 				return
 			else
 				-- Do not disable, as otherwise save files will break
@@ -181,13 +381,13 @@ local function on_ready()
 					2)
 			end
 		else
-			if uninstallSuccessful and not config.firstTimeSetup then
+			if uninstallSuccessful and not config.debugging.firstTimeSetup then
 				mod.DebugPrint(
 					"The mod was uninstalled successfully, and the \"firstTimeSetup\" flag is set to false, disabling mod. Set \"enabled\" to true in the config to install the mod the next time the game is started.",
 					2)
 				config.enabled = false
 				-- Set to true to install the next time the mod is enabled
-				config.firstTimeSetup = true
+				config.debugging.firstTimeSetup = true
 				return
 			elseif not uninstallSuccessful then
 				mod.DebugPrint(
@@ -202,7 +402,7 @@ local function on_ready()
 	end
 
 	local setupSuccessful = true
-	if config.firstTimeSetup then
+	if config.debugging.firstTimeSetup then
 		-- Pre-install: Create/Copy files that are required before the loading bar starts
 		mod.InstallationPending = true
 		setupSuccessful = mod.CreateRequiredHookTargetFiles()
@@ -241,6 +441,7 @@ local function on_ready()
 			DebugLogScriptImportProgress("Item Animation SJSON")
 
 			import "Game/Animations/Enemy_1Base_VFX.sjson.lua"
+			import "Game/Animations/Melinoe_Spell_VFX.sjson.lua"
 			import "Game/Animations/Melinoe_Zeus_VFX.sjson.lua"
 			import "Game/Animations/Obstacle_1Base_VFX.sjson.lua"
 			import "Game/Animations/Obstacle_Asphodel_VFX.sjson.lua"
@@ -369,6 +570,22 @@ local function on_ready()
 			import "Game/Text/zh-TW/_LootData_Chaos.zh-TW.sjson.lua"
 			DebugLogScriptImportProgress("Chaos LootData SJSON")
 
+			import "Game/Text/de/_NPCData_Skelly.de.sjson.lua"
+			import "Game/Text/el/_NPCData_Skelly.el.sjson.lua"
+			import "Game/Text/es/_NPCData_Skelly.es.sjson.lua"
+			import "Game/Text/fr/_NPCData_Skelly.fr.sjson.lua"
+			import "Game/Text/it/_NPCData_Skelly.it.sjson.lua"
+			import "Game/Text/ja/_NPCData_Skelly.ja.sjson.lua"
+			import "Game/Text/ko/_NPCData_Skelly.ko.sjson.lua"
+			import "Game/Text/pl/_NPCData_Skelly.pl.sjson.lua"
+			import "Game/Text/pt-BR/_NPCData_Skelly.pt-BR.sjson.lua"
+			import "Game/Text/ru/_NPCData_Skelly.ru.sjson.lua"
+			import "Game/Text/tr/_NPCData_Skelly.tr.sjson.lua"
+			import "Game/Text/uk/_NPCData_Skelly.uk.sjson.lua"
+			import "Game/Text/zh-CN/_NPCData_Skelly.zh-CN.sjson.lua"
+			import "Game/Text/zh-TW/_NPCData_Skelly.zh-TW.sjson.lua"
+			DebugLogScriptImportProgress("Skelly NPCData SJSON")
+
 			-- Imports enemy, encounter and room data from Hades to Hades II - ALWAYS requires a Hades installation
 			-- Done first, as the EncounterData depends on the EnemySets
 			import "Scripts/EnemySets.lua"
@@ -444,7 +661,11 @@ local function on_ready()
 			import "Scripts/HeroData.lua"
 			import "Scripts/KeywordData.lua"
 			import "Scripts/LootData.lua"
+			import "Scripts/LootData_Ares.lua"
+			import "Scripts/LootData_Artemis.lua"
+			import "Scripts/LootData_Athena.lua"
 			import "Scripts/LootData_Chaos.lua"
+			import "Scripts/LootData_Dionysus.lua"
 			import "Scripts/LootData_Hermes.lua"
 			import "Scripts/MarketData.lua"
 			import "Scripts/MetaUpgradeData.lua"
@@ -481,6 +702,7 @@ local function on_ready()
 			import "Scripts/FunctionMappings/Crawler.lua"
 			import "Scripts/FunctionMappings/CrusherUnit.lua"
 			import "Scripts/FunctionMappings/Environment.lua"
+			import "Scripts/FunctionMappings/GhostLogic.lua"
 			import "Scripts/FunctionMappings/HeavyRanged.lua"
 			import "Scripts/FunctionMappings/LightSpawner.lua"
 			import "Scripts/FunctionMappings/MiniBossTartarus.lua"
@@ -496,6 +718,7 @@ local function on_ready()
 			import "Scripts/AudioLogic.lua"
 			import "Scripts/BadgeLogic.lua"
 			import "Scripts/BiomeMapPresentation.lua"
+			import "Scripts/BoonInfoLogic.lua"
 			import "Scripts/BountyLogic.lua"
 			import "Scripts/BountyPresentation.lua"
 			import "Scripts/CodexLogic.lua"
@@ -517,6 +740,7 @@ local function on_ready()
 			import "Scripts/GhostAdminLogic.lua"
 			import "Scripts/HarvestPresentation.lua"
 			import "Scripts/HubPresentation.lua"
+			import "Scripts/InteractLogic.lua"
 			import "Scripts/KeepsakeData.lua"
 			import "Scripts/MarketPresentation.lua"
 			import "Scripts/MetaUpgradeLogic.lua"
@@ -604,6 +828,7 @@ local function on_ready_late()
 	import "Scripts/CodexLogic_Late.lua"
 	import "Scripts/CombatLogic_Late.lua"
 	import "Scripts/DeathLoopLogic_Late.lua"
+	import "Scripts/EffectLogic_Late.lua"
 	import "Scripts/EffectPresentation_Late.lua"
 	import "Scripts/EventPresentation_Late.lua"
 	import "Scripts/GhostLogic_Late.lua"
@@ -613,6 +838,7 @@ local function on_ready_late()
 	import "Scripts/InteractLogic_Late.lua"
 	import "Scripts/MarketLogic_Late.lua"
 	import "Scripts/ObjectiveLogic_Late.lua"
+	import "Scripts/Meta/PonyMenuLogic_Late.lua"
 	import "Scripts/PowersLogic_Late.lua"
 	import "Scripts/ResourceLogic_Late.lua"
 	import "Scripts/RewardPresentation_Late.lua"

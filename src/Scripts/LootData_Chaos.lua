@@ -378,5 +378,5 @@ mod.AddNarrativeDataEntries(
 	newModdedInteractTextLines, "TrialUpgrade", "InteractTextLineSets", "InteractTextLinePriorities",
 	{ Chaos = { "Modsnikkelmhadesbiomeschaos", "ZagreusField" } }, { Chaos_ = "Modsnikkelmhadesbiomeschaos_" },
 	{ ModsNikkelMHadesBiomes_Chaos_ = "ModsNikkelMHadesBiomes_Portrait_Chaos_Default_01" },
-	"/VO/ChaosKeepsake_0280", "ChaosKeepsake"
+	{ "/VO/ChaosKeepsake_0280" }, "ChaosKeepsake"
 )

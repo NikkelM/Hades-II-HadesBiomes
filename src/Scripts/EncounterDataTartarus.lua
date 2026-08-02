@@ -32,6 +32,7 @@ local encounterDataTartarus = {
 	EliteChallengeTartarus = game.DeepCopyTable(encounterData.EliteChallengeF),
 
 	-- Intro encounters
+	EnemyIntroFight01 = encounterData.EnemyIntroFight01,
 	ThiefMineLayerIntro = encounterData.ThiefMineLayerIntro,
 	HeavyRangedIntro = encounterData.HeavyRangedIntro,
 	PunchingBagIntro = encounterData.PunchingBagIntro,
@@ -102,12 +103,12 @@ local encounterReplacements = {
 
 	PerfectClearChallengeTartarus = {
 		InheritFrom = { "PerfectClearChallenge", "GeneratedTartarus" },
-		EnemySet = EnemySets.EnemiesBiome1,
+		EnemySet = game.EnemySets.EnemiesBiome1,
 		DreamBiomeData = "nil",
 	},
 	EliteChallengeTartarus = {
 		InheritFrom = { "EliteChallenge", "GeneratedTartarus" },
-		EnemySet = EnemySets.EnemiesBiome1_EliteChallenge,
+		EnemySet = game.EnemySets.EnemiesBiome1_EliteChallenge,
 		DreamBiomeData = "nil",
 	},
 	BaseSurvival = {
@@ -299,6 +300,15 @@ local encounterReplacements = {
 				},
 			},
 		},
+	},
+
+	-- New encounters
+	ArtemisCombatTartarus = {
+		InheritFrom = { "BaseArtemisCombat", "GeneratedTartarus" },
+		CanEncounterSkip = false,
+		DifficultyModifier = 120,
+		-- Feels weird in the mod if turned off
+		PreSpawnEnemies = true,
 	},
 }
 
@@ -748,27 +758,24 @@ local encounterModifications = {
 	-- MINIBOSSES
 	MiniBossGrenadier = {
 		LoadPackages = { "BiomeB" },
-		CanEncounterSkip = false,
 		BlockNextBiomeEnemyShrineUpgrade = true,
 		NextRoomResumeMusic = true,
 	},
 	MiniBossHeavyRangedSplitter = {
 		WipeEnemiesOnKillAllTypes = { "HeavyRangedSplitterMiniboss" },
 		CancelSpawnsOnKillAllTypes = { "HeavyRangedSplitterMiniboss" },
-		CanEncounterSkip = false,
 		NextRoomResumeMusic = true,
 	},
 	MiniBossHeavyRangedSplitter2 = {
 		WipeEnemiesOnKillAllTypes = { "HeavyRangedSplitterMiniboss" },
 		CancelSpawnsOnKillAllTypes = { "HeavyRangedSplitterMiniboss" },
-		CanEncounterSkip = false,
 		NextRoomResumeMusic = true,
 	},
 	MiniBossWretchAssassin = {
 		WipeEnemiesOnKillAllTypes = { "WretchAssassinMiniboss" },
 		CancelSpawnsOnKillAllTypes = { "WretchAssassinMiniboss" },
-		CanEncounterSkip = false,
 		BlockNextBiomeEnemyShrineUpgrade = true,
+		BlockDionysusEncounterKeepsake = true,
 		BlockEliteAttributes = true,
 		NextRoomResumeMusic = true,
 	},
@@ -801,6 +808,27 @@ local encounterModifications = {
 		},
 		DelayedStart = true,
 		BlockNextBiomeEnemyShrineUpgrade = true,
+	},
+
+	-- INTRO ENCOUNTERS
+	EnemyIntroFight01 = {
+		RequiredFalseTextLines = mod.NilValue,
+		GameStateRequirements = {
+			{
+				PathFalse = { "GameState", "EncountersCompletedCache", "EnemyIntroFight01" },
+			},
+		},
+		UnthreadedEvents = game.EncounterSets.EncounterEventsDefault,
+		SkipIntroEncounterCheck = true,
+		SpawnWaves = {
+			[1] = {
+				Spawns = {
+					[1] = {
+						Name = "HeavyMelee",
+					},
+				},
+			},
+		},
 	},
 }
 

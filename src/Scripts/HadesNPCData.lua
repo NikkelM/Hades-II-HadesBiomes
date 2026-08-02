@@ -339,6 +339,7 @@ mod.PresetEventArgs = mod.PresetEventArgs or {
 	-- #endregion
 	-- #region Megaera
 	Sulking = {
+		Name = "ModsNikkelMHadesBiomes_MegaeraHubGreeting",
 		ChanceToTrigger = 0.5,
 		TriggerOnceThisRun = true,
 		PostTriggerAnimation = "FuryIdleInHouseFidgetGreeting",
@@ -348,6 +349,7 @@ mod.PresetEventArgs = mod.PresetEventArgs or {
 		},
 	},
 	SulkingRepeatable = {
+		Name = "ModsNikkelMHadesBiomes_MegaeraHubGreeting",
 		ChanceToTrigger = 0.5,
 		TriggerOnceThisRun = true,
 		PostTriggerAnimation = "FuryIdleInHouseFidgetGreeting",
@@ -14876,7 +14878,6 @@ mod.NPCData = mod.NPCData or {
 				PlayOnce = true,
 				UseInitialInteractSetup = true,
 				UseableOffSource = true,
-				-- TODO:
 				RequiredTextLines = { "AresAboutThanatos02", },
 				-- Disturbingly all right!
 				EndCue = "/VO/ZagreusHome_1446",
@@ -15367,7 +15368,6 @@ mod.NPCData = mod.NPCData or {
 				UseableOffSource = true,
 				UseInitialInteractSetup = true,
 				RequiredMinNPCInteractions = { NPC_Thanatos_01 = 1 },
-				-- TODO: ?
 				RequiredCosmetics = { "QuestLog", },
 				RequiredFalseFlags = { "InFlashback" },
 				EndVoiceLines = {
@@ -20358,6 +20358,16 @@ mod.NPCData = mod.NPCData or {
 			-- Next?
 			{ Cue = "/VO/ThanatosField_0157" },
 		},
+	},
+
+	-- Used in special visit scenes
+	NPC_Thanatos_Story_01 = {
+		InheritFrom = { "NPC_Neutral", "NPC_Giftable" },
+		UseText = "UseTalkToThanatos",
+		Portrait = "Portrait_Thanatos_Default_01",
+		AnimOffsetZ = 255,
+		Groups = { "NPCs" },
+		InteractTextLineSets = {},
 	},
 
 	-- Manually replaced PresetEventArgs.SingingEurydiceSong01_Eurydice[_SongFromStart] with mod.PresetEventArgs.SingingEurydiceSong01_Eurydice[_SongFromStart] to make it easier
@@ -29484,20 +29494,15 @@ mod.NPCData = mod.NPCData or {
 			},
 		},
 	},
-	-- used in special scenes
+
+	-- Used in special visit scenes
 	NPC_FurySister_Story_01 = {
 		InheritFrom = { "NPC_Neutral", "NPC_Giftable" },
-
 		UseText = "UseTalkToFury",
 		Portrait = "Portrait_FurySister01_Default_01",
 		AnimOffsetZ = 265,
 		Groups = { "NPCs" },
-
-		ActivateRequirements = {
-			-- Force = true,
-		},
-
-		InteractTextLineSets = {
-		},
+		ActivateRequirements = {},
+		InteractTextLineSets = {},
 	},
 }

@@ -46,7 +46,22 @@ table.insert(game.HubRoomData.Hub_PreRun.StartUnthreadedEvents, {
 	}
 })
 
+-- Check if we already have a Chaos Gate spawned
+function mod.HadesRunStartDoorExists()
+	for _, id in ipairs(GetIds({ Name = "ModsNikkelMHadesBiomes.RunStartDoor" }) or {}) do
+		if game.MapState.ActiveObstacles[id] ~= nil then
+			return true
+		end
+	end
+
+	return false
+end
+
 function mod.SpawnHadesRunStartDoor(source, args)
+	if mod.HadesRunStartDoorExists() then
+		return
+	end
+
 	local chaosGate = game.DeepCopyTable(game.ObstacleData.SecretDoor) or {}
 
 	chaosGate.ObjectId = SpawnObstacle({
@@ -60,7 +75,7 @@ function mod.SpawnHadesRunStartDoor(source, args)
 
 	chaosGate.SetupEvents = {
 		{
-			FunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesUpdateEscapeDoorForLimitGraspShrineUpgrade",
+			FunctionName = _PLUGIN.guid .. "." .. "UpdateChaosGateEscapeDoorAvailability",
 		},
 	}
 	chaosGate.SpeakerName = nil
@@ -74,6 +89,11 @@ function mod.SpawnHadesRunStartDoor(source, args)
 			PlayOnce = true,
 			PlayOnceContext = "ModsNikkelMHadesBiomes_HadesRunStartDoorApproach",
 			UsePlayerSource = true,
+			GameStateRequirements = {
+				{
+					PathTrue = { "GameState", "TextLinesRecord", "ApolloFirstPickUp" }
+				},
+			},
 			{ Cue = "/VO/MelinoeField_2868", Text = "A Chaos Gate, up here?", },
 		},
 	}
@@ -102,6 +122,24 @@ function mod.SpawnHadesRunStartDoor(source, args)
 	AddToGroup({ Id = chaosGate.ObjectId, Name = "ModsNikkelMHadesBiomes.RunStartDoor" })
 	-- Enable MelinoeField voicelines when entering the Chaos gate
 	game.LoadVoiceBanks({ Name = "MelinoeField" })
+end
+
+function mod.EnsureHadesRunStartDoorExists(room)
+	if room == nil or room.Name ~= "Hub_PreRun" then
+		return
+	end
+
+	-- Only spawn on a valid installation
+	if not mod.HiddenConfig or not mod.HiddenConfig.IsValidInstallation then
+		return
+	end
+
+	if not mod.HadesRunStartDoorExists() then
+		mod.DebugPrint(
+			"The Chaos Gate failed to spawn on the expected path - re-attempting the creation. Please report this issue to the developer",
+			2)
+		mod.SpawnHadesRunStartDoor()
+	end
 end
 
 function mod.StartHadesRun(source, args)
@@ -257,10 +295,9 @@ for _, event in ipairs(game.HubRoomData.Hub_PreRun.StartUnthreadedEvents) do
 		local conversations = event.Args.Conversations
 		for i, conversationName in ipairs(conversations) do
 			if conversationName == "TrophyQuestComplete03" then
-				table.insert(conversations, i + 1, "ModsNikkelMHadesBiomes_HadesStatueUnveil03")
-				table.insert(conversations, i + 1, "ModsNikkelMHadesBiomes_HadesStatueUnveil02")
-				table.insert(conversations, i + 1, "ModsNikkelMHadesBiomes_HadesStatueUnveil01")
-				table.insert(conversations, i + 1, "ModsNikkelMHadesBiomes_HadesStatueIntro01")
+				for _, moddedConversationName in ipairs(mod.SkellyModdedCrossroadsConversations) do
+					table.insert(conversations, i + 1, moddedConversationName)
+				end
 				break
 			end
 		end
@@ -295,7 +332,7 @@ function mod.SpawnHadesSkellyStatues(source, args)
 	local skellyId = GetIdsByType({ Name = "NPC_Skelly_01" })[1]
 	if skellyId ~= nil then
 		local skelly = game.ActiveEnemies[skellyId]
-		if skelly and skelly.NextInteractLines and game.Contains(mod.SkellyStatueConversations, skelly.NextInteractLines.Name) then
+		if skelly and skelly.NextInteractLines and game.Contains(mod.SkellyModdedCrossroadsConversations, skelly.NextInteractLines.Name) then
 			game.LoadVoiceBanks({ "Modsnikkelmhadesbiomesskelly", "Modsnikkelmhadesbiomeszagreushome" })
 		end
 	end
@@ -379,11 +416,9 @@ end
 local skellyPriorities = game.NarrativeData.NPC_Skelly_01.InteractTextLinePriorities
 for i, entry in ipairs(skellyPriorities) do
 	if entry == "SkellyAboutTrophyQuest03" then
-		-- Insert in reverse order so they end up: Intro -> Unveil01 -> Unveil02 -> Unveil03
-		table.insert(skellyPriorities, i + 1, "ModsNikkelMHadesBiomes_HadesStatueUnveil03")
-		table.insert(skellyPriorities, i + 1, "ModsNikkelMHadesBiomes_HadesStatueUnveil02")
-		table.insert(skellyPriorities, i + 1, "ModsNikkelMHadesBiomes_HadesStatueUnveil01")
-		table.insert(skellyPriorities, i + 1, "ModsNikkelMHadesBiomes_HadesStatueIntro01")
+		for _, moddedConversationName in ipairs(mod.SkellyModdedCrossroadsConversations) do
+			table.insert(skellyPriorities, i + 1, moddedConversationName)
+		end
 		break
 	end
 end
@@ -431,7 +466,6 @@ game.EnemyData.NPC_Skelly_01.InteractTextLineSets.ModsNikkelMHadesBiomes_HadesSt
 		"Wrong! We're talking something really big, here, pal, you see that thing back there? Trinket. Come on, what are you, scared?"
 	},
 }
-
 game.EnemyData.NPC_Skelly_01.InteractTextLineSets.ModsNikkelMHadesBiomes_HadesStatueUnveil01 = {
 	Name = "ModsNikkelMHadesBiomes_HadesStatueUnveil01",
 	PlayOnce = true,
@@ -481,7 +515,6 @@ game.EnemyData.NPC_Skelly_01.InteractTextLineSets.ModsNikkelMHadesBiomes_HadesSt
 		"Look, boyo, there was a little mix-up when we put in the request for that thing, see? I told 'em to make something that'll make me look good with my sources, and anyway that's how it all turned out. The other ones turned out much better, though, you'll see!"
 	},
 }
-
 game.EnemyData.NPC_Skelly_01.InteractTextLineSets.ModsNikkelMHadesBiomes_HadesStatueUnveil02 = {
 	Name = "ModsNikkelMHadesBiomes_HadesStatueUnveil02",
 	PlayOnce = true,
@@ -545,7 +578,6 @@ game.EnemyData.NPC_Skelly_01.InteractTextLineSets.ModsNikkelMHadesBiomes_HadesSt
 		"{#DialogueItalicFormat}How could you{#Prev}--? I would return those statues for a full refund right here and now, if I could move! And if there was a refund policy on them."
 	},
 }
-
 game.EnemyData.NPC_Skelly_01.InteractTextLineSets.ModsNikkelMHadesBiomes_HadesStatueUnveil03 = {
 	Name = "ModsNikkelMHadesBiomes_HadesStatueUnveil03",
 	PlayOnce = true,
@@ -593,6 +625,54 @@ game.EnemyData.NPC_Skelly_01.InteractTextLineSets.ModsNikkelMHadesBiomes_HadesSt
 		PreLineAnim = "Skelly_Explaining",
 		Text =
 		"Oh you better believe it, pal! So how about we call it even. We've been through a lot. Both of us! Really learned from this experience, and now, we share a deeper understanding, yeah?"
+	},
+}
+-- Extra conversation for Goddess Mode
+game.EnemyData.NPC_Skelly_01.InteractTextLineSets.ModsNikkelMHadesBiomes_SkellyHintMeeting_EasyMode01 = {
+	Name = "ModsNikkelMHadesBiomes_SkellyHintMeeting_EasyMode01",
+	PlayOnce = true,
+	UseableOffSource = true,
+	GameStateRequirements = {
+		{
+			PathFalse = { "GameState", "RoomsEntered", "A_PostBoss01" },
+		},
+		{
+			Path = { "GameState", "ModsNikkelMHadesBiomesCompletedRunsCache" },
+			Comparison = ">=",
+			Value = 4,
+		},
+		{
+			FunctionName = _PLUGIN.guid .. "." .. "ModConfigLeafKeyHasValue",
+			FunctionArgs = { LeafKey = "z_GoddessMode", ExpectedValue = false }
+		},
+		{
+			PathFalse = { "GameState", "TraitsTaken", "ModsNikkelMHadesBiomesGoddessModeTrait" },
+		},
+	},
+	StatusAnimation = "StatusIconWantsToTalkImportant_Skelly",
+	EndVoiceLines = {
+		PreLineWait = 0.35,
+		ObjectType = "NPC_Skelly_01",
+		-- Exactly, pal, that's it!
+		{ Cue = "/VO/Modsnikkelmhadesbiomesskelly_0368" },
+	},
+	{
+		Cue = "/VO/Modsnikkelmhadesbiomesskelly_0367",
+		Emote = "PortraitEmoteFiredUp",
+		Text =
+		"If you're having a rough time out there, boyo, you just remember something: You're a {#DialogueItalicFormat}god{#Prev}, all right?! Way tougher than you think. They give you trouble, you just turn on {#DialogLegendaryFormat}Goddess Mode {#Prev}{#DialogueItalicFormat}(in the mod config){#Prev}, and you let 'em have it for me!"
+	},
+	{
+		Cue = "/VO/Modsnikkelmhadesbiomeszagreushome_1506",
+		Portrait = "ModsNikkelMHadesBiomes_Portrait_Zag_Defiant_01",
+		Speaker = "CharProtag",
+		PreLineAnim = "MelTalkBrooding01",
+		PreLineAnimTarget = "Hero",
+		PostLineAnim = "MelinoeIdleWeaponless",
+		PostLineAnimTarget = "Hero",
+		PostLineThreadedFunctionName = "DisplayGodModeHint",
+		Text =
+		"You act as though this {#DialogueItalicFormat}Goddess Mode {#Prev}is some sort of lever I can simply switch at will if ever I wish to unlock my latent strength, there, mate."
 	},
 }
 

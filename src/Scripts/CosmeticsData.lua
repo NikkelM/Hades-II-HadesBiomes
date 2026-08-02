@@ -21,8 +21,8 @@
 	"ModsNikkelMHadesBiomes_BossResourceStyx",
 ]] --
 
--- In total, as of 2026-04-27: 49 cosmetics
--- Last added: Arcana, Escaping
+-- In total, as of 2026-05-21: 56 cosmetics
+-- Last added: Pillarets, Coned
 
 -- #region CosmeticsShop_Tent
 local tentCosmetics = {
@@ -350,6 +350,64 @@ local tentCosmetics = {
 			ModsNikkelMHadesBiomes_PlantElysium = 2,
 		},
 	},
+	{
+		Id = _PLUGIN.guid .. "." .. "Cosmetic_TentBlanket_Chariot",
+		Name = {
+			en = "Bedding, Racer",
+		},
+		Description = {
+			en =
+			"{$Keywords.CosmeticSwap}: Sturdy and swift, and heavily inspired by a particular type of foe.",
+		},
+		FlavorText = {
+			en =
+			"Headmistress Hecate deeply regrets the day she allowed the young Princess to procure this particular piece.",
+		},
+		CosmeticsGroup = "Cosmetic_TentBlanket01",
+		InsertAfterCosmetic = _PLUGIN.guid .. "." .. "Cosmetic_TentBlanket_Olympic",
+		ShopCategory = "CosmeticsShop_Tent",
+		SetAnimationIds = { 566738 },
+		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Icons\\Tent\\Blanket_Chariot_Icon",
+		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Tent\\Blanket_Chariot",
+		AnimationScale = 1.75,
+		GameStateRequirements = {
+			{
+				Path = { "GameState", "ModsNikkelMHadesBiomesClearedRunsCache" },
+				Comparison = ">=",
+				Value = 10,
+			},
+			-- Defeated 100 Chariots
+			{
+				Path = { "GameState", "EnemyKills" },
+				SumOf = { "Chariot", "ChariotSuicide", "ChariotElite", "ChariotSuicideElite" },
+				Comparison = ">=",
+				Value = 100,
+			},
+			NamedRequirements = { "T5Cosmetic" },
+		},
+		AlwaysRevealImmediately = true,
+		Cost = {
+			CosmeticsPoints = 666,
+			ModsNikkelMHadesBiomes_BossResourceElysium = 2,
+			ModsNikkelMHadesBiomes_OreElysium = 5,
+			ModsNikkelMHadesBiomes_CropElysium = 2,
+		},
+		PreRevealVoiceLines = {
+			Queue = "Interrupt",
+			{
+				PreLineWait = 0.35,
+				UsePlayerSource = true,
+				{ Cue = "/VO/Melinoe_1401", Text = "Always wanted something like this in the tent..." },
+			},
+		},
+		RevealReactionVoiceLines = {
+			{
+				PreLineWait = 0.35,
+				ObjectType = "NPC_Dora_01",
+				{ Cue = "/VO/Dora_0258", Text = "Guess it's OK...", PreLineFunctionName = "GenericPresentation", PreLineFunctionArgs = game.PresetAudioArgs.DoraNormalAppearArgs, },
+			},
+		},
+	},
 	-- #endregion
 	-- #region Shelving/Cosmetic_TentShelf01
 	{
@@ -635,7 +693,7 @@ local mainHubAreaCosmetics = {
 		},
 		Description = {
 			en =
-			"{$Keywords.CosmeticSwap}: Rustic monoliths that stand tall to either side of the {#BoldFormatGraftDark}Cauldron{#Prev}.",
+			"{$Keywords.CosmeticSwap}: Constraining monoliths that stand tall to either side of the {#BoldFormatGraftDark}Cauldron{#Prev}.",
 		},
 		FlavorText = {
 			en =
@@ -660,6 +718,41 @@ local mainHubAreaCosmetics = {
 		},
 	},
 	{
+		Id = _PLUGIN.guid .. "." .. "Cosmetic_Pillars_Deathly",
+		Name = {
+			en = "Pillars, Deathly",
+		},
+		Description = {
+			en =
+			"{$Keywords.CosmeticSwap}: Improvised monoliths that stand tall to either side of the {#BoldFormatGraftDark}Cauldron{#Prev}.",
+		},
+		FlavorText = {
+			en =
+			"There is no waste in the Underworld, and so even the most macabre of materials can be repurposed into something functional, and perhaps even beautiful.",
+		},
+		CosmeticsGroup = "Cosmetic_CauldronPillars01",
+		InsertAfterCosmetic = _PLUGIN.guid .. "." .. "Cosmetic_Pillars_Serpentine",
+		ShopCategory = "CosmeticsShop_Main",
+		CameraFocusId = 575873,
+		SetAnimationIds = { 575834, 575871, 575872, 575874, 575873, 575832, },
+		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Icons\\HubMain\\Pillars_Deathly_Icon",
+		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\HubMain\\Pillars_Deathly",
+		AnimationScale = 1.85,
+		GameStateRequirements = {
+			{
+				PathTrue = { "GameState", "RoomsEntered", "D_Intro" },
+			},
+			NamedRequirements = { "T2Cosmetic" },
+		},
+		AlwaysRevealImmediately = true,
+		Cost = {
+			CosmeticsPoints = 500,
+			ModsNikkelMHadesBiomes_OreElysium = 3,
+			ModsNikkelMHadesBiomes_BossResourceAsphodel = 1,
+			ModsNikkelMHadesBiomes_PlantTartarus = 1,
+		},
+	},
+	{
 		Id = _PLUGIN.guid .. "." .. "Cosmetic_Pillars_Infinite",
 		Name = {
 			en = "Pillars, Infinite",
@@ -673,7 +766,7 @@ local mainHubAreaCosmetics = {
 			"Chaos does as they please, and though they are in their essence the opposite of structure, these pillars with their endless patterns seem to embody both concepts at once.",
 		},
 		CosmeticsGroup = "Cosmetic_CauldronPillars01",
-		InsertAfterCosmetic = _PLUGIN.guid .. "." .. "Cosmetic_Pillars_Serpentine",
+		InsertAfterCosmetic = _PLUGIN.guid .. "." .. "Cosmetic_Pillars_Deathly",
 		ShopCategory = "CosmeticsShop_Main",
 		CameraFocusId = 575873,
 		SetAnimationIds = { 575834, 575871, 575872, 575874, 575873, 575832, },
@@ -989,6 +1082,41 @@ local mainHubAreaCosmetics = {
 		},
 	},
 	-- #endregion
+	-- #region Hypnos pillarets/Cosmetic_HypnosPedestal01
+	{
+		Id = _PLUGIN.guid .. "." .. "Cosmetic_HypnosPedestal_Coned",
+		Name = {
+			en = "Pillarets, Coned",
+		},
+		Description = {
+			en =
+			"{$Keywords.CosmeticSwap}: Numerous nature-imitating columns encircling where {$Keywords.CharHypnos} typically resides.",
+		},
+		FlavorText = {
+			en =
+			"Trees are often associated with sleepiness and dreams by mortals, so it is only befitting that a symbol of theirs should stand watch here.",
+		},
+		CosmeticsGroup = "Cosmetic_HypnosPedestal01",
+		InsertAfterCosmetic = "Cosmetic_HypnosPedestal01b",
+		ShopCategory = "CosmeticsShop_Main",
+		CameraFocusId = 800742,
+		SetAnimationIds = { 590946, 590943, 590944, 590945, 590218, 590219, 590954, },
+		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Icons\\HubMain\\HypnosPedestal_Coned_Icon",
+		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\HubMain\\HypnosPedestal_Coned",
+		AnimationScale = 2,
+		GameStateRequirements = {
+			{
+				PathTrue = { "GameState", "TextLinesRecord", "HypnosGift01" }
+			},
+			NamedRequirements = { "T2Cosmetic" },
+		},
+		AlwaysRevealImmediately = true,
+		Cost = {
+			CosmeticsPoints = 400,
+			ModsNikkelMHadesBiomes_OreStyx = 2,
+		},
+	},
+	--#endregion
 }
 for _, cosmeticData in ipairs(mainHubAreaCosmetics) do
 	if cosmeticData.GameStateRequirements == nil then
@@ -1414,6 +1542,98 @@ local tavernaCosmetics = {
 				{ Cue = "/VO/Dora_0455", Text = "Could always use more stuff hanging from the trees.", PreLineFunctionName = "GenericPresentation", PreLineFunctionArgs = game.PresetAudioArgs.DoraNormalAppearArgs },
 			},
 			{ GlobalVoiceLines = "PositiveReactionVoiceLines" },
+		},
+	},
+	-- #endregion
+	-- #region Music Maker stage/Cosmetic_TavernaMusicStage01
+	{
+		Id = _PLUGIN.guid .. "." .. "Cosmetic_TavernaMusicStage_Serpentine",
+		Name = {
+			en = "Stage, Serpentine",
+		},
+		Description = {
+			en =
+			"{$Keywords.CosmeticAltAdd}: Cold and strong flooring directly beneath the {$Keywords.MusicPlayer}.",
+		},
+		FlavorText = {
+			en =
+			"Snakes are not commonly what comes to mind when one thinks of music, but the rhythmic movement of their bodies and swaying motion of their necks can enchant the unsuspecting observer just as well.",
+		},
+		CosmeticsGroup = "Cosmetic_TavernaMusicStage01",
+		InsertAfterCosmetic = "Cosmetic_TavernaMusicStage02",
+		ShopCategory = "CosmeticsShop_Taverna",
+		ActivateIds = { 800654 },
+		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Icons\\Taverna\\Stage_Serpentine_Icon",
+		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Taverna\\Stage_Serpentine",
+		AnimationScale = 2,
+		GameStateRequirements = {
+			{
+				Path = { "GameState", "WorldUpgrades" },
+				CountOf = mod.HadesOstSongNames,
+				Comparison = ">=",
+				Value = 5,
+			},
+		},
+		Cost = {
+			CosmeticsPoints = 300,
+			ModsNikkelMHadesBiomes_OreTartarus = 4,
+			ModsNikkelMHadesBiomes_PlantAsphodel = 2,
+		},
+		AlwaysRevealImmediately = true,
+		RevealReactionVoiceLines = {
+			{
+				PreLineWait = 0.35,
+				UsePlayerSource = true,
+				{ Cue = "/VO/Melinoe_5387", Text = "Perhaps a more-suitable stage for your performance, Music Maker!", PostLineFunctionName = "MusicMakerReaction" },
+			},
+			{
+				PreLineWait = 0.35,
+				ObjectType = "NPC_Dora_01",
+				{ Cue = "/VO/Dora_0717", Text = "Should really help with the acoustics, whatever those are.", PreLineFunctionName = "GenericPresentation", PreLineFunctionArgs = game.PresetAudioArgs.DoraNormalAppearArgs, },
+			},
+		},
+	},
+	{
+		Id = _PLUGIN.guid .. "." .. "Cosmetic_TavernaMusicStage_Royal",
+		Name = {
+			en = "Stage, Royal",
+		},
+		Description = {
+			en =
+			"{$Keywords.CosmeticAltAdd}: Imposing and commanding flooring directly beneath the {$Keywords.MusicPlayer}.",
+		},
+		FlavorText = {
+			en =
+			"Good music is known to focus the attention of entire crowds on the one performing it, and this stage will give them something to feast their eyes on as well.",
+		},
+		CosmeticsGroup = "Cosmetic_TavernaMusicStage01",
+		InsertAfterCosmetic = _PLUGIN.guid .. "." .. "Cosmetic_TavernaMusicStage_Serpentine",
+		ShopCategory = "CosmeticsShop_Taverna",
+		ActivateIds = { 800654 },
+		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Icons\\Taverna\\Stage_Royal_Icon",
+		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Taverna\\Stage_Royal",
+		AnimationScale = 2,
+		GameStateRequirements = {
+			{
+				Path = { "GameState", "WorldUpgrades" },
+				CountOf = mod.HadesOstSongNames,
+				Comparison = ">=",
+				Value = 15,
+			},
+		},
+		Cost = {
+			CosmeticsPoints = 350,
+			ModsNikkelMHadesBiomes_OreStyx = 4,
+			ModsNikkelMHadesBiomes_PlantElysium = 3,
+		},
+		AlwaysRevealImmediately = true,
+		RevealReactionVoiceLines = {
+			{
+				PreLineWait = 0.35,
+				UsePlayerSource = true,
+				{ Cue = "/VO/Melinoe_5388", Text = "Here's a new spot from which to regale us, Music Maker!", PostLineFunctionName = "MusicMakerReaction" },
+			},
+			{ GlobalVoiceLines = "DoraCosmeticReactionVoiceLines" },
 		},
 	},
 	-- #endregion

@@ -59,9 +59,8 @@ modutil.mod.Path.Wrap("LoadCurrentRoomResources", function(base, currentRoom)
 
 		-- For the vow that gives a chance for enemies to be from the next biome
 		if game.GetShrineUpgradeChangeValue("NextBiomeEnemyShrineUpgrade") > 0 then
-			local nextRoomSet = game.NextRoomSets[currentRoom.RoomSetName]
-			if nextRoomSet ~= nil then
-				LoadPackages({ Name = nextRoomSet })
+			if currentRoom.RoomSetName == "Tartarus" then
+				LoadPackages({ Name = "BiomeB" })
 			end
 		end
 
@@ -103,7 +102,7 @@ modutil.mod.Path.Wrap("SetupUnit", function(base, unit, currentRun, args)
 		end
 
 		-- Increase the unit's health and armour, if it shouldn't be excluded from the modded modifiers
-		if not unit.ModsNikkelMHadesBiomesIgnoreModdedHealthModifiers then
+		if not unit.ModsNikkelMHadesBiomesIgnoreModdedHealthModifiers and not config.accessibility.z_GoddessMode then
 			local scalingBiome = mod.EnemyBelongsToBiome[unit.Name or ""] or currentRun.CurrentRoom.RoomSetName
 			local healthBufferBonus = mod.ModdedUnitHealthBufferMultiplierBonus[scalingBiome] or
 					mod.ModdedUnitHealthBufferMultiplierBonus.Default
@@ -354,13 +353,14 @@ modutil.mod.Path.Wrap("EndEncounterEffects", function(base, currentRun, currentR
 	if currentRun.ModsNikkelMHadesBiomesIsModdedRun and not currentRun.IsDreamRun then
 		if game.HeroHasTrait(mod.SharedKeepsakePortThanatosKeepsakeTrait) then
 			local traitData = game.GetHeroTrait(mod.SharedKeepsakePortThanatosKeepsakeTrait) or {}
-			if traitData.AccumulatedDamageBonus >= 1.296 then
+			if (traitData.AccumulatedDamageBonus or 0) >= 1.296 then
 				game.GameState.ModsNikkelMHadesBiomesCustomFlags.ModsNikkelMHadesBiomes_ThanatosKeepsakeAchievedHighPercentage = true
 			end
 		end
 	end
 end)
 
+-- Wrapping both LoadVoiceBanks and LoadPackages as some characters only call one or the other, to ensure we always have the required modded voicebanks available
 modutil.mod.Path.Wrap("LoadVoiceBanks", function(base, characters, persist, ignoreAssert)
 	if game.CurrentRun and game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun then
 		if type(characters) == "table" then
@@ -377,6 +377,50 @@ modutil.mod.Path.Wrap("LoadVoiceBanks", function(base, characters, persist, igno
 	end
 
 	return base(characters, persist, ignoreAssert)
+end)
+
+-- Wrapping both LoadVoiceBanks and LoadPackages as some characters only call one or the other, to ensure we always have the required modded voicebanks available
+modutil.mod.Path.Wrap("LoadPackages", function(base, args)
+	if game.CurrentRun and game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun then
+		if args.Name then
+			-- If it's a table (bad mod), move it into args.Names
+			if type(args.Name) == "table" then
+				args.Names = args.Name
+				args.Name = nil
+			elseif mod.LootVoiceBankMappings[args.Name or "nil"] ~= nil then
+				game.LoadVoiceBanks(mod.LootVoiceBankMappings[args.Name])
+			end
+		end
+		-- Explicitly not an elseif so we catch the case where we moved args.Name into args.Names above
+		if args.Names then
+			if type(args.Names) == "string" then
+				args.Names = { args.Names }
+			end
+			for _, character in ipairs(args.Names) do
+				if mod.LootVoiceBankMappings[character] ~= nil then
+					game.LoadVoiceBanks(mod.LootVoiceBankMappings[character])
+				end
+			end
+		end
+	end
+
+	return base(args)
+end)
+
+modutil.mod.Path.Wrap("SetupHeroObject", function(base, room, applyLuaUpgrades)
+	base(room, applyLuaUpgrades)
+
+	-- Add the Goddess Mode boon if in a modded run and the config is turned on
+	if config.accessibility.z_GoddessMode and game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and game.CurrentHubRoom == nil then
+		if not game.HeroHasTrait("ModsNikkelMHadesBiomesGoddessModeTrait") then
+			game.AddTraitToHero({ TraitName = "ModsNikkelMHadesBiomesGoddessModeTrait", SkipUIUpdate = true })
+			game.UpdateHeroTraitDictionary()
+		end
+		-- Else, if the player has the trait, remove it (either config turned off, or no longer in a modded biome)
+	elseif game.HeroHasTrait("ModsNikkelMHadesBiomesGoddessModeTrait") then
+		game.RemoveTrait(game.CurrentRun.Hero, "ModsNikkelMHadesBiomesGoddessModeTrait")
+		game.UpdateHeroTraitDictionary()
+	end
 end)
 
 -- This is essentially the same function as vanilla, and only inserts the logic to upgrade consumable rewards for Styx miniboss rooms and ShrineChallenge/Erebus rooms

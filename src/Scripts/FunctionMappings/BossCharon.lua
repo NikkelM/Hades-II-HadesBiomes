@@ -105,6 +105,15 @@ function mod.ForbiddenShopItemTaken(source, args)
 	args.NextMap = "CharonFight01"
 	-- Custom: Does nothing (but must be assigned or it will cause a nil error)
 	game.CurrentRun.CurrentRoom.ExitFunctionName = _PLUGIN.guid .. "." .. "ExitToCharonFightPresentation"
+
+	-- Delay any Hermes deliveries for one encounter, so they don't spawn in Charon's boss room after defeating him, which breaks the game
+	local pendingDeliveries = game.CurrentRun.Hero.TraitDictionary.StorePendingDeliveryItem
+	if pendingDeliveries ~= nil then
+		for _, trait in pairs(pendingDeliveries) do
+			trait.HoldRemainingRooms = (trait.HoldRemainingRooms or 0) + 1
+		end
+	end
+
 	mod.LeaveRoomWithNoDoor(source, args)
 end
 

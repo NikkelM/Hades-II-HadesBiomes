@@ -1,7 +1,7 @@
 local newTraitData = {
 	ModsNikkelMHadesBiomes_TemporaryBlockExplodingChariotsTrait = {
 		InheritFrom = { "ShopTrait" },
-		Icon = "NikkelM-HadesBiomesGUIModded\\GUIModded\\Screens\\ShopIcons\\release_parchment_23",
+		Icon = "GUIModded\\Screens\\ShopIcons\\release_parchment_23",
 		OnPurchaseSound = "/Leftovers/Menu Sounds/WellPurchase_Paper",
 		ResourceCosts = {
 			Money = 75,

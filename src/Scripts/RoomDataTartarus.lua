@@ -15,6 +15,12 @@ local roomReplacements = {
 				Path = { "CurrentRun", "CurrentRoom", "RoomSetName" },
 				IsNone = { "Styx", "Challenge", "Surface" },
 			},
+			{
+				-- Don't allow any natural Chaos Gates in Tartarus in the first run, since we force one in RoomOpening
+				Path = { "GameState", "ModsNikkelMHadesBiomesCompletedRunsCache" },
+				Comparison = ">=",
+				Value = 1,
+			},
 			NamedRequirements = { "ChaosUnlocked", "NoRecentChaosEncounter" },
 		},
 		-- The Asphodel teleport in Hades II - we don't want it in Zagreus' Journey
@@ -389,12 +395,109 @@ local roomReplacements = {
 				FunctionName = "CheckObjectiveSetSource",
 				Args = { ObjectiveSetName = "BountyAdvancedTooltip" },
 			},
+			-- Copied from the original ThreadedEvents but needed to move due to the additional entries above
+			{
+				FunctionName = _PLUGIN.guid .. "." .. "PatrolPath",
+				Args = {
+					GroupName = "GhostPatrols",
+					NewGroupName = "ActiveGhosts",
+					RemoveFromGroup = true,
+					AddToGroup = true,
+					MaxPatrols = 10,
+					SendPatrolInterval = 1.0,
+					SpeedMin = 30,
+					SpeedMax = 80,
+					Path = {
+						{ Id = 410943, OffsetRadius = 10, },
+						{
+							Branch = {
+								{
+									{ Id = 410940, OffsetRadius = 10 },
+								},
+								{
+									{ Id = 410957, OffsetRadius = 10, AngleTowardIdOnStop = 410959, PostArriveWait = 5 },
+								},
+								{
+									{ Id = 410956, OffsetRadius = 10, AngleTowardIdOnStop = 410960, PostArriveWait = 5 },
+								},
+								{
+									{ Id = 410958, OffsetRadius = 10 },
+									{ Id = 410951, OffsetRadius = 10 },
+									{
+										Branch = {
+											{
+												{ Id = 410955, OffsetRadius = 10, PostArriveWait = 15, MinUseInterval = 15 },
+												{ Id = 410951, OffsetRadius = 10 },
+											},
+											{
+												{ Id = 410954, OffsetRadius = 10, PostArriveWait = 13, MinUseInterval = 13 },
+												{ Id = 410951, OffsetRadius = 10 },
+											},
+										},
+									},
+									{ Id = 410944, OffsetRadius = 10 },
+									{
+										Branch = {
+											{
+												{ Id = 410945, OffsetRadius = 10, PostArriveWait = 15, MinUseInterval = 15 },
+												{ Id = 410944, OffsetRadius = 10 },
+												{ Id = 410951, OffsetRadius = 10 },
+												{ Id = 410958, OffsetRadius = 10 },
+											},
+											{
+												{ Id = 410961, OffsetRadius = 10, PostArriveWait = 13, MinUseInterval = 13 },
+												{ Id = 410944, OffsetRadius = 10 },
+												{ Id = 410951, OffsetRadius = 10 },
+												{ Id = 410958, OffsetRadius = 10 },
+											},
+										},
+									},
+								},
+								{
+									{ Id = 410941, OffsetRadius = 10 },
+									{
+										Branch = {
+											{
+												{ Id = 410942, OffsetRadius = 10, PostArriveWait = 15, MinUseInterval = 15 },
+												{ Id = 410941, OffsetRadius = 10 },
+											},
+											{
+												{ Id = 410953, OffsetRadius = 10, PostArriveWait = 13, MinUseInterval = 13 },
+												{ Id = 410941, OffsetRadius = 10 },
+											},
+											{
+												{ Id = 410946, OffsetRadius = 10 },
+												{ Id = 410947, OffsetRadius = 10, PostArriveWait = 13, MinUseInterval = 13 },
+												{ Id = 410946, OffsetRadius = 10 },
+												{ Id = 410941, OffsetRadius = 10 },
+											},
+										},
+									},
+								},
+							},
+						},
+					},
+				},
+			},
 		},
 
 		EnterVoiceLines = {
+			-- First run with fresh file config on
+			{
+				GameStateRequirements = {
+					{
+						Path = { "GameState", "CompletedRunsCache" },
+						Comparison = "==",
+						Value = 0,
+					},
+				},
+				BreakIfPlayed = true,
+				PreLineWait = 0.9,
+				{ Cue = "/VO/MelinoeField_4814", Text = "In the name of Hades." },
+			},
 			-- Chaos Trial/Bounty
 			{ GlobalVoiceLines = "StartPackagedBountyRunVoiceLines" },
-			-- First run
+			-- First modded run
 			{
 				BreakIfPlayed = true,
 				RequiredCompletedRuns = 0,
@@ -548,12 +651,20 @@ local roomReplacements = {
 	},
 
 	RoomSimple01 = {
-		ForceIfEncounterNotCompleted = mod.NilValue,
-		LegalEncounters = { "GeneratedTartarus", },
-		ForcedRewardStore = mod.NilValue,
-		ForcedRewards = mod.NilValue,
-		ForceCommonLootFirstRun = mod.NilValue,
-		ForceLootTableFirstRun = mod.NilValue,
+		LegalEncounters = { "EnemyIntroFight01", "GeneratedTartarus", },
+		-- Mirrors vanilla ForcedRewards on fresh file
+		ForcedRewards = {
+			{
+				Name = "Boon",
+				LootName = "ApolloUpgrade",
+				GameStateRequirements = {
+					{
+						PathFalse = { "GameState", "UseRecord", "ApolloUpgrade" },
+					},
+				},
+			},
+		},
+		ForceLootTableFirstRun = { "ApolloWeaponBoon", "ApolloSprintBoon", "ApolloManaBoon" },
 	},
 
 	A_Reprieve01 = {
@@ -598,13 +709,15 @@ local roomReplacements = {
 			},
 		},
 	},
+
+	A_Combat25 = mod.NilValue,
 }
 
 local roomModifications = {
 	-- GENERIC
 	BaseTartarus = {
 		-- These are loaded in LoadCurrentRoomResources, which is called OnAnyLoad
-		LoadModdedAudioBanks = { "EnemiesModsNikkelMHadesBiomes", "SoundsModsNikkelMHadesBiomes", "ModsNikkelMHadesBiomesMusicModded", "ModsNikkelMHadesBiomesMusicTartarusModded", },
+		LoadModdedAudioBanks = { "EnemiesModsNikkelMHadesBiomes", "SoundsModsNikkelMHadesBiomes", "ModsNikkelMHadesBiomesMusicModded", "ModsNikkelMHadesBiomesMusicTartarusModded", "ModsNikkelMHadesBiomesAmbienceModded", },
 
 		NarrativeContextArt = "ModsNikkelMHadesBiomes_DialogueBackground_Tartarus",
 
@@ -636,6 +749,7 @@ local roomModifications = {
 	-- OPENING ROOMS
 	RoomOpening = {
 		InheritFrom = { "BaseTartarus", "BiomeStartRoom", },
+		RemoveTimerBlock = "InterBiome",
 		FlipHorizontalChance = 0.0,
 		EntranceFunctionName = _PLUGIN.guid .. "." .. "RoomEntranceDropRoomOpening",
 		EntranceFunctionArgs = { LandingAnimation = "Melinoe_HeroLanding", Sound = "/SFX/Player Sounds/MelWhooshDropIn", IntroHoldDuration = 2.34, StartZoomFraction = 0.65, ZoomDuration = 4 },
@@ -650,7 +764,6 @@ local roomModifications = {
 		PlayBiomeMusic = true,
 		MusicSection = 0,
 		MusicStartDelay = 1.75,
-		-- Requires AthenaFirstPickup voiceline, which is not implemented
 		ChooseRewardRequirements = mod.NilValue,
 		IneligibleRewards = game.RewardSets.OpeningRoomBans,
 		MaxAppearancesThisBiome = 1,
@@ -678,9 +791,8 @@ local roomModifications = {
 	A_Shop01 = {
 		LoadModdedVoiceBanks = { "Modsnikkelmhadesbiomescharon" },
 		ThreadedEvents = {
-			-- To get PatrolPath working, see RoomOpening
-			[1] = mod.NilValue,
-			[2] = mod.NilValue
+			[1] = { FunctionName = _PLUGIN.guid .. "." .. "PatrolPath" },
+			[2] = { FunctionName = _PLUGIN.guid .. "." .. "PatrolPath" },
 		},
 		StoreDataName = "WorldShop",
 		StartUnthreadedEvents = game.EncounterSets.ShopRoomEvents,
@@ -752,6 +864,7 @@ local roomModifications = {
 		MusicMutedStems = { "Drums", "Bass", "Guitar", },
 
 		ZagContractRewardDestinationId = 776332,
+		AutocompleteSurfaceShopDelivery = true,
 
 		ShovelPointChance = 0.35,
 		PickaxePointChance = 0.35,
@@ -827,6 +940,8 @@ local roomModifications = {
 		CanSpawnDreamReward = true,
 		SkipTimedDropResourceInDream = true,
 
+		IgnoreForRewardStoreCount = true,
+
 		HasFishingPoint = false,
 		HasPickaxePoint = false,
 		ShovelPointChance = 0.3,
@@ -855,6 +970,8 @@ local roomModifications = {
 		},
 		BackupCauseOfDeath = "Harpy2",
 		CombatResolvedVoiceLines = {},
+
+		IgnoreForRewardStoreCount = true,
 
 		HasFishingPoint = false,
 		HasPickaxePoint = false,
@@ -888,6 +1005,8 @@ local roomModifications = {
 		RestorePresentationFunction = mod.NilValue,
 		BackupCauseOfDeath = "Harpy3",
 
+		IgnoreForRewardStoreCount = true,
+
 		-- Tisiphone adds walls during her fight, so gatherables would become inaccessible
 		HasHarvestPoint = false,
 		HasShovelPoint = false,
@@ -903,6 +1022,9 @@ local roomModifications = {
 		ModsNikkelMHadesBiomes_DisableRewardPreviewOverrideOnChaosCurse = true,
 		GameStateRequirements = {
 			NamedRequirementsFalse = { "StandardPackageBountyActive" },
+		},
+		ThreadedEvents = {
+			[1] = { FunctionName = _PLUGIN.guid .. "." .. "PatrolPath" },
 		},
 
 		LegalEncounters = {
@@ -921,10 +1043,6 @@ local roomModifications = {
 		IgnoreMusic = true,
 		SecretMusic = mod.NilValue,
 
-		ThreadedEvents = {
-			[1] = mod.NilValue
-		},
-
 		InspectPoints = {
 			[506297] = {
 				RequiredEncounters = { "Story_Sisyphus_01" },
@@ -936,7 +1054,6 @@ local roomModifications = {
 		ShovelPointChance = 0.35,
 		PickaxePointChance = 0.35,
 		ExorcismPointChance = 0.35,
-
 		HarvestPointRequirements = {
 			OrRequirements = {
 				-- collection
@@ -1018,7 +1135,6 @@ local roomModifications = {
 		ThreadedEvents = {
 			[1] = { FunctionName = "HadesSpeakingPresentation", Args = { VoiceLines = game.GlobalVoiceLines.HadesPostBossVoiceLines, StartDelay = 2.5, SubtitleColor = game.Color.HadesVoice, LineHistoryName = "Hades" } },
 		},
-		NextRoomSet = { "Asphodel" },
 		-- In vanilla the game adds a SetupGameStateRequirement to the obstacle, but we don't do that in modded rooms
 		-- So to prevent the well from spawning even without the incantation, we set ForceWellShop to false and just use the WellShopSpawnChance
 		ForceWellShop = false,

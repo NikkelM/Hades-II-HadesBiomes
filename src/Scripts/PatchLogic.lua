@@ -99,8 +99,7 @@ modutil.mod.Path.Wrap("DoPatches", function(base)
 			game.GameState.ModsNikkelMHadesBiomes_ClearedFullRunWithKeepsakes = game.GameState
 					.ModsNikkelMHadesBiomes_ClearedFullRunWithKeepsakes or {}
 			-- To track some custom misc flag, e.g. for certain Quest progress
-			game.GameState.ModsNikkelMHadesBiomesCustomFlags = game.GameState
-					.ModsNikkelMHadesBiomesCustomFlags or {}
+			game.GameState.ModsNikkelMHadesBiomesCustomFlags = game.GameState.ModsNikkelMHadesBiomesCustomFlags or {}
 			-- Ensure LordHadesDefeated01 is true in case it was skipped before due to the Extreme Measure conversation having played instead
 			if game.GameState.TextLinesRecord["LordHadesExtremeMeasuresDefeat01"] == true and game.GameState.TextLinesRecord["PersephoneFirstMeeting"] == true and game.GameState.TextLinesRecord["LordHadesDefeated01"] == nil then
 				game.GameState.TextLinesRecord["LordHadesDefeated01"] = true
@@ -224,8 +223,33 @@ modutil.mod.Path.Wrap("DoPatches", function(base)
 			end
 		end
 
+		if game.GameState.ModsNikkelMHadesBiomesPatchRevision < 10 then
+			-- Port over the fix for the game crashing if the GameStats were last sorted to a modded category, then the mod was uninstalled
+			-- Already fixed for everyone using the screen, but still broken for those that used it a while ago and never re-opened it before uninstalling
+			if game.GameState.RunHistoryGameStatsSortMode ~= nil and game.GameState.RunHistoryGameStatsSortMode > 6 then
+				game.GameState.RunHistoryGameStatsSortMode = 1
+			end
+		end
+
+		-- Migrate Quest flags to CustomFlags table
+		if game.GameState.ModsNikkelMHadesBiomesPatchRevision < 11 then
+			game.GameState.ModsNikkelMHadesBiomesCustomFlags.ModsNikkelMHadesBiomes_DreamDiveDefeatedCharonAndZagreus = game
+					.GameState.ModsNikkelMHadesBiomes_DreamDiveDefeatedCharonAndZagreus
+			game.GameState.ModsNikkelMHadesBiomes_DreamDiveDefeatedCharonAndZagreus = nil
+
+			game.GameState.ModsNikkelMHadesBiomesCustomFlags.ModsNikkelMHadesBiomes_DreamDiveDefeatedEMChronosTyphonHades =
+					game.GameState.ModsNikkelMHadesBiomes_DreamDiveDefeatedEMChronosTyphonHades
+			game.GameState.ModsNikkelMHadesBiomes_DreamDiveDefeatedEMChronosTyphonHades = nil
+		end
+
+		-- Add flashback dialogues from H1 to the TextLinesRecord to easily unblock dialogues
+		if game.GameState.ModsNikkelMHadesBiomesPatchRevision < 12 then
+			game.GameState.TextLinesRecord["Flashback_Mother_01"] = true
+			game.GameState.TextLinesRecord["Flashback_DayNightJob_01"] = true
+		end
+
 		-- IMPORTANT: This must be incremented every time this function is changed
-		game.GameState.ModsNikkelMHadesBiomesPatchRevision = 9
+		game.GameState.ModsNikkelMHadesBiomesPatchRevision = 12
 	end
 
 	return base()

@@ -335,13 +335,9 @@ local function copyHadesHelpTexts()
 							table.remove(hadesHelpTextData.Texts, i)
 						end
 						if entry.Id then
-							entry.Id = entry.Id:gsub("Storyteller_", "Modsnikkelmhadesbiomesstoryteller_")
-							entry.Id = entry.Id:gsub("Charon_", "Modsnikkelmhadesbiomescharon_")
-							entry.Id = entry.Id:gsub("Persephone_", "Modsnikkelmhadesbiomespersephone_")
-							entry.Id = entry.Id:gsub("ZagreusHome_", "Modsnikkelmhadesbiomeszagreushome_")
-							-- LootData
-							entry.Id = entry.Id:gsub("Hermes_", "Modsnikkelmhadesbiomeshermes_")
-							entry.Id = entry.Id:gsub("Chaos_", "Modsnikkelmhadesbiomeschaos_")
+							for originalName, moddedName in pairs(mod.VoiceoverFileNames) do
+								entry.Id = entry.Id:gsub(originalName .. "_", moddedName .. "_")
+							end
 						end
 						if entry.DisplayName then
 							entry.DisplayName = string.gsub(entry.DisplayName, "{#PreviousFormat}", "{#Prev}")
@@ -380,16 +376,11 @@ local function copyHadesNPCTexts()
 					local filteredTexts = {}
 					for _, entry in ipairs(hadesHelpTextDataRaw.Texts) do
 						if entry.Id and entry.Speaker and allowedSpeakers[entry.Speaker] then
-							entry.Id = entry.Id:gsub("Storyteller_", "Modsnikkelmhadesbiomesstoryteller_")
-							entry.Id = entry.Id:gsub("Charon_", "Modsnikkelmhadesbiomescharon_")
-							entry.Id = entry.Id:gsub("Persephone_", "Modsnikkelmhadesbiomespersephone_")
-							entry.Id = entry.Id:gsub("MegaeraHome_", "Modsnikkelmhadesbiomesmegaerahome_")
+							for originalName, moddedName in pairs(mod.VoiceoverFileNames) do
+								entry.Id = entry.Id:gsub(originalName .. "_", moddedName .. "_")
+							end
+							-- Custom rename, moved into MegaeraHome bank
 							entry.Id = entry.Id:gsub("MegaeraExtra_", "Modsnikkelmhadesbiomesmegaerahome_5")
-							-- entry.Id = entry.Id:gsub("Nyx_", "Modsnikkelmhadesbiomesnyx_")
-							-- entry.Id = entry.Id:gsub("Hades_", "Modsnikkelmhadesbiomeshades_")
-							entry.Id = entry.Id:gsub("Skelly_", "Modsnikkelmhadesbiomesskelly_")
-							-- entry.Id = entry.Id:gsub("Hypnos_", "Modsnikkelmhadesbiomeshypnos_")
-							entry.Id = entry.Id:gsub("ZagreusHome_", "Modsnikkelmhadesbiomeszagreushome_")
 
 							if entry.DisplayName then
 								entry.DisplayName = entry.DisplayName:gsub("{#PreviousFormat}", "{#Prev}")
@@ -539,8 +530,8 @@ function mod.CreateRequiredHookTargetFiles()
 		public.IsValidInstallation = false
 
 		-- Ensure we get a new clean install next time
-		config.uninstall = true
-		config.firstTimeSetup = true
+		config.debugging.uninstall = true
+		config.debugging.firstTimeSetup = true
 		mod.InstallationPending = false
 		return false
 	end
@@ -749,8 +740,8 @@ function mod.FinalizeInstallation()
 		public.IsValidInstallation = false
 
 		-- Ensure we get a new clean install next time
-		config.uninstall = true
-		config.firstTimeSetup = true
+		config.debugging.uninstall = true
+		config.debugging.firstTimeSetup = true
 		mod.InstallationPending = false
 		return
 	end
@@ -763,7 +754,7 @@ function mod.FinalizeInstallation()
 	---@diagnostic disable-next-line: undefined-global
 	public.IsValidInstallation = true
 
-	config.firstTimeSetup = false
+	config.debugging.firstTimeSetup = false
 	mod.InstallationPending = false
 	mod.DebugPrint("Finished mod installation and first time setup.", 3)
 end

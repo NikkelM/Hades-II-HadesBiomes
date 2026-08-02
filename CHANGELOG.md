@@ -1,12 +1,133 @@
 # Changelog
 
-## v1.0.4
+## v2.0.0
 
 <!--Releasenotes start-->
 ### Patch Highlights:
+- You may now encounter Artemis in Tartarus and Elysium, and she will use her dialogues from the first game when you speak to her.
+- You may now encounter Athena in Elysium and Styx, and she will use her dialogues from the first game when you speak to her.
+
+Other fixes and improvements:
+- Added NPCs added by Zagreus' Journey to [PonyMenu](https://thunderstore.io/c/hades-ii/p/PonyWarrior/PonyMenu/).
+- Balancing: You can now destroy the butterflies created by Soul Spawners with your attacks and specials.
+- Balancing: Exalted Shades can no longer create Lone Shades when dying.
+- Balancing: Slightly reduced the base encounter difficulty of wing-end combat rooms in the Temple of Styx.
+- Balancing: Blocked a number of additional Elite perks from certain enemy types.
+- Balancing: Reworked "Lament of Orpheus" to no longer require defeating the enemy that originally damaged you to be able to trigger it again, and also be able to freeze enemies that are currently on cooldown from being frozen normally.
+- Fixed: Shells fired by the Argent Skull can become irretrievable if they were supposed to return to Melinoë during dialogue playing between phases in Hades' boss fight.
+- Fixed: Theseus immediately snaps to look at Melinoë after his dialogue completes instead of gradually turning.
+- Fixed: Damage taken from the Tiny Vermin is categorized as damage taken from Crawlers in the Damage Taken record in the run clear screen.
+- Fixed: Clones created by Elite enemies with the "Cloner" perk can create Revenants, Lone Shades, or be resurrected by Night Bloom.
+- Fixed: The voiceline that is supposed to play when attempting to interact with the locked Keepsake Cabinet in post-boss rooms may not play in some cases.
+- Fixed: The boons presented by Orpheus & Eurydice once they are reunited may be in a different order than expected.
+- Fixed: Meeting Orpheus is not counted towards the unlock conditions of the "Close at Heart" Minor Prophecy.
+- Fixed: There is a typo in the description of Orpheus' "Hymn to Zagreus" boon.
+- Fixed: The vanilla Hades II intro video plays before Zagreus' Journey fresh file runs.
+<!--Releasenotes end-->
+
+## v1.2.0
+
+### Patch Highlights:
+- Ported (almost) all of Ares' dialogues with Zagreus from the first game. Some of these are still blocked by missing dialogues from other Gods, which will be added in subsequent updates.
+- Ported additional dialogues between Zagreus and various other Gods, delivered by Hermes via his boons in the Nightmare Realm (Athena, Dionysus).
+- Improved visual fidelity across all biomes, and Elysium especially, by adding a group of previously missing environmental lighting elements.
+- Added four new cosmetics: Two stages for the Music Maker, a set of pillars near the Cauldron, and a set of pillarets surrounding Hypnos.
+- Accessibility: Added a "Goddess Mode" config option that disables enemy health and armour scaling added by the mod. Across all biomes, enemies will have 30-45% less health and 10-20% less armour if this is enabled. *Please note that enemy health scaling was added to compensate for Melinoë's increased damage output, and you may find the mod too easy when enabling Goddess Mode.*
+- Fixed: The storyline between Orpheus and Eurydice can be very hard to progress due to repeatable dialogues being selected randomly at the same priority as dialogues that drive it forward.
+
+Other fixes and improvements:
+- If boons offered by NPCs have specific requirements before they can be offered, these will now be shown in the Codex (Patroclus, Orpheus).
+- Added a new Minor Prophecy unlocked by talking to Ares in the Nightmare Realm (*more will follow*).
+- Accessibility: Added a config option to fade to black instead of white when exiting the Styx hub room to Hades' boss arena.
+- Accessibility: Added support for the "Zoom In" accessibility option. A blanket 13% zoom will be applied to all rooms. If you use this option and find certain rooms to be too zoomed in, or still too zoomed out, please report this.
+- Balancing: Elite enemies that have jumping attacks can no longer be imbued with the "Spiller" Elite perk.
+- Balancing: More Elite enemies in Asphodel can now be imbued with the "Spinner" Elite perk.
+- Balancing: Trap damage now scales in Dream Dives.
+- Fixed: Ghosts in Tartarus' opening room, mid-shop and Sisyphus' chamber do not move around the room, instead staying where they spawn.
+- Fixed: Chaos Gates may be offered in Tartarus during the first run, where you already receive a Chaos boon in the first room through the forced story event.
+- Fixed: Dire Brimstones and Dire Voidstones can be imbued with the "Shifter" Elite perk, but their small floating crystals to not teleport with them.
+- Fixed: Some of the Furies' unblockable attacks can be blocked by the Black Coat's Omega attack block.
+- Fixed: Familiars and some obstacles such as Zeus' Mana Fountain can end up in an unreachable location if they are outside of the new playable area after one of Tisiphone's phase transitions.
+- Fixed: The game can crash during Tisiphone's phase transition if certain Gods aid her through the "Vow of Betrayal" added by the [Nightmare Fear](https://thunderstore.io/c/hades-ii/p/ReadEmAndWeep/Nightmare_Fear/) mod.
+- Fixed: The boat in Asphodel sometimes enters a new room from an incorrect direction, in relation to the direction it exited the previous room.
+- Fixed: Some animations and textures are missing when loading a save in non-combat rooms in Asphodel.
+- Fixed: Eurydice's "Pom Porridge" only upgrades boons by one instead of two levels (fix by zerp).
+- Fixed: If the Megagorgon is stunned, it turns invisible and cannot be damaged.
+- Fixed: The Splitter's large projectile does not split into small projectiles after hitting Melinoë or an obstacle, but only when expiring mid-flight.
+- Fixed: The Brightsword's dash does not have its direction randomized.
+- Fixed: If a Shade enemy in Elysium dies while polymorphed, it drops a weapon that is able to be picked up by Exalted Shades.
+- Fixed: If a Shade enemy in Elysium has both the "Massive" and "Popper" elite perks, the additional Exalted Shades produced by the "Popper" perk are enlarged until they land.
+- Fixed: Shade enemies in Elysium start spawning an Exalted Shade that then immediately disappears if they are killed by Athena.
+- Fixed: The explosion from the fake Exalted Shades created by the "Popper" elite perk can be blocked by the Black Coat's Omega attack block.
+- Fixed: If a Flame Wheel or Nemean Chariot is morphed by "Twilight Curse" while attacking, the sheep will continue performing the attack.
+- Fixed: Asterius sometimes skips his jump animation.
+- Fixed: Asterius' shockwave projectiles are created in front of instead of behind him during some attacks in his second phase.
+- Fixed: Theseus' and Hades' spear throws do not damage Melinoë if she is using the Black Coat's Omega attack when they pierce her.
+- Fixed: The Good Shade in Elysium can be saluted when Theseus was defeated, but Asterius is still alive.
+- Fixed: Megaera greets Melinoë each time she returns to the Styx Hub.
+- Fixed: If the Tiny Vermin in Styx is met before meeting King Vermin in Oceanus, the game crashes.
+- Fixed: The Tiny Vermin is damaged by Medea's "Suffering on Sight" boon.
+- Fixed: The "Poison will wear off automatically" message can incorrectly show in Styx, where this is not the case.
+- Fixed: Moving close to certain walls and other obstacles in Styx can make Melinoë appear behind them.
+- Fixed: If an enemy goes invisible as part of its attack, the Black Coat's Omega special's lock-on effect remains active, revealing its location.
+- Fixed: Rewards from Shrines of Hermes and Icarus' "Supply Chain" boon can be delivered after defeating Charon, which softlocks the player if picked up.
+- Fixed: If deliveries from a Shrine of Hermes are pending after giving the Satyr Sack to Cerberus in a Dream Dive, they will not be auto-delivered.
+- Fixed: In rare cases, the game may crash after Melinoë exits "Unseen Ire" while an enemy is performing a certain type of attack.
+- Fixed: The cloud VFX added above enemies that are afflicted by Blitz is misaligned for enemies using Hades II models, if enemies using Hades models are also present in the room.
+- Fixed: The VFX added by Blitz and the "Skyfall" Hex are misaligned for many enemies from the first game.
+- Fixed: Zagreus' Journey regions can occur in their natural order (e.g. Asphodel after Tartarus) in Dream Dives.
+- Fixed: The "Vow of Menace" can spawn enemies from regions you have not seen yet.
+- Fixed: The game may briefly stutter when the first enemy from the respective next region is spawned in a region through the "Vow of Menace".
+- Fixed: Dialogue background animations run on a lower frame rate that makes them appear more staggered during transitions.
+- Fixed: Some NPC voicelines that should run after a dialogue completes do not play.
+- Fixed: If all dialogue for a boon-giving NPC is exhausted and it plays a repeatable dialogue, the player can keep interacting with the NPC and gain multiple boons.
+- Fixed: Some textures flicker in Eurydice's chamber.
+- Fixed: Icons for Well of Charon items added through the mod disappear if they are still active when entering a non-modded region during Dream Dives.
+- Fixed: The intro video before the very first run of a new save does not play if Zagreus' Journey is installed.
+- Fixed: When opening the statistics screen while the mod is disabled and if the previously selected sort column was a modded column, the game crashes if the statistics had not been viewed since version 1.1.0 of the mod.
+- Fixed: Some ambient music is influenced by the music volume slider, instead of the ambience slider. *Note that due to engine quirks, both the SFX and the Ambience slider influence ambience volume*.
+- Fixed: If certain mods that integrate with Zagreus' Journey are active in the mod manager, but disabled through the mod configuration file, Zagreus' Journey still thinks they are active.
+- Fixed: Added a tentative fix for the Chaos Gate in the Training Grounds sometimes not spawning after returning from a run. Please report if this still happens.
+- Fixed: If the "x64" or "x86" sub-path is provided as part of the "hadesGameFolder" config setting, the game crashes instead of gracefully correcting the path internally.
+- Fixed: If only a single Hades base game file is modified by installed mods, this mod's check will not recognize that Hades is modded.
+
+## v1.1.3
+
+### Patch Highlights:
+- Fixed issues introduced by the most recent game patch.
+- Balancing: The "Fig Leaf" keepsake can now trigger in most miniboss encounters across all regions.
+- Fixed: In Dream Dives, the timer pauses when entering Tartarus and stays paused until the next region.
+- Fixed: In Dream Dives, Asterius and Hades may start a dialogue in certain cases.
+- Fixed: Relationship/story progress for Orpheus is blocked by an unobtainable dialogue, preventing him from offering "Hymn to Zagreus".
+- Fixed: "Good Riddance" offered by Orpheus is not required to complete the "Singer of Sorrows" prophecy.
+
+## v1.1.2
+
+### Patch Highlights:
+- Added a new bedding cosmetic inspired by the Chariots in Elysium.
+- Fixed: A specific room will always follow the opening room, instead of it being random.
+- Fixed: Rerolling the reward on the door out of the opening room doesn't change the displayed reward, but does change the actual reward you will receive in the next room.
+- Fixed: "Hymn to Zagreus" from Orpheus could never be offered due to an incorrect dialogue requirement.
+- Fixed: The game crashes when entering Sisyphus' chamber while a dialogue between him and Thanatos is queued.
+- Fixed: Some of Megaera's key dialogues can't be triggered, locking out her romance and follow-up dialogues.
+- Fixed: If Hades is encountered during a Dream Dive when the next normal run would be the tenth clear, he will not engage in combat.
+
+## v1.1.1
+
+### Patch Highlights:
+- Fixed: If the previous run was a Dream Dive that ended in a Zagreus' Journey biome, the save will fail to load if loaded without Zagreus' Journey active.
+- Fixed: If Melinoë is affected by Circe's "Word of Greater Girth" or "Word of Smaller Stature", she will continuously shrink with each new room in Zagreus' Journey biomes.
+
+Other fixes and improvements:
+- If Melinoë is affected by Circe's "Word of Smaller Stature", she will now *not* be additionally scaled down in Zagreus' Journey rooms.
+- Fixed: If Melinoë is affected by Circe's "Word of Greater Girth" or "Word of Smaller Stature", using the "Dark Side" hex restores her to the scale set by the Circe boon, which is not multiplied by the size multiplier the mod sets.
+
+## v1.1.0
+
+### Patch Highlights:
 - The Chaos Gate in the Training Grounds can now also appear before having met Chaos the first time.
 - The first time that Zagreus' Journey regions are eligible in Dream Dives, Elysium will appear as the guaranteed first region (after you have already completed at least one total Dream Dive).
-- Added two new sets of Arcana card backs, depicting the various bosses and gods you encounter in Zagreus' Journey.
+- Added two new sets of Arcana card backs, depicting the various bosses and gods you can encounter during Zagreus' Journey.
 - Balancing: Slightly reduced overall number of enemies per encounter in all regions.
 - Balancing: Slightly reduced health and armour of non-boss enemies.
 - Fixed: The sound made by Hades' laser beam attack is very loud.
@@ -15,6 +136,7 @@
 Other fixes and improvements:
 - Melinoë is now slightly smaller while in Zagreus' Journey rooms, to compensate for the difference in room and enemy scales.
 - When confiding in Frinos, Melinoë can now refer to events in Zagreus' Journey runs.
+- Added a new configuration option that forces the first run of a fresh save file to be a Zagreus' Journey run, meant for speedrunning, called `z_SpeedrunFreshFileZagreusJourneyRun`. You should *only* use this for speedrunning, not for normal saves, as progression beyond the first run may break.
 - Added a new configuration option to allow picking up the reward in the opening room of the run instead of talking to Thanatos, even if he still has unique dialogue left, called `z_SpeedrunSkipOpeningThanatos`.
 - Added a new configuration option to hide the "Poison will wear off automatically!" message that appears when poisoned in Elysium, called `z_HideElysiumPoisonMessage`.
 - The "Poison will wear off automatically!" message that appears when poisoned in Elysium will now only show once per run, not once per encounter.
@@ -61,7 +183,6 @@ Other fixes and improvements:
 - Fixed: Melinoë can salute NPCs with "Death to Chronos!" during Zagreus' Journey runs.
 - Fixed: If the mod is removed and then downloaded again without removing the config file, the mod is not re-installed automatically and files will be missing.
 - Fixed: When opening the statistics screen while the mod is disabled and if the previously selected sort column was a modded column, the game crashes.
-<!--Releasenotes end-->
 
 ## v1.0.3
 

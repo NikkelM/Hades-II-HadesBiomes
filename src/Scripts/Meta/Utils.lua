@@ -19,7 +19,7 @@ end
 ---@param level number|nil The verbosity level required to print the message. 0 = Off/Always printed, 1 = Errors, 2 = Warnings, 3 = Info, 4 = Debug
 function mod.DebugPrint(t, level)
 	level = level or 0
-	if config.logLevel >= level then
+	if config.debugging.logLevel >= level then
 		if type(t) == "table" then
 			-- Tables are always logged without a level display
 			mod.PrintTable(t, nil, nil)
@@ -555,10 +555,11 @@ function mod.AreHadesModsInstalled()
 		if file then
 			local content = file:read("*all")
 			file:close()
-			if content and content:find("base files import a total of") and not content:find("0 base files import a total of 0 mod files") then
+			if content and (content:find("base files import a total of") and not content:find("0 base files import a total of 0 mod files")) or content:find("1 base file imports a total of") then
 				mod.DebugPrint(
-					"Hades mods detected! You must uninstall all mods for Hades before installing Zagreus' Journey. Aborting mod installation to prevent conflicts.",
+					"Hades mods detected! You must uninstall all mods for Hades before installing Zagreus' Journey. Aborting mod installation to prevent conflicts. modimporter.log content:",
 					1)
+				mod.DebugPrint("\n" .. content, 1)
 
 				mod.HiddenConfig.IsValidInstallation = false
 				mod.HiddenConfig.InstallationFailReason = "HadesModsInstalled"
@@ -567,8 +568,8 @@ function mod.AreHadesModsInstalled()
 				public.IsValidInstallation = false
 
 				-- Ensure we get a new clean install next time
-				config.uninstall = true
-				config.firstTimeSetup = true
+				config.debugging.uninstall = true
+				config.debugging.firstTimeSetup = true
 
 				return true
 			end
@@ -590,21 +591,22 @@ function mod.SetBiomePackageLoadOverrides()
 	local originalFxHash = rom.data.get_hash_guid_from_string("ModsNikkelMHadesBiomesFxOriginal")
 	local moddedFxHash = rom.data.get_hash_guid_from_string("NikkelM-HadesBiomesFxModded")
 	local roomManagerHash = rom.data.get_hash_guid_from_string("RoomManagerModsNikkelMHadesBiomes")
+	local originalDevHash = rom.data.get_hash_guid_from_string("ModsNikkelMHadesBiomesDevOriginal")
 
 	rom.data.load_package_overrides_set(tartarusBiomeHash,
-		{ tartarusBiomeHash, originalFxHash, moddedFxHash, roomManagerHash })
+		{ tartarusBiomeHash, originalFxHash, moddedFxHash, roomManagerHash, originalDevHash })
 	rom.data.load_package_overrides_set(asphodelBiomeHash,
-		{ asphodelBiomeHash, originalFxHash, moddedFxHash, roomManagerHash })
+		{ asphodelBiomeHash, originalFxHash, moddedFxHash, roomManagerHash, originalDevHash })
 	rom.data.load_package_overrides_set(elysiumBiomeHash,
-		{ elysiumBiomeHash, originalFxHash, moddedFxHash, roomManagerHash })
+		{ elysiumBiomeHash, originalFxHash, moddedFxHash, roomManagerHash, originalDevHash })
 	rom.data.load_package_overrides_set(styxBiomeHash,
-		{ styxBiomeHash, originalFxHash, moddedFxHash, roomManagerHash })
+		{ styxBiomeHash, originalFxHash, moddedFxHash, roomManagerHash, originalDevHash })
 	rom.data.load_package_overrides_set(surfaceBiomeHash,
-		{ surfaceBiomeHash, originalFxHash, moddedFxHash, roomManagerHash })
+		{ surfaceBiomeHash, originalFxHash, moddedFxHash, roomManagerHash, originalDevHash })
 	rom.data.load_package_overrides_set(erebusBiomeHash,
-		{ erebusBiomeHash, originalFxHash, moddedFxHash, roomManagerHash })
+		{ erebusBiomeHash, originalFxHash, moddedFxHash, roomManagerHash, originalDevHash })
 	rom.data.load_package_overrides_set(charonBiomeHash,
-		{ charonBiomeHash, originalFxHash, moddedFxHash, roomManagerHash })
+		{ charonBiomeHash, originalFxHash, moddedFxHash, roomManagerHash, originalDevHash })
 
 	-- Main Menu package, only if installation is valid (so we don't show the logo on invalid installs to prevent confusion)
 	if mod.HiddenConfig.IsValidInstallation then
@@ -657,7 +659,74 @@ function mod.ReplaceVoiceLineRequirements(voiceLineTable, cue, newRequirements, 
 	end
 end
 
-modutil.mod.Path.Wrap("DebugPrint", function(base, args)
-	mod.DebugPrint(args.Text, 4)
-	return base(args)
-end)
+function mod.IsOtherModActive(modIdentifier)
+	local modReference = rom.mods[modIdentifier]
+	-- Even though the mod is active in the mod manager, it is disabled in the config
+	if modReference and modReference.config and modReference.config.enabled == false then
+		return nil
+	end
+
+	return modReference
+end
+
+--- Returns whether the mod is both enabled in the config and the installation is valid.
+---@return boolean isEnabledAndValid True only if the mod is enabled and the installation is valid.
+---@diagnostic disable-next-line: undefined-global
+public.IsModEnabledAndInstallationValid = function()
+	---@diagnostic disable-next-line: undefined-global
+	return config.enabled == true and public.IsValidInstallation == true
+end
+
+--- Returns the current value of a given config leaf key, or nil if the key does not exist or the mod is not enabled or the installation is invalid.
+--- This allows to check for a config key no matter where in the mod config it lives.
+---@param leafKey string The config key to check. Only pass the leaf key value, e.g. to get the value of config.gameplay.z_ExcludeFromDreamDives, pass "z_ExcludeFromDreamDives".
+---@return any keyValue The current value of this key, or nil if the key does not exist or the mod is not enabled or the installation is invalid.
+---@diagnostic disable-next-line: undefined-global
+public.GetModConfigValueByLeafKey = function(leafKey)
+	local function findConfigLeaf(configGroup)
+		for key, value in pairs(configGroup) do
+			if key == leafKey then
+				return value
+			end
+
+			-- Descend into a nested group
+			if type(value) == "table" then
+				local nestedValue = findConfigLeaf(value)
+				-- The key exists in this nested group, return it
+				if nestedValue ~= nil then
+					return nestedValue
+				end
+			end
+		end
+
+		return nil
+	end
+
+	---@diagnostic disable-next-line: undefined-global
+	if not public.IsModEnabledAndInstallationValid() then
+		return nil
+	end
+
+	return findConfigLeaf(config)
+end
+
+--- Returns true if the given config leaf key has the expected value, false otherwise, including if the key does not exist.
+---@param source table
+---@param args table Must contain LeafKey and ExpectedValue.
+function mod.ModConfigLeafKeyHasValue(source, args)
+	args = args or {}
+	if args.LeafKey == nil or args.ExpectedValue == nil then
+		mod.DebugPrint("mod.ModConfigLeafKeyHasValue was called with missing arguments!", 1)
+		mod.PrintTable(args)
+	end
+
+	---@diagnostic disable-next-line: undefined-global
+	return public.GetModConfigValueByLeafKey(args.LeafKey) == args.ExpectedValue
+end
+
+if config.debugging.enableVanillaDebugPrint then
+	modutil.mod.Path.Wrap("DebugPrint", function(base, args)
+		mod.DebugPrint(args.Text, 4)
+		return base(args)
+	end)
+end

@@ -24,7 +24,9 @@ end
 -- Based on ProjectileSpawnUnitOnDeath, but skips the ActiveEnemyCap check
 -- ShadeNaked respawns should always succeed - they're not new spawns
 function mod.ShadeDeathSpawnOnDeath(projectileData, triggerArgs)
-	if game.SessionMapState.HandlingDeath or (triggerArgs and triggerArgs.BlockSpawns) then
+	triggerArgs = triggerArgs or {}
+
+	if game.SessionMapState.HandlingDeath or game.MapState.BlockSpawns or triggerArgs.BlockSpawns then
 		mod.CleanupPendingShadeSpawn()
 		return
 	end
@@ -292,4 +294,8 @@ function mod.ProcessPickup(enemy, pickupTarget)
 	if pickupData.AttachAnimation ~= nil then
 		CreateAnimation({ Name = pickupData.AttachAnimation, DestinationId = enemy.ObjectId })
 	end
+end
+
+function mod.ShadeSideDashRandomizeFireAngle(enemy, weaponAIData, currentRun)
+	weaponAIData.FireSelfVelocityAngleOffset = game.RandomFloat(0, 360)
 end

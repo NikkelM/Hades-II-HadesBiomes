@@ -12,7 +12,7 @@ rem Laptop
 
 rem Desktop
 set DECOMPILE_OUTPUT=C:\Users\nikke\Downloads
-set HADES_MAPPER=C:\Users\nikke\AppData\Local\Programs\Python\Python39\Scripts\HadesMapper
+set HADES_MAPPER=C:\Users\nikke\AppData\Local\Programs\Python\Python313\Scripts\HadesMapper
 set HADES_CONTENT=D:\Program Files (x86)\Steam\steamapps\common\Hades\Content\Win\Maps
 set OUTPUT_DIR_MOD=F:\Users\nikke\OneDrive\Privat\Projects\Hades-II-HadesBiomes\data\Content\Maps\bin
 set OUTPUT_DIR_PLUGINS=C:\Users\nikke\AppData\Roaming\r2modmanPlus-local\HadesII\profiles\Default\ReturnOfModding\plugins_data\NikkelM-Zagreus_Journey\Content\Maps\bin
@@ -27,7 +27,7 @@ rem Loop through each file and process it
     rem Decode the file
     @REM %HADES_MAPPER% dc -i "%HADES_CONTENT%\%%f" -o "%DECOMPILE_OUTPUT%\%%f_DECOMPILED"
 
-    rem Decode the file (from Hades II)
+    rem Decode the file (from mod data folder)
     %HADES_MAPPER% dc -s -i "%OUTPUT_DIR_MOD%\%%f" -o "%DECOMPILE_OUTPUT%\%%f_DECOMPILED"
     
     rem Encode the file in the output directories

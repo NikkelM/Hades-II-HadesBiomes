@@ -77,6 +77,17 @@ function mod.ApplyModificationsAndInheritRoomData(base, modifications, replaceme
 		roomData.Name = roomName
 
 		game.ProcessDataInheritance(roomData, game.RoomData)
+
+		if roomData.ZoomFraction ~= nil then
+			if roomData.ZoomFractionAlt == nil then
+				roomData.ZoomFractionAlt = roomData.ZoomFraction + mod.IncreasedZoomFractionOffset
+			end
+			roomData.ZoomFractionOriginal = roomData.ZoomFraction
+		end
+		if roomData.CameraZoomWeights ~= nil then
+			roomData.CameraZoomWeightsOriginal = roomData.CameraZoomWeights
+		end
+
 		base[roomName] = roomData
 	end
 	-- Don't skip duplicates, since we have already added all the data before

@@ -51,12 +51,12 @@ local newTraitData = {
 	ModsNikkelMHadesBiomesSisyphusHealing = {
 		InheritFrom = { "ModsNikkelMHadesBiomesBaseSisyphus" },
 		Icon = "Boon_Sisyphus_01",
-		AcquireFunctionName = "GiveRandomConsumables",
+		AcquireFunctionName = _PLUGIN.guid .. "." .. "GiveRandomConsumablesWithDynamicDestinationId",
 		AcquireFunctionArgs = {
 			Delay = 0.5,
 			NotRequiredPickup = true,
 			ForceToValidLocation = true,
-			DestinationId = 370001,
+			ModsNikkelMHadesBiomesPreferredDestinationId = 370001,
 			Range = 0,
 			Force = 500,
 			UpwardForce = 700,
@@ -98,14 +98,14 @@ local newTraitData = {
 			ScaleKeys = { { "AcquireFunctionArgs", "LootOptions", 1, "Overrides", "AddResources", "MetaCurrency" } },
 			AsInt = true,
 		},
-		AcquireFunctionName = "GiveRandomConsumables",
+		AcquireFunctionName = _PLUGIN.guid .. "." .. "GiveRandomConsumablesWithDynamicDestinationId",
 		AcquireFunctionArgs = {
 			Delay = 0.5,
 			DropFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesSisyphusDropPresentation",
 			NotRequiredPickup = false,
 			ForceToValidLocation = true,
 			RunProgressUpgradeEligible = true,
-			DestinationId = 370001,
+			ModsNikkelMHadesBiomesPreferredDestinationId = 370001,
 			Range = 0,
 			Force = 350,
 			UpwardForce = 600,
@@ -145,13 +145,13 @@ local newTraitData = {
 		GameStateRequirements = {
 			NamedRequirements = { "StackUpgradeLegal", },
 		},
-		AcquireFunctionName = "GiveRandomConsumables",
+		AcquireFunctionName = _PLUGIN.guid .. "." .. "GiveRandomConsumablesWithDynamicDestinationId",
 		AcquireFunctionArgs = {
 			Delay = 0.5,
 			DropFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesSisyphusDropPresentation",
 			NotRequiredPickup = true,
 			ForceToValidLocation = true,
-			DestinationId = 370001,
+			ModsNikkelMHadesBiomesPreferredDestinationId = 370001,
 			Range = 0,
 			UpwardForceMin = 650,
 			UpwardForceMax = 750,
@@ -180,13 +180,13 @@ local newTraitData = {
 			ScaleKeys = { { "AcquireFunctionArgs", "LootOptions", 1, "Overrides", "AddMaxHealth" } },
 			AsInt = true,
 		},
-		AcquireFunctionName = "GiveRandomConsumables",
+		AcquireFunctionName = _PLUGIN.guid .. "." .. "GiveRandomConsumablesWithDynamicDestinationId",
 		AcquireFunctionArgs = {
 			Delay = 0.5,
 			DropFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesSisyphusDropPresentation",
 			NotRequiredPickup = true,
 			ForceToValidLocation = true,
-			DestinationId = 370001,
+			ModsNikkelMHadesBiomesPreferredDestinationId = 370001,
 			Range = 0,
 			Force = 350,
 			UpwardForce = 600,
@@ -224,13 +224,13 @@ local newTraitData = {
 			ScaleKeys = { { "AcquireFunctionArgs", "LootOptions", 1, "Overrides", "AddMaxMana" } },
 			AsInt = true,
 		},
-		AcquireFunctionName = "GiveRandomConsumables",
+		AcquireFunctionName = _PLUGIN.guid .. "." .. "GiveRandomConsumablesWithDynamicDestinationId",
 		AcquireFunctionArgs = {
 			Delay = 0.5,
 			DropFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesSisyphusDropPresentation",
 			NotRequiredPickup = true,
 			ForceToValidLocation = true,
-			DestinationId = 370001,
+			ModsNikkelMHadesBiomesPreferredDestinationId = 370001,
 			Range = 0,
 			Force = 350,
 			UpwardForce = 600,
@@ -271,13 +271,13 @@ local newTraitData = {
 		GameStateRequirements = {
 			NamedRequirements = { "TalentLegal" },
 		},
-		AcquireFunctionName = "GiveRandomConsumables",
+		AcquireFunctionName = _PLUGIN.guid .. "." .. "GiveRandomConsumablesWithDynamicDestinationId",
 		AcquireFunctionArgs = {
 			Delay = 0.5,
 			DropFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesSisyphusDropPresentation",
 			NotRequiredPickup = true,
 			ForceToValidLocation = true,
-			DestinationId = 370001,
+			ModsNikkelMHadesBiomesPreferredDestinationId = 370001,
 			Range = 0,
 			Force = 350,
 			UpwardForce = 600,
@@ -332,7 +332,6 @@ local newTraitData = {
 				Value = 1,
 			},
 		},
-		-- Otherwises crashes the boon info screen as it doesn't have any logic to properly parse SumOf
 		BoonInfoIgnoreRequirements = true,
 		AcquireFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesEurydiceBuff",
 		AcquireFunctionArgs = {
@@ -366,7 +365,7 @@ local newTraitData = {
 			NamedRequirements = { "StackUpgradeLegal", },
 		},
 		AcquireFunctionArgs = {
-			FunctionName = "AddStackToTraits",
+			FunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesAddStackToTraits",
 			NumTraits = 3,
 			NumStacks = 2,
 			ReportValues = {
@@ -392,8 +391,8 @@ local newTraitData = {
 		RarityLevels = {
 			Common = { Multiplier = 1 },
 			Rare = { Multiplier = 1 },
-			Epic = { Multiplier = 4/3 },
-			Heroic = { Multiplier = 4/3 },
+			Epic = { Multiplier = 4 / 3 },
+			Heroic = { Multiplier = 4 / 3 },
 		},
 		ModsNikkelMHadesBiomesDreamRunScaling = {
 			ScaleKeys = { { "RemainingUses" } },
@@ -498,6 +497,15 @@ local newTraitData = {
 			Epic = { Multiplier = 1 },
 			Heroic = { Multiplier = 1.2 },
 		},
+		GameStateRequirements = {
+			{
+				Path = { "CurrentRun", "Hero", "MaxHealth" },
+				Comparison = "<=",
+				ValuePath = { "CurrentRun", "Hero", "MaxMana" },
+			},
+		},
+		ModsNikkelMHadesBiomesCustomCodexRequirementsText =
+		"ModsNikkelMHadesBiomes_BoonInfoRequirements_PatroclusGainMaxHealthMinMana",
 		ModsNikkelMHadesBiomesDreamRunScaling = {
 			ScaleKeys = { { "AcquireFunctionArgs", "AddMaxHealth" }, { "AcquireFunctionArgs", "AddMaxMana" } },
 			AsInt = true,
@@ -527,6 +535,15 @@ local newTraitData = {
 	ModsNikkelMHadesBiomesGainMinHealthMaxMana = {
 		InheritFrom = { "ModsNikkelMHadesBiomesGainMaxHealthMinMana", },
 		Icon = "Boon_Patroclus_05",
+		GameStateRequirements = {
+			{
+				Path = { "CurrentRun", "Hero", "MaxHealth" },
+				Comparison = ">",
+				ValuePath = { "CurrentRun", "Hero", "MaxMana" },
+			},
+		},
+		ModsNikkelMHadesBiomesCustomCodexRequirementsText =
+		"ModsNikkelMHadesBiomes_BoonInfoRequirements_PatroclusGainMinHealthMaxMana",
 		AcquireFunctionArgs = {
 			FunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesPatroclusAddMaxHealthMana",
 			AddMaxHealth = 25,
@@ -806,6 +823,7 @@ local newTraitData = {
 		ShowInHUD = true,
 		Icon = "Boon_Orpheus_LamentOfOrpheus",
 		BoonInfoIgnoreRequirements = true,
+		ModsNikkelMHadesBiomesCustomCodexRequirementsText = "ModsNikkelMHadesBiomes_BoonInfoRequirements_OrpheusSong1",
 		GameStateRequirements = {
 			NamedRequirements = { "ModsNikkelMHadesBiomesOrpheusSingsAgainRoomStart", },
 		},
@@ -826,6 +844,9 @@ local newTraitData = {
 					Cooldown = "Cooldown",
 				},
 			},
+		},
+		StatLines = {
+			"ModsNikkelMHadesBiomesOrpheusOrpheusSong1BoonCooldownStatDisplay",
 		},
 		ExtractValues = {
 			{
@@ -862,9 +883,10 @@ local newTraitData = {
 		ShowInHUD = true,
 		Icon = "Boon_Orpheus_HymnToZagreus",
 		BoonInfoIgnoreRequirements = true,
+		ModsNikkelMHadesBiomesCustomCodexRequirementsText = "ModsNikkelMHadesBiomes_BoonInfoRequirements_OrpheusSong2",
 		GameStateRequirements = {
 			{
-				PathTrue = { "GameState", "TextLinesRecord", "OrpheusSingsAgain_02" },
+				PathTrue = { "GameState", "TextLinesRecord", "OrpheusSingsAgain02" },
 			},
 		},
 		AcquireFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesOrpheusBuff",
@@ -890,7 +912,7 @@ local newTraitData = {
 			Common = { Multiplier = 1 },
 			Rare = { Multiplier = 1.2 },
 			Epic = { Multiplier = 1.4 },
-			Heroic = { Multiplier = 25/15 },
+			Heroic = { Multiplier = 25 / 15 },
 		},
 		ModsNikkelMHadesBiomesDreamRunScaling = {
 			ScaleKeys = { { "ModsNikkelMHadesBiomesMaxStoreDiscount" } },
@@ -923,6 +945,8 @@ local newTraitData = {
 		InheritFrom = { "ModsNikkelMHadesBiomesBaseOrpheus" },
 		Icon = "Boon_Orpheus_GoodRiddance",
 		BoonInfoIgnoreRequirements = true,
+		ModsNikkelMHadesBiomesCustomCodexRequirementsText =
+		"ModsNikkelMHadesBiomes_BoonInfoRequirements_OrpheusEurydiceSong1",
 		GameStateRequirements = {
 			{
 				Path = { "GameState", "TextLinesRecord" },

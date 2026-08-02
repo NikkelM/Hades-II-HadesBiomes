@@ -1,4 +1,33 @@
 -- #region Run Start Logic
+-- Lock the escape chaos gate if we don't allow modded runs yet for any reason
+function mod.UpdateChaosGateEscapeDoorAvailability(source, args)
+	args = args or {}
+	args.EscapeDoorIds = args.EscapeDoorIds or { source.ObjectId }
+	local escapeDoorId = args.EscapeDoorIds[1]
+	local escapeDoor = game.MapState.ActiveObstacles[escapeDoorId]
+
+	if escapeDoor == nil then
+		return
+	end
+
+	-- Check if the Arcana doesn't allow using any door
+	mod.ModsNikkelMHadesBiomesUpdateEscapeDoorForLimitGraspShrineUpgrade(source, args)
+
+	-- Don't allow using the gate if the player hasn't met Apollo yet (first boon you get in a vanilla run)
+	if not game.GameState.TextLinesRecord["ApolloFirstPickUp"] then
+		game.thread(function()
+			-- If Apollo hasn't been met yet, the player needs to spawn by the Altar, so this wait isn't visible
+			game.wait(1)
+			mod.LockHadesRunStartDoor(escapeDoor,
+				{
+					ShouldLock = true,
+					UseText = "LimitGraspShrineUpgradeEscapeDoorClosed",
+					OnUsedFunctionName = "TechTestEscapeDoorClosed"
+				})
+		end)
+	end
+end
+
 -- Lock the escape chaos gate if the shrine upgrade does not allow starting a run yet
 function mod.ModsNikkelMHadesBiomesUpdateEscapeDoorForLimitGraspShrineUpgrade(source, args)
 	args = args or {}

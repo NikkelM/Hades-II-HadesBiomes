@@ -41,7 +41,7 @@ function mod.ExitToHadesPresentation(currentRun, exitDoor)
 
 	LockCamera({ Id = cameraId, EaseIn = 0.04, EaseOut = 0.275, Duration = 10 })
 	game.wait(1.75)
-	FadeOut({ Color = game.Color.White, Duration = 2 })
+	FadeOut({ Color = mod.ExitToHadesFadeColour, Duration = 2 })
 	game.wait(1.0)
 
 	SetUnitProperty({ Property = "StartGraphic", Value = nil, DestinationId = currentRun.Hero.ObjectId })
@@ -73,7 +73,7 @@ function mod.RoomEntranceHades(currentRun, currentRoom)
 	local roomIntroSequenceDuration = currentRoom.IntroSequenceDuration or game.RoomData.BaseRoom.IntroSequenceDuration or
 			0.0
 
-	FadeOut({ Color = game.Color.White, Duration = 0 })
+	FadeOut({ Color = mod.ExitToHadesFadeColour, Duration = 0 })
 	AdjustFullscreenBloom({ Name = "LightningStrike", Duration = 0 })
 	AdjustFullscreenBloom({ Name = "WrathPhase2", Duration = 0.1, Delay = 0 })
 	AdjustRadialBlurStrength({ Fraction = 1.5, Duration = 0 })
@@ -221,6 +221,9 @@ function mod.HadesPhaseTransition(boss, currentRun, aiStage)
 	if boss.IsInvisible then
 		boss.IsInvisible = false
 
+		-- Custom start
+		SetTargetable({ Id = boss.ObjectId })
+		-- Custom end
 		SetLifeProperty({ DestinationId = boss.ObjectId, Property = "InvulnerableFx", Value = "Invincibubble_Hades" })
 		SetAlpha({ Id = boss.ObjectId, Fraction = 1.0 })
 	end
@@ -251,17 +254,7 @@ function mod.HadesPhaseTransition(boss, currentRun, aiStage)
 
 	SetAnimation({ Name = "HadesBattleKnockDown", DestinationId = boss.ObjectId })
 	SetGoalAngle({ Id = boss.ObjectId, Angle = 270 })
-	mod.ClearShadeWeapons()
 	game.thread(game.LastKillPresentation, boss)
-
-	local ammoIds = GetIdsByType({ Name = "LobAmmoPack" })
-	SetObstacleProperty({ Property = "Magnetism", Value = 3000, DestinationIds = ammoIds })
-	SetObstacleProperty({
-		Property = "MagnetismSpeedMax",
-		Value = currentRun.Hero.LeaveRoomAmmoMangetismSpeed,
-		DestinationIds = ammoIds
-	})
-	StopAnimation({ DestinationIds = ammoIds, Name = "AmmoReturnTimer" })
 
 	-- Do it again, just in case there was some desync
 	mod.DestroyHadesFightObstacles()
@@ -272,8 +265,10 @@ function mod.HadesPhaseTransition(boss, currentRun, aiStage)
 
 	game.wait(1.25, boss.AIThreadName)
 
-	game.ProcessTextLines(boss.BossPresentationNextStageTextLineSets)
-	game.ProcessTextLines(boss.BossPresentationNextStageRepeatableTextLineSets)
+	if not game.CurrentRun.IsDreamRun then
+		game.ProcessTextLines(boss.BossPresentationNextStageTextLineSets)
+		game.ProcessTextLines(boss.BossPresentationNextStageRepeatableTextLineSets)
+	end
 
 	if game.GameState.TextLinesRecord["LordHadesR1FirstWin"] then
 		game.wait(0.5, game.RoomThreadName)
@@ -281,8 +276,10 @@ function mod.HadesPhaseTransition(boss, currentRun, aiStage)
 		game.wait(2.0, game.RoomThreadName)
 	end
 
-	if not mod.PlayRandomRemainingTextLines(boss, boss.BossPresentationNextStageTextLineSets) then
-		mod.PlayRandomRemainingTextLines(boss, boss.BossPresentationNextStageRepeatableTextLineSets)
+	if not game.CurrentRun.IsDreamRun then
+		if not mod.PlayRandomRemainingTextLines(boss, boss.BossPresentationNextStageTextLineSets) then
+			mod.PlayRandomRemainingTextLines(boss, boss.BossPresentationNextStageRepeatableTextLineSets)
+		end
 	end
 
 	game.wait(1.0, boss.AIThreadName)
@@ -519,20 +516,6 @@ function mod.GetFinalBossExitDoorUseText(door)
 	door.CanBeRerolled = false
 	return door.UnlockedUseText
 end
-
-modutil.mod.Path.Wrap("AttemptReroll", function(base, run, target)
-	-- The reroll function for this door isn't an actual reroll, but lets us enter the Surface instead
-	if target ~= nil and target.ModsNikkelMHadesBiomes_IsSurfaceDoor then
-		target.ModsNikkelMHadesBiomes_ProceedToSurface = true
-		if target.Room == nil then
-			target.Room = game.CreateRoom(game.RoomData["E_Intro"])
-		end
-		game.LeaveRoom(game.CurrentRun, target)
-		return
-	end
-
-	return base(run, target)
-end)
 
 function mod.SurfaceExitIncantationPresentation(usee, args, user)
 	args = args or {}
@@ -968,7 +951,7 @@ function mod.DoHadesAssistPresentation(assistData, enemyId)
 	CreateAnimation({
 		Name = "WrathPresentationBottomDivider",
 		DestinationId = wrathStreakFront,
-		Scale = "1.25",
+		Scale = 1.25,
 		Color = assistData.AssistPresentationColor or game.Color.Red
 	})
 

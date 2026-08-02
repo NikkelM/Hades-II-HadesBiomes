@@ -27,7 +27,7 @@ local challengeRoomModifications = {
 		RoomSetName = "Challenge",
 
 		LoadModdedPackages = { "RoomManagerModsNikkelMHadesBiomes", "NikkelM-HadesBiomesFxModded", "NikkelM-HadesBiomesGUIModded", "ModsNikkelMHadesBiomesGUIOriginal", },
-		LoadModdedAudioBanks = { "EnemiesModsNikkelMHadesBiomes", "SoundsModsNikkelMHadesBiomes", "ModsNikkelMHadesBiomesMusicModded", },
+		LoadModdedAudioBanks = { "EnemiesModsNikkelMHadesBiomes", "SoundsModsNikkelMHadesBiomes", "ModsNikkelMHadesBiomesMusicModded", "ModsNikkelMHadesBiomesAmbienceModded", },
 
 		SaveProfileLocationText = "ModsNikkelMHadesBiomesLocation_Hades_Challenge",
 		DreamSaveProfileLocationText = "ModsNikkelMHadesBiomesLocation_Hades_Erebus_Dream",
@@ -95,7 +95,7 @@ local charonRoomModifications = {
 		RoomSetName = "Challenge",
 		-- BiomeG for some of the SFX for Charon's attacks
 		LoadModdedPackages = { "RoomManagerModsNikkelMHadesBiomes", "NikkelM-HadesBiomesFxModded", "NikkelM-HadesBiomesGUIModded", "ModsNikkelMHadesBiomesGUIOriginal", },
-		LoadModdedAudioBanks = { "EnemiesModsNikkelMHadesBiomes", "SoundsModsNikkelMHadesBiomes", "ModsNikkelMHadesBiomesMusicModded", "ModsNikkelMHadesBiomesMusicErebusModded", },
+		LoadModdedAudioBanks = { "EnemiesModsNikkelMHadesBiomes", "SoundsModsNikkelMHadesBiomes", "ModsNikkelMHadesBiomesMusicModded", "ModsNikkelMHadesBiomesMusicErebusModded", "ModsNikkelMHadesBiomesAmbienceModded", },
 		LoadVanillaAudioBanks = { "BiomeG", },
 
 		SaveProfileLocationText = "ModsNikkelMHadesBiomesLocation_Hades_Challenge",
@@ -109,6 +109,8 @@ local charonRoomModifications = {
 		-- Started manually through the text lines
 		SecretMusic = "/Music/BlankMusicCue",
 		NextRoomResumeMusic = true,
+
+		SkipTimedDropResources = true,
 
 		UnthreadedEvents = {
 			[1] = {
@@ -140,7 +142,7 @@ local surfaceRoomModifications = {
 		RoomSetName = "Surface",
 		LoadModdedPackages = { "RoomManagerModsNikkelMHadesBiomes", "NikkelM-HadesBiomesFxModded", "NikkelM-HadesBiomesGUIModded", "ModsNikkelMHadesBiomesGUIOriginal", },
 		LoadModdedVoiceBanks = { "Modsnikkelmhadesbiomescharon", "Modsnikkelmhadesbiomespersephone", "Modsnikkelmhadesbiomeszagreushome", "ZagreusField" },
-		LoadModdedAudioBanks = { "ModsNikkelMHadesBiomesMusicModded", "ModsNikkelMHadesBiomesMusicSurfaceModded", },
+		LoadModdedAudioBanks = { "ModsNikkelMHadesBiomesMusicModded", "ModsNikkelMHadesBiomesMusicSurfaceModded", "ModsNikkelMHadesBiomesAmbienceModded", },
 		EntranceFunctionName = _PLUGIN.guid .. "." .. "ReturnRoomEntrance",
 		ExitFunctionName = _PLUGIN.guid .. "." .. "ReturnRoomExit",
 		UnthreadedEvents = {

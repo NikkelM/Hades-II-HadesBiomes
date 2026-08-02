@@ -1,50 +1,3 @@
--- Exact same as the original, but with a different trigger animation (for the Z-Offset)
-function mod.ModsNikkelMHadesBiomesDamageEchoTrigger(enemy, effectName, damageMultiplier, additiveDamageMultiplier,
-																										 cooldown)
-	if enemy and not enemy.IsDead and game.IsEmpty(enemy.InvulnerableFlags) then
-		CreateAnimation({
-			Name = "ModsNikkelMHadesBiomesZeusEchoDebuffSwell",
-			DestinationId = enemy.ObjectId,
-			Scale = enemy.EffectVfxScale
-		})
-		additiveDamageMultiplier = additiveDamageMultiplier or 1
-		enemy.QueuedDamageMultipliers[game.EffectData[effectName].ProjectileName] = additiveDamageMultiplier
-
-		game.thread(game.CreateZeusBolt, {
-			SourceId = game.CurrentRun.Hero.ObjectId,
-			TargetId = enemy.ObjectId,
-			Range = 1,
-			SeekTarget = true,
-			ProjectileName = game.EffectData[effectName].ProjectileName,
-			DamageMultiplier = damageMultiplier,
-			Delay = 0.45,
-			Count = 1
-		})
-		ApplyEffect({
-			DestinationId = enemy.ObjectId,
-			Id = game.CurrentRun.Hero.ObjectId,
-			EffectName = "DamageEchoVulnerabilityPlaceholder",
-			DataProperties = game.EffectData.DamageEchoVulnerabilityPlaceholder.DataProperties
-		})
-		ClearEffect({ Id = enemy.ObjectId, Name = effectName })
-		if cooldown then
-			AddEffectBlock({ Id = enemy.ObjectId, Name = effectName })
-			game.thread(game.RemoveEffectBlockOnDelay, enemy.ObjectId, cooldown, effectName)
-			game.thread(game.RemoveEffectOnDelay, enemy.ObjectId, cooldown, "DamageEchoVulnerabilityPlaceholder")
-		end
-	end
-end
-
-modutil.mod.Path.Wrap("DamageEchoTrigger",
-	function(base, enemy, effectName, damageMultiplier, additiveDamageMultiplier, cooldown)
-		if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and enemy.ModsNikkelMHadesBiomesIsModdedEnemy and not enemy.ModsNikkelMHadesBiomesOriginalHadesTwoEnemy then
-			mod.ModsNikkelMHadesBiomesDamageEchoTrigger(enemy, effectName, damageMultiplier, additiveDamageMultiplier,
-				cooldown)
-		else
-			return base(enemy, effectName, damageMultiplier, additiveDamageMultiplier, cooldown)
-		end
-	end)
-
 modutil.mod.Path.Wrap("HitByFreezeWeapon", function(base, victim)
 	if victim and victim.ObjectId then
 		-- So the player doesn't slide while sprinting, brings them to a smooth stop
@@ -108,3 +61,12 @@ modutil.mod.Path.Wrap("ClearEffect", function(base, args)
 		end
 	end
 end)
+
+-- Returns either the default offset, or a per-enemy offset defined in the enemyModifications
+function mod.GetModdedEnemyEffectVfxOffsetZ(victim, vfx)
+	if vfx == nil or not mod.HeadMarkerEffectVfxes[vfx] then
+		return nil
+	end
+
+	return (victim and victim.ModsNikkelMHadesBiomesEffectVfxOffsetZ) or mod.DefaultModdedEnemyHeadVfxOffsetZ
+end

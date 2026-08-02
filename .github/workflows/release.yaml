@@ -1,5 +1,5 @@
 name: Release
-run-name: ${{ format('{0} {1}', (inputs.is-dry-run && 'Dry-run') || 'GitHub Release', inputs.tag) }}
+run-name: ${{ format('{0} {1}', ((inputs.is-dry-run && 'Dry-run') || inputs.is-github-release-only-run && 'GitHub Release') || 'Release', inputs.tag) }}
 
 on:
   workflow_dispatch:
@@ -15,10 +15,10 @@ on:
         description: "Dry-run (do not publish, only test build)"
         type: boolean
         default: true
-      # is-github-release-only-run:
-      #   description: "Release to GitHub only (do not upload to Thunderstore). Do not tick Dry-run for this to work"
-      #   type: boolean
-      #   default: true
+      is-github-release-only-run:
+        description: "Release to GitHub only (do not upload to Thunderstore). Do not tick Dry-run for this to work"
+        type: boolean
+        default: true
 
 permissions:
   contents: write # required for pushing to the repository and creating releases
@@ -27,10 +27,11 @@ env:
   thunderstore-config: thunderstore.toml
   build-dir: build
   artifact-content-type: application/zip
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
 
 jobs:
   release:
-    name: ${{ format('{0} {1}', (inputs.is-dry-run && 'Dry-run') || 'GitHub Release', inputs.tag) }}
+    name: ${{ format('{0} {1}', ((inputs.is-dry-run && 'Dry-run') || inputs.is-github-release-only-run && 'GitHub Release') || 'Release', inputs.tag) }}
     runs-on: ubuntu-latest
     steps:
       - name: Check input tag format
@@ -41,7 +42,7 @@ jobs:
           fi
 
       - name: Checkout files
-        uses: actions/checkout@1d96c772d19495a3b5c517cd2bc0cb401ea0529f
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
           lfs: true
 
@@ -64,18 +65,11 @@ jobs:
           echo "artifact-path=${{ env.build-dir }}/${ARTIFACT_NAME}" >> "$GITHUB_ENV"
 
       - name: Upload artifact to workflow
-        uses: actions/upload-artifact@65462800fd760344b1a7b4382951275a0abb4808
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
         with:
           name: ${{ env.artifact-name }}
           path: ${{ env.artifact-path }}
           retention-days: 1
-
-          # Disabled on this repository, since we sometimes get a timeout when publishing the large package directly, which will fail the workflow and not publish the GitHub release
-      # - name: Publish package
-      #   if: ${{ !inputs.is-dry-run && !inputs.is-github-release-only-run }}
-      #   env:
-      #     TCLI_AUTH_TOKEN: ${{ secrets.TCLI_AUTH_TOKEN }}
-      #   run: tcli publish --file ${{ env.artifact-path }}
 
       - name: Tag and push to repository
         if: ${{ !inputs.is-dry-run }}
@@ -89,7 +83,15 @@ jobs:
 
       - name: Create Release notes
         run: |
-          echo "## What's Changed
+          echo "# Zagreus' Journey
+
+          Thank you for checking out the Release! I highly recommend that you get this mod from [Thunderstore](https://thunderstore.io/c/hades-ii/p/NikkelM/Zagreus_Journey/) and install it directly through the [r2modman](https://thunderstore.io/c/hades-ii/p/ebkr/r2modman/) client.
+
+          For general questions, please take a look at the [FAQ](https://github.com/NikkelM/Hades-II-HadesBiomes/wiki), for help with installation refer to [this wiki page](https://github.com/NikkelM/Hades-II-HadesBiomes/wiki/Installation-&-Uninstallation).
+
+          Please directly leave bug reports as a [new issue](https://github.com/NikkelM/Hades-II-HadesBiomes/issues/new?template=bug_report.md), or [start a discussion](https://github.com/NikkelM/Hades-II-HadesBiomes/discussions) for general feedback, suggestions and questions.
+
+          ## What's Changed
 
           " > RELEASE_NOTES.md
           sed -n '/<!--Releasenotes start-->/,/<!--Releasenotes end-->/p' CHANGELOG.md >> RELEASE_NOTES.md
@@ -119,3 +121,20 @@ jobs:
           asset_content_type: ${{ env.artifact-content-type }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Publish package to Thunderstore
+        if: ${{ !inputs.is-dry-run && !inputs.is-github-release-only-run }}
+        env:
+          TCLI_AUTH_TOKEN: ${{ secrets.TCLI_AUTH_TOKEN }}
+        run: tcli publish --file ${{ env.artifact-path }}
+
+      - name: Publish package to Nexus Mods
+        if: ${{ !inputs.is-dry-run && !inputs.is-github-release-only-run }}
+        uses: Nexus-Mods/upload-action@0bf670d75d46988c176c9bfacc94ca0144e0fe3f # v1.0.0-beta.7
+        with:
+          api_key: ${{ secrets.NEXUSMODS_API_KEY }}
+          file_group_id: ${{ vars.NEXUSMODS_FILE_GROUP_ID }}
+          filename: ${{ env.artifact-path }}
+          version: ${{ inputs.tag }}
+          display_name: Zagreus' Journey
+          file_category: main

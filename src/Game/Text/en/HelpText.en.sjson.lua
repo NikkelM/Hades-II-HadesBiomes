@@ -1895,6 +1895,16 @@ local newData = {
 		DisplayName =
 		"{!Icons.QuestProgressComplete} Defeat {$Keywords.CharCharon} with the Aspect of Charon",
 	},
+	{
+		Id = "ModsNikkelMHadesBiomes_AresEarnKills",
+		DisplayName = "{!Icons.ModsNikkelMHadesBiomesRunHistoryDoorLarge} War-God's Bloodlust ",
+		Description =
+		"The daughter of the god of the dead shall someday dream of single-handedly vanquishing entire legions of the dead, such that even the god of war cannot help but be impressed.",
+	},
+	{
+		Id = "AresKillQuestComplete",
+		DisplayName = "Slay 10,000 Foes or More in the Nightmare Realm, Then Seek Ares",
+	},
 	-- #endregion
 
 	-- #region Chaos Trials/Bounties
@@ -1972,6 +1982,33 @@ local newData = {
 		DisplayName = "Trial of Heavens",
 	},
 	-- #endregion
+	-- #endregion
+
+	-- #region Codex
+	{
+		Id = "ModsNikkelMHadesBiomes_BoonInfoRequirements_CustomHeader",
+		DisplayName = "Requires the Following:",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_BoonInfoRequirements_PatroclusGainMaxHealthMinMana",
+		DisplayName = "{!Icons.Bullet}Have More {!Icons.ManaUp} Max Magick Than {!Icons.HealthUp} Max Life",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_BoonInfoRequirements_PatroclusGainMinHealthMaxMana",
+		DisplayName = "{!Icons.Bullet}Have More {!Icons.HealthUp} Max Life Than {!Icons.ManaUp} Max Magick",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_BoonInfoRequirements_OrpheusSong1",
+		DisplayName = "{!Icons.Bullet}Hear Orpheus Sing Again",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_BoonInfoRequirements_OrpheusSong2",
+		DisplayName = "{!Icons.Bullet}Hear Orpheus Sing a Hymn to Your Brother",
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_BoonInfoRequirements_OrpheusEurydiceSong1",
+		DisplayName = "{!Icons.Bullet}Hear Orpheus Sing a Farewell to His Muse",
+	},
 	-- #endregion
 }
 

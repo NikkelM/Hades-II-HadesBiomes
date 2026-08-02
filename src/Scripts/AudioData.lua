@@ -384,6 +384,7 @@ mod.ReplaceVoiceLineRequirements(game.GlobalVoiceLines.CombatBeginsVoiceLines, "
 		IsNone = { "Tartarus", "Asphodel", "Elysium", "Styx", "Challenge" },
 	},
 })
+table.insert(game.GlobalVoiceLines.CombatBeginsVoiceLines[2].GameStateRequirements[2].IsNone, "RoomOpening")
 
 -- Prevent "Death to Chronos" salute voiceline in modded runs
 mod.ReplaceVoiceLineRequirements(game.GlobalVoiceLines.SaluteVoiceLines, "/VO/Melinoe_1700", {

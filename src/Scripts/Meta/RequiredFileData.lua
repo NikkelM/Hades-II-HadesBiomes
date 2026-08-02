@@ -8,6 +8,7 @@ mod.AudioFileMappings = {
 }
 
 -- Voiceover .txt and .fsb file names
+-- Mapped H1 cue names <-> Modded cue names for localization mapping support
 -- The file name must be the same as the event names within the file
 mod.VoiceoverFileNames = {
 	Alecto = "Alecto",
@@ -15,15 +16,19 @@ mod.VoiceoverFileNames = {
 	HadesField = "HadesField",
 	MegaeraField = "MegaeraField",
 	Minotaur = "Minotaur",
-	Modsnikkelmhadesbiomeschaos = "Modsnikkelmhadesbiomeschaos",
-	Modsnikkelmhadesbiomescharon = "Modsnikkelmhadesbiomescharon",
-	Modsnikkelmhadesbiomeshermes = "Modsnikkelmhadesbiomeshermes",
-	Modsnikkelmhadesbiomesintercom = "Modsnikkelmhadesbiomesintercom",
-	Modsnikkelmhadesbiomesmegaerahome = "Modsnikkelmhadesbiomesmegaerahome",
-	Modsnikkelmhadesbiomespersephone = "Modsnikkelmhadesbiomespersephone",
-	Modsnikkelmhadesbiomesskelly = "Modsnikkelmhadesbiomesskelly",
-	Modsnikkelmhadesbiomesstoryteller = "Modsnikkelmhadesbiomesstoryteller",
-	Modsnikkelmhadesbiomeszagreushome = "Modsnikkelmhadesbiomeszagreushome",
+	Ares = "Modsnikkelmhadesbiomesares",
+	Artemis = "Modsnikkelmhadesbiomesartemis",
+	Athena = "Modsnikkelmhadesbiomesathena",
+	Chaos = "Modsnikkelmhadesbiomeschaos",
+	Charon = "Modsnikkelmhadesbiomescharon",
+	Dionysus = "Modsnikkelmhadesbiomesdionysus",
+	Hermes = "Modsnikkelmhadesbiomeshermes",
+	Intercom = "Modsnikkelmhadesbiomesintercom",
+	MegaeraHome = "Modsnikkelmhadesbiomesmegaerahome",
+	Persephone = "Modsnikkelmhadesbiomespersephone",
+	Skelly = "Modsnikkelmhadesbiomesskelly",
+	Storyteller = "Modsnikkelmhadesbiomesstoryteller",
+	ZagreusHome = "Modsnikkelmhadesbiomeszagreushome",
 	Orpheus = "Orpheus",
 	Patroclus = "Patroclus",
 	Sisyphus = "Sisyphus",
@@ -656,14 +661,13 @@ mod.MapFileMappings = {
 	["B_Combat21"] = "X_Combat21",
 	["B_Combat22"] = "X_Combat22",
 	["B_Story01"] = "X_Story01",
-	-- Elysium - C_ is also used for Zagreus/Charon fight in Hades II
+	-- Elysium - C_ is also used for Zagreus secret boss fight in Hades II
 	["C_Intro"] = "Y_Intro",
 	["C_PreBoss01"] = "Y_PreBoss01",
 	["C_Boss01"] = "Y_Boss01",
 	["C_PostBoss01"] = "Y_PostBoss01",
 	["C_MiniBoss01"] = "Y_MiniBoss01",
 	["C_MiniBoss02"] = "Y_MiniBoss02",
-	["C_MiniBoss03"] = "Y_MiniBoss03",
 	["C_Shop01"] = "Y_Shop01",
 	["C_Story01"] = "Y_Story01",
 	["C_Reprieve01"] = "Y_Reprieve01",
@@ -673,7 +677,6 @@ mod.MapFileMappings = {
 	["C_Combat04"] = "Y_Combat04",
 	["C_Combat05"] = "Y_Combat05",
 	["C_Combat06"] = "Y_Combat06",
-	["C_Combat07"] = "Y_Combat07",
 	["C_Combat08"] = "Y_Combat08",
 	["C_Combat09"] = "Y_Combat09",
 	["C_Combat10"] = "Y_Combat10",
@@ -681,7 +684,6 @@ mod.MapFileMappings = {
 	["C_Combat12"] = "Y_Combat12",
 	["C_Combat13"] = "Y_Combat13",
 	["C_Combat14"] = "Y_Combat14",
-	["C_Combat15"] = "Y_Combat15",
 	-- Styx
 	["D_Intro"] = "D_Intro",
 	["D_Hub"] = "D_Hub",
@@ -728,6 +730,13 @@ mod.MapFileMappings = {
 	["RoomChallenge04"] = "RoomChallenge04",
 	-- Charon
 	["CharonFight01"] = "CharonFight01",
+}
+
+-- Previously installed with the mod, but no longer - if uninstalling, ensure these are removed properly as well
+mod.UninstallOnlyMapFileMappings = {
+	["C_MiniBoss03"] = "Y_MiniBoss03",
+	["C_Combat07"] = "Y_Combat07",
+	["C_Combat15"] = "Y_Combat15",
 }
 
 -- .map_text files that should be copied from the plugins_data folder instead of the Hades installation, as they have modifications from the original

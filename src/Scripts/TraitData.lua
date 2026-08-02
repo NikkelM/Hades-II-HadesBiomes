@@ -11,7 +11,7 @@ table.insert(game.TraitData.TemporaryForcedSecretDoorTrait.GameStateRequirements
 -- Enable Hades' final boss damage boon in modded runs
 table.insert(game.TraitData.HadesPreDamageBoon.EncounterPreDamage.ValidRooms, "D_Boss01")
 -- Point Dream Run text to modded versions that include Hades as a valid target
-if not config.z_ExcludeFromDreamDives then
+if not config.gameplay.z_ExcludeFromDreamDives then
 	game.TraitData.HadesPreDamageBoon.CustomNameWithRequirements.Name =
 	"ModsNikkelMHadesBiomes_HadesPreDamageBoon_DreamRun"
 	game.TraitData.HadesPreDamageBoon.DreamRunStatLines = { "ModsNikkelMHadesBiomes_ChronosDamageStatDisplay_DreamRun" }
@@ -30,4 +30,11 @@ game.TraitData.ModsNikkelMHadesBiomesPlayerScaleTrait = {
 		Args = { ScaleMultiplier = mod.ModdedPlayerScaleMultiplier },
 		RunOnce = false,
 	},
+}
+
+-- Indicator boon shown in the trait tray while Goddess Mode is active during a modded run
+-- Mirrors vanilla's God Mode indicator (GodModeTrait), it has no gameplay effect of its own, the health/armour scaling is disabled in RoomLogic
+game.TraitData.ModsNikkelMHadesBiomesGoddessModeTrait = {
+	Icon = "GodMode",
+	HideInRunHistory = true,
 }

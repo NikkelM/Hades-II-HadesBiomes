@@ -1520,17 +1520,34 @@ mod.ZagreusFieldVoicelines = {
 	Modsnikkelmhadesbiomeszagreushome_2804 = true, -- ZagreusHome_2804
 	-- #endregion
 
-	-- #region Skelly/Skelly Statues
+	-- #region Skelly
+	-- Skelly Statues
 	Modsnikkelmhadesbiomeszagreushome_0678 = true, -- ZagreusHome_0678
 	Modsnikkelmhadesbiomeszagreushome_0681 = true, -- ZagreusHome_0681
 	Modsnikkelmhadesbiomeszagreushome_0682 = true, -- ZagreusHome_0682
 	Modsnikkelmhadesbiomeszagreushome_0686 = true, -- ZagreusHome_0686
 	Modsnikkelmhadesbiomeszagreushome_1054 = true, -- ZagreusHome_1054
+	-- God(dess) Mode
+	Modsnikkelmhadesbiomeszagreushome_1506 = true, -- ZagreusHome_1506
 	-- #endregion
 
 	-- #region LootData/Boon pickup/InteractTextLineSets
 	-- #region Chaos/TrialUpgrade
 	ZagreusField_3804 = true,
+	-- #endregion
+
+	-- #region Ares/AresUpgrade
+	ZagreusField_4340 = true,
+	-- #endregion
+
+	-- #region Artemis/ArtemisUpgrade
+	-- ZagreusField_0786 = true, -- ArtemisFirstPickUp, but this cue is disabled
+	ZagreusField_4341 = true,
+	-- #endregion
+
+	-- #region Athena/AthenaUpgrade
+	ZagreusField_0774 = true,
+	ZagreusField_4338 = true,
 	-- #endregion
 	-- #endregion
 }

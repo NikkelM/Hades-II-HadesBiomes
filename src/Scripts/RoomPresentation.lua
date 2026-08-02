@@ -56,13 +56,48 @@ modutil.mod.Path.Wrap("StartRoomPresentation", function(base, currentRun, curren
 			currentRoom)
 	end
 
+	-- #region Fresh file run
+	if mod.NeedsFreshFileMapReload then
+		mod.NeedsFreshFileMapReload = false
+
+		-- Reset the counters from the original room start
+		if currentRun.RoomsEntered and currentRun.RoomsEntered[currentRoom.Name] then
+			currentRun.RoomsEntered[currentRoom.Name] = currentRun.RoomsEntered[currentRoom.Name] - 1
+		end
+		if game.GameState.RoomsEntered and game.GameState.RoomsEntered[currentRoom.Name] then
+			game.GameState.RoomsEntered[currentRoom.Name] = game.GameState.RoomsEntered[currentRoom.Name] - 1
+		end
+
+		-- Destroy any reward preview icons spawned by the aborted first StartRoom to prevent double animations
+		if game.MapState and game.MapState.OfferedExitDoors then
+			for doorId, door in pairs(game.MapState.OfferedExitDoors) do
+				if door.RewardPreviewIconIds then
+					Destroy({ Ids = door.RewardPreviewIconIds })
+					door.RewardPreviewIconIds = nil
+				end
+				if door.RewardPreviewBackingIds then
+					Destroy({ Ids = door.RewardPreviewBackingIds })
+					door.RewardPreviewBackingIds = nil
+				end
+			end
+			game.MapState.OfferedExitDoors = {}
+		end
+
+		local nextRoom = game.ChooseStartingRoom(currentRun, { StartingBiome = "Tartarus" })
+		currentRun.CurrentRoom = game.CreateRoom(game.RoomData["F_Opening01"], { StartingBiome = "F" }) or {}
+		currentRun.CurrentRoom.ExitFunctionName = "FastExitPresentation"
+		game.LeaveRoom(currentRun, { Room = nextRoom })
+		return
+	end
+	-- #endregion
+
 	return base(currentRun, currentRoom, metaPointsAwarded)
 end)
 
 modutil.mod.Path.Wrap("RoomEntrancePortal", function(base, currentRun, currentRoom, args)
 	if currentRun.ModsNikkelMHadesBiomesIsModdedRun and currentRoom.RoomSetName == "Chaos" then
 		-- To make sure we have the room reward preview icon loaded in case the next room is a story room
-		LoadPackages({ Names = { "ModsNikkelMHadesBiomesGUIOriginal" } })
+		LoadPackages({ Name = "ModsNikkelMHadesBiomesGUIOriginal" })
 	end
 
 	return base(currentRun, currentRoom, args)
@@ -278,6 +313,46 @@ function mod.RoomEntranceDropRoomOpening(currentRun, currentRoom, args)
 	game.RoomEntranceDrop(currentRun, currentRoom, args)
 	game.thread(game.RoomOpeningUIDelay)
 end
+
+modutil.mod.Path.Wrap("GatherRoomPresentationObjects", function(base, currentRun, currentRoom)
+	local roomData = game.RoomData[currentRoom.Name] or currentRoom
+
+	-- Ensure the boat always enters from the correct angle/direction in Asphodel (BaseAsphodel sets EntranceDirectionEndIdObstacleName)
+	if roomData.EntranceDirectionEndIdObstacleName ~= nil and not roomData.CardinalEntranceDirection and not roomData.StrictLeftRight and not game.CurrentRun.StoredHeroLocation and not (game.CurrentRun.NextHeroStartPoint ~= nil and game.CurrentRun.NextHeroEndPoint ~= nil) and (currentRoom.HeroStartPoint == nil or currentRoom.HeroEndPoint == nil) then
+		local heroStartIds = GetIdsByType({ Name = "HeroStart" }) or {}
+		table.sort(heroStartIds)
+		local heroEndIds = GetIdsByType({ Name = "HeroEnd" }) or {}
+		table.sort(heroEndIds)
+		local prevRoom = game.GetPreviousRoom(currentRun)
+		local eligibleStartPairs = {}
+		for _, startId in ipairs(heroStartIds) do
+			local endId = GetClosest({ Id = startId, DestinationIds = heroEndIds })
+			-- Direction is measured to the boat move point (H1 parity), not the walk-to HeroEnd point
+			local directionEndId = GetClosest({
+				Id = startId,
+				DestinationIds = GetIdsByType({ Name = roomData.EntranceDirectionEndIdObstacleName })
+			})
+			if directionEndId == nil or directionEndId <= 0 then
+				directionEndId = endId
+			end
+			local entranceAngle = game.GetAngleBetween({ Id = startId, DestinationId = directionEndId }) or 0
+			local entranceDirection = (entranceAngle < 90 or entranceAngle > 270) and "Right" or "Left"
+			if prevRoom == nil or prevRoom.ExitDirection == nil or prevRoom.ExitDirection == entranceDirection then
+				table.insert(eligibleStartPairs, { HeroStartPoint = startId, HeroEndPoint = endId })
+			end
+		end
+		if not game.IsEmpty(eligibleStartPairs) then
+			local chosenPair = game.GetRandomValue(eligibleStartPairs) or {}
+			currentRoom.HeroStartPoint = chosenPair.HeroStartPoint
+			currentRoom.HeroEndPoint = chosenPair.HeroEndPoint
+		else
+			currentRoom.HeroStartPoint = game.GetFirstValue(heroStartIds)
+			currentRoom.HeroEndPoint = game.GetFirstValue(heroEndIds)
+		end
+	end
+
+	return base(currentRun, currentRoom)
+end)
 
 function mod.AsphodelEnterRoomPresentation(currentRun, currentRoom, endLookAtId, skipCameraLockOnEnd)
 	local roomIntroSequenceDuration = currentRoom.IntroSequenceDuration or game.RoomData.BaseRoom.IntroSequenceDuration or

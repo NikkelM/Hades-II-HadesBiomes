@@ -1,5 +1,4 @@
 local newColors = {
-	MegVoice = { 37, 124, 255, 255 },
 	AlectoVoice = { 240, 69, 41, 255 },
 	TisiphoneVoice = { 56, 255, 56, 255 },
 	TheseusVoice = { 255, 194, 46, 255 },
@@ -7,8 +6,6 @@ local newColors = {
 	SisyphusVoice = { 109, 185, 116, 255 },
 	EurydiceVoice = { 238, 255, 100, 255 },
 	PatroclusVoice = { 110, 148, 150, 255 },
-	ThanatosVoice = { 198, 164, 255, 255 },
-	DusaVoice = { 146, 255, 92, 255 },
 
 	CurseHealth = { 134, 64, 255, 255 },
 	CurseHealthBuffer = { 245, 86, 255, 255 },

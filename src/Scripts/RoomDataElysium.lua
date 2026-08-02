@@ -506,13 +506,17 @@ local roomReplacements = {
 			},
 		},
 	},
+
+	Y_Combat07 = mod.NilValue,
+	Y_Combat15 = mod.NilValue,
+	Y_MiniBoss03 = mod.NilValue,
 }
 
 local roomModifications = {
 	-- GENERIC
 	BaseElysium = {
 		-- These are loaded in LoadCurrentRoomResources, which is called OnAnyLoad
-		LoadModdedAudioBanks = { "EnemiesModsNikkelMHadesBiomes", "SoundsModsNikkelMHadesBiomes", "ModsNikkelMHadesBiomesMusicModded", "ModsNikkelMHadesBiomesMusicElysiumModded", },
+		LoadModdedAudioBanks = { "EnemiesModsNikkelMHadesBiomes", "SoundsModsNikkelMHadesBiomes", "ModsNikkelMHadesBiomesMusicModded", "ModsNikkelMHadesBiomesMusicElysiumModded", "ModsNikkelMHadesBiomesAmbienceModded", },
 
 		NarrativeContextArt = "ModsNikkelMHadesBiomes_DialogueBackground_Elysium",
 
@@ -633,6 +637,7 @@ local roomModifications = {
 		MusicMutedStems = { "Drums", "Bass", "Guitar", },
 
 		ZagContractRewardDestinationId = 776332,
+		AutocompleteSurfaceShopDelivery = true,
 
 		HarvestPointChances = { 0.3 },
 		ShovelPointChance = 0.3,
@@ -711,8 +716,7 @@ local roomModifications = {
 				UseTextSpecial = "SpecialInteractShade",
 				SpecialInteractGameStateRequirements = {
 					{
-						Path = { "CurrentRun", "EnemyKills" },
-						HasAny = { "Theseus", "Theseus2" }
+						PathTrue = { "CurrentRun", "CurrentRoom", "Encounter", "Completed" },
 					},
 				},
 			},

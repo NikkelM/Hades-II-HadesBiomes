@@ -6,7 +6,7 @@ _Zagreus' Journey_ is a mod for Hades II that adds the original route Zagreus to
 Escape the Underworld as Melinoë, battle familiar foes and bosses using her unique abilities and weapons, meet Zagreus' old friends, and reconnect with your family's past - all integrated into the main game as if it was always there: Naturally progress through the new biomes, unlock new incantations to perform, reveal and complete new Minor Prophecies, forge bonds with NPCs in familiar and new locations, collect over 30 new resources to spend on new cosmetics and music, and test your skills with new Testaments, Chaos Trials and in Dream Dives.
 Find the full list of features below!
 
-This mod has been officially endorsed by the developer!
+This mod has been officially endorsed by the developers!
 [Supergiant Games: We're blown away by this mod!](https://x.com/SupergiantGames/status/2051709669476012501)
 
 Wonder what it plays like?
@@ -37,13 +37,14 @@ It is highly recommended that you complete the main story of the first Hades gam
 
 ![Features](./img/Readme/FeaturesStyx.png)
 
-- Play through the original four biomes of Hades as Melinoë: Tartarus, Asphodel, Elysium and the Temple of Styx.
+- Start playing at any time - the mod integrates seemlessly into the main game, and can be used on a fresh file as well as after completing the epilogue.
+- Journey through the original four biomes of Hades as Melinoë: Tartarus, Asphodel, Elysium and the Temple of Styx.
 - Discover and overcome the challenge of fighting all of the original game's enemies and bosses using Melinoë's unique abilities and weapons.
 - Relive Zagreus' story by escaping to the Surface, forging bonds with your brother's old friends, and conversing with the Fury Sisters, the Champions of Elysium and [REDACTED] himself.
 - Benefit from a multitude of entirely new boons and effects offered to you by Sisyphus, Eurydice, Patroclus... and other familiar faces that you will now be able to meet along the way!
 - Collect **30+** new resources specific to the new biomes, use them for unlocks in this and other mods (see section below), and trade them with the Broker.
-- Unlock **29** new musical tracks from Hades' original soundtrack through the [Hades OST for the Music Maker](https://thunderstore.io/c/hades-ii/p/NikkelM/Hades_OST_for_the_Music_Maker/) mod integration (automatically installed with this mod).
-- Decorate the Crossroads with **45+** new cosmetics, including new **Cauldrons**, **Arcana Card Backs**, and **Charms** inspired by Zagreus' companions from the first game.
+- Unlock **28** new musical tracks from Hades' original soundtrack through the [Hades OST for the Music Maker](https://thunderstore.io/c/hades-ii/p/NikkelM/Hades_OST_for_the_Music_Maker/) mod integration (automatically installed with this mod).
+- Decorate the Crossroads with **55+** new cosmetics, including new **Cauldrons**, **Arcana Card Backs**, and **Charms** inspired by Zagreus' companions from the first game.
 - Discover and complete **40+** new Minor Prophecies at the Fated List.
 - Complete **24** new testaments by clearing the new bosses using each of your weapons with new fear levels.
 - Discover and perform **20+** new incantations to unlock gameplay features and progress story events in Zagreus' Journey.
@@ -58,10 +59,11 @@ It is highly recommended that you complete the main story of the first Hades gam
 
 Some other mods integrate with _Zagreus' Journey_ to provide additional features, alternative functionality, or use the resources introduced by this mod:
 
-- [Charon's Tip Jar](https://thunderstore.io/c/hades-ii/p/NikkelM/Charons_Tip_Jar/) adds a tip jar to Charon's shop rooms during _Zagreus' Journey_ underworld runs.
+- [Dream Dive Tweaks](https://thunderstore.io/c/hades-ii/p/zerp/DreamDiveTweaks/) allows you to run longer Dream Dives, including all 12 available regions in a single run if _Zagreus' Journey_ is installed as well. The mod also adds some Quality of Life improvements and bug fixes for Dream Dives.
 - [Flip the Arcana](https://thunderstore.io/c/hades-ii/p/ReadEmAndWeep/Flip_the_Arcana_Mod/) adds flipped versions of the Arcana cards with wildly different effects, and will require resources from _Zagreus' Journey_ to unlock them if both mods are installed.
+- [Charon's Tip Jar](https://thunderstore.io/c/hades-ii/p/NikkelM/Charons_Tip_Jar/) adds a tip jar to Charon's shop rooms during _Zagreus' Journey_ underworld runs.
 - [NPC Room Randomizer](https://thunderstore.io/c/hades-ii/p/zerp/NPCRoomRandomizer/) randomizes which NPCs appear in which biome, and will include NPCs from _Zagreus' Journey_ if both mods are installed.
-- [Biome Randomizer](https://thunderstore.io/c/hades-ii/p/zerp/BiomeRandomizer/) adds new randomized Chaos Trials in the style of Dream Dives, and includes the new biomes from _Zagreus' Journey_ if both mods are installed.
+- [Tools of the Trade](https://thunderstore.io/c/hades-ii/p/JarlUlsfark/Tools_of_the_Trade/) adds a weapon aspect that can copy enemy abilities including enemies from _Zagreus' Journey_ if both mods are installed.
 
 > Are you developing a mod that integrates with _Zagreus' Journey_, or would like to add such an integration? Let me know on [Discord](https://discord.gg/KuMbyrN) in the [#h1-run-h2](https://discord.com/channels/667753182608359424/1443569685407989842) channel.
 
@@ -81,7 +83,7 @@ If the mod was installed successfully, you will see a new logo appear in the mai
 
 Please also keep the following in mind:
 
-- You must uninstall your Hades 1 mods (rename or delete the `Mods` folder and run `modimporter.exe`) before using this mod. Zagreus' Journey is compatible with other Hades II mods.
+- You must uninstall your **Hades 1** mods (rename or delete the `Mods` folder and run `modimporter.exe`) before using this mod. Zagreus' Journey **is** compatible with other Hades II mods.
 - If Hades and Hades II are installed in different parent folders (e.g. through different storefronts), set the `hadesGameFolder` in the mod's [configuration file](https://github.com/NikkelM/Hades-II-HadesBiomes/wiki/Configuration) to your Hades install path.
 - Is your Hades II installed through Epic Games? You may need to follow [this FAQ entry](https://sgg-modding.github.io/Hades2ModWiki/docs/installing-mods/getting-started#i-own-hades-ii-on-epic-games-and-mods-do-not-work-when-playing-what-can-i-do) if mods don't seem to be active.
 - Installing the mod on Steam Deck? Follow the [Steam Deck guide](https://sgg-modding.github.io/Hades2ModWiki/docs/installing-mods/steam-deck) in the wiki.
@@ -93,12 +95,17 @@ For more information or troubleshooting, see the [Installation wiki page](https:
 
 ![Configuration](./img/Readme/ConfigurationElysium.png)
 
+The mod offers a number of configuration options to allow you to customize your way of experiencing *Zagreus' Journey*, such as:
+- **Goddess Mode**, which disables the health and armour scaling the mod adds. This is done to rebalance enemies to counter Melinoë's increased damage compared to Zagreus, but you may use Goddess Mode to make the mod a little easier (*no judgement!*)
+- Other **Accessibility Settings**, such as changing the fade between the Temple of Styx and Hades' boss chamber from a bright white to black (no more flashbangs!)
+- **Speedrunning Support** - there are a number of settings aimed at making speedrunning *Zagreus' Journey* easier, such as forcing the Satyr Sack in Styx to always spawn in the second chamber, or making fresh file runs be in *Zagreus' Journey* instead of the Hades II Underworld.
+
+You can find an explanation of all configuration options [on this wiki page](https://github.com/NikkelM/Hades-II-HadesBiomes/wiki/Configuration).
+
 Note that the configuration file is only created after the first game start with the mod enabled in your mod manager.
 
 If you are using r2modman or the Thunderstore Mod Manager, you can modify the config directly through the mod manager, in the `Config editor` tab.
-Make sure to save the file once done.
-
-You can find an explanation of all configuration options [on this wiki page](https://github.com/NikkelM/Hades-II-HadesBiomes/wiki/Configuration).
+Make sure to save your changes once done.
 
 ### Feedback & Bug Reports
 
@@ -173,5 +180,5 @@ This mod does not, and never will, use generative AI for any art, voice or music
 
 ## Disclaimer
 
-This mod is a fan-project and while [endorsed by](https://x.com/SupergiantGames/status/2051709669476012501), it is not affiliated with by Supergiant Games.
+This mod is a fan-project and while [endorsed by](https://x.com/SupergiantGames/status/2051709669476012501), it is not affiliated with Supergiant Games.
 All original code, art, music, voice & game design of Hades is copyright Supergiant Games.

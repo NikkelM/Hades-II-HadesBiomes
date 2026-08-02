@@ -14,11 +14,12 @@ mod.DefaultHiddenConfig = {
 	InstalledModVersion = "",
 	-- For debugging purposes
 	EnableVanillaDebugKeybinds = false,
+	DeveloperMode = false,
 }
 
 -- This is the number of sjson.hook calls we normally make
 -- If the count in the cache/sjsonLoads.sjson file is different when OnAnyLoad is called, we know something went wrong and need to ask the user to restart the game
-mod.ExpectedNumSjsonHooks = 37
+mod.ExpectedNumSjsonHooks = 38
 
 -- All enemies have more health and armour in modded runs, scales with each biome
 -- Should not apply to bosses, which should opt out using ModsNikkelMHadesBiomesIgnoreModdedHealthModifiers and define their own modified health
@@ -466,6 +467,7 @@ mod.AllNewResourceNames = game.ConcatTableValuesIPairs(game.DeepCopyTable(mod.No
 mod.ModdedCosmeticIds = {}
 
 -- Song names/Ids from Hades OST for the Music Maker
+-- Note: Unseen Ones is not part of this, as it is also a vanilla song
 mod.HadesOstSongNames = hadesOSTModReference.HadesOstSongNames
 
 -- Keepsake names from SharedKeepsakePort
@@ -580,11 +582,20 @@ mod.InformalNPCRelationshipsM = {
 	"NPC_Orpheus_Story_01",
 }
 
-mod.SkellyStatueConversations = {
-	"ModsNikkelMHadesBiomes_HadesStatueIntro01",
-	"ModsNikkelMHadesBiomes_HadesStatueUnveil01",
-	"ModsNikkelMHadesBiomes_HadesStatueUnveil02",
+-- Controls if the Skelly and ZagreusHome voicebanks are loaded in the Crossroads, and the insertion order into Skelly's priority conversations (last in this list has highest priority)
+mod.SkellyModdedCrossroadsConversations = {
+	"ModsNikkelMHadesBiomes_SkellyHintMeeting_EasyMode01",
 	"ModsNikkelMHadesBiomes_HadesStatueUnveil03",
+	"ModsNikkelMHadesBiomes_HadesStatueUnveil02",
+	"ModsNikkelMHadesBiomes_HadesStatueUnveil01",
+	"ModsNikkelMHadesBiomes_HadesStatueIntro01",
 }
 
 mod.ModdedPlayerScaleMultiplier = 0.9
+
+mod.IncreasedZoomFractionOffset = 0.13
+
+mod.ExitToHadesFadeColour = config.accessibility.z_FadeToBlackEnteringHades and game.Color.Black or game.Color.White
+
+-- Populated in ApplyModificationsAndInheritEnemyData()
+mod.AllRequiredKillModdedEnemyNames = {}

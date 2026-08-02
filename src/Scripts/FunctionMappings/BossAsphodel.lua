@@ -282,6 +282,10 @@ function mod.HandleBossSpawns(enemy, weaponAIData, currentRun, args)
 
 		if weaponAIData.SpawnClones then
 			newEnemy.IsClone = true
+			newEnemy.RequiredKill = false
+			newEnemy.BlockRespawnShrineUpgrade = true
+			newEnemy.BlockRaiseDead = true
+			newEnemy.NeverLeavesShadeMerc = true
 		end
 
 		if weaponAIData.SpawnAggroed then

@@ -1,5 +1,5 @@
 function mod.ConfirmHadesInstallation()
-	mod.hadesGameFolder = config.hadesGameFolder
+	mod.hadesGameFolder = config.debugging.hadesGameFolder
 
 	-- Clean leading/trailing quotes, spaces and apostrophes from user-provided path
 	if mod.hadesGameFolder ~= nil then
@@ -14,33 +14,48 @@ function mod.ConfirmHadesInstallation()
 
 	-- Check if the Hades installation is valid (by just confirming the .exe exists)
 	local exePath = rom.path.combine(mod.hadesGameFolder, "x64\\Hades.exe")
-	-- Check for a Steam or Epic installation first
+	-- Check for a regular Steam or Epic installation first
 	if not rom.path.exists(exePath) then
-		-- If not found, the user may have Hades installed from the Microsoft Store, which uses a different path for the .exe
-		local microsoftExePath = rom.path.combine(mod.hadesGameFolder, "Content\\Hades.exe")
-		if not rom.path.exists(microsoftExePath) then
-			-- If not found, check for the Microsoft Store Path one Content level up, in case the user misunderstood the instructions
-			local microsoftBackupExePath = rom.path.combine(mod.hadesGameFolder, "Hades.exe")
-			if not rom.path.exists(microsoftBackupExePath) then
-				-- Set the invalid installation flag
-				mod.HiddenConfig.IsValidInstallation = false
-				mod.HiddenConfig.InstallationFailReason = "NoHadesInstallationFound"
-				mod.SaveCachedSjsonFile("hiddenConfig.sjson", mod.HiddenConfig)
-				---@diagnostic disable-next-line: undefined-global
-				public.IsValidInstallation = false
+		-- If not found, check for the Path one level up, in case the user misunderstood the instructions and provided the "x64" or "x86" subfolders
+		local parentExePath = rom.path.combine(rom.path.get_parent(mod.hadesGameFolder), "x64\\Hades.exe")
+		if not rom.path.exists(parentExePath) then
+			-- If not found, the user may have Hades installed from the Microsoft Store, which uses a different path for the .exe
+			local microsoftExePath = rom.path.combine(mod.hadesGameFolder, "Content\\Hades.exe")
+			if not rom.path.exists(microsoftExePath) then
+				-- If not found, check for the Microsoft Store Path one Content level up, in case the user misunderstood the instructions
+				local microsoftBackupExePath = rom.path.combine(mod.hadesGameFolder, "Hades.exe")
+				if not rom.path.exists(microsoftBackupExePath) then
+					-- Set the invalid installation flag
+					mod.HiddenConfig.IsValidInstallation = false
+					mod.HiddenConfig.InstallationFailReason = "NoHadesInstallationFound"
+					mod.SaveCachedSjsonFile("hiddenConfig.sjson", mod.HiddenConfig)
+					---@diagnostic disable-next-line: undefined-global
+					public.IsValidInstallation = false
 
+					mod.DebugPrint(
+						"The mod tried finding your Hades installation at \"" ..
+						exePath .. "\" (Steam/Epic) or \"" ..
+						microsoftExePath ..
+						"\" (Microsoft Store/Game Pass), but did not find it. Please set the correct path in the config file through your mod manager. Use \"root\" if the Hades folder is in the same folder as the Hades II folder.",
+						1)
+
+					return false
+				end
+			else
+				-- If the microsoft path exists, the hadesGameFolder needs to go one "Content" level deeper
+				mod.hadesGameFolder = rom.path.combine(mod.hadesGameFolder, "Content")
 				mod.DebugPrint(
-					"The mod tried finding your Hades installation at \"" ..
-					exePath .. "\" (Steam/Epic) or \"" ..
-					microsoftExePath ..
-					"\" (Microsoft Store/Game Pass), but did not find it. Please set the correct path in the config file through your mod manager. Use \"root\" if the Hades folder is in the same folder as the Hades II folder.",
-					1)
-
-				return false
+					"Corrected the hadesGameFolder path from " ..
+					config.debugging.hadesGameFolder .. " to " .. mod.hadesGameFolder, 4)
+				config.debugging.hadesGameFolder = mod.hadesGameFolder
 			end
 		else
-			-- If the backup path exists, the hadesGameFolder needs to go one "Content" level deeper
-			mod.hadesGameFolder = rom.path.combine(mod.hadesGameFolder, "Content")
+			-- If the parent path exists, the hadesGameFolder needs to go one level up
+			mod.hadesGameFolder = rom.path.get_parent(mod.hadesGameFolder)
+			mod.DebugPrint(
+				"Corrected the hadesGameFolder path from " ..
+				config.debugging.hadesGameFolder .. " to " .. mod.hadesGameFolder, 4)
+			config.debugging.hadesGameFolder = mod.hadesGameFolder
 		end
 	end
 
@@ -104,9 +119,7 @@ local function checkFilesExist(fileMappings, rootPath, basePath, extension, fail
 	for src, dest in pairs(fileMappings) do
 		local destPath = rom.path.combine(rootPath, basePath .. dest .. extension)
 		if not checkFileExistsWithRetry(destPath, 3, 0.2, failFast) then
-			if not failFast then
-				mod.DebugPrint("Missing file: " .. destPath, 1)
-			end
+			mod.DebugPrint("Missing file: " .. destPath, 1)
 			missingFiles = missingFiles + 1
 			if failFast then return missingFiles end
 		end
@@ -166,25 +179,38 @@ function mod.CheckRequiredFiles(failFast)
 	local pluginsDataContentRoot = rom.path.combine(rom.paths.plugins_data(), _PLUGIN.guid, "Content")
 
 	-- Non-SJSON files: checked in the game install directory
-	missingFiles = missingFiles + checkFilesExist(mod.AudioFileMappings, pluginsDataContentRoot, "Audio\\Desktop\\", ".bank", failFast)
+	missingFiles = missingFiles +
+			checkFilesExist(mod.AudioFileMappings, pluginsDataContentRoot, "Audio\\Desktop\\", ".bank", failFast)
 	-- We only check once, since with a successful uninstall, there will be at least one missing file here already
 	if failFast and missingFiles > 0 then return missingFiles end
 
-	missingFiles = missingFiles + checkFilesExist(mod.BikFileNames, pluginsDataContentRoot, "Movies\\1080p\\", ".bik", failFast)
-	missingFiles = missingFiles + checkFilesExist(mod.BikFileNames, pluginsDataContentRoot, "Movies\\1080p\\", ".bik_atlas", failFast)
-	missingFiles = missingFiles + checkFilesExist(mod.BikFileNames, pluginsDataContentRoot, "Movies\\720p\\", ".bik", failFast)
-	missingFiles = missingFiles + checkFilesExist(mod.BikFileNames, pluginsDataContentRoot, "Movies\\720p\\", ".bik_atlas", failFast)
+	missingFiles = missingFiles +
+			checkFilesExist(mod.BikFileNames, pluginsDataContentRoot, "Movies\\1080p\\", ".bik", failFast)
+	missingFiles = missingFiles +
+			checkFilesExist(mod.BikFileNames, pluginsDataContentRoot, "Movies\\1080p\\", ".bik_atlas", failFast)
+	missingFiles = missingFiles +
+			checkFilesExist(mod.BikFileNames, pluginsDataContentRoot, "Movies\\720p\\", ".bik", failFast)
+	missingFiles = missingFiles +
+			checkFilesExist(mod.BikFileNames, pluginsDataContentRoot, "Movies\\720p\\", ".bik_atlas", failFast)
 
-	missingFiles = missingFiles + checkFilesExist(mod.CustomBikFileNames, pluginsDataContentRoot, "Movies\\1080p\\", ".bik", failFast)
-	missingFiles = missingFiles + checkFilesExist(mod.CustomBikFileNames, pluginsDataContentRoot, "Movies\\1080p\\", ".bik_atlas", failFast)
-	missingFiles = missingFiles + checkFilesExist(mod.CustomBikFileNames, pluginsDataContentRoot, "Movies\\720p\\", ".bik", failFast)
-	missingFiles = missingFiles + checkFilesExist(mod.CustomBikFileNames, pluginsDataContentRoot, "Movies\\720p\\", ".bik_atlas", failFast)
+	missingFiles = missingFiles +
+			checkFilesExist(mod.CustomBikFileNames, pluginsDataContentRoot, "Movies\\1080p\\", ".bik", failFast)
+	missingFiles = missingFiles +
+			checkFilesExist(mod.CustomBikFileNames, pluginsDataContentRoot, "Movies\\1080p\\", ".bik_atlas", failFast)
+	missingFiles = missingFiles +
+			checkFilesExist(mod.CustomBikFileNames, pluginsDataContentRoot, "Movies\\720p\\", ".bik", failFast)
+	missingFiles = missingFiles +
+			checkFilesExist(mod.CustomBikFileNames, pluginsDataContentRoot, "Movies\\720p\\", ".bik_atlas", failFast)
 
-	missingFiles = missingFiles + checkFilesExist(mod.MapFileMappings, pluginsDataContentRoot, "Maps\\", ".map_text", failFast)
-	missingFiles = missingFiles + checkFilesExist(mod.MapFileMappings, pluginsDataContentRoot, "Maps\\bin\\", ".thing_bin", failFast)
+	missingFiles = missingFiles +
+			checkFilesExist(mod.MapFileMappings, pluginsDataContentRoot, "Maps\\", ".map_text", failFast)
+	missingFiles = missingFiles +
+			checkFilesExist(mod.MapFileMappings, pluginsDataContentRoot, "Maps\\bin\\", ".thing_bin", failFast)
 
-	missingFiles = missingFiles + checkFilesExist(mod.VoiceoverFileNames, pluginsDataContentRoot, "Audio\\Desktop\\VO\\", ".txt", failFast)
-	missingFiles = missingFiles + checkFilesExist(mod.VoiceoverFileNames, pluginsDataContentRoot, "Audio\\Desktop\\VO\\", ".fsb", failFast)
+	missingFiles = missingFiles +
+			checkFilesExist(mod.VoiceoverFileNames, pluginsDataContentRoot, "Audio\\Desktop\\VO\\", ".txt", failFast)
+	missingFiles = missingFiles +
+			checkFilesExist(mod.VoiceoverFileNames, pluginsDataContentRoot, "Audio\\Desktop\\VO\\", ".fsb", failFast)
 
 	-- SJSON files: placed in the SJSON data directory in plugins_data
 	missingFiles = missingFiles + checkFilesExist(mod.SjsonFileMappings, sjsonDataRoot, "", ".sjson", failFast)
@@ -208,7 +234,8 @@ function mod.CheckRequiredFiles(failFast)
 	for _, fileName in ipairs(getAllHelpAndNPCTextFileNames()) do
 		for _, language in ipairs(mod.HelpTextLanguages) do
 			if not (mod.HadesHelpTextFileSkipMap[fileName] and mod.HadesHelpTextFileSkipMap[fileName][language]) then
-				local sjsonDataRelativePath = "Text\\" .. language .. "\\Z_" .. fileName .. "ModsNikkelMHadesBiomes." .. language .. ".sjson"
+				local sjsonDataRelativePath = "Text\\" ..
+						language .. "\\Z_" .. fileName .. "ModsNikkelMHadesBiomes." .. language .. ".sjson"
 				if not rom.path.exists(rom.path.combine(_PLUGIN.sjson_data_path, sjsonDataRelativePath)) then
 					mod.DebugPrint("Missing SJSON data file: " .. sjsonDataRelativePath, 1)
 					missingFiles = missingFiles + 1

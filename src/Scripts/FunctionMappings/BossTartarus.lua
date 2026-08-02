@@ -83,6 +83,17 @@ function mod.HarpySupportAI(enemy)
 
 			Teleport({ Id = enemy.ObjectId, DestinationId = targetId })
 			game.DoAttack(enemy, weaponAIData)
+			-- Clean up InvisibleTargets
+			if enemy.TargetIdsLeaked ~= nil then
+				for id, v in pairs(enemy.TargetIdsLeaked) do
+					Destroy({ Id = id })
+				end
+				enemy.TargetIdsLeaked = nil
+			end
+			if enemy.CreatedOwnTarget then
+				Destroy({ Id = enemy.CreatedOwnTarget })
+				enemy.CreatedOwnTarget = nil
+			end
 			if weaponAIData.ForcedEarlyExit then
 				SetAnimation({ DestinationId = enemy.ObjectId, Name = supportAIWeaponSetName .. "MultiFurySkyDiveFadeOut" })
 			end
@@ -699,10 +710,18 @@ function mod.Harpy3MapTransition(enemy)
 		end
 	end
 
-	ExpireProjectiles({ ExcludeNames = game.WeaponSets.MapTransitionExpireProjectileExcludeNames })
+	-- Needed to prevent crash if NightmareFear Vow of Betrayal is turned on
+	DestroyRequiredKills({ BlockLoot = true, SkipIds = { enemy.ObjectId }, BlockDeathWeapons = true })
+	ExpireProjectiles({ ExcludeNames = game.WeaponSets.ExpireProjectileExcludeProjectileNames, BlockSpawns = true })
+	ExpireProjectiles({ ExcludeNames = game.WeaponSets.MapTransitionExpireProjectileExcludeNames, BlockSpawns = true })
+
 	game.wait(0.75)
 
-	ExpireProjectiles({ ExcludeNames = game.WeaponSets.MapTransitionExpireProjectileExcludeNames })
+	-- Just to be safe
+	DestroyRequiredKills({ BlockLoot = true, SkipIds = { enemy.ObjectId }, BlockDeathWeapons = true })
+	ExpireProjectiles({ ExcludeNames = game.WeaponSets.ExpireProjectileExcludeProjectileNames, BlockSpawns = true })
+	ExpireProjectiles({ ExcludeNames = game.WeaponSets.MapTransitionExpireProjectileExcludeNames, BlockSpawns = true })
+
 	AddInputBlock({ Name = "Harpy3MapTransition" })
 	PlaySound({ Name = "/SFX/Menu Sounds/HadesTextDisappearFade" })
 	game.FullScreenFadeOutAnimation()
@@ -725,6 +744,30 @@ function mod.Harpy3MapTransition(enemy)
 	-- Dusa Summon
 	local dusaId = GetIdsByType({ Name = "DusaSummon" })
 	Teleport({ Id = dusaId, DestinationId = 520857 })
+	-- Familiars
+	if game.MapState.FamiliarUnit ~= nil then
+		Teleport({ Id = game.MapState.FamiliarUnit.ObjectId, DestinationId = 520857 })
+		AngleTowardTarget({ Id = game.MapState.FamiliarUnit.ObjectId, DestinationId = enemy.ObjectId })
+	end
+
+	Destroy({ Ids = GetIdsByType({ Names = { "ManaDropZeus", "PowerDrinkDrop" } }) })
+	if game.CurrentRun.Hero.Weapons.WeaponLob then
+		game.ReloadAmmo({ Name = "WeaponLob" })
+		game.UpdateWeaponAmmo("WeaponLob", 0)
+		game.thread(game.UpdateAmmoUI)
+		ExpireProjectiles({ Names = { "ProjectileLobCharged", "ProjectileLob" }, BlockSpawns = true })
+		Destroy({ Ids = GetIdsByType({ Name = "LobAmmoPack" }) })
+	end
+
+	if game.SessionMapState.ManaDropId then
+		Destroy({ Id = game.SessionMapState.ManaDropId })
+		game.SessionMapState.ManaDropId = nil
+	end
+
+	if game.SessionMapState.DrinkDropId then
+		Destroy({ Id = game.SessionMapState.DrinkDropId })
+		game.SessionMapState.DrinkDropId = nil
+	end
 
 	local activateObstacles = {}
 	local deactivateObstacles = {}

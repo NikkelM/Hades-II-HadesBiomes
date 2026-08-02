@@ -171,11 +171,11 @@ modutil.mod.Path.Wrap("RecordRunCleared", function(base)
 	if game.CurrentRun.IsDreamRun then
 		-- Defeated Charon + Zagreus in a single Dream Dive
 		if game.CurrentRun.ModsNikkelMHadesBiomes_DreamDiveDefeatedCharon and game.CurrentRun.ModsNikkelMHadesBiomes_DreamDiveDefeatedZagreus then
-			game.GameState.ModsNikkelMHadesBiomes_DreamDiveDefeatedCharonAndZagreus = true
+			game.GameState.ModsNikkelMHadesBiomesCustomFlags.ModsNikkelMHadesBiomes_DreamDiveDefeatedCharonAndZagreus = true
 		end
 		-- Defeated EM Chronos, Typhon + Hades in a single Dream Dive
 		if game.CurrentRun.ModsNikkelMHadesBiomes_DreamDiveDefeatedEMChronos and game.CurrentRun.ModsNikkelMHadesBiomes_DreamDiveDefeatedEMTyphon and game.CurrentRun.ModsNikkelMHadesBiomes_DreamDiveDefeatedEMHades then
-			game.GameState.ModsNikkelMHadesBiomes_DreamDiveDefeatedEMChronosTyphonHades = true
+			game.GameState.ModsNikkelMHadesBiomesCustomFlags.ModsNikkelMHadesBiomes_DreamDiveDefeatedEMChronosTyphonHades = true
 		end
 	end
 
@@ -298,7 +298,7 @@ modutil.mod.Path.Wrap("IsRoomForced", function(base, currentRun, currentRoom, ne
 
 		-- Randomly force the next room to be a fountain room, with a 100% chance if this is the last wing
 		if nextRoomData.ForceChanceByRemainingWings then
-			if config.z_SpeedrunForceTwoSack and not currentRun.ModsNikkelMHadesBiomesForceStyxFountainDepth then
+			if config.speedrunning.z_SpeedrunForceTwoSack and not currentRun.ModsNikkelMHadesBiomesForceStyxFountainDepth then
 				-- If the config option is enabled, always force the fountain room in the second wing
 				if currentRun.CompletedStyxWings == 1 then
 					mod.DebugPrint("Forcing fountain room in Styx wing 2 due to config option.", 2)
@@ -333,3 +333,27 @@ function mod.LockedGiftRackPresentation(usee)
 		game.thread(game.InCombatText, game.CurrentRun.Hero.ObjectId, "AwardMenuLocked", 1.0)
 	end
 end
+
+-- #region Fresh File runs
+mod.ForceFreshFileNewGame = false
+mod.NeedsFreshFileMapReload = false
+
+modutil.mod.Path.Wrap("StartNewGame", function(base, mapName)
+	mod.ForceFreshFileNewGame = config.speedrunning.z_SpeedrunFreshFileZagreusJourneyRun
+	mod.NeedsFreshFileMapReload = mod.ForceFreshFileNewGame
+	local result = base(mapName)
+	mod.ForceFreshFileNewGame = false
+
+	return result
+end)
+
+modutil.mod.Path.Wrap("StartNewRun", function(base, prevRun, args)
+	if mod.ForceFreshFileNewGame then
+		args = args or {}
+		args.RoomName = "RoomOpening"
+		args.StartingBiome = "Tartarus"
+	end
+
+	return base(prevRun, args)
+end)
+-- #endregion

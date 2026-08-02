@@ -54,7 +54,9 @@ mod.HadesPortraitAnimationAdditionsParents = {
 		ChildAnimation = "ModsNikkelMHadesBiomes_Portrait_Ares_Blink",
 		EndFrame = 1,
 		StartFrame = 1,
-		OffsetY = -90,
+		OffsetY = -88,
+		StartOffsetX = -20.0,
+		StartOffsetY = 0,
 	},
 	{
 		Name = "ModsNikkelMHadesBiomes_Portrait_Athena_Default_01",
@@ -63,12 +65,18 @@ mod.HadesPortraitAnimationAdditionsParents = {
 		FilePath = "Portraits\\Portraits_Athena_01",
 		EndFrame = 1,
 		StartFrame = 1,
+		OffsetY = 0,
+		StartOffsetX = -20.0,
+		StartOffsetY = 0,
 	},
 	{
 		Name = "ModsNikkelMHadesBiomes_Portrait_Dionysus_Default_01",
 		InheritFrom = "Portrait_God_01",
 		FilePath = "Portraits\\Portraits_Dionysus_01",
 		ChildAnimation = "ModsNikkelMHadesBiomes_Portrait_Dionysus_Blink",
+		OffsetY = -15,
+		StartOffsetX = -20.0,
+		StartOffsetY = 0,
 	},
 	{
 		Name = "ModsNikkelMHadesBiomes_Portrait_Artemis_Default_01",
@@ -77,6 +85,7 @@ mod.HadesPortraitAnimationAdditionsParents = {
 		FilePath = "Portraits\\Portraits_Artemis_01",
 		EndFrame = 1,
 		StartFrame = 1,
+		OffsetY = -8.0,
 	},
 	{
 		Name = "ModsNikkelMHadesBiomes_Portrait_Demeter_Default_01",
@@ -238,7 +247,7 @@ mod.HadesPortraitAnimationAdditions = {
 		Loop = true,
 		AddColor = false,
 		OffsetX = 0,
-		OffsetY = -90,
+		OffsetY = -88,
 		Scale = 0.8,
 		Slides = {
 			{ DurationFrames = 4, FilePath = "Portraits\\Animation\\Ares\\Portrait_Ares_Blink01" },
@@ -253,7 +262,7 @@ mod.HadesPortraitAnimationAdditions = {
 		FilePath = "Portraits\\Portraits_Ares_01",
 		EndFrame = 1,
 		StartFrame = 1,
-		OffsetY = -90.0,
+		OffsetY = -88,
 	},
 	{
 		Name = "ModsNikkelMHadesBiomes_AthenaBlink",
@@ -264,6 +273,7 @@ mod.HadesPortraitAnimationAdditions = {
 		Loop = true,
 		NumFrames = 6,
 		StartFrame = 1,
+		OffsetY = 0,
 		Scale = 0.8,
 		Slides = {
 			{ DurationFrames = 6, FilePath = "Portraits\\Animation\\Portrait_Athena_Blink01" },
@@ -280,6 +290,7 @@ mod.HadesPortraitAnimationAdditions = {
 		FilePath = "Portraits\\Portraits_Athena_01",
 		EndFrame = 1,
 		StartFrame = 1,
+		OffsetY = 0,
 	},
 	{
 		Name = "ModsNikkelMHadesBiomes_Portrait_Dionysus_Blink",
@@ -289,7 +300,7 @@ mod.HadesPortraitAnimationAdditions = {
 		Loop = true,
 		AddColor = false,
 		OffsetX = 0,
-		OffsetY = 0,
+		OffsetY = -15,
 		Scale = 0.8,
 		Slides = {
 			{ DurationFrames = 4, FilePath = "Portraits\\Animation\\Dionysus\\Portrait_Dionysus_Blink01" },
@@ -314,7 +325,7 @@ mod.HadesPortraitAnimationAdditions = {
 		StartFrame = 1,
 		EndOffsetY = -10.0,
 		OffsetX = -320.0,
-		OffsetY = 280.0,
+		OffsetY = 265.0,
 		DieWithOwner = true,
 		PhaseOffsetAngle = 90,
 		Scale = 0.2,
@@ -327,6 +338,7 @@ mod.HadesPortraitAnimationAdditions = {
 		FilePath = "Portraits\\Portraits_Dionysus_01",
 		EndFrame = 1,
 		StartFrame = 1,
+		OffsetY = -15,
 	},
 	{
 		Name = "ModsNikkelMHadesBiomes_Portrait_Artemis_Default_01_Exit",
@@ -334,6 +346,7 @@ mod.HadesPortraitAnimationAdditions = {
 		FilePath = "Portraits\\Portraits_Artemis_01",
 		EndFrame = 1,
 		StartFrame = 1,
+		OffsetY = -8.0,
 	},
 	{
 		Name = "ModsNikkelMHadesBiomes_Portrait_Chaos_Default_01",

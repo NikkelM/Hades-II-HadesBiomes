@@ -4,14 +4,15 @@ game.ScreenData.QuestLog.IncompleteFormat.TextSymbolScale = 0
 game.ScreenData.QuestLog.CashedOutFormat.TextSymbolScale = 0
 game.ScreenData.QuestLog.ComponentData.InfoBoxTitle.TextArgs.TextSymbolScale = 0.5
 
-local flippedArcanaActive = rom.mods["ReadEmAndWeep-Flip_the_Arcana_Mod"]
-local nighmareFearActive = rom.mods["ReadEmAndWeep-Nightmare_Fear"]
+local flippedArcanaActive = mod.IsOtherModActive("ReadEmAndWeep-Flip_the_Arcana_Mod")
+local nighmareFearActive = mod.IsOtherModActive("ReadEmAndWeep-Nightmare_Fear")
 
 -- #region The order of the quests in the Quest log, these will be appended to the end of the vanilla list
+-- Current number of quests: 42 (40 base + one flipped + one nightmare)
 local newQuestOrderData = {
 	-- key / mission-critical
-	"ModsNikkelMHadesBiomes_QuestReuniteOrpheusEurydice",
 	"ModsNikkelMHadesBiomes_QuestSisyphusLiberation",
+	"ModsNikkelMHadesBiomes_QuestReuniteOrpheusEurydice",
 	"ModsNikkelMHadesBiomes_QuestOrpheusRelease",
 	"ModsNikkelMHadesBiomes_QuestTenClears",
 	"ModsNikkelMHadesBiomes_QuestFirstClear",
@@ -47,6 +48,7 @@ local newQuestOrderData = {
 	"ModsNikkelMHadesBiomes_QuestEliteAttributeKills",
 	"ModsNikkelMHadesBiomes_QuestMiniBossKills",
 	"ModsNikkelMHadesBiomes_QuestClearedExtremeMeasuresRun",
+	"ModsNikkelMHadesBiomes_AresEarnKills",
 	"ModsNikkelMHadesBiomes_QuestShutdownThanatos",
 	"ModsNikkelMHadesBiomes_QuestThanatosKeepsakeHighPercentage",
 	"ModsNikkelMHadesBiomes_QuestHitlessErebusEncounters",
@@ -180,10 +182,13 @@ local newQuestData = {
 		RewardResourceName = "SuperGiftPoints",
 		RewardResourceAmount = 2,
 		UnlockGameStateRequirements = {
-			-- Has met any of the new NPCs
+			-- Has met any two of the new NPCs
+			-- TODO: Once implemented, Achilles, Dusa
 			{
 				Path = { "GameState", "UseRecord" },
-				HasAny = { "NPC_Sisyphus_01", "NPC_Eurydice_01", "NPC_Patroclus_01", "NPC_Thanatos_01", "NPC_Thanatos_Field_01" }
+				CountOf = { "NPC_Sisyphus_01", "NPC_Eurydice_01", "NPC_Patroclus_01", "NPC_Thanatos_01", "NPC_Thanatos_Field_01", "NPC_Orpheus_01", },
+				Comparison = ">=",
+				Value = 2,
 			},
 		},
 		CompleteGameStateRequirements = {
@@ -523,6 +528,22 @@ local newQuestData = {
 			"WeaponAxe",
 			"WeaponLob",
 			"WeaponSuit",
+		},
+	},
+	-- Kill 10000 (modded) enemies
+	ModsNikkelMHadesBiomes_AresEarnKills = {
+		InheritFrom = { "DefaultQuestItem", "DefaultKillQuest" },
+		RewardResourceName = "WeaponPointsRare",
+		RewardResourceAmount = 2,
+		UnlockGameStateRequirements = {
+			{
+				PathTrue = { "GameState", "TextLinesRecord", "AresKillQuest01" },
+			},
+		},
+		CompleteGameStateRequirements = {
+			{
+				PathTrue = { "GameState", "TextLinesRecord", "AresKillQuestComplete" },
+			},
 		},
 	},
 	-- #endregion
@@ -1406,7 +1427,7 @@ local newQuestData = {
 		},
 		CompleteGameStateRequirements = {
 			{
-				PathTrue = { "GameState", "ModsNikkelMHadesBiomes_DreamDiveDefeatedCharonAndZagreus" },
+				PathTrue = { "GameState", "ModsNikkelMHadesBiomesCustomFlags", "ModsNikkelMHadesBiomes_DreamDiveDefeatedCharonAndZagreus" },
 			},
 		},
 		CustomIncompleteString = "ModsNikkelMHadesBiomes_QuestDreamDiveCharonAndZagreus_Condition",
@@ -1439,7 +1460,7 @@ local newQuestData = {
 		},
 		CompleteGameStateRequirements = {
 			{
-				PathTrue = { "GameState", "ModsNikkelMHadesBiomes_DreamDiveDefeatedEMChronosTyphonHades" },
+				PathTrue = { "GameState", "ModsNikkelMHadesBiomesCustomFlags", "ModsNikkelMHadesBiomes_DreamDiveDefeatedEMChronosTyphonHades" },
 			},
 		},
 		CustomIncompleteString = "ModsNikkelMHadesBiomes_QuestDreamDiveEMBosses_Condition",

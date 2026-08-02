@@ -195,13 +195,19 @@ local newData = {
 	-- 	Id = "ModsNikkelMHadesBiomesOrpheusOrpheusSong1Boon",
 	-- 	InheritFrom = "MusicMusicPlayerOrpheusSong1MusicPlayer",
 	-- 	Description =
-	-- 	"After you take damage, inflict {$Keywords.Root} on {#BoldFormat}ALL {#Prev}foes. After {#BoldFormatGraft}{$TooltipData.ExtractData.Cooldown} Sec. {#Prev}and once the foe that damaged you has been slain, this can repeat.",
+	-- 	"After you take damage, immediately inflict {$Keywords.Root} on {#BoldFormat}ALL {#Prev}foes.",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomesOrpheusOrpheusSong1BoonCooldownStatDisplay",
+	-- 	InheritFrom = "BaseStatLine",
+	-- 	DisplayName = "{!Icons.Bullet}{#PropertyFormat}Cooldown:",
+	-- 	Description = "{#UpgradeFormat}{$TooltipData.ExtractData.Cooldown} Sec.{#Prev}",
 	-- },
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomesOrpheusOrpheusSong2Boon",
 	-- 	InheritFrom = "MusicMusicPlayerOrpheusSong2MusicPlayer",
 	-- 	Description =
-	-- 	"Once this night, when you fall to {#PenaltyFormat}0{#Prev}{!Icons.Health} without any {$Keywords.ExtraChanceMisc} remaining, instead loose all {$Keywords.ModsNikkelMHadesBiomesCoreBoonPlural} and restore {#UpgradeFormat}{$TooltipData.ExtractData.LastStandHeal}%{#Prev}{!Icons.Health} and {!Icons.Mana}. This boon does not deactivate {$Keywords.ModsNikkelMHadesBiomesLowHealthBonus}.",
+	-- 	"Once this night, when you fall to {#PenaltyFormat}0{#Prev}{!Icons.Health} without any {$Keywords.ExtraChanceMisc} remaining, instead lose all {$Keywords.ModsNikkelMHadesBiomesCoreBoonPlural} and restore {#UpgradeFormat}{$TooltipData.ExtractData.LastStandHeal}%{#Prev}{!Icons.Health} and {!Icons.Mana}. This boon does not deactivate {$Keywords.ModsNikkelMHadesBiomesLowHealthBonus}.",
 	-- },
 	-- {
 	-- 	Id = "ModsNikkelMHadesBiomesOrpheusCharonShopThemeBoon",
@@ -258,6 +264,21 @@ local newData = {
 		"{!Icons.Bullet}{#PropertyFormat}Посіпак [Кроноса]{$Keywords.CharChronos}, [Тифона]{$Keywords.CharTyphon} або [Аїда]{$Keywords.CharHades}:",
 		Description = "{#UpgradeFormat}-{$TooltipData.StatDisplay1}",
 	},
+	-- #endregion
+
+	-- #region Mod Config (Goddess Mode)
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomesGoddessMode",
+	-- 	DisplayName = "Goddess Mode",
+	-- 	Description =
+	-- 	"A state in which you will find enemies in the {$Keywords.ModsNikkelMHadesBiomesModdedRoute} easier to slay.",
+	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomesGoddessModeTrait",
+	-- 	DisplayName = "Dea Ex Machina",
+	-- 	Description =
+	-- 	"Enemies in the {$Keywords.ModsNikkelMHadesBiomesModdedRoute} have less {$Keywords.EnemyHealth} and {$Keywords.Armor} while you are in {$Keywords.ModsNikkelMHadesBiomesGoddessMode}.",
+	-- },
 	-- #endregion
 }
 

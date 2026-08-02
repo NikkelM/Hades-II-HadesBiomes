@@ -26,7 +26,7 @@ function mod.RoomEntranceCrawlerMiniBoss(currentRun, currentRoom)
 	game.wait(0.5)
 
 	-- This is used to give enough time for the intro voicelines on the first encounter
-	if game.GameState.EncountersOccurredCache.ModsNikkelMHadesBiomesMiniBossCrawler > 1 or game.GameState.EncountersOccurredCache.MiniBossCrawler > 1 then
+	if (game.GameState.EncountersOccurredCache.ModsNikkelMHadesBiomesMiniBossCrawler or 0) > 1 or (game.GameState.EncountersOccurredCache.MiniBossCrawler or 0) > 1 then
 		game.wait(0.5)
 	else
 		game.wait(2.5)
@@ -56,7 +56,7 @@ function mod.RoomEntranceCrawlerMiniBoss(currentRun, currentRoom)
 	game.wait(0.5)
 	game.thread(game.EndTinyVerminRadialBlur)
 
-	if game.GameState.EncountersOccurredCache.ModsNikkelMHadesBiomesMiniBossCrawler > 1 then
+	if (game.GameState.EncountersOccurredCache.ModsNikkelMHadesBiomesMiniBossCrawler or 0) > 1 then
 		LockCamera({ Id = currentRun.Hero.ObjectId, Duration = 1.0 })
 		FocusCamera({ Fraction = game.CurrentRun.CurrentRoom.ZoomFraction, ZoomType = "Ease", Duration = 1.0 })
 		game.wait(1.0)

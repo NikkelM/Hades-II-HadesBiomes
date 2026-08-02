@@ -74,6 +74,7 @@ local hadesWeaponsModifications = {
 	},
 	MinotaurOverheadShockwave = {
 		ProjectileAngleOffset = 90,
+		ProjectileAngleStartOffset = 0,
 	},
 	-- Not used?
 	TheseusChariotRam = {
@@ -111,6 +112,9 @@ local hadesWeaponsModifications = {
 }
 
 mod.ApplyNestedSjsonModifications(hadesWeaponsTable.Weapons, hadesWeaponsModifications)
+
+-- Remove duplicates we don't want at all, as there is one defined in Hades II already or we just don't need it
+mod.RemoveSjsonEntries(hadesWeaponsTable.Weapons, mod.EnemyWeaponRemovals, "Name", "EnemyWeapons.sjson")
 
 for i = #hadesWeaponsTable.Weapons, 1, -1 do
 	local weapon = hadesWeaponsTable.Weapons[i]
