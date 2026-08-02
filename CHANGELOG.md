@@ -16,6 +16,7 @@ Other fixes and improvements:
 - Fixed: Shells fired by the Argent Skull can become irretrievable if they were supposed to return to Melinoë during dialogue playing between phases in Hades' boss fight.
 - Fixed: Damage taken from the Tiny Vermin is categorized as damage taken from Crawlers in the Damage Taken record in the run clear screen.
 - Fixed: The voiceline that is supposed to play when attempting to interact with the locked Keepsake Cabinet in post-boss rooms may not play in some cases.
+- Fixed: The boons presented by Orpheus & Eurydice once they are reunited may be in a different order than expected.
 - Fixed: Meeting Orpheus is not counted towards the unlock conditions of the "Close at Heart" Minor Prophecy.
 - Fixed: There is a typo in the description of Orpheus' "Hymn to Zagreus" boon.
 <!--Releasenotes end-->

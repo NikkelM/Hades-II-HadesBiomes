@@ -426,6 +426,7 @@ local npcModifications = {
 		},
 		-- "Blessings of Eurydice",
 		BoonInfoTitleText = "Codex_BoonInfo_Echo",
+		-- Also update/add to order for NPC_Orpheus_Story_01
 		Traits = {
 			"ModsNikkelMHadesBiomesBuffSlottedBoonRarity",
 			"ModsNikkelMHadesBiomesBuffMegaPom",
@@ -1838,6 +1839,11 @@ local npcModifications = {
 		MenuTitle = "ModsNikkelMHadesBiomes_Eurydice_Orpheus",
 		FlavorTextIds = {
 			"Eurydice_OfferText03",
+		},
+		Traits = {
+			"ModsNikkelMHadesBiomesBuffSlottedBoonRarity",
+			"ModsNikkelMHadesBiomesBuffMegaPom",
+			"ModsNikkelMHadesBiomesBuffFutureBoonRarity",
 		},
 		AllowSpecialInteractInPartnerConversation = true,
 		InteractVoiceLines = {
