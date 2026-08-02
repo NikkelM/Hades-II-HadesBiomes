@@ -335,16 +335,9 @@ local function copyHadesHelpTexts()
 							table.remove(hadesHelpTextData.Texts, i)
 						end
 						if entry.Id then
-							entry.Id = entry.Id:gsub("Storyteller_", "Modsnikkelmhadesbiomesstoryteller_")
-							entry.Id = entry.Id:gsub("Charon_", "Modsnikkelmhadesbiomescharon_")
-							entry.Id = entry.Id:gsub("Persephone_", "Modsnikkelmhadesbiomespersephone_")
-							entry.Id = entry.Id:gsub("ZagreusHome_", "Modsnikkelmhadesbiomeszagreushome_")
-							-- LootData
-							entry.Id = entry.Id:gsub("Ares_", "Modsnikkelmhadesbiomesares_")
-							entry.Id = entry.Id:gsub("Athena_", "Modsnikkelmhadesbiomesathena_")
-							entry.Id = entry.Id:gsub("Chaos_", "Modsnikkelmhadesbiomeschaos_")
-							entry.Id = entry.Id:gsub("Dionysus_", "Modsnikkelmhadesbiomesdionysus_")
-							entry.Id = entry.Id:gsub("Hermes_", "Modsnikkelmhadesbiomeshermes_")
+							for originalName, moddedName in pairs(mod.VoiceoverFileNames) do
+								entry.Id = entry.Id:gsub(originalName .. "_", moddedName .. "_")
+							end
 						end
 						if entry.DisplayName then
 							entry.DisplayName = string.gsub(entry.DisplayName, "{#PreviousFormat}", "{#Prev}")
@@ -383,16 +376,11 @@ local function copyHadesNPCTexts()
 					local filteredTexts = {}
 					for _, entry in ipairs(hadesHelpTextDataRaw.Texts) do
 						if entry.Id and entry.Speaker and allowedSpeakers[entry.Speaker] then
-							entry.Id = entry.Id:gsub("Storyteller_", "Modsnikkelmhadesbiomesstoryteller_")
-							entry.Id = entry.Id:gsub("Charon_", "Modsnikkelmhadesbiomescharon_")
-							entry.Id = entry.Id:gsub("Persephone_", "Modsnikkelmhadesbiomespersephone_")
-							entry.Id = entry.Id:gsub("MegaeraHome_", "Modsnikkelmhadesbiomesmegaerahome_")
+							for originalName, moddedName in pairs(mod.VoiceoverFileNames) do
+								entry.Id = entry.Id:gsub(originalName .. "_", moddedName .. "_")
+							end
+							-- Custom rename, moved into MegaeraHome bank
 							entry.Id = entry.Id:gsub("MegaeraExtra_", "Modsnikkelmhadesbiomesmegaerahome_5")
-							-- entry.Id = entry.Id:gsub("Nyx_", "Modsnikkelmhadesbiomesnyx_")
-							-- entry.Id = entry.Id:gsub("Hades_", "Modsnikkelmhadesbiomeshades_")
-							entry.Id = entry.Id:gsub("Skelly_", "Modsnikkelmhadesbiomesskelly_")
-							-- entry.Id = entry.Id:gsub("Hypnos_", "Modsnikkelmhadesbiomeshypnos_")
-							entry.Id = entry.Id:gsub("ZagreusHome_", "Modsnikkelmhadesbiomeszagreushome_")
 
 							if entry.DisplayName then
 								entry.DisplayName = entry.DisplayName:gsub("{#PreviousFormat}", "{#Prev}")

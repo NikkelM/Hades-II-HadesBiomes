@@ -582,11 +582,13 @@ mod.InformalNPCRelationshipsM = {
 	"NPC_Orpheus_Story_01",
 }
 
-mod.SkellyStatueConversations = {
-	"ModsNikkelMHadesBiomes_HadesStatueIntro01",
-	"ModsNikkelMHadesBiomes_HadesStatueUnveil01",
-	"ModsNikkelMHadesBiomes_HadesStatueUnveil02",
+-- Controls if the Skelly and ZagreusHome voicebanks are loaded in the Crossroads, and the insertion order into Skelly's priority conversations (last in this list has highest priority)
+mod.SkellyModdedCrossroadsConversations = {
+	"ModsNikkelMHadesBiomes_SkellyHintMeeting_EasyMode01",
 	"ModsNikkelMHadesBiomes_HadesStatueUnveil03",
+	"ModsNikkelMHadesBiomes_HadesStatueUnveil02",
+	"ModsNikkelMHadesBiomes_HadesStatueUnveil01",
+	"ModsNikkelMHadesBiomes_HadesStatueIntro01",
 }
 
 mod.ModdedPlayerScaleMultiplier = 0.9

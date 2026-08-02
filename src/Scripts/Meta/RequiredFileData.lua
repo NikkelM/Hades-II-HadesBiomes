@@ -8,6 +8,7 @@ mod.AudioFileMappings = {
 }
 
 -- Voiceover .txt and .fsb file names
+-- Mapped H1 cue names <-> Modded cue names for localization mapping support
 -- The file name must be the same as the event names within the file
 mod.VoiceoverFileNames = {
 	Alecto = "Alecto",
@@ -15,18 +16,19 @@ mod.VoiceoverFileNames = {
 	HadesField = "HadesField",
 	MegaeraField = "MegaeraField",
 	Minotaur = "Minotaur",
-	Modsnikkelmhadesbiomesares = "Modsnikkelmhadesbiomesares",
-	Modsnikkelmhadesbiomesathena = "Modsnikkelmhadesbiomesathena",
-	Modsnikkelmhadesbiomeschaos = "Modsnikkelmhadesbiomeschaos",
-	Modsnikkelmhadesbiomescharon = "Modsnikkelmhadesbiomescharon",
-	Modsnikkelmhadesbiomesdionysus = "Modsnikkelmhadesbiomesdionysus",
-	Modsnikkelmhadesbiomeshermes = "Modsnikkelmhadesbiomeshermes",
-	Modsnikkelmhadesbiomesintercom = "Modsnikkelmhadesbiomesintercom",
-	Modsnikkelmhadesbiomesmegaerahome = "Modsnikkelmhadesbiomesmegaerahome",
-	Modsnikkelmhadesbiomespersephone = "Modsnikkelmhadesbiomespersephone",
-	Modsnikkelmhadesbiomesskelly = "Modsnikkelmhadesbiomesskelly",
-	Modsnikkelmhadesbiomesstoryteller = "Modsnikkelmhadesbiomesstoryteller",
-	Modsnikkelmhadesbiomeszagreushome = "Modsnikkelmhadesbiomeszagreushome",
+	Ares = "Modsnikkelmhadesbiomesares",
+	Artemis = "Modsnikkelmhadesbiomesartemis",
+	Athena = "Modsnikkelmhadesbiomesathena",
+	Chaos = "Modsnikkelmhadesbiomeschaos",
+	Charon = "Modsnikkelmhadesbiomescharon",
+	Dionysus = "Modsnikkelmhadesbiomesdionysus",
+	Hermes = "Modsnikkelmhadesbiomeshermes",
+	Intercom = "Modsnikkelmhadesbiomesintercom",
+	MegaeraHome = "Modsnikkelmhadesbiomesmegaerahome",
+	Persephone = "Modsnikkelmhadesbiomespersephone",
+	Skelly = "Modsnikkelmhadesbiomesskelly",
+	Storyteller = "Modsnikkelmhadesbiomesstoryteller",
+	ZagreusHome = "Modsnikkelmhadesbiomeszagreushome",
 	Orpheus = "Orpheus",
 	Patroclus = "Patroclus",
 	Sisyphus = "Sisyphus",

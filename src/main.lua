@@ -570,6 +570,22 @@ local function on_ready()
 			import "Game/Text/zh-TW/_LootData_Chaos.zh-TW.sjson.lua"
 			DebugLogScriptImportProgress("Chaos LootData SJSON")
 
+			import "Game/Text/de/_NPCData_Skelly.de.sjson.lua"
+			import "Game/Text/el/_NPCData_Skelly.el.sjson.lua"
+			import "Game/Text/es/_NPCData_Skelly.es.sjson.lua"
+			import "Game/Text/fr/_NPCData_Skelly.fr.sjson.lua"
+			import "Game/Text/it/_NPCData_Skelly.it.sjson.lua"
+			import "Game/Text/ja/_NPCData_Skelly.ja.sjson.lua"
+			import "Game/Text/ko/_NPCData_Skelly.ko.sjson.lua"
+			import "Game/Text/pl/_NPCData_Skelly.pl.sjson.lua"
+			import "Game/Text/pt-BR/_NPCData_Skelly.pt-BR.sjson.lua"
+			import "Game/Text/ru/_NPCData_Skelly.ru.sjson.lua"
+			import "Game/Text/tr/_NPCData_Skelly.tr.sjson.lua"
+			import "Game/Text/uk/_NPCData_Skelly.uk.sjson.lua"
+			import "Game/Text/zh-CN/_NPCData_Skelly.zh-CN.sjson.lua"
+			import "Game/Text/zh-TW/_NPCData_Skelly.zh-TW.sjson.lua"
+			DebugLogScriptImportProgress("Skelly NPCData SJSON")
+
 			-- Imports enemy, encounter and room data from Hades to Hades II - ALWAYS requires a Hades installation
 			-- Done first, as the EncounterData depends on the EnemySets
 			import "Scripts/EnemySets.lua"
