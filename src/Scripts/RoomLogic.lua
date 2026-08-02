@@ -382,15 +382,24 @@ end)
 -- Wrapping both LoadVoiceBanks and LoadPackages as some characters only call one or the other, to ensure we always have the required modded voicebanks available
 modutil.mod.Path.Wrap("LoadPackages", function(base, args)
 	if game.CurrentRun and game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun then
+		if args.Name then
+			-- If it's a table (bad mod), move it into args.Names
+			if type(args.Name) == "table" then
+				args.Names = args.Name
+				args.Name = nil
+			elseif mod.LootVoiceBankMappings[args.Name or "nil"] ~= nil then
+				game.LoadVoiceBanks(mod.LootVoiceBankMappings[mod.LootVoiceBankMappings[args.Name]])
+			end
+		end
+		-- Explicitly not an elseif so we catch the case where we moved args.Name into args.Names above
 		if args.Names then
+			if type(args.Names) == "string" then
+				args.Names = { args.Names }
+			end
 			for _, character in ipairs(args.Names) do
 				if mod.LootVoiceBankMappings[character] ~= nil then
 					game.LoadVoiceBanks(mod.LootVoiceBankMappings[character])
 				end
-			end
-		else
-			if mod.LootVoiceBankMappings[args.Name or "nil"] ~= nil then
-				game.LoadVoiceBanks(mod.LootVoiceBankMappings[mod.LootVoiceBankMappings[args.Name]])
 			end
 		end
 	end
