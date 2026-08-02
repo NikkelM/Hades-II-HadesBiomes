@@ -8,7 +8,7 @@ if ponyMenuInternal == nil or ponyMenuInternal.BoonData == nil then
 	return
 end
 
-local iconScale = 0.25
+local iconScale = 0.2
 local npcMenuEntries = {
 	{
 		Name = "NPC_SisyphusAndBouldy_01",
