@@ -22,6 +22,7 @@ Other fixes and improvements:
 - Fixed: The boons presented by Orpheus & Eurydice once they are reunited may be in a different order than expected.
 - Fixed: Meeting Orpheus is not counted towards the unlock conditions of the "Close at Heart" Minor Prophecy.
 - Fixed: There is a typo in the description of Orpheus' "Hymn to Zagreus" boon.
+- Fixed: The fade-in animation of the Record Keeper's screen is missing some smoother animations on the bar graphs that exist in the base game.
 - Fixed: The vanilla Hades II intro video plays before Zagreus' Journey fresh file runs.
 <!--Releasenotes end-->
 

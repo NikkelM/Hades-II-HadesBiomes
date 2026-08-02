@@ -164,7 +164,10 @@ modutil.mod.Path.Override("ShowTraitStats", function(screen)
 				Group = screen.ComponentData.DefaultGroup,
 				X = columnData.X,
 				Y = locationY,
-				Scale = screen.IconScaleTraits
+				Scale = screen.IconScaleTraits,
+				Alpha = 0,
+				AlphaTarget = 1,
+				AlphaTargetDuration = 0.1
 			})
 			components[columnData.ColumnName .. i] = component
 			SetAnimation({ DestinationId = component.Id, Name = game.TraitData[traitName].Icon })
@@ -180,7 +183,10 @@ modutil.mod.Path.Override("ShowTraitStats", function(screen)
 				Name = "BlankObstacle",
 				Group = screen.ComponentData.DefaultGroup,
 				X = columnData.X,
-				Y = locationY
+				Y = locationY,
+				Alpha = 0,
+				AlphaTarget = 1,
+				AlphaTargetDuration = 0.1
 			})
 			components[columnData.ColumnName .. i] = component
 			SetAnimation({ DestinationId = component.Id, Name = "BarGraphBar" }) --nopkg
