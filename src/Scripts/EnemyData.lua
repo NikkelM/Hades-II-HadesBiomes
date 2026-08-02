@@ -2063,6 +2063,7 @@ local enemyModifications = {
 		BlockRaiseDead = true,
 		BlockRespawnShrineUpgrade = true,
 		BlockCharm = true,
+		NeverLeavesShadeMerc = true,
 		AIOptions = { _PLUGIN.guid .. "." .. "PickupAI", },
 		AIPickupRange = 45,
 		RespawningVoiceLines = mod.NilValue,
@@ -3050,6 +3051,7 @@ local enemyModifications = {
 		-- Handled by the Cast projectile itself
 		OutgoingDamageModifiers = mod.NilValue,
 		ImmuneToPolymorph = true,
+		NeverLeavesShadeMerc = true,
 		RunHistoryKilledByName = "NPC_Hades_01",
 		BossKillVoiceLines = {
 			-- Replacing the GlobalVoiceLines.FinalBossDefeatedVoiceLines which don't exist anyways
