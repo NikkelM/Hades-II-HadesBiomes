@@ -68,6 +68,7 @@ end
 function mod.PlayPreLineTauntAnimFromSource(source, args)
 	if source ~= nil and source.TauntAnimation ~= nil then
 		SetAnimation({ Name = source.TauntAnimation, DestinationId = source.ObjectId })
+		AngleTowardTarget({ Id = source.ObjectId, DestinationId = game.CurrentRun.Hero.ObjectId, Duration = 0.07 })
 	end
 end
 
@@ -302,9 +303,8 @@ end
 
 function mod.SelectTheseusGod(enemy, run, args)
 	enemy.TheseusGodName = mod.GetUninteractedGodThisRunForTheseus() or "Artemis"
-	LoadPackages({ Names = enemy.TheseusGodName })
 	-- Contains some necessary Fx that were in various GodUpgrade packages in Hades
-	LoadPackages({ Names = "ModsNikkelMHadesBiomesTheseusGodFxOriginal" })
+	LoadPackages({ Names = { enemy.TheseusGodName, "ModsNikkelMHadesBiomesTheseusGodFxOriginal" } })
 end
 
 function mod.TheseusGodAI(enemy, currentRun)
