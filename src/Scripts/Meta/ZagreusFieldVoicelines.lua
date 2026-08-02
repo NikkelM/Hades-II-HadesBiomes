@@ -1532,11 +1532,9 @@ mod.ZagreusFieldVoicelines = {
 	-- #endregion
 
 	-- #region LootData/Boon pickup/InteractTextLineSets
-	-- #region Chaos/TrialUpgrade
-	ZagreusField_3804 = true,
-	-- #endregion
 
 	-- #region Ares/AresUpgrade
+	ZagreusField_0789 = true,
 	ZagreusField_4340 = true,
 	-- #endregion
 
@@ -1549,5 +1547,14 @@ mod.ZagreusFieldVoicelines = {
 	ZagreusField_0774 = true,
 	ZagreusField_4338 = true,
 	-- #endregion
+
+	-- #region Chaos/TrialUpgrade
+	ZagreusField_3804 = true,
+	-- #endregion
+
+	-- #region Hermes/HermesUpgrade
+	ZagreusField_1923 = true,
+	-- #endregion
+
 	-- #endregion
 }
