@@ -411,6 +411,58 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 		end
 	end
 
+	-- Map duplicate TextLineSet names that exist in both games to add the ModsNikkelMHadesBiomes_ prefix
+	local textLineRequirementOptions = {
+		RequiredTextLines = "table",
+		RequiredFalseTextLines = "table",
+		RequiredAnyTextLines = "table",
+		RequiredAnyOtherTextLines = "table",
+		RequiredAnyTextLinesThisRun = "table",
+		RequiredTextLinesThisRoom = "table",
+		RequiredFalseTextLinesThisRoom = "table",
+		RequiredFalseTextLinesThisRun = "table",
+		RequiredAnyQueuedTextLines = "table",
+		RequiredFalseQueuedTextLines = "table",
+		RequiredAnyTextLinesLastRun = "table",
+		RequiredFalseTextLinesLastRun = "table",
+		RequiredTextLinesThisRun = "string",
+		RequiredQueuedTextLines = "string",
+		RequiredTextLinesLastRun = "stringOrTable",
+		RequiredMinAnyTextLines = "textLinesSubTable",
+		RequiredMaxAnyTextLines = "textLinesSubTable",
+		RequiredTextLinesPerMetaUpgradeLevel = "textLinesSubTable",
+		MinRunsSinceAnyTextLines = "textLinesSubTable",
+		MaxRunsSinceAnyTextLines = "textLinesSubTable",
+	}
+	for textLineRequirement, requirementType in pairs(textLineRequirementOptions) do
+		local value = requirements[textLineRequirement]
+		if value ~= nil then
+			if requirementType == "string" then
+				requirements[textLineRequirement] = mod.MapDuplicateTextLineName(value)
+			elseif requirementType == "stringOrTable" then
+				if type(value) == "string" then
+					requirements[textLineRequirement] = mod.MapDuplicateTextLineName(value)
+				elseif type(value) == "table" then
+					for i, textLineSet in ipairs(value) do
+						value[i] = mod.MapDuplicateTextLineName(textLineSet)
+					end
+				end
+			elseif requirementType == "table" then
+				if type(value) == "table" then
+					for i, textLineSet in ipairs(value) do
+						value[i] = mod.MapDuplicateTextLineName(textLineSet)
+					end
+				end
+			elseif requirementType == "textLinesSubTable" then
+				if type(value) == "table" and type(value.TextLines) == "table" then
+					for i, textLineSet in ipairs(value.TextLines) do
+						value.TextLines[i] = mod.MapDuplicateTextLineName(textLineSet)
+					end
+				end
+			end
+		end
+	end
+
 	if requirements.RequiredTrait then
 		-- Replace Hades trait names with Hades II equivalents
 		local traitMappings = {

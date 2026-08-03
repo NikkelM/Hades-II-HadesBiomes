@@ -243,6 +243,19 @@ function mod.ApplyModificationsAndInheritEnemyData(base, modifications, replacem
 		}
 		for _, property in ipairs(bossPresentationProperties) do
 			if enemyData[property] then
+				-- Deduplicate TextLineSet keys that exist in both games by prepending ModsNikkelMHadesBiomes_
+				local duplicateKeyRenames = {}
+				for key in pairs(enemyData[property]) do
+					local mappedKey = mod.MapDuplicateTextLineName(key)
+					if mappedKey ~= key then
+						duplicateKeyRenames[key] = mappedKey
+					end
+				end
+				for oldKey, newKey in pairs(duplicateKeyRenames) do
+					enemyData[property][newKey] = enemyData[property][oldKey]
+					enemyData[property][oldKey] = nil
+				end
+
 				for key, textLineSet in pairs(enemyData[property]) do
 					textLineSet.Name = key
 					for index, entry in ipairs(textLineSet) do

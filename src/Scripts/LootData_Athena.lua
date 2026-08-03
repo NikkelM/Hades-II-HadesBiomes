@@ -982,7 +982,7 @@ local newPortedInteractTextLines = {
 		},
 	},
 	{
-		Name = "ModsNikkelMHadesBiomes_AthenaPostEpilogue01",
+		Name = "AthenaPostEpilogue01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
 			InsertAfterNarrativeTextLine = "AthenaFirstPickUp",
 		},
@@ -1001,7 +1001,7 @@ local newPortedInteractTextLines = {
 	-- #endregion
 	-- #region Storylines/Priority dialogues (Inserted in a group after priority dialogues above)
 	{
-		Name = "ModsNikkelMHadesBiomes_AthenaAboutZeus01",
+		Name = "AthenaAboutZeus01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
 			InsertAfterTextLineGroupContaining = "AthenaFirstPickUp",
 			CreateNewPriorityGroup = true,
@@ -1024,7 +1024,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "AthenaAboutPoseidon01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "ModsNikkelMHadesBiomes_AthenaAboutZeus01",
+			InsertAfterNarrativeTextLine = "AthenaAboutZeus01",
 		},
 		PlayOnce = true,
 		RequiredFalseTextLinesThisRun = game.GameData.GodAboutGodVoiceLines,
@@ -1044,7 +1044,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "AthenaAboutAphrodite01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "ModsNikkelMHadesBiomes_AthenaAboutZeus01",
+			InsertAfterNarrativeTextLine = "AthenaAboutZeus01",
 		},
 		PlayOnce = true,
 		RequiredFalseTextLinesThisRun = game.GameData.GodAboutGodVoiceLines,
@@ -1062,9 +1062,9 @@ local newPortedInteractTextLines = {
 		},
 	},
 	{
-		Name = "ModsNikkelMHadesBiomes_AthenaAboutAres01",
+		Name = "AthenaAboutAres01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "ModsNikkelMHadesBiomes_AthenaAboutZeus01",
+			InsertAfterNarrativeTextLine = "AthenaAboutZeus01",
 		},
 		PlayOnce = true,
 		RequiredFalseTextLinesThisRun = game.GameData.GodAboutGodVoiceLines,
@@ -1084,7 +1084,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "AthenaAboutArtemis01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "ModsNikkelMHadesBiomes_AthenaAboutZeus01",
+			InsertAfterNarrativeTextLine = "AthenaAboutZeus01",
 		},
 		PlayOnce = true,
 		RequiredFalseTextLinesThisRun = game.GameData.GodAboutGodVoiceLines,
@@ -1101,9 +1101,9 @@ local newPortedInteractTextLines = {
 		},
 	},
 	{
-		Name = "ModsNikkelMHadesBiomes_AthenaAboutDionysus01",
+		Name = "AthenaAboutDionysus01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "ModsNikkelMHadesBiomes_AthenaAboutZeus01",
+			InsertAfterNarrativeTextLine = "AthenaAboutZeus01",
 		},
 		PlayOnce = true,
 		RequiredFalseTextLinesThisRun = game.GameData.GodAboutGodVoiceLines,
@@ -1122,7 +1122,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "AthenaAboutHermes01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "ModsNikkelMHadesBiomes_AthenaAboutZeus01",
+			InsertAfterNarrativeTextLine = "AthenaAboutZeus01",
 		},
 		PlayOnce = true,
 		RequiredFalseTextLinesThisRun = game.GameData.GodAboutGodVoiceLines,
@@ -1141,7 +1141,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "AthenaAboutHadesKeepsake01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "ModsNikkelMHadesBiomes_AthenaAboutZeus01",
+			InsertAfterNarrativeTextLine = "AthenaAboutZeus01",
 		},
 		PlayOnce = true,
 		RequiredFalseTextLinesThisRun = game.GameData.GodAboutGodVoiceLines,
@@ -1160,7 +1160,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "AthenaAboutHadesKeepsake02",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "ModsNikkelMHadesBiomes_AthenaAboutZeus01",
+			InsertAfterNarrativeTextLine = "AthenaAboutZeus01",
 		},
 		PlayOnce = true,
 		RequiredFalseTextLinesThisRun = game.GameData.GodAboutGodVoiceLines,
@@ -1180,7 +1180,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "AthenaPostGiftPickup01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "ModsNikkelMHadesBiomes_AthenaAboutZeus01",
+			InsertAfterNarrativeTextLine = "AthenaAboutZeus01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -1198,7 +1198,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "AthenaPostGiftPickup02",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "ModsNikkelMHadesBiomes_AthenaAboutZeus01",
+			InsertAfterNarrativeTextLine = "AthenaAboutZeus01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -1215,7 +1215,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "AthenaPostGiftPickup03",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "ModsNikkelMHadesBiomes_AthenaAboutZeus01",
+			InsertAfterNarrativeTextLine = "AthenaAboutZeus01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -1232,7 +1232,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "AthenaPostGiftPickup04",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "ModsNikkelMHadesBiomes_AthenaAboutZeus01",
+			InsertAfterNarrativeTextLine = "AthenaAboutZeus01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -1249,7 +1249,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "AthenaPostGiftPickup05",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "ModsNikkelMHadesBiomes_AthenaAboutZeus01",
+			InsertAfterNarrativeTextLine = "AthenaAboutZeus01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -1266,7 +1266,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "AthenaVsOlympians01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "ModsNikkelMHadesBiomes_AthenaAboutZeus01",
+			InsertAfterNarrativeTextLine = "AthenaAboutZeus01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -1283,7 +1283,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "AthenaBackstory01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "ModsNikkelMHadesBiomes_AthenaAboutZeus01",
+			InsertAfterNarrativeTextLine = "AthenaAboutZeus01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -1302,7 +1302,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "AthenaBackstory02",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "ModsNikkelMHadesBiomes_AthenaAboutZeus01",
+			InsertAfterNarrativeTextLine = "AthenaAboutZeus01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -1321,7 +1321,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "AthenaBackstory03",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "ModsNikkelMHadesBiomes_AthenaAboutZeus01",
+			InsertAfterNarrativeTextLine = "AthenaAboutZeus01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -1339,7 +1339,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "AthenaBackstory04",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "ModsNikkelMHadesBiomes_AthenaAboutZeus01",
+			InsertAfterNarrativeTextLine = "AthenaAboutZeus01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -1358,7 +1358,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "AthenaBackstory05",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "ModsNikkelMHadesBiomes_AthenaAboutZeus01",
+			InsertAfterNarrativeTextLine = "AthenaAboutZeus01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -1375,7 +1375,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "AthenaPostFlashback01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "ModsNikkelMHadesBiomes_AthenaAboutZeus01",
+			InsertAfterNarrativeTextLine = "AthenaAboutZeus01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -1393,7 +1393,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "AthenaRunProgress01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "ModsNikkelMHadesBiomes_AthenaAboutZeus01",
+			InsertAfterNarrativeTextLine = "AthenaAboutZeus01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -1411,7 +1411,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "AthenaRunProgress02",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "ModsNikkelMHadesBiomes_AthenaAboutZeus01",
+			InsertAfterNarrativeTextLine = "AthenaAboutZeus01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -1429,7 +1429,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "AthenaRunProgress03",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "ModsNikkelMHadesBiomes_AthenaAboutZeus01",
+			InsertAfterNarrativeTextLine = "AthenaAboutZeus01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -1448,7 +1448,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "AthenaRunProgress04",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "ModsNikkelMHadesBiomes_AthenaAboutZeus01",
+			InsertAfterNarrativeTextLine = "AthenaAboutZeus01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -1467,7 +1467,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "AthenaRunCleared01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "ModsNikkelMHadesBiomes_AthenaAboutZeus01",
+			InsertAfterNarrativeTextLine = "AthenaAboutZeus01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -1484,7 +1484,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "AthenaRunCleared02",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "ModsNikkelMHadesBiomes_AthenaAboutZeus01",
+			InsertAfterNarrativeTextLine = "AthenaAboutZeus01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -1503,7 +1503,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "AthenaRunCleared03",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "ModsNikkelMHadesBiomes_AthenaAboutZeus01",
+			InsertAfterNarrativeTextLine = "AthenaAboutZeus01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -1519,14 +1519,14 @@ local newPortedInteractTextLines = {
 		},
 	},
 	{
-		Name = "ModsNikkelMHadesBiomes_AthenaPostEpilogue02",
+		Name = "AthenaPostEpilogue02",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "ModsNikkelMHadesBiomes_AthenaAboutZeus01",
+			InsertAfterNarrativeTextLine = "AthenaAboutZeus01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
 		PreEventFunctionArgs = { PickupWait = 1.0, },
-		RequiredTextLines = { "OlympianReunionQuestComplete", "ModsNikkelMHadesBiomes_AthenaPostEpilogue01" },
+		RequiredTextLines = { "OlympianReunionQuestComplete", "AthenaPostEpilogue01" },
 		{
 			Cue = "/VO/Athena_0235",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
@@ -1536,9 +1536,9 @@ local newPortedInteractTextLines = {
 		},
 	},
 	{
-		Name = "ModsNikkelMHadesBiomes_AthenaAboutKeepsake01",
+		Name = "AthenaAboutKeepsake01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "ModsNikkelMHadesBiomes_AthenaAboutZeus01",
+			InsertAfterNarrativeTextLine = "AthenaAboutZeus01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -1555,7 +1555,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "AthenaAboutNyx01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "ModsNikkelMHadesBiomes_AthenaAboutZeus01",
+			InsertAfterNarrativeTextLine = "AthenaAboutZeus01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -1572,7 +1572,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "AthenaAboutNyx02",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "ModsNikkelMHadesBiomes_AthenaAboutZeus01",
+			InsertAfterNarrativeTextLine = "AthenaAboutZeus01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -1591,7 +1591,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "AthenaAboutNyx03",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "ModsNikkelMHadesBiomes_AthenaAboutZeus01",
+			InsertAfterNarrativeTextLine = "AthenaAboutZeus01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -1608,7 +1608,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "AthenaAboutQuestLog01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "ModsNikkelMHadesBiomes_AthenaAboutZeus01",
+			InsertAfterNarrativeTextLine = "AthenaAboutZeus01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -1627,9 +1627,9 @@ local newPortedInteractTextLines = {
 		},
 	},
 	{
-		Name = "ModsNikkelMHadesBiomes_AthenaLegendaryPickUp01",
+		Name = "AthenaLegendaryPickUp01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "ModsNikkelMHadesBiomes_AthenaAboutZeus01",
+			InsertAfterNarrativeTextLine = "AthenaAboutZeus01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -1648,9 +1648,9 @@ local newPortedInteractTextLines = {
 		},
 	},
 	{
-		Name = "ModsNikkelMHadesBiomes_AthenaLegendaryPickUp02",
+		Name = "AthenaLegendaryPickUp02",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "ModsNikkelMHadesBiomes_AthenaAboutZeus01",
+			InsertAfterNarrativeTextLine = "AthenaAboutZeus01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -1671,7 +1671,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "AthenaMaxRelationship01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "ModsNikkelMHadesBiomes_AthenaAboutZeus01",
+			InsertAfterNarrativeTextLine = "AthenaAboutZeus01",
 		},
 		PlayOnce = true,
 		RequiredTextLines = { "Athena_07" },
@@ -1686,9 +1686,9 @@ local newPortedInteractTextLines = {
 		},
 	},
 	{
-		Name = "ModsNikkelMHadesBiomes_AthenaLowHealth01",
+		Name = "AthenaLowHealth01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "ModsNikkelMHadesBiomes_AthenaAboutZeus01",
+			InsertAfterNarrativeTextLine = "AthenaAboutZeus01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -1707,7 +1707,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "AthenaLowHealth02",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "ModsNikkelMHadesBiomes_AthenaAboutZeus01",
+			InsertAfterNarrativeTextLine = "AthenaAboutZeus01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -1726,7 +1726,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "AthenaLowHealth03",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "ModsNikkelMHadesBiomes_AthenaAboutZeus01",
+			InsertAfterNarrativeTextLine = "AthenaAboutZeus01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -1745,7 +1745,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "AthenaLowHealth04",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "ModsNikkelMHadesBiomes_AthenaAboutZeus01",
+			InsertAfterNarrativeTextLine = "AthenaAboutZeus01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -1764,7 +1764,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "AthenaLowHealth05",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "ModsNikkelMHadesBiomes_AthenaAboutZeus01",
+			InsertAfterNarrativeTextLine = "AthenaAboutZeus01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -1781,9 +1781,10 @@ local newPortedInteractTextLines = {
 		},
 	},
 	{
-		Name = "AthenaLegendaryPickUp01",
+		-- Two versions exist in H1, so adding the _Alternate suffix
+		Name = "AthenaLegendaryPickUp01_Alternate",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "ModsNikkelMHadesBiomes_AthenaAboutZeus01",
+			InsertAfterNarrativeTextLine = "AthenaAboutZeus01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -1802,9 +1803,10 @@ local newPortedInteractTextLines = {
 		},
 	},
 	{
-		Name = "AthenaLegendaryPickUp02",
+		-- Two versions exist in H1, so adding the _Alternate suffix
+		Name = "AthenaLegendaryPickUp02_Alternate",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "ModsNikkelMHadesBiomes_AthenaAboutZeus01",
+			InsertAfterNarrativeTextLine = "AthenaAboutZeus01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",

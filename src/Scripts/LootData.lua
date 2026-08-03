@@ -145,15 +145,21 @@ function mod.AddNarrativeDataEntries(newTextLines, narrativeDataKey, textLineTyp
 	end
 
 	for index, data in ipairs(newTextLines) do
-		local key = data.Name
-		if key == nil then
+		local originalName = data.Name
+		if originalName == nil then
 			mod.DebugPrint("A text line set is missing the Name field! (At index " .. index .. ")", 1)
 			return
 		end
 
-		-- Check if this name collides with an existing Hades II dialogue
-		if mod.HiddenConfig.DeveloperMode and not ignoreDuplicates and dialogueNameExistsInHadesTwo(key) then
-			mod.DebugPrint("Text line set '" .. key .. "' already exists in Hades II.", 1)
+		-- Deduplicate names that exist in both games
+		local key = mod.MapDuplicateTextLineName(originalName) or ""
+		data.Name = key
+
+		-- Safety net for duplicates that are not yet tracked in mod.DuplicateTextLineSetNames
+		if mod.HiddenConfig.DeveloperMode and not ignoreDuplicates and not mod.DuplicateTextLineSetNames[originalName] and dialogueNameExistsInHadesTwo(originalName) then
+			mod.DebugPrint(
+				"Text line set '" .. originalName .. "' already exists in Hades II but is not in mod.DuplicateTextLineSetNames.",
+				1)
 		end
 
 		local metadata = data.ModsNikkelMHadesBiomes_TextLineMetadata or {}
@@ -232,9 +238,10 @@ function mod.AddNarrativeDataEntries(newTextLines, narrativeDataKey, textLineTyp
 			-- Is this a new sub-table, or just the key itself
 			local entry = metadata.CreateNewPriorityGroup and { key } or key
 			if metadata.InsertAfterTextLineGroupContaining ~= nil then
-				insertAfterGroup(priorityTable, metadata.InsertAfterTextLineGroupContaining, entry, key)
+				insertAfterGroup(priorityTable, mod.MapDuplicateTextLineName(metadata.InsertAfterTextLineGroupContaining), entry,
+					key)
 			elseif metadata.InsertAfterNarrativeTextLine ~= nil then
-				insertAfterLine(priorityTable, metadata.InsertAfterNarrativeTextLine, entry, key,
+				insertAfterLine(priorityTable, mod.MapDuplicateTextLineName(metadata.InsertAfterNarrativeTextLine), entry, key,
 					metadata.CreateNewPriorityGroup)
 			elseif metadata.InsertAtFirstPriority ~= nil then
 				-- Insert at the very top of the priorityTable

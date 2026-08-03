@@ -1,4 +1,32 @@
 local newPortedInteractTextLines = {
+	{
+		Name = "AresFirstPickUp",
+		ModsNikkelMHadesBiomes_TextLineMetadata = {
+			InsertAtFirstPriority = true,
+			CreateNewPriorityGroup = true,
+		},
+		PlayOnce = true,
+		RequiredTextLines = { "AthenaFirstPickUp", },
+		{
+			Cue = "/VO/ZagreusField_0789",
+			Portrait = "Portrait_Zag_Default_01",
+			Speaker = "CharProtag",
+			PreLineThreadedFunctionName = "PowerWordPresentation",
+			PreLineThreadedFunctionArgs = { WaitTime = 3.38 },
+			PostLineAnim = "ZagreusInteractEquip",
+			PostLineAnimTarget = "Hero",
+			PostLineFunctionName = "BoonInteractPresentation",
+			Text = "This one was bound to show up I guess. In the name of Hades! Olympus! I accept this message."
+		},
+		{
+			Cue = "/VO/Ares_0002",
+			PortraitExitWait = 1.25,
+			PreContentSound = "/Leftovers/Menu Sounds/TextReveal2",
+			UseEventEndSound = true,
+			Text =
+			"You've got quite the fighting spirit in you there, I have to say. Most intriguing, and yet no surprise for someone born in hell itself. You come on out of there, and tell me all about it. I'm a fellow student of death, you see."
+		},
+	},
 	-- #region High-Priority Storylines/Quests (Inserted in a group after AresPostTrueEndingAboutTyphon01)
 	{
 		Name = "AresKillQuest01",
@@ -68,7 +96,7 @@ local newPortedInteractTextLines = {
 		},
 	},
 	{
-		Name = "ModsNikkelMHadesBiomes_AresPostEpilogue01",
+		Name = "AresPostEpilogue01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
 			InsertAfterNarrativeTextLine = "AresKillQuest01",
 		},
@@ -236,7 +264,7 @@ local newPortedInteractTextLines = {
 		},
 	},
 	{
-		Name = "ModsNikkelMHadesBiomes_AresAboutNyx01",
+		Name = "AresAboutNyx01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
 			InsertAfterNarrativeTextLine = "AresAboutThanatos01",
 		},
@@ -244,7 +272,7 @@ local newPortedInteractTextLines = {
 		PreEventFunctionName = "BoonInteractPresentation",
 		PreEventFunctionArgs = { PickupWait = 1.0, },
 		RequiredTextLines = { "AresAboutNyxIntro01", "AresPostFlashback01", "AresGift02", "NyxGift07", "ThanatosAboutAres01" },
-		RequiredFalseTextLines = { "ModsNikkelMHadesBiomes_AresAboutNyx01_B", "OlympianReunionQuestComplete" },
+		RequiredFalseTextLines = { "AresAboutNyx01_B", "OlympianReunionQuestComplete" },
 		MinRunsSinceAnyTextLines = { TextLines = game.GameData.AresAboutNyxTextLines, Count = 6 },
 		{
 			Cue = "/VO/Ares_0163",
@@ -255,7 +283,7 @@ local newPortedInteractTextLines = {
 		},
 	},
 	{
-		Name = "ModsNikkelMHadesBiomes_AresAboutNyx01_B",
+		Name = "AresAboutNyx01_B",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
 			InsertAfterNarrativeTextLine = "AresAboutThanatos01",
 		},
@@ -263,7 +291,7 @@ local newPortedInteractTextLines = {
 		PreEventFunctionName = "BoonInteractPresentation",
 		PreEventFunctionArgs = { PickupWait = 1.0, },
 		RequiredTextLines = { "AresAboutNyxIntro01", "AresPostFlashback01", "AresGift02", "NyxGift07", "ThanatosAboutAres01", "OlympianReunionQuestComplete" },
-		RequiredFalseTextLines = { "ModsNikkelMHadesBiomes_AresAboutNyx01" },
+		RequiredFalseTextLines = { "AresAboutNyx01" },
 		MinRunsSinceAnyTextLines = { TextLines = game.GameData.AresAboutNyxTextLines, Count = 6 },
 		{
 			Cue = "/VO/Ares_0234",
@@ -274,7 +302,7 @@ local newPortedInteractTextLines = {
 		},
 	},
 	{
-		Name = "ModsNikkelMHadesBiomes_AresAboutNyx02",
+		Name = "AresAboutNyx02",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
 			InsertAfterNarrativeTextLine = "AresAboutThanatos01",
 		},
@@ -282,7 +310,7 @@ local newPortedInteractTextLines = {
 		PreEventFunctionName = "BoonInteractPresentation",
 		PreEventFunctionArgs = { PickupWait = 1.0, },
 		RequiredTextLines = { "NyxAboutAres01", },
-		RequiredFalseTextLines = { "ModsNikkelMHadesBiomes_AresAboutNyx02_B", "OlympianReunionQuestComplete" },
+		RequiredFalseTextLines = { "AresAboutNyx02_B", "OlympianReunionQuestComplete" },
 		MinRunsSinceAnyTextLines = { TextLines = game.GameData.AresAboutNyxTextLines, Count = 6 },
 		{
 			Cue = "/VO/Ares_0164",
@@ -293,7 +321,7 @@ local newPortedInteractTextLines = {
 		},
 	},
 	{
-		Name = "ModsNikkelMHadesBiomes_AresAboutNyx02_B",
+		Name = "AresAboutNyx02_B",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
 			InsertAfterNarrativeTextLine = "AresAboutThanatos01",
 		},
@@ -302,7 +330,7 @@ local newPortedInteractTextLines = {
 		PreEventFunctionArgs = { PickupWait = 1.0, },
 		RequiredTextLines = { "OlympianReunionQuestComplete" },
 		RequiredAnyTextLines = { "NyxAboutAres01", "NyxAboutAres01_B" },
-		RequiredFalseTextLines = { "ModsNikkelMHadesBiomes_AresAboutNyx02" },
+		RequiredFalseTextLines = { "AresAboutNyx02" },
 		MinRunsSinceAnyTextLines = { TextLines = game.GameData.AresAboutNyxTextLines, Count = 6 },
 		{
 			Cue = "/VO/Ares_0235",
@@ -472,7 +500,7 @@ local newPortedInteractTextLines = {
 	-- #endregion
 	-- #region Misc (Inserted in a group after priority dialogues above)
 	{
-		Name = "ModsNikkelMHadesBiomes_AresAboutZeus01",
+		Name = "AresAboutZeus01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
 			InsertAfterTextLineGroupContaining = "AresAboutThanatos01",
 			CreateNewPriorityGroup = true,
@@ -492,9 +520,9 @@ local newPortedInteractTextLines = {
 		},
 	},
 	{
-		Name = "ModsNikkelMHadesBiomes_AresAboutPoseidon01",
+		Name = "AresAboutPoseidon01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "ModsNikkelMHadesBiomes_AresAboutZeus01",
+			InsertAfterNarrativeTextLine = "AresAboutZeus01",
 		},
 		PlayOnce = true,
 		RequiredFalseTextLinesThisRun = game.GameData.GodAboutGodVoiceLines,
@@ -511,9 +539,9 @@ local newPortedInteractTextLines = {
 		},
 	},
 	{
-		Name = "ModsNikkelMHadesBiomes_AresAboutAthena01",
+		Name = "AresAboutAthena01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "ModsNikkelMHadesBiomes_AresAboutZeus01",
+			InsertAfterNarrativeTextLine = "AresAboutZeus01",
 		},
 		PlayOnce = true,
 		RequiredFalseTextLinesThisRun = game.GameData.GodAboutGodVoiceLines,
@@ -530,9 +558,9 @@ local newPortedInteractTextLines = {
 		},
 	},
 	{
-		Name = "ModsNikkelMHadesBiomes_AresAboutAphrodite01",
+		Name = "AresAboutAphrodite01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "ModsNikkelMHadesBiomes_AresAboutZeus01",
+			InsertAfterNarrativeTextLine = "AresAboutZeus01",
 		},
 		PlayOnce = true,
 		RequiredFalseTextLinesThisRun = game.GameData.GodAboutGodVoiceLines,
@@ -549,9 +577,9 @@ local newPortedInteractTextLines = {
 		},
 	},
 	{
-		Name = "ModsNikkelMHadesBiomes_AresAboutArtemis01",
+		Name = "AresAboutArtemis01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "ModsNikkelMHadesBiomes_AresAboutZeus01",
+			InsertAfterNarrativeTextLine = "AresAboutZeus01",
 		},
 		PlayOnce = true,
 		RequiredFalseTextLinesThisRun = game.GameData.GodAboutGodVoiceLines,
@@ -570,7 +598,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "AresAboutDionysus01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "ModsNikkelMHadesBiomes_AresAboutZeus01",
+			InsertAfterNarrativeTextLine = "AresAboutZeus01",
 		},
 		PlayOnce = true,
 		RequiredFalseTextLinesThisRun = game.GameData.GodAboutGodVoiceLines,
@@ -587,9 +615,9 @@ local newPortedInteractTextLines = {
 		},
 	},
 	{
-		Name = "ModsNikkelMHadesBiomes_AresAboutHermes01",
+		Name = "AresAboutHermes01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "ModsNikkelMHadesBiomes_AresAboutZeus01",
+			InsertAfterNarrativeTextLine = "AresAboutZeus01",
 		},
 		PlayOnce = true,
 		RequiredFalseTextLinesThisRun = game.GameData.GodAboutGodVoiceLines,
@@ -606,9 +634,9 @@ local newPortedInteractTextLines = {
 		},
 	},
 	{
-		Name = "ModsNikkelMHadesBiomes_AresAboutDemeter01",
+		Name = "AresAboutDemeter01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "ModsNikkelMHadesBiomes_AresAboutZeus01",
+			InsertAfterNarrativeTextLine = "AresAboutZeus01",
 		},
 		PlayOnce = true,
 		RequiredFalseTextLinesThisRun = game.GameData.GodAboutGodVoiceLines,
@@ -627,7 +655,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "AresAboutHadesKeepsake01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "ModsNikkelMHadesBiomes_AresAboutZeus01",
+			InsertAfterNarrativeTextLine = "AresAboutZeus01",
 		},
 		PlayOnce = true,
 		RequiredFalseTextLinesThisRun = game.GameData.GodAboutGodVoiceLines,
@@ -646,7 +674,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "AresRunProgress01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "ModsNikkelMHadesBiomes_AresAboutZeus01",
+			InsertAfterNarrativeTextLine = "AresAboutZeus01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -664,7 +692,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "AresRunProgress02",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "ModsNikkelMHadesBiomes_AresAboutZeus01",
+			InsertAfterNarrativeTextLine = "AresAboutZeus01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -683,7 +711,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "AresRunCleared01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "ModsNikkelMHadesBiomes_AresAboutZeus01",
+			InsertAfterNarrativeTextLine = "AresAboutZeus01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -704,7 +732,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "AresRunCleared02",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "ModsNikkelMHadesBiomes_AresAboutZeus01",
+			InsertAfterNarrativeTextLine = "AresAboutZeus01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -724,7 +752,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "AresRunCleared03",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "ModsNikkelMHadesBiomes_AresAboutZeus01",
+			InsertAfterNarrativeTextLine = "AresAboutZeus01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -741,9 +769,9 @@ local newPortedInteractTextLines = {
 		},
 	},
 	{
-		Name = "ModsNikkelMHadesBiomes_AresAboutWar01",
+		Name = "AresAboutWar01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "ModsNikkelMHadesBiomes_AresAboutZeus01",
+			InsertAfterNarrativeTextLine = "AresAboutZeus01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -758,12 +786,12 @@ local newPortedInteractTextLines = {
 		},
 	},
 	{
-		Name = "ModsNikkelMHadesBiomes_AresAboutWar02",
+		Name = "AresAboutWar02",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "ModsNikkelMHadesBiomes_AresAboutZeus01",
+			InsertAfterNarrativeTextLine = "AresAboutZeus01",
 		},
 		PlayOnce = true,
-		RequiredTextLines = { "ModsNikkelMHadesBiomes_AresAboutWar01", },
+		RequiredTextLines = { "AresAboutWar01", },
 		PreEventFunctionName = "BoonInteractPresentation",
 		PreEventFunctionArgs = { PickupWait = 1.0, },
 		{
@@ -775,12 +803,12 @@ local newPortedInteractTextLines = {
 		},
 	},
 	{
-		Name = "ModsNikkelMHadesBiomes_AresAboutWar03",
+		Name = "AresAboutWar03",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "ModsNikkelMHadesBiomes_AresAboutZeus01",
+			InsertAfterNarrativeTextLine = "AresAboutZeus01",
 		},
 		PlayOnce = true,
-		RequiredTextLines = { "ModsNikkelMHadesBiomes_AresAboutWar02", "AresGift07" },
+		RequiredTextLines = { "AresAboutWar02", "AresGift07" },
 		PreEventFunctionName = "BoonInteractPresentation",
 		PreEventFunctionArgs = { PickupWait = 1.0, },
 		{
@@ -794,7 +822,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "AresAboutWeaponEnchantments01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "ModsNikkelMHadesBiomes_AresAboutZeus01",
+			InsertAfterNarrativeTextLine = "AresAboutZeus01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -810,9 +838,9 @@ local newPortedInteractTextLines = {
 		},
 	},
 	{
-		Name = "ModsNikkelMHadesBiomes_AresAboutKeepsake01",
+		Name = "AresAboutKeepsake01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "ModsNikkelMHadesBiomes_AresAboutZeus01",
+			InsertAfterNarrativeTextLine = "AresAboutZeus01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -829,7 +857,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "AresBackstory01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "ModsNikkelMHadesBiomes_AresAboutZeus01",
+			InsertAfterNarrativeTextLine = "AresAboutZeus01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -848,7 +876,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "AresPostGiftPickup01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "ModsNikkelMHadesBiomes_AresAboutZeus01",
+			InsertAfterNarrativeTextLine = "AresAboutZeus01",
 		},
 		PlayOnce = true,
 		RequiredTextLines = { "AresGift01", },
@@ -864,7 +892,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "AresPostGiftPickup02",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "ModsNikkelMHadesBiomes_AresAboutZeus01",
+			InsertAfterNarrativeTextLine = "AresAboutZeus01",
 		},
 		PlayOnce = true,
 		RequiredTextLines = { "AresGift02", },
@@ -881,7 +909,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "AresPostGiftPickup03",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "ModsNikkelMHadesBiomes_AresAboutZeus01",
+			InsertAfterNarrativeTextLine = "AresAboutZeus01",
 		},
 		PlayOnce = true,
 		RequiredTextLines = { "AresGift03", },
@@ -898,7 +926,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "AresPostGiftPickup04",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "ModsNikkelMHadesBiomes_AresAboutZeus01",
+			InsertAfterNarrativeTextLine = "AresAboutZeus01",
 		},
 		PlayOnce = true,
 		RequiredTextLines = { "AresGift04", },
@@ -915,7 +943,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "AresPostGiftPickup05",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "ModsNikkelMHadesBiomes_AresAboutZeus01",
+			InsertAfterNarrativeTextLine = "AresAboutZeus01",
 		},
 		PlayOnce = true,
 		RequiredTextLines = { "AresGift05", },
@@ -932,7 +960,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "AresPostGiftPickup06",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "ModsNikkelMHadesBiomes_AresAboutZeus01",
+			InsertAfterNarrativeTextLine = "AresAboutZeus01",
 		},
 		PlayOnce = true,
 		RequiredTextLines = { "AresGift01", },
@@ -949,10 +977,10 @@ local newPortedInteractTextLines = {
 	{
 		Name = "AresPostEpilogue02",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "ModsNikkelMHadesBiomes_AresAboutZeus01",
+			InsertAfterNarrativeTextLine = "AresAboutZeus01",
 		},
 		PlayOnce = true,
-		RequiredTextLines = { "ModsNikkelMHadesBiomes_AresPostEpilogue01" },
+		RequiredTextLines = { "AresPostEpilogue01" },
 		PreEventFunctionName = "BoonInteractPresentation",
 		PreEventFunctionArgs = { PickupWait = 1.0, },
 		{
@@ -966,7 +994,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "AresPostEpilogue03",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "ModsNikkelMHadesBiomes_AresAboutZeus01",
+			InsertAfterNarrativeTextLine = "AresAboutZeus01",
 		},
 		PlayOnce = true,
 		RequiredTextLines = { "AresPostEpilogue02", "AresGift05" },
@@ -981,9 +1009,9 @@ local newPortedInteractTextLines = {
 		},
 	},
 	{
-		Name = "ModsNikkelMHadesBiomes_AresLegendaryPickUp01",
+		Name = "AresLegendaryPickUp01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "ModsNikkelMHadesBiomes_AresAboutZeus01",
+			InsertAfterNarrativeTextLine = "AresAboutZeus01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -1002,9 +1030,9 @@ local newPortedInteractTextLines = {
 		},
 	},
 	{
-		Name = "ModsNikkelMHadesBiomes_AresLegendaryPickUp02",
+		Name = "AresLegendaryPickUp02",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "ModsNikkelMHadesBiomes_AresAboutZeus01",
+			InsertAfterNarrativeTextLine = "AresAboutZeus01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -1023,9 +1051,9 @@ local newPortedInteractTextLines = {
 		},
 	},
 	{
-		Name = "ModsNikkelMHadesBiomes_AresLowHealth01",
+		Name = "AresLowHealth01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "ModsNikkelMHadesBiomes_AresAboutZeus01",
+			InsertAfterNarrativeTextLine = "AresAboutZeus01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -1042,9 +1070,9 @@ local newPortedInteractTextLines = {
 		},
 	},
 	{
-		Name = "ModsNikkelMHadesBiomes_AresLowHealth02",
+		Name = "AresLowHealth02",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "ModsNikkelMHadesBiomes_AresAboutZeus01",
+			InsertAfterNarrativeTextLine = "AresAboutZeus01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -1061,9 +1089,9 @@ local newPortedInteractTextLines = {
 		},
 	},
 	{
-		Name = "ModsNikkelMHadesBiomes_AresLowHealth03",
+		Name = "AresLowHealth03",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "ModsNikkelMHadesBiomes_AresAboutZeus01",
+			InsertAfterNarrativeTextLine = "AresAboutZeus01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -1080,9 +1108,9 @@ local newPortedInteractTextLines = {
 		},
 	},
 	{
-		Name = "ModsNikkelMHadesBiomes_AresLowHealth04",
+		Name = "AresLowHealth04",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "ModsNikkelMHadesBiomes_AresAboutZeus01",
+			InsertAfterNarrativeTextLine = "AresAboutZeus01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -1101,7 +1129,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "AresLowHealth05",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "ModsNikkelMHadesBiomes_AresAboutZeus01",
+			InsertAfterNarrativeTextLine = "AresAboutZeus01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -1122,7 +1150,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "AresMiscPickup01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterTextLineGroupContaining = "ModsNikkelMHadesBiomes_AresAboutZeus01",
+			InsertAfterTextLineGroupContaining = "AresAboutZeus01",
 			CreateNewPriorityGroup = true,
 		},
 		RequiredTextLines = { "AresFirstPickUp" },
@@ -1913,7 +1941,7 @@ local newPortedInteractTextLines = {
 			InsertAfterNarrativeTextLine = "AresMiscPickup01",
 		},
 		RequiredTextLines = game.GameData.AresBasicPickUpTextLines,
-		RequiredAnyTextLines = { "ModsNikkelMHadesBiomes_AresAboutNyx02", "ModsNikkelMHadesBiomes_AresAboutNyx02_B" },
+		RequiredAnyTextLines = { "AresAboutNyx02", "AresAboutNyx02_B" },
 		PreEventFunctionName = "BoonInteractPresentation",
 		PreEventFunctionArgs = { PickupWait = 1.0, },
 		{
@@ -1933,7 +1961,7 @@ mod.AddNarrativeDataEntries(
 
 local newPortedLootboughtTextLines = {
 	{
-		Name = "ModsNikkelMHadesBiomes_AresLootBought01",
+		Name = "AresLootBought01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
 			InsertAtFirstPriority = true,
 			CreateNewPriorityGroup = true,
@@ -1949,9 +1977,9 @@ local newPortedLootboughtTextLines = {
 		},
 	},
 	{
-		Name = "ModsNikkelMHadesBiomes_AresLootBought02",
+		Name = "AresLootBought02",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "ModsNikkelMHadesBiomes_AresLootBought01",
+			InsertAfterNarrativeTextLine = "AresLootBought01",
 		},
 		PlayOnce = true,
 		ChanceToPlay = 0.33,
@@ -1965,9 +1993,9 @@ local newPortedLootboughtTextLines = {
 		},
 	},
 	{
-		Name = "ModsNikkelMHadesBiomes_AresLootBought03",
+		Name = "AresLootBought03",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "ModsNikkelMHadesBiomes_AresLootBought01",
+			InsertAfterNarrativeTextLine = "AresLootBought01",
 		},
 		PlayOnce = true,
 		ChanceToPlay = 0.33,
@@ -1981,9 +2009,9 @@ local newPortedLootboughtTextLines = {
 		},
 	},
 	{
-		Name = "ModsNikkelMHadesBiomes_AresLootBought04",
+		Name = "AresLootBought04",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "ModsNikkelMHadesBiomes_AresLootBought01",
+			InsertAfterNarrativeTextLine = "AresLootBought01",
 		},
 		PlayOnce = true,
 		ChanceToPlay = 0.33,
@@ -2000,7 +2028,7 @@ local newPortedLootboughtTextLines = {
 	{
 		Name = "AresLootBought05",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "ModsNikkelMHadesBiomes_AresLootBought01",
+			InsertAfterNarrativeTextLine = "AresLootBought01",
 		},
 		PlayOnce = true,
 		ChanceToPlay = 0.33,
@@ -2022,7 +2050,7 @@ mod.AddNarrativeDataEntries(
 
 local newPortedRejectionTextLines = {
 	{
-		Name = "ModsNikkelMHadesBiomes_AresRejection01",
+		Name = "AresRejection01",
 		RequiredFalseTextLines = { "AresGift03" },
 		{
 			Cue = "/VO/Ares_0003",
@@ -2035,7 +2063,7 @@ local newPortedRejectionTextLines = {
 		},
 	},
 	{
-		Name = "ModsNikkelMHadesBiomes_AresRejection02",
+		Name = "AresRejection02",
 		{
 			Cue = "/VO/Ares_0045",
 			PreLineFunctionName = "BoonInteractPresentation",
@@ -2047,7 +2075,7 @@ local newPortedRejectionTextLines = {
 		},
 	},
 	{
-		Name = "ModsNikkelMHadesBiomes_AresRejection03",
+		Name = "AresRejection03",
 		{
 			Cue = "/VO/Ares_0046",
 			PreLineFunctionName = "BoonInteractPresentation",
@@ -2059,7 +2087,7 @@ local newPortedRejectionTextLines = {
 		},
 	},
 	{
-		Name = "ModsNikkelMHadesBiomes_AresRejection04",
+		Name = "AresRejection04",
 		{
 			Cue = "/VO/Ares_0047",
 			PreLineFunctionName = "BoonInteractPresentation",
@@ -2070,7 +2098,7 @@ local newPortedRejectionTextLines = {
 		},
 	},
 	{
-		Name = "ModsNikkelMHadesBiomes_AresRejection05",
+		Name = "AresRejection05",
 		{
 			Cue = "/VO/Ares_0048",
 			PreLineFunctionName = "BoonInteractPresentation",
@@ -2081,7 +2109,7 @@ local newPortedRejectionTextLines = {
 		},
 	},
 	{
-		Name = "ModsNikkelMHadesBiomes_AresRejection06",
+		Name = "AresRejection06",
 		{
 			Cue = "/VO/Ares_0129",
 			PreLineFunctionName = "BoonInteractPresentation",
@@ -2092,7 +2120,7 @@ local newPortedRejectionTextLines = {
 		},
 	},
 	{
-		Name = "ModsNikkelMHadesBiomes_AresRejection07",
+		Name = "AresRejection07",
 		{
 			Cue = "/VO/Ares_0130",
 			PreLineFunctionName = "BoonInteractPresentation",
@@ -2104,7 +2132,7 @@ local newPortedRejectionTextLines = {
 		},
 	},
 	{
-		Name = "ModsNikkelMHadesBiomes_AresRejection08",
+		Name = "AresRejection08",
 		{
 			Cue = "/VO/Ares_0131",
 			PreLineFunctionName = "BoonInteractPresentation",
@@ -2116,7 +2144,7 @@ local newPortedRejectionTextLines = {
 		},
 	},
 	{
-		Name = "ModsNikkelMHadesBiomes_AresRejection09",
+		Name = "AresRejection09",
 		{
 			Cue = "/VO/Ares_0132",
 			PreLineFunctionName = "BoonInteractPresentation",
@@ -2128,7 +2156,7 @@ local newPortedRejectionTextLines = {
 		},
 	},
 	{
-		Name = "ModsNikkelMHadesBiomes_AresRejection10",
+		Name = "AresRejection10",
 		{
 			Cue = "/VO/Ares_0177",
 			PreLineFunctionName = "BoonInteractPresentation",
@@ -2140,7 +2168,7 @@ local newPortedRejectionTextLines = {
 		},
 	},
 	{
-		Name = "ModsNikkelMHadesBiomes_AresRejection11",
+		Name = "AresRejection11",
 		{
 			Cue = "/VO/Ares_0178",
 			PreLineFunctionName = "BoonInteractPresentation",
@@ -2151,7 +2179,7 @@ local newPortedRejectionTextLines = {
 		},
 	},
 	{
-		Name = "ModsNikkelMHadesBiomes_AresRejection12",
+		Name = "AresRejection12",
 		{
 			Cue = "/VO/Ares_0179",
 			PreLineFunctionName = "BoonInteractPresentation",
@@ -2163,7 +2191,7 @@ local newPortedRejectionTextLines = {
 		},
 	},
 	{
-		Name = "ModsNikkelMHadesBiomes_AresRejection13",
+		Name = "AresRejection13",
 		{
 			Cue = "/VO/Ares_0180",
 			PreLineFunctionName = "BoonInteractPresentation",
@@ -2183,7 +2211,7 @@ mod.AddNarrativeDataEntries(
 
 local newPortedMakeUpTextLines = {
 	{
-		Name = "ModsNikkelMHadesBiomes_AresMakeUp01",
+		Name = "AresMakeUp01",
 		PreEventFunctionName = "BoonInteractPresentation",
 		PreEventFunctionArgs = { PickupWait = 1.0, },
 		{
@@ -2195,7 +2223,7 @@ local newPortedMakeUpTextLines = {
 		},
 	},
 	{
-		Name = "ModsNikkelMHadesBiomes_AresMakeUp02",
+		Name = "AresMakeUp02",
 		PreEventFunctionName = "BoonInteractPresentation",
 		PreEventFunctionArgs = { PickupWait = 1.0, },
 		{
@@ -2207,7 +2235,7 @@ local newPortedMakeUpTextLines = {
 		},
 	},
 	{
-		Name = "ModsNikkelMHadesBiomes_AresMakeUp03",
+		Name = "AresMakeUp03",
 		PreEventFunctionName = "BoonInteractPresentation",
 		PreEventFunctionArgs = { PickupWait = 1.0, },
 		{
@@ -2219,7 +2247,7 @@ local newPortedMakeUpTextLines = {
 		},
 	},
 	{
-		Name = "ModsNikkelMHadesBiomes_AresMakeUp04",
+		Name = "AresMakeUp04",
 		PreEventFunctionName = "BoonInteractPresentation",
 		PreEventFunctionArgs = { PickupWait = 1.0, },
 		{
@@ -2230,7 +2258,7 @@ local newPortedMakeUpTextLines = {
 		},
 	},
 	{
-		Name = "ModsNikkelMHadesBiomes_AresMakeUp05",
+		Name = "AresMakeUp05",
 		PreEventFunctionName = "BoonInteractPresentation",
 		PreEventFunctionArgs = { PickupWait = 1.0, },
 		{
@@ -2241,7 +2269,7 @@ local newPortedMakeUpTextLines = {
 		},
 	},
 	{
-		Name = "ModsNikkelMHadesBiomes_AresMakeUp06",
+		Name = "AresMakeUp06",
 		PreEventFunctionName = "BoonInteractPresentation",
 		PreEventFunctionArgs = { PickupWait = 1.0, },
 		{
@@ -2252,7 +2280,7 @@ local newPortedMakeUpTextLines = {
 		},
 	},
 	{
-		Name = "ModsNikkelMHadesBiomes_AresMakeUp07",
+		Name = "AresMakeUp07",
 		PreEventFunctionName = "BoonInteractPresentation",
 		PreEventFunctionArgs = { PickupWait = 1.0, },
 		{
@@ -2263,7 +2291,7 @@ local newPortedMakeUpTextLines = {
 		},
 	},
 	{
-		Name = "ModsNikkelMHadesBiomes_AresMakeUp08",
+		Name = "AresMakeUp08",
 		PreEventFunctionName = "BoonInteractPresentation",
 		PreEventFunctionArgs = { PickupWait = 1.0, },
 		{
@@ -2275,7 +2303,7 @@ local newPortedMakeUpTextLines = {
 		},
 	},
 	{
-		Name = "ModsNikkelMHadesBiomes_AresMakeUp09",
+		Name = "AresMakeUp09",
 		PreEventFunctionName = "BoonInteractPresentation",
 		PreEventFunctionArgs = { PickupWait = 1.0, },
 		{
@@ -2286,7 +2314,7 @@ local newPortedMakeUpTextLines = {
 		},
 	},
 	{
-		Name = "ModsNikkelMHadesBiomes_AresMakeUp10",
+		Name = "AresMakeUp10",
 		PreEventFunctionName = "BoonInteractPresentation",
 		PreEventFunctionArgs = { PickupWait = 1.0, },
 		{
@@ -2298,7 +2326,7 @@ local newPortedMakeUpTextLines = {
 		},
 	},
 	{
-		Name = "ModsNikkelMHadesBiomes_AresMakeUp11",
+		Name = "AresMakeUp11",
 		PreEventFunctionName = "BoonInteractPresentation",
 		PreEventFunctionArgs = { PickupWait = 1.0, },
 		{
@@ -2309,7 +2337,7 @@ local newPortedMakeUpTextLines = {
 		},
 	},
 	{
-		Name = "ModsNikkelMHadesBiomes_AresMakeUp12",
+		Name = "AresMakeUp12",
 		PreEventFunctionName = "BoonInteractPresentation",
 		PreEventFunctionArgs = { PickupWait = 1.0, },
 		{

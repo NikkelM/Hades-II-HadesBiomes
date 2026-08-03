@@ -284,13 +284,13 @@ local newHermesDeliveredDialogues = {
 		},
 	},
 	{
-		Name = "ModsNikkelMHadesBiomes_DionysusAboutAmbrosia01",
+		Name = "DionysusAboutAmbrosia01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
 			InsertAfterNarrativeTextLine = "DionysusPostGiftPickup01",
 		},
 		PlayOnce = true,
 		RequiredTextLines = { "DionysusFirstPickUp", "DionysusGift01" },
-		RequiredFalseTextLines = { "ModsNikkelMHadesBiomes_DionysusAboutAmbrosia02" },
+		RequiredFalseTextLines = { "DionysusAboutAmbrosia02" },
 		PreEventFunctionName = "BoonInteractPresentation",
 		PreEventFunctionArgs = { PickupWait = 1.0, },
 		RequiredResourcesMin = { SuperGiftPoints = 1 },
@@ -303,7 +303,7 @@ local newHermesDeliveredDialogues = {
 		},
 	},
 	{
-		Name = "ModsNikkelMHadesBiomes_DionysusAboutAmbrosia02",
+		Name = "DionysusAboutAmbrosia02",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
 			InsertAfterNarrativeTextLine = "DionysusPostGiftPickup01",
 		},
@@ -311,7 +311,7 @@ local newHermesDeliveredDialogues = {
 		RequiredTextLines = { "DionysusGift03", "DionysusAboutAmbrosia04" },
 		PreEventFunctionName = "BoonInteractPresentation",
 		PreEventFunctionArgs = { PickupWait = 1.0, },
-		MinRunsSinceAnyTextLines = { TextLines = { "ModsNikkelMHadesBiomes_DionysusAboutAmbrosia01", "ModsNikkelMHadesBiomes_DionysusAboutAmbrosia02", "ModsNikkelMHadesBiomes_DionysusAboutAmbrosia03", "DionysusAboutAmbrosia04" }, Count = 3 },
+		MinRunsSinceAnyTextLines = { TextLines = { "DionysusAboutAmbrosia01", "DionysusAboutAmbrosia02", "DionysusAboutAmbrosia03", "DionysusAboutAmbrosia04" }, Count = 3 },
 		RequiredResourcesMin = { SuperGiftPoints = 5 },
 		{
 			Cue = "/VO/Dionysus_0184",
@@ -322,18 +322,18 @@ local newHermesDeliveredDialogues = {
 		},
 	},
 	{
-		Name = "ModsNikkelMHadesBiomes_DionysusAboutAmbrosia03",
+		Name = "DionysusAboutAmbrosia03",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
 			InsertAfterNarrativeTextLine = "DionysusPostGiftPickup01",
 		},
 		PlayOnce = true,
-		RequiredAnyTextLines = { "ModsNikkelMHadesBiomes_DionysusAboutAmbrosia01", "ModsNikkelMHadesBiomes_DionysusAboutAmbrosia02", "DionysusAboutAmbrosia04" },
+		RequiredAnyTextLines = { "DionysusAboutAmbrosia01", "DionysusAboutAmbrosia02", "DionysusAboutAmbrosia04" },
 		RequiredTextLines = { "DionysusGift06" },
 		PreEventFunctionName = "BoonInteractPresentation",
 		PreEventFunctionArgs = { PickupWait = 1.0, },
 		RequiredLifetimeResourcesSpentMin = { SuperGiftPoints = 10 },
 		RequiredMinAnyTextLines = { TextLines = { "CerberusGift07", "ZeusGift07", "PoseidonGift07", "AthenaGift07", "AphroditeGift07", "AresGift07", "ArtemisGift07", "HermesGift07", "DemeterGift07", "MegaeraGift07", "ThanatosGift07_A", "AchillesGift07_A", "NyxGift07", "SkellyGift07", "SisyphusGift07_A", "PatroclusGift07_A", "EurydiceGift07", "DusaGift07", "HypnosGift07" }, Count = 6 },
-		MinRunsSinceAnyTextLines = { TextLines = { "ModsNikkelMHadesBiomes_DionysusAboutAmbrosia01", "ModsNikkelMHadesBiomes_DionysusAboutAmbrosia02", "ModsNikkelMHadesBiomes_DionysusAboutAmbrosia03", "DionysusAboutAmbrosia04" }, Count = 3 },
+		MinRunsSinceAnyTextLines = { TextLines = { "DionysusAboutAmbrosia01", "DionysusAboutAmbrosia02", "DionysusAboutAmbrosia03", "DionysusAboutAmbrosia04" }, Count = 3 },
 		{
 			Cue = "/VO/Dionysus_0188",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
@@ -351,7 +351,7 @@ local newHermesDeliveredDialogues = {
 		PreEventFunctionName = "BoonInteractPresentation",
 		PreEventFunctionArgs = { PickupWait = 1.0, },
 		RequiredLifetimeResourcesGainedMin = { SuperGiftPoints = 15 },
-		MinRunsSinceAnyTextLines = { TextLines = { "ModsNikkelMHadesBiomes_DionysusAboutAmbrosia01", "ModsNikkelMHadesBiomes_DionysusAboutAmbrosia02", "ModsNikkelMHadesBiomes_DionysusAboutAmbrosia03", "DionysusAboutAmbrosia04" }, Count = 3 },
+		MinRunsSinceAnyTextLines = { TextLines = { "DionysusAboutAmbrosia01", "DionysusAboutAmbrosia02", "DionysusAboutAmbrosia03", "DionysusAboutAmbrosia04" }, Count = 3 },
 		RequiredTextLines = { "DionysusGift03" },
 		{
 			Cue = "/VO/Dionysus_0189",

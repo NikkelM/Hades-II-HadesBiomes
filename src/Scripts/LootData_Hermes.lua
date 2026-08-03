@@ -5,6 +5,37 @@ table.insert(game.LootData.HermesUpgrade.TextLinesEndEvents[1].GameStateRequirem
 })
 
 local newPortedInteractTextLines = {
+	{
+		Name = "HermesFirstPickUp",
+		ModsNikkelMHadesBiomes_TextLineMetadata = {
+			InsertAtFirstPriority = true,
+			CreateNewPriorityGroup = true,
+		},
+		PlayOnce = true,
+		PreEventFunctionName = "BoonInteractPresentation",
+		PreEventFunctionArgs = { PickupWait = 1.0, },
+		-- Removing this prerequisite to allow this one to play before the delivered AthenaFirstPickUp
+		-- RequiredTextLines = { "AthenaFirstPickUp", },
+		{
+			Cue = "/VO/ZagreusField_1923",
+			Portrait = "Portrait_Zag_Default_01",
+			Speaker = "CharProtag",
+			PreLineThreadedFunctionName = "PowerWordPresentation",
+			PreLineThreadedFunctionArgs = { WaitTime = 3.05 },
+			PostLineAnim = "ZagreusInteractEquip",
+			PostLineAnimTarget = "Hero",
+			PostLineFunctionName = "BoonInteractPresentation",
+			Text = "This mark, almost like a bat wing. In the name of Hades! Olympus! I accept this message."
+		},
+		{
+			Cue = "/VO/Hermes_0002",
+			PortraitExitWait = 1.25,
+			PreContentSound = "/Leftovers/Menu Sounds/TextReveal2",
+			UseEventEndSound = true,
+			Text =
+			"Hey boss, found you, good. Hermes, at your service. Pleasure! You are the talk of Olympus! Normally I wouldn't get mixed up, but for you, I will be making an exception. Now, come on, we both got places to be!"
+		},
+	},
 	-- #region Charon Fight Questline
 	{
 		Name = "HermesAboutCharonFight01",
