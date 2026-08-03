@@ -78,7 +78,6 @@ local newGameDataTables = {
 		"DionysusAboutHadesKeepsake01",
 		"HermesAboutHadesKeepsake01",
 	},
-
 	AresAboutNyxTextLines = {
 		"AresGift01",
 		"NyxGift01",
@@ -96,7 +95,6 @@ local newGameDataTables = {
 		"AresAboutNyx06",
 		"AresAboutNyx06_B",
 	},
-
 	AresBasicPickUpTextLines = {
 		"AresFirstPickUp",
 		"AresMiscPickup01",
@@ -117,7 +115,6 @@ local newGameDataTables = {
 		"AresMiscPickup16",
 		"AresMiscPickup17",
 	},
-
 	ArtemisAboutCallistoTextLines = {
 		"ArtemisAboutCallisto01",
 		"ArtemisAboutCallisto02",
@@ -126,7 +123,6 @@ local newGameDataTables = {
 		"ArtemisAboutCallisto05",
 		"ArtemisAboutCallisto06",
 	},
-
 	AthenaBasicPickUpTextLines = {
 		"AthenaFirstPickUp",
 		"AthenaMiscPickup02",
@@ -142,6 +138,24 @@ local newGameDataTables = {
 		"AthenaMiscPickup18",
 		"AthenaMiscPickup19",
 		"AthenaMiscPickup20",
+	},
+	ZeusBasicPickUpTextLines = {
+		"ZeusFirstPickUp",
+		"ZeusMiscPickup02",
+		"ZeusMiscPickup03",
+		"ZeusMiscPickup05",
+		"ZeusMiscPickup07",
+		"ZeusMiscPickup09",
+		"ZeusMiscPickup11",
+		"ZeusMiscPickup12",
+		"ZeusMiscPickup14",
+		"ZeusMiscPickup16",
+		"ZeusMiscPickup17",
+		"ZeusMiscPickup18",
+		"ZeusMiscPickup20",
+		"ZeusMiscPickup25",
+		"ZeusMiscPickup26",
+		"ZeusMiscPickup27",
 	},
 }
 

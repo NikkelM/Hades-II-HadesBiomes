@@ -29,6 +29,7 @@ mod.VoiceoverFileNames = {
 	Skelly = "Modsnikkelmhadesbiomesskelly",
 	Storyteller = "Modsnikkelmhadesbiomesstoryteller",
 	ZagreusHome = "Modsnikkelmhadesbiomeszagreushome",
+	Zeus = "Modsnikkelmhadesbiomeszeus",
 	Orpheus = "Orpheus",
 	Patroclus = "Patroclus",
 	Sisyphus = "Sisyphus",
