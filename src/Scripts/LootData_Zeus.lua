@@ -29,11 +29,11 @@ local newPortedInteractTextLines = {
 			"Greetings there, young man! Look, your father's always been rather difficult, and he's not so much as called in quite some time. You'll have a better home where you belong, here on Olympus! And to help you on your journey, have my blessing."
 		},
 	},
-	-- #region High-Priority Storylines/Quests (Inserted in a group after ZeusPostEpilogue02)
+	-- #region High-Priority Storylines/Quests (Inserted in a group after ZeusFirstPickUp (above))
 	{
 		Name = "ZeusAboutDemeter03",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "ZeusPostEpilogue02",
+			InsertAfterTextLineGroupContaining = "ZeusFirstPickUp",
 			CreateNewPriorityGroup = true,
 		},
 		PlayOnce = true,

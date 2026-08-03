@@ -46,6 +46,8 @@ mod.HadesPortraitAnimationAdditionsParents = {
 		EndFrame = 1,
 		StartFrame = 1,
 		OffsetY = -8.0,
+		StartOffsetX = -20.0,
+		StartOffsetY = 0,
 	},
 	{
 		Name = "ModsNikkelMHadesBiomes_Portrait_Ares_Default_01",
@@ -74,7 +76,7 @@ mod.HadesPortraitAnimationAdditionsParents = {
 		InheritFrom = "Portrait_God_01",
 		FilePath = "Portraits\\Portraits_Dionysus_01",
 		ChildAnimation = "ModsNikkelMHadesBiomes_Portrait_Dionysus_Blink",
-		OffsetY = -15,
+		OffsetY = -15.0,
 		StartOffsetX = -20.0,
 		StartOffsetY = 0,
 	},
@@ -94,6 +96,9 @@ mod.HadesPortraitAnimationAdditionsParents = {
 		ChildAnimation = "PortraitGodRayEmitter_Demeter",
 		EndFrame = 1,
 		StartFrame = 1,
+		OffsetY = -8.0,
+		StartOffsetX = -20.0,
+		StartOffsetY = 0,
 	},
 	{
 		Name = "ModsNikkelMHadesBiomes_Portrait_Poseidon_Default_01",
@@ -103,6 +108,8 @@ mod.HadesPortraitAnimationAdditionsParents = {
 		EndFrame = 1,
 		StartFrame = 1,
 		OffsetY = -140.0,
+		StartOffsetX = -20.0,
+		StartOffsetY = 0,
 	},
 	{
 		Name = "ModsNikkelMHadesBiomes_Portrait_Zeus_Default_01",
@@ -111,6 +118,9 @@ mod.HadesPortraitAnimationAdditionsParents = {
 		FilePath = "Portraits\\Portraits_Zeus_01",
 		EndFrame = 1,
 		StartFrame = 1,
+		OffsetY = -7.0,
+		StartOffsetX = -20.0,
+		StartOffsetY = 0,
 	},
 }
 
@@ -262,7 +272,7 @@ mod.HadesPortraitAnimationAdditions = {
 		FilePath = "Portraits\\Portraits_Ares_01",
 		EndFrame = 1,
 		StartFrame = 1,
-		OffsetY = -88,
+		OffsetY = -88.0,
 	},
 	{
 		Name = "ModsNikkelMHadesBiomes_AthenaBlink",
@@ -338,7 +348,7 @@ mod.HadesPortraitAnimationAdditions = {
 		FilePath = "Portraits\\Portraits_Dionysus_01",
 		EndFrame = 1,
 		StartFrame = 1,
-		OffsetY = -15,
+		OffsetY = -15.0,
 	},
 	{
 		Name = "ModsNikkelMHadesBiomes_Portrait_Artemis_Default_01_Exit",
@@ -402,6 +412,7 @@ mod.HadesPortraitAnimationAdditions = {
 		FilePath = "Portraits\\Portraits_Demeter_01",
 		EndFrame = 1,
 		StartFrame = 1,
+		OffsetY = -8.0,
 	},
 	{
 		Name = "ModsNikkelMHadesBiomes_Portrait_Nyx_Default_01",
@@ -506,6 +517,7 @@ mod.HadesPortraitAnimationAdditions = {
 		FilePath = "Portraits\\Portraits_Zeus_01",
 		EndFrame = 1,
 		StartFrame = 1,
+		OffsetY = -7.0,
 	},
 	-- #endregion
 	-- #region Codex portraits
