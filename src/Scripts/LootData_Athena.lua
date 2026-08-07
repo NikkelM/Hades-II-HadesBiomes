@@ -1,9 +1,9 @@
--- #region These are played when picking up a Hermes boon in a modded run
+-- #region Hermes-delivered opener
 local newHermesDeliveredDialogues = {
 	{
 		Name = "AthenaFirstPickUp",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "HermesPostTrueEnding01",
+			InsertAtFirstPriority = true,
 			CreateNewPriorityGroup = true,
 			HermesDeliveredDialoguesSkipIntroLine = true,
 		},
@@ -62,7 +62,7 @@ mod.AddHermesDeliveredDialogues(newHermesDeliveredDialogues,
 
 -- #region Only added to Athena herself, not Hermes
 local newAthenaExclusivePortedInteractTextLines = {
-	-- #region Priority
+	-- #region Opener
 	{
 		Name = "AthenaFirstPickUp",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
@@ -95,7 +95,7 @@ local newAthenaExclusivePortedInteractTextLines = {
 		},
 	},
 	-- #endregion
-	-- #region Misc (Inserted in a group after priority dialogues above)
+	-- #region Misc
 	{
 		Name = "AthenaMiscPickup01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
@@ -927,17 +927,19 @@ local newAthenaExclusivePortedInteractTextLines = {
 mod.AddNarrativeDataEntries(
 	newAthenaExclusivePortedInteractTextLines, "NPC_Athena_01", "InteractTextLineSets", "InteractTextLinePriorities",
 	{ Athena = { "Modsnikkelmhadesbiomesathena", "ZagreusField" } }, { Athena_ = "Modsnikkelmhadesbiomesathena_" },
-	{ Athena_ = "ModsNikkelMHadesBiomes_Portrait_Athena_Default_01" }, nil, nil, true, { "PreEventFunctionName", "PreEventFunctionArgs" }
+	{ Athena_ = "ModsNikkelMHadesBiomes_Portrait_Athena_Default_01" }, nil, nil, true,
+	{ "PreEventFunctionName", "PreEventFunctionArgs" }
 )
 -- #endregion
 
--- #region These can play either when picking up a Hermes boon, or meeting Athena in a modded run
-local newPortedInteractTextLines = {
-	-- #region High-Priority Storylines/Quests (Inserted in a group after AresPostTrueEndingAboutTyphon01)
+-- #region Ported Athena interact dialogues
+-- #region Shared priority
+local newSharedAthenaPriorityTextLines = {
 	{
 		Name = "AthenaAboutDemeter01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AthenaFirstPickUp",
+			InsertAfterTextLineGroupContaining = "AthenaFirstPickUp",
+			CreateNewPriorityGroup = true,
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -956,7 +958,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "AthenaAboutOlympianReunionQuest01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AthenaFirstPickUp",
+			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
 		},
 		PlayOnce = true,
 		RequiredTextLines = { "AthenaFirstPickUp", "PersephoneAboutOlympianReunionQuest01" },
@@ -984,7 +986,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "AthenaPostEpilogue01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AthenaFirstPickUp",
+			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -998,13 +1000,10 @@ local newPortedInteractTextLines = {
 			"It was my privilege to have visited your father's House, and briefly had a chance to meet {#DialogueItalicFormat}you{#PreviousFormat}, Zagreus. Nyx and your mother each are very shrewd; perhaps you've taken after both of them. As for your new responsibilities... exposing weak points in defenses is my specialty."
 		},
 	},
-	-- #endregion
-	-- #region Storylines/Priority dialogues (Inserted in a group after priority dialogues above)
 	{
 		Name = "AthenaAboutZeus01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterTextLineGroupContaining = "AthenaFirstPickUp",
-			CreateNewPriorityGroup = true,
+			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
 		},
 		PlayOnce = true,
 		RequiredFalseTextLinesThisRun = game.GameData.GodAboutGodVoiceLines,
@@ -1177,10 +1176,16 @@ local newPortedInteractTextLines = {
 			"So you've another blessing from Lord Hades, then. Zagreus, I'm under no delusion you and your father shall become the closest friends, from here. Neverthless, I do believe it's possible to move forward even such a relationship as yours. Believe me... I know."
 		},
 	},
+}
+-- #endregion
+
+-- #region Athena-only contextual
+local newAthenaExclusivePostGiftTextLines = {
 	{
 		Name = "AthenaPostGiftPickup01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AthenaAboutZeus01",
+			InsertAfterTextLineGroupContaining = "AthenaAboutDemeter01",
+			CreateNewPriorityGroup = true,
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -1198,7 +1203,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "AthenaPostGiftPickup02",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AthenaAboutZeus01",
+			InsertAfterNarrativeTextLine = "AthenaPostGiftPickup01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -1215,7 +1220,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "AthenaPostGiftPickup03",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AthenaAboutZeus01",
+			InsertAfterNarrativeTextLine = "AthenaPostGiftPickup01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -1232,7 +1237,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "AthenaPostGiftPickup04",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AthenaAboutZeus01",
+			InsertAfterNarrativeTextLine = "AthenaPostGiftPickup01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -1249,7 +1254,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "AthenaPostGiftPickup05",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AthenaAboutZeus01",
+			InsertAfterNarrativeTextLine = "AthenaPostGiftPickup01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -1263,6 +1268,11 @@ local newPortedInteractTextLines = {
 			"Let my voice be a glimmer in the darkness, noble Cousin; though, may the blessing I am about to provide be even more than that."
 		},
 	},
+}
+-- #endregion
+
+-- #region Shared priority
+local newSharedAthenaRelationshipTextLines = {
 	{
 		Name = "AthenaVsOlympians01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
@@ -1390,10 +1400,15 @@ local newPortedInteractTextLines = {
 			"You're nothing like your father, Zagreus. I mean that as a compliment. He cut himself off from the rest of us. Many times have we attempted peace, to no avail."
 		},
 	},
+}
+-- #endregion
+
+-- #region Athena-only contextual
+local newAthenaExclusiveRunTextLines = {
 	{
 		Name = "AthenaRunProgress01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AthenaAboutZeus01",
+			InsertAfterNarrativeTextLine = "AthenaPostGiftPickup01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -1411,7 +1426,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "AthenaRunProgress02",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AthenaAboutZeus01",
+			InsertAfterNarrativeTextLine = "AthenaPostGiftPickup01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -1429,7 +1444,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "AthenaRunProgress03",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AthenaAboutZeus01",
+			InsertAfterNarrativeTextLine = "AthenaPostGiftPickup01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -1448,7 +1463,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "AthenaRunProgress04",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AthenaAboutZeus01",
+			InsertAfterNarrativeTextLine = "AthenaPostGiftPickup01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -1467,7 +1482,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "AthenaRunCleared01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AthenaAboutZeus01",
+			InsertAfterNarrativeTextLine = "AthenaPostGiftPickup01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -1484,7 +1499,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "AthenaRunCleared02",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AthenaAboutZeus01",
+			InsertAfterNarrativeTextLine = "AthenaPostGiftPickup01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -1503,7 +1518,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "AthenaRunCleared03",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AthenaAboutZeus01",
+			InsertAfterNarrativeTextLine = "AthenaPostGiftPickup01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -1518,6 +1533,11 @@ local newPortedInteractTextLines = {
 			"Despite whatever difficulties you've encountered, dear Cousin, again and again, you have never yielded. I must admit, your strength of will is quite inspiring. For, even I have doubts, from time to time. It's all the clearer to me why the goddess Nyx spoke so highly of you."
 		},
 	},
+}
+-- #endregion
+
+-- #region Shared priority
+local newSharedAthenaLateStoryTextLines = {
 	{
 		Name = "AthenaPostEpilogue02",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
@@ -1626,10 +1646,15 @@ local newPortedInteractTextLines = {
 			"The goddess Nyx has indicated you possess a list of prophecies from the Three Fates. I've such a list upon Olympus, here! It seems to be connected to your own, as several prophecies already are fulfilled. Isn't it such an honor to urge Fate along?"
 		},
 	},
+}
+-- #endregion
+
+-- #region Athena-only contextual
+local newAthenaExclusiveContextualTextLines = {
 	{
 		Name = "AthenaLegendaryPickUp01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AthenaAboutZeus01",
+			InsertAfterNarrativeTextLine = "AthenaPostGiftPickup01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -1650,7 +1675,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "AthenaLegendaryPickUp02",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AthenaAboutZeus01",
+			InsertAfterNarrativeTextLine = "AthenaPostGiftPickup01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -1671,7 +1696,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "AthenaMaxRelationship01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AthenaAboutZeus01",
+			InsertAfterNarrativeTextLine = "AthenaPostGiftPickup01",
 		},
 		PlayOnce = true,
 		RequiredTextLines = { "Athena_07" },
@@ -1688,7 +1713,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "AthenaLowHealth01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AthenaAboutZeus01",
+			InsertAfterNarrativeTextLine = "AthenaPostGiftPickup01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -1707,7 +1732,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "AthenaLowHealth02",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AthenaAboutZeus01",
+			InsertAfterNarrativeTextLine = "AthenaPostGiftPickup01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -1726,7 +1751,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "AthenaLowHealth03",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AthenaAboutZeus01",
+			InsertAfterNarrativeTextLine = "AthenaPostGiftPickup01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -1745,7 +1770,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "AthenaLowHealth04",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AthenaAboutZeus01",
+			InsertAfterNarrativeTextLine = "AthenaPostGiftPickup01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -1764,7 +1789,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "AthenaLowHealth05",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AthenaAboutZeus01",
+			InsertAfterNarrativeTextLine = "AthenaPostGiftPickup01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -1784,7 +1809,7 @@ local newPortedInteractTextLines = {
 		-- Two versions exist in H1, so adding the _Alternate suffix
 		Name = "AthenaLegendaryPickUp01_Alternate",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AthenaAboutZeus01",
+			InsertAfterNarrativeTextLine = "AthenaPostGiftPickup01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -1806,7 +1831,7 @@ local newPortedInteractTextLines = {
 		-- Two versions exist in H1, so adding the _Alternate suffix
 		Name = "AthenaLegendaryPickUp02_Alternate",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AthenaAboutZeus01",
+			InsertAfterNarrativeTextLine = "AthenaPostGiftPickup01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -1824,16 +1849,36 @@ local newPortedInteractTextLines = {
 			"The circumstances spur me now to offer you the greatest of my powers, Cousin. Take my strength, and strike the darkness down!"
 		},
 	},
-	-- #endregion
 }
--- Add to both Hermes AND Athena herself
-mod.AddHermesDeliveredDialogues(game.DeepCopyTable(newPortedInteractTextLines) or {},
+-- #endregion
+
+local hermesDeliveredAthenaTextLines = game.ConcatTableValuesIPairs(
+	game.ConcatTableValuesIPairs(
+		game.DeepCopyTable(newSharedAthenaPriorityTextLines) or {},
+		game.DeepCopyTable(newSharedAthenaRelationshipTextLines) or {}),
+	game.DeepCopyTable(newSharedAthenaLateStoryTextLines) or {}) or {}
+mod.AddHermesDeliveredDialogues(hermesDeliveredAthenaTextLines,
 	{ Hermes = { "Modsnikkelmhadesbiomesathena", "ZagreusField" } }, { Athena_ = "Modsnikkelmhadesbiomesathena_" },
 	{ Athena_ = "ModsNikkelMHadesBiomes_Portrait_Athena_Default_01" }, "/SFX/AthenaBoonHolyShield",
 	{ Athena = { Speaker = "NPC_Athena_01", NarrativeContextArt = "DialogueBackground_Olympus" } })
+
+local sharedAthenaTextLines = game.ConcatTableValuesIPairs(
+	game.ConcatTableValuesIPairs(newSharedAthenaPriorityTextLines, newSharedAthenaRelationshipTextLines),
+	newSharedAthenaLateStoryTextLines) or {}
 mod.AddNarrativeDataEntries(
-	newPortedInteractTextLines, "NPC_Athena_01", "InteractTextLineSets", "InteractTextLinePriorities",
+	sharedAthenaTextLines, "NPC_Athena_01", "InteractTextLineSets", "InteractTextLinePriorities",
 	{ Athena = { "Modsnikkelmhadesbiomesathena", "ZagreusField" } }, { Athena_ = "Modsnikkelmhadesbiomesathena_" },
-	{ Athena_ = "ModsNikkelMHadesBiomes_Portrait_Athena_Default_01" }, nil, nil, true, { "PreEventFunctionName", "PreEventFunctionArgs" }
+	{ Athena_ = "ModsNikkelMHadesBiomes_Portrait_Athena_Default_01" }, nil, nil, true,
+	{ "PreEventFunctionName", "PreEventFunctionArgs" }
+)
+
+local exclusiveAthenaContextualTextLines = game.ConcatTableValuesIPairs(
+	game.ConcatTableValuesIPairs(newAthenaExclusivePostGiftTextLines, newAthenaExclusiveRunTextLines),
+	newAthenaExclusiveContextualTextLines) or {}
+mod.AddNarrativeDataEntries(
+	exclusiveAthenaContextualTextLines, "NPC_Athena_01", "InteractTextLineSets", "InteractTextLinePriorities",
+	{ Athena = { "Modsnikkelmhadesbiomesathena", "ZagreusField" } }, { Athena_ = "Modsnikkelmhadesbiomesathena_" },
+	{ Athena_ = "ModsNikkelMHadesBiomes_Portrait_Athena_Default_01" }, nil, nil, true,
+	{ "PreEventFunctionName", "PreEventFunctionArgs" }
 )
 -- #endregion

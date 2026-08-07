@@ -5,6 +5,7 @@ table.insert(game.LootData.HermesUpgrade.TextLinesEndEvents[1].GameStateRequirem
 })
 
 local newPortedInteractTextLines = {
+	-- #region First pickup
 	{
 		Name = "HermesFirstPickUp",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
@@ -36,11 +37,31 @@ local newPortedInteractTextLines = {
 			"Hey boss, found you, good. Hermes, at your service. Pleasure! You are the talk of Olympus! Normally I wouldn't get mixed up, but for you, I will be making an exception. Now, come on, we both got places to be!"
 		},
 	},
-	-- #region Charon Fight Questline
+	-- #endregion
+	-- #region Opener
+	{
+		Name = "HermesSecondPickUp",
+		ModsNikkelMHadesBiomes_TextLineMetadata = {
+			InsertAfterNarrativeTextLine = "AthenaFirstPickUp",
+		},
+		PlayOnce = true,
+		PreEventFunctionName = "BoonInteractPresentation",
+		PreEventFunctionArgs = { PickupWait = 1.0, },
+		RequiredTextLines = { "HermesFirstPickUp", },
+		{
+			Cue = "/VO/Hermes_0003",
+			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+			UseEventEndSound = true,
+			Text =
+			"What's going on, there, Coz? Can I call you Coz? Got something here for you should make your battles to the death end that much quicker!"
+		},
+	},
+	-- #endregion
+	-- #region Super-priority story and quests
 	{
 		Name = "HermesAboutCharonFight01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterTextLineGroupContaining = "HermesFirstPickUp",
+			InsertAfterTextLineGroupContaining = "AthenaFirstPickUp",
 			CreateNewPriorityGroup = true,
 		},
 		PlayOnce = true,
@@ -110,29 +131,11 @@ local newPortedInteractTextLines = {
 		},
 	},
 	-- #endregion
-	-- #region Priority Story
-	{
-		Name = "HermesSecondPickUp",
-		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterTextLineGroupContaining = "DionysusFirstPickUp",
-			CreateNewPriorityGroup = true,
-		},
-		PlayOnce = true,
-		PreEventFunctionName = "BoonInteractPresentation",
-		PreEventFunctionArgs = { PickupWait = 1.0, },
-		RequiredTextLines = { "HermesFirstPickUp", },
-		{
-			Cue = "/VO/Hermes_0003",
-			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
-			Text =
-			"What's going on, there, Coz? Can I call you Coz? Got something here for you should make your battles to the death end that much quicker!"
-		},
-	},
+	-- #region Priority story
 	{
 		Name = "HermesAboutPersephoneMeeting01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "HermesSecondPickUp",
+			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -152,7 +155,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "HermesPostEnding01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "HermesSecondPickUp",
+			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -172,7 +175,7 @@ local newPortedInteractTextLines = {
 		-- Used to be called HermesPostEnding01 as well, but was a duplicate with a SuperPriority textline
 		Name = "HermesPostEnding02",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "HermesSecondPickUp",
+			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -190,7 +193,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "HermesExpectingZeus01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "HermesSecondPickUp",
+			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -209,7 +212,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "HermesExpectingPoseidon01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "HermesSecondPickUp",
+			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -228,7 +231,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "HermesExpectingAthena01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "HermesSecondPickUp",
+			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -247,7 +250,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "HermesExpectingAres01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "HermesSecondPickUp",
+			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -266,7 +269,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "HermesExpectingAphrodite01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "HermesSecondPickUp",
+			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -285,7 +288,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "HermesExpectingDemeter01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "HermesSecondPickUp",
+			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -304,7 +307,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "HermesAboutPlume02",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "HermesSecondPickUp",
+			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -324,7 +327,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "HermesAboutSkelly01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "HermesSecondPickUp",
+			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -344,7 +347,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "HermesAboutOlympianReunionQuest01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "HermesSecondPickUp",
+			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
 		},
 		PlayOnce = true,
 		RequiredTextLines = { "HermesFirstPickUp", "PersephoneAboutOlympianReunionQuest01", },
@@ -372,7 +375,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "HermesPostEpilogue01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "HermesSecondPickUp",
+			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -387,12 +390,11 @@ local newPortedInteractTextLines = {
 		},
 	},
 	-- #endregion
-	-- #region Misc NPC reaction voicelines
+	-- #region Priority NPC reaction dialogues
 	{
 		Name = "HermesAboutThanatos01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterTextLineGroupContaining = "HermesSecondPickUp",
-			CreateNewPriorityGroup = true,
+			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -460,11 +462,509 @@ local newPortedInteractTextLines = {
 		},
 	},
 	-- #endregion
-	-- #region Other Misc priority
+	-- #region Priority story
+	{
+		Name = "HermesAboutZeus01",
+		ModsNikkelMHadesBiomes_TextLineMetadata = {
+			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
+		},
+		PlayOnce = true,
+		PreEventFunctionName = "BoonInteractPresentation",
+		PreEventFunctionArgs = { PickupWait = 1.0, },
+		RequiredTextLines = { "HermesSecondPickUp" },
+		RequiredGodLoot = "ZeusUpgrade",
+		{
+			Cue = "/VO/Hermes_0053",
+			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+			UseEventEndSound = true,
+			Text =
+			"You heard already from my pop, haven't you, Coz? Wonderful guy. Don't get to spend a lot of time together, though! You know how that is. Well, see you!"
+		},
+	},
+	{
+		Name = "HermesAboutZeus02",
+		ModsNikkelMHadesBiomes_TextLineMetadata = {
+			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
+		},
+		PlayOnce = true,
+		PreEventFunctionName = "BoonInteractPresentation",
+		PreEventFunctionArgs = { PickupWait = 1.0, },
+		RequiredTextLines = { "HermesAboutZeus01" },
+		RequiredGodLoot = "ZeusUpgrade",
+		{
+			Cue = "/VO/Hermes_0223",
+			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+			UseEventEndSound = true,
+			Text =
+			"You know, Coz, my pop never gives his lightning blessings to me! He's quite invested in what happens to you, isn't he?"
+		},
+	},
+	{
+		Name = "HermesAboutPoseidon01",
+		ModsNikkelMHadesBiomes_TextLineMetadata = {
+			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
+		},
+		PlayOnce = true,
+		PreEventFunctionName = "BoonInteractPresentation",
+		PreEventFunctionArgs = { PickupWait = 1.0, },
+		RequiredTextLines = { "HermesSecondPickUp" },
+		RequiredGodLoot = "PoseidonUpgrade",
+		{
+			Cue = "/VO/Hermes_0054",
+			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+			UseEventEndSound = true,
+			Text =
+			"Want to bring you in on something, boss. Reason that Uncle Poseidon got to you before I did is, I let him. He's under the impression he's as spry as ever! {#DialogueItalicFormat}Hah!{#PreviousFormat}"
+		},
+	},
+	{
+		Name = "HermesAboutAthena01",
+		ModsNikkelMHadesBiomes_TextLineMetadata = {
+			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
+		},
+		PlayOnce = true,
+		PreEventFunctionName = "BoonInteractPresentation",
+		PreEventFunctionArgs = { PickupWait = 1.0, },
+		RequiredTextLines = { "HermesSecondPickUp" },
+		RequiredGodLoot = "AthenaUpgrade",
+		{
+			Cue = "/VO/Hermes_0055",
+			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+			UseEventEndSound = true,
+			Text =
+			"So then Athena's looking out for you, that's good, that's good! She likes to put a lot of thought and stuff in everything, it's all a little much, if you ask me!"
+		},
+	},
+	{
+		Name = "HermesAboutAres01",
+		ModsNikkelMHadesBiomes_TextLineMetadata = {
+			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
+		},
+		PlayOnce = true,
+		PreEventFunctionName = "BoonInteractPresentation",
+		PreEventFunctionArgs = { PickupWait = 1.0, },
+		RequiredTextLines = { "HermesSecondPickUp" },
+		RequiredGodLoot = "AresUpgrade",
+		{
+			Cue = "/VO/Hermes_0056",
+			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+			UseEventEndSound = true,
+			Text =
+			"You know who keeps me awful busy, Coz? Ares. Nothing like a good old war amongst the mortals to create demand for lots and lots of messages to go around!"
+		},
+	},
+	{
+		Name = "HermesAboutArtemis01",
+		ModsNikkelMHadesBiomes_TextLineMetadata = {
+			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
+		},
+		PlayOnce = true,
+		PreEventFunctionName = "BoonInteractPresentation",
+		PreEventFunctionArgs = { PickupWait = 1.0, },
+		RequiredTextLines = { "HermesSecondPickUp" },
+		RequiredGodLoot = "ArtemisUpgrade",
+		{
+			Cue = "/VO/Hermes_0057",
+			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+			UseEventEndSound = true,
+			Text =
+			"Did Artemis manage to locate you already, boss? She's pretty good at that, I have to say. I'm faster! But she's fast, she's pretty fast, all right."
+		},
+	},
+	{
+		Name = "HermesAboutAphrodite01",
+		ModsNikkelMHadesBiomes_TextLineMetadata = {
+			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
+		},
+		PlayOnce = true,
+		PreEventFunctionName = "BoonInteractPresentation",
+		PreEventFunctionArgs = { PickupWait = 1.0, },
+		RequiredTextLines = { "HermesSecondPickUp" },
+		RequiredGodLoot = "AphroditeUpgrade",
+		{
+			Cue = "/VO/Hermes_0058",
+			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+			UseEventEndSound = true,
+			Text =
+			"Aphrodite's really something, don't you think so, Coz? Normally I'd stop for no one here. But when it comes to her, exceptions must be made!"
+		},
+	},
+	{
+		Name = "HermesAboutDionysus01",
+		ModsNikkelMHadesBiomes_TextLineMetadata = {
+			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
+		},
+		PlayOnce = true,
+		PreEventFunctionName = "BoonInteractPresentation",
+		PreEventFunctionArgs = { PickupWait = 1.0, },
+		RequiredTextLines = { "HermesSecondPickUp" },
+		RequiredGodLoot = "DionysusUpgrade",
+		{
+			Cue = "/VO/Hermes_0059",
+			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+			UseEventEndSound = true,
+			Text =
+			"You ever get the feeling life's been moving all too quickly for you, boss? Well Dionysus doesn't, as you're probably aware. Throws quite a feast, though!"
+		},
+	},
+	{
+		Name = "HermesAboutDemeter01",
+		ModsNikkelMHadesBiomes_TextLineMetadata = {
+			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
+		},
+		PlayOnce = true,
+		PreEventFunctionName = "BoonInteractPresentation",
+		PreEventFunctionArgs = { PickupWait = 1.0, },
+		RequiredTextLines = { "HermesSecondPickUp", "DemeterGift01" },
+		RequiredFalseFlags = { "PersephoneAway" },
+		RequiredGodLoot = "DemeterUpgrade",
+		{
+			Cue = "/VO/Hermes_0159",
+			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+			UseEventEndSound = true,
+			Text =
+			"Been downright chilly up here lately, Coz! We've Demeter to thank for that! Me, I try to stay out of her way, she doesn't think I'm of much help to her. Although I'm sure she's warmed to you at least!"
+		},
+	},
+	{
+		Name = "HermesAboutHadesKeepsake01",
+		ModsNikkelMHadesBiomes_TextLineMetadata = {
+			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
+		},
+		PlayOnce = true,
+		PreEventFunctionName = "BoonInteractPresentation",
+		PreEventFunctionArgs = { PickupWait = 1.0, },
+		RequiredTextLines = { "HermesSecondPickUp", "OlympianReunionQuestComplete" },
+		RequiredTrait = "HadesShoutKeepsake",
+		{
+			Cue = "/VO/Hermes_0235",
+			Emote = "PortraitEmoteSurprise",
+			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+			UseEventEndSound = true,
+			Text =
+			"Say, isn't that your father's blessing on you, Coz?! I almost can't believe it, but you've done such a good job of things, how could he {#DialogueItalicFormat}not {#PreviousFormat}approve?"
+		},
+	},
+	{
+		Name = "HermesBackstory01",
+		ModsNikkelMHadesBiomes_TextLineMetadata = {
+			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
+		},
+		PlayOnce = true,
+		PreEventFunctionName = "BoonInteractPresentation",
+		PreEventFunctionArgs = { PickupWait = 1.0, },
+		RequiredTextLines = { "HermesSecondPickUp" },
+		{
+			Cue = "/VO/Hermes_0004",
+			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+			UseEventEndSound = true,
+			Text =
+			"Whoa, what's good, there, Coz? Though, who am I kidding, we can cut the small talk. I don't mind. I interrupt my brothers and my sisters all the time!"
+		},
+	},
+	{
+		Name = "HermesBackstory02",
+		ModsNikkelMHadesBiomes_TextLineMetadata = {
+			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
+		},
+		PlayOnce = true,
+		PreEventFunctionName = "BoonInteractPresentation",
+		PreEventFunctionArgs = { PickupWait = 1.0, },
+		RequiredTextLines = { "HermesSecondPickUp" },
+		{
+			Cue = "/VO/Hermes_0067",
+			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+			UseEventEndSound = true,
+			Text =
+			"Boss, you've probably caught yourself thinking: {#DialogueItalicFormat}Hermes sure is quick! So how come it took so long for him to show up in the first place? {#PreviousFormat}Well, I'm afraid that's not for you to know. But! It's not because I was late. Not late for anything."
+		},
+	},
+	{
+		Name = "HermesBackstory03",
+		ModsNikkelMHadesBiomes_TextLineMetadata = {
+			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
+		},
+		PlayOnce = true,
+		PreEventFunctionName = "BoonInteractPresentation",
+		PreEventFunctionArgs = { PickupWait = 1.0, },
+		RequiredTextLines = { "HermesBackstory01", "HermesBackstory02" },
+		{
+			Cue = "/VO/Hermes_0068",
+			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+			UseEventEndSound = true,
+			Text =
+			"Hey, uh, could you do a little favor for me, Coz? My brothers, sisters, family, and whatnot, they're unaware I'm working with you, here. It's no big deal, but let's keep it that way for now. All right?"
+		},
+	},
+	{
+		Name = "HermesBackstory04",
+		ModsNikkelMHadesBiomes_TextLineMetadata = {
+			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
+		},
+		PlayOnce = true,
+		PreEventFunctionName = "BoonInteractPresentation",
+		PreEventFunctionArgs = { PickupWait = 1.0, },
+		RequiredTextLines = { "HermesFirstPickUp", "HermesLootBought02" },
+		{
+			Cue = "/VO/Hermes_0069",
+			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+			UseEventEndSound = true,
+			Text =
+			"Happened to be in the area, boss! Seeing as the mortal folk up here keep dying off, and someone's got to bring their souls to your domain, now, don't they."
+		},
+	},
+	{
+		Name = "HermesBackstory05",
+		ModsNikkelMHadesBiomes_TextLineMetadata = {
+			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
+		},
+		PlayOnce = true,
+		PreEventFunctionName = "BoonInteractPresentation",
+		PreEventFunctionArgs = { PickupWait = 1.0, },
+		RequiredTextLines = { "HermesGift05" },
+		{
+			Cue = "/VO/Hermes_0072",
+			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+			UseEventEndSound = true,
+			Text =
+			"Know that saying {#DialogueItalicFormat}'don't be hasty'{#PreviousFormat}, boss? That comes from me. I swear! A little way to stave off competition, masquerading as the wisdom of a sage. Those stupid mortals will buy anything!"
+		},
+	},
+	{
+		Name = "HermesBackstory06",
+		ModsNikkelMHadesBiomes_TextLineMetadata = {
+			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
+		},
+		PlayOnce = true,
+		PreEventFunctionName = "BoonInteractPresentation",
+		PreEventFunctionArgs = { PickupWait = 1.0, },
+		RequiredTextLines = { "HermesBackstory03", "HermesGift02" },
+		RequiredFalseTextLines = { "OlympianReunionQuestComplete" },
+		{
+			Cue = "/VO/Hermes_0193",
+			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+			UseEventEndSound = true,
+			Text =
+			"Not that I really know {#DialogueItalicFormat}exactly {#PreviousFormat}what you're up to, Coz, but! If I did, I don't think anybody on Olympus is aware of it. Or, if they are, they're keeping their mouths shut. The same as me!"
+		},
+	},
+	{
+		Name = "HermesBackstory07",
+		ModsNikkelMHadesBiomes_TextLineMetadata = {
+			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
+		},
+		PlayOnce = true,
+		PreEventFunctionName = "BoonInteractPresentation",
+		PreEventFunctionArgs = { PickupWait = 1.0, },
+		RequiredTextLines = { "HermesBackstory02", "HermesGift04" },
+		{
+			Cue = "/VO/Hermes_0214",
+			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+			UseEventEndSound = true,
+			Text =
+			"You ever wonder how I got this fast, Coz? Lots of practicing, I'll tell you that! And being born unnaturally quick, I guess!"
+		},
+	},
+	{
+		Name = "HermesAboutSkinnyLittleChap01",
+		ModsNikkelMHadesBiomes_TextLineMetadata = {
+			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
+		},
+		PlayOnce = true,
+		PreEventFunctionName = "BoonInteractPresentation",
+		PreEventFunctionArgs = { PickupWait = 1.0, },
+		-- these requirements are purely coincidental to the content of this event
+		RequiredAnyTextLines = { "HermesAboutSecretService01", "SkellyBackstory03", "SkellyGift09", "HermesGift08" },
+		{
+			Cue = "/VO/Hermes_0195",
+			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+			UseEventEndSound = true,
+			Text =
+			"Once took a skinny little chap down to the Underworld, got the business end of a sharp spear, he did! He had it coming, though, a lot of lying, cheating, and the like. Last that I heard, he's still making his amends down there. {#DialogueItalicFormat}Eh{#PreviousFormat}!"
+		},
+	},
+	{
+		Name = "HermesAboutSkelly02",
+		ModsNikkelMHadesBiomes_TextLineMetadata = {
+			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
+		},
+		PlayOnce = true,
+		PreEventFunctionName = "BoonInteractPresentation",
+		PreEventFunctionArgs = { PickupWait = 1.0, },
+		RequiredAnyTextLines = { "SkellyAboutSources01", },
+		{
+			Cue = "/VO/Hermes_0118",
+			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+			UseEventEndSound = true,
+			Text =
+			"Boss, I know you've heard a certain rumor from a very skinny individual who's uninclined to move. You best keep that one to yourself, all right? Or else our jig is up, and your father wouldn't like that, nor would you. So, cheers!"
+		},
+	},
+	{
+		Name = "HermesAboutSkelly03",
+		ModsNikkelMHadesBiomes_TextLineMetadata = {
+			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
+		},
+		PlayOnce = true,
+		PreEventFunctionName = "BoonInteractPresentation",
+		PreEventFunctionArgs = { PickupWait = 1.0, },
+		RequiredTextLines = { "HermesAboutSkelly01", "HermesGift05", "SkellyGift09" },
+		{
+			Cue = "/VO/Hermes_0196",
+			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+			UseEventEndSound = true,
+			Text =
+			"Say, you're in good with what's-his-name, the one who gave you his lucky tooth? So he's an all-right sort, then. Has to be, if you put up with him!"
+		},
+	},
+	{
+		Name = "HermesAboutSecretService01",
+		ModsNikkelMHadesBiomes_TextLineMetadata = {
+			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
+		},
+		PlayOnce = true,
+		PreEventFunctionName = "BoonInteractPresentation",
+		PreEventFunctionArgs = { PickupWait = 1.0, },
+		RequiredAnyTextLines = { "SkellyAboutSources02" },
+		RequiredFalseTextLinesLastRun = { "SkellyAboutSources02" },
+		{
+			Cue = "/VO/Hermes_0165",
+			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+			UseEventEndSound = true,
+			Text =
+			"So, now you've found me out, haven't you, Coz? Heard from the big boat-man himself. Well, good! We're pleased to be of service. And {#DialogueItalicFormat}we've {#PreviousFormat}got a lot of dirt on {#DialogueItalicFormat}you{#PreviousFormat}, so you be sure to keep our secrets, too. All right?"
+		},
+	},
+	{
+		Name = "HermesAboutSecretService02",
+		ModsNikkelMHadesBiomes_TextLineMetadata = {
+			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
+		},
+		PlayOnce = true,
+		PreEventFunctionName = "BoonInteractPresentation",
+		PreEventFunctionArgs = { PickupWait = 1.0, },
+		RequiredTextLines = { "Ending01", "HermesGift08", "CharonGift07" },
+		RequiredAnyTextLines = { "HermesLootBought01", "HermesLootBought01_B", "HermesAboutHourglass01" },
+		{
+			Cue = "/VO/Hermes_0231",
+			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+			UseEventEndSound = true,
+			Text =
+			"So my professional associate, the fearsome boatman on the River Styx? You got to know him pretty well in all of this, right, Coz? Hard getting through to him, I know, but his heart's in the right place! It's why I'm working with him, after all this time!"
+		},
+	},
+	{
+		Name = "HermesAboutHades01",
+		ModsNikkelMHadesBiomes_TextLineMetadata = {
+			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
+		},
+		PlayOnce = true,
+		PreEventFunctionName = "BoonInteractPresentation",
+		PreEventFunctionArgs = { PickupWait = 1.0, },
+		RequiredTextLines = { "HermesFirstPickUp", "HadesAboutCharon01" },
+		RequiredFalseTextLines = { "OlympianReunionQuestComplete" },
+		{
+			Cue = "/VO/Hermes_0071",
+			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+			UseEventEndSound = true,
+			Text =
+			"Met your father face to face only the one time, Coz. Despite rendering services to him for quite a while. Memorable experience, I'll give it that! Seems like he's not done anything with all the messages my side keeps sending him."
+		},
+	},
+	{
+		Name = "HermesPostEpilogue02",
+		ModsNikkelMHadesBiomes_TextLineMetadata = {
+			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
+		},
+		PlayOnce = true,
+		PreEventFunctionName = "BoonInteractPresentation",
+		PreEventFunctionArgs = { PickupWait = 1.0, },
+		RequiredTextLines = { "OlympianReunionQuestComplete", },
+		{
+			Cue = "/VO/Hermes_0228",
+			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+			UseEventEndSound = true,
+			Text =
+			"Everybody on Olympus, they're still going on about Persephone, Queen of the Underworld! They had no idea she was down there all along, none whatsoever, Coz! And as for me, now I can deliver you my blessings more officially, I think!"
+		},
+	},
+	{
+		Name = "HermesPostEpilogue03",
+		ModsNikkelMHadesBiomes_TextLineMetadata = {
+			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
+		},
+		PlayOnce = true,
+		PreEventFunctionName = "BoonInteractPresentation",
+		PreEventFunctionArgs = { PickupWait = 1.0, },
+		RequiredTextLines = { "OlympianReunionQuestComplete", "HermesGift03" },
+		{
+			Cue = "/VO/Hermes_0229",
+			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+			UseEventEndSound = true,
+			Text =
+			"Even though everything's out in the open, now, and all my brothers, sisters, and whatnot are going to keep helping you fight your way out of there, I've still been keeping to myself, of late! That way nobody slows me down."
+		},
+	},
+	{
+		Name = "HermesPostEpilogue04",
+		ModsNikkelMHadesBiomes_TextLineMetadata = {
+			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
+		},
+		PlayOnce = true,
+		PreEventFunctionName = "BoonInteractPresentation",
+		PreEventFunctionArgs = { PickupWait = 1.0, },
+		RequiredTextLines = { "OlympianReunionQuestComplete", "HermesGift04" },
+		MinRunsSinceAnyTextLines = { TextLines = { "OlympianReunionQuestComplete" }, Count = 3 },
+		{
+			Cue = "/VO/Hermes_0230",
+			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+			UseEventEndSound = true,
+			Text =
+			"Some members of the family up here, I know they haven't helped at all, but just don't take it personal or anything, all right? Think of it this way: You've got more of us getting along and talking properly than I have ever {#DialogueItalicFormat}seen{#PreviousFormat}!"
+		},
+	},
+	{
+		Name = "HermesAboutPersephoneVisit01",
+		ModsNikkelMHadesBiomes_TextLineMetadata = {
+			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
+		},
+		PlayOnce = true,
+		PreEventFunctionName = "BoonInteractPresentation",
+		PreEventFunctionArgs = { PickupWait = 1.0, },
+		RequiredTextLines = { "OlympianReunionQuestComplete" },
+		RequiredTrueFlags = { "PersephoneAway" },
+		{
+			Cue = "/VO/Hermes_0233",
+			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+			UseEventEndSound = true,
+			Text =
+			"Your mother got from there just fine, don't worry, Coz! She had me looking after her, and such. Seemed real nice! Told me to tell you hi."
+		},
+	},
+	{
+		Name = "HermesAboutPersephoneVisit02",
+		ModsNikkelMHadesBiomes_TextLineMetadata = {
+			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
+		},
+		PlayOnce = true,
+		PreEventFunctionName = "BoonInteractPresentation",
+		PreEventFunctionArgs = { PickupWait = 1.0, },
+		RequiredTextLines = { "OlympianReunionQuestComplete" },
+		RequiredTrueFlags = { "PersephoneAway" },
+		{
+			Cue = "/VO/Hermes_0234",
+			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+			UseEventEndSound = true,
+			Text =
+			"You know, I never knew the pomegranate seeds down in the Underworld held such power if not for your mother mentioning it, Coz! And here I thought they were just tasty, that was it!"
+		},
+	},
+	-- #endregion
+	-- #region Contextual
 	{
 		Name = "HermesExpectingMiscOlympian01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterTextLineGroupContaining = "HermesAboutThanatos01",
+			InsertAfterTextLineGroupContaining = "AthenaAboutDemeter01",
 			CreateNewPriorityGroup = true,
 		},
 		PlayOnce = true,
@@ -588,396 +1088,6 @@ local newPortedInteractTextLines = {
 			UseEventEndSound = true,
 			Text =
 			"I may not be the god you're looking for right at the moment, boss, but I will get you on your way to them in no time here!"
-		},
-	},
-	{
-		Name = "HermesAboutZeus01",
-		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "HermesExpectingMiscOlympian01",
-		},
-		PlayOnce = true,
-		PreEventFunctionName = "BoonInteractPresentation",
-		PreEventFunctionArgs = { PickupWait = 1.0, },
-		RequiredTextLines = { "HermesSecondPickUp" },
-		RequiredGodLoot = "ZeusUpgrade",
-		{
-			Cue = "/VO/Hermes_0053",
-			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
-			Text =
-			"You heard already from my pop, haven't you, Coz? Wonderful guy. Don't get to spend a lot of time together, though! You know how that is. Well, see you!"
-		},
-	},
-	{
-		Name = "HermesAboutZeus02",
-		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "HermesExpectingMiscOlympian01",
-		},
-		PlayOnce = true,
-		PreEventFunctionName = "BoonInteractPresentation",
-		PreEventFunctionArgs = { PickupWait = 1.0, },
-		RequiredTextLines = { "HermesAboutZeus01" },
-		RequiredGodLoot = "ZeusUpgrade",
-		{
-			Cue = "/VO/Hermes_0223",
-			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
-			Text =
-			"You know, Coz, my pop never gives his lightning blessings to me! He's quite invested in what happens to you, isn't he?"
-		},
-	},
-	{
-		Name = "HermesAboutPoseidon01",
-		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "HermesExpectingMiscOlympian01",
-		},
-		PlayOnce = true,
-		PreEventFunctionName = "BoonInteractPresentation",
-		PreEventFunctionArgs = { PickupWait = 1.0, },
-		RequiredTextLines = { "HermesSecondPickUp" },
-		RequiredGodLoot = "PoseidonUpgrade",
-		{
-			Cue = "/VO/Hermes_0054",
-			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
-			Text =
-			"Want to bring you in on something, boss. Reason that Uncle Poseidon got to you before I did is, I let him. He's under the impression he's as spry as ever! {#DialogueItalicFormat}Hah!{#PreviousFormat}"
-		},
-	},
-	{
-		Name = "HermesAboutAthena01",
-		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "HermesExpectingMiscOlympian01",
-		},
-		PlayOnce = true,
-		PreEventFunctionName = "BoonInteractPresentation",
-		PreEventFunctionArgs = { PickupWait = 1.0, },
-		RequiredTextLines = { "HermesSecondPickUp" },
-		RequiredGodLoot = "AthenaUpgrade",
-		{
-			Cue = "/VO/Hermes_0055",
-			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
-			Text =
-			"So then Athena's looking out for you, that's good, that's good! She likes to put a lot of thought and stuff in everything, it's all a little much, if you ask me!"
-		},
-	},
-	{
-		Name = "HermesAboutAres01",
-		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "HermesExpectingMiscOlympian01",
-		},
-		PlayOnce = true,
-		PreEventFunctionName = "BoonInteractPresentation",
-		PreEventFunctionArgs = { PickupWait = 1.0, },
-		RequiredTextLines = { "HermesSecondPickUp" },
-		RequiredGodLoot = "AresUpgrade",
-		{
-			Cue = "/VO/Hermes_0056",
-			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
-			Text =
-			"You know who keeps me awful busy, Coz? Ares. Nothing like a good old war amongst the mortals to create demand for lots and lots of messages to go around!"
-		},
-	},
-	{
-		Name = "HermesAboutArtemis01",
-		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "HermesExpectingMiscOlympian01",
-		},
-		PlayOnce = true,
-		PreEventFunctionName = "BoonInteractPresentation",
-		PreEventFunctionArgs = { PickupWait = 1.0, },
-		RequiredTextLines = { "HermesSecondPickUp" },
-		RequiredGodLoot = "ArtemisUpgrade",
-		{
-			Cue = "/VO/Hermes_0057",
-			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
-			Text =
-			"Did Artemis manage to locate you already, boss? She's pretty good at that, I have to say. I'm faster! But she's fast, she's pretty fast, all right."
-		},
-	},
-	{
-		Name = "HermesAboutAphrodite01",
-		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "HermesExpectingMiscOlympian01",
-		},
-		PlayOnce = true,
-		PreEventFunctionName = "BoonInteractPresentation",
-		PreEventFunctionArgs = { PickupWait = 1.0, },
-		RequiredTextLines = { "HermesSecondPickUp" },
-		RequiredGodLoot = "AphroditeUpgrade",
-		{
-			Cue = "/VO/Hermes_0058",
-			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
-			Text =
-			"Aphrodite's really something, don't you think so, Coz? Normally I'd stop for no one here. But when it comes to her, exceptions must be made!"
-		},
-	},
-	{
-		Name = "HermesAboutDionysus01",
-		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "HermesExpectingMiscOlympian01",
-		},
-		PlayOnce = true,
-		PreEventFunctionName = "BoonInteractPresentation",
-		PreEventFunctionArgs = { PickupWait = 1.0, },
-		RequiredTextLines = { "HermesSecondPickUp" },
-		RequiredGodLoot = "DionysusUpgrade",
-		{
-			Cue = "/VO/Hermes_0059",
-			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
-			Text =
-			"You ever get the feeling life's been moving all too quickly for you, boss? Well Dionysus doesn't, as you're probably aware. Throws quite a feast, though!"
-		},
-	},
-	{
-		Name = "HermesAboutDemeter01",
-		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "HermesExpectingMiscOlympian01",
-		},
-		PlayOnce = true,
-		PreEventFunctionName = "BoonInteractPresentation",
-		PreEventFunctionArgs = { PickupWait = 1.0, },
-		RequiredTextLines = { "HermesSecondPickUp", "DemeterGift01" },
-		RequiredFalseFlags = { "PersephoneAway" },
-		RequiredGodLoot = "DemeterUpgrade",
-		{
-			Cue = "/VO/Hermes_0159",
-			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
-			Text =
-			"Been downright chilly up here lately, Coz! We've Demeter to thank for that! Me, I try to stay out of her way, she doesn't think I'm of much help to her. Although I'm sure she's warmed to you at least!"
-		},
-	},
-	{
-		Name = "HermesAboutHadesKeepsake01",
-		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "HermesExpectingMiscOlympian01",
-		},
-		PlayOnce = true,
-		PreEventFunctionName = "BoonInteractPresentation",
-		PreEventFunctionArgs = { PickupWait = 1.0, },
-		RequiredTextLines = { "HermesSecondPickUp", "OlympianReunionQuestComplete" },
-		RequiredTrait = "HadesShoutKeepsake",
-		{
-			Cue = "/VO/Hermes_0235",
-			Emote = "PortraitEmoteSurprise",
-			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
-			Text =
-			"Say, isn't that your father's blessing on you, Coz?! I almost can't believe it, but you've done such a good job of things, how could he {#DialogueItalicFormat}not {#PreviousFormat}approve?"
-		},
-	},
-	{
-		Name = "HermesBackstory01",
-		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "HermesExpectingMiscOlympian01",
-		},
-		PlayOnce = true,
-		PreEventFunctionName = "BoonInteractPresentation",
-		PreEventFunctionArgs = { PickupWait = 1.0, },
-		RequiredTextLines = { "HermesSecondPickUp" },
-		{
-			Cue = "/VO/Hermes_0004",
-			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
-			Text =
-			"Whoa, what's good, there, Coz? Though, who am I kidding, we can cut the small talk. I don't mind. I interrupt my brothers and my sisters all the time!"
-		},
-	},
-	{
-		Name = "HermesBackstory02",
-		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "HermesExpectingMiscOlympian01",
-		},
-		PlayOnce = true,
-		PreEventFunctionName = "BoonInteractPresentation",
-		PreEventFunctionArgs = { PickupWait = 1.0, },
-		RequiredTextLines = { "HermesSecondPickUp" },
-		{
-			Cue = "/VO/Hermes_0067",
-			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
-			Text =
-			"Boss, you've probably caught yourself thinking: {#DialogueItalicFormat}Hermes sure is quick! So how come it took so long for him to show up in the first place? {#PreviousFormat}Well, I'm afraid that's not for you to know. But! It's not because I was late. Not late for anything."
-		},
-	},
-	{
-		Name = "HermesBackstory03",
-		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "HermesExpectingMiscOlympian01",
-		},
-		PlayOnce = true,
-		PreEventFunctionName = "BoonInteractPresentation",
-		PreEventFunctionArgs = { PickupWait = 1.0, },
-		RequiredTextLines = { "HermesBackstory01", "HermesBackstory02" },
-		{
-			Cue = "/VO/Hermes_0068",
-			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
-			Text =
-			"Hey, uh, could you do a little favor for me, Coz? My brothers, sisters, family, and whatnot, they're unaware I'm working with you, here. It's no big deal, but let's keep it that way for now. All right?"
-		},
-	},
-	{
-		Name = "HermesBackstory04",
-		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "HermesExpectingMiscOlympian01",
-		},
-		PlayOnce = true,
-		PreEventFunctionName = "BoonInteractPresentation",
-		PreEventFunctionArgs = { PickupWait = 1.0, },
-		RequiredTextLines = { "HermesFirstPickUp", "HermesLootBought02" },
-		{
-			Cue = "/VO/Hermes_0069",
-			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
-			Text =
-			"Happened to be in the area, boss! Seeing as the mortal folk up here keep dying off, and someone's got to bring their souls to your domain, now, don't they."
-		},
-	},
-	{
-		Name = "HermesBackstory05",
-		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "HermesExpectingMiscOlympian01",
-		},
-		PlayOnce = true,
-		PreEventFunctionName = "BoonInteractPresentation",
-		PreEventFunctionArgs = { PickupWait = 1.0, },
-		RequiredTextLines = { "HermesGift05" },
-		{
-			Cue = "/VO/Hermes_0072",
-			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
-			Text =
-			"Know that saying {#DialogueItalicFormat}'don't be hasty'{#PreviousFormat}, boss? That comes from me. I swear! A little way to stave off competition, masquerading as the wisdom of a sage. Those stupid mortals will buy anything!"
-		},
-	},
-	{
-		Name = "HermesBackstory06",
-		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "HermesExpectingMiscOlympian01",
-		},
-		PlayOnce = true,
-		PreEventFunctionName = "BoonInteractPresentation",
-		PreEventFunctionArgs = { PickupWait = 1.0, },
-		RequiredTextLines = { "HermesBackstory03", "HermesGift02" },
-		RequiredFalseTextLines = { "OlympianReunionQuestComplete" },
-		{
-			Cue = "/VO/Hermes_0193",
-			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
-			Text =
-			"Not that I really know {#DialogueItalicFormat}exactly {#PreviousFormat}what you're up to, Coz, but! If I did, I don't think anybody on Olympus is aware of it. Or, if they are, they're keeping their mouths shut. The same as me!"
-		},
-	},
-	{
-		Name = "HermesBackstory07",
-		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "HermesExpectingMiscOlympian01",
-		},
-		PlayOnce = true,
-		PreEventFunctionName = "BoonInteractPresentation",
-		PreEventFunctionArgs = { PickupWait = 1.0, },
-		RequiredTextLines = { "HermesBackstory02", "HermesGift04" },
-		{
-			Cue = "/VO/Hermes_0214",
-			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
-			Text =
-			"You ever wonder how I got this fast, Coz? Lots of practicing, I'll tell you that! And being born unnaturally quick, I guess!"
-		},
-	},
-	{
-		Name = "HermesAboutSkinnyLittleChap01",
-		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "HermesExpectingMiscOlympian01",
-		},
-		PlayOnce = true,
-		PreEventFunctionName = "BoonInteractPresentation",
-		PreEventFunctionArgs = { PickupWait = 1.0, },
-		-- these requirements are purely coincidental to the content of this event
-		RequiredAnyTextLines = { "HermesAboutSecretService01", "SkellyBackstory03", "SkellyGift09", "HermesGift08" },
-		{
-			Cue = "/VO/Hermes_0195",
-			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
-			Text =
-			"Once took a skinny little chap down to the Underworld, got the business end of a sharp spear, he did! He had it coming, though, a lot of lying, cheating, and the like. Last that I heard, he's still making his amends down there. {#DialogueItalicFormat}Eh{#PreviousFormat}!"
-		},
-	},
-	{
-		Name = "HermesAboutSkelly02",
-		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "HermesExpectingMiscOlympian01",
-		},
-		PlayOnce = true,
-		PreEventFunctionName = "BoonInteractPresentation",
-		PreEventFunctionArgs = { PickupWait = 1.0, },
-		RequiredAnyTextLines = { "SkellyAboutSources01", },
-		{
-			Cue = "/VO/Hermes_0118",
-			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
-			Text =
-			"Boss, I know you've heard a certain rumor from a very skinny individual who's uninclined to move. You best keep that one to yourself, all right? Or else our jig is up, and your father wouldn't like that, nor would you. So, cheers!"
-		},
-	},
-	{
-		Name = "HermesAboutSkelly03",
-		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "HermesExpectingMiscOlympian01",
-		},
-		PlayOnce = true,
-		PreEventFunctionName = "BoonInteractPresentation",
-		PreEventFunctionArgs = { PickupWait = 1.0, },
-		RequiredTextLines = { "HermesAboutSkelly01", "HermesGift05", "SkellyGift09" },
-		{
-			Cue = "/VO/Hermes_0196",
-			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
-			Text =
-			"Say, you're in good with what's-his-name, the one who gave you his lucky tooth? So he's an all-right sort, then. Has to be, if you put up with him!"
-		},
-	},
-	{
-		Name = "HermesAboutSecretService01",
-		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "HermesExpectingMiscOlympian01",
-		},
-		PlayOnce = true,
-		PreEventFunctionName = "BoonInteractPresentation",
-		PreEventFunctionArgs = { PickupWait = 1.0, },
-		RequiredAnyTextLines = { "SkellyAboutSources02" },
-		RequiredFalseTextLinesLastRun = { "SkellyAboutSources02" },
-		{
-			Cue = "/VO/Hermes_0165",
-			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
-			Text =
-			"So, now you've found me out, haven't you, Coz? Heard from the big boat-man himself. Well, good! We're pleased to be of service. And {#DialogueItalicFormat}we've {#PreviousFormat}got a lot of dirt on {#DialogueItalicFormat}you{#PreviousFormat}, so you be sure to keep our secrets, too. All right?"
-		},
-	},
-	{
-		Name = "HermesAboutSecretService02",
-		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "HermesExpectingMiscOlympian01",
-		},
-		PlayOnce = true,
-		PreEventFunctionName = "BoonInteractPresentation",
-		PreEventFunctionArgs = { PickupWait = 1.0, },
-		RequiredTextLines = { "Ending01", "HermesGift08", "CharonGift07" },
-		RequiredAnyTextLines = { "HermesLootBought01", "HermesLootBought01_B", "HermesAboutHourglass01" },
-		{
-			Cue = "/VO/Hermes_0231",
-			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
-			Text =
-			"So my professional associate, the fearsome boatman on the River Styx? You got to know him pretty well in all of this, right, Coz? Hard getting through to him, I know, but his heart's in the right place! It's why I'm working with him, after all this time!"
 		},
 	},
 	{
@@ -1147,24 +1257,6 @@ local newPortedInteractTextLines = {
 			UseEventEndSound = true,
 			Text =
 			"You know, Coz, all this time that I've been bussing souls across the borders of your father's land, it's good to have the chance to help somebody out the other way!"
-		},
-	},
-	{
-		Name = "HermesAboutHades01",
-		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "HermesExpectingMiscOlympian01",
-		},
-		PlayOnce = true,
-		PreEventFunctionName = "BoonInteractPresentation",
-		PreEventFunctionArgs = { PickupWait = 1.0, },
-		RequiredTextLines = { "HermesFirstPickUp", "HadesAboutCharon01" },
-		RequiredFalseTextLines = { "OlympianReunionQuestComplete" },
-		{
-			Cue = "/VO/Hermes_0071",
-			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
-			Text =
-			"Met your father face to face only the one time, Coz. Despite rendering services to him for quite a while. Memorable experience, I'll give it that! Seems like he's not done anything with all the messages my side keeps sending him."
 		},
 	},
 	{
@@ -1611,94 +1703,6 @@ local newPortedInteractTextLines = {
 			UseEventEndSound = true,
 			Text =
 			"Heard the news you broke your streak of victories of late, boss. Happens, right? You seem the sort to bounce right back, though. Let me help with that!"
-		},
-	},
-	{
-		Name = "HermesPostEpilogue02",
-		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "HermesExpectingMiscOlympian01",
-		},
-		PlayOnce = true,
-		PreEventFunctionName = "BoonInteractPresentation",
-		PreEventFunctionArgs = { PickupWait = 1.0, },
-		RequiredTextLines = { "OlympianReunionQuestComplete", },
-		{
-			Cue = "/VO/Hermes_0228",
-			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
-			Text =
-			"Everybody on Olympus, they're still going on about Persephone, Queen of the Underworld! They had no idea she was down there all along, none whatsoever, Coz! And as for me, now I can deliver you my blessings more officially, I think!"
-		},
-	},
-	{
-		Name = "HermesPostEpilogue03",
-		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "HermesExpectingMiscOlympian01",
-		},
-		PlayOnce = true,
-		PreEventFunctionName = "BoonInteractPresentation",
-		PreEventFunctionArgs = { PickupWait = 1.0, },
-		RequiredTextLines = { "OlympianReunionQuestComplete", "HermesGift03" },
-		{
-			Cue = "/VO/Hermes_0229",
-			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
-			Text =
-			"Even though everything's out in the open, now, and all my brothers, sisters, and whatnot are going to keep helping you fight your way out of there, I've still been keeping to myself, of late! That way nobody slows me down."
-		},
-	},
-	{
-		Name = "HermesPostEpilogue04",
-		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "HermesExpectingMiscOlympian01",
-		},
-		PlayOnce = true,
-		PreEventFunctionName = "BoonInteractPresentation",
-		PreEventFunctionArgs = { PickupWait = 1.0, },
-		RequiredTextLines = { "OlympianReunionQuestComplete", "HermesGift04" },
-		MinRunsSinceAnyTextLines = { TextLines = { "OlympianReunionQuestComplete" }, Count = 3 },
-		{
-			Cue = "/VO/Hermes_0230",
-			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
-			Text =
-			"Some members of the family up here, I know they haven't helped at all, but just don't take it personal or anything, all right? Think of it this way: You've got more of us getting along and talking properly than I have ever {#DialogueItalicFormat}seen{#PreviousFormat}!"
-		},
-	},
-	{
-		Name = "HermesAboutPersephoneVisit01",
-		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "HermesExpectingMiscOlympian01",
-		},
-		PlayOnce = true,
-		PreEventFunctionName = "BoonInteractPresentation",
-		PreEventFunctionArgs = { PickupWait = 1.0, },
-		RequiredTextLines = { "OlympianReunionQuestComplete" },
-		RequiredTrueFlags = { "PersephoneAway" },
-		{
-			Cue = "/VO/Hermes_0233",
-			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
-			Text =
-			"Your mother got from there just fine, don't worry, Coz! She had me looking after her, and such. Seemed real nice! Told me to tell you hi."
-		},
-	},
-	{
-		Name = "HermesAboutPersephoneVisit02",
-		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "HermesExpectingMiscOlympian01",
-		},
-		PlayOnce = true,
-		PreEventFunctionName = "BoonInteractPresentation",
-		PreEventFunctionArgs = { PickupWait = 1.0, },
-		RequiredTextLines = { "OlympianReunionQuestComplete" },
-		RequiredTrueFlags = { "PersephoneAway" },
-		{
-			Cue = "/VO/Hermes_0234",
-			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
-			Text =
-			"You know, I never knew the pomegranate seeds down in the Underworld held such power if not for your mother mentioning it, Coz! And here I thought they were just tasty, that was it!"
 		},
 	},
 	{
@@ -2939,6 +2943,7 @@ local newPortedInteractTextLines = {
 	},
 	-- #endregion
 }
+
 mod.AddNarrativeDataEntries(
 	newPortedInteractTextLines, "HermesUpgrade", "InteractTextLineSets", "InteractTextLinePriorities",
 	{ Hermes = { "Modsnikkelmhadesbiomeshermes" } }, { Hermes_ = "Modsnikkelmhadesbiomeshermes_" },

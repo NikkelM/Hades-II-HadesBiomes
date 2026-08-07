@@ -1,11 +1,10 @@
--- #region These are played when picking up a Hermes boon in a modded run
+-- #region Hermes-delivered dialogues
 local newHermesDeliveredDialogues = {
-	-- #region Storylines
+	-- #region Opener
 	{
 		Name = "DionysusFirstPickUp",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "HermesAboutTyphonDeath01",
-			CreateNewPriorityGroup = true,
+			InsertAfterNarrativeTextLine = "HermesSecondPickUp",
 		},
 		PlayOnce = true,
 		RequiredTextLines = { "AthenaFirstPickUp", },
@@ -30,10 +29,12 @@ local newHermesDeliveredDialogues = {
 			"Heeey, there, Zag, man, how's it going? Look, you have got to get here with the rest of us already, we've been saving you a spot! Let me see what I can do, make life a little sweeter for you in the meantime!"
 		},
 	},
+	-- #endregion
+	-- #region Super-priority story and quests
 	{
 		Name = "DionysusAboutOrpheus01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "DionysusFirstPickUp",
+			InsertAfterNarrativeTextLine = "HermesAboutCharonFight01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -65,10 +66,12 @@ local newHermesDeliveredDialogues = {
 			"...That chap comes up with the most smashing songs, so I was thinking, maybe we could spin him a tall tale, something like how maybe you and I, like, we're connected or something? He'll buy it, tell him, tell him for me, yeah?!"
 		},
 	},
+	-- #endregion
+	-- #region Priority story and relationships
 	{
 		Name = "DionysusAboutOrpheus02",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "DionysusFirstPickUp",
+			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -86,7 +89,7 @@ local newHermesDeliveredDialogues = {
 	{
 		Name = "DionysusAboutSingersReunionQuest01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "DionysusFirstPickUp",
+			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -104,7 +107,7 @@ local newHermesDeliveredDialogues = {
 	{
 		Name = "DionysusAboutMegRelationship01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "DionysusFirstPickUp",
+			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -123,7 +126,7 @@ local newHermesDeliveredDialogues = {
 	{
 		Name = "DionysusAboutMegRelationship02",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "DionysusFirstPickUp",
+			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -143,7 +146,7 @@ local newHermesDeliveredDialogues = {
 	{
 		Name = "DionysusAboutThanRelationship01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "DionysusFirstPickUp",
+			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -160,7 +163,7 @@ local newHermesDeliveredDialogues = {
 	{
 		Name = "DionysusAboutYarn01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "DionysusFirstPickUp",
+			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -176,12 +179,11 @@ local newHermesDeliveredDialogues = {
 		},
 	},
 	-- #endregion
-	-- #region Misc (Inserted in a group after priority dialogues above)
+	-- #region Contextual
 	{
 		Name = "DionysusPostGiftPickup01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterTextLineGroupContaining = "DionysusAboutOrpheus01",
-			CreateNewPriorityGroup = true,
+			InsertAfterNarrativeTextLine = "HermesExpectingMiscOlympian01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -410,3 +412,5 @@ mod.AddHermesDeliveredDialogues(newHermesDeliveredDialogues,
 	{ Dionysus_ = "ModsNikkelMHadesBiomes_Portrait_Dionysus_Default_01" }, "/SFX/DionysusBoonWineLaugh",
 	{ Dionysus = { Speaker = "NPC_Dionysus_01", NarrativeContextArt = "DialogueBackground_Olympus" } })
 -- #endregion
+
+mod.PrintTable(game.NarrativeData.HermesUpgrade.InteractTextLinePriorities)
