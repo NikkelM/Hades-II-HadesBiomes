@@ -1,10 +1,10 @@
 -- #region These are played when picking up a Hermes boon in a modded run
 local newHermesDeliveredDialogues = {
-	-- #region Storylines (Inserted in a group after HermesAboutApolloKeepsake01)
+	-- #region Storylines
 	{
 		Name = "DionysusFirstPickUp",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterTextLineGroupContaining = "HermesAboutApolloKeepsake01",
+			InsertAfterNarrativeTextLine = "HermesAboutTyphonDeath01",
 			CreateNewPriorityGroup = true,
 		},
 		PlayOnce = true,

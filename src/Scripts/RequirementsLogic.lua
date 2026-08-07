@@ -3156,14 +3156,20 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 
 	if requirements.RequiredTrueConfigOptions ~= nil then
 		for k, configOption in pairs(requirements.RequiredTrueConfigOptions) do
-			if not GetConfigOptionValue({ Name = configOption }) then
+			-- if not GetConfigOptionValue({ Name = configOption }) then
+			-- 	return false
+			-- end
+			if not game.ConfigOptionCache[configOption] then
 				return false
 			end
 		end
 	end
 	if requirements.RequiredFalseConfigOptions ~= nil then
 		for k, configOption in pairs(requirements.RequiredFalseConfigOptions) do
-			if GetConfigOptionValue({ Name = configOption }) then
+			-- if GetConfigOptionValue({ Name = configOption }) then
+			-- 	return false
+			-- end
+			if game.ConfigOptionCache[configOption] then
 				return false
 			end
 		end

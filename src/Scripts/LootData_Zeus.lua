@@ -1672,7 +1672,7 @@ mod.AddNarrativeDataEntries(
 	{ Zeus_ = "ModsNikkelMHadesBiomes_Portrait_Zeus_Default_01" }
 )
 
-local newPortedLootboughtTextLines = {
+local newPortedLootBoughtTextLines = {
 	{
 		Name = "ZeusLootBought01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
@@ -1760,7 +1760,7 @@ local newPortedLootboughtTextLines = {
 	},
 }
 mod.AddNarrativeDataEntries(
-	newPortedLootboughtTextLines, "ZeusUpgrade", "BoughtTextLines", "BoughtTextLinePriorities",
+	newPortedLootBoughtTextLines, "ZeusUpgrade", "BoughtTextLines", "BoughtTextLinePriorities",
 	{ Zeus = { "Modsnikkelmhadesbiomeszeus" } }, { Zeus_ = "Modsnikkelmhadesbiomeszeus_" },
 	{ Zeus_ = "ModsNikkelMHadesBiomes_Portrait_Zeus_Default_01" }
 )
