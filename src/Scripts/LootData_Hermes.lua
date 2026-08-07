@@ -61,8 +61,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "HermesAboutCharonFight01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterTextLineGroupContaining = "AthenaFirstPickUp",
-			CreateNewPriorityGroup = true,
+			InsertAfterNarrativeTextLine = "DionysusAboutOrpheus01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -964,8 +963,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "HermesExpectingMiscOlympian01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterTextLineGroupContaining = "AthenaAboutDemeter01",
-			CreateNewPriorityGroup = true,
+			InsertAfterNarrativeTextLine = "DionysusPostGiftPickup01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
