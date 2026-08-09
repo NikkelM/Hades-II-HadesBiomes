@@ -257,6 +257,7 @@ local function on_ready()
 	end
 	-- Used in some imported files
 	mod.EncounteredInstallationIssues = false
+	mod.InstallationPending = false
 
 	-- File handling and other generic functions required at install time
 	import "Scripts/Meta/Constants.lua"
@@ -408,14 +409,17 @@ local function on_ready()
 		setupSuccessful = mod.CreateRequiredHookTargetFiles()
 	end
 
+	-- When the lua state reloads to load a save the hooks do not run again, so a pending install can never complete and must be treated as a broken one instead
+	local canCompleteInstall = mod.InstallationPending and game.GameState == nil
+
 	if setupSuccessful then
-		-- Only check if all required files exist here if we are not waiting on an install, and haven't successfully checked them before
+		-- Only check if all required files exist here if we are not waiting on an install that can still complete, and haven't successfully checked them before
 		-- After the installation completes, mod.CheckRequiredFiles is called again, so we are not missing the check
-		if not mod.InstallationPending and numMissingFiles == -1 then
+		if not canCompleteInstall and numMissingFiles == -1 then
 			numMissingFiles = mod.CheckRequiredFiles(false)
 		end
 
-		if numMissingFiles == 0 or mod.InstallationPending then
+		if numMissingFiles == 0 or canCompleteInstall then
 			-- General data needed for map generation/display
 			import "Game/MapGroups.sjson.lua"
 			DebugLogScriptImportProgress("MapGroups SJSON")
@@ -777,11 +781,29 @@ local function on_ready()
 			lastImportTime = os.clock()
 
 			-- E.g. ThanatosElysiumIntro encounter is missing, will be caught when importing EncounterDataElysium.lua
-			if mod.EncounteredInstallationIssues ~= true then
-				mod.HiddenConfig.IsValidInstallation = true
+			if mod.EncounteredInstallationIssues == true then
+				mod.HiddenConfig.IsValidInstallation = false
+				if mod.HiddenConfig.InstallationFailReason == "" then
+					mod.HiddenConfig.InstallationFailReason = "MissingFiles"
+				end
 				mod.SaveCachedSjsonFile("hiddenConfig.sjson", mod.HiddenConfig)
 				---@diagnostic disable-next-line: undefined-global
+				public.IsValidInstallation = false
+
+				mod.DebugPrint(
+					"The mod ran into issues during installation and is not active, see the errors above. Please check the log and re-run the installation by setting the \"firstTimeSetup\" and \"uninstall\" in the config to true.",
+					1)
+			else
+				mod.HiddenConfig.IsValidInstallation = true
+				---@diagnostic disable-next-line: undefined-global
 				public.IsValidInstallation = true
+
+				-- Only persist a valid installation once mod.FinalizeInstallation has actually verified the copied files
+				-- Writing it here while an install is pending would mark a broken install as valid if the game is closed before verification completes
+				if not mod.InstallationPending then
+					mod.HiddenConfig.InstallationFailReason = ""
+					mod.SaveCachedSjsonFile("hiddenConfig.sjson", mod.HiddenConfig)
+				end
 
 				-- Check for any incompatible installed mods to display a warning to the user
 				if mod.AreIncompatibleModsInstalled() then

@@ -525,10 +525,16 @@ end
 ---Saves data to a file in the mod's cache folder.
 ---@param fileName string The name of the file to save to. This file must be located in the mod's cache folder.
 ---@param data table The data to save.
+---@return boolean success Whether the file was written.
 function mod.SaveCachedSjsonFile(fileName, data)
 	local basePath = rom.path.combine(rom.paths.plugins_data(), _PLUGIN.guid .. "\\cache\\")
 	local path = rom.path.combine(basePath, fileName)
-	sjson.encode_file(path, data)
+	local success, err = pcall(sjson.encode_file, path, data)
+	if not success then
+		mod.DebugPrint("Could not write cached file: " .. path .. " (" .. tostring(err) .. ")", 1)
+	end
+
+	return success
 end
 
 ---Writes an SJSON file to the SJSON data directory in plugins_data and registers it with H2M.

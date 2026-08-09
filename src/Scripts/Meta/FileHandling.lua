@@ -92,33 +92,20 @@ function mod.RemoveFile(filePath)
 	end
 end
 
-local function checkFileExistsWithRetry(filePath, retries, delay, failFast)
-	local function sleep(sleepFor)
-		local t0 = os.clock()
-		while os.clock() - t0 <= sleepFor do end
+local function checkFileExists(filePath)
+	local file = io.open(filePath, "r")
+	if not file then
+		return false
 	end
-
-	for i = 1, retries do
-		local file = io.open(filePath, "r")
-		if file then
-			file:close()
-			return true
-		end
-		if not failFast then
-			mod.DebugPrint("File not found: " .. filePath .. " (attempt " .. i .. ")", 2)
-		else
-			return false
-		end
-		sleep(delay)
-	end
-	return false
+	file:close()
+	return true
 end
 
 local function checkFilesExist(fileMappings, rootPath, basePath, extension, failFast)
 	local missingFiles = 0
 	for src, dest in pairs(fileMappings) do
 		local destPath = rom.path.combine(rootPath, basePath .. dest .. extension)
-		if not checkFileExistsWithRetry(destPath, 3, 0.2, failFast) then
+		if not checkFileExists(destPath) then
 			mod.DebugPrint("Missing file: " .. destPath, 1)
 			missingFiles = missingFiles + 1
 			if failFast then return missingFiles end
@@ -292,6 +279,17 @@ OnAnyLoad {
 				-- Don't need to save to the file as it's already saved above
 				mod.HiddenConfig.MustShowUninstallFailureScreen = false
 			else
+				-- A pending install on map load means it didn't complete correctly, so throw an error
+				if mod.InstallationPending then
+					mod.DebugPrint("The installation never completed, marking it as invalid.", 1)
+					mod.HiddenConfig.IsValidInstallation = false
+					if mod.HiddenConfig.InstallationFailReason == "" then
+						mod.HiddenConfig.InstallationFailReason = "MissingFiles"
+					end
+					---@diagnostic disable-next-line: undefined-global
+					public.IsValidInstallation = false
+				end
+
 				-- If we haven't shown the install screen yet, or the installation is invalid, or we must show the warning about incompatible mods
 				if not mod.HiddenConfig.HasShownSuccessfulInstallScreen or not mod.HiddenConfig.IsValidInstallation or mod.HiddenConfig.MustShowIncompatibleModsInstallScreen then
 					-- Update the config with the type of screen we are showing

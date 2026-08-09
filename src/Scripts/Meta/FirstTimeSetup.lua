@@ -5,33 +5,47 @@ local function copyFile(src, dest, skipCheck)
 	if not skipCheck then
 		if rom.path.exists(dest) then
 			mod.DebugPrint("File already exists and will not be overwritten: " .. dest, 2)
-			return
+			return true
 		end
 	end
 
 	local inputFile = io.open(src, "rb")
 	if not inputFile then
 		mod.DebugPrint("Could not open source file: " .. src .. " - validate your Hades installation and try again.", 1)
-		return
+		mod.EncounteredInstallationIssues = true
+		return false
 	end
 
-	local outputFile = io.open(dest, "wb")
+	local outputFile, openError = io.open(dest, "wb")
 	if not outputFile then
 		inputFile:close()
-		mod.DebugPrint("Could not open destination file: " .. dest, 1)
-		return
+		mod.DebugPrint("Could not open destination file: " .. dest .. " (" .. tostring(openError) .. ")", 1)
+		mod.EncounteredInstallationIssues = true
+		return false
 	end
 
 	mod.DebugPrint("Copying file " .. src .. " to " .. dest, 4)
-	-- Read in blocks to not run out of memory
+	local writeError = nil
 	while true do
-		local block = inputFile:read(1024)
+		local block = inputFile:read(64 * 1024)
 		if not block then break end
-		outputFile:write(block)
+		local written, err = outputFile:write(block)
+		if not written then
+			writeError = err
+			break
+		end
 	end
 
 	inputFile:close()
-	outputFile:close()
+	-- Buffered data is only flushed on close, so a failed write can surface here rather than during the writes
+	local closed, closeError = outputFile:close()
+	if writeError or not closed then
+		mod.DebugPrint("Could not write destination file: " .. dest .. " (" .. tostring(writeError or closeError) .. ")", 1)
+		mod.EncounteredInstallationIssues = true
+		return false
+	end
+
+	return true
 end
 
 local function copyFiles(fileMappings, srcBasePath, destBasePath, extension, nameHint, usePluginData, destUsePluginData)
@@ -605,15 +619,6 @@ local function copyMapTextFiles()
 	end
 end
 
----Copies .bik files from Hades 1 to plugins_data and registers them with H2M
-local function copyBikFiles(fileMappings, srcBasePath, destBasePath, nameHint)
-	copyFiles(fileMappings, srcBasePath, destBasePath, ".bik", nameHint, false, true)
-	local pluginsDataBase = rom.path.combine(rom.paths.plugins_data(), _PLUGIN.guid)
-	for _, dest in pairs(fileMappings) do
-		local destPath = rom.path.combine(pluginsDataBase, destBasePath .. dest .. ".bik")
-	end
-end
-
 local installSteps = {
 	Enemies = { "Audio .bank files", function()
 		copyFiles(mod.AudioFileMappings, "Content\\Audio\\FMOD\\Build\\Desktop\\", "Content\\Audio\\Desktop\\", ".bank",
@@ -629,35 +634,43 @@ local installSteps = {
 	end },
 
 	Projectiles = { "1080p .bik batch 1", function()
-		copyBikFiles(bikBatches1080p[1], "Content\\Movies\\", "Content\\Movies\\1080p\\", "1080p Hades Animation ")
+		copyFiles(bikBatches1080p[1], "Content\\Movies\\", "Content\\Movies\\1080p\\", ".bik", "1080p Hades Animation ",
+			false, true)
 	end },
 
 	Asphodel = { "1080p .bik batch 2", function()
-		copyBikFiles(bikBatches1080p[2], "Content\\Movies\\", "Content\\Movies\\1080p\\", "1080p Hades Animation ")
+		copyFiles(bikBatches1080p[2], "Content\\Movies\\", "Content\\Movies\\1080p\\", ".bik", "1080p Hades Animation ",
+			false, true)
 	end },
 
 	Chaos = { "1080p .bik batch 3", function()
-		copyBikFiles(bikBatches1080p[3], "Content\\Movies\\", "Content\\Movies\\1080p\\", "1080p Hades Animation ")
+		copyFiles(bikBatches1080p[3], "Content\\Movies\\", "Content\\Movies\\1080p\\", ".bik", "1080p Hades Animation ",
+			false, true)
 	end },
 
 	Elysium = { "1080p .bik batch 4", function()
-		copyBikFiles(bikBatches1080p[4], "Content\\Movies\\", "Content\\Movies\\1080p\\", "1080p Hades Animation ")
+		copyFiles(bikBatches1080p[4], "Content\\Movies\\", "Content\\Movies\\1080p\\", ".bik", "1080p Hades Animation ",
+			false, true)
 	end },
 
 	Graybox = { "1080p .bik batch 5", function()
-		copyBikFiles(bikBatches1080p[5], "Content\\Movies\\", "Content\\Movies\\1080p\\", "1080p Hades Animation ")
+		copyFiles(bikBatches1080p[5], "Content\\Movies\\", "Content\\Movies\\1080p\\", ".bik", "1080p Hades Animation ",
+			false, true)
 	end },
 
 	Styx = { "1080p .bik batch 6", function()
-		copyBikFiles(bikBatches1080p[6], "Content\\Movies\\", "Content\\Movies\\1080p\\", "1080p Hades Animation ")
+		copyFiles(bikBatches1080p[6], "Content\\Movies\\", "Content\\Movies\\1080p\\", ".bik", "1080p Hades Animation ",
+			false, true)
 	end },
 
 	Surface = { "1080p .bik batch 7", function()
-		copyBikFiles(bikBatches1080p[7], "Content\\Movies\\", "Content\\Movies\\1080p\\", "1080p Hades Animation ")
+		copyFiles(bikBatches1080p[7], "Content\\Movies\\", "Content\\Movies\\1080p\\", ".bik", "1080p Hades Animation ",
+			false, true)
 	end },
 
 	Tartarus = { "1080p .bik batch 8", function()
-		copyBikFiles(bikBatches1080p[8], "Content\\Movies\\", "Content\\Movies\\1080p\\", "1080p Hades Animation ")
+		copyFiles(bikBatches1080p[8], "Content\\Movies\\", "Content\\Movies\\1080p\\", ".bik", "1080p Hades Animation ",
+			false, true)
 	end },
 
 	Temple = { "Helptext .sjson files", function()
@@ -685,23 +698,28 @@ local installSteps = {
 	end },
 
 	GUI_HUD_VFX = { "720p .bik batch 1", function()
-		copyBikFiles(bikBatches720p[1], "Content\\Movies\\720p\\", "Content\\Movies\\720p\\", "720p Hades Animation ")
+		copyFiles(bikBatches720p[1], "Content\\Movies\\720p\\", "Content\\Movies\\720p\\", ".bik", "720p Hades Animation ",
+			false, true)
 	end },
 
 	GUI_Portraits_VFX = { "720p .bik batch 2", function()
-		copyBikFiles(bikBatches720p[2], "Content\\Movies\\720p\\", "Content\\Movies\\720p\\", "720p Hades Animation ")
+		copyFiles(bikBatches720p[2], "Content\\Movies\\720p\\", "Content\\Movies\\720p\\", ".bik", "720p Hades Animation ",
+			false, true)
 	end },
 
 	Items_General_VFX = { "720p .bik batch 3", function()
-		copyBikFiles(bikBatches720p[3], "Content\\Movies\\720p\\", "Content\\Movies\\720p\\", "720p Hades Animation ")
+		copyFiles(bikBatches720p[3], "Content\\Movies\\720p\\", "Content\\Movies\\720p\\", ".bik", "720p Hades Animation ",
+			false, true)
 	end },
 
 	Items_Harvest_VFX = { "720p .bik batch 4", function()
-		copyBikFiles(bikBatches720p[4], "Content\\Movies\\720p\\", "Content\\Movies\\720p\\", "720p Hades Animation ")
+		copyFiles(bikBatches720p[4], "Content\\Movies\\720p\\", "Content\\Movies\\720p\\", ".bik", "720p Hades Animation ",
+			false, true)
 	end },
 
 	Melinoe_Zeus_VFX = { "720p .bik batch 5", function()
-		copyBikFiles(bikBatches720p[5], "Content\\Movies\\720p\\", "Content\\Movies\\720p\\", "720p Hades Animation ")
+		copyFiles(bikBatches720p[5], "Content\\Movies\\720p\\", "Content\\Movies\\720p\\", ".bik", "720p Hades Animation ",
+			false, true)
 	end },
 }
 
@@ -727,10 +745,10 @@ function mod.FinalizeInstallation()
 
 	mod.DebugPrint("[Install] Ensuring all required files exist...", 3)
 	local numMissingFiles = mod.CheckRequiredFiles(false)
-	if numMissingFiles > 0 then
+	if numMissingFiles > 0 or mod.EncounteredInstallationIssues then
 		mod.DebugPrint(
 			numMissingFiles ..
-			" required files are missing after installation. Do you have Hades installed in the correct folder? Check the \"hadesGameFolder\" setting in your config file.",
+			" required files are missing after installation and the installation failed, see the errors above. Make sure the mod's plugins_data folder is not read-only, and that Hades is installed in the folder configured in \"hadesGameFolder\".",
 			1)
 
 		mod.HiddenConfig.IsValidInstallation = false
@@ -747,6 +765,7 @@ function mod.FinalizeInstallation()
 	end
 
 	mod.HiddenConfig.IsValidInstallation = true
+	mod.HiddenConfig.InstallationFailReason = ""
 	mod.HiddenConfig.InstalledModVersion = _PLUGIN.version
 	-- If this is a reinstall, to show the successful install screen again
 	mod.HiddenConfig.HasShownSuccessfulInstallScreen = false
