@@ -9,6 +9,7 @@
 
 Other fixes and improvements:
 - Added NPCs added by Zagreus' Journey to [PonyMenu](https://thunderstore.io/c/hades-ii/p/PonyWarrior/PonyMenu/).
+- Updated the mod installation/update process to take only about half the time it used to take.
 - Balancing: You can now destroy the butterflies created by Soul Spawners with your attacks and specials.
 - Balancing: Exalted Shades can no longer create Lone Shades when dying.
 - Balancing: Slightly reduced the base encounter difficulty of wing-end combat rooms in the Temple of Styx.

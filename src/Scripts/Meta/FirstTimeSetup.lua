@@ -1,46 +1,14 @@
 -- Copies a file from src to dest
-local function copyFile(src, dest, skipCheck)
-	skipCheck = skipCheck or false
-	-- Check if the file already exists
-	if not skipCheck then
-		if rom.path.exists(dest) then
-			mod.DebugPrint("File already exists and will not be overwritten: " .. dest, 2)
-			return true
-		end
-	end
-
-	local inputFile = io.open(src, "rb")
-	if not inputFile then
-		mod.DebugPrint("Could not open source file: " .. src .. " - validate your Hades installation and try again.", 1)
-		mod.EncounteredInstallationIssues = true
-		return false
-	end
-
-	local outputFile, openError = io.open(dest, "wb")
-	if not outputFile then
-		inputFile:close()
-		mod.DebugPrint("Could not open destination file: " .. dest .. " (" .. tostring(openError) .. ")", 1)
-		mod.EncounteredInstallationIssues = true
-		return false
+local function copyFile(src, dest)
+	if rom.path.exists(dest) then
+		mod.DebugPrint("File already exists and will not be overwritten: " .. dest, 2)
+		return true
 	end
 
 	mod.DebugPrint("Copying file " .. src .. " to " .. dest, 4)
-	local writeError = nil
-	while true do
-		local block = inputFile:read(64 * 1024)
-		if not block then break end
-		local written, err = outputFile:write(block)
-		if not written then
-			writeError = err
-			break
-		end
-	end
-
-	inputFile:close()
-	-- Buffered data is only flushed on close, so a failed write can surface here rather than during the writes
-	local closed, closeError = outputFile:close()
-	if writeError or not closed then
-		mod.DebugPrint("Could not write destination file: " .. dest .. " (" .. tostring(writeError or closeError) .. ")", 1)
+	local copied, copyError = rom.path.copy_file(src, dest)
+	if not copied then
+		mod.DebugPrint("Could not copy " .. src .. " to " .. dest .. ": " .. tostring(copyError), 1)
 		mod.EncounteredInstallationIssues = true
 		return false
 	end
