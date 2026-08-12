@@ -614,7 +614,15 @@ local roomReplacements = {
 				{ Cue = "/VO/MelinoeField_0198", Text = "Won't be staying long..." },
 				{ Cue = "/VO/Melinoe_1843",      Text = "OK...", },
 				{ Cue = "/VO/MelinoeField_0108", Text = "I can do this..." },
-				{ Cue = "/VO/MelinoeField_0977", Text = "Almost out of here..." },
+				{
+					Cue = "/VO/MelinoeField_0977",
+					Text = "Almost out of here...",
+					GameStateRequirements = {
+						{
+							PathFalse = { "CurrentRun", "IsDreamRun", },
+						},
+					},
+				},
 			},
 		},
 
