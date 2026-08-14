@@ -1552,6 +1552,12 @@ mod.ZagreusFieldVoicelines = {
 	ZagreusField_3804 = true,
 	-- #endregion
 
+	-- #region Dionysus/DionysusUpgrade
+	ZagreusField_0792 = true,
+	ZagreusField_1218 = true,
+	ZagreusField_4342 = true,
+	-- #endregion
+
 	-- #region Hermes/HermesUpgrade
 	ZagreusField_1923 = true,
 	ZagreusField_4343 = true,
