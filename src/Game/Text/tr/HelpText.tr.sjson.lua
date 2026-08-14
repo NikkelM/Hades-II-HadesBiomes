@@ -1929,6 +1929,16 @@ local newData = {
 	-- 	Id = "AresKillQuestComplete",
 	-- 	DisplayName = "Slay 10,000 Foes or More, Then Seek Ares in the Nightmare Realm",
 	-- },
+	-- {
+	-- 	Id = "ModsNikkelMHadesBiomes_PoseidonBeatTheseus",
+	-- 	DisplayName = "{!Icons.ModsNikkelMHadesBiomesRunHistoryDoorLarge} Sea-God's Spite ",
+	-- 	Description =
+	-- 	"The daughter of the god of the dead shall someday dream of overcoming the Hero of Athens while under the influence of the {#ShrineHighlightFormat}Vow of Rivals{#Prev}, until the spurned god of the sea is aware.",
+	-- },
+	-- {
+	-- 	Id = "PoseidonBeatTheseusQuestComplete",
+	-- 	DisplayName = "Vanquish Vow of Rivals Theseus, Then Seek Poseidon",
+	-- },
 	-- #endregion
 
 	-- #region Chaos Trials/Bounties

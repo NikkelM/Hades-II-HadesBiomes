@@ -9,6 +9,7 @@
 - Picking up a boon from Hermes while in a Zagreus' Journey run may now have him deliver a message from the first game's Dionysus to you (as Dionysus cannot be encountered during Zagreus' Journey runs), allowing you to experience his storyline.
 
 Other fixes and improvements:
+- Added a new Minor Prophecy unlocked by talking to Poseidon in the Nightmare Realm.
 - Added NPCs added by Zagreus' Journey to [PonyMenu](https://thunderstore.io/c/hades-ii/p/PonyWarrior/PonyMenu/).
 - Updated the mod installation/update process to take only about half the time it used to take.
 - Balancing: You can now destroy the butterflies created by Soul Spawners with your attacks and specials.
