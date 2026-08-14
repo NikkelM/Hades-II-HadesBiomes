@@ -933,32 +933,13 @@ mod.AddNarrativeDataEntries(
 -- #endregion
 
 -- #region Ported Athena interact dialogues
--- #region Shared priority
-local newSharedAthenaPriorityTextLines = {
-	{
-		Name = "AthenaAboutDemeter01",
-		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterTextLineGroupContaining = "AthenaFirstPickUp",
-			CreateNewPriorityGroup = true,
-		},
-		PlayOnce = true,
-		PreEventFunctionName = "BoonInteractPresentation",
-		PreEventFunctionArgs = { PickupWait = 1.0, },
-		RequiredTextLines = { "ZeusFirstPickUp", "PoseidonFirstPickUp", "AthenaFirstPickUp", "AphroditeFirstPickUp", "AresFirstPickUp", "ArtemisFirstPickUp", "DionysusFirstPickUp" },
-		RequiredFalseTextLines = { "OlympianReunionQuestComplete" },
-		RequiredGodLoot = "DemeterUpgrade",
-		{
-			Cue = "/VO/Athena_0212",
-			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
-			Text =
-			"The biting cold surrounding you must mean the Goddess of Seasons decided to take an interest in your struggle, Zagreus? I did not count on Demeter being a part of this. Take heart, though use discretion around her."
-		},
-	},
+-- #region Hermes-delivered super-priority
+local newAthenaOlympianReunionTextLines = {
 	{
 		Name = "AthenaAboutOlympianReunionQuest01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
+			InsertAfterTextLineGroupContaining = "AthenaFirstPickUp",
+			CreateNewPriorityGroup = true,
 		},
 		PlayOnce = true,
 		RequiredTextLines = { "AthenaFirstPickUp", "PersephoneAboutOlympianReunionQuest01" },
@@ -981,6 +962,30 @@ local newSharedAthenaPriorityTextLines = {
 			UseEventEndSound = true,
 			Text =
 			"Is this some kind of offering for me? No, hold a moment, this appears to be a message! Part of one. Then, can this mean...? I have to notify the others. I trust they also have received something from you, or shortly shall."
+		},
+	},
+}
+-- #endregion
+
+-- #region Athena priority
+local newAthenaPriorityTextLines = {
+	{
+		Name = "AthenaAboutDemeter01",
+		ModsNikkelMHadesBiomes_TextLineMetadata = {
+			InsertAfterNarrativeTextLine = "AthenaAboutOlympianReunionQuest01",
+		},
+		PlayOnce = true,
+		PreEventFunctionName = "BoonInteractPresentation",
+		PreEventFunctionArgs = { PickupWait = 1.0, },
+		RequiredTextLines = { "ZeusFirstPickUp", "PoseidonFirstPickUp", "AthenaFirstPickUp", "AphroditeFirstPickUp", "AresFirstPickUp", "ArtemisFirstPickUp", "DionysusFirstPickUp" },
+		RequiredFalseTextLines = { "OlympianReunionQuestComplete" },
+		RequiredGodLoot = "DemeterUpgrade",
+		{
+			Cue = "/VO/Athena_0212",
+			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+			UseEventEndSound = true,
+			Text =
+			"The biting cold surrounding you must mean the Goddess of Seasons decided to take an interest in your struggle, Zagreus? I did not count on Demeter being a part of this. Take heart, though use discretion around her."
 		},
 	},
 	{
@@ -1271,8 +1276,8 @@ local newAthenaExclusivePostGiftTextLines = {
 }
 -- #endregion
 
--- #region Shared priority
-local newSharedAthenaRelationshipTextLines = {
+-- #region Athena priority
+local newAthenaRelationshipTextLines = {
 	{
 		Name = "AthenaVsOlympians01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
@@ -1536,8 +1541,8 @@ local newAthenaExclusiveRunTextLines = {
 }
 -- #endregion
 
--- #region Shared priority
-local newSharedAthenaLateStoryTextLines = {
+-- #region Athena priority
+local newAthenaLateStoryTextLines = {
 	{
 		Name = "AthenaPostEpilogue02",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
@@ -1852,21 +1857,18 @@ local newAthenaExclusiveContextualTextLines = {
 }
 -- #endregion
 
-local hermesDeliveredAthenaTextLines = game.ConcatTableValuesIPairs(
-	game.ConcatTableValuesIPairs(
-		game.DeepCopyTable(newSharedAthenaPriorityTextLines) or {},
-		game.DeepCopyTable(newSharedAthenaRelationshipTextLines) or {}),
-	game.DeepCopyTable(newSharedAthenaLateStoryTextLines) or {}) or {}
-mod.AddHermesDeliveredDialogues(hermesDeliveredAthenaTextLines,
+mod.AddHermesDeliveredDialogues(game.DeepCopyTable(newAthenaOlympianReunionTextLines) or {},
 	{ Hermes = { "Modsnikkelmhadesbiomesathena", "ZagreusField" } }, { Athena_ = "Modsnikkelmhadesbiomesathena_" },
 	{ Athena_ = "ModsNikkelMHadesBiomes_Portrait_Athena_Default_01" }, "/SFX/AthenaBoonHolyShield",
 	{ Athena = { Speaker = "NPC_Athena_01", NarrativeContextArt = "DialogueBackground_Olympus" } })
 
-local sharedAthenaTextLines = game.ConcatTableValuesIPairs(
-	game.ConcatTableValuesIPairs(newSharedAthenaPriorityTextLines, newSharedAthenaRelationshipTextLines),
-	newSharedAthenaLateStoryTextLines) or {}
+local athenaPriorityTextLines = game.ConcatTableValuesIPairs(
+	game.ConcatTableValuesIPairs(
+		game.ConcatTableValuesIPairs(newAthenaOlympianReunionTextLines, newAthenaPriorityTextLines),
+		newAthenaRelationshipTextLines),
+	newAthenaLateStoryTextLines) or {}
 mod.AddNarrativeDataEntries(
-	sharedAthenaTextLines, "NPC_Athena_01", "InteractTextLineSets", "InteractTextLinePriorities",
+	athenaPriorityTextLines, "NPC_Athena_01", "InteractTextLineSets", "InteractTextLinePriorities",
 	{ Athena = { "Modsnikkelmhadesbiomesathena", "ZagreusField" } }, { Athena_ = "Modsnikkelmhadesbiomesathena_" },
 	{ Athena_ = "ModsNikkelMHadesBiomes_Portrait_Athena_Default_01" }, nil, nil, true,
 	{ "PreEventFunctionName", "PreEventFunctionArgs" }

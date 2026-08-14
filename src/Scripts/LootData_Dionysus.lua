@@ -34,8 +34,7 @@ local newHermesDeliveredDialogues = {
 	{
 		Name = "DionysusAboutOrpheus01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterTextLineGroupContaining = "AthenaFirstPickUp",
-			CreateNewPriorityGroup = true,
+			InsertAfterNarrativeTextLine = "AthenaAboutOlympianReunionQuest01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -72,7 +71,8 @@ local newHermesDeliveredDialogues = {
 	{
 		Name = "DionysusAboutOrpheus02",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
+			InsertAfterTextLineGroupContaining = "AthenaAboutOlympianReunionQuest01",
+			CreateNewPriorityGroup = true,
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -90,7 +90,7 @@ local newHermesDeliveredDialogues = {
 	{
 		Name = "DionysusAboutSingersReunionQuest01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
+			InsertAfterNarrativeTextLine = "DionysusAboutOrpheus02",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -108,7 +108,7 @@ local newHermesDeliveredDialogues = {
 	{
 		Name = "DionysusAboutMegRelationship01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
+			InsertAfterNarrativeTextLine = "DionysusAboutOrpheus02",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -127,7 +127,7 @@ local newHermesDeliveredDialogues = {
 	{
 		Name = "DionysusAboutMegRelationship02",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
+			InsertAfterNarrativeTextLine = "DionysusAboutOrpheus02",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -147,7 +147,7 @@ local newHermesDeliveredDialogues = {
 	{
 		Name = "DionysusAboutThanRelationship01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
+			InsertAfterNarrativeTextLine = "DionysusAboutOrpheus02",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -164,7 +164,7 @@ local newHermesDeliveredDialogues = {
 	{
 		Name = "DionysusAboutYarn01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
+			InsertAfterNarrativeTextLine = "DionysusAboutOrpheus02",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -184,7 +184,7 @@ local newHermesDeliveredDialogues = {
 	{
 		Name = "DionysusPostGiftPickup01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterTextLineGroupContaining = "AthenaAboutDemeter01",
+			InsertAfterTextLineGroupContaining = "DionysusAboutOrpheus02",
 			CreateNewPriorityGroup = true,
 		},
 		PlayOnce = true,

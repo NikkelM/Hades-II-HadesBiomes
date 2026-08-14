@@ -134,7 +134,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "HermesAboutPersephoneMeeting01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
+			InsertAfterNarrativeTextLine = "DionysusAboutOrpheus02",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -154,7 +154,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "HermesPostEnding01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
+			InsertAfterNarrativeTextLine = "DionysusAboutOrpheus02",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -174,7 +174,7 @@ local newPortedInteractTextLines = {
 		-- Used to be called HermesPostEnding01 as well, but was a duplicate with a SuperPriority textline
 		Name = "HermesPostEnding02",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
+			InsertAfterNarrativeTextLine = "DionysusAboutOrpheus02",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -192,7 +192,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "HermesExpectingZeus01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
+			InsertAfterNarrativeTextLine = "DionysusAboutOrpheus02",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -211,7 +211,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "HermesExpectingPoseidon01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
+			InsertAfterNarrativeTextLine = "DionysusAboutOrpheus02",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -230,7 +230,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "HermesExpectingAthena01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
+			InsertAfterNarrativeTextLine = "DionysusAboutOrpheus02",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -249,7 +249,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "HermesExpectingAres01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
+			InsertAfterNarrativeTextLine = "DionysusAboutOrpheus02",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -268,7 +268,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "HermesExpectingAphrodite01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
+			InsertAfterNarrativeTextLine = "DionysusAboutOrpheus02",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -287,7 +287,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "HermesExpectingDemeter01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
+			InsertAfterNarrativeTextLine = "DionysusAboutOrpheus02",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -306,7 +306,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "HermesAboutPlume02",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
+			InsertAfterNarrativeTextLine = "DionysusAboutOrpheus02",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -326,7 +326,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "HermesAboutSkelly01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
+			InsertAfterNarrativeTextLine = "DionysusAboutOrpheus02",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -346,7 +346,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "HermesAboutOlympianReunionQuest01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
+			InsertAfterNarrativeTextLine = "DionysusAboutOrpheus02",
 		},
 		PlayOnce = true,
 		RequiredTextLines = { "HermesFirstPickUp", "PersephoneAboutOlympianReunionQuest01", },
@@ -374,7 +374,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "HermesPostEpilogue01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
+			InsertAfterNarrativeTextLine = "DionysusAboutOrpheus02",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -393,7 +393,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "HermesAboutThanatos01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
+			InsertAfterNarrativeTextLine = "DionysusAboutOrpheus02",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -465,7 +465,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "HermesAboutZeus01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
+			InsertAfterNarrativeTextLine = "DionysusAboutOrpheus02",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -483,7 +483,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "HermesAboutZeus02",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
+			InsertAfterNarrativeTextLine = "DionysusAboutOrpheus02",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -501,7 +501,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "HermesAboutPoseidon01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
+			InsertAfterNarrativeTextLine = "DionysusAboutOrpheus02",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -519,7 +519,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "HermesAboutAthena01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
+			InsertAfterNarrativeTextLine = "DionysusAboutOrpheus02",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -537,7 +537,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "HermesAboutAres01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
+			InsertAfterNarrativeTextLine = "DionysusAboutOrpheus02",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -555,7 +555,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "HermesAboutArtemis01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
+			InsertAfterNarrativeTextLine = "DionysusAboutOrpheus02",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -573,7 +573,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "HermesAboutAphrodite01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
+			InsertAfterNarrativeTextLine = "DionysusAboutOrpheus02",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -591,7 +591,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "HermesAboutDionysus01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
+			InsertAfterNarrativeTextLine = "DionysusAboutOrpheus02",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -609,7 +609,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "HermesAboutDemeter01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
+			InsertAfterNarrativeTextLine = "DionysusAboutOrpheus02",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -628,7 +628,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "HermesAboutHadesKeepsake01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
+			InsertAfterNarrativeTextLine = "DionysusAboutOrpheus02",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -647,7 +647,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "HermesBackstory01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
+			InsertAfterNarrativeTextLine = "DionysusAboutOrpheus02",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -664,7 +664,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "HermesBackstory02",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
+			InsertAfterNarrativeTextLine = "DionysusAboutOrpheus02",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -681,7 +681,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "HermesBackstory03",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
+			InsertAfterNarrativeTextLine = "DionysusAboutOrpheus02",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -698,7 +698,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "HermesBackstory04",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
+			InsertAfterNarrativeTextLine = "DionysusAboutOrpheus02",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -715,7 +715,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "HermesBackstory05",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
+			InsertAfterNarrativeTextLine = "DionysusAboutOrpheus02",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -732,7 +732,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "HermesBackstory06",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
+			InsertAfterNarrativeTextLine = "DionysusAboutOrpheus02",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -750,7 +750,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "HermesBackstory07",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
+			InsertAfterNarrativeTextLine = "DionysusAboutOrpheus02",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -767,7 +767,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "HermesAboutSkinnyLittleChap01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
+			InsertAfterNarrativeTextLine = "DionysusAboutOrpheus02",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -785,7 +785,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "HermesAboutSkelly02",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
+			InsertAfterNarrativeTextLine = "DionysusAboutOrpheus02",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -802,7 +802,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "HermesAboutSkelly03",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
+			InsertAfterNarrativeTextLine = "DionysusAboutOrpheus02",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -819,7 +819,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "HermesAboutSecretService01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
+			InsertAfterNarrativeTextLine = "DionysusAboutOrpheus02",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -837,7 +837,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "HermesAboutSecretService02",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
+			InsertAfterNarrativeTextLine = "DionysusAboutOrpheus02",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -855,7 +855,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "HermesAboutHades01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
+			InsertAfterNarrativeTextLine = "DionysusAboutOrpheus02",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -873,7 +873,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "HermesPostEpilogue02",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
+			InsertAfterNarrativeTextLine = "DionysusAboutOrpheus02",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -890,7 +890,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "HermesPostEpilogue03",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
+			InsertAfterNarrativeTextLine = "DionysusAboutOrpheus02",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -907,7 +907,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "HermesPostEpilogue04",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
+			InsertAfterNarrativeTextLine = "DionysusAboutOrpheus02",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -925,7 +925,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "HermesAboutPersephoneVisit01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
+			InsertAfterNarrativeTextLine = "DionysusAboutOrpheus02",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -943,7 +943,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "HermesAboutPersephoneVisit02",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AthenaAboutDemeter01",
+			InsertAfterNarrativeTextLine = "DionysusAboutOrpheus02",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
