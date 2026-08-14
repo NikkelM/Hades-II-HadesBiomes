@@ -369,8 +369,8 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 		RequiredFalseSeenRoomLastRun = "string",
 		RequiredSeenRoomsBeforeThisRun = "table",
 		RequiredFalseSeenRoomsBeforeThisRun = "table",
-		RequiredMinTimesSeenRoom = "string",
-		RequiredMaxTimesSeenRoom = "string",
+		RequiredMinTimesSeenRoom = "keyTable",
+		RequiredMaxTimesSeenRoom = "keyTable",
 		RequiredRoomThisRun = "string",
 		RequiredRoomsThisRun = "table",
 		RequiredAnyRoomsThisRun = "table",
@@ -407,6 +407,16 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 							or mod.ElysiumRoomNameMappings[roomName.Name]
 							or roomName.Name
 				end
+			elseif requirementType == "keyTable" then
+				local mappedRequirements = {}
+				for roomName, value in pairs(requirements[roomRequirement]) do
+					local mappedRoomName =
+							mod.AsphodelRoomNameMappings[roomName]
+							or mod.ElysiumRoomNameMappings[roomName]
+							or roomName
+					mappedRequirements[mappedRoomName] = value
+				end
+				requirements[roomRequirement] = mappedRequirements
 			end
 		end
 	end

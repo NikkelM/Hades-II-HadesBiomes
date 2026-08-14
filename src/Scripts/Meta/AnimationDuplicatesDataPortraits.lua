@@ -107,7 +107,7 @@ mod.HadesPortraitAnimationAdditionsParents = {
 		FilePath = "Portraits\\Portraits_Poseidon_01",
 		EndFrame = 1,
 		StartFrame = 1,
-		OffsetY = -140.0,
+		OffsetY = -55.0,
 		StartOffsetX = -20.0,
 		StartOffsetY = 0,
 	},
@@ -494,7 +494,7 @@ mod.HadesPortraitAnimationAdditions = {
 		FilePath = "Portraits\\Portraits_Poseidon_01",
 		EndFrame = 1,
 		StartFrame = 1,
-		OffsetY = -140.0,
+		OffsetY = -55.0,
 	},
 	{
 		Name = "ModsNikkelMHadesBiomes_Portrait_Skelly_Default_01",

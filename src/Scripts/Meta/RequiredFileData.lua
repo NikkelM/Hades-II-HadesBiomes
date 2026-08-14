@@ -26,6 +26,7 @@ mod.VoiceoverFileNames = {
 	Intercom = "Modsnikkelmhadesbiomesintercom",
 	MegaeraHome = "Modsnikkelmhadesbiomesmegaerahome",
 	Persephone = "Modsnikkelmhadesbiomespersephone",
+	Poseidon = "Modsnikkelmhadesbiomesposeidon",
 	Skelly = "Modsnikkelmhadesbiomesskelly",
 	Storyteller = "Modsnikkelmhadesbiomesstoryteller",
 	ZagreusHome = "Modsnikkelmhadesbiomeszagreushome",

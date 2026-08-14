@@ -4,8 +4,9 @@
 
 <!--Releasenotes start-->
 ### Patch Highlights:
-- You may now encounter Artemis in Tartarus and Elysium, and she will use her dialogues from the first game when you speak to her.
-- You may now encounter Athena in Elysium and Styx, and she will use her dialogues from the first game when you speak to her.
+- You may now naturally encounter Artemis and Athena in Zagreus' Journey, and they will use their dialogues from the first game when you speak to one of them.
+- Picking up boons from Ares, Hermes, Poseidon or Zeus while in a Zagreus' Journey run will now use their respective dialogues and advance their storylines from the first game.
+- Picking up a boon from Hermes while in a Zagreus' Journey run may now have him deliver a message from the first game's Dionysus to you (as Dionysus cannot be encountered during Zagreus' Journey runs), allowing you to experience his storyline.
 
 Other fixes and improvements:
 - Added NPCs added by Zagreus' Journey to [PonyMenu](https://thunderstore.io/c/hades-ii/p/PonyWarrior/PonyMenu/).
@@ -23,6 +24,7 @@ Other fixes and improvements:
 - Fixed: The boons presented by Orpheus & Eurydice once they are reunited may be in a different order than expected.
 - Fixed: Meeting Orpheus is not counted towards the unlock conditions of the "Close at Heart" Minor Prophecy.
 - Fixed: There is a typo in the description of Orpheus' "Hymn to Zagreus" boon.
+- Fixed: Dialogues and other events requiring you to have seen a specific room a minimum or maximum number of times are not checked for eligibility correctly. 
 - Fixed: The fade-in animation of the Record Keeper's screen is missing some smoother animations on the bar graphs that exist in the base game.
 - Fixed: The vanilla Hades II intro video plays before Zagreus' Journey fresh file runs.
 - Fixed: If the plugins_data folder for the mod is read-only and the installation fails due to it, the mod doesn't recognize this correctly.
