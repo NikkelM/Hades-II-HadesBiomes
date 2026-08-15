@@ -665,6 +665,7 @@ local function on_ready()
 			import "Scripts/HeroData.lua"
 			import "Scripts/KeywordData.lua"
 			import "Scripts/LootData.lua"
+			import "Scripts/LootData_Aphrodite.lua"
 			import "Scripts/LootData_Ares.lua"
 			import "Scripts/LootData_Artemis.lua"
 			import "Scripts/LootData_Athena.lua"

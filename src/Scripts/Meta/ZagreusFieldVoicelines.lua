@@ -1533,6 +1533,11 @@ mod.ZagreusFieldVoicelines = {
 
 	-- #region LootData/Boon pickup/InteractTextLineSets
 
+	-- #region Aphrodite/AphroditeUpgrade
+	ZagreusField_0782 = true,
+	ZagreusField_4339 = true,
+	-- #endregion
+
 	-- #region Ares/AresUpgrade
 	ZagreusField_0789 = true,
 	ZagreusField_4340 = true,

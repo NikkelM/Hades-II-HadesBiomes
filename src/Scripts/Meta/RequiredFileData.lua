@@ -16,6 +16,7 @@ mod.VoiceoverFileNames = {
 	HadesField = "HadesField",
 	MegaeraField = "MegaeraField",
 	Minotaur = "Minotaur",
+	Aphrodite = "Modsnikkelmhadesbiomesaphrodite",
 	Ares = "Modsnikkelmhadesbiomesares",
 	Artemis = "Modsnikkelmhadesbiomesartemis",
 	Athena = "Modsnikkelmhadesbiomesathena",

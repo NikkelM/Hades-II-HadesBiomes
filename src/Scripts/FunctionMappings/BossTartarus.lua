@@ -223,7 +223,7 @@ function mod.HarpyKillPresentation(unit, args)
 	end
 
 	if game.ActiveScreens.TraitTrayScreen ~= nil then
-		game.TraitTrayScreenClose(ActiveScreens.TraitTrayScreen)
+		game.TraitTrayScreenClose(game.ActiveScreens.TraitTrayScreen)
 	end
 
 	if deathPanSettings.StartSound then
