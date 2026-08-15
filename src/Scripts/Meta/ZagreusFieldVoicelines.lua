@@ -1554,7 +1554,20 @@ mod.ZagreusFieldVoicelines = {
 	-- #endregion
 
 	-- #region Chaos/TrialUpgrade
+	ZagreusField_0540 = true,
+	ZagreusField_0541 = true,
+	ZagreusField_0542 = true,
+	ZagreusField_3400 = true,
+	ZagreusField_3401 = true,
+	ZagreusField_3402 = true,
+	ZagreusField_3403 = true,
+	ZagreusField_3404 = true,
+	ZagreusField_3458 = true,
 	ZagreusField_3804 = true,
+	ZagreusField_4296 = true,
+	ZagreusField_4297 = true,
+	ZagreusField_4298 = true,
+	ZagreusField_4299 = true,
 	-- #endregion
 
 	-- #region Demeter/DemeterUpgrade

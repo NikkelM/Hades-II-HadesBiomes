@@ -801,7 +801,9 @@ mod.DuplicateTextLineSetNames = {
 	["ChaosAboutOlympians01"] = true,
 	["ChaosAboutPoseidon01"] = true,
 	["ChaosAboutZeus01"] = true,
-	["ChaosFirstPickUp"] = true,
+	-- Removed as duplicate as we don't add the H1 version since we have custom dialogues to introduce the Nightmare Realm
+	-- Any H1 dialogues depending on this will depend on the H2 ChaosFirstPickUp instead
+	-- ["ChaosFirstPickUp"] = true,
 	-- ["ChaosGift01"] = true,
 	-- ["ChaosGift02"] = true,
 	-- ["ChaosGift03"] = true,
