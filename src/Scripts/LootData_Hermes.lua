@@ -408,6 +408,25 @@ local newPortedInteractTextLines = {
 		},
 	},
 	{
+		Name = "HermesAboutThanatos02",
+		ModsNikkelMHadesBiomes_TextLineMetadata = {
+			InsertAfterNarrativeTextLine = "HermesAboutThanatos01",
+		},
+		PlayOnce = true,
+		PreEventFunctionName = "BoonInteractPresentation",
+		PreEventFunctionArgs = { PickupWait = 1.0, },
+		RequiredTextLines = { "HermesAboutThanatos01", },
+		RequiredAnyTextLines = { "BecameCloseWithThanatos01", "BecameCloseWithThanatos01_B" },
+		MinRunsSinceAnyTextLines = { TextLines = { "ThanatosAboutRelationship02" }, Count = 2 },
+		{
+			Cue = "/VO/Hermes_0157",
+			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+			UseEventEndSound = true,
+			Text =
+			"Saw Thanatos again lately, here, boss, and want to tell you, almost looked as though he cracked a smile when he mentioned you! Never seen anything like that with him!"
+		},
+	},
+	{
 		Name = "HermesAboutOrpheus01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
 			InsertAfterNarrativeTextLine = "HermesAboutThanatos01",
