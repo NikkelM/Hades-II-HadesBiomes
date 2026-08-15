@@ -473,37 +473,50 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 		end
 	end
 
-	if requirements.RequiredTrait then
-		-- Replace Hades trait names with Hades II equivalents
-		local traitMappings = {
-			-- #region Shout/Wrath/Hex/Spell
-			ZeusShoutTrait = "PolymorphZeusTalent",
-			PoseidonShoutTrait = "PotionPoseidonTalent",
-			AphroditeShoutTrait = "TransformAphroditeTalent",
-			AresShoutTrait = "MoonBeamAresTalent",
-			DemeterShoutTrait = "TimeSlowDemeterTalent",
-			-- Unused H2 traits: LaserApolloTalent, LeapHephaestusTalent, SummonHeraTalent, MeteorHestiaTalent,
-			-- Unused H1 shouts: HadesShoutTrait, AthenaShoutTrait, ArtemisShoutTrait, DionysusShoutTrait
-			-- #endregion
-			-- #region Keepsakes
-			ShopDurationTrait = "BonusMoneyKeepsake",
-			ReincarnationTrait = "ReincarnationKeepsake",
-			ForceZeusBoonTrait = "ForceZeusBoonKeepsake",
-			ForcePoseidonBoonTrait = "ForcePoseidonBoonKeepsake",
-			ForceAthenaBoonTrait = "AthenaEncounterKeepsake",
-			ForceAphroditeBoonTrait = "ForceAphroditeBoonKeepsake",
-			ForceAresBoonTrait = "ForceAresBoonKeepsake",
-			ForceArtemisBoonTrait = "LowHealthCritKeepsake",
-			ForceDionysusBoonTrait = "SkipEncounterKeepsake",
-			FastClearDodgeBonusTrait = "TimedBuffKeepsake",
-			ForceDemeterBoonTrait = "ForceDemeterBoonKeepsake",
-			ChaosBoonTrait = "RandomBlessingKeepsake",
-			HadesShoutKeepsake = "HadesAndPersephoneKeepsake",
-			-- #endregion
-		}
-		if traitMappings[requirements.RequiredTrait] ~= nil then
-			requirements.RequiredTrait = traitMappings[requirements.RequiredTrait]
-		end
+	-- Replace Hades trait names with Hades II equivalents
+	local traitNameMappings = {
+		-- #region Shout/Wrath/Hex/Spell
+		ZeusShoutTrait = "PolymorphZeusTalent",
+		PoseidonShoutTrait = "PotionPoseidonTalent",
+		AphroditeShoutTrait = "TransformAphroditeTalent",
+		AresShoutTrait = "MoonBeamAresTalent",
+		DemeterShoutTrait = "TimeSlowDemeterTalent",
+		-- Unused H2 traits: LaserApolloTalent, LeapHephaestusTalent, SummonHeraTalent, MeteorHestiaTalent,
+		-- Unused H1 shouts: HadesShoutTrait, AthenaShoutTrait, ArtemisShoutTrait, DionysusShoutTrait
+		-- #endregion
+		-- #region Keepsakes
+		ShopDurationTrait = "BonusMoneyKeepsake",
+		ReincarnationTrait = "ReincarnationKeepsake",
+		ForceZeusBoonTrait = "ForceZeusBoonKeepsake",
+		ForcePoseidonBoonTrait = "ForcePoseidonBoonKeepsake",
+		ForceAthenaBoonTrait = "AthenaEncounterKeepsake",
+		ForceAphroditeBoonTrait = "ForceAphroditeBoonKeepsake",
+		ForceAresBoonTrait = "ForceAresBoonKeepsake",
+		ForceArtemisBoonTrait = "LowHealthCritKeepsake",
+		ForceDionysusBoonTrait = "SkipEncounterKeepsake",
+		FastClearDodgeBonusTrait = "TimedBuffKeepsake",
+		ForceDemeterBoonTrait = "ForceDemeterBoonKeepsake",
+		ChaosBoonTrait = "RandomBlessingKeepsake",
+		HadesShoutKeepsake = "HadesAndPersephoneKeepsake",
+		-- #endregion
+		-- #region Duo boons
+		RegeneratingCappedSuperTrait = "SprintEchoBoon",
+		ImprovedPomTrait = "AllCloseBoon",
+		CurseSickTrait = "BloodManaBurstBoon",
+		SelfLaserTrait = "MaxHealthDamageBoon",
+		PoseidonAresProjectileTrait = "DoubleSplashBoon",
+		StationaryRiftTrait = "SelfCastBoon",
+		JoltDurationTrait = "RootStrikeBoon",
+		BlizzardOrbTrait = "GoodStuffBoon",
+		ImpactBoltTrait = "LightningVulnerabilityBoon",
+		AutoRetaliateTrait = "AutoRevengeBoon",
+		-- #endregion
+	}
+	if requirements.RequiredTrait and traitNameMappings[requirements.RequiredTrait] ~= nil then
+		requirements.RequiredTrait = traitNameMappings[requirements.RequiredTrait]
+	end
+	if requirements.HasTraitNameInRoom and traitNameMappings[requirements.HasTraitNameInRoom] ~= nil then
+		requirements.HasTraitNameInRoom = traitNameMappings[requirements.HasTraitNameInRoom]
 	end
 
 	if requirements.RequiredMinNPCInteractions then

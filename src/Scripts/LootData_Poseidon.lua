@@ -1882,6 +1882,71 @@ mod.AddNarrativeDataEntries(
 	{ Poseidon_ = "ModsNikkelMHadesBiomes_Portrait_Poseidon_Default_01" }
 )
 
+-- #region Hades I duo dialogues
+local newPortedDuoPickupTextLines = {
+	{
+		Name = "PoseidonWithZeus01",
+		PlayOnce = true,
+		PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+		HasTraitNameInRoom = "ImpactBoltTrait",
+		PreLineThreadedFunctionName = "PlayEmoteAnimFromSource", PreLineThreadedFunctionArgs = { Emote = "PortraitEmoteSurprise", DoShake = true, WaitTime = 11.2 },
+		{ Cue = "/VO/Poseidon_0129",
+			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+			Text = "Now, little Hades, you have met my brother Zeus! He's sometimes known as king of all the gods! Although, in many ways, he's not as powerful as I! Nor anywhere as dashing. Why, I, {#DialogueItalicFormat}oop{#PreviousFormat}--!" },
+		{ Cue = "/VO/Zeus_0125",
+			PortraitExitWait = 0.35,
+			PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
+			StartSound = "/SFX/ZeusBoonThunder",
+			EndSound = "/Leftovers/World Sounds/MapZoomInShort",
+			Speaker = "NPC_Zeus_01", Portrait = "Portrait_Zeus_Default_01",
+			Text = "Now, Brother... you know better than to say such things about me, I should think. I know that tact does not come easily to you, though I'd be careful what you say to our good nephew, there." },
+		{ Cue = "/VO/Poseidon_0130",
+			Emote = "PortraitEmoteFiredUp",
+			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+			EndSound = "/Leftovers/World Sounds/MapZoomInShort",
+			Text = "{#DialogueItalicFormat}Buh{#PreviousFormat}, {#DialogueItalicFormat}erm{#PreviousFormat}, anyway, as I was saying, little Hades! Brother Zeus is king of all the gods! And the most dashing, powerful, and hey, let's face it, {#DialogueItalicFormat}godliest {#PreviousFormat}of all!" },
+	},
+	{
+		Name = "PoseidonWithAres01",
+		PlayOnce = true,
+		PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+		HasTraitNameInRoom = "PoseidonAresProjectileTrait",
+		{ Cue = "/VO/Poseidon_0234",
+			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+			Text = "Now, little Hades, you must know by now I've other nephews here, don't you? For instance, Ares comes to mind, the god of war! Some mighty wars have taken place at sea, is that not so?" },
+		{ Cue = "/VO/Ares_0224",
+			PortraitExitWait = 0.35,
+			PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
+			StartSound = "/SFX/AresWrathBattle",
+			EndSound = "/Leftovers/World Sounds/MapZoomInShort",
+			Speaker = "NPC_Ares_01", Portrait = "Portrait_Ares_Default_01",
+			Text = "Indeed, they have, good Uncle Poseidon. Mortals show great ingenuity when war is concerned; it drives their sense of progress, more than anything at all. Perhaps someday they shall wage war even in Father's skies." },
+	},
+	{
+		Name = "PoseidonWithDemeter01",
+		PlayOnce = true,
+		PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+		HasTraitNameInRoom = "BlizzardOrbTrait",
+		{ Cue = "/VO/Poseidon_0144",
+			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+			Text = "My foster-sister Goddess Demeter, despite her stern approach, she often likes to make good sport of me, Nephew! Why, here she is right now!" },
+		{ Cue = "/VO/Demeter_0144",
+			PortraitExitWait = 0.35,
+			PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
+			StartSound = "/SFX/DemeterBoonFrost",
+			EndSound = "/Leftovers/World Sounds/MapZoomInShort",
+			Speaker = "NPC_Demeter_01", Portrait = "Portrait_Demeter_Default_01",
+			Text = "If you're quite finished blathering, Poseidon, our young Zagreus has more important things to do. He needs your blessings, not your point of view. Don't you, young sprout?" },
+	},
+}
+mod.AddNarrativeDataEntries(
+	newPortedDuoPickupTextLines, "PoseidonUpgrade", "DuoPickupTextLines", nil,
+	{}, -- H2 loads only the selected duo speakers from their Cue names
+	{ Aphrodite_ = "Modsnikkelmhadesbiomesaphrodite_", Ares_ = "Modsnikkelmhadesbiomesares_", Demeter_ = "Modsnikkelmhadesbiomesdemeter_", Poseidon_ = "Modsnikkelmhadesbiomesposeidon_", Zeus_ = "Modsnikkelmhadesbiomeszeus_" },
+	{ Aphrodite_ = "ModsNikkelMHadesBiomes_Portrait_Aphrodite_Default_01", Ares_ = "ModsNikkelMHadesBiomes_Portrait_Ares_Default_01", Demeter_ = "ModsNikkelMHadesBiomes_Portrait_Demeter_Default_01", Poseidon_ = "ModsNikkelMHadesBiomes_Portrait_Poseidon_Default_01", Zeus_ = "ModsNikkelMHadesBiomes_Portrait_Zeus_Default_01" }
+)
+-- #endregion
+
 local newPortedLootBoughtTextLines = {
 	{
 		Name = "PoseidonLootBought01",

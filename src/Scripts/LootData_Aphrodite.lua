@@ -1535,6 +1535,83 @@ mod.AddNarrativeDataEntries(
 	{ Aphrodite_ = "ModsNikkelMHadesBiomes_Portrait_Aphrodite_Default_01" }
 )
 
+local newPortedDuoPickupTextLines = {
+	{
+		Name = "AphroditeWithZeus01",
+		PlayOnce = true,
+		PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+		HasTraitNameInRoom = "RegeneratingCappedSuperTrait",
+		{ Cue = "/VO/Aphrodite_0187",
+			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+			Text = "Dearest, your lord uncle wishes to address you from our mountaintop, although I had assured him that the two of us, we had everything well under control!" },
+		{ Cue = "/VO/Zeus_0199",
+			PortraitExitWait = 0.35,
+			PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
+			StartSound = "/SFX/ZeusBoonThunder",
+			EndSound = "/Leftovers/World Sounds/MapZoomInShort",
+			Speaker = "NPC_Zeus_01", Portrait = "Portrait_Zeus_Default_01",
+			Text = "Come now, Zagreus, the only thing Lady Aphrodite has under control is her long list of salivating suitors, am I right? Aphrodite, how about you bestow your blessing and be off, and I'll take it from here." },
+	},
+	{
+		Name = "AphroditeWithPoseidon01",
+		PlayOnce = true,
+		PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+		HasTraitNameInRoom = "ImprovedPomTrait",
+		{ Cue = "/VO/Aphrodite_0050",
+			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+			Text = "The thing to know about this family, dearest, is that, each of us, we have our little quirks. Although, we always stick together and our love for one another perseveres!" },
+		{ Cue = "/VO/Poseidon_0131",
+			PortraitExitWait = 0.35,
+			PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
+			StartSound = "/SFX/PoseidonBoonWaveCrash",
+			EndSound = "/Leftovers/World Sounds/MapZoomInShort",
+			Speaker = "NPC_Poseidon_01", Portrait = "Portrait_Poseidon_Default_01",
+			Text = "Oh, {#DialogueItalicFormat}hoh{#PreviousFormat}! What do we have here, little Hades? Seems to me that you have {#DialogueItalicFormat}company{#PreviousFormat}! Well, I'll just leave the two of you alone. My lips are sealed tighter than a warship hull!" },
+		{ Cue = "/VO/Aphrodite_0051",
+			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+			EndSound = "/Leftovers/World Sounds/MapZoomInShort",
+			Emote = "PortraitEmoteCheerful",
+			Text = "Oh, feel free to stay, Poseidon! I was just explaining what an idiot you are, though you're able to articulate this best! Anyway, dearest, what was I on about...?" },
+	},
+	{
+		Name = "AphroditeWithAres01",
+		PlayOnce = true,
+		PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+		HasTraitNameInRoom = "CurseSickTrait",
+		{ Cue = "/VO/Aphrodite_0189",
+			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+			Text = "I think for many of us, dearest, it can come as a surprise to learn that love and war often go hand in hand. Opposite forces, yet this connects them, doesn't it. The fiercest passions of gods and mortals! Isn't that right, Lord Ares?" },
+		{ Cue = "/VO/Ares_0226",
+			PortraitExitWait = 0.35,
+			PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
+			StartSound = "/SFX/AresWrathBattle",
+			EndSound = "/Leftovers/World Sounds/MapZoomInShort",
+			Speaker = "NPC_Ares_01", Portrait = "Portrait_Ares_Default_01",
+			Text = "Mortals are so bent on clinging to their lives, that many among them would gladly kill for it. The surge of emotion which they feel... one passion is no different from another, Lady Aphrodite, dear." },
+	},
+	{
+		Name = "AphroditeWithDemeter01",
+		PlayOnce = true,
+		PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+		HasTraitNameInRoom = "SelfLaserTrait",
+		{ Cue = "/VO/Aphrodite_0191",
+			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+			Text = "The venerable goddess of the seasons, Demeter, chooses to look as stately as can be, can you believe it, dearest? Although, why one would mark so many fine lines upon their face, I wouldn't know." },
+		{ Cue = "/VO/Demeter_0152",
+			PortraitExitWait = 0.35,
+			StartSound = "/SFX/DemeterBoonFrost",
+			EndSound = "/Leftovers/World Sounds/MapZoomInShort",
+			Speaker = "NPC_Demeter_01", Portrait = "Portrait_Demeter_Default_01",
+			Text = "Oh, Aphrodite, dear... you wouldn't know a thing of substance if it offered you a cloak. Your chosen countenance makes plain the full extent of your intentions, and your interests alike." },
+	},
+}
+mod.AddNarrativeDataEntries(
+	newPortedDuoPickupTextLines, "AphroditeUpgrade", "DuoPickupTextLines", nil,
+	{}, -- H2 loads only the selected duo speakers from their Cue names
+	{ Aphrodite_ = "Modsnikkelmhadesbiomesaphrodite_", Ares_ = "Modsnikkelmhadesbiomesares_", Demeter_ = "Modsnikkelmhadesbiomesdemeter_", Poseidon_ = "Modsnikkelmhadesbiomesposeidon_", Zeus_ = "Modsnikkelmhadesbiomeszeus_" },
+	{ Aphrodite_ = "ModsNikkelMHadesBiomes_Portrait_Aphrodite_Default_01", Ares_ = "ModsNikkelMHadesBiomes_Portrait_Ares_Default_01", Demeter_ = "ModsNikkelMHadesBiomes_Portrait_Demeter_Default_01", Poseidon_ = "ModsNikkelMHadesBiomes_Portrait_Poseidon_Default_01", Zeus_ = "ModsNikkelMHadesBiomes_Portrait_Zeus_Default_01" }
+)
+
 local newPortedLootBoughtTextLines = {
 	{
 		Name = "AphroditeLootBought01",

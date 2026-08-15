@@ -2165,6 +2165,85 @@ mod.AddNarrativeDataEntries(
 	{ Demeter_ = "ModsNikkelMHadesBiomes_Portrait_Demeter_Default_01" }
 )
 
+-- #region Hades I duo dialogues
+local newPortedDuoPickupTextLines = {
+	{
+		Name = "DemeterWithZeus01",
+		PlayOnce = true,
+		PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+		HasTraitNameInRoom = "JoltDurationTrait",
+		RequiredTextLines = { "DemeterGift01", "ZeusGift01" },
+		RequiredFalseTextLinesLastRun = { "ZeusWithDemeter01" },
+		{ Cue = "/VO/Demeter_0151",
+			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+			Text = "Well, now, young sprout, you've met the so-called King of the Olympians, and I. Whom do you now suppose is genuinely ruler of this snow-encrusted mountaintop of ours?" },
+		{ Cue = "/VO/Zeus_0201",
+			PortraitExitWait = 0.35,
+			PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
+			StartSound = "/SFX/ZeusBoonThunder",
+			EndSound = "/Leftovers/World Sounds/MapZoomInShort",
+			Speaker = "NPC_Zeus_01", Portrait = "Portrait_Zeus_Default_01",
+			Text = "Oh, {#DialogueItalicFormat}hah-hah-hah{#PreviousFormat}, Lady Demeter! Your wit is just as dry as the earth lying quite fallow in your care! Perhaps you should go tend to that again, though let's we go ahead and help our young man first!" },
+	},
+	{
+		Name = "DemeterWithPoseidon01",
+		PlayOnce = true,
+		PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+		HasTraitNameInRoom = "BlizzardOrbTrait",
+		{ Cue = "/VO/Demeter_0145",
+			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+			Text = "Ah, little sprout. I was just notifying Lord Poseidon here that all of his domain exists because it pleases me; remember, my good foster-brother, I could freeze your oceans solid if I chose." },
+		{ Cue = "/VO/Poseidon_0145",
+			PortraitExitWait = 0.35,
+			PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
+			StartSound = "/SFX/PoseidonBoonWaveCrash",
+			EndSound = "/Leftovers/World Sounds/MapZoomInShort",
+			Speaker = "NPC_Poseidon_01", Portrait = "Portrait_Poseidon_Default_01",
+			Text = "{#DialogueItalicFormat}Ah, hahahah! {#PreviousFormat}Excellently stated, venerable Goddess Demeter! I'm reminded once more of your vast experience, though, I think we all prefer our oceans liquidy, isn't that right, Nephew?!" },
+	},
+	{
+		Name = "DemeterWithAres01",
+		PlayOnce = true,
+		PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+		HasTraitNameInRoom = "StationaryRiftTrait",
+		RequiredFalseTextLines = { "OlympianReunionQuestComplete" },
+		{ Cue = "/VO/Demeter_0143",
+			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+			Text = "Young Zagreus, once you arrive, do tell Lord Ares here that his great power's not worth anything without my own. Wars have their causes, among which, many I control." },
+		{ Cue = "/VO/Ares_0162",
+			PortraitExitWait = 0.35,
+			PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
+			StartSound = "/SFX/AresWrathBattle",
+			EndSound = "/Leftovers/World Sounds/MapZoomInShort",
+			Speaker = "NPC_Ares_01", Portrait = "Portrait_Ares_Default_01",
+			Text = "I do not question that your influence can stir a mortal's impulses toward war, O Goddess Demeter. At least we can agree that our domains are quite compatible!" },
+	},
+	{
+		Name = "DemeterWithAphrodite01",
+		PlayOnce = true,
+		PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+		HasTraitNameInRoom = "SelfLaserTrait",
+		{ Cue = "/VO/Demeter_0153",
+			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+			Text = "Remember something for us, Zagreus. A frozen heart holds no sway over anyone at all. Isn't that right, oh Aphrodite, dear?" },
+		{ Cue = "/VO/Aphrodite_0192",
+			PortraitExitWait = 0.35,
+			PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
+			StartSound = "/SFX/AphroditeBoonLoveChimes",
+			EndSound = "/Leftovers/World Sounds/MapZoomInShort",
+			Emote = "PortraitEmoteCheerful",
+			Speaker = "NPC_Aphrodite_01", Portrait = "Portrait_Aphrodite_Default_01",
+			Text = "Oh, I don't know, my dearest Demeter! The frozen heart has tendency to thaw, and then begin to beat with renewed vigor after that. I trust your time shall come! It can never be too late, except for mortals, the poor things." },
+	},
+}
+mod.AddNarrativeDataEntries(
+	newPortedDuoPickupTextLines, "DemeterUpgrade", "DuoPickupTextLines", nil,
+	{}, -- H2 loads only the selected duo speakers from their Cue names
+	{ Aphrodite_ = "Modsnikkelmhadesbiomesaphrodite_", Ares_ = "Modsnikkelmhadesbiomesares_", Demeter_ = "Modsnikkelmhadesbiomesdemeter_", Poseidon_ = "Modsnikkelmhadesbiomesposeidon_", Zeus_ = "Modsnikkelmhadesbiomeszeus_" },
+	{ Aphrodite_ = "ModsNikkelMHadesBiomes_Portrait_Aphrodite_Default_01", Ares_ = "ModsNikkelMHadesBiomes_Portrait_Ares_Default_01", Demeter_ = "ModsNikkelMHadesBiomes_Portrait_Demeter_Default_01", Poseidon_ = "ModsNikkelMHadesBiomes_Portrait_Poseidon_Default_01", Zeus_ = "ModsNikkelMHadesBiomes_Portrait_Zeus_Default_01" }
+)
+-- #endregion
+
 local newPortedLootBoughtTextLines = {
 	{
 		Name = "DemeterLootBought01",

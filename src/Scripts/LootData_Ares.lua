@@ -1960,6 +1960,86 @@ mod.AddNarrativeDataEntries(
 	{ Ares_ = "ModsNikkelMHadesBiomes_Portrait_Ares_Default_01" }
 )
 
+-- #region Hades I duo dialogues
+local newPortedDuoPickupTextLines = {
+	{
+		Name = "AresWithPoseidon01",
+		PlayOnce = true,
+		PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+		HasTraitNameInRoom = "PoseidonAresProjectileTrait",
+		{ Cue = "/VO/Ares_0223",
+			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+			Text = "Well, my hellborn kin, I have to say that there are times I wish I could have been acquainted with your father somewhat more, if you'll forgive my saying so. My father and my uncle, here... they're predisposed quite differently than I." },
+		{ Cue = "/VO/Poseidon_0235",
+			PortraitExitWait = 0.35,
+			PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
+			StartSound = "/SFX/PoseidonBoonWaveCrash",
+			EndSound = "/Leftovers/World Sounds/MapZoomInShort",
+			Speaker = "NPC_Poseidon_01", Portrait = "Portrait_Poseidon_Default_01",
+			Text = "Perhaps if you were not so odd, and made more effort to be somewhat more approachable, Ares, then we'd have more in common, you and I! Should you need any tips on that, why, you just let me know!" },
+	},
+	{
+		Name = "AresWithAphrodite01",
+		PlayOnce = true,
+		PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+		HasTraitNameInRoom = "CurseSickTrait",
+		RequiredTextLines = { "AresGift03", "AphroditeGift03" },
+		RequiredFalseTextLines = { "OlympianReunionQuestComplete" },
+		{ Cue = "/VO/Ares_0039",
+			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+			Text = "I so anticipate the day you finally arrive upon Olympus. There are few amongst us here with interests such as those I think we share." },
+		{ Cue = "/VO/Aphrodite_0052",
+			PortraitExitWait = 0.35,
+			PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
+			StartSound = "/SFX/AphroditeBoonLoveChimes",
+			EndSound = "/Leftovers/World Sounds/MapZoomInShort",
+			Speaker = "NPC_Aphrodite_01", Portrait = "Portrait_Aphrodite_Default_01",
+			Emote = "PortraitEmoteAffection",
+			Text = "There are at least a few of us who share such interests here, isn't that so, Lord Ares? As for {#DialogueItalicFormat}you{#PreviousFormat}, dearest, you take all the time you need!" },
+	},
+	{
+		Name = "AresWithAphrodite02",
+		PlayOnce = true,
+		PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+		HasTraitNameInRoom = "CurseSickTrait",
+		RequiredTextLines = { "AresGift01", "AphroditeGift01" },
+		{ Cue = "/VO/Ares_0225",
+			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+			Text = "Wars waged over love, my kin... can you imagine that? The lady Aphrodite and I can endlessly discuss such circumstances. I trust, from time to time, you stop to ask yourself how come you choose to fight. Not that you need a reason, of course." },
+		{ Cue = "/VO/Aphrodite_0190",
+			PortraitExitWait = 0.35,
+			PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
+			StartSound = "/SFX/AphroditeBoonLoveChimes",
+			EndSound = "/Leftovers/World Sounds/MapZoomInShort",
+			Speaker = "NPC_Aphrodite_01", Portrait = "Portrait_Aphrodite_Default_01",
+			Emote = "PortraitEmoteAffection",
+			Text = "Oh, Lord Ares, truly there isn't the need to cloud our little godling's thoughts and judgment with such comments, is there, {#DialogueItalicFormat}hm{#PreviousFormat}? Let's give him what he wants, and we can carry on in private, about that." },
+	},
+	{
+		Name = "AresWithDemeter01",
+		PlayOnce = true,
+		PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+		HasTraitNameInRoom = "StationaryRiftTrait",
+		{ Cue = "/VO/Ares_0161",
+			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+			Text = "The cold of death is quite becoming of the Goddess Demeter, do you not think so, my death-dealing kin? She is becoming well accustomed to it, too." },
+		{ Cue = "/VO/Demeter_0142",
+			PortraitExitWait = 0.35,
+			PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
+			StartSound = "/SFX/DemeterBoonFrost",
+			EndSound = "/Leftovers/World Sounds/MapZoomInShort",
+			Speaker = "NPC_Demeter_01", Portrait = "Portrait_Demeter_Default_01",
+			Text = "I think that you forget yourself, Lord Ares, sir. For I am much your elder; my famines had already slain the mortals by the tens of thousands by the time such thoughts of doing so first crossed your mind." },
+	},
+}
+mod.AddNarrativeDataEntries(
+	newPortedDuoPickupTextLines, "AresUpgrade", "DuoPickupTextLines", nil,
+	{}, -- H2 loads only the selected duo speakers from their Cue names
+	{ Aphrodite_ = "Modsnikkelmhadesbiomesaphrodite_", Ares_ = "Modsnikkelmhadesbiomesares_", Demeter_ = "Modsnikkelmhadesbiomesdemeter_", Poseidon_ = "Modsnikkelmhadesbiomesposeidon_", Zeus_ = "Modsnikkelmhadesbiomeszeus_" },
+	{ Aphrodite_ = "ModsNikkelMHadesBiomes_Portrait_Aphrodite_Default_01", Ares_ = "ModsNikkelMHadesBiomes_Portrait_Ares_Default_01", Demeter_ = "ModsNikkelMHadesBiomes_Portrait_Demeter_Default_01", Poseidon_ = "ModsNikkelMHadesBiomes_Portrait_Poseidon_Default_01", Zeus_ = "ModsNikkelMHadesBiomes_Portrait_Zeus_Default_01" }
+)
+-- #endregion
+
 local newPortedLootboughtTextLines = {
 	{
 		Name = "AresLootBought01",
