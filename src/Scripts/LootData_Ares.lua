@@ -28,11 +28,11 @@ local newPortedInteractTextLines = {
 			"You've got quite the fighting spirit in you there, I have to say. Most intriguing, and yet no surprise for someone born in hell itself. You come on out of there, and tell me all about it. I'm a fellow student of death, you see."
 		},
 	},
-	-- #region High-Priority Storylines/Quests (Inserted in a group after AresPostTrueEndingAboutTyphon01)
+	-- #region High-Priority Storylines/Quests
 	{
 		Name = "AresKillQuest01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AresPostTrueEndingAboutTyphon01",
+			InsertAfterTextLineGroupContaining = "AresFirstPickUp",
 			CreateNewPriorityGroup = true,
 		},
 		PlayOnce = true,

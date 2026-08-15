@@ -1,9 +1,9 @@
 local newPortedInteractTextLines = {
-	-- #region Priority Storylines (Inserted in a group after ArtemisFirstMeeting)
+	-- #region Priority Storylines
 	{
 		Name = "ArtemisAboutOlympianReunionQuest01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "ArtemisFirstMeeting",
+			InsertAtFirstPriority = true,
 			CreateNewPriorityGroup = true,
 		},
 		PlayOnce = true,
