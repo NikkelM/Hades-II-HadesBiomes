@@ -670,6 +670,7 @@ local function on_ready()
 			import "Scripts/LootData_Artemis.lua"
 			import "Scripts/LootData_Athena.lua"
 			import "Scripts/LootData_Chaos.lua"
+			import "Scripts/LootData_Demeter.lua"
 			import "Scripts/LootData_Dionysus.lua"
 			import "Scripts/LootData_Hermes.lua"
 			import "Scripts/LootData_Poseidon.lua"

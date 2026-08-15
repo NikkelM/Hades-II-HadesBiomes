@@ -22,6 +22,7 @@ mod.VoiceoverFileNames = {
 	Athena = "Modsnikkelmhadesbiomesathena",
 	Chaos = "Modsnikkelmhadesbiomeschaos",
 	Charon = "Modsnikkelmhadesbiomescharon",
+	Demeter = "Modsnikkelmhadesbiomesdemeter",
 	Dionysus = "Modsnikkelmhadesbiomesdionysus",
 	Hermes = "Modsnikkelmhadesbiomeshermes",
 	Intercom = "Modsnikkelmhadesbiomesintercom",
