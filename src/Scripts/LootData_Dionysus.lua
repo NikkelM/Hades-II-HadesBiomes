@@ -762,23 +762,6 @@ local newHermesDeliveredDialogues = {
 		},
 	},
 	{
-		Name = "DionysusAboutKeepsake01",
-		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "DionysusPostGiftPickup01",
-		},
-		PlayOnce = true,
-		PreEventFunctionName = "BoonInteractPresentation",
-		PreEventFunctionArgs = { PickupWait = 1.0, },
-		RequiredTrait = "ForceDionysusBoonTrait",
-
-		{
-			Cue = "/VO/Dionysus_0185",
-			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
-			Text = "Say, isn't that the Overflowing Cup I handed down to you, I'm glad you like it, man! I guess it's overflowing still, because I figure otherwise I couldn't tell at all!",
-		},
-	},
-	{
 		Name = "DionysusAboutNectar01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
 			InsertAfterNarrativeTextLine = "DionysusPostGiftPickup01",
