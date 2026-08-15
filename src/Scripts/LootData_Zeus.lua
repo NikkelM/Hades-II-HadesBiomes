@@ -8,7 +8,8 @@ local newPortedInteractTextLines = {
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
 		PreEventFunctionArgs = { PickupWait = 1.0, },
-		RequiredTextLines = { "AthenaFirstPickUp", },
+		-- Always allow, to not block this if Hermes wasn't met in a modded run yet
+		-- RequiredTextLines = { "AthenaFirstPickUp", },
 		{
 			Cue = "/VO/ZagreusField_0776",
 			Portrait = "Portrait_Zag_Default_01",

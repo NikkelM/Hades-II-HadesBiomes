@@ -6,7 +6,8 @@ local newPortedInteractTextLines = {
 			CreateNewPriorityGroup = true,
 		},
 		PlayOnce = true,
-		RequiredTextLines = { "AthenaFirstPickUp", },
+		-- Always allow, to not block this if Hermes wasn't met in a modded run yet
+		-- RequiredTextLines = { "AthenaFirstPickUp", },
 		{
 			Cue = "/VO/ZagreusField_0789",
 			Portrait = "Portrait_Zag_Default_01",

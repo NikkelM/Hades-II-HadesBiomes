@@ -53,7 +53,8 @@ local newPortedInteractTextLines = {
 			InsertAfterNarrativeTextLine = "ArtemisAboutOlympianReunionQuest01",
 		},
 		PlayOnce = true,
-		RequiredTextLines = { "AthenaFirstPickUp", },
+		-- Always allow, to not block this if Hermes wasn't met in a modded run yet
+		-- RequiredTextLines = { "AthenaFirstPickUp", },
 		-- Disabled as you meet her in person
 		-- {
 		-- 	Cue = "/VO/ZagreusField_0786",
