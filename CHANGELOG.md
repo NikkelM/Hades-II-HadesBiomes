@@ -26,6 +26,7 @@ Other fixes and improvements:
 - Fixed: Meeting Orpheus is not counted towards the unlock conditions of the "Close at Heart" Minor Prophecy.
 - Fixed: There is a typo in the description of Orpheus' "Hymn to Zagreus" boon.
 - Fixed: Dialogues and other events requiring you to have seen a specific room a minimum or maximum number of times are not checked for eligibility correctly. 
+- Fixed: Dialogues that should only be able to play if three boon choices are available may play even when less are available.
 - Fixed: The fade-in animation of the Record Keeper's screen is missing some smoother animations on the bar graphs that exist in the base game.
 - Fixed: The vanilla Hades II intro video plays before Zagreus' Journey fresh file runs.
 - Fixed: If the plugins_data folder for the mod is read-only and the installation fails due to it, the mod doesn't recognize this correctly.

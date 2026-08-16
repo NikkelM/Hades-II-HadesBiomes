@@ -1919,10 +1919,17 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 		-- end
 	end
 
-	if requirements.RequiredInactiveMetaUpgrade ~= nil and GetNumShrineUpgrades(requirements.RequiredInactiveMetaUpgrade) > 0 then
-		return false
+	if requirements.RequiredInactiveMetaUpgrade ~= nil then
+		if game.GetNumShrineUpgrades(requirements.RequiredInactiveMetaUpgrade) > 0 then
+			return false
+		end
+		-- This specific vow doesn't exist in H2, instead a Chaos Curse can restrict choices
+		if requirements.RequiredInactiveMetaUpgrade == "ReducedLootChoicesShrineUpgrade" then
+			requirements.RequiredLootChoices = 3
+		end
 	end
-	if requirements.RequiredActiveMetaUpgrade ~= nil and GetNumShrineUpgrades(requirements.RequiredActiveMetaUpgrade) < 1 then
+
+	if requirements.RequiredActiveMetaUpgrade ~= nil and game.GetNumShrineUpgrades(requirements.RequiredActiveMetaUpgrade) < 1 then
 		return false
 	end
 
