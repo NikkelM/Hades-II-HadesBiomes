@@ -224,7 +224,7 @@ local hadesProjectilesModifications = {
 		AffectsSelf = false,
 		Speed = 530,
 		Thing = {
-			Graphic = "EnemyProjectileIn",
+			Graphic = "HadesEnemyProjectileIn",
 		},
 		ImmunityKey = "ModsNikkelMHadesBiomes_SplitShot",
 		ImmunityDuration = 0.4,

@@ -17,8 +17,10 @@ Other fixes and improvements:
 - Balancing: Slightly reduced the base encounter difficulty of wing-end combat rooms in the Temple of Styx.
 - Balancing: Blocked a number of additional Elite perks from certain enemy types.
 - Balancing: Reworked "Lament of Orpheus" to no longer require defeating the enemy that originally damaged you to be able to trigger it again, and also be able to freeze enemies that are currently on cooldown from being frozen normally.
-- Fixed: Shells fired by the Argent Skull can become irretrievable if they were supposed to return to Melinoë during dialogue playing between phases in Hades' boss fight.
+- Fixed: The projectiles created by the Spreaders in Asphodel, and the small projectiles created by the Splitters in Elysium have the Hades II graphic instead of the Hades graphic.
 - Fixed: Theseus immediately snaps to look at Melinoë after his dialogue completes instead of gradually turning.
+- Fixed: Shells fired by the Argent Skull can become irretrievable if they were supposed to return to Melinoë during dialogue playing between phases in Hades' boss fight.
+- Fixed: Wretched Witches summoned by Hades during his boss fight fire three bursts of three large projectiles that split into five smaller projectiles, instead of one burst of three large projectiles that split into ten smaller projectiles.
 - Fixed: Damage taken from the Tiny Vermin is categorized as damage taken from Crawlers in the Damage Taken record in the run clear screen.
 - Fixed: Clones created by Elite enemies with the "Cloner" perk can create Revenants, Lone Shades, or be resurrected by Night Bloom.
 - Fixed: The voiceline that is supposed to play when attempting to interact with the locked Keepsake Cabinet in post-boss rooms may not play in some cases.

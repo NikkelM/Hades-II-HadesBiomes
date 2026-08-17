@@ -992,6 +992,9 @@ local enemyModifications = {
 	LightRangedSuperElite = {
 		DefaultAIData = {
 			TakeCoverDuration = 3.0,
+			AIFireTicksMin = 1,
+			AIFireTicksMax = 1,
+			AIFireTicksCooldown = 0.07,
 		},
 	},
 	ThiefMineLayer = {
@@ -1660,6 +1663,7 @@ local enemyModifications = {
 	HadesSpreadShotUnit = {
 		ModsNikkelMHadesBiomesOriginalHadesTwoEnemy = true,
 		LoadPackages = { "BiomeB", },
+		WeaponOptions = { "HadesSpreadShotBolt" },
 		ActivateFx = "EnemySummonRuneMedium",
 		ActivateFx2 = "nil",
 		ActivateFxPreSpawn = "nil",
@@ -1671,6 +1675,7 @@ local enemyModifications = {
 		ModsNikkelMHadesBiomesOriginalHadesTwoEnemy = true,
 		GenusName = "SpreadShotUnit_Elite",
 		LoadPackages = { "BiomeB", },
+		WeaponOptions = { "HadesSpreadShotBoltElite" },
 		ActivateFx = "EnemySummonRuneMedium",
 		ActivateFx2 = "nil",
 		ActivateFxPreSpawn = "nil",
