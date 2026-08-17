@@ -1393,7 +1393,8 @@ local newPortedInteractTextLines = {
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
 		PreEventFunctionArgs = { PickupWait = 1.0, },
-		RequiredTextLines = { "HermesAboutWhippedFrenzy03", },
+		-- Changed from HermesAboutWhippedFrenzy03 which doesn't exist
+		RequiredTextLines = { "HermesAboutBiomeSpeedCondition01" },
 		RequiredActiveMetaUpgrade = "BiomeSpeedShrineUpgrade",
 		{
 			Cue = "/VO/Hermes_0191",

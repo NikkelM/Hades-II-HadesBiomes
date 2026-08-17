@@ -1602,7 +1602,8 @@ local newAthenaLateStoryTextLines = {
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
 		PreEventFunctionArgs = { PickupWait = 1.0, },
-		RequiredTextLines = { "AthenaGift04", "AresWithAthena01" },
+		-- Removed AresWithAthena01 as Athena is not a boon-giver and the Duo-dialogue is not available
+		RequiredTextLines = { "AthenaGift04" },
 		RequiredAnyTextLines = { "AresAboutNyx04", "AresAboutNyx04_B" },
 		RequiredFalseTextLinesLastRun = { "AresAboutNyx04", "AresAboutNyx04_B" },
 		{
@@ -1704,7 +1705,8 @@ local newAthenaExclusiveContextualTextLines = {
 			InsertAfterNarrativeTextLine = "AthenaPostGiftPickup01",
 		},
 		PlayOnce = true,
-		RequiredTextLines = { "Athena_07" },
+		-- Updated from broken Athena_07
+		RequiredTextLines = { "AthenaGift07" },
 		PreEventFunctionName = "BoonInteractPresentation",
 		PreEventFunctionArgs = { PickupWait = 1.0, },
 		{
