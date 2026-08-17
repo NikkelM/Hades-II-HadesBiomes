@@ -2504,7 +2504,7 @@ local npcModifications = {
 												PreLineAnim = "FuryIdleInHouseFidgetWhipTaunt_ReturnToIdle",
 												PreLineWait = 0.35,
 												PostLineThreadedFunctionName = _PLUGIN.guid .. "." .. "AddTextLineToTextLineRecord",
-												PostLineFunctionArgs = { TextLine = "BecameCloseWithMegaera01Meg_BackOff" },
+												PostLineFunctionArgs = { TextLine = "BecameCloseWithMegaera01_BMeg_BackOff" },
 												Text =
 												"...I... Meg, I'm deeply flattered, and you're very dear to me, it's just... this isn't what I want from our relationship. I fear I must have led you on. Forgive me. Please say you'll still be my friend?"
 											},
@@ -2552,7 +2552,7 @@ local npcModifications = {
 												InterSceneWaitTime = 0.5,
 												PreLineAngleHeroTowardTargetId = 390082,
 												PostLineThreadedFunctionName = _PLUGIN.guid .. "." .. "AddTextLineToTextLineRecord",
-												PostLineFunctionArgs = { TextLine = "BecameCloseWithMegaera01Meg_GoToHer" },
+												PostLineFunctionArgs = { TextLine = "BecameCloseWithMegaera01_BMeg_GoToHer" },
 												Text = "Um, Meg, I... what I'm trying to say is, are you... are we good, or...?"
 											},
 											{
