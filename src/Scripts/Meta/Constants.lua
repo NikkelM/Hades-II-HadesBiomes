@@ -1001,15 +1001,15 @@ public.DuplicateTextLineSetNames = {
 	-- #endregion
 
 	-- #region Hypnos
-	-- TODO When Hypnos is added his gifting will likely be reimplemented, so uncomment the Gift lines below so they get de-duplicated
+	-- TODO: When Hypnos is added his gifting will likely be reimplemented, so uncomment the Gift lines below so they get de-duplicated
 	["HypnosFirstMeeting"] = true,
 	-- ["HypnosGift01"] = true,
 	-- ["HypnosGift02"] = true,
 	-- #endregion
 
-	-- -- #region Narrator
+	-- #region Narrator
 	-- ["InspectPreRun01"] = true,
-	-- -- #endregion
+	-- #endregion
 
 	-- #region Nyx
 	-- ["NyxGift01"] = true,

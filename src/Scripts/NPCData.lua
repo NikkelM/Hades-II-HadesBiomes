@@ -791,19 +791,19 @@ local npcModifications = {
 				-- Heh.
 				{ Cue = "/VO/Thanatos_0181", RequiredFalsePlayedThisRoom = { "/VO/Thanatos_0181" }, RequiredTextLines = { "ThanatosGift05" }, },
 				-- You all right?
-				{ Cue = "/VO/Thanatos_0189", RequiredFalsePlayedThisRoom = { "/VO/Thanatos_0189" }, RequiredTextLines = { "ThanatosGift06" },                                               RequiresLastRunNotCleared = true },
+				{ Cue = "/VO/Thanatos_0189", RequiredFalsePlayedThisRoom = { "/VO/Thanatos_0189" }, RequiredTextLines = { "ThanatosGift06" },                                             RequiresLastRunNotCleared = true },
 				-- You OK?
-				{ Cue = "/VO/Thanatos_0190", RequiredFalsePlayedThisRoom = { "/VO/Thanatos_0190" }, RequiredTextLines = { "ThanatosGift06" },                                               RequiresLastRunNotCleared = true },
+				{ Cue = "/VO/Thanatos_0190", RequiredFalsePlayedThisRoom = { "/VO/Thanatos_0190" }, RequiredTextLines = { "ThanatosGift06" },                                             RequiresLastRunNotCleared = true },
 				-- Hey.
 				{ Cue = "/VO/Thanatos_0194", RequiredFalsePlayedThisRoom = { "/VO/Thanatos_0194" }, RequiredTextLines = { "ThanatosGift06" }, },
 				-- Hey.
 				{ Cue = "/VO/Thanatos_0427", RequiredFalsePlayedThisRoom = { "/VO/Thanatos_0427" }, RequiredTextLines = { "ThanatosGift10" }, },
 				-- Good work out there.
-				{ Cue = "/VO/Thanatos_0429", RequiredFalsePlayedThisRoom = { "/VO/Thanatos_0429" }, RequiredTextLines = { "ThanatosGift06" },                                               RequiresLastRunCleared = true, },
+				{ Cue = "/VO/Thanatos_0429", RequiredFalsePlayedThisRoom = { "/VO/Thanatos_0429" }, RequiredTextLines = { "ThanatosGift06" },                                             RequiresLastRunCleared = true, },
 				-- Well done that time.
-				{ Cue = "/VO/Thanatos_0430", RequiredFalsePlayedThisRoom = { "/VO/Thanatos_0430" }, RequiredTextLines = { "ThanatosGift06" },                                               RequiresLastRunCleared = true, },
+				{ Cue = "/VO/Thanatos_0430", RequiredFalsePlayedThisRoom = { "/VO/Thanatos_0430" }, RequiredTextLines = { "ThanatosGift06" },                                             RequiresLastRunCleared = true, },
 				-- Glad you're back.
-				{ Cue = "/VO/Thanatos_0434", RequiredFalsePlayedThisRoom = { "/VO/Thanatos_0434" }, RequiredAnyTextLines = { "BecameCloserWithThanatos01", "BecameCloserWithThanatos01_B" } },
+				{ Cue = "/VO/Thanatos_0434", RequiredFalsePlayedThisRoom = { "/VO/Thanatos_0434" }, RequiredAnyTextLines = { "BecameCloseWithThanatos01", "BecameCloseWithThanatos01_B" } },
 				-- Back in one piece.
 				{ Cue = "/VO/Thanatos_0435", RequiredFalsePlayedThisRoom = { "/VO/Thanatos_0435" }, RequiredTextLines = { "ThanatosGift07_A" }, },
 			},
