@@ -731,11 +731,11 @@ function mod.ModConfigLeafKeyHasValue(source, args)
 end
 
 --- Maps a duplicate TextLineSet name (one that exists in both Hades and Hades II) to its deduplicated ModsNikkelMHadesBiomes_ version
---- Names that are not in mod.DuplicateTextLineSetNames are returned unchanged
+--- Names that are not in public.DuplicateTextLineSetNames are returned unchanged
 ---@param name string|nil The TextLineSet name to map
 ---@return string|nil mappedName The deduplicated name if it is a known duplicate, otherwise the original name
 function mod.MapDuplicateTextLineName(name)
-	if mod.DuplicateTextLineSetNames[name] then
+	if public.DuplicateTextLineSetNames[name] then
 		local mappedName = "ModsNikkelMHadesBiomes_" .. name
 		mod.DebugPrint("Mapping TextLineSet " .. name .. " to " .. mappedName .. " as it exists in both games.", 4)
 		return mappedName

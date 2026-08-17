@@ -602,7 +602,7 @@ mod.AllRequiredKillModdedEnemyNames = {}
 
 -- Set of duplicate TextLineSet names that exist in both games, agnostic to the actual table they exist in
 -- Gift lines are intentionally left commented out - they are not ported, so dialogues requiring them should reference the Hades II versions
-mod.DuplicateTextLineSetNames = {
+public.DuplicateTextLineSetNames = {
 	-- #region Aphrodite
 	["AphroditeAboutAres01"] = true,
 	["AphroditeAboutArtemis01"] = true,

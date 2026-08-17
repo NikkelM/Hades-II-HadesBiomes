@@ -155,10 +155,10 @@ function mod.AddNarrativeDataEntries(newTextLines, narrativeDataKey, textLineTyp
 		local key = mod.MapDuplicateTextLineName(originalName) or ""
 		data.Name = key
 
-		-- Safety net for duplicates that are not yet tracked in mod.DuplicateTextLineSetNames
-		if mod.HiddenConfig.DeveloperMode and not ignoreDuplicates and not mod.DuplicateTextLineSetNames[originalName] and dialogueNameExistsInHadesTwo(originalName) then
+		-- Safety net for duplicates that are not yet tracked in public.DuplicateTextLineSetNames
+		if mod.HiddenConfig.DeveloperMode and not ignoreDuplicates and not public.DuplicateTextLineSetNames[originalName] and dialogueNameExistsInHadesTwo(originalName) then
 			mod.DebugPrint(
-				"Text line set '" .. originalName .. "' already exists in Hades II but is not in mod.DuplicateTextLineSetNames.",
+				"Text line set '" .. originalName .. "' already exists in Hades II but is not in public.DuplicateTextLineSetNames.",
 				1)
 		end
 
