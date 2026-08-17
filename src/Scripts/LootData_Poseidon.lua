@@ -57,11 +57,23 @@ local newPortedInteractTextLines = {
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
 		PreEventFunctionArgs = { PickupWait = 1.0, },
+		GameStateRequirements = {
 		-- Removed PoseidonWrathIntro01 as requirement
-		RequiredTextLines = { "PoseidonAboutFishing01" },
-		-- RequiredFalseTextLinesLastRun = { "PoseidonWrathIntro01" },
-		RequiredMinTotalCaughtFish = 3,
-		HasTraitNameInRoom = "FishingTrait",
+			{
+				PathTrue = { "GameState", "TextLinesRecord", "PoseidonAboutFishing01" },
+			},
+			{
+				Path = { "GameState", "FishCaught" },
+				UseLength = true,
+				Comparison = ">=",
+				Value = 3,
+			},
+			{
+				PathTrue = { "GameState", "WeaponsUnlocked", "ToolFishingRod" },
+			},
+		},
+		-- Boon doesn't exist in Hades II
+		-- HasTraitNameInRoom = "FishingTrait",
 		{
 			Cue = "/VO/Poseidon_0148",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
