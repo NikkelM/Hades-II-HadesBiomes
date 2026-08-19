@@ -650,6 +650,16 @@ local roomModifications = {
 	Y_MiniBoss01 = {
 		LoadModdedVoiceBanks = { "Minotaur", "ZagreusField" },
 		RewardPreviewIcon = "RoomRewardSubIcon_Miniboss",
+		GameStateRequirements = {
+			{
+				FunctionName = _PLUGIN.guid .. "." .. "ModConfigLeafKeyHasValue",
+				FunctionArgs = { LeafKey = "z_SpeedrunDisableLongMinibossEncounters", ExpectedValue = false },
+			},
+			{
+				FunctionName = _PLUGIN.guid .. "." .. "ModConfigLeafKeyHasValue",
+				FunctionArgs = { LeafKey = "z_SpeedrunDisableAsterius", ExpectedValue = false },
+			},
+		},
 		UnthreadedEvents = {
 			[1] = {
 				FunctionName = _PLUGIN.guid .. "." .. "BossIntroElysium",

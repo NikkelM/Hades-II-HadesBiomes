@@ -113,6 +113,16 @@ local encounterModifications = {
 		CanEncounterSkip = false,
 		SkipBossTraits = true,
 		NextRoomResumeMusic = true,
+		GameStateRequirements = {
+			{
+				FunctionName = _PLUGIN.guid .. "." .. "ModConfigLeafKeyHasValue",
+				FunctionArgs = { LeafKey = "z_SpeedrunDisableLongMinibossEncounters", ExpectedValue = false },
+			},
+			{
+				FunctionName = _PLUGIN.guid .. "." .. "ModConfigLeafKeyHasValue",
+				FunctionArgs = { LeafKey = "z_SpeedrunDisableTinyVermin", ExpectedValue = false },
+			},
+		},
 	},
 	MiniBossHeavyRangedForked = {
 		BlockDionysusEncounterKeepsake = true,

@@ -12,6 +12,12 @@ local config = {
     z_SpeedrunForceTwoSack = false,
     z_SpeedrunSkipOpeningThanatos = false,
     z_SpeedrunFreshFileZagreusJourneyRun = false,
+    z_LongMinibossEncounters = {
+      z_SpeedrunDisableLongMinibossEncounters = false,
+      z_SpeedrunDisableBargeOfDeath = false,
+      z_SpeedrunDisableAsterius = false,
+      z_SpeedrunDisableTinyVermin = false,
+    },
   },
   debugging = {
     hadesGameFolder = "root",
@@ -42,6 +48,16 @@ local configDesc = {
     "If enabled, the reward in the first room of the run will always spawn immediately and allow skipping dialogue with Thanatos, even if he has a unique dialogue queued.",
     z_SpeedrunFreshFileZagreusJourneyRun =
     "If enabled, starting a fresh save file will force the first run to be a Zagreus' Journey run. This will follow all rules of a classic fresh file run. It may break some progression past the first run, so is only recommended for Fresh File speedrun attempts, not actual main save files.",
+    z_LongMinibossEncounters = {
+      z_SpeedrunDisableLongMinibossEncounters =
+      "If enabled, all of the miniboss encounters in this group will never appear, no matter their individual settings.",
+      z_SpeedrunDisableBargeOfDeath =
+      "If enabled, the Barge of Death miniboss in Asphodel will never appear.",
+      z_SpeedrunDisableAsterius =
+      "If enabled, the Asterius miniboss in Elysium will never appear.",
+      z_SpeedrunDisableTinyVermin =
+      "If enabled, the Tiny Vermin miniboss in Styx will never appear.",
+    },
   },
   debugging = {
     hadesGameFolder =
