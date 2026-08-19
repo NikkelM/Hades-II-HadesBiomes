@@ -450,7 +450,7 @@ function mod.ModsNikkelMHadesBiomesDoUnlockRoomExits(run, room)
 
 	for index, door in ipairs(exitDoorsIPairs) do
 		if room.PersistentRoomForDoors and room.DoorRoomHistory ~= nil and room.DoorRoomHistory[door.ObjectId] ~= nil then
-			door.Room = game.ShallowCopyTable(run.RoomHistory[room.DoorRoomHistory[door.ObjectId]]) or {}
+			door.Room = game.ShallowCopyTable(run.RoomHistory[room.DoorRoomHistory[door.ObjectId]])
 			-- Restore any missing data that may have been stripped for saving
 			local originalRoomData = game.RoomData[door.Room.Name]
 			if originalRoomData ~= nil then
