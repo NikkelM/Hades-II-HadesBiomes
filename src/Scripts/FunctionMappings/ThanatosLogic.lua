@@ -219,6 +219,7 @@ function mod.ThanatosExit(source, args)
 
 	game.wait(1.0, game.RoomThreadName)
 
+	game.ActiveEnemies[source.ObjectId] = nil
 	if game.ActivatedObjects ~= nil and game.ActivatedObjects[source.ObjectId] ~= nil and not game.CurrentRun.Hero.IsDead then
 		game.ActivatedObjects[source.ObjectId] = nil
 		game.wait(0.2, game.RoomThreadName)

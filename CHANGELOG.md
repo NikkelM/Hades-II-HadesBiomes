@@ -31,6 +31,7 @@ Other fixes and improvements:
 - Fixed: There is a typo in the description of Orpheus' "Hymn to Zagreus" boon.
 - Fixed: After getting closer to Megaera while already close with Thanatos, the game will think you got with Megaera before Thanatos, which can change some future dialogue eligibilities.
 - Fixed: Thanatos shows an interaction prompt even when he has nothing left to say after his encounter.
+- Fixed: After some conversations, Thanatos may teleport away twice in the opening room of a run.
 - Fixed: Dialogues and other events requiring you to have seen a specific room a minimum or maximum number of times are not checked for eligibility correctly. 
 - Fixed: Dialogues that should only be able to play if three boon choices are available may play even when less are available.
 - Fixed: The fade-in animation of the Record Keeper's screen is missing some smoother animations on the bar graphs that exist in the base game.
