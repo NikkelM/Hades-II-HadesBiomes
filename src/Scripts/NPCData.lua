@@ -860,7 +860,7 @@ local npcModifications = {
 								{
 									Cue = "/VO/Thanatos_0417",
 									AngleTowardHero = true,
-									AngleHeroTowardTargetId = 390000,
+									AngleHeroTowardTargetId = 423052,
 									Text =
 									"Just tell me one thing, Zagreus. Did you really mean what you told me before, that... maybe we ought to... take our time?"
 								},
@@ -1044,7 +1044,7 @@ local npcModifications = {
 								{
 									Cue = "/VO/Thanatos_0417",
 									AngleTowardHero = true,
-									AngleHeroTowardTargetId = 390000,
+									AngleHeroTowardTargetId = 423052,
 									Text =
 									"Just tell me one thing, Zagreus. Did you really mean what you told me before, that... maybe we ought to... take our time?"
 								},
