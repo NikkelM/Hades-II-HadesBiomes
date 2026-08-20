@@ -25,6 +25,7 @@ Other fixes and improvements:
 - Fixed: Wretched Witches summoned by Hades during his boss fight fire three bursts of three large projectiles that split into five smaller projectiles, instead of one burst of three large projectiles that split into ten smaller projectiles.
 - Fixed: Damage taken from the Tiny Vermin is categorized as damage taken from Crawlers in the Damage Taken record in the run clear screen.
 - Fixed: Clones created by Elite enemies with the "Cloner" perk can create Revenants, Lone Shades, Exalted Shades, or be resurrected by Night Bloom.
+- Fixed: After killing certain enemies while also inflicting a freeze effect on them at the same time, the associated VFX can continue sliding over the ground for a split second.
 - Fixed: The voiceline that is supposed to play when attempting to interact with the locked Keepsake Cabinet in post-boss rooms may not play in some cases.
 - Fixed: The boons presented by Orpheus & Eurydice once they are reunited may be in a different order than expected.
 - Fixed: Meeting Orpheus is not counted towards the unlock conditions of the "Close at Heart" Minor Prophecy.
