@@ -312,6 +312,7 @@ local function on_ready()
 	import "Scripts/Meta/AnimationDuplicatesDataNPCs.lua"
 	import "Scripts/Meta/AnimationDuplicatesDataPortraits.lua"
 	import "Scripts/Meta/ScreenDataInstallation.lua"
+	import "Scripts/Meta/SpeedrunPresentation.lua"
 	import "Scripts/Meta/StorytellerVoicelines.lua"
 	import "Scripts/Meta/ZagreusFieldVoicelines.lua"
 	DebugLogScriptImportProgress("additional meta")
