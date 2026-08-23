@@ -13,6 +13,8 @@ local hadesTwoMelinoeSpellVFXModifications = {
 }
 
 sjson.hook(hadesTwoMelinoeSpellVFXFile, function(data)
+	mod.RunInstallStep("Melinoe_Spell_VFX")
+
 	local sjsonLoads = mod.TryLoadCachedSjsonFile("sjsonLoads.sjson") or {}
 	sjsonLoads["Melinoe_Spell_VFX"] = true
 	mod.SaveCachedSjsonFile("sjsonLoads.sjson", sjsonLoads)

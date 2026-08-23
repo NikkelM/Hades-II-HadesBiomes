@@ -544,6 +544,11 @@ end
 function mod.WriteSjsonData(sjsonDataRelativePath, data)
 	local absolutePath = rom.path.combine(_PLUGIN.sjson_data_path, sjsonDataRelativePath)
 
+	-- Ensure correct order as expected by the engine
+	if data.lang ~= nil and sjson.get_order(data) == nil then
+		data = sjson.to_object(data, { "lang", "Texts" })
+	end
+
 	sjson.encode_file(absolutePath, data)
 	rom.data.register_sjson_file(absolutePath)
 
@@ -728,6 +733,21 @@ function mod.ModConfigLeafKeyHasValue(source, args)
 
 	---@diagnostic disable-next-line: undefined-global
 	return public.GetModConfigValueByLeafKey(args.LeafKey) == args.ExpectedValue
+end
+
+--- Returns true if any setting in the given config group is enabled, descending into nested groups.
+---@param configGroup table The config group to check, e.g. config or config.speedrunning.
+---@return boolean anyEnabled
+function mod.AnyConfigSettingEnabled(configGroup)
+	for _, value in pairs(configGroup or {}) do
+		if value == true then
+			return true
+		elseif type(value) == "table" and mod.AnyConfigSettingEnabled(value) then
+			return true
+		end
+	end
+
+	return false
 end
 
 --- Maps a duplicate TextLineSet name (one that exists in both Hades and Hades II) to its deduplicated ModsNikkelMHadesBiomes_ version

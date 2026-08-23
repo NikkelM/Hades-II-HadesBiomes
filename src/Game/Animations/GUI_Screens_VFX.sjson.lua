@@ -258,6 +258,8 @@ local addAnimations = {
 }
 
 sjson.hook(hadesTwoScreensVFXFile, function(data)
+	mod.RunInstallStep("GUI_Screens_VFX")
+
 	local sjsonLoads = mod.TryLoadCachedSjsonFile("sjsonLoads.sjson") or {}
 	sjsonLoads["GUI_Screens_VFX"] = true
 	mod.SaveCachedSjsonFile("sjsonLoads.sjson", sjsonLoads)

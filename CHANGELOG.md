@@ -11,9 +11,11 @@
 
 Other fixes and improvements:
 - Added new speedrunning settings to disable the Barge of Death, Asterius and Tiny Vermin miniboss encounters, either all at once or individually.
+- Added an on-screen indicator that is shown while any of the speedrunning settings are enabled.
 - Added a new Minor Prophecy unlocked by talking to Poseidon in the Nightmare Realm.
 - Added NPCs added by Zagreus' Journey to [PonyMenu](https://thunderstore.io/c/hades-ii/p/PonyWarrior/PonyMenu/).
-- Updated the mod installation/update process to take only about half the time it used to take.
+- Reduced mod install time by ~50% by switching to a new internal file copy process.
+- Reduced mod load time by ~50% by moving work previously done at each game start and save load to a single install-time activity.
 - Balancing: You can now destroy the butterflies created by Soul Spawners with your attacks and specials.
 - Balancing: Exalted Shades can no longer create Lone Shades when dying.
 - Balancing: Slightly reduced the base encounter difficulty of wing-end combat rooms in the Temple of Styx.

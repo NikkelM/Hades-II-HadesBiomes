@@ -32,4 +32,3 @@ modutil.mod.Path.Wrap("MarketScreenMouseOffItem", function(base, button)
 
 	return base(button)
 end)
-

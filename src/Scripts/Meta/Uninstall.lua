@@ -19,14 +19,13 @@ local function removeSjsonDataFiles()
 		mod.HadesGUIAnimationsSjsonDataPath,
 		mod.HadesPortraitAnimationsSjsonDataPath,
 		mod.HadesCharacterAnimationsNPCsSjsonDataPath,
+		mod.HadesCharacterAnimationsEnemiesSjsonDataPath,
+		mod.HadesEnemyAnimationsSjsonDataPath,
 	}) do
 		mod.RemoveFile(rom.path.combine(_PLUGIN.sjson_data_path, sjsonDataRelativePath))
 	end
 
-	local allHelpTextFileNames = game.DeepCopyTable(mod.HadesHelpTextFileNames) or {}
-	for fileName, _ in pairs(mod.NPCTextFileNames) do
-		table.insert(allHelpTextFileNames, fileName)
-	end
+	local allHelpTextFileNames = mod.GetAllGeneratedTextFileNames()
 	for _, fileName in ipairs(allHelpTextFileNames) do
 		for _, language in ipairs(mod.HelpTextLanguages) do
 			if not (mod.HadesHelpTextFileSkipMap[fileName] and mod.HadesHelpTextFileSkipMap[fileName][language]) then

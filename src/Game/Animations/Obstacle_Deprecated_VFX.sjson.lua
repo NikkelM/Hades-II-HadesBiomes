@@ -508,6 +508,8 @@ local addAnimations = {
 }
 
 sjson.hook(hadesTwoTartarusObstacleFile, function(data)
+	mod.RunInstallStep("Obstacle_Deprecated_VFX")
+
 	local sjsonLoads = mod.TryLoadCachedSjsonFile("sjsonLoads.sjson") or {}
 	sjsonLoads["Obstacle_Deprecated_VFX"] = true
 	mod.SaveCachedSjsonFile("sjsonLoads.sjson", sjsonLoads)
