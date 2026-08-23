@@ -1,30 +1,41 @@
 -- #region New/Imported text lines
 
 -- #region Helper functions for AddNarrativeDataEntries
-local function dialogueNameExistsInHadesTwo(name)
-	-- These tables don't contain dialogues (in NarrativeData) and should not be checked
-	local nonDialogueNarrativeFields = {
-		BonusGiftHeartRequirements = true,
-		SpecialGiftTrackHintRequirements = true,
-		SpecialKeepsakeEventRequirements = true,
-		ChoiceButtons = true,
-	}
+local hadesTwoDialogueNames = nil
 
-	for _, source in pairs(game.NarrativeData) do
-		if type(source) == "table" then
-			for key, childTable in pairs(source) do
-				if type(childTable) == "table" and not nonDialogueNarrativeFields[key] then
-					for _, entry in pairs(childTable) do
-						-- Entries are either a dialogue name or a group (table) of dialogue names
-						if entry == name or (type(entry) == "table" and game.Contains(entry, name)) then
-							return true
+local function dialogueNameExistsInHadesTwo(name)
+	-- Built once on first use, before any modded text lines have been inserted, so our own additions cannot cause false positives
+	if hadesTwoDialogueNames == nil then
+		-- These tables don't contain dialogues (in NarrativeData) and should not be checked
+		local nonDialogueNarrativeFields = {
+			BonusGiftHeartRequirements = true,
+			SpecialGiftTrackHintRequirements = true,
+			SpecialKeepsakeEventRequirements = true,
+			ChoiceButtons = true,
+		}
+
+		hadesTwoDialogueNames = {}
+		for _, source in pairs(game.NarrativeData) do
+			if type(source) == "table" then
+				for key, childTable in pairs(source) do
+					if type(childTable) == "table" and not nonDialogueNarrativeFields[key] then
+						for _, entry in pairs(childTable) do
+							-- Entries are either a dialogue name or a group (table) of dialogue names
+							if type(entry) == "table" then
+								for _, groupedEntry in pairs(entry) do
+									hadesTwoDialogueNames[groupedEntry] = true
+								end
+							else
+								hadesTwoDialogueNames[entry] = true
+							end
 						end
 					end
 				end
 			end
 		end
 	end
-	return false
+
+	return hadesTwoDialogueNames[name] == true
 end
 
 local function insertAfterGroup(priorityTable, target, entry, textLineKey)
