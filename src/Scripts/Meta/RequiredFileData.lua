@@ -738,6 +738,20 @@ mod.UninstallOnlyMapFileMappings = {
 	["C_Combat15"] = "Y_Combat15",
 }
 
+-- Packages that used to be copied into the game install directory, which no versions since 1.0.0 clean up
+mod.UninstallOnlyPackageFileNames = {
+	"TartarusModsNikkelMHadesBiomes",
+	"AsphodelModsNikkelMHadesBiomes",
+	"ElysiumModsNikkelMHadesBiomes",
+	"StyxModsNikkelMHadesBiomes",
+	"SurfaceModsNikkelMHadesBiomes",
+	"RoomManagerModsNikkelMHadesBiomes",
+	"FxModsNikkelMHadesBiomes",
+	"GUIModsNikkelMHadesBiomes",
+	"ModsNikkelMHadesBiomesPortraits",
+	"ModsNikkelMHadesBiomesFxModded",
+}
+
 -- .map_text files that should be copied from the plugins_data folder instead of the Hades installation, as they have modifications from the original
 mod.MapTextFileNames = {
 	-- A new Terrain group was added to resolve flickering tiles next to where the player spawns

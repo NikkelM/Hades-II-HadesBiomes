@@ -764,6 +764,23 @@ function mod.MapDuplicateTextLineName(name)
 	return name
 end
 
+---Compares two version strings numerically, so that e.g. 1.10.0 correctly sorts above 1.2.0 unlike a plain string comparison.
+---@param version string|nil The version to check.
+---@param comparedTo string The version to compare against.
+---@return boolean isOlder True if version is older/smaller than comparedTo.
+function mod.IsVersionOlderThan(version, comparedTo)
+	local function versionKey(versionString)
+		local major, minor, patch = tostring(versionString or ""):match("(%d+)%.(%d+)%.(%d+)")
+		if not major then
+			return -1
+		end
+
+		return major * 1000000 + minor * 1000 + patch
+	end
+
+	return versionKey(version) < versionKey(comparedTo)
+end
+
 if config.debugging.enableVanillaDebugPrint then
 	modutil.mod.Path.Wrap("DebugPrint", function(base, args)
 		mod.DebugPrint(args.Text, 4)

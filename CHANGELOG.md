@@ -44,6 +44,7 @@ Other fixes and improvements:
 - Fixed: The fade-in animation of the Record Keeper's screen is missing some smoother animations on the bar graphs that exist in the base game.
 - Fixed: The vanilla Hades II intro video plays before Zagreus' Journey fresh file runs.
 - Fixed: If the plugins_data folder for the mod is read-only and the installation fails due to it, the mod doesn't recognize this correctly.
+- Fixed: If the mod was installed before 0.1.0, some leftover package files may have remained in the game install directory after updating, which will now be removed correctly.
 <!--Releasenotes end-->
 
 ## v1.2.0
