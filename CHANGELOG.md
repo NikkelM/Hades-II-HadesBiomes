@@ -7,6 +7,7 @@
 - You may now naturally encounter Artemis and Athena in Zagreus' Journey, and they will use their dialogues from the first game when you speak to one of them.
 - Picking up boons from Aphrodite, Ares, Chaos, Demeter, Hermes, Poseidon or Zeus while in a Zagreus' Journey run will now use their respective dialogues and advance their storylines from the first game.
 - Picking up a boon from Hermes while in a Zagreus' Journey run may now have him deliver a message from the first game's Dionysus to you (as Dionysus cannot be encountered during Zagreus' Journey runs), allowing you to experience his storyline.
+- Balancing: Slightly reduced health and armour of non-boss enemies in all biomes.
 - Fixed: Goddess Mode does not reduce boss health. Enabling it will now reduce boss health by about 25% of the difference between the health they had in Hades and the health they have with Goddess Mode disabled.
 
 Other fixes and improvements:

@@ -24,17 +24,17 @@ mod.ExpectedNumSjsonHooks = 25
 -- All enemies have more health and armour in modded runs, scales with each biome
 -- Should not apply to bosses, which should opt out using ModsNikkelMHadesBiomesIgnoreModdedHealthModifiers and define their own modified health
 mod.ModdedUnitMaxHealthMultiplierBonus = {
-	Default = 0.38,
-	Tartarus = 0.32,
-	Asphodel = 0.38,
-	Elysium = 0.40,
-	Styx = 0.45
+	Default = 0.35,
+	Tartarus = 0.30,
+	Asphodel = 0.35,
+	Elysium = 0.38,
+	Styx = 0.42
 }
 mod.ModdedUnitHealthBufferMultiplierBonus = {
-	Default = 0.13,
-	Tartarus = 0.09,
-	Asphodel = 0.13,
-	Elysium = 0.18,
+	Default = 0.11,
+	Tartarus = 0.06,
+	Asphodel = 0.11,
+	Elysium = 0.16,
 	Styx = 0.2
 }
 
