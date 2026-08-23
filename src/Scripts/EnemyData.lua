@@ -1038,7 +1038,7 @@ local enemyModifications = {
 	},
 	HeavyRangedElite = {
 		-- The tethers don't teleport and instead float over to the new location
-		BlockAttributes = { "Blink" },
+		BlockAttributes = { "Blink", "ExtraDamage" },
 	},
 	Swarmer = {
 		StunAnimations = { Default = "EnemyWretchSwarmerAlert", },
@@ -2870,6 +2870,7 @@ local enemyModifications = {
 	},
 	HeavyRangedForkedElite = {
 		DeathAnimation = "HeavyRangedForkedDeath",
+		BlockAttributes = { "ExtraDamage" },
 		EliteAttributeOptions = game.CombineTables(game.EnemySets.GenericEliteAttributes, { "Metallic", }),
 	},
 	ThiefImpulseMineLayer = {
