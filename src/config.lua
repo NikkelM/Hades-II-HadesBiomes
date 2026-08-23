@@ -28,6 +28,7 @@ local config = {
   },
 }
 
+---@type mod_settings.config_desc
 local configDesc = {
   enabled =
   "Whether the mod is enabled or not. Do not disable this while in a Zagreus' Journey run or region!",
