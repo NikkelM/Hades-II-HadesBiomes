@@ -15,8 +15,8 @@ Other fixes and improvements:
 - Added an on-screen indicator that is shown while any of the speedrunning settings are enabled.
 - Added a new Minor Prophecy unlocked by talking to Poseidon in the Nightmare Realm.
 - Added NPCs added by Zagreus' Journey to [PonyMenu](https://thunderstore.io/c/hades-ii/p/PonyWarrior/PonyMenu/).
-- Reduced mod install time by ~50% by switching to a new internal file copy process.
-- Reduced mod load time by ~50% by moving work previously done at each game start and save load to a single install-time activity.
+- Reduced mod install/update time by ~50% by switching to a new internal file copy process.
+- Reduced mod load time by up to ~60% by moving work previously done at each game start and save load to install-time activities, and optimizing some recurring setup processes.
 - Added an on-screen indicator if any setting in the "Speedrunning" category is enabled.
 - Balancing: You can now destroy the butterflies created by Soul Spawners with your attacks and specials.
 - Balancing: Exalted Shades can no longer create Lone Shades when dying.
