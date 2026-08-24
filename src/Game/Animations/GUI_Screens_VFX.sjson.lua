@@ -11,7 +11,7 @@ local hadesTwoScreenVFXModifications = {
 	},
 	-- Change the ChildAnimation to the X, so that it gets rendered below the two logos
 	MainMenuIn = {
-		ChildAnimation = "ModsNikkelMHadesBiomes_MainMenuDelay",
+		ChildAnimation = "ModsNikkelMHadesBiomes_MainMenuMashupX_Early",
 	},
 	MainMenuLoop = {
 		ChildAnimation = "ModsNikkelMHadesBiomes_MainMenuMashupX",
@@ -31,14 +31,15 @@ local addParentAnimations = {
 		FilePath = "NikkelM-HadesBiomesMainMenu\\Screens\\Logo\\MashupX",
 		StartScale = 0.5,
 		EndScale = 0.505,
-		OffsetX = -1051,
-		OffsetY = -754.5,
-		Duration = 0.5,
+		OffsetX = -180,
+		OffsetY = -425,
+		Duration = 2.2,
 		Loop = false,
 		HoldLastFrame = true,
 		StartAlpha = 0,
 		EndAlpha = 1,
-		EaseIn = 0,
+		-- The negative EaseIn keeps the logo hidden for the first 1.7s until the intro animation has completed, then fades it in over 0.5s
+		EaseIn = -7.25333,
 		EaseOut = 1,
 		FlipHorizontal = true,
 		ChildAnimation = "ModsNikkelMHadesBiomes_MainMenuMashupLogo_Early",
@@ -48,14 +49,14 @@ local addParentAnimations = {
 		FilePath = "NikkelM-HadesBiomesMainMenu\\Screens\\Logo\\HadesLogo",
 		StartScale = 0.55,
 		EndScale = 0.56,
-		OffsetX = -820,
-		OffsetY = -747,
-		Duration = 0.5,
+		OffsetX = 250,
+		OffsetY = -370,
+		Duration = 2.2,
 		Loop = false,
 		HoldLastFrame = true,
 		StartAlpha = 0,
 		EndAlpha = 1,
-		EaseIn = 0,
+		EaseIn = -7.25333,
 		EaseOut = 1,
 		-- The original H2 outline/logo
 		ChildAnimation = "MainMenuLogoOutline_Early",
@@ -65,14 +66,14 @@ local addParentAnimations = {
 		FilePath = "Screens\\MainMenu\\HadesLogoOutline",
 		StartScale = 0.6825,
 		EndScale = 0.6826,
-		OffsetX = -1443.5,
-		OffsetY = -762.5,
-		Duration = 0.5,
+		OffsetX = -708,
+		OffsetY = -326,
+		Duration = 2.2,
 		Loop = false,
 		HoldLastFrame = true,
 		StartAlpha = 0,
 		EndAlpha = 1,
-		EaseIn = 0,
+		EaseIn = -7.25333,
 		EaseOut = 1,
 	},
 }
@@ -214,12 +215,6 @@ local addAnimations = {
 	},
 	-- #endregion
 	-- #region Main Menu
-	-- Dummy animation that's only there to delay the logo fade-in
-	ModsNikkelMHadesBiomes_MainMenuDelay = {
-		Name = "ModsNikkelMHadesBiomes_MainMenuDelay",
-		ChainTo = "ModsNikkelMHadesBiomes_MainMenuMashupX_Early",
-		Duration = 1.7,
-	},
 	ModsNikkelMHadesBiomes_MainMenuMashupX = {
 		Name = "ModsNikkelMHadesBiomes_MainMenuMashupX",
 		FilePath = "NikkelM-HadesBiomesMainMenu\\Screens\\Logo\\MashupX",
