@@ -306,153 +306,88 @@ local newMarketCropValues = {
 }
 -- #endregion
 
--- #region Boss Resources
-local newBossResourceValues = {
-	-- Tartarus -> Erebus/Ephyra
-	{
-		BuyName = "MixerFBoss",
-		BuyAmount = 1,
-		Cost = {
-			ModsNikkelMHadesBiomes_BossResourceTartarus = 2,
-		},
-		-- ConsumeSound of the drop of the resource you're buying
-		PurchaseSound = "/SFX/HeatCollectionPickupReverse2",
-		GameStateRequirements = {
-			{
-				Path = { "GameState", "LifetimeResourcesGained", "MixerFBoss" },
-				Comparison = ">=",
-				Value = 3,
-			},
-			{
-				PathTrue = { "GameState", "LifetimeResourcesGained", "ModsNikkelMHadesBiomes_BossResourceTartarus" },
-			},
-		},
+-- #region Resource Trades
+local regionTradeOrder = { "Tartarus", "Asphodel", "Elysium", "Styx" }
+local resourceTypeTradeOrder = { "Plant", "Crop", "Ore", "BossResource" }
+local vanillaTradeTargets = {
+	Tartarus = {
+		Plant = { "PlantFMoly", "PlantNMoss" },
+		Crop = { "PlantFNightshade", "PlantNGarlic" },
+		Ore = { "OreFSilver", "OreNBronze" },
+		BossResource = { "MixerFBoss", "MixerNBoss" },
 	},
-	{
-		BuyName = "MixerNBoss",
-		BuyAmount = 1,
-		Cost = {
-			ModsNikkelMHadesBiomes_BossResourceTartarus = 2,
-		},
-		PurchaseSound = "/SFX/WoolPickup",
-		GameStateRequirements = {
-			{
-				Path = { "GameState", "LifetimeResourcesGained", "MixerNBoss" },
-				Comparison = ">=",
-				Value = 3,
-			},
-			{
-				PathTrue = { "GameState", "LifetimeResourcesGained", "ModsNikkelMHadesBiomes_BossResourceTartarus" },
-			},
-		},
+	Asphodel = {
+		Plant = { "PlantGLotus", "PlantODriftwood" },
+		Crop = { "PlantGCattail", "PlantOMandrake" },
+		Ore = { "OreGLime", "OreOIron" },
+		BossResource = { "MixerGBoss", "MixerOBoss" },
 	},
-	-- Asphodel -> Oceanus/Thessaly
-	{
-		BuyName = "MixerGBoss",
-		BuyAmount = 1,
-		Cost = {
-			ModsNikkelMHadesBiomes_BossResourceAsphodel = 2,
-		},
-		GameStateRequirements = {
-			{
-				Path = { "GameState", "LifetimeResourcesGained", "MixerGBoss" },
-				Comparison = ">=",
-				Value = 3,
-			},
-			{
-				PathTrue = { "GameState", "LifetimeResourcesGained", "ModsNikkelMHadesBiomes_BossResourceAsphodel" },
-			},
-		},
+	Elysium = {
+		Plant = { "PlantHMyrtle", "PlantPIris" },
+		Crop = { "PlantHWheat", "PlantPOlive" },
+		Ore = { "OreHGlassrock", "OrePAdamant" },
+		BossResource = { "MixerHBoss", "MixerPBoss" },
 	},
-	{
-		BuyName = "MixerOBoss",
-		BuyAmount = 1,
-		Cost = {
-			ModsNikkelMHadesBiomes_BossResourceAsphodel = 2,
-		},
-		PurchaseSound = "/SFX/ApplePickup",
-		GameStateRequirements = {
-			{
-				Path = { "GameState", "LifetimeResourcesGained", "MixerOBoss" },
-				Comparison = ">=",
-				Value = 3,
-			},
-			{
-				PathTrue = { "GameState", "LifetimeResourcesGained", "ModsNikkelMHadesBiomes_BossResourceAsphodel" },
-			},
-		},
-	},
-	-- Elysium -> Fields/Olympus
-	{
-		BuyName = "MixerHBoss",
-		BuyAmount = 1,
-		Cost = {
-			ModsNikkelMHadesBiomes_BossResourceElysium = 2,
-		},
-		PurchaseSound = "/SFX/TearPickup",
-		GameStateRequirements = {
-			{
-				Path = { "GameState", "LifetimeResourcesGained", "MixerHBoss" },
-				Comparison = ">=",
-				Value = 3,
-			},
-			{
-				PathTrue = { "GameState", "LifetimeResourcesGained", "ModsNikkelMHadesBiomes_BossResourceElysium" },
-			},
-		},
-	},
-	{
-		BuyName = "MixerPBoss",
-		BuyAmount = 1,
-		Cost = {
-			ModsNikkelMHadesBiomes_BossResourceElysium = 2,
-		},
-		PurchaseSound = "/SFX/FeatherPickup",
-		GameStateRequirements = {
-			{
-				Path = { "GameState", "LifetimeResourcesGained", "MixerPBoss" },
-				Comparison = ">=",
-				Value = 3,
-			},
-			{
-				PathTrue = { "GameState", "LifetimeResourcesGained", "ModsNikkelMHadesBiomes_BossResourceElysium" },
-			},
-		},
-	},
-	-- Styx -> Tartarus/Summit
-	{
-		BuyName = "MixerIBoss",
-		BuyAmount = 1,
-		Cost = {
-			ModsNikkelMHadesBiomes_BossResourceStyx = 2,
-		},
-		PurchaseSound = "/SFX/ChronosZSandPickupSFX",
-		GameStateRequirements = {
-			{
-				PathTrue = { "GameState", "ReachedTrueEnding" },
-			},
-			{
-				PathTrue = { "GameState", "LifetimeResourcesGained", "ModsNikkelMHadesBiomes_BossResourceStyx" },
-			},
-		},
-	},
-	{
-		BuyName = "MixerQBoss",
-		BuyAmount = 1,
-		Cost = {
-			ModsNikkelMHadesBiomes_BossResourceStyx = 2,
-		},
-		PurchaseSound = "/SFX/VoidLensPickupSFX",
-		GameStateRequirements = {
-			{
-				PathTrue = { "GameState", "ReachedTrueEnding" },
-			},
-			{
-				PathTrue = { "GameState", "LifetimeResourcesGained", "ModsNikkelMHadesBiomes_BossResourceStyx" },
-			},
-		},
+	Styx = {
+		Plant = { "PlantIShaderot", "PlantQFang" },
+		Crop = { "PlantIPoppy", "PlantQSnakereed" },
+		Ore = { "OreIMarble", "OreQScales" },
+		BossResource = { "MixerIBoss", "MixerQBoss" },
 	},
 }
+
+local genericTradePurchaseSound = "/Leftovers/World Sounds/Caravan Interior/MushroomLogInteract"
+local tradePurchaseSounds = {
+	MixerFBoss = "/SFX/HeatCollectionPickupReverse2",
+	MixerNBoss = "/SFX/WoolPickup",
+	MixerOBoss = "/SFX/ApplePickup",
+	MixerHBoss = "/SFX/TearPickup",
+	MixerPBoss = "/SFX/FeatherPickup",
+	MixerIBoss = "/SFX/ChronosZSandPickupSFX",
+	MixerQBoss = "/SFX/VoidLensPickupSFX",
+}
+
+local newResourceTradeValues = {}
+mod.NewBrokerTradeCostResources = {}
+for _, region in ipairs(regionTradeOrder) do
+	for _, resourceType in ipairs(resourceTypeTradeOrder) do
+		local costResource = "ModsNikkelMHadesBiomes_" .. resourceType .. region
+		local isBossResource = resourceType == "BossResource"
+		table.insert(mod.NewBrokerTradeCostResources, costResource)
+
+		for _, buyResource in ipairs(vanillaTradeTargets[region][resourceType]) do
+			-- All trades are 2:1
+			local tradeValue = {
+				BuyName = buyResource,
+				BuyAmount = 1,
+				Cost = { [costResource] = 2 },
+				PurchaseSound = tradePurchaseSounds[buyResource],
+			}
+			if isBossResource then
+				local unlockRequirement = {
+					-- Can only trade for boss resources if you already own at least three of the H2 equivalent resources
+					Path = { "GameState", "LifetimeResourcesGained", buyResource },
+					Comparison = ">=",
+					Value = 3,
+				}
+				if region == "Styx" then
+					-- Can only trade for H2 end-boss resources after the ending to prevent softlocks
+					unlockRequirement = { PathTrue = { "GameState", "ReachedTrueEnding" } }
+				end
+				tradeValue.GameStateRequirements = {
+					unlockRequirement,
+					-- Must know about the resource you're buying
+					{ PathTrue = { "GameState", "LifetimeResourcesGained", costResource } },
+				}
+			else
+				tradeValue.PurchaseSound = tradeValue.PurchaseSound or genericTradePurchaseSound
+				tradeValue.Priority = true
+			end
+			table.insert(newResourceTradeValues, tradeValue)
+		end
+	end
+end
+
 -- Add a new category to the broker screen
 mod.NewBrokerBossTradeCategory = {
 	Name = "ModsNikkelMHadesBiomes_MarketScreen_Resources",
@@ -468,29 +403,15 @@ mod.NewBrokerBossTradeCategory = {
 			Comparison = ">=",
 			Value = 1,
 		},
-		-- To only show this when the player has ever obtained a boss resource to trade here, and that resource can also already be traded in (the trade is unlocked)
 		{
-			PathTrue = { "GameState", "LifetimeResourcesGained", "ModsNikkelMHadesBiomes_BossResourceTartarus" },
+			Path = { "GameState", "LifetimeResourcesGained" },
+			SumOf = mod.NewBrokerTradeCostResources,
+			Comparison = ">=",
+			Value = 10,
 		},
-		OrRequirements = {
-			{
-				{
-					Path = { "GameState", "LifetimeResourcesGained", "MixerFBoss" },
-					Comparison = ">=",
-					Value = 3,
-				},
-			},
-			{
-				{
-					Path = { "GameState", "LifetimeResourcesGained", "MixerNBoss" },
-					Comparison = ">=",
-					Value = 3,
-				},
-			},
-		}
 	},
 }
-mod.NewBrokerBossTradeCategory = game.ConcatTableValuesIPairs(mod.NewBrokerBossTradeCategory, newBossResourceValues) or
+mod.NewBrokerBossTradeCategory = game.ConcatTableValuesIPairs(mod.NewBrokerBossTradeCategory, newResourceTradeValues) or
 		{}
 table.insert(game.ScreenData.MarketScreen.ItemCategories, mod.NewBrokerBossTradeCategory)
 -- #endregion
