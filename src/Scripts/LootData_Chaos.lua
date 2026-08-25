@@ -1747,7 +1747,7 @@ local newModdedInteractTextLines = {
 			PostLineAnim = "MelinoeIdleWeaponless",
 			PostLineAnimTarget = "Hero",
 			Text =
-			"Almighty Chaos, indeed I have traveled through the portal you opened within the Crossroads. How is it possible that I'm here? This Tartarus, it feels familiar, but... different."
+			"Almighty Chaos, indeed I have traveled through the portal you opened within the Crossroads. How is it possible that I'm here? This place you say is Tartarus, it feels familiar, but... different."
 		},
 		{
 			Cue = "/VO/ModsNikkelMHadesBiomes_Chaos_ChaosAboutNightmareRuns01_0001",
