@@ -2090,7 +2090,6 @@ local newPortedDuoPickupTextLines = {
 }
 mod.AddNarrativeDataEntries(newPortedDuoPickupTextLines, "PoseidonUpgrade", "DuoPickupTextLines",
 	{
-		VoiceBankMappings = {}, -- H2 loads only the selected duo speakers from their Cue names
 		CueMappings = { Aphrodite_ = "Modsnikkelmhadesbiomesaphrodite_", Ares_ = "Modsnikkelmhadesbiomesares_", Demeter_ = "Modsnikkelmhadesbiomesdemeter_", Poseidon_ = "Modsnikkelmhadesbiomesposeidon_", Zeus_ = "Modsnikkelmhadesbiomeszeus_" },
 		PortraitMappings = { Aphrodite_ = "ModsNikkelMHadesBiomes_Portrait_Aphrodite_Default_01", Ares_ = "ModsNikkelMHadesBiomes_Portrait_Ares_Default_01", Demeter_ = "ModsNikkelMHadesBiomes_Portrait_Demeter_Default_01", Poseidon_ = "ModsNikkelMHadesBiomes_Portrait_Poseidon_Default_01", Zeus_ = "ModsNikkelMHadesBiomes_Portrait_Zeus_Default_01" },
 	}
