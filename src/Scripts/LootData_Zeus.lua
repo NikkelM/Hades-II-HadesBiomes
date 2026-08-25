@@ -1667,10 +1667,13 @@ local newPortedInteractTextLines = {
 	},
 	-- #endregion
 }
-mod.AddNarrativeDataEntries(
-	newPortedInteractTextLines, "ZeusUpgrade", "InteractTextLineSets", "InteractTextLinePriorities",
-	{ Zeus = { "Modsnikkelmhadesbiomeszeus", "ZagreusField" } }, { Zeus_ = "Modsnikkelmhadesbiomeszeus_" },
-	{ Zeus_ = "ModsNikkelMHadesBiomes_Portrait_Zeus_Default_01" }
+mod.AddNarrativeDataEntries(newPortedInteractTextLines, "ZeusUpgrade", "InteractTextLineSets",
+	{
+		TextLinePriorityType = "InteractTextLinePriorities",
+		VoiceBankMappings = { Zeus = { "Modsnikkelmhadesbiomeszeus", "ZagreusField" } },
+		CueMappings = { Zeus_ = "Modsnikkelmhadesbiomeszeus_" },
+		PortraitMappings = { Zeus_ = "ModsNikkelMHadesBiomes_Portrait_Zeus_Default_01" },
+	}
 )
 
 -- #region Hades I duo dialogues
@@ -1678,60 +1681,87 @@ local newPortedDuoPickupTextLines = {
 	{
 		Name = "ZeusWithAres01",
 		PlayOnce = true,
-		PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+		PreEventFunctionName = "BoonInteractPresentation",
+		PreEventFunctionArgs = { PickupWait = 1.0, },
 		HasTraitNameInRoom = "AutoRetaliateTrait",
-		{ Cue = "/VO/Zeus_0126",
+		{
+			Cue = "/VO/Zeus_0126",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			Text = "Nephew! By my divine authority, my oft-misunderstood son, Ares, now shall lend you a small token of his power. I'll make him helpful yet!" },
-		{ Cue = "/VO/Ares_0118",
+			Text =
+			"Nephew! By my divine authority, my oft-misunderstood son, Ares, now shall lend you a small token of his power. I'll make him helpful yet!"
+		},
+		{
+			Cue = "/VO/Ares_0118",
 			PortraitExitWait = 0.35,
-			PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
+			PreLineFunctionName = "BoonInteractPresentation",
+			PreLineWait = 0.5,
 			StartSound = "/SFX/AresWrathBattle",
 			EndSound = "/Leftovers/World Sounds/MapZoomInShort",
-			Speaker = "NPC_Ares_01", Portrait = "Portrait_Ares_Default_01",
-			Text = "It shall be exactly as you say, Lord Father. Your wishes are identical to mine." },
+			Speaker = "NPC_Ares_01",
+			Portrait = "Portrait_Ares_Default_01",
+			Text = "It shall be exactly as you say, Lord Father. Your wishes are identical to mine."
+		},
 	},
 	{
 		Name = "ZeusWithAphrodite01",
 		PlayOnce = true,
-		PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+		PreEventFunctionName = "BoonInteractPresentation",
+		PreEventFunctionArgs = { PickupWait = 1.0, },
 		HasTraitNameInRoom = "RegeneratingCappedSuperTrait",
 		RequiredFalseTextLines = { "OlympianReunionQuestComplete" },
-		{ Cue = "/VO/Zeus_0200",
+		{
+			Cue = "/VO/Zeus_0200",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			Text = "Young man, I know you'd like to get to know the comely Aphrodite face to face, or I don't know, you can decide once you arrive at last! He can decide, isn't that right, my Lady Aphrodite, hm?" },
-		{ Cue = "/VO/Aphrodite_0188",
+			Text =
+			"Young man, I know you'd like to get to know the comely Aphrodite face to face, or I don't know, you can decide once you arrive at last! He can decide, isn't that right, my Lady Aphrodite, hm?"
+		},
+		{
+			Cue = "/VO/Aphrodite_0188",
 			PortraitExitWait = 0.35,
-			PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
+			PreLineFunctionName = "BoonInteractPresentation",
+			PreLineWait = 0.5,
 			StartSound = "/SFX/AphroditeBoonLoveChimes",
 			EndSound = "/Leftovers/World Sounds/MapZoomInShort",
 			Emote = "PortraitEmoteCheerful",
-			Speaker = "NPC_Aphrodite_01", Portrait = "Portrait_Aphrodite_Default_01",
-			Text = "Why, I never, Lord Zeus! That sounded rather like a crass remark, from {#DialogueItalicFormat}you{#PreviousFormat}! How shocking that the golden standard for the rest of us should have such words for {#DialogueItalicFormat}me{#PreviousFormat}!" },
+			Speaker = "NPC_Aphrodite_01",
+			Portrait = "Portrait_Aphrodite_Default_01",
+			Text =
+			"Why, I never, Lord Zeus! That sounded rather like a crass remark, from {#DialogueItalicFormat}you{#PreviousFormat}! How shocking that the golden standard for the rest of us should have such words for {#DialogueItalicFormat}me{#PreviousFormat}!"
+		},
 	},
 	{
 		Name = "ZeusWithDemeter01",
 		PlayOnce = true,
-		PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+		PreEventFunctionName = "BoonInteractPresentation",
+		PreEventFunctionArgs = { PickupWait = 1.0, },
 		HasTraitNameInRoom = "JoltDurationTrait",
 		RequiredFalseTextLinesLastRun = { "DemeterWithZeus01" },
-		{ Cue = "/VO/Zeus_0202",
+		{
+			Cue = "/VO/Zeus_0202",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			Text = "Now, now, young man, whatever you have heard about good Demeter, I'm here to clear the air. She's like a sister to me, yes, but only thus. Although her Titan parents and my own met the same fate." },
-		{ Cue = "/VO/Demeter_0150",
+			Text =
+			"Now, now, young man, whatever you have heard about good Demeter, I'm here to clear the air. She's like a sister to me, yes, but only thus. Although her Titan parents and my own met the same fate."
+		},
+		{
+			Cue = "/VO/Demeter_0150",
 			PortraitExitWait = 0.35,
-			PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
+			PreLineFunctionName = "BoonInteractPresentation",
+			PreLineWait = 0.5,
 			StartSound = "/SFX/DemeterBoonFrost",
 			EndSound = "/Leftovers/World Sounds/MapZoomInShort",
-			Speaker = "NPC_Demeter_01", Portrait = "Portrait_Demeter_Default_01",
-			Text = "Why, Foster-Brother Zeus! Such an unlikely bit of candor there, from you! Almost as though you felt compelled to speak the truth only whilst I'm directly within earshot." },
+			Speaker = "NPC_Demeter_01",
+			Portrait = "Portrait_Demeter_Default_01",
+			Text =
+			"Why, Foster-Brother Zeus! Such an unlikely bit of candor there, from you! Almost as though you felt compelled to speak the truth only whilst I'm directly within earshot."
+		},
 	},
 }
-mod.AddNarrativeDataEntries(
-	newPortedDuoPickupTextLines, "ZeusUpgrade", "DuoPickupTextLines", nil,
-	{}, -- H2 loads only the selected duo speakers from their Cue names
-	{ Aphrodite_ = "Modsnikkelmhadesbiomesaphrodite_", Ares_ = "Modsnikkelmhadesbiomesares_", Demeter_ = "Modsnikkelmhadesbiomesdemeter_", Poseidon_ = "Modsnikkelmhadesbiomesposeidon_", Zeus_ = "Modsnikkelmhadesbiomeszeus_" },
-	{ Aphrodite_ = "ModsNikkelMHadesBiomes_Portrait_Aphrodite_Default_01", Ares_ = "ModsNikkelMHadesBiomes_Portrait_Ares_Default_01", Demeter_ = "ModsNikkelMHadesBiomes_Portrait_Demeter_Default_01", Poseidon_ = "ModsNikkelMHadesBiomes_Portrait_Poseidon_Default_01", Zeus_ = "ModsNikkelMHadesBiomes_Portrait_Zeus_Default_01" }
+mod.AddNarrativeDataEntries(newPortedDuoPickupTextLines, "ZeusUpgrade", "DuoPickupTextLines",
+	{
+		VoiceBankMappings = {}, -- H2 loads only the selected duo speakers from their Cue names
+		CueMappings = { Aphrodite_ = "Modsnikkelmhadesbiomesaphrodite_", Ares_ = "Modsnikkelmhadesbiomesares_", Demeter_ = "Modsnikkelmhadesbiomesdemeter_", Poseidon_ = "Modsnikkelmhadesbiomesposeidon_", Zeus_ = "Modsnikkelmhadesbiomeszeus_" },
+		PortraitMappings = { Aphrodite_ = "ModsNikkelMHadesBiomes_Portrait_Aphrodite_Default_01", Ares_ = "ModsNikkelMHadesBiomes_Portrait_Ares_Default_01", Demeter_ = "ModsNikkelMHadesBiomes_Portrait_Demeter_Default_01", Poseidon_ = "ModsNikkelMHadesBiomes_Portrait_Poseidon_Default_01", Zeus_ = "ModsNikkelMHadesBiomes_Portrait_Zeus_Default_01" },
+	}
 )
 -- #endregion
 
@@ -1822,10 +1852,13 @@ local newPortedLootBoughtTextLines = {
 		},
 	},
 }
-mod.AddNarrativeDataEntries(
-	newPortedLootBoughtTextLines, "ZeusUpgrade", "BoughtTextLines", "BoughtTextLinePriorities",
-	{ Zeus = { "Modsnikkelmhadesbiomeszeus" } }, { Zeus_ = "Modsnikkelmhadesbiomeszeus_" },
-	{ Zeus_ = "ModsNikkelMHadesBiomes_Portrait_Zeus_Default_01" }
+mod.AddNarrativeDataEntries(newPortedLootBoughtTextLines, "ZeusUpgrade", "BoughtTextLines",
+	{
+		TextLinePriorityType = "BoughtTextLinePriorities",
+		VoiceBankMappings = { Zeus = { "Modsnikkelmhadesbiomeszeus" } },
+		CueMappings = { Zeus_ = "Modsnikkelmhadesbiomeszeus_" },
+		PortraitMappings = { Zeus_ = "ModsNikkelMHadesBiomes_Portrait_Zeus_Default_01" },
+	}
 )
 
 local newPortedRejectionTextLines = {
@@ -2000,10 +2033,12 @@ local newPortedRejectionTextLines = {
 	},
 
 }
-mod.AddNarrativeDataEntries(
-	newPortedRejectionTextLines, "ZeusUpgrade", "RejectionTextLines", nil,
-	{ Zeus = { "Modsnikkelmhadesbiomeszeus" } }, { Zeus_ = "Modsnikkelmhadesbiomeszeus_" },
-	{ Zeus_ = "ModsNikkelMHadesBiomes_Portrait_Zeus_Default_01" }
+mod.AddNarrativeDataEntries(newPortedRejectionTextLines, "ZeusUpgrade", "RejectionTextLines",
+	{
+		VoiceBankMappings = { Zeus = { "Modsnikkelmhadesbiomeszeus" } },
+		CueMappings = { Zeus_ = "Modsnikkelmhadesbiomeszeus_" },
+		PortraitMappings = { Zeus_ = "ModsNikkelMHadesBiomes_Portrait_Zeus_Default_01" },
+	}
 )
 
 local newPortedMakeUpTextLines = {
@@ -2149,8 +2184,10 @@ local newPortedMakeUpTextLines = {
 		},
 	},
 }
-mod.AddNarrativeDataEntries(
-	newPortedMakeUpTextLines, "ZeusUpgrade", "MakeUpTextLines", nil,
-	{ Zeus = { "Modsnikkelmhadesbiomeszeus" } }, { Zeus_ = "Modsnikkelmhadesbiomeszeus_" },
-	{ Zeus_ = "ModsNikkelMHadesBiomes_Portrait_Zeus_Default_01" }
+mod.AddNarrativeDataEntries(newPortedMakeUpTextLines, "ZeusUpgrade", "MakeUpTextLines",
+	{
+		VoiceBankMappings = { Zeus = { "Modsnikkelmhadesbiomeszeus" } },
+		CueMappings = { Zeus_ = "Modsnikkelmhadesbiomeszeus_" },
+		PortraitMappings = { Zeus_ = "ModsNikkelMHadesBiomes_Portrait_Zeus_Default_01" },
+	}
 )

@@ -25,7 +25,8 @@ local newPortedInteractTextLines = {
 			PortraitExitWait = 1.25,
 			PreContentSound = "/Leftovers/Menu Sounds/TextReveal2",
 			UseEventEndSound = true,
-			Text = "Hoy there, little Hades! You recognize your uncle, do you not? We've a lot of catching up to do, but first things first, you get yourself out of that dour Underworld! As for me, I'll see if I can {#DialogueItalicFormat}stir {#PreviousFormat}things up a bit to cover your advance!",
+			Text =
+			"Hoy there, little Hades! You recognize your uncle, do you not? We've a lot of catching up to do, but first things first, you get yourself out of that dour Underworld! As for me, I'll see if I can {#DialogueItalicFormat}stir {#PreviousFormat}things up a bit to cover your advance!",
 		},
 	},
 	-- #endregion
@@ -46,7 +47,8 @@ local newPortedInteractTextLines = {
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
 			Emote = "PortraitEmoteFiredUp",
-			Text = "{#DialogueItalicFormat}Ah-haha{#PreviousFormat}! I knew that I could count on you, Nephew! So the ungrateful Theseus, the winsome prize he earned was just some chariot, correct? And he was vanquished on it, anyway! That's what he gets! Boasting his prize was greater than any in his mortal days, {#DialogueItalicFormat}pah{#PreviousFormat}!",
+			Text =
+			"{#DialogueItalicFormat}Ah-haha{#PreviousFormat}! I knew that I could count on you, Nephew! So the ungrateful Theseus, the winsome prize he earned was just some chariot, correct? And he was vanquished on it, anyway! That's what he gets! Boasting his prize was greater than any in his mortal days, {#DialogueItalicFormat}pah{#PreviousFormat}!",
 		},
 	},
 	{
@@ -58,7 +60,7 @@ local newPortedInteractTextLines = {
 		PreEventFunctionName = "BoonInteractPresentation",
 		PreEventFunctionArgs = { PickupWait = 1.0, },
 		GameStateRequirements = {
-		-- Removed PoseidonWrathIntro01 as requirement
+			-- Removed PoseidonWrathIntro01 as requirement
 			{
 				PathTrue = { "GameState", "TextLinesRecord", "PoseidonAboutFishing01" },
 			},
@@ -78,7 +80,8 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Poseidon_0148",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			EndSound = "/SFX/PoseidonBoonWaveCrash",
-			Text = "Nephew! I'm mightily impressed with your ability to cull those rivers there of all the denizens of my domain! Your crusty father's not entitled to the bounties of the sea! But, on my limitless authority, you {#DialogueItalicFormat}are{#PreviousFormat}! You have my Rod of Fishing... now have {#DialogueItalicFormat}this{#PreviousFormat}!",
+			Text =
+			"Nephew! I'm mightily impressed with your ability to cull those rivers there of all the denizens of my domain! Your crusty father's not entitled to the bounties of the sea! But, on my limitless authority, you {#DialogueItalicFormat}are{#PreviousFormat}! You have my Rod of Fishing... now have {#DialogueItalicFormat}this{#PreviousFormat}!",
 		},
 	},
 	{
@@ -97,7 +100,8 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Poseidon_0149",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "{#DialogueItalicFormat}Ah-haha-hah{#PreviousFormat}, little Hades, I was certain you'd the wherewithal to thin the ranks of the betraying river denizens who fled my surface-seas to your father's domain!! I bid you good fish-hunting forevermore!",
+			Text =
+			"{#DialogueItalicFormat}Ah-haha-hah{#PreviousFormat}, little Hades, I was certain you'd the wherewithal to thin the ranks of the betraying river denizens who fled my surface-seas to your father's domain!! I bid you good fish-hunting forevermore!",
 		},
 	},
 	{
@@ -116,7 +120,8 @@ local newPortedInteractTextLines = {
 			PostLineAnim = "ZagreusInteractEquip",
 			PostLineAnimTarget = "Hero",
 			PostLineFunctionName = "BoonInteractPresentation",
-			Text = "All right, here goes. In the name of Hades! Olympus! This is an official message! Uncle Poseidon, hope you can make this out.",
+			Text =
+			"All right, here goes. In the name of Hades! Olympus! This is an official message! Uncle Poseidon, hope you can make this out.",
 		},
 		{
 			Cue = "/VO/Poseidon_0238",
@@ -124,7 +129,8 @@ local newPortedInteractTextLines = {
 			PreContentSound = "/Leftovers/Menu Sounds/TextReveal2",
 			UseEventEndSound = true,
 			Emote = "PortraitEmoteSurprise",
-			Text = "What's this, Nephew? Why, isn't this a note? Or, part of one, addressed to me, but it appears there should be other pieces, for the others here? {#DialogueItalicFormat}Ah{#PreviousFormat}, it's like a sunken treasure, then! Which means I must seek its mysteries at once!",
+			Text =
+			"What's this, Nephew? Why, isn't this a note? Or, part of one, addressed to me, but it appears there should be other pieces, for the others here? {#DialogueItalicFormat}Ah{#PreviousFormat}, it's like a sunken treasure, then! Which means I must seek its mysteries at once!",
 		},
 	},
 	{
@@ -140,7 +146,8 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Poseidon_0239",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "You know, Nephew, I had a positively raucous time down there, with your old father, and Persephone, was she a sight! I never thought I'd see {#DialogueItalicFormat}her {#PreviousFormat}again! So then, we're one big happy family, at last! But you've a job to do, and we upon Olympus, we'll do our fair share!",
+			Text =
+			"You know, Nephew, I had a positively raucous time down there, with your old father, and Persephone, was she a sight! I never thought I'd see {#DialogueItalicFormat}her {#PreviousFormat}again! So then, we're one big happy family, at last! But you've a job to do, and we upon Olympus, we'll do our fair share!",
 		},
 	},
 	-- #endregion
@@ -162,7 +169,8 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Poseidon_0037",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "So, Nephew, my honored brother Zeus already has endowed you with his thunderous might? Well you shall soon forget about all that, after a taste of {#DialogueItalicFormat}this{#PreviousFormat}!",
+			Text =
+			"So, Nephew, my honored brother Zeus already has endowed you with his thunderous might? Well you shall soon forget about all that, after a taste of {#DialogueItalicFormat}this{#PreviousFormat}!",
 		},
 	},
 	{
@@ -181,7 +189,8 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Poseidon_0038",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "{#DialogueItalicFormat}Ahh{#PreviousFormat}, you've received a blessing from Athena there already, little Hades! So careful all the time, that one, but here, I'll help you live a little, just in case!",
+			Text =
+			"{#DialogueItalicFormat}Ahh{#PreviousFormat}, you've received a blessing from Athena there already, little Hades! So careful all the time, that one, but here, I'll help you live a little, just in case!",
 		},
 	},
 	{
@@ -200,7 +209,8 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Poseidon_0039",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "{#DialogueItalicFormat}Oh-hoh{#PreviousFormat}, so you've already heard from Aphrodite, have you, Nephew? Understandable, but first things first, now let me add a little something to all that!",
+			Text =
+			"{#DialogueItalicFormat}Oh-hoh{#PreviousFormat}, so you've already heard from Aphrodite, have you, Nephew? Understandable, but first things first, now let me add a little something to all that!",
 		},
 	},
 	{
@@ -219,7 +229,8 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Poseidon_0040",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "Hoy, Nephew! It's my understanding you've been blessed already by one of my {#DialogueItalicFormat}other {#PreviousFormat}nephews, Ares! As you can see, not all of us are cut from the same cloth; and thank the Fates for that!",
+			Text =
+			"Hoy, Nephew! It's my understanding you've been blessed already by one of my {#DialogueItalicFormat}other {#PreviousFormat}nephews, Ares! As you can see, not all of us are cut from the same cloth; and thank the Fates for that!",
 		},
 	},
 	{
@@ -238,7 +249,8 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Poseidon_0041",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "I sense that you've been marked by the elusive Artemis, correct, Nephew? She shies away from most of us, so if she's taken somewhat of a liking to you, great!",
+			Text =
+			"I sense that you've been marked by the elusive Artemis, correct, Nephew? She shies away from most of us, so if she's taken somewhat of a liking to you, great!",
 		},
 	},
 	{
@@ -257,7 +269,8 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Poseidon_0042",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "Whenever Dionysus calls a feast, I'm turning up sooner or later, hear me, Nephew? So make room for one more blessing, and, let's go!",
+			Text =
+			"Whenever Dionysus calls a feast, I'm turning up sooner or later, hear me, Nephew? So make room for one more blessing, and, let's go!",
 		},
 	},
 	{
@@ -276,7 +289,8 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Poseidon_0137",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "Little Hades, it appears that you are moving right along! Almost at an uncanny pace!! I wonder how you got to be so fast! Aquatic exercise?!",
+			Text =
+			"Little Hades, it appears that you are moving right along! Almost at an uncanny pace!! I wonder how you got to be so fast! Aquatic exercise?!",
 		},
 	},
 	{
@@ -296,7 +310,8 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Poseidon_0138",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "Nephew, how is it you're navigating your cruel father's realm at such a blinding speed?! There's only one Olympian who moves that quick! Besides myself! Where is he, anyway?",
+			Text =
+			"Nephew, how is it you're navigating your cruel father's realm at such a blinding speed?! There's only one Olympian who moves that quick! Besides myself! Where is he, anyway?",
 		},
 	},
 	{
@@ -315,7 +330,8 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Poseidon_0143",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "Why, little Hades, there's a certain chill about you, meaning you received an ice-cold blessing courtesy of Elder Goddess Demeter, correct? Now, personally, I think water's best in liquid form, but who am I to judge?",
+			Text =
+			"Why, little Hades, there's a certain chill about you, meaning you received an ice-cold blessing courtesy of Elder Goddess Demeter, correct? Now, personally, I think water's best in liquid form, but who am I to judge?",
 		},
 	},
 	{
@@ -333,7 +349,8 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Poseidon_0049",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "You've come to know your Uncle Zeus, by now, correct? Just want to let you know, good Zeus gets very busy on the regular, so you just stick with me, I've always time for you, Nephew!",
+			Text =
+			"You've come to know your Uncle Zeus, by now, correct? Just want to let you know, good Zeus gets very busy on the regular, so you just stick with me, I've always time for you, Nephew!",
 		},
 	},
 	{
@@ -351,7 +368,8 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Poseidon_0043",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "Nephew, your cruel father, Hades, he's my elder brother, you know that? Not exactly the expressive type, and never was. We seldomly saw eye-to-eye on things!",
+			Text =
+			"Nephew, your cruel father, Hades, he's my elder brother, you know that? Not exactly the expressive type, and never was. We seldomly saw eye-to-eye on things!",
 		},
 	},
 	{
@@ -367,7 +385,8 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Poseidon_0044",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "I daresay, little Hades, you've some spunk in you! Why, I think you take after me more than my crusty elder brother! You'll get away from that old codger yet!",
+			Text =
+			"I daresay, little Hades, you've some spunk in you! Why, I think you take after me more than my crusty elder brother! You'll get away from that old codger yet!",
 		},
 	},
 	{
@@ -385,7 +404,8 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Poseidon_0045",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "My crusty elder brother Hades must have tried to poison you against us lot! I can imagine it as clear as water, Nephew! I'm proud that you've resisted his undoubtedly most-twisted words!",
+			Text =
+			"My crusty elder brother Hades must have tried to poison you against us lot! I can imagine it as clear as water, Nephew! I'm proud that you've resisted his undoubtedly most-twisted words!",
 		},
 	},
 	{
@@ -403,7 +423,8 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Poseidon_0221",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "Last time your father and I spoke, he told me I was all washed up, can you believe the nerve of it, Nephew? Why, he took the words right out of my mouth!",
+			Text =
+			"Last time your father and I spoke, he told me I was all washed up, can you believe the nerve of it, Nephew? Why, he took the words right out of my mouth!",
 		},
 	},
 	{
@@ -419,7 +440,8 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Poseidon_0167",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "It's likely, little Hades, that you currently reside just underneath one of my boundless seas! Normally you'd have to be submerged to use this power, but you know what, close enough!",
+			Text =
+			"It's likely, little Hades, that you currently reside just underneath one of my boundless seas! Normally you'd have to be submerged to use this power, but you know what, close enough!",
 		},
 	},
 	{
@@ -435,7 +457,8 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Poseidon_0168",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "You know I've many vitally important things to do besides lending my aid to you repeatedly, Nephew? But, all of that can wait! Family comes first!",
+			Text =
+			"You know I've many vitally important things to do besides lending my aid to you repeatedly, Nephew? But, all of that can wait! Family comes first!",
 		},
 	},
 	{
@@ -451,7 +474,8 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Poseidon_0231",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "If you should ever make it here, Nephew, know this! I shall be pleased to stand in for the father figure I can tell you never really had. We can engage in all sorts of aquatic competitions, solve riddles, visit the sea-nymphs! Oh, it would be great, wouldn't you think?",
+			Text =
+			"If you should ever make it here, Nephew, know this! I shall be pleased to stand in for the father figure I can tell you never really had. We can engage in all sorts of aquatic competitions, solve riddles, visit the sea-nymphs! Oh, it would be great, wouldn't you think?",
 		},
 	},
 	{
@@ -467,7 +491,8 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Poseidon_0169",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "Nephew, why, the seas up here, they're just about as widely feared as your vast Underworld down there! For water can be deadlier than bronze!",
+			Text =
+			"Nephew, why, the seas up here, they're just about as widely feared as your vast Underworld down there! For water can be deadlier than bronze!",
 		},
 	},
 	{
@@ -483,7 +508,8 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Poseidon_0220",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "My oceans, they are filled with danger, not just water, little Hades! Many of the dead you face, they met their mortal end at sea, and not on land!",
+			Text =
+			"My oceans, they are filled with danger, not just water, little Hades! Many of the dead you face, they met their mortal end at sea, and not on land!",
 		},
 	},
 	{
@@ -498,14 +524,15 @@ local newPortedInteractTextLines = {
 		RequiredFalseTextLines = { "PoseidonVsMeg02" },
 		ConsecutiveDeathsInRoom =
 		{
-		  Name = "A_Boss01",
-		  Count = 2,
+			Name = "A_Boss01",
+			Count = 2,
 		},
 		{
 			Cue = "/VO/Poseidon_0046",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "{#DialogueItalicFormat}Ahh{#PreviousFormat}, it seems to me you've had yourself a spot of lady trouble, lately, isn't that correct, Nephew? I mean the Fury down in Tartarus, of course! You going to let her keep on bossing you around?!",
+			Text =
+			"{#DialogueItalicFormat}Ahh{#PreviousFormat}, it seems to me you've had yourself a spot of lady trouble, lately, isn't that correct, Nephew? I mean the Fury down in Tartarus, of course! You going to let her keep on bossing you around?!",
 		},
 	},
 	{
@@ -523,7 +550,8 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Poseidon_0047",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "{#DialogueItalicFormat}Hah{#PreviousFormat}! I heard you showed that good-for-nothing Fury after all, I knew you'd handle that old crone, Nephew! And if she troubles you again, you just remind her who's in charge down there!",
+			Text =
+			"{#DialogueItalicFormat}Hah{#PreviousFormat}! I heard you showed that good-for-nothing Fury after all, I knew you'd handle that old crone, Nephew! And if she troubles you again, you just remind her who's in charge down there!",
 		},
 	},
 	{
@@ -542,7 +570,8 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Poseidon_0048",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "Good tidings, Nephew! I've learned that you have managed to get all the way to Asphodel, fine work! Now, you just keep on going!",
+			Text =
+			"Good tidings, Nephew! I've learned that you have managed to get all the way to Asphodel, fine work! Now, you just keep on going!",
 		},
 	},
 	{
@@ -560,7 +589,8 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Poseidon_0134",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "{#DialogueItalicFormat}Ohh{#PreviousFormat}, Nephew, you've stood against the Bull of Minos, have you? Well I must apologize for any inconvenience there, because, he was a living testament to my revenge! Long story, boring really, rather sordid, too. Stay strong!",
+			Text =
+			"{#DialogueItalicFormat}Ohh{#PreviousFormat}, Nephew, you've stood against the Bull of Minos, have you? Well I must apologize for any inconvenience there, because, he was a living testament to my revenge! Long story, boring really, rather sordid, too. Stay strong!",
 		},
 	},
 	{
@@ -578,7 +608,8 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Poseidon_0136",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "Word reaches us that you've come very far, indeed, Nephew! Striking distance from the surface! You just keep at it like that, and with our help, we'll have you out of there for sure!",
+			Text =
+			"Word reaches us that you've come very far, indeed, Nephew! Striking distance from the surface! You just keep at it like that, and with our help, we'll have you out of there for sure!",
 		},
 	},
 	{
@@ -595,7 +626,8 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Poseidon_0140",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "I wonder what monstrosities await you near the surface, little Hades? There's your father's terrifying hell-hound, for one thing! Ah, well, I'm sure you'll find a way to sail past whatever's in your way!",
+			Text =
+			"I wonder what monstrosities await you near the surface, little Hades? There's your father's terrifying hell-hound, for one thing! Ah, well, I'm sure you'll find a way to sail past whatever's in your way!",
 		},
 	},
 	{
@@ -614,7 +646,8 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Poseidon_0170",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "Now don't lose heart, Nephew! Because in spite of all your efforts, it is probably the case that you still have a long and painful road ahead!",
+			Text =
+			"Now don't lose heart, Nephew! Because in spite of all your efforts, it is probably the case that you still have a long and painful road ahead!",
 		},
 	},
 	{
@@ -632,7 +665,8 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Poseidon_0218",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "{#DialogueItalicFormat}Ah{#PreviousFormat}, I thought for certain you were well on your way out of there last time, Nephew! But, no matter, we'll just get you on another voyage to the top!",
+			Text =
+			"{#DialogueItalicFormat}Ah{#PreviousFormat}, I thought for certain you were well on your way out of there last time, Nephew! But, no matter, we'll just get you on another voyage to the top!",
 		},
 	},
 	{
@@ -650,7 +684,8 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Poseidon_0219",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "Little Nephew, why, I could have sworn you made it to the surface recently, and yet, you're all the way back there, again? Must be some sort of terrible monstrosity preventing your way out!",
+			Text =
+			"Little Nephew, why, I could have sworn you made it to the surface recently, and yet, you're all the way back there, again? Must be some sort of terrible monstrosity preventing your way out!",
 		},
 	},
 	{
@@ -666,7 +701,8 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Poseidon_0240",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "I'll tell you, Nephew, I was quite taken aback to learn Persephone, she was your mother all along! Just disappeared up here, one day! Ran off, I figured, as she's got some mortal blood in her. But she was with your father! That rascal is my brother, after all!",
+			Text =
+			"I'll tell you, Nephew, I was quite taken aback to learn Persephone, she was your mother all along! Just disappeared up here, one day! Ran off, I figured, as she's got some mortal blood in her. But she was with your father! That rascal is my brother, after all!",
 		},
 	},
 	{
@@ -683,7 +719,8 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Poseidon_0244",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "So how is crusty old Hades faring down there of late, Nephew? Fewer worries there upon his brow? That Underworld of yours all running smoothly, and all that? We'll keep on pitching in from over here. Least we can do!",
+			Text =
+			"So how is crusty old Hades faring down there of late, Nephew? Fewer worries there upon his brow? That Underworld of yours all running smoothly, and all that? We'll keep on pitching in from over here. Least we can do!",
 		},
 	},
 	{
@@ -700,7 +737,8 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Poseidon_0245",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "Persephone, she says you're really stuck down there, born of the Underworld, something like that? Well, if you ask me, that's no kind of attitude to have! You can do {#DialogueItalicFormat}anything {#PreviousFormat}you set your mind to, Nephew! Take it from me!",
+			Text =
+			"Persephone, she says you're really stuck down there, born of the Underworld, something like that? Well, if you ask me, that's no kind of attitude to have! You can do {#DialogueItalicFormat}anything {#PreviousFormat}you set your mind to, Nephew! Take it from me!",
 		},
 	},
 	{
@@ -717,7 +755,8 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Poseidon_0246",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "If you {#DialogueItalicFormat}do {#PreviousFormat}ever get the opportunity to spend some time up here, Nephew, know I shall take you on a grand tour of the surface! From the depths of my seas to the height of Olympus! Sure, maybe not today, or tomorrow, or even the next aeon! But sometime, we should go!",
+			Text =
+			"If you {#DialogueItalicFormat}do {#PreviousFormat}ever get the opportunity to spend some time up here, Nephew, know I shall take you on a grand tour of the surface! From the depths of my seas to the height of Olympus! Sure, maybe not today, or tomorrow, or even the next aeon! But sometime, we should go!",
 		},
 	},
 	{
@@ -733,7 +772,8 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Poseidon_0247",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "Been nice to see my brothers getting on again, just like old times! Well, not exactly like old times, and come to think of it, there always was a bit of tension there between those two, but still! It's better than before!",
+			Text =
+			"Been nice to see my brothers getting on again, just like old times! Well, not exactly like old times, and come to think of it, there always was a bit of tension there between those two, but still! It's better than before!",
 		},
 	},
 	{
@@ -750,7 +790,8 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Poseidon_0243",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "Your good mother Persephone, she's here all safe and sound, thought you should know, there, little Hades! Shame you can't be here with her, too, but {#DialogueItalicFormat}ah{#PreviousFormat}! Doubtless we'll someday meet again!",
+			Text =
+			"Your good mother Persephone, she's here all safe and sound, thought you should know, there, little Hades! Shame you can't be here with her, too, but {#DialogueItalicFormat}ah{#PreviousFormat}! Doubtless we'll someday meet again!",
 		},
 	},
 	{
@@ -766,7 +807,8 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Poseidon_0222",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "Ah-{#DialogueItalicFormat}hah{#PreviousFormat}! I sense you have in your possession that fine shell I sent to you, a little gift plucked straight out of the sea! You keep it close so I can better track you down!",
+			Text =
+			"Ah-{#DialogueItalicFormat}hah{#PreviousFormat}! I sense you have in your possession that fine shell I sent to you, a little gift plucked straight out of the sea! You keep it close so I can better track you down!",
 		},
 	},
 	{
@@ -783,7 +825,8 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Poseidon_0224",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "Say, word has reached me that you squared against one known as Theseus, now champion there in Elysium? He was a handful even when he lived! So much so that my honored brother Zeus, he took to calling him my son, can you believe the nerve?",
+			Text =
+			"Say, word has reached me that you squared against one known as Theseus, now champion there in Elysium? He was a handful even when he lived! So much so that my honored brother Zeus, he took to calling him my son, can you believe the nerve?",
 		},
 	},
 	{
@@ -800,7 +843,8 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Poseidon_0225",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "So, little Hades, doubtless you have seen that we upon Olympus also lend our favor to the mighty Theseus, who bars your passage from Elysium! Now, don't you take it personally, there, because our blessings go to {#DialogueItalicFormat}all {#PreviousFormat}who deserve them. Although, we try to save the best for you!",
+			Text =
+			"So, little Hades, doubtless you have seen that we upon Olympus also lend our favor to the mighty Theseus, who bars your passage from Elysium! Now, don't you take it personally, there, because our blessings go to {#DialogueItalicFormat}all {#PreviousFormat}who deserve them. Although, we try to save the best for you!",
 		},
 	},
 	{
@@ -820,7 +864,8 @@ local newPortedInteractTextLines = {
 			Emote = "PortraitEmoteAnger",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "That scoundrel Theseus! Apparently he earned himself some sort of winsome prize, for all his blustering there in Elysium! Though, I'm quite certain that, no matter what he and his bull friend have at their disposal, you've the power to defeat them, utterly! So go do it, surely I'll get word!",
+			Text =
+			"That scoundrel Theseus! Apparently he earned himself some sort of winsome prize, for all his blustering there in Elysium! Though, I'm quite certain that, no matter what he and his bull friend have at their disposal, you've the power to defeat them, utterly! So go do it, surely I'll get word!",
 		},
 	},
 	{
@@ -839,7 +884,8 @@ local newPortedInteractTextLines = {
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
 			Emote = "PortraitEmoteFiredUp",
-			Text = "Why, Nephew, you've procured the Rod of Fishing, I detect! Fine handiwork if I say so myself! Its line is nigh-invisible and causes denizens of my domain to flock to it like mortals to temples of mine! Good fortune with that thing!",
+			Text =
+			"Why, Nephew, you've procured the Rod of Fishing, I detect! Fine handiwork if I say so myself! Its line is nigh-invisible and causes denizens of my domain to flock to it like mortals to temples of mine! Good fortune with that thing!",
 		},
 	},
 	{
@@ -858,7 +904,8 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Poseidon_0147",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "I'm told a number of the underwater denizens from my domain were captured fair-and-square through your surpassing skill using the Rod of Fishing, little Hades!! They're yours, I've millions more!",
+			Text =
+			"I'm told a number of the underwater denizens from my domain were captured fair-and-square through your surpassing skill using the Rod of Fishing, little Hades!! They're yours, I've millions more!",
 		},
 	},
 	{
@@ -877,7 +924,8 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Poseidon_0241",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "All these river denizens you've caught, little Hades... it can only mean we share a deep connection, don't you think? I, with my power over the entire vastness of the seas! And you, with the power to ensnare a hapless fish with but a flick of the wrist!",
+			Text =
+			"All these river denizens you've caught, little Hades... it can only mean we share a deep connection, don't you think? I, with my power over the entire vastness of the seas! And you, with the power to ensnare a hapless fish with but a flick of the wrist!",
 		},
 	},
 	{
@@ -896,7 +944,8 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Poseidon_0073",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "{#DialogueItalicFormat}Hoh{#PreviousFormat}, you look positively in atrocious shape, there, Nephew! What's the matter, one too many run-ins with the wretched dead before {#DialogueItalicFormat}I {#PreviousFormat}intervened?",
+			Text =
+			"{#DialogueItalicFormat}Hoh{#PreviousFormat}, you look positively in atrocious shape, there, Nephew! What's the matter, one too many run-ins with the wretched dead before {#DialogueItalicFormat}I {#PreviousFormat}intervened?",
 		},
 	},
 	{
@@ -915,7 +964,8 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Poseidon_0074",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "Seems to me that you're in dire straits, there, little Hades! Why, you're bleeding everywhere! Here, let me try and do something for that.",
+			Text =
+			"Seems to me that you're in dire straits, there, little Hades! Why, you're bleeding everywhere! Here, let me try and do something for that.",
 		},
 	},
 	{
@@ -935,7 +985,8 @@ local newPortedInteractTextLines = {
 			Emote = "PortraitEmoteSurprise",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "{#DialogueItalicFormat}Ah{#PreviousFormat}, what happened to you, little Hades?! I can tell even from here that you've been beaten like a skiff during a storm!",
+			Text =
+			"{#DialogueItalicFormat}Ah{#PreviousFormat}, what happened to you, little Hades?! I can tell even from here that you've been beaten like a skiff during a storm!",
 		},
 	},
 	{
@@ -954,7 +1005,8 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Poseidon_0200",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "Now, don't go dying on me, yet, Nephew! You have to {#DialogueItalicFormat}live{#PreviousFormat}! Or else the Boon I offer you shall go to waste!",
+			Text =
+			"Now, don't go dying on me, yet, Nephew! You have to {#DialogueItalicFormat}live{#PreviousFormat}! Or else the Boon I offer you shall go to waste!",
 		},
 	},
 	{
@@ -973,7 +1025,8 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Poseidon_0201",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "Your hated enemies, they almost got the best of you, I fear! But you can still turn it around, especially now that you have my aid!",
+			Text =
+			"Your hated enemies, they almost got the best of you, I fear! But you can still turn it around, especially now that you have my aid!",
 		},
 	},
 	{
@@ -993,7 +1046,8 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Poseidon_0033",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "{#DialogueItalicFormat}Ohh{#PreviousFormat}, have I got something for you this time, little Hades! Something special I have saved for when you {#DialogueItalicFormat}really {#PreviousFormat}proved yourself!",
+			Text =
+			"{#DialogueItalicFormat}Ohh{#PreviousFormat}, have I got something for you this time, little Hades! Something special I have saved for when you {#DialogueItalicFormat}really {#PreviousFormat}proved yourself!",
 		},
 	},
 	{
@@ -1013,7 +1067,8 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Poseidon_0034",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "There's nothing stronger than the sea, Nephew, neither above it nor below!! And, if you are in need of further proof, behold: The greatest of my blessings, just for you!",
+			Text =
+			"There's nothing stronger than the sea, Nephew, neither above it nor below!! And, if you are in need of further proof, behold: The greatest of my blessings, just for you!",
 		},
 	},
 	-- #endregion
@@ -1032,7 +1087,8 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Poseidon_0012",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "Hoy, Nephew, it's excellent to see you once again, and in good spirits, still? Then, come, let's make some waves!",
+			Text =
+			"Hoy, Nephew, it's excellent to see you once again, and in good spirits, still? Then, come, let's make some waves!",
 		},
 	},
 	{
@@ -1049,7 +1105,8 @@ local newPortedInteractTextLines = {
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
 			Emote = "PortraitEmoteFiredUp",
-			Text = "Ahoy, little Hades, it is I! The greatest of your uncles! Here to aid you in your daringest escape attempt! And I do admire your persistence!",
+			Text =
+			"Ahoy, little Hades, it is I! The greatest of your uncles! Here to aid you in your daringest escape attempt! And I do admire your persistence!",
 		},
 	},
 	{
@@ -1065,7 +1122,8 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Poseidon_0014",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "Good tidings once again, there, little Nephew!! It is I, returned as ever here to make a splash against your many, many foolish enemies!",
+			Text =
+			"Good tidings once again, there, little Nephew!! It is I, returned as ever here to make a splash against your many, many foolish enemies!",
 		},
 	},
 	{
@@ -1081,7 +1139,8 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Poseidon_0015",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "Ahoy, Nephew! I bet you have your hands full dealing with your enemies down there, so let me see what I can do. And I can do a lot!",
+			Text =
+			"Ahoy, Nephew! I bet you have your hands full dealing with your enemies down there, so let me see what I can do. And I can do a lot!",
 		},
 	},
 	{
@@ -1097,7 +1156,8 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Poseidon_0016",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "It seems you're getting somewhere, little Nephew! Good, but here, allow your favorite Uncle to bestow a little boost!",
+			Text =
+			"It seems you're getting somewhere, little Nephew! Good, but here, allow your favorite Uncle to bestow a little boost!",
 		},
 	},
 	{
@@ -1114,7 +1174,8 @@ local newPortedInteractTextLines = {
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
 			Emote = "PortraitEmoteFiredUp",
-			Text = "{#DialogueItalicFormat}Ah, hahaha! {#PreviousFormat}Found you down there, Nephew! Now let's overwhelm your enemies in a typhoon of godly might, what do you say?",
+			Text =
+			"{#DialogueItalicFormat}Ah, hahaha! {#PreviousFormat}Found you down there, Nephew! Now let's overwhelm your enemies in a typhoon of godly might, what do you say?",
 		},
 	},
 	{
@@ -1130,7 +1191,8 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Poseidon_0018",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "Little Hades, have I ever told you I detest the dead? Well, I admit it, I just cannot stand a mortal past his due. So how about we get you far away from all such filth, agreed?",
+			Text =
+			"Little Hades, have I ever told you I detest the dead? Well, I admit it, I just cannot stand a mortal past his due. So how about we get you far away from all such filth, agreed?",
 		},
 	},
 	{
@@ -1146,7 +1208,8 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Poseidon_0019",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "What do you say, there, Nephew, ready to get wet, or no? Oh I suspect you are, so let's get to it, and dispense some liquid justice!",
+			Text =
+			"What do you say, there, Nephew, ready to get wet, or no? Oh I suspect you are, so let's get to it, and dispense some liquid justice!",
 		},
 	},
 	{
@@ -1164,7 +1227,8 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Poseidon_0020",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "How fares your feud against my crusty elder brother lately, good? Big Hades, he is disagreeable with all of us, not just with you, so, don't you take it personal, and stick with me!",
+			Text =
+			"How fares your feud against my crusty elder brother lately, good? Big Hades, he is disagreeable with all of us, not just with you, so, don't you take it personal, and stick with me!",
 		},
 	},
 	{
@@ -1180,7 +1244,8 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Poseidon_0021",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "Looks like {#DialogueItalicFormat}you {#PreviousFormat}could use the power of the sea, wouldn't you say so, little Hades? Good thing I'm here, so that together, we might wash your enemies away!",
+			Text =
+			"Looks like {#DialogueItalicFormat}you {#PreviousFormat}could use the power of the sea, wouldn't you say so, little Hades? Good thing I'm here, so that together, we might wash your enemies away!",
 		},
 	},
 	{
@@ -1196,7 +1261,8 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Poseidon_0022",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "Enough kidding around without me, Nephew! I am here, so let's go bust you out, much like a raging river through a frail little dam!",
+			Text =
+			"Enough kidding around without me, Nephew! I am here, so let's go bust you out, much like a raging river through a frail little dam!",
 		},
 	},
 	{
@@ -1212,7 +1278,8 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Poseidon_0023",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "You're looking somewhat stronger than before, there, little Nephew, but you're much too scrawny still, to be quite blunt. So, here! Let's fatten you right up!",
+			Text =
+			"You're looking somewhat stronger than before, there, little Nephew, but you're much too scrawny still, to be quite blunt. So, here! Let's fatten you right up!",
 		},
 	},
 	{
@@ -1229,7 +1296,8 @@ local newPortedInteractTextLines = {
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
 			Emote = "PortraitEmoteFiredUp",
-			Text = "{#DialogueItalicFormat}Hoy{#PreviousFormat}, my nephew! I think I have kept you waiting long enough, so then, let's {#DialogueItalicFormat}go{#PreviousFormat}! And break our enemies to pieces, like so many ships upon the shoals!",
+			Text =
+			"{#DialogueItalicFormat}Hoy{#PreviousFormat}, my nephew! I think I have kept you waiting long enough, so then, let's {#DialogueItalicFormat}go{#PreviousFormat}! And break our enemies to pieces, like so many ships upon the shoals!",
 		},
 	},
 	{
@@ -1245,7 +1313,8 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Poseidon_0025",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "I'll have you know, the power of the seas themselves is yours once more, Nephew! So how about you put it to its rightful purpose, and go smash some stuff!",
+			Text =
+			"I'll have you know, the power of the seas themselves is yours once more, Nephew! So how about you put it to its rightful purpose, and go smash some stuff!",
 		},
 	},
 	{
@@ -1261,7 +1330,8 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Poseidon_0026",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "Are you perchance in need of godlike aid, Nephew? Well, excellent! Because I happen to command the sea, and I shall hereby let you take it for a whirl!",
+			Text =
+			"Are you perchance in need of godlike aid, Nephew? Well, excellent! Because I happen to command the sea, and I shall hereby let you take it for a whirl!",
 		},
 	},
 	{
@@ -1278,7 +1348,8 @@ local newPortedInteractTextLines = {
 			Emote = "PortraitEmoteFiredUp",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "Who dares to mess with little Hades? You simply point me at them, Nephew, and we'll leave them shivering and sopping wet, you'll see!",
+			Text =
+			"Who dares to mess with little Hades? You simply point me at them, Nephew, and we'll leave them shivering and sopping wet, you'll see!",
 		},
 	},
 	{
@@ -1294,7 +1365,8 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Poseidon_0028",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "At last I found you once again, Nephew! You eating well and getting strong, correct? I'll help you with the latter category in a moment. Here!",
+			Text =
+			"At last I found you once again, Nephew! You eating well and getting strong, correct? I'll help you with the latter category in a moment. Here!",
 		},
 	},
 	{
@@ -1311,7 +1383,8 @@ local newPortedInteractTextLines = {
 			Emote = "PortraitEmoteFiredUp",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "The awesome bounty of the sea is yours to do with as you please, Nephew! I've mustered forth a sample, anyway!",
+			Text =
+			"The awesome bounty of the sea is yours to do with as you please, Nephew! I've mustered forth a sample, anyway!",
 		},
 	},
 	{
@@ -1328,7 +1401,8 @@ local newPortedInteractTextLines = {
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
 			Emote = "PortraitEmoteFiredUp",
-			Text = "Hoh, little Hades! I'd heard you were preparing to rain terrible destruction on your enemies! So I got here as quickly as I could! I'm not too late, am I?",
+			Text =
+			"Hoh, little Hades! I'd heard you were preparing to rain terrible destruction on your enemies! So I got here as quickly as I could! I'm not too late, am I?",
 		},
 	},
 	{
@@ -1344,7 +1418,8 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Poseidon_0031",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "All of us must sail through troubled waters now and then, correct, Nephew? Fortunately, navigation is my speciality, so let's be on our way!",
+			Text =
+			"All of us must sail through troubled waters now and then, correct, Nephew? Fortunately, navigation is my speciality, so let's be on our way!",
 		},
 	},
 	{
@@ -1360,7 +1435,8 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Poseidon_0032",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "Your victory's most certainly at hand now that I'm here, Nephew! So long as you make sure to take advantage of the absolutely awesome power I bequeath!",
+			Text =
+			"Your victory's most certainly at hand now that I'm here, Nephew! So long as you make sure to take advantage of the absolutely awesome power I bequeath!",
 		},
 	},
 	{
@@ -1378,7 +1454,8 @@ local newPortedInteractTextLines = {
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
 			Emote = "PortraitEmoteFiredUp",
-			Text = "Why, if it isn't the most favored of my nephews, stuck as ever though you may yet be! We'll get you from there, little Hades, don't despair, Uncle Poseidon's here!!",
+			Text =
+			"Why, if it isn't the most favored of my nephews, stuck as ever though you may yet be! We'll get you from there, little Hades, don't despair, Uncle Poseidon's here!!",
 		},
 	},
 	{
@@ -1395,7 +1472,8 @@ local newPortedInteractTextLines = {
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
 			Emote = "PortraitEmoteFiredUp",
-			Text = "Good tidings, my most favored nephew! All is relatively well, I hope? But hope alone is worthless without action, is it not? So here, let's act {#DialogueItalicFormat}together{#PreviousFormat}!",
+			Text =
+			"Good tidings, my most favored nephew! All is relatively well, I hope? But hope alone is worthless without action, is it not? So here, let's act {#DialogueItalicFormat}together{#PreviousFormat}!",
 		},
 	},
 	{
@@ -1411,7 +1489,8 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Poseidon_0050",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "Just wait until you see the seas, Nephew! My underwater realm is the most glorious of the world's habitats. It positively teems with life, and it's much cooler there than in that sweaty Underworld of yours!",
+			Text =
+			"Just wait until you see the seas, Nephew! My underwater realm is the most glorious of the world's habitats. It positively teems with life, and it's much cooler there than in that sweaty Underworld of yours!",
 		},
 	},
 	{
@@ -1548,7 +1627,8 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Poseidon_0171",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "How about we set you up here with some real {#DialogueItalicFormat}water{#PreviousFormat}-power, little Hades?",
+			Text =
+			"How about we set you up here with some real {#DialogueItalicFormat}water{#PreviousFormat}-power, little Hades?",
 		},
 	},
 	{
@@ -1668,7 +1748,8 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Poseidon_0179",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "Don't let the wretched dead dampen your spirits, little Hades! Dampen {#DialogueItalicFormat}theirs{#PreviousFormat}!",
+			Text =
+			"Don't let the wretched dead dampen your spirits, little Hades! Dampen {#DialogueItalicFormat}theirs{#PreviousFormat}!",
 		},
 	},
 	{
@@ -1778,7 +1859,8 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Poseidon_0186",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "Must get so stuffy in that dreary place, Nephew! So why don't you cool off a bit, with {#DialogueItalicFormat}this{#PreviousFormat}!",
+			Text =
+			"Must get so stuffy in that dreary place, Nephew! So why don't you cool off a bit, with {#DialogueItalicFormat}this{#PreviousFormat}!",
 		},
 	},
 	{
@@ -1865,7 +1947,8 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Poseidon_0191",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "You've earned only the very finest of my blessings, little Hades! Why? Why {#DialogueItalicFormat}not{#PreviousFormat}!",
+			Text =
+			"You've earned only the very finest of my blessings, little Hades! Why? Why {#DialogueItalicFormat}not{#PreviousFormat}!",
 		},
 	},
 	{
@@ -1908,10 +1991,13 @@ local newPortedInteractTextLines = {
 	},
 	-- #endregion
 }
-mod.AddNarrativeDataEntries(
-	newPortedInteractTextLines, "PoseidonUpgrade", "InteractTextLineSets", "InteractTextLinePriorities",
-	{ Poseidon = { "Modsnikkelmhadesbiomesposeidon", "ZagreusField" } }, { Poseidon_ = "Modsnikkelmhadesbiomesposeidon_" },
-	{ Poseidon_ = "ModsNikkelMHadesBiomes_Portrait_Poseidon_Default_01" }
+mod.AddNarrativeDataEntries(newPortedInteractTextLines, "PoseidonUpgrade", "InteractTextLineSets",
+	{
+		TextLinePriorityType = "InteractTextLinePriorities",
+		VoiceBankMappings = { Poseidon = { "Modsnikkelmhadesbiomesposeidon", "ZagreusField" } },
+		CueMappings = { Poseidon_ = "Modsnikkelmhadesbiomesposeidon_" },
+		PortraitMappings = { Poseidon_ = "ModsNikkelMHadesBiomes_Portrait_Poseidon_Default_01" },
+	}
 )
 
 -- #region Hades I duo dialogues
@@ -1919,63 +2005,95 @@ local newPortedDuoPickupTextLines = {
 	{
 		Name = "PoseidonWithZeus01",
 		PlayOnce = true,
-		PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+		PreEventFunctionName = "BoonInteractPresentation",
+		PreEventFunctionArgs = { PickupWait = 1.0, },
 		HasTraitNameInRoom = "ImpactBoltTrait",
-		PreLineThreadedFunctionName = "PlayEmoteAnimFromSource", PreLineThreadedFunctionArgs = { Emote = "PortraitEmoteSurprise", DoShake = true, WaitTime = 11.2 },
-		{ Cue = "/VO/Poseidon_0129",
+		PreLineThreadedFunctionName = "PlayEmoteAnimFromSource",
+		PreLineThreadedFunctionArgs = { Emote = "PortraitEmoteSurprise", DoShake = true, WaitTime = 11.2 },
+		{
+			Cue = "/VO/Poseidon_0129",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			Text = "Now, little Hades, you have met my brother Zeus! He's sometimes known as king of all the gods! Although, in many ways, he's not as powerful as I! Nor anywhere as dashing. Why, I, {#DialogueItalicFormat}oop{#PreviousFormat}--!" },
-		{ Cue = "/VO/Zeus_0125",
+			Text =
+			"Now, little Hades, you have met my brother Zeus! He's sometimes known as king of all the gods! Although, in many ways, he's not as powerful as I! Nor anywhere as dashing. Why, I, {#DialogueItalicFormat}oop{#PreviousFormat}--!"
+		},
+		{
+			Cue = "/VO/Zeus_0125",
 			PortraitExitWait = 0.35,
-			PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
+			PreLineFunctionName = "BoonInteractPresentation",
+			PreLineWait = 0.5,
 			StartSound = "/SFX/ZeusBoonThunder",
 			EndSound = "/Leftovers/World Sounds/MapZoomInShort",
-			Speaker = "NPC_Zeus_01", Portrait = "Portrait_Zeus_Default_01",
-			Text = "Now, Brother... you know better than to say such things about me, I should think. I know that tact does not come easily to you, though I'd be careful what you say to our good nephew, there." },
-		{ Cue = "/VO/Poseidon_0130",
+			Speaker = "NPC_Zeus_01",
+			Portrait = "Portrait_Zeus_Default_01",
+			Text =
+			"Now, Brother... you know better than to say such things about me, I should think. I know that tact does not come easily to you, though I'd be careful what you say to our good nephew, there."
+		},
+		{
+			Cue = "/VO/Poseidon_0130",
 			Emote = "PortraitEmoteFiredUp",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			EndSound = "/Leftovers/World Sounds/MapZoomInShort",
-			Text = "{#DialogueItalicFormat}Buh{#PreviousFormat}, {#DialogueItalicFormat}erm{#PreviousFormat}, anyway, as I was saying, little Hades! Brother Zeus is king of all the gods! And the most dashing, powerful, and hey, let's face it, {#DialogueItalicFormat}godliest {#PreviousFormat}of all!" },
+			Text =
+			"{#DialogueItalicFormat}Buh{#PreviousFormat}, {#DialogueItalicFormat}erm{#PreviousFormat}, anyway, as I was saying, little Hades! Brother Zeus is king of all the gods! And the most dashing, powerful, and hey, let's face it, {#DialogueItalicFormat}godliest {#PreviousFormat}of all!"
+		},
 	},
 	{
 		Name = "PoseidonWithAres01",
 		PlayOnce = true,
-		PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+		PreEventFunctionName = "BoonInteractPresentation",
+		PreEventFunctionArgs = { PickupWait = 1.0, },
 		HasTraitNameInRoom = "PoseidonAresProjectileTrait",
-		{ Cue = "/VO/Poseidon_0234",
+		{
+			Cue = "/VO/Poseidon_0234",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			Text = "Now, little Hades, you must know by now I've other nephews here, don't you? For instance, Ares comes to mind, the god of war! Some mighty wars have taken place at sea, is that not so?" },
-		{ Cue = "/VO/Ares_0224",
+			Text =
+			"Now, little Hades, you must know by now I've other nephews here, don't you? For instance, Ares comes to mind, the god of war! Some mighty wars have taken place at sea, is that not so?"
+		},
+		{
+			Cue = "/VO/Ares_0224",
 			PortraitExitWait = 0.35,
-			PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
+			PreLineFunctionName = "BoonInteractPresentation",
+			PreLineWait = 0.5,
 			StartSound = "/SFX/AresWrathBattle",
 			EndSound = "/Leftovers/World Sounds/MapZoomInShort",
-			Speaker = "NPC_Ares_01", Portrait = "Portrait_Ares_Default_01",
-			Text = "Indeed, they have, good Uncle Poseidon. Mortals show great ingenuity when war is concerned; it drives their sense of progress, more than anything at all. Perhaps someday they shall wage war even in Father's skies." },
+			Speaker = "NPC_Ares_01",
+			Portrait = "Portrait_Ares_Default_01",
+			Text =
+			"Indeed, they have, good Uncle Poseidon. Mortals show great ingenuity when war is concerned; it drives their sense of progress, more than anything at all. Perhaps someday they shall wage war even in Father's skies."
+		},
 	},
 	{
 		Name = "PoseidonWithDemeter01",
 		PlayOnce = true,
-		PreEventFunctionName = "BoonInteractPresentation", PreEventFunctionArgs = { PickupWait = 1.0, },
+		PreEventFunctionName = "BoonInteractPresentation",
+		PreEventFunctionArgs = { PickupWait = 1.0, },
 		HasTraitNameInRoom = "BlizzardOrbTrait",
-		{ Cue = "/VO/Poseidon_0144",
+		{
+			Cue = "/VO/Poseidon_0144",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			Text = "My foster-sister Goddess Demeter, despite her stern approach, she often likes to make good sport of me, Nephew! Why, here she is right now!" },
-		{ Cue = "/VO/Demeter_0144",
+			Text =
+			"My foster-sister Goddess Demeter, despite her stern approach, she often likes to make good sport of me, Nephew! Why, here she is right now!"
+		},
+		{
+			Cue = "/VO/Demeter_0144",
 			PortraitExitWait = 0.35,
-			PreLineFunctionName = "BoonInteractPresentation", PreLineWait = 0.5,
+			PreLineFunctionName = "BoonInteractPresentation",
+			PreLineWait = 0.5,
 			StartSound = "/SFX/DemeterBoonFrost",
 			EndSound = "/Leftovers/World Sounds/MapZoomInShort",
-			Speaker = "NPC_Demeter_01", Portrait = "Portrait_Demeter_Default_01",
-			Text = "If you're quite finished blathering, Poseidon, our young Zagreus has more important things to do. He needs your blessings, not your point of view. Don't you, young sprout?" },
+			Speaker = "NPC_Demeter_01",
+			Portrait = "Portrait_Demeter_Default_01",
+			Text =
+			"If you're quite finished blathering, Poseidon, our young Zagreus has more important things to do. He needs your blessings, not your point of view. Don't you, young sprout?"
+		},
 	},
 }
-mod.AddNarrativeDataEntries(
-	newPortedDuoPickupTextLines, "PoseidonUpgrade", "DuoPickupTextLines", nil,
-	{}, -- H2 loads only the selected duo speakers from their Cue names
-	{ Aphrodite_ = "Modsnikkelmhadesbiomesaphrodite_", Ares_ = "Modsnikkelmhadesbiomesares_", Demeter_ = "Modsnikkelmhadesbiomesdemeter_", Poseidon_ = "Modsnikkelmhadesbiomesposeidon_", Zeus_ = "Modsnikkelmhadesbiomeszeus_" },
-	{ Aphrodite_ = "ModsNikkelMHadesBiomes_Portrait_Aphrodite_Default_01", Ares_ = "ModsNikkelMHadesBiomes_Portrait_Ares_Default_01", Demeter_ = "ModsNikkelMHadesBiomes_Portrait_Demeter_Default_01", Poseidon_ = "ModsNikkelMHadesBiomes_Portrait_Poseidon_Default_01", Zeus_ = "ModsNikkelMHadesBiomes_Portrait_Zeus_Default_01" }
+mod.AddNarrativeDataEntries(newPortedDuoPickupTextLines, "PoseidonUpgrade", "DuoPickupTextLines",
+	{
+		VoiceBankMappings = {}, -- H2 loads only the selected duo speakers from their Cue names
+		CueMappings = { Aphrodite_ = "Modsnikkelmhadesbiomesaphrodite_", Ares_ = "Modsnikkelmhadesbiomesares_", Demeter_ = "Modsnikkelmhadesbiomesdemeter_", Poseidon_ = "Modsnikkelmhadesbiomesposeidon_", Zeus_ = "Modsnikkelmhadesbiomeszeus_" },
+		PortraitMappings = { Aphrodite_ = "ModsNikkelMHadesBiomes_Portrait_Aphrodite_Default_01", Ares_ = "ModsNikkelMHadesBiomes_Portrait_Ares_Default_01", Demeter_ = "ModsNikkelMHadesBiomes_Portrait_Demeter_Default_01", Poseidon_ = "ModsNikkelMHadesBiomes_Portrait_Poseidon_Default_01", Zeus_ = "ModsNikkelMHadesBiomes_Portrait_Zeus_Default_01" },
+	}
 )
 -- #endregion
 
@@ -1994,7 +2112,8 @@ local newPortedLootBoughtTextLines = {
 			Emote = "PortraitEmoteFiredUp",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "Ah-{#DialogueItalicFormat}hah{#PreviousFormat}! You found me, little Nephew! Strewn among the inventories of that most disturbing river-boatman! That means you win my blessing!",
+			Text =
+			"Ah-{#DialogueItalicFormat}hah{#PreviousFormat}! You found me, little Nephew! Strewn among the inventories of that most disturbing river-boatman! That means you win my blessing!",
 		},
 	},
 	{
@@ -2010,7 +2129,8 @@ local newPortedLootBoughtTextLines = {
 			Cue = "/VO/Poseidon_0052",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "Well, well, my plan to get ahold of you via the boatman worked out flawlessly! Harness the might of the sea, then, why don't you?",
+			Text =
+			"Well, well, my plan to get ahold of you via the boatman worked out flawlessly! Harness the might of the sea, then, why don't you?",
 		},
 	},
 	{
@@ -2026,7 +2146,8 @@ local newPortedLootBoughtTextLines = {
 			Cue = "/VO/Poseidon_0194",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "Well, Nephew, I know that salty Charon can be difficult. But I am certain that whatever price you paid, you got a {#DialogueItalicFormat}deal{#PreviousFormat}!",
+			Text =
+			"Well, Nephew, I know that salty Charon can be difficult. But I am certain that whatever price you paid, you got a {#DialogueItalicFormat}deal{#PreviousFormat}!",
 		},
 	},
 	{
@@ -2042,7 +2163,8 @@ local newPortedLootBoughtTextLines = {
 			Cue = "/VO/Poseidon_0195",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "Nothing comes freely for the mortals on the surface, Nephew! And from the sound of things, it isn't any different with that Charon character!",
+			Text =
+			"Nothing comes freely for the mortals on the surface, Nephew! And from the sound of things, it isn't any different with that Charon character!",
 		},
 	},
 	{
@@ -2059,14 +2181,18 @@ local newPortedLootBoughtTextLines = {
 			Cue = "/VO/Poseidon_0196",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "Let me just say, Nephew, that money-hoarding boatman best be fair with you! Because I'd hate to see anything happen to that little boat of his!",
+			Text =
+			"Let me just say, Nephew, that money-hoarding boatman best be fair with you! Because I'd hate to see anything happen to that little boat of his!",
 		},
 	},
 }
-mod.AddNarrativeDataEntries(
-	newPortedLootBoughtTextLines, "PoseidonUpgrade", "BoughtTextLines", "BoughtTextLinePriorities",
-	{ Poseidon = { "Modsnikkelmhadesbiomesposeidon" } }, { Poseidon_ = "Modsnikkelmhadesbiomesposeidon_" },
-	{ Poseidon_ = "ModsNikkelMHadesBiomes_Portrait_Poseidon_Default_01" }
+mod.AddNarrativeDataEntries(newPortedLootBoughtTextLines, "PoseidonUpgrade", "BoughtTextLines",
+	{
+		TextLinePriorityType = "BoughtTextLinePriorities",
+		VoiceBankMappings = { Poseidon = { "Modsnikkelmhadesbiomesposeidon" } },
+		CueMappings = { Poseidon_ = "Modsnikkelmhadesbiomesposeidon_" },
+		PortraitMappings = { Poseidon_ = "ModsNikkelMHadesBiomes_Portrait_Poseidon_Default_01" },
+	}
 )
 
 local newPortedRejectionTextLines = {
@@ -2079,7 +2205,8 @@ local newPortedRejectionTextLines = {
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
 			Emote = "PortraitEmoteFiredUp",
-			Text = "{#DialogueItalicFormat}Whaaaa{#PreviousFormat}, you think that you've a chance in hell without my help, am I to understand?! You made a big mistake there, little Hades, just you watch.",
+			Text =
+			"{#DialogueItalicFormat}Whaaaa{#PreviousFormat}, you think that you've a chance in hell without my help, am I to understand?! You made a big mistake there, little Hades, just you watch.",
 		},
 	},
 	{
@@ -2090,7 +2217,8 @@ local newPortedRejectionTextLines = {
 			PreLineWait = 1.0,
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "How bold of you to throw your lot in with my relatives instead of me, given the choice, there, little Hades. But don't you ever bet against {#DialogueItalicFormat}this {#PreviousFormat}horse!",
+			Text =
+			"How bold of you to throw your lot in with my relatives instead of me, given the choice, there, little Hades. But don't you ever bet against {#DialogueItalicFormat}this {#PreviousFormat}horse!",
 		},
 	},
 	{
@@ -2101,7 +2229,8 @@ local newPortedRejectionTextLines = {
 			PreLineWait = 1.0,
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "Oh, now, it seems to me your strength outweighs your smarts, there, Nephew, if you're prone to picking other sides than mine!",
+			Text =
+			"Oh, now, it seems to me your strength outweighs your smarts, there, Nephew, if you're prone to picking other sides than mine!",
 		},
 	},
 	{
@@ -2112,7 +2241,8 @@ local newPortedRejectionTextLines = {
 			PreLineWait = 1.0,
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "A word of caution, little Nephew: Never turn your back against the sea. And, while you're at it, never take up sides against your greatest uncle!",
+			Text =
+			"A word of caution, little Nephew: Never turn your back against the sea. And, while you're at it, never take up sides against your greatest uncle!",
 		},
 	},
 	{
@@ -2124,7 +2254,8 @@ local newPortedRejectionTextLines = {
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
 			Emote = "PortraitEmoteFiredUp",
-			Text = "{#DialogueItalicFormat}Augh{#PreviousFormat}! I'm absolutely flabbergasted, Nephew!! I offer you the finest blessings of the earth and sea, and they're not good enough?",
+			Text =
+			"{#DialogueItalicFormat}Augh{#PreviousFormat}! I'm absolutely flabbergasted, Nephew!! I offer you the finest blessings of the earth and sea, and they're not good enough?",
 		},
 	},
 	{
@@ -2135,7 +2266,8 @@ local newPortedRejectionTextLines = {
 			PreLineWait = 1.0,
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "Apparently my crusty elder brother failed to teach you any manners, if you deign to thusly spurn my offerings! But I can teach you yet!",
+			Text =
+			"Apparently my crusty elder brother failed to teach you any manners, if you deign to thusly spurn my offerings! But I can teach you yet!",
 		},
 	},
 	{
@@ -2147,7 +2279,8 @@ local newPortedRejectionTextLines = {
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
 			Emote = "PortraitEmoteAnger",
-			Text = "{#DialogueItalicFormat}Betrayal{#PreviousFormat}, little Hades!! Of all my nephews, you should know better than this! Or perhaps I should. One of us, at least!",
+			Text =
+			"{#DialogueItalicFormat}Betrayal{#PreviousFormat}, little Hades!! Of all my nephews, you should know better than this! Or perhaps I should. One of us, at least!",
 		},
 	},
 	{
@@ -2158,7 +2291,8 @@ local newPortedRejectionTextLines = {
 			PreLineWait = 1.0,
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "That's definitely not the choice {#DialogueItalicFormat}I {#PreviousFormat}would have made, Nephew! Because, for me to side against myself, why, that would make no sense at all!",
+			Text =
+			"That's definitely not the choice {#DialogueItalicFormat}I {#PreviousFormat}would have made, Nephew! Because, for me to side against myself, why, that would make no sense at all!",
 		},
 	},
 	{
@@ -2170,7 +2304,8 @@ local newPortedRejectionTextLines = {
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
 			Emote = "PortraitEmoteFiredUp",
-			Text = "Nephew, what you have just done is tantamount to spitting in my face! Let me remind you, then, the ocean can spit back!",
+			Text =
+			"Nephew, what you have just done is tantamount to spitting in my face! Let me remind you, then, the ocean can spit back!",
 		},
 	},
 	{
@@ -2182,7 +2317,8 @@ local newPortedRejectionTextLines = {
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
 			Emote = "PortraitEmoteDepressed",
-			Text = "You wound me, little Hades, with your callous choice! It's fortunate I'm quite impervious to harm. But I don't think the same is true for you!",
+			Text =
+			"You wound me, little Hades, with your callous choice! It's fortunate I'm quite impervious to harm. But I don't think the same is true for you!",
 		},
 	},
 	{
@@ -2193,7 +2329,8 @@ local newPortedRejectionTextLines = {
 			PreLineWait = 1.0,
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "You know the saying not to play with fire, don't you, Nephew? You'll find the same is very much the case with water, too!",
+			Text =
+			"You know the saying not to play with fire, don't you, Nephew? You'll find the same is very much the case with water, too!",
 		},
 	},
 	{
@@ -2206,7 +2343,8 @@ local newPortedRejectionTextLines = {
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
 			Emote = "PortraitEmoteFiredUp",
-			Text = "Again, you would defy me, little Hades? I'm beginning to see why your father might be very frustrated, indeed, having to deal with you!",
+			Text =
+			"Again, you would defy me, little Hades? I'm beginning to see why your father might be very frustrated, indeed, having to deal with you!",
 		},
 	},
 	{
@@ -2219,7 +2357,8 @@ local newPortedRejectionTextLines = {
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
 			Emote = "PortraitEmoteAnger",
-			Text = "It seems that you require yet one more gentle reminder not to scoff at chances to accept my blessings, little Hades! Now remember this!",
+			Text =
+			"It seems that you require yet one more gentle reminder not to scoff at chances to accept my blessings, little Hades! Now remember this!",
 		},
 	},
 	{
@@ -2231,7 +2370,8 @@ local newPortedRejectionTextLines = {
 			PreLineWait = 1.0,
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "Sometimes I think, surely my nephew takes to heart my strongly worded threats about my distaste for his little acts of treachery, but {#DialogueItalicFormat}no{#PreviousFormat}!",
+			Text =
+			"Sometimes I think, surely my nephew takes to heart my strongly worded threats about my distaste for his little acts of treachery, but {#DialogueItalicFormat}no{#PreviousFormat}!",
 		},
 	},
 	{
@@ -2243,14 +2383,17 @@ local newPortedRejectionTextLines = {
 			PreLineWait = 1.0,
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "I could have sworn I told you never to take the power of the sea for granted, little Hades? It seems the time for words is over, then!",
+			Text =
+			"I could have sworn I told you never to take the power of the sea for granted, little Hades? It seems the time for words is over, then!",
 		},
 	},
 }
-mod.AddNarrativeDataEntries(
-	newPortedRejectionTextLines, "PoseidonUpgrade", "RejectionTextLines", nil,
-	{ Poseidon = { "Modsnikkelmhadesbiomesposeidon" } }, { Poseidon_ = "Modsnikkelmhadesbiomesposeidon_" },
-	{ Poseidon_ = "ModsNikkelMHadesBiomes_Portrait_Poseidon_Default_01" }
+mod.AddNarrativeDataEntries(newPortedRejectionTextLines, "PoseidonUpgrade", "RejectionTextLines",
+	{
+		VoiceBankMappings = { Poseidon = { "Modsnikkelmhadesbiomesposeidon" } },
+		CueMappings = { Poseidon_ = "Modsnikkelmhadesbiomesposeidon_" },
+		PortraitMappings = { Poseidon_ = "ModsNikkelMHadesBiomes_Portrait_Poseidon_Default_01" },
+	}
 )
 
 local newPortedMakeUpTextLines = {
@@ -2262,7 +2405,8 @@ local newPortedMakeUpTextLines = {
 			Cue = "/VO/Poseidon_0058",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "Oh, very well then, little Hades! Uncle's going to let you off the hook this time. Just mind your manners next we meet!",
+			Text =
+			"Oh, very well then, little Hades! Uncle's going to let you off the hook this time. Just mind your manners next we meet!",
 		},
 	},
 	{
@@ -2273,7 +2417,8 @@ local newPortedMakeUpTextLines = {
 			Cue = "/VO/Poseidon_0059",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "I must hand it to you, little Hades! I did not expect that you would weather such a storm! I'm mightily impressed!",
+			Text =
+			"I must hand it to you, little Hades! I did not expect that you would weather such a storm! I'm mightily impressed!",
 		},
 	},
 	{
@@ -2284,7 +2429,8 @@ local newPortedMakeUpTextLines = {
 			Cue = "/VO/Poseidon_0060",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "Ah, I can't stay angry! Let us call all that unpleasantness back there water under the bridge, what say you, Nephew?",
+			Text =
+			"Ah, I can't stay angry! Let us call all that unpleasantness back there water under the bridge, what say you, Nephew?",
 		},
 	},
 	{
@@ -2295,7 +2441,8 @@ local newPortedMakeUpTextLines = {
 			Cue = "/VO/Poseidon_0061",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "My, a show of strength like that deserves a commendation I should think! Although, for next time, know my favor's not a thing to trifle with!",
+			Text =
+			"My, a show of strength like that deserves a commendation I should think! Although, for next time, know my favor's not a thing to trifle with!",
 		},
 	},
 	{
@@ -2306,7 +2453,8 @@ local newPortedMakeUpTextLines = {
 			Cue = "/VO/Poseidon_0062",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "All right, that's quite enough, I take it you have had about enough of that, correct? You're pretty good! So here, why don't you run along!",
+			Text =
+			"All right, that's quite enough, I take it you have had about enough of that, correct? You're pretty good! So here, why don't you run along!",
 		},
 	},
 	{
@@ -2318,7 +2466,8 @@ local newPortedMakeUpTextLines = {
 			Emote = "PortraitEmoteFiredUp",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "{#DialogueItalicFormat}Ah-haha{#PreviousFormat}, my fits of anger come and go just like the tides, Nephew! Now take this from me, and get out of here!",
+			Text =
+			"{#DialogueItalicFormat}Ah-haha{#PreviousFormat}, my fits of anger come and go just like the tides, Nephew! Now take this from me, and get out of here!",
 		},
 	},
 	{
@@ -2329,7 +2478,8 @@ local newPortedMakeUpTextLines = {
 			Cue = "/VO/Poseidon_0162",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "Now that was truly finely fought, indeed, Nephew! And I've a suitable reward here, just for you! Don't even know what I was mad about!",
+			Text =
+			"Now that was truly finely fought, indeed, Nephew! And I've a suitable reward here, just for you! Don't even know what I was mad about!",
 		},
 	},
 	{
@@ -2340,7 +2490,8 @@ local newPortedMakeUpTextLines = {
 			Cue = "/VO/Poseidon_0163",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "What can I say, Nephew? Sometimes our tempers get the best of all of us. You're fortunate mine didn't get the best of you back there!",
+			Text =
+			"What can I say, Nephew? Sometimes our tempers get the best of all of us. You're fortunate mine didn't get the best of you back there!",
 		},
 	},
 	{
@@ -2351,7 +2502,8 @@ local newPortedMakeUpTextLines = {
 			Cue = "/VO/Poseidon_0164",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "You weathered the storm, there, little Hades, and the sea is once again at peace. And you'll make every attempt to keep it that way, correct?",
+			Text =
+			"You weathered the storm, there, little Hades, and the sea is once again at peace. And you'll make every attempt to keep it that way, correct?",
 		},
 	},
 	{
@@ -2362,7 +2514,8 @@ local newPortedMakeUpTextLines = {
 			Cue = "/VO/Poseidon_0165",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "All right, no need to fight about this any longer, don't you think, Nephew? Here, take my blessing, like you should have in the first place!",
+			Text =
+			"All right, no need to fight about this any longer, don't you think, Nephew? Here, take my blessing, like you should have in the first place!",
 		},
 	},
 	{
@@ -2373,12 +2526,15 @@ local newPortedMakeUpTextLines = {
 			Cue = "/VO/Poseidon_0166",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
 			UseEventEndSound = true,
-			Text = "Now let's not set a bad example for the family, Nephew! We're better than all that. Besides! They've many bad examples as it is.",
+			Text =
+			"Now let's not set a bad example for the family, Nephew! We're better than all that. Besides! They've many bad examples as it is.",
 		},
 	},
 }
-mod.AddNarrativeDataEntries(
-	newPortedMakeUpTextLines, "PoseidonUpgrade", "MakeUpTextLines", nil,
-	{ Poseidon = { "Modsnikkelmhadesbiomesposeidon" } }, { Poseidon_ = "Modsnikkelmhadesbiomesposeidon_" },
-	{ Poseidon_ = "ModsNikkelMHadesBiomes_Portrait_Poseidon_Default_01" }
+mod.AddNarrativeDataEntries(newPortedMakeUpTextLines, "PoseidonUpgrade", "MakeUpTextLines",
+	{
+		VoiceBankMappings = { Poseidon = { "Modsnikkelmhadesbiomesposeidon" } },
+		CueMappings = { Poseidon_ = "Modsnikkelmhadesbiomesposeidon_" },
+		PortraitMappings = { Poseidon_ = "ModsNikkelMHadesBiomes_Portrait_Poseidon_Default_01" },
+	}
 )

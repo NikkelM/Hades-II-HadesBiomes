@@ -86,24 +86,35 @@ end
 ---@param newTextLines table<integer, table> Text line sets keyed by text line id, each including `ModsNikkelMHadesBiomes_TextLineMetadata`
 ---@param narrativeDataKey string Key in `game.NarrativeData` and `game.LootData`/`game.EnemyData`
 ---@param textLineType string Field name on LootData/EnemyData to store sets (e.g. "InteractTextLineSets")
----@param textLinePriorityType string|nil Field name on NarrativeData priority table (e.g. "InteractTextLinePriorities")
----@param voiceBankMappings table<string, table<string>> Voicebank mapping to load modded voicebanks with vanilla loads
----@param cueMappings table<string, string> Cue prefix mapping, applied to `/VO/<Find>` -> `/VO/<ReplaceWith>`
----@param portraitMappings table<string, string> Mappings of Cue prefixes to Portrait names
----@param dummyCues table<integer, string>|nil If not nil, a random cue from this table will be played when the loot is picked up, in place of an actual voiced dialogue
----@param dummyVoiceBank string|nil If `dummyCues` is set, this voicebank will be loaded for it
----@param ignoreDuplicates boolean|nil If true, the duplicates check will ignore these textlines. Only use for tables where you knowingly add duplicates
----@param stripProperties table|nil A list of property keys within each TextLineSet that should be set to nil
-function mod.AddNarrativeDataEntries(newTextLines, narrativeDataKey, textLineType, textLinePriorityType,
-																		 voiceBankMappings, cueMappings, portraitMappings, dummyCues, dummyVoiceBank,
-																		 ignoreDuplicates, stripProperties)
-	if narrativeDataKey == nil or textLineType == nil or voiceBankMappings == nil or cueMappings == nil or portraitMappings == nil then
+---@param args table|nil Optional parameters:
+---`TextLinePriorityType`: Field name on the NarrativeData priority table (e.g. "InteractTextLinePriorities")
+---`VoiceBankMappings`: Voicebank mapping to load modded voicebanks with vanilla loads
+---`CueMappings`: Cue prefix mapping, applied to `/VO/<Find>` -> `/VO/<ReplaceWith>`
+---`PortraitMappings`: Mappings of Cue prefixes to Portrait names
+---`DummyCues`: A random cue from this table is played when the loot is picked up, in place of an actual voiced dialogue
+---`DummyVoiceBank`: Loaded for `DummyCues`, and required whenever that is set
+---`IgnoreDuplicates`: Skips the duplicates check. Only use for tables where you knowingly add duplicates
+---`StripProperties`: A list of property keys within each TextLineSet that should be set to nil
+---`SkipModdedRunRequirement`: Prevents adding the `CurrentRun.ModsNikkelMHadesBiomesIsModdedRun` requirement to the given textLines
+---`SkipUseRecordRequirement`: Prevents adding the `UseRecord` gate, which Crossroads NPCs must do because interacting records a use before the just-in-time eligibility recheck
+function mod.AddNarrativeDataEntries(newTextLines, narrativeDataKey, textLineType, args)
+	args = args or {}
+	local textLinePriorityType = args.TextLinePriorityType
+	local voiceBankMappings = args.VoiceBankMappings or {}
+	local cueMappings = args.CueMappings or {}
+	local portraitMappings = args.PortraitMappings or {}
+	local dummyCues = args.DummyCues
+	local dummyVoiceBank = args.DummyVoiceBank
+	local ignoreDuplicates = args.IgnoreDuplicates
+	local stripProperties = args.StripProperties
+
+	if narrativeDataKey == nil or textLineType == nil then
 		mod.DebugPrint("A required parameter is missing!", 1)
 		return
 	end
 	if dummyCues ~= nil and dummyVoiceBank == nil then
 		mod.DebugPrint(
-			"dummyCues is set but dummyVoiceBank is nil, both must be set to use a dummy cue! For " ..
+			"args.DummyCues is set but args.DummyVoiceBank is nil, both must be set to use a dummy cue! For " ..
 			narrativeDataKey ", " .. textLineType, 1)
 		return
 	end
@@ -169,7 +180,8 @@ function mod.AddNarrativeDataEntries(newTextLines, narrativeDataKey, textLineTyp
 		-- Safety net for duplicates that are not yet tracked in public.DuplicateTextLineSetNames
 		if mod.HiddenConfig.DeveloperMode and not ignoreDuplicates and not public.DuplicateTextLineSetNames[originalName] and dialogueNameExistsInHadesTwo(originalName) then
 			mod.DebugPrint(
-				"Text line set '" .. originalName .. "' already exists in Hades II but is not in public.DuplicateTextLineSetNames.",
+				"Text line set '" ..
+				originalName .. "' already exists in Hades II but is not in public.DuplicateTextLineSetNames.",
 				1)
 		end
 
@@ -178,16 +190,21 @@ function mod.AddNarrativeDataEntries(newTextLines, narrativeDataKey, textLineTyp
 		-- Mark as modded textline
 		data.ModsNikkelMHadesBiomesIsModdedTextLine = true
 		-- Don't play the Chaos effect on Chaos' own boons, Devotion MakeUp voicelines, and NPCs in the world (not by boon)
-		if narrativeDataKey == "TrialUpgrade" or textLineType == "MakeUpTextLines" or narrativeDataKey == "NPC_Artemis_Field_01" or narrativeDataKey == "NPC_Athena_01" then
+		if narrativeDataKey == "TrialUpgrade" or textLineType == "MakeUpTextLines" or narrativeDataKey:find("^NPC_") then
 			-- This will prevent using the Chaos effects on boon pickup, which would double up
 			data.ModsNikkelMHadesBiomesIsModdedTrialUpgradeTextLine = true
 		end
 
 		data.GameStateRequirements = data.GameStateRequirements or {}
-		-- All modded text lines can only appear in modded runs
-		table.insert(data.GameStateRequirements, { PathTrue = { "CurrentRun", "ModsNikkelMHadesBiomesIsModdedRun" } })
-		-- This requirement was missing in Hades' textlines
-		table.insert(data.GameStateRequirements, { PathFalse = { "CurrentRun", "UseRecord", narrativeDataKey } })
+		-- All modded text lines can only appear in modded runs, unless they are meant to play in the Crossroads after any kind of run
+		if not args.SkipModdedRunRequirement then
+			table.insert(data.GameStateRequirements, { PathTrue = { "CurrentRun", "ModsNikkelMHadesBiomesIsModdedRun" } })
+		end
+		-- This requirement was missing in Hades' god boon pickup textlines
+		-- NPCs must skip it, as RecordUse fires on interact before the just-in-time eligibility recheck, which would disqualify the line being played
+		if not args.SkipUseRecordRequirement then
+			table.insert(data.GameStateRequirements, { PathFalse = { "CurrentRun", "UseRecord", narrativeDataKey } })
+		end
 
 		-- Strip keys
 		for _, stripProperty in ipairs(stripProperties or {}) do
@@ -406,8 +423,13 @@ function mod.AddHermesDeliveredDialogues(deliveries, voiceBankMappings, cueMappi
 		delivery.EndEvents = { { FunctionName = _PLUGIN.guid .. "." .. "SetHermesDeliveryArgs", }, }
 	end
 
-	mod.AddNarrativeDataEntries(deliveries, "HermesUpgrade", "InteractTextLineSets", "InteractTextLinePriorities",
-		voiceBankMappings, cueMappings, portraitMappings)
+	mod.AddNarrativeDataEntries(deliveries, "HermesUpgrade", "InteractTextLineSets",
+		{
+			TextLinePriorityType = "InteractTextLinePriorities",
+			VoiceBankMappings = voiceBankMappings,
+			CueMappings = cueMappings,
+			PortraitMappings = portraitMappings,
+		})
 end
 
 function mod.SetHermesDeliveryArgs(source, eventArgs, args)

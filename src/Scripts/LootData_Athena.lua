@@ -924,11 +924,15 @@ local newAthenaExclusivePortedInteractTextLines = {
 	},
 	-- #endregion
 }
-mod.AddNarrativeDataEntries(
-	newAthenaExclusivePortedInteractTextLines, "NPC_Athena_01", "InteractTextLineSets", "InteractTextLinePriorities",
-	{ Athena = { "Modsnikkelmhadesbiomesathena", "ZagreusField" } }, { Athena_ = "Modsnikkelmhadesbiomesathena_" },
-	{ Athena_ = "ModsNikkelMHadesBiomes_Portrait_Athena_Default_01" }, nil, nil, true,
-	{ "PreEventFunctionName", "PreEventFunctionArgs" }
+mod.AddNarrativeDataEntries(newAthenaExclusivePortedInteractTextLines, "NPC_Athena_01", "InteractTextLineSets",
+	{
+		TextLinePriorityType = "InteractTextLinePriorities",
+		VoiceBankMappings = { Athena = { "Modsnikkelmhadesbiomesathena", "ZagreusField" } },
+		CueMappings = { Athena_ = "Modsnikkelmhadesbiomesathena_" },
+		PortraitMappings = { Athena_ = "ModsNikkelMHadesBiomes_Portrait_Athena_Default_01" },
+		IgnoreDuplicates = true,
+		StripProperties = { "PreEventFunctionName", "PreEventFunctionArgs" },
+	}
 )
 -- #endregion
 
@@ -1869,20 +1873,28 @@ local athenaPriorityTextLines = game.ConcatTableValuesIPairs(
 		game.ConcatTableValuesIPairs(newAthenaOlympianReunionTextLines, newAthenaPriorityTextLines),
 		newAthenaRelationshipTextLines),
 	newAthenaLateStoryTextLines) or {}
-mod.AddNarrativeDataEntries(
-	athenaPriorityTextLines, "NPC_Athena_01", "InteractTextLineSets", "InteractTextLinePriorities",
-	{ Athena = { "Modsnikkelmhadesbiomesathena", "ZagreusField" } }, { Athena_ = "Modsnikkelmhadesbiomesathena_" },
-	{ Athena_ = "ModsNikkelMHadesBiomes_Portrait_Athena_Default_01" }, nil, nil, true,
-	{ "PreEventFunctionName", "PreEventFunctionArgs" }
+mod.AddNarrativeDataEntries(athenaPriorityTextLines, "NPC_Athena_01", "InteractTextLineSets",
+	{
+		TextLinePriorityType = "InteractTextLinePriorities",
+		VoiceBankMappings = { Athena = { "Modsnikkelmhadesbiomesathena", "ZagreusField" } },
+		CueMappings = { Athena_ = "Modsnikkelmhadesbiomesathena_" },
+		PortraitMappings = { Athena_ = "ModsNikkelMHadesBiomes_Portrait_Athena_Default_01" },
+		IgnoreDuplicates = true,
+		StripProperties = { "PreEventFunctionName", "PreEventFunctionArgs" },
+	}
 )
 
 local exclusiveAthenaContextualTextLines = game.ConcatTableValuesIPairs(
 	game.ConcatTableValuesIPairs(newAthenaExclusivePostGiftTextLines, newAthenaExclusiveRunTextLines),
 	newAthenaExclusiveContextualTextLines) or {}
-mod.AddNarrativeDataEntries(
-	exclusiveAthenaContextualTextLines, "NPC_Athena_01", "InteractTextLineSets", "InteractTextLinePriorities",
-	{ Athena = { "Modsnikkelmhadesbiomesathena", "ZagreusField" } }, { Athena_ = "Modsnikkelmhadesbiomesathena_" },
-	{ Athena_ = "ModsNikkelMHadesBiomes_Portrait_Athena_Default_01" }, nil, nil, true,
-	{ "PreEventFunctionName", "PreEventFunctionArgs" }
+mod.AddNarrativeDataEntries(exclusiveAthenaContextualTextLines, "NPC_Athena_01", "InteractTextLineSets",
+	{
+		TextLinePriorityType = "InteractTextLinePriorities",
+		VoiceBankMappings = { Athena = { "Modsnikkelmhadesbiomesathena", "ZagreusField" } },
+		CueMappings = { Athena_ = "Modsnikkelmhadesbiomesathena_" },
+		PortraitMappings = { Athena_ = "ModsNikkelMHadesBiomes_Portrait_Athena_Default_01" },
+		IgnoreDuplicates = true,
+		StripProperties = { "PreEventFunctionName", "PreEventFunctionArgs" },
+	}
 )
 -- #endregion

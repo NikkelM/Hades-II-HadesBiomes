@@ -1707,8 +1707,11 @@ local newPortedInteractTextLines = {
 	},
 	-- #endregion
 }
-mod.AddNarrativeDataEntries(
-	newPortedInteractTextLines, "NPC_Artemis_Field_01", "InteractTextLineSets", "InteractTextLinePriorities",
-	{ Artemis = { "Modsnikkelmhadesbiomesartemis", "ZagreusField" } }, { Artemis_ = "Modsnikkelmhadesbiomesartemis_" },
-	{ Artemis_ = "ModsNikkelMHadesBiomes_Portrait_Artemis_Default_01" }
+mod.AddNarrativeDataEntries(newPortedInteractTextLines, "NPC_Artemis_Field_01", "InteractTextLineSets",
+	{
+		TextLinePriorityType = "InteractTextLinePriorities",
+		VoiceBankMappings = { Artemis = { "Modsnikkelmhadesbiomesartemis", "ZagreusField" } },
+		CueMappings = { Artemis_ = "Modsnikkelmhadesbiomesartemis_" },
+		PortraitMappings = { Artemis_ = "ModsNikkelMHadesBiomes_Portrait_Artemis_Default_01" },
+	}
 )
