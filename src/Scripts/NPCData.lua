@@ -791,19 +791,19 @@ local npcModifications = {
 				-- Heh.
 				{ Cue = "/VO/Thanatos_0181", RequiredFalsePlayedThisRoom = { "/VO/Thanatos_0181" }, RequiredTextLines = { "ThanatosGift05" }, },
 				-- You all right?
-				{ Cue = "/VO/Thanatos_0189", RequiredFalsePlayedThisRoom = { "/VO/Thanatos_0189" }, RequiredTextLines = { "ThanatosGift06" },                                               RequiresLastRunNotCleared = true },
+				{ Cue = "/VO/Thanatos_0189", RequiredFalsePlayedThisRoom = { "/VO/Thanatos_0189" }, RequiredTextLines = { "ThanatosGift06" },                                             RequiresLastRunNotCleared = true },
 				-- You OK?
-				{ Cue = "/VO/Thanatos_0190", RequiredFalsePlayedThisRoom = { "/VO/Thanatos_0190" }, RequiredTextLines = { "ThanatosGift06" },                                               RequiresLastRunNotCleared = true },
+				{ Cue = "/VO/Thanatos_0190", RequiredFalsePlayedThisRoom = { "/VO/Thanatos_0190" }, RequiredTextLines = { "ThanatosGift06" },                                             RequiresLastRunNotCleared = true },
 				-- Hey.
 				{ Cue = "/VO/Thanatos_0194", RequiredFalsePlayedThisRoom = { "/VO/Thanatos_0194" }, RequiredTextLines = { "ThanatosGift06" }, },
 				-- Hey.
 				{ Cue = "/VO/Thanatos_0427", RequiredFalsePlayedThisRoom = { "/VO/Thanatos_0427" }, RequiredTextLines = { "ThanatosGift10" }, },
 				-- Good work out there.
-				{ Cue = "/VO/Thanatos_0429", RequiredFalsePlayedThisRoom = { "/VO/Thanatos_0429" }, RequiredTextLines = { "ThanatosGift06" },                                               RequiresLastRunCleared = true, },
+				{ Cue = "/VO/Thanatos_0429", RequiredFalsePlayedThisRoom = { "/VO/Thanatos_0429" }, RequiredTextLines = { "ThanatosGift06" },                                             RequiresLastRunCleared = true, },
 				-- Well done that time.
-				{ Cue = "/VO/Thanatos_0430", RequiredFalsePlayedThisRoom = { "/VO/Thanatos_0430" }, RequiredTextLines = { "ThanatosGift06" },                                               RequiresLastRunCleared = true, },
+				{ Cue = "/VO/Thanatos_0430", RequiredFalsePlayedThisRoom = { "/VO/Thanatos_0430" }, RequiredTextLines = { "ThanatosGift06" },                                             RequiresLastRunCleared = true, },
 				-- Glad you're back.
-				{ Cue = "/VO/Thanatos_0434", RequiredFalsePlayedThisRoom = { "/VO/Thanatos_0434" }, RequiredAnyTextLines = { "BecameCloserWithThanatos01", "BecameCloserWithThanatos01_B" } },
+				{ Cue = "/VO/Thanatos_0434", RequiredFalsePlayedThisRoom = { "/VO/Thanatos_0434" }, RequiredAnyTextLines = { "BecameCloseWithThanatos01", "BecameCloseWithThanatos01_B" } },
 				-- Back in one piece.
 				{ Cue = "/VO/Thanatos_0435", RequiredFalsePlayedThisRoom = { "/VO/Thanatos_0435" }, RequiredTextLines = { "ThanatosGift07_A" }, },
 			},
@@ -860,7 +860,7 @@ local npcModifications = {
 								{
 									Cue = "/VO/Thanatos_0417",
 									AngleTowardHero = true,
-									AngleHeroTowardTargetId = 390000,
+									AngleHeroTowardTargetId = 423052,
 									Text =
 									"Just tell me one thing, Zagreus. Did you really mean what you told me before, that... maybe we ought to... take our time?"
 								},
@@ -1044,7 +1044,7 @@ local npcModifications = {
 								{
 									Cue = "/VO/Thanatos_0417",
 									AngleTowardHero = true,
-									AngleHeroTowardTargetId = 390000,
+									AngleHeroTowardTargetId = 423052,
 									Text =
 									"Just tell me one thing, Zagreus. Did you really mean what you told me before, that... maybe we ought to... take our time?"
 								},
@@ -2504,7 +2504,7 @@ local npcModifications = {
 												PreLineAnim = "FuryIdleInHouseFidgetWhipTaunt_ReturnToIdle",
 												PreLineWait = 0.35,
 												PostLineThreadedFunctionName = _PLUGIN.guid .. "." .. "AddTextLineToTextLineRecord",
-												PostLineFunctionArgs = { TextLine = "BecameCloseWithMegaera01Meg_BackOff" },
+												PostLineFunctionArgs = { TextLine = "BecameCloseWithMegaera01_BMeg_BackOff" },
 												Text =
 												"...I... Meg, I'm deeply flattered, and you're very dear to me, it's just... this isn't what I want from our relationship. I fear I must have led you on. Forgive me. Please say you'll still be my friend?"
 											},
@@ -2552,7 +2552,7 @@ local npcModifications = {
 												InterSceneWaitTime = 0.5,
 												PreLineAngleHeroTowardTargetId = 390082,
 												PostLineThreadedFunctionName = _PLUGIN.guid .. "." .. "AddTextLineToTextLineRecord",
-												PostLineFunctionArgs = { TextLine = "BecameCloseWithMegaera01Meg_GoToHer" },
+												PostLineFunctionArgs = { TextLine = "BecameCloseWithMegaera01_BMeg_GoToHer" },
 												Text = "Um, Meg, I... what I'm trying to say is, are you... are we good, or...?"
 											},
 											{

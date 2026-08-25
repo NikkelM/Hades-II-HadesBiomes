@@ -8,6 +8,8 @@ local hadesTwoEnemyBaseVFXModifications = {
 }
 
 sjson.hook(hadesTwoEnemyBaseVFXFile, function(data)
+	mod.RunInstallStep("Enemy_1Base_VFX")
+
 	local sjsonLoads = mod.TryLoadCachedSjsonFile("sjsonLoads.sjson") or {}
 	sjsonLoads["Enemy_1Base_VFX"] = true
 	mod.SaveCachedSjsonFile("sjsonLoads.sjson", sjsonLoads)

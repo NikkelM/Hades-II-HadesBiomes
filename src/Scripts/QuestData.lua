@@ -8,7 +8,7 @@ local flippedArcanaActive = mod.IsOtherModActive("ReadEmAndWeep-Flip_the_Arcana_
 local nighmareFearActive = mod.IsOtherModActive("ReadEmAndWeep-Nightmare_Fear")
 
 -- #region The order of the quests in the Quest log, these will be appended to the end of the vanilla list
--- Current number of quests: 42 (40 base + one flipped + one nightmare)
+-- Current number of quests: 43 (41 base + one flipped + one nightmare)
 local newQuestOrderData = {
 	-- key / mission-critical
 	"ModsNikkelMHadesBiomes_QuestSisyphusLiberation",
@@ -48,6 +48,7 @@ local newQuestOrderData = {
 	"ModsNikkelMHadesBiomes_QuestEliteAttributeKills",
 	"ModsNikkelMHadesBiomes_QuestMiniBossKills",
 	"ModsNikkelMHadesBiomes_QuestClearedExtremeMeasuresRun",
+	"ModsNikkelMHadesBiomes_PoseidonBeatTheseus",
 	"ModsNikkelMHadesBiomes_AresEarnKills",
 	"ModsNikkelMHadesBiomes_QuestShutdownThanatos",
 	"ModsNikkelMHadesBiomes_QuestThanatosKeepsakeHighPercentage",
@@ -528,6 +529,22 @@ local newQuestData = {
 			"WeaponAxe",
 			"WeaponLob",
 			"WeaponSuit",
+		},
+	},
+	-- Defeat EM Theseus for Poseidon
+	ModsNikkelMHadesBiomes_PoseidonBeatTheseus = {
+		InheritFrom = { "DefaultQuestItem", "DefaultKillQuest" },
+		RewardResourceName = "SuperGiftPoints",
+		RewardResourceAmount = 3,
+		UnlockGameStateRequirements = {
+			{
+				PathTrue = { "GameState", "TextLinesRecord", "PoseidonBeatTheseusQuest01" },
+			},
+		},
+		CompleteGameStateRequirements = {
+			{
+				PathTrue = { "GameState", "TextLinesRecord", "PoseidonBeatTheseusQuestComplete" },
+			},
 		},
 	},
 	-- Kill 10000 (modded) enemies

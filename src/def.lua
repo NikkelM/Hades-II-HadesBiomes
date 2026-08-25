@@ -7,6 +7,9 @@ public.config = {}
 ---@type boolean Whether the mod has been installed successfully and is active.
 public.IsValidInstallation = false
 
+---@type table<string, boolean> TextLineSet names shared by Hades and Hades II.
+public.DuplicateTextLineSetNames = {}
+
 --- Returns whether the mod is both enabled in the config and the installation is valid.
 ---@return boolean isEnabledAndValid True only if the mod is enabled and the installation is valid.
 function public.IsModEnabledAndInstallationValid() end

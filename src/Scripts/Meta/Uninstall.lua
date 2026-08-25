@@ -19,14 +19,13 @@ local function removeSjsonDataFiles()
 		mod.HadesGUIAnimationsSjsonDataPath,
 		mod.HadesPortraitAnimationsSjsonDataPath,
 		mod.HadesCharacterAnimationsNPCsSjsonDataPath,
+		mod.HadesCharacterAnimationsEnemiesSjsonDataPath,
+		mod.HadesEnemyAnimationsSjsonDataPath,
 	}) do
 		mod.RemoveFile(rom.path.combine(_PLUGIN.sjson_data_path, sjsonDataRelativePath))
 	end
 
-	local allHelpTextFileNames = game.DeepCopyTable(mod.HadesHelpTextFileNames) or {}
-	for fileName, _ in pairs(mod.NPCTextFileNames) do
-		table.insert(allHelpTextFileNames, fileName)
-	end
+	local allHelpTextFileNames = mod.GetAllGeneratedTextFileNames()
 	for _, fileName in ipairs(allHelpTextFileNames) do
 		for _, language in ipairs(mod.HelpTextLanguages) do
 			if not (mod.HadesHelpTextFileSkipMap[fileName] and mod.HadesHelpTextFileSkipMap[fileName][language]) then
@@ -81,7 +80,7 @@ function mod.Uninstall()
 
 	-- Remove files from the game install directory for users upgrading from versions before 1.0.0
 	local previousVersion = mod.HiddenConfig.InstalledModVersion or ""
-	if previousVersion == "" or previousVersion < "1.0.0" then
+	if mod.IsVersionOlderThan(previousVersion, "1.0.0") then
 		mod.DebugPrint("Cleaning up legacy files from game install directory (upgrading from " .. previousVersion .. ")...", 3)
 		mod.RemoveLegacySjsonFilesFromContent()
 		removeFiles(mod.MapFileMappings, contentRoot, "Maps\\", ".map_text")
@@ -98,6 +97,15 @@ function mod.Uninstall()
 		removeFiles(mod.CustomBikFileNames, contentRoot, "Movies\\720p\\", ".bik")
 		removeFiles(mod.CustomBikFileNames, contentRoot, "Movies\\720p\\", ".bik_atlas")
 		mod.RemoveFile(rom.path.combine(rom.paths.plugins_data(), _PLUGIN.guid, "checksums.txt"))
+	end
+
+	-- Package copying and its removal code were both dropped before 0.2.0, so the 1.0.0 cleanup above never picked these up
+	if mod.IsVersionOlderThan(previousVersion, "2.0.0") then
+		mod.DebugPrint("Cleaning up legacy packages from game install directory (upgrading from " .. previousVersion .. ")...", 3)
+		removeFiles(mod.UninstallOnlyPackageFileNames, contentRoot, "Packages\\1080p\\", ".pkg")
+		removeFiles(mod.UninstallOnlyPackageFileNames, contentRoot, "Packages\\1080p\\", ".pkg_manifest")
+		removeFiles(mod.UninstallOnlyPackageFileNames, contentRoot, "Packages\\720p\\", ".pkg")
+		removeFiles(mod.UninstallOnlyPackageFileNames, contentRoot, "Packages\\720p\\", ".pkg_manifest")
 	end
 
 	config.debugging.uninstall = false

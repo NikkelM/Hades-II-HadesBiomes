@@ -195,11 +195,8 @@ mod.HadesFxAnimationModifications = {
 	-- #region ENVIRONMENT
 	-- Used by the HydraSlamScattered attack
 	RadialNovaRubble = {
-		-- Updating the third value, but need to include the others to not set them to null
 		CreateAnimations = {
-			{ Name = "RubbleFall" },
-			{ Name = "RubbleFallImpactSpike" },
-			{ Name = "ModsNikkelMHadesBiomesRubbleFallImpactDecal" },
+			[3] = { Name = "ModsNikkelMHadesBiomesRubbleFallImpactDecal" },
 		},
 	},
 	-- #endregion

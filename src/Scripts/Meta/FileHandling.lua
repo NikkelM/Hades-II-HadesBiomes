@@ -92,33 +92,20 @@ function mod.RemoveFile(filePath)
 	end
 end
 
-local function checkFileExistsWithRetry(filePath, retries, delay, failFast)
-	local function sleep(sleepFor)
-		local t0 = os.clock()
-		while os.clock() - t0 <= sleepFor do end
+local function checkFileExists(filePath)
+	local file = io.open(filePath, "r")
+	if not file then
+		return false
 	end
-
-	for i = 1, retries do
-		local file = io.open(filePath, "r")
-		if file then
-			file:close()
-			return true
-		end
-		if not failFast then
-			mod.DebugPrint("File not found: " .. filePath .. " (attempt " .. i .. ")", 2)
-		else
-			return false
-		end
-		sleep(delay)
-	end
-	return false
+	file:close()
+	return true
 end
 
 local function checkFilesExist(fileMappings, rootPath, basePath, extension, failFast)
 	local missingFiles = 0
 	for src, dest in pairs(fileMappings) do
 		local destPath = rom.path.combine(rootPath, basePath .. dest .. extension)
-		if not checkFileExistsWithRetry(destPath, 3, 0.2, failFast) then
+		if not checkFileExists(destPath) then
 			mod.DebugPrint("Missing file: " .. destPath, 1)
 			missingFiles = missingFiles + 1
 			if failFast then return missingFiles end
@@ -127,10 +114,23 @@ local function checkFilesExist(fileMappings, rootPath, basePath, extension, fail
 	return missingFiles
 end
 
--- Returns a combined list of help text and NPC text file names for iteration
-local function getAllHelpAndNPCTextFileNames()
-	local allFileNames = game.DeepCopyTable(mod.HadesHelpTextFileNames) or {}
+-- Every text file name the install generates, including the NPC text files that copyHadesNPCTexts writes
+function mod.GetAllGeneratedTextFileNames()
+	local allFileNames = mod.GetAllHadesTextFileNames()
 	for fileName, _ in pairs(mod.NPCTextFileNames) do
+		table.insert(allFileNames, fileName)
+	end
+
+	return allFileNames
+end
+
+-- The text files copyHadesTextFiles copies, NPC text files are excluded as their entries are filtered by speaker instead
+function mod.GetAllHadesTextFileNames()
+	local allFileNames = {}
+	for _, fileName in ipairs(mod.HadesTextFileNames) do
+		table.insert(allFileNames, fileName)
+	end
+	for _, fileName in ipairs(mod.HadesHelpTextFileNames) do
 		table.insert(allFileNames, fileName)
 	end
 	return allFileNames
@@ -147,7 +147,7 @@ function mod.RemoveLegacySjsonFilesFromContent()
 	mod.RemoveFile(rom.path.combine(rom.paths.Content(), "Game\\" .. mod.HadesPortraitAnimationsSjsonDataPath))
 	mod.RemoveFile(rom.path.combine(rom.paths.Content(), "Game\\" .. mod.HadesCharacterAnimationsNPCsSjsonDataPath))
 
-	for _, fileName in ipairs(getAllHelpAndNPCTextFileNames()) do
+	for _, fileName in ipairs(mod.GetAllGeneratedTextFileNames()) do
 		for _, language in ipairs(mod.HelpTextLanguages) do
 			if not (mod.HadesHelpTextFileSkipMap[fileName] and mod.HadesHelpTextFileSkipMap[fileName][language]) then
 				mod.RemoveFile(rom.path.combine(rom.paths.Content(),
@@ -220,6 +220,8 @@ function mod.CheckRequiredFiles(failFast)
 		mod.HadesGUIAnimationsSjsonDataPath,
 		mod.HadesPortraitAnimationsSjsonDataPath,
 		mod.HadesCharacterAnimationsNPCsSjsonDataPath,
+		mod.HadesCharacterAnimationsEnemiesSjsonDataPath,
+		mod.HadesEnemyAnimationsSjsonDataPath,
 	}) do
 		if not rom.path.exists(rom.path.combine(_PLUGIN.sjson_data_path, sjsonDataRelativePath)) then
 			if not failFast then
@@ -231,7 +233,7 @@ function mod.CheckRequiredFiles(failFast)
 	end
 
 	-- Help text/NPC text SJSON files in the SJSON data directory
-	for _, fileName in ipairs(getAllHelpAndNPCTextFileNames()) do
+	for _, fileName in ipairs(mod.GetAllGeneratedTextFileNames()) do
 		for _, language in ipairs(mod.HelpTextLanguages) do
 			if not (mod.HadesHelpTextFileSkipMap[fileName] and mod.HadesHelpTextFileSkipMap[fileName][language]) then
 				local sjsonDataRelativePath = "Text\\" ..
@@ -240,6 +242,26 @@ function mod.CheckRequiredFiles(failFast)
 					mod.DebugPrint("Missing SJSON data file: " .. sjsonDataRelativePath, 1)
 					missingFiles = missingFiles + 1
 				end
+			end
+		end
+	end
+
+	-- Subtitle SJSON files parsed from the Hades .csv files, one per language and speaker
+	local subtitleLanguages = {}
+	for _, targetFolderNames in pairs(mod.SubtitleCsvFolderNames or {}) do
+		for _, language in ipairs(targetFolderNames) do
+			subtitleLanguages[language] = true
+		end
+	end
+	for language, _ in pairs(subtitleLanguages) do
+		for speakerName, _ in pairs(mod.SubtitleCsvFileNameMappings or {}) do
+			local subtitlePath = mod.GetSubtitleSjsonPath(language, speakerName)
+			if not rom.path.exists(subtitlePath) then
+				if not failFast then
+					mod.DebugPrint("Missing subtitle SJSON data file: " .. subtitlePath, 1)
+				end
+				missingFiles = missingFiles + 1
+				if failFast then return missingFiles end
 			end
 		end
 	end
@@ -292,6 +314,17 @@ OnAnyLoad {
 				-- Don't need to save to the file as it's already saved above
 				mod.HiddenConfig.MustShowUninstallFailureScreen = false
 			else
+				-- A pending install on map load means it didn't complete correctly, so throw an error
+				if mod.InstallationPending then
+					mod.DebugPrint("The installation never completed, marking it as invalid.", 1)
+					mod.HiddenConfig.IsValidInstallation = false
+					if mod.HiddenConfig.InstallationFailReason == "" then
+						mod.HiddenConfig.InstallationFailReason = "MissingFiles"
+					end
+					---@diagnostic disable-next-line: undefined-global
+					public.IsValidInstallation = false
+				end
+
 				-- If we haven't shown the install screen yet, or the installation is invalid, or we must show the warning about incompatible mods
 				if not mod.HiddenConfig.HasShownSuccessfulInstallScreen or not mod.HiddenConfig.IsValidInstallation or mod.HiddenConfig.MustShowIncompatibleModsInstallScreen then
 					-- Update the config with the type of screen we are showing

@@ -133,7 +133,7 @@ modutil.mod.Path.Wrap("CheckAvailableTextLines", function(base, source, args)
 	if source.NextInteractLines == nil and not game.NeedsUseableOff(source) and game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and source.ModsNikkelMHadesBiomesIsModdedEnemy and source.RepeatableTextLineSets ~= nil then
 		args = args or {}
 
-		source.NextInteractLines = game.GetRandomEligibleTextLines(source, source.RepeatableTextLineSets, nil, args) or {}
+		source.NextInteractLines = game.GetRandomEligibleTextLines(source, source.RepeatableTextLineSets, nil, args)
 		if source.NextInteractLines ~= nil then
 			if source.NextInteractLines.Partner ~= nil then
 				local partnerUnit = game.CheckPartnerConversations(source)

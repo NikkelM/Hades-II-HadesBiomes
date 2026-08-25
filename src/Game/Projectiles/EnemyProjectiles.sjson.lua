@@ -4,6 +4,25 @@ local hadesProjectilesTable = mod.DecodeSjsonFile(hadesProjectilesFile)
 
 local hadesTwoProjectilesFile = rom.path.combine(rom.paths.Content(), "Game\\Projectiles\\PlayerProjectiles.sjson")
 
+-- Hades projectiles that are almost identical to Hades II base projectiles
+local baseProjectiles = {
+	{
+		Name = "1_BaseSmallProjectile",
+		InheritFrom = "1_BaseProjectile",
+	},
+	{
+		Name = "1_BasePlayerSmallProjectile",
+		InheritFrom = "1_BaseProjectile",
+		ImpactFxInterval = 0.0,
+	},
+	{
+		Name = "1_BasePlayerLargeProjectile",
+		InheritFrom = "1_BaseProjectile",
+		ImpactFxInterval = 0.0,
+		SpawnType = "PROJECTILE",
+	},
+}
+
 -- Projectiles that are defined in a different file and therefore not caught by AddTableKeysSkipDupes()
 -- Or for compatibility with other mods, or we simply don't need them
 local projectilesToRemove = {
@@ -224,7 +243,7 @@ local hadesProjectilesModifications = {
 		AffectsSelf = false,
 		Speed = 530,
 		Thing = {
-			Graphic = "EnemyProjectileIn",
+			Graphic = "HadesEnemyProjectileIn",
 		},
 		ImmunityKey = "ModsNikkelMHadesBiomes_SplitShot",
 		ImmunityDuration = 0.4,
@@ -741,10 +760,13 @@ for _, projectile in ipairs(hadesProjectilesTable.Projectiles) do
 end
 
 sjson.hook(hadesTwoProjectilesFile, function(data)
+	mod.RunInstallStep("EnemyProjectiles")
+
 	local sjsonLoads = mod.TryLoadCachedSjsonFile("sjsonLoads.sjson") or {}
 	sjsonLoads["EnemyProjectiles"] = true
 	mod.SaveCachedSjsonFile("sjsonLoads.sjson", sjsonLoads)
 
+	mod.AddTableKeysSkipDupes(data.Projectiles, baseProjectiles, "Name")
 	mod.AddTableKeysSkipDupes(data.Projectiles, hadesProjectilesTable.Projectiles, "Name")
 	mod.AddTableKeysSkipDupes(data.Projectiles, addProjectiles, "Name")
 end)

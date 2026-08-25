@@ -1532,11 +1532,14 @@ mod.ZagreusFieldVoicelines = {
 	-- #endregion
 
 	-- #region LootData/Boon pickup/InteractTextLineSets
-	-- #region Chaos/TrialUpgrade
-	ZagreusField_3804 = true,
+
+	-- #region Aphrodite/AphroditeUpgrade
+	ZagreusField_0782 = true,
+	ZagreusField_4339 = true,
 	-- #endregion
 
 	-- #region Ares/AresUpgrade
+	ZagreusField_0789 = true,
 	ZagreusField_4340 = true,
 	-- #endregion
 
@@ -1549,5 +1552,49 @@ mod.ZagreusFieldVoicelines = {
 	ZagreusField_0774 = true,
 	ZagreusField_4338 = true,
 	-- #endregion
+
+	-- #region Chaos/TrialUpgrade
+	ZagreusField_0540 = true,
+	ZagreusField_0541 = true,
+	ZagreusField_0542 = true,
+	ZagreusField_3400 = true,
+	ZagreusField_3401 = true,
+	ZagreusField_3402 = true,
+	ZagreusField_3403 = true,
+	ZagreusField_3404 = true,
+	ZagreusField_3458 = true,
+	ZagreusField_3804 = true,
+	ZagreusField_4296 = true,
+	ZagreusField_4297 = true,
+	ZagreusField_4298 = true,
+	ZagreusField_4299 = true,
+	-- #endregion
+
+	-- #region Demeter/DemeterUpgrade
+	ZagreusField_2966 = true,
+	ZagreusField_4344 = true,
+	-- #endregion
+
+	-- #region Dionysus/DionysusUpgrade
+	ZagreusField_0792 = true,
+	ZagreusField_1218 = true,
+	ZagreusField_4342 = true,
+	-- #endregion
+
+	-- #region Hermes/HermesUpgrade
+	ZagreusField_1923 = true,
+	ZagreusField_4343 = true,
+	-- #endregion
+
+	-- #region Poseidon/PoseidonUpgrade
+	ZagreusField_0779 = true,
+	ZagreusField_4337 = true,
+	-- #endregion
+
+	-- #region Zeus/ZeusUpgrade
+	ZagreusField_0776 = true,
+	ZagreusField_4336 = true,
+	-- #endregion
+
 	-- #endregion
 }

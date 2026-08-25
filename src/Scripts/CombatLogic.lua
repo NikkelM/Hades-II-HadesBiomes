@@ -26,7 +26,7 @@ modutil.mod.Path.Wrap("KillEnemy", function(base, victim, triggerArgs)
 			end
 		end
 
-		if victim.SupportAIUnitId ~= nil then
+		if victim.SupportAIUnitId ~= nil and game.ActiveEnemies[victim.SupportAIUnitId] ~= nil then
 			game.thread(game.Kill, game.ActiveEnemies[victim.SupportAIUnitId])
 		end
 

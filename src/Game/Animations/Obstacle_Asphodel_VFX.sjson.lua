@@ -33,6 +33,8 @@ local hadesTwoObstacleModifications = {
 local addAnimations = {}
 
 sjson.hook(hadesTwoTartarusObstacleFile, function(data)
+	mod.RunInstallStep("Obstacle_Asphodel_VFX")
+
 	local sjsonLoads = mod.TryLoadCachedSjsonFile("sjsonLoads.sjson") or {}
 	sjsonLoads["Obstacle_Asphodel_VFX"] = true
 	mod.SaveCachedSjsonFile("sjsonLoads.sjson", sjsonLoads)

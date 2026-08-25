@@ -243,6 +243,19 @@ function mod.ApplyModificationsAndInheritEnemyData(base, modifications, replacem
 		}
 		for _, property in ipairs(bossPresentationProperties) do
 			if enemyData[property] then
+				-- Deduplicate TextLineSet keys that exist in both games by prepending ModsNikkelMHadesBiomes_
+				local duplicateKeyRenames = {}
+				for key in pairs(enemyData[property]) do
+					local mappedKey = mod.MapDuplicateTextLineName(key)
+					if mappedKey ~= key then
+						duplicateKeyRenames[key] = mappedKey
+					end
+				end
+				for oldKey, newKey in pairs(duplicateKeyRenames) do
+					enemyData[property][newKey] = enemyData[property][oldKey]
+					enemyData[property][oldKey] = nil
+				end
+
 				for key, textLineSet in pairs(enemyData[property]) do
 					textLineSet.Name = key
 					for index, entry in ipairs(textLineSet) do
@@ -979,6 +992,9 @@ local enemyModifications = {
 	LightRangedSuperElite = {
 		DefaultAIData = {
 			TakeCoverDuration = 3.0,
+			AIFireTicksMin = 1,
+			AIFireTicksMax = 1,
+			AIFireTicksCooldown = 0.07,
 		},
 	},
 	ThiefMineLayer = {
@@ -1022,7 +1038,7 @@ local enemyModifications = {
 	},
 	HeavyRangedElite = {
 		-- The tethers don't teleport and instead float over to the new location
-		BlockAttributes = { "Blink" },
+		BlockAttributes = { "Blink", "ExtraDamage" },
 	},
 	Swarmer = {
 		StunAnimations = { Default = "EnemyWretchSwarmerAlert", },
@@ -1169,6 +1185,7 @@ local enemyModifications = {
 		-- Polyphemus EM Health: 10200
 		-- Note that this is NOT multiplied by the ModdedUnitMaxHealthMultiplierBonus
 		MaxHealth = 11000,
+		ModsNikkelMHadesBiomesGoddessModeMaxHealth = 8000,
 		CauseOfDeathVoiceLines = {
 			Queue = "Interrupt",
 			[1] = { Source = { LineHistoryName = "Harpy" } },
@@ -1179,6 +1196,7 @@ local enemyModifications = {
 		},
 		ShrineDataOverwrites = {
 			MaxHealth = 12000,
+			ModsNikkelMHadesBiomesGoddessModeMaxHealth = 8500,
 		},
 		ModsNikkelMHadesBiomesIgnoreModdedHealthModifiers = true,
 		AltHealthBarTextIds = {
@@ -1293,7 +1311,8 @@ local enemyModifications = {
 	Harpy2 = {
 		-- Base Health: 4600
 		-- EM Health: 4900
-		MaxHealth = 11100,
+		MaxHealth = 11200,
+		ModsNikkelMHadesBiomesGoddessModeMaxHealth = 8200,
 		CauseOfDeathVoiceLines = {
 			Queue = "Interrupt",
 			[1] = { Source = { LineHistoryName = "Harpy2" } },
@@ -1303,6 +1322,7 @@ local enemyModifications = {
 		},
 		ShrineDataOverwrites = {
 			MaxHealth = 12200,
+			ModsNikkelMHadesBiomesGoddessModeMaxHealth = 8700,
 		},
 		ModsNikkelMHadesBiomesIgnoreModdedHealthModifiers = true,
 		AltHealthBarTextIds = {
@@ -1386,12 +1406,14 @@ local enemyModifications = {
 		-- Base Health: 5200
 		-- EM Health: 5600
 		MaxHealth = 11400,
+		ModsNikkelMHadesBiomesGoddessModeMaxHealth = 9000,
 		CauseOfDeathVoiceLines = {
 			Queue = "Interrupt",
 			[1] = { Source = { LineHistoryName = "Harpy3" } },
 		},
 		ShrineDataOverwrites = {
 			MaxHealth = 12400,
+			ModsNikkelMHadesBiomesGoddessModeMaxHealth = 9800,
 		},
 		ModsNikkelMHadesBiomesIgnoreModdedHealthModifiers = true,
 		AltHealthBarTextIds = {
@@ -1647,6 +1669,7 @@ local enemyModifications = {
 	HadesSpreadShotUnit = {
 		ModsNikkelMHadesBiomesOriginalHadesTwoEnemy = true,
 		LoadPackages = { "BiomeB", },
+		WeaponOptions = { "HadesSpreadShotBolt" },
 		ActivateFx = "EnemySummonRuneMedium",
 		ActivateFx2 = "nil",
 		ActivateFxPreSpawn = "nil",
@@ -1658,6 +1681,7 @@ local enemyModifications = {
 		ModsNikkelMHadesBiomesOriginalHadesTwoEnemy = true,
 		GenusName = "SpreadShotUnit_Elite",
 		LoadPackages = { "BiomeB", },
+		WeaponOptions = { "HadesSpreadShotBoltElite" },
 		ActivateFx = "EnemySummonRuneMedium",
 		ActivateFx2 = "nil",
 		ActivateFxPreSpawn = "nil",
@@ -1844,6 +1868,7 @@ local enemyModifications = {
 		-- Eris Health: 16000
 		-- Note that this is NOT multiplied by the ModdedUnitMaxHealthMultiplierBonus
 		MaxHealth = 18000,
+		ModsNikkelMHadesBiomesGoddessModeMaxHealth = 12000,
 		ModsNikkelMHadesBiomesIgnoreModdedHealthModifiers = true,
 		DreamBiomeData = {
 			[1] = { DataOverrides = { HealthMultiplier = 0.6 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.1 } },
@@ -1962,6 +1987,7 @@ local enemyModifications = {
 	BaseHydraHead = {
 		-- Note that this is NOT multiplied by the ModdedUnitMaxHealthMultiplierBonus
 		MaxHealth = 1000,
+		ModsNikkelMHadesBiomesGoddessModeMaxHealth = 700,
 		HealthBuffer = 1000,
 		ModsNikkelMHadesBiomesIgnoreModdedHealthModifiers = true,
 		DreamBiomeData = {
@@ -2374,6 +2400,7 @@ local enemyModifications = {
 		-- Heracles Health: 34000
 		-- Note that this is NOT multiplied by the ModdedUnitMaxHealthMultiplierBonus
 		MaxHealth = 26500,
+		ModsNikkelMHadesBiomesGoddessModeMaxHealth = 20000,
 		CauseOfDeathVoiceLines = {
 			Queue = "Interrupt",
 			[1] = { Source = { LineHistoryName = "Minotaur" } },
@@ -2554,6 +2581,7 @@ local enemyModifications = {
 	Minotaur2 = {
 		-- Base Health: 16000
 		MaxHealth = 27000,
+		ModsNikkelMHadesBiomesGoddessModeMaxHealth = 20500,
 		ModsNikkelMHadesBiomesIgnoreModdedHealthModifiers = true,
 		OnTouchdownFunctionArgs = {
 			ProjectileName = "MinotaurArmoredOverheadTouchdown",
@@ -2574,6 +2602,7 @@ local enemyModifications = {
 	Theseus = {
 		-- Base Health: 9000
 		MaxHealth = 20000,
+		ModsNikkelMHadesBiomesGoddessModeMaxHealth = 16000,
 		CauseOfDeathVoiceLines = {
 			Queue = "Interrupt",
 			[1] = { Source = { LineHistoryName = "Theseus" } },
@@ -2764,6 +2793,7 @@ local enemyModifications = {
 	Theseus2 = {
 		-- Base Health: 12000
 		MaxHealth = 21500,
+		ModsNikkelMHadesBiomesGoddessModeMaxHealth = 17400,
 		ModsNikkelMHadesBiomesIgnoreModdedHealthModifiers = true,
 		OnDeathFunctionName = _PLUGIN.guid .. "." .. "TheseusMinotaurKillPresentation",
 		OnDamagedFunctionName = _PLUGIN.guid .. "." .. "Theseus2Damaged",
@@ -2840,6 +2870,7 @@ local enemyModifications = {
 	},
 	HeavyRangedForkedElite = {
 		DeathAnimation = "HeavyRangedForkedDeath",
+		BlockAttributes = { "ExtraDamage" },
 		EliteAttributeOptions = game.CombineTables(game.EnemySets.GenericEliteAttributes, { "Metallic", }),
 	},
 	ThiefImpulseMineLayer = {
@@ -2967,6 +2998,7 @@ local enemyModifications = {
 		-- Typhon Health: 65000
 		-- Note that this is NOT multiplied by the ModdedUnitMaxHealthMultiplierBonus
 		MaxHealth = 30000,
+		ModsNikkelMHadesBiomesGoddessModeMaxHealth = 26000,
 		CauseOfDeathVoiceLines = {
 			Queue = "Interrupt",
 			[1] = { Source = { LineHistoryName = "Hades" } },
@@ -2977,6 +3009,7 @@ local enemyModifications = {
 		},
 		ShrineDataOverwrites = {
 			MaxHealth = 36000,
+			ModsNikkelMHadesBiomesGoddessModeMaxHealth = 31500,
 		},
 		ModsNikkelMHadesBiomesIgnoreModdedHealthModifiers = true,
 		DreamBiomeData = {
@@ -3183,6 +3216,7 @@ local enemyModifications = {
 	Charon = {
 		-- Note that this is NOT multiplied by the ModdedUnitMaxHealthMultiplierBonus
 		MaxHealth = 21000,
+		ModsNikkelMHadesBiomesGoddessModeMaxHealth = 18000,
 		CauseOfDeathVoiceLines = {
 			Queue = "Interrupt",
 			[1] = { Source = { LineHistoryName = "Charon" } },

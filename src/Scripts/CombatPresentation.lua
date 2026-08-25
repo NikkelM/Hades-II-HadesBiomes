@@ -4,6 +4,8 @@ modutil.mod.Path.Wrap("KillPresentation", function(base, victim, killer, args)
 		game.thread(mod.HandleTetherParentDeath, victim)
 
 		if victim.DeathAnimation ~= nil and victim.ManualDeathAnimation and not victim.ModsNikkelMHadesBiomesSkipDeathAnimation and not victim.ModsNikkelMHadesBiomesDiedWhilePolymorphed then
+			-- Clear effects to remove any lingering VFX from moving with the now invisible unit
+			StopAnimation({ Names = { "DemeterRootFxFront", "DemeterRootFxBack", }, DestinationId = victim.ObjectId, PreventChain = true })
 			-- Set the death animation manually on a new obstacles, to not have to time the DestroyDelay
 			local deathAnimationObstacle = SpawnObstacle({
 				Name = "BlankObstacle",

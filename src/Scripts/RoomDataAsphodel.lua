@@ -605,6 +605,16 @@ local roomModifications = {
 		PostCombatReloadEvents = {
 			[1] = { FunctionName = _PLUGIN.guid .. "." .. "WrappingPostCombatReloadPresentation", },
 		},
+		GameStateRequirements = {
+			{
+				FunctionName = _PLUGIN.guid .. "." .. "ModConfigLeafKeyHasValue",
+				FunctionArgs = { LeafKey = "z_SpeedrunDisableLongMinibossEncounters", ExpectedValue = false },
+			},
+			{
+				FunctionName = _PLUGIN.guid .. "." .. "ModConfigLeafKeyHasValue",
+				FunctionArgs = { LeafKey = "z_SpeedrunDisableBargeOfDeath", ExpectedValue = false },
+			},
+		},
 	},
 
 	-- BOSSES

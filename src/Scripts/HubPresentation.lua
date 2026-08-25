@@ -127,6 +127,12 @@ modutil.mod.Path.Wrap("StartNewRunPresentation", function(base, runDoor, args)
 		SetUnitProperty({ DestinationId = game.CurrentRun.Hero.ObjectId, Property = "CollideWithObstacles", Value = false })
 		SetUnitProperty({ DestinationId = game.CurrentRun.Hero.ObjectId, Property = "CollideWithUnits", Value = false })
 		game.SetFixedDashPresentationValues()
+		game.killTaggedThreads("SpawnSkelly")
+		local skellyId = GetIdsByType({ Name = "NPC_Skelly_01" })[1]
+		if skellyId ~= nil then
+			game.killTaggedThreads("Activating" .. skellyId)
+		end
+		game.killTaggedThreads("SkellySpawnVoiceLines")
 		game.thread(game.PlayVoiceLines,
 			game.GlobalVoiceLines[args.GlobalVoiceLines] or game.GlobalVoiceLines.StartNewRunVoiceLines)
 		game.wait(0.1)

@@ -109,6 +109,8 @@ mod.AddTableKeysSkipDupes(hadesHouseObstacleTable.Obstacles, hadesObstacleAdditi
 -- local hadesTwoObstacleModifications = {}
 
 sjson.hook(hadesTwoHouseObstacleFile, function(data)
+	mod.RunInstallStep("House")
+
 	local sjsonLoads = mod.TryLoadCachedSjsonFile("sjsonLoads.sjson") or {}
 	sjsonLoads["House"] = true
 	mod.SaveCachedSjsonFile("sjsonLoads.sjson", sjsonLoads)

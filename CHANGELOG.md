@@ -4,25 +4,48 @@
 
 <!--Releasenotes start-->
 ### Patch Highlights:
-- You may now encounter Artemis in Tartarus and Elysium, and she will use her dialogues from the first game when you speak to her.
-- You may now encounter Athena in Elysium and Styx, and she will use her dialogues from the first game when you speak to her.
+- You may now naturally encounter Artemis and Athena in Zagreus' Journey, and they will use their dialogues from the first game when you speak to one of them.
+- Picking up boons from Aphrodite, Ares, Chaos, Demeter, Hermes, Poseidon or Zeus while in a Zagreus' Journey run will now use their respective dialogues and advance their storylines from the first game.
+- Picking up a boon from Hermes while in a Zagreus' Journey run may now have him deliver a message from the first game's Dionysus to you (as Dionysus cannot be encountered during Zagreus' Journey runs), allowing you to experience his storyline.
+- Balancing: Slightly reduced health and armour of non-boss enemies in all biomes.
+- Fixed: Goddess Mode does not reduce boss health. Enabling it will now reduce boss health by about 25% of the difference between the health they had in Hades and the health they have with Goddess Mode disabled.
 
 Other fixes and improvements:
+- Added new speedrunning settings to disable the Barge of Death, Asterius and Tiny Vermin miniboss encounters, either all at once or individually.
+- Added an on-screen indicator that is shown while any of the speedrunning settings are enabled.
+- Added a new Minor Prophecy unlocked by talking to Poseidon in the Nightmare Realm.
 - Added NPCs added by Zagreus' Journey to [PonyMenu](https://thunderstore.io/c/hades-ii/p/PonyWarrior/PonyMenu/).
+- Reduced mod install/update time by ~50% by switching to a new internal file copy process.
+- Reduced mod load time by up to ~60% by moving work previously done at each game start and save load to install-time activities, and optimizing some recurring setup processes.
+- Added an on-screen indicator if any setting in the "Speedrunning" category is enabled.
 - Balancing: You can now destroy the butterflies created by Soul Spawners with your attacks and specials.
 - Balancing: Exalted Shades can no longer create Lone Shades when dying.
 - Balancing: Slightly reduced the base encounter difficulty of wing-end combat rooms in the Temple of Styx.
 - Balancing: Blocked a number of additional Elite perks from certain enemy types.
 - Balancing: Reworked "Lament of Orpheus" to no longer require defeating the enemy that originally damaged you to be able to trigger it again, and also be able to freeze enemies that are currently on cooldown from being frozen normally.
-- Fixed: Shells fired by the Argent Skull can become irretrievable if they were supposed to return to Melinoë during dialogue playing between phases in Hades' boss fight.
+- Fixed: The projectiles created by the Spreaders in Asphodel, and the small projectiles created by the Splitters in Elysium have the Hades II graphic instead of the Hades graphic.
 - Fixed: Theseus immediately snaps to look at Melinoë after his dialogue completes instead of gradually turning.
+- Fixed: Shells fired by the Argent Skull can become irretrievable if they were supposed to return to Melinoë during dialogue playing between phases in Hades' boss fight.
+- Fixed: Wretched Witches summoned by Hades during his boss fight fire three bursts of three large projectiles that split into five smaller projectiles, instead of one burst of three large projectiles that split into ten smaller projectiles.
 - Fixed: Damage taken from the Tiny Vermin is categorized as damage taken from Crawlers in the Damage Taken record in the run clear screen.
-- Fixed: Clones created by Elite enemies with the "Cloner" perk can create Revenants, Lone Shades, or be resurrected by Night Bloom.
+- Fixed: Dire Brimstones and Dire Snaketones can be imbued with the "Bruiser" elite perk which makes them stun Melinoë when they hit her, causing infinite stuns due to the rapid-fire nature of their attacks.
+- Fixed: Clones created by Elite enemies with the "Cloner" perk can create Revenants, Lone Shades, Exalted Shades, or be resurrected by Night Bloom.
+- Fixed: After killing certain enemies while also inflicting a freeze effect on them at the same time, the associated VFX can continue sliding over the ground for a split second.
 - Fixed: The voiceline that is supposed to play when attempting to interact with the locked Keepsake Cabinet in post-boss rooms may not play in some cases.
 - Fixed: The boons presented by Orpheus & Eurydice once they are reunited may be in a different order than expected.
 - Fixed: Meeting Orpheus is not counted towards the unlock conditions of the "Close at Heart" Minor Prophecy.
 - Fixed: There is a typo in the description of Orpheus' "Hymn to Zagreus" boon.
+- Fixed: After getting closer to Megaera while already close with Thanatos, the game will think you got with Megaera before Thanatos, which can change some future dialogue eligibilities.
+- Fixed: Thanatos shows an interaction prompt even when he has nothing left to say after his encounter.
+- Fixed: Melinoë doesn't look at directly at Thanatos during romance dialogues, instead looking off somewhere to the side.
+- Fixed: After some conversations, Thanatos may teleport away twice in the opening room of a run.
+- Fixed: Dialogues and other events requiring you to have seen a specific room a minimum or maximum number of times are not checked for eligibility correctly. 
+- Fixed: Dialogues that should only be able to play if three boon choices are available may play even when less are available.
+- Fixed: The fade-in animation of the Record Keeper's screen is missing some smoother animations on the bar graphs that exist in the base game.
 - Fixed: The vanilla Hades II intro video plays before Zagreus' Journey fresh file runs.
+- Fixed: The main menu logo is briefly misaligned at the beginning for non-16:9 aspect ratios.
+- Fixed: If the plugins_data folder for the mod is read-only and the installation fails due to it, the mod doesn't recognize this correctly.
+- Fixed: If the mod was installed before 0.1.0, some leftover package files may have remained in the game install directory after updating, which will now be removed correctly.
 <!--Releasenotes end-->
 
 ## v1.2.0

@@ -16,19 +16,23 @@ mod.VoiceoverFileNames = {
 	HadesField = "HadesField",
 	MegaeraField = "MegaeraField",
 	Minotaur = "Minotaur",
+	Aphrodite = "Modsnikkelmhadesbiomesaphrodite",
 	Ares = "Modsnikkelmhadesbiomesares",
 	Artemis = "Modsnikkelmhadesbiomesartemis",
 	Athena = "Modsnikkelmhadesbiomesathena",
 	Chaos = "Modsnikkelmhadesbiomeschaos",
 	Charon = "Modsnikkelmhadesbiomescharon",
+	Demeter = "Modsnikkelmhadesbiomesdemeter",
 	Dionysus = "Modsnikkelmhadesbiomesdionysus",
 	Hermes = "Modsnikkelmhadesbiomeshermes",
 	Intercom = "Modsnikkelmhadesbiomesintercom",
 	MegaeraHome = "Modsnikkelmhadesbiomesmegaerahome",
 	Persephone = "Modsnikkelmhadesbiomespersephone",
+	Poseidon = "Modsnikkelmhadesbiomesposeidon",
 	Skelly = "Modsnikkelmhadesbiomesskelly",
 	Storyteller = "Modsnikkelmhadesbiomesstoryteller",
 	ZagreusHome = "Modsnikkelmhadesbiomeszagreushome",
+	Zeus = "Modsnikkelmhadesbiomeszeus",
 	Orpheus = "Orpheus",
 	Patroclus = "Patroclus",
 	Sisyphus = "Sisyphus",
@@ -472,7 +476,6 @@ mod.CustomBikFileNames = {
 
 mod.SjsonFileMappings = {
 	-- Character animations - should only contain unique animation data, so we can simply copy the file instead of hooking
-	-- Note - it's possible this only works if the file name is the same?
 	-- Normal enemies
 	"Animations\\CharacterAnim_Enemies_BoneDracon",
 	"Animations\\CharacterAnim_Enemies_Chariot",
@@ -737,6 +740,20 @@ mod.UninstallOnlyMapFileMappings = {
 	["C_MiniBoss03"] = "Y_MiniBoss03",
 	["C_Combat07"] = "Y_Combat07",
 	["C_Combat15"] = "Y_Combat15",
+}
+
+-- Packages that used to be copied into the game install directory, which no versions since 1.0.0 clean up
+mod.UninstallOnlyPackageFileNames = {
+	"TartarusModsNikkelMHadesBiomes",
+	"AsphodelModsNikkelMHadesBiomes",
+	"ElysiumModsNikkelMHadesBiomes",
+	"StyxModsNikkelMHadesBiomes",
+	"SurfaceModsNikkelMHadesBiomes",
+	"RoomManagerModsNikkelMHadesBiomes",
+	"FxModsNikkelMHadesBiomes",
+	"GUIModsNikkelMHadesBiomes",
+	"ModsNikkelMHadesBiomesPortraits",
+	"ModsNikkelMHadesBiomesFxModded",
 }
 
 -- .map_text files that should be copied from the plugins_data folder instead of the Hades installation, as they have modifications from the original

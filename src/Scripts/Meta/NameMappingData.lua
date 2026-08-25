@@ -432,6 +432,13 @@ mod.ElysiumRoomNameMappings = {
 	["C_Story01"] = "Y_Story01",
 }
 
+-- Exist in all localizations, while mod.HadesHelpTextFileNames only exist for localizations other than english
+mod.HadesTextFileNames = {
+	"HelpText",
+	"CodexText",
+	"MiscText",
+}
+
 mod.HadesHelpTextFileNames = {
 	"_EnemyData",
 	"_EncounterData",

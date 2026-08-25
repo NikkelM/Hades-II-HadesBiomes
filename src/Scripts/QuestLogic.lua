@@ -29,14 +29,14 @@ modutil.mod.Path.Wrap("ShowQuestProgress", function(base, screen, questData, req
 			local complete = game.IsGameStateEligible(questData, { requirement })
 			index = index + 1
 			if index >= firstVisibleIndex and index <= maxVisibleIndex then
-				local bulletPointFormat = game.ShallowCopyTable(screen.BulletPointFormat)
+				local bulletPointFormat = game.ShallowCopyTable(screen.BulletPointFormat) or {}
 				bulletPointFormat.Id = screen.Components.DescriptionBox.Id
 				bulletPointFormat.Text = complete and "QuestLog_QuestProgressComplete" or "QuestLog_QuestProgressIncomplete"
 				bulletPointFormat.OffsetX = (currentColumn - 1) * columnWidth
 				bulletPointFormat.OffsetY = offsetY
 				CreateTextBox(bulletPointFormat)
 
-				local completionRequirementFormat = game.ShallowCopyTable(screen.CompletionRequirementFormat)
+				local completionRequirementFormat = game.ShallowCopyTable(screen.CompletionRequirementFormat) or {}
 				completionRequirementFormat.Id = screen.Components.DescriptionBox.Id
 				if not complete and questData.IncompleteName then
 					completionRequirementFormat.Text = questData.IncompleteName

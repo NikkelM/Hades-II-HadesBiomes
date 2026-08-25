@@ -317,7 +317,17 @@ for _, npcData in pairs(hadesNPCAdditions) do
 end
 
 sjson.hook(hadesTwoEnemiesFile, function(data)
+	mod.RunInstallStep("NPCs")
+
 	local sjsonLoads = mod.TryLoadCachedSjsonFile("sjsonLoads.sjson") or {}
+	-- This is the first hook to run after the Enemies.sjson hook, which resets the table, so we verify it ran first
+	if sjsonLoads["Enemies"] == "FileInitialized" then
+		sjsonLoads["Enemies"] = true
+	else
+		-- It didn't run, we need to make sure the mod opens the error popup
+		-- The easiest way is to remove the key from the table
+		sjsonLoads["Enemies"] = nil
+	end
 	sjsonLoads["NPCs-Enemies"] = true
 	mod.SaveCachedSjsonFile("sjsonLoads.sjson", sjsonLoads)
 

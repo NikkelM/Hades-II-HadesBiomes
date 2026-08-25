@@ -308,6 +308,8 @@ function mod.HandleBossSpawns(enemy, weaponAIData, currentRun, args)
 			newEnemy.MaxHealth = 1
 			newEnemy.Health = 1
 			newEnemy.HealthBuffer = 1
+			newEnemy.OnDeathFireWeapons = nil
+			newEnemy.SpawnUnitOnDeath = nil
 		end
 
 		game.SetupUnit(newEnemy, game.CurrentRun, args)

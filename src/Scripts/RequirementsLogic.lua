@@ -369,8 +369,8 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 		RequiredFalseSeenRoomLastRun = "string",
 		RequiredSeenRoomsBeforeThisRun = "table",
 		RequiredFalseSeenRoomsBeforeThisRun = "table",
-		RequiredMinTimesSeenRoom = "string",
-		RequiredMaxTimesSeenRoom = "string",
+		RequiredMinTimesSeenRoom = "keyTable",
+		RequiredMaxTimesSeenRoom = "keyTable",
 		RequiredRoomThisRun = "string",
 		RequiredRoomsThisRun = "table",
 		RequiredAnyRoomsThisRun = "table",
@@ -407,41 +407,116 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 							or mod.ElysiumRoomNameMappings[roomName.Name]
 							or roomName.Name
 				end
+			elseif requirementType == "keyTable" then
+				local mappedRequirements = {}
+				for roomName, value in pairs(requirements[roomRequirement]) do
+					local mappedRoomName =
+							mod.AsphodelRoomNameMappings[roomName]
+							or mod.ElysiumRoomNameMappings[roomName]
+							or roomName
+					mappedRequirements[mappedRoomName] = value
+				end
+				requirements[roomRequirement] = mappedRequirements
 			end
 		end
 	end
 
-	if requirements.RequiredTrait then
-		-- Replace Hades trait names with Hades II equivalents
-		local traitMappings = {
-			-- #region Shout/Wrath/Hex/Spell
-			ZeusShoutTrait = "PolymorphZeusTalent",
-			PoseidonShoutTrait = "PotionPoseidonTalent",
-			AphroditeShoutTrait = "TransformAphroditeTalent",
-			AresShoutTrait = "MoonBeamAresTalent",
-			DemeterShoutTrait = "TimeSlowDemeterTalent",
-			-- Unused H2 traits: LaserApolloTalent, LeapHephaestusTalent, SummonHeraTalent, MeteorHestiaTalent,
-			-- Unused H1 shouts: HadesShoutTrait, AthenaShoutTrait, ArtemisShoutTrait, DionysusShoutTrait
-			-- #endregion
-			-- #region Keepsakes
-			ShopDurationTrait = "BonusMoneyKeepsake",
-			ReincarnationTrait = "ReincarnationKeepsake",
-			ForceZeusBoonTrait = "ForceZeusBoonKeepsake",
-			ForcePoseidonBoonTrait = "ForcePoseidonBoonKeepsake",
-			ForceAthenaBoonTrait = "AthenaEncounterKeepsake",
-			ForceAphroditeBoonTrait = "ForceAphroditeBoonKeepsake",
-			ForceAresBoonTrait = "ForceAresBoonKeepsake",
-			ForceArtemisBoonTrait = "LowHealthCritKeepsake",
-			ForceDionysusBoonTrait = "SkipEncounterKeepsake",
-			FastClearDodgeBonusTrait = "TimedBuffKeepsake",
-			ForceDemeterBoonTrait = "ForceDemeterBoonKeepsake",
-			ChaosBoonTrait = "RandomBlessingKeepsake",
-			HadesShoutKeepsake = "HadesAndPersephoneKeepsake",
-			-- #endregion
-		}
-		if traitMappings[requirements.RequiredTrait] ~= nil then
-			requirements.RequiredTrait = traitMappings[requirements.RequiredTrait]
+	-- Map duplicate TextLineSet names that exist in both games to add the ModsNikkelMHadesBiomes_ prefix
+	local textLineRequirementOptions = {
+		RequiredTextLines = "table",
+		RequiredFalseTextLines = "table",
+		RequiredAnyTextLines = "table",
+		RequiredAnyOtherTextLines = "table",
+		RequiredAnyTextLinesThisRun = "table",
+		RequiredTextLinesThisRoom = "table",
+		RequiredFalseTextLinesThisRoom = "table",
+		RequiredFalseTextLinesThisRun = "table",
+		RequiredAnyQueuedTextLines = "table",
+		RequiredFalseQueuedTextLines = "table",
+		RequiredAnyTextLinesLastRun = "table",
+		RequiredFalseTextLinesLastRun = "table",
+		RequiredTextLinesThisRun = "string",
+		RequiredQueuedTextLines = "string",
+		RequiredTextLinesLastRun = "stringOrTable",
+		RequiredMinAnyTextLines = "textLinesSubTable",
+		RequiredMaxAnyTextLines = "textLinesSubTable",
+		RequiredTextLinesPerMetaUpgradeLevel = "textLinesSubTable",
+		MinRunsSinceAnyTextLines = "textLinesSubTable",
+		MaxRunsSinceAnyTextLines = "textLinesSubTable",
+	}
+	for textLineRequirement, requirementType in pairs(textLineRequirementOptions) do
+		local value = requirements[textLineRequirement]
+		if value ~= nil then
+			if requirementType == "string" then
+				requirements[textLineRequirement] = mod.MapDuplicateTextLineName(value)
+			elseif requirementType == "stringOrTable" then
+				if type(value) == "string" then
+					requirements[textLineRequirement] = mod.MapDuplicateTextLineName(value)
+				elseif type(value) == "table" then
+					for i, textLineSet in ipairs(value) do
+						value[i] = mod.MapDuplicateTextLineName(textLineSet)
+					end
+				end
+			elseif requirementType == "table" then
+				if type(value) == "table" then
+					for i, textLineSet in ipairs(value) do
+						value[i] = mod.MapDuplicateTextLineName(textLineSet)
+					end
+				end
+			elseif requirementType == "textLinesSubTable" then
+				if type(value) == "table" and type(value.TextLines) == "table" then
+					for i, textLineSet in ipairs(value.TextLines) do
+						value.TextLines[i] = mod.MapDuplicateTextLineName(textLineSet)
+					end
+				end
+			end
 		end
+	end
+
+	-- Replace Hades trait names with Hades II equivalents
+	local traitNameMappings = {
+		-- #region Shout/Wrath/Hex/Spell
+		ZeusShoutTrait = "PolymorphZeusTalent",
+		PoseidonShoutTrait = "PotionPoseidonTalent",
+		AphroditeShoutTrait = "TransformAphroditeTalent",
+		AresShoutTrait = "MoonBeamAresTalent",
+		DemeterShoutTrait = "TimeSlowDemeterTalent",
+		-- Unused H2 traits: LaserApolloTalent, LeapHephaestusTalent, SummonHeraTalent, MeteorHestiaTalent,
+		-- Unused H1 shouts: HadesShoutTrait, AthenaShoutTrait, ArtemisShoutTrait, DionysusShoutTrait
+		-- #endregion
+		-- #region Keepsakes
+		ShopDurationTrait = "BonusMoneyKeepsake",
+		ReincarnationTrait = "ReincarnationKeepsake",
+		ForceZeusBoonTrait = "ForceZeusBoonKeepsake",
+		ForcePoseidonBoonTrait = "ForcePoseidonBoonKeepsake",
+		ForceAthenaBoonTrait = "AthenaEncounterKeepsake",
+		ForceAphroditeBoonTrait = "ForceAphroditeBoonKeepsake",
+		ForceAresBoonTrait = "ForceAresBoonKeepsake",
+		ForceArtemisBoonTrait = "LowHealthCritKeepsake",
+		ForceDionysusBoonTrait = "SkipEncounterKeepsake",
+		FastClearDodgeBonusTrait = "TimedBuffKeepsake",
+		ForceDemeterBoonTrait = "ForceDemeterBoonKeepsake",
+		ChaosBoonTrait = "RandomBlessingKeepsake",
+		HadesShoutKeepsake = "HadesAndPersephoneKeepsake",
+		-- #endregion
+		-- #region Duo boons
+		RegeneratingCappedSuperTrait = "SprintEchoBoon",
+		ImprovedPomTrait = "AllCloseBoon",
+		CurseSickTrait = "BloodManaBurstBoon",
+		SelfLaserTrait = "MaxHealthDamageBoon",
+		PoseidonAresProjectileTrait = "DoubleSplashBoon",
+		StationaryRiftTrait = "SelfCastBoon",
+		JoltDurationTrait = "RootStrikeBoon",
+		BlizzardOrbTrait = "GoodStuffBoon",
+		ImpactBoltTrait = "LightningVulnerabilityBoon",
+		AutoRetaliateTrait = "AutoRevengeBoon",
+		-- #endregion
+	}
+	if requirements.RequiredTrait and traitNameMappings[requirements.RequiredTrait] ~= nil then
+		requirements.RequiredTrait = traitNameMappings[requirements.RequiredTrait]
+	end
+	if requirements.HasTraitNameInRoom and traitNameMappings[requirements.HasTraitNameInRoom] ~= nil then
+		requirements.HasTraitNameInRoom = traitNameMappings[requirements.HasTraitNameInRoom]
 	end
 
 	if requirements.RequiredMinNPCInteractions then
@@ -1844,10 +1919,17 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 		-- end
 	end
 
-	if requirements.RequiredInactiveMetaUpgrade ~= nil and GetNumShrineUpgrades(requirements.RequiredInactiveMetaUpgrade) > 0 then
-		return false
+	if requirements.RequiredInactiveMetaUpgrade ~= nil then
+		if game.GetNumShrineUpgrades(requirements.RequiredInactiveMetaUpgrade) > 0 then
+			return false
+		end
+		-- This specific vow doesn't exist in H2, instead a Chaos Curse can restrict choices
+		if requirements.RequiredInactiveMetaUpgrade == "ReducedLootChoicesShrineUpgrade" then
+			requirements.RequiredLootChoices = 3
+		end
 	end
-	if requirements.RequiredActiveMetaUpgrade ~= nil and GetNumShrineUpgrades(requirements.RequiredActiveMetaUpgrade) < 1 then
+
+	if requirements.RequiredActiveMetaUpgrade ~= nil and game.GetNumShrineUpgrades(requirements.RequiredActiveMetaUpgrade) < 1 then
 		return false
 	end
 
@@ -3104,14 +3186,20 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 
 	if requirements.RequiredTrueConfigOptions ~= nil then
 		for k, configOption in pairs(requirements.RequiredTrueConfigOptions) do
-			if not GetConfigOptionValue({ Name = configOption }) then
+			-- if not GetConfigOptionValue({ Name = configOption }) then
+			-- 	return false
+			-- end
+			if not game.ConfigOptionCache[configOption] then
 				return false
 			end
 		end
 	end
 	if requirements.RequiredFalseConfigOptions ~= nil then
 		for k, configOption in pairs(requirements.RequiredFalseConfigOptions) do
-			if GetConfigOptionValue({ Name = configOption }) then
+			-- if GetConfigOptionValue({ Name = configOption }) then
+			-- 	return false
+			-- end
+			if game.ConfigOptionCache[configOption] then
 				return false
 			end
 		end

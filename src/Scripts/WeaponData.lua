@@ -387,6 +387,23 @@ local weaponReplacements = {
 	-- #endregion
 	-- #endregion
 
+	-- #region ASPHODEL
+	HadesSpreadShotBolt = {
+		InheritFrom = { "SpreadShotBolt" },
+		AIData = {
+			DeepInheritance = true,
+			ProjectileName = "SpreadShotWeapon",
+		},
+	},
+	HadesSpreadShotBoltElite = {
+		InheritFrom = { "SpreadShotBolt_Elite" },
+		AIData = {
+			DeepInheritance = true,
+			ProjectileName = "SpreadShotWeapon",
+		},
+	},
+	-- #endregion
+
 	-- #region ELYSIUM
 	-- #region Minibosses
 	FlurrySpawnerWeaponElite = {

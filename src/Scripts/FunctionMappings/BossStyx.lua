@@ -770,7 +770,7 @@ function mod.ModsNikkelMHadesBiomesAttackAndDie(enemy)
 		game.thread(mod.ModsNikkelMHadesBiomesHandleAttackTimer, enemy, attackDuration)
 	end
 
-	local targetId = GetTargetId(enemy, aiData)
+	local targetId = game.GetTargetId(enemy, aiData)
 	game.DoAttackerAILoop(enemy, aiData)
 
 	while enemy.ChainedWeapon ~= nil or enemy.ActiveWeaponCombo ~= nil do

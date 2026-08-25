@@ -340,16 +340,18 @@ function mod.DecodeSjsonFile(filePath)
 		fileString = string.gsub(fileString, "父上は、エウリュディケを冥界からn\\", "父上は、エウリュディケを冥界から\n")
 	end
 
-	-- In some localizations, multiline strings (starting with """) are used, but " are still incorrectly escaped using \"
-	-- This breaks the sjson decoding, so we need to fix it by replacing \" with "
-	fileString = string.gsub(fileString, '"""(.-)"""', function(content)
-		return '"""' .. content:gsub('\\"', '"') .. '"""'
-	end)
+	if fileString:find('"""', 1, true) then
+		-- In some localizations, multiline strings (starting with """) are used, but " are still incorrectly escaped using \"
+		-- This breaks the sjson decoding, so we need to fix it by replacing \" with "
+		fileString = string.gsub(fileString, '"""(.-)"""', function(content)
+			return '"""' .. content:gsub('\\"', '"') .. '"""'
+		end)
 
-	-- Replace opening quadruple quotes with triple quotes and a newline
-	fileString = string.gsub(fileString, '= """"', '= """\n"')
-	-- Replace closing quadruple quotes with a newline and triple quotes
-	fileString = string.gsub(fileString, '""""', '"\n"""')
+		-- Replace opening quadruple quotes with triple quotes and a newline
+		fileString = string.gsub(fileString, '= """"', '= """\n"')
+		-- Replace closing quadruple quotes with a newline and triple quotes
+		fileString = string.gsub(fileString, '""""', '"\n"""')
+	end
 
 	-- Decode the string to a table
 	return sjson.decode(fileString)
@@ -525,10 +527,16 @@ end
 ---Saves data to a file in the mod's cache folder.
 ---@param fileName string The name of the file to save to. This file must be located in the mod's cache folder.
 ---@param data table The data to save.
+---@return boolean success Whether the file was written.
 function mod.SaveCachedSjsonFile(fileName, data)
 	local basePath = rom.path.combine(rom.paths.plugins_data(), _PLUGIN.guid .. "\\cache\\")
 	local path = rom.path.combine(basePath, fileName)
-	sjson.encode_file(path, data)
+	local success, err = pcall(sjson.encode_file, path, data)
+	if not success then
+		mod.DebugPrint("Could not write cached file: " .. path .. " (" .. tostring(err) .. ")", 1)
+	end
+
+	return success
 end
 
 ---Writes an SJSON file to the SJSON data directory in plugins_data and registers it with H2M.
@@ -537,6 +545,11 @@ end
 ---@return string absolutePath The absolute path the file was written to.
 function mod.WriteSjsonData(sjsonDataRelativePath, data)
 	local absolutePath = rom.path.combine(_PLUGIN.sjson_data_path, sjsonDataRelativePath)
+
+	-- Ensure correct order as expected by the engine
+	if data.lang ~= nil and sjson.get_order(data) == nil then
+		data = sjson.to_object(data, { "lang", "Texts" })
+	end
 
 	sjson.encode_file(absolutePath, data)
 	rom.data.register_sjson_file(absolutePath)
@@ -722,6 +735,52 @@ function mod.ModConfigLeafKeyHasValue(source, args)
 
 	---@diagnostic disable-next-line: undefined-global
 	return public.GetModConfigValueByLeafKey(args.LeafKey) == args.ExpectedValue
+end
+
+--- Returns true if any setting in the given config group is enabled, descending into nested groups.
+---@param configGroup table The config group to check, e.g. config or config.speedrunning.
+---@return boolean anyEnabled
+function mod.AnyConfigSettingEnabled(configGroup)
+	for _, value in pairs(configGroup or {}) do
+		if value == true then
+			return true
+		elseif type(value) == "table" and mod.AnyConfigSettingEnabled(value) then
+			return true
+		end
+	end
+
+	return false
+end
+
+--- Maps a duplicate TextLineSet name (one that exists in both Hades and Hades II) to its deduplicated ModsNikkelMHadesBiomes_ version
+--- Names that are not in public.DuplicateTextLineSetNames are returned unchanged
+---@param name string|nil The TextLineSet name to map
+---@return string|nil mappedName The deduplicated name if it is a known duplicate, otherwise the original name
+function mod.MapDuplicateTextLineName(name)
+	if public.DuplicateTextLineSetNames[name] then
+		local mappedName = "ModsNikkelMHadesBiomes_" .. name
+		mod.DebugPrint("Mapping TextLineSet " .. name .. " to " .. mappedName .. " as it exists in both games.", 4)
+		return mappedName
+	end
+
+	return name
+end
+
+---Compares two version strings numerically, so that e.g. 1.10.0 correctly sorts above 1.2.0 unlike a plain string comparison.
+---@param version string|nil The version to check.
+---@param comparedTo string The version to compare against.
+---@return boolean isOlder True if version is older/smaller than comparedTo.
+function mod.IsVersionOlderThan(version, comparedTo)
+	local function versionKey(versionString)
+		local major, minor, patch = tostring(versionString or ""):match("(%d+)%.(%d+)%.(%d+)")
+		if not major then
+			return -1
+		end
+
+		return major * 1000000 + minor * 1000 + patch
+	end
+
+	return versionKey(version) < versionKey(comparedTo)
 end
 
 if config.debugging.enableVanillaDebugPrint then

@@ -248,8 +248,22 @@ modutil.mod.Path.Wrap("DoPatches", function(base)
 			game.GameState.TextLinesRecord["Flashback_DayNightJob_01"] = true
 		end
 
+		if game.GameState.ModsNikkelMHadesBiomesPatchRevision < 13 then
+			-- Player got the alternate Meg dialogue, but the mod incorrectly recorded the normal choice variants
+			if game.GameState.TextLinesRecord["BecameCloseWithMegaera01_B"] then
+				if game.GameState.TextLinesRecord["BecameCloseWithMegaera01Meg_BackOff"] then
+					game.GameState.TextLinesRecord["BecameCloseWithMegaera01_BMeg_BackOff"] = true
+					game.GameState.TextLinesRecord["BecameCloseWithMegaera01Meg_BackOff"] = nil
+				end
+				if game.GameState.TextLinesRecord["BecameCloseWithMegaera01Meg_GoToHer"] then
+					game.GameState.TextLinesRecord["BecameCloseWithMegaera01_BMeg_GoToHer"] = true
+					game.GameState.TextLinesRecord["BecameCloseWithMegaera01Meg_GoToHer"] = nil
+				end
+			end
+		end
+
 		-- IMPORTANT: This must be incremented every time this function is changed
-		game.GameState.ModsNikkelMHadesBiomesPatchRevision = 12
+		game.GameState.ModsNikkelMHadesBiomesPatchRevision = 13
 	end
 
 	return base()

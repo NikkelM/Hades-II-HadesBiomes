@@ -3,32 +3,49 @@
 -- Loads EncounterData from a file in Hades
 -- Note: EnemyData must be loaded first, as there are some references to it in EncounterData!
 mod.CachedHadesEncounterData = nil
+
+-- Importing files only ever read individual entries, so hand out a proxy that copies each entry on first access
+-- This avoids deep copying the whole of Hades' EncounterData once per importing file
+local function encounterDataProxy()
+	return setmetatable({}, {
+		__index = function(proxy, key)
+			local value = mod.CachedHadesEncounterData[key]
+			if type(value) == "table" then
+				value = game.DeepCopyTable(value)
+			end
+			rawset(proxy, key, value)
+			return value
+		end,
+	})
+end
+
 function mod.LoadHadesEncounterData(fileName)
 	if mod.CachedHadesEncounterData then
-		return game.DeepCopyTable(mod.CachedHadesEncounterData)
+		return encounterDataProxy()
 	end
-	local originalConstantsData = game.DeepCopyTable(game.ConstantsData)
-	local originalWaveDifficultyPatterns = game.DeepCopyTable(game.WaveDifficultyPatterns)
-	local originalTimerBlockCombatExcludes = game.DeepCopyTable(game.TimerBlockCombatExcludes)
-	local originalBaseWaveOverrideValues = game.DeepCopyTable(game.BaseWaveOverrideValues)
-	local originalElysiumWaveOverrideValues = game.DeepCopyTable(game.ElysiumWaveOverrideValues)
-	local originalIntroWaveOverrideValues = game.DeepCopyTable(game.IntroWaveOverrideValues)
-	local originalEncounterData = game.DeepCopyTable(game.EncounterData)
+	local originalWaveDifficultyPatterns = game.WaveDifficultyPatterns
+	local originalTimerBlockCombatExcludes = game.TimerBlockCombatExcludes
+	local originalBaseWaveOverrideValues = game.BaseWaveOverrideValues
+	local originalElysiumWaveOverrideValues = game.ElysiumWaveOverrideValues
+	local originalIntroWaveOverrideValues = game.IntroWaveOverrideValues
+	local originalEncounterData = game.EncounterData
+	-- MinimumDifficulty is the only key the file writes in place, so it is the only one that needs saving separately
+	local originalMinimumDifficulty = game.ConstantsData.MinimumDifficulty
 	local pathName = rom.path.combine(mod.hadesGameFolder, "Content\\Scripts", fileName)
 	local chunk, err = loadfile(pathName)
 	if chunk then
 		chunk()
-		-- No worries if this is marked as undefined, it comes from the loaded file
+		-- The chunk assigned a brand new table that nothing else holds a reference to, and callers only ever get copies of it
 		---@diagnostic disable-next-line: undefined-global
-		mod.CachedHadesEncounterData = game.DeepCopyTable(EncounterData)
-		game.ConstantsData = originalConstantsData
+		mod.CachedHadesEncounterData = EncounterData
+		game.ConstantsData.MinimumDifficulty = originalMinimumDifficulty
 		game.WaveDifficultyPatterns = originalWaveDifficultyPatterns
 		game.TimerBlockCombatExcludes = originalTimerBlockCombatExcludes
 		game.BaseWaveOverrideValues = originalBaseWaveOverrideValues
 		game.ElysiumWaveOverrideValues = originalElysiumWaveOverrideValues
 		game.IntroWaveOverrideValues = originalIntroWaveOverrideValues
 		game.EncounterData = originalEncounterData
-		return game.DeepCopyTable(mod.CachedHadesEncounterData)
+		return encounterDataProxy()
 	else
 		mod.DebugPrint("Error loading encounterData: " .. err, 1)
 	end

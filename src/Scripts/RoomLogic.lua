@@ -101,8 +101,14 @@ modutil.mod.Path.Wrap("SetupUnit", function(base, unit, currentRun, args)
 			unit.WeaponOptions = unit.ShrineWeaponOptionsOverwrite
 		end
 
-		-- Increase the unit's health and armour, if it shouldn't be excluded from the modded modifiers
-		if not unit.ModsNikkelMHadesBiomesIgnoreModdedHealthModifiers and not config.accessibility.z_GoddessMode then
+		-- Increase the unit's health and armour, if it shouldn't be excluded from the modded modifiers, or if Goddess Mode is active
+		if config.accessibility.z_GoddessMode then
+			-- Goddess Mode is active, and this unit has a specific MaxHealth for this case (mostly bosses)
+			if unit.ModsNikkelMHadesBiomesGoddessModeMaxHealth ~= nil then
+				unit.MaxHealth = unit.ModsNikkelMHadesBiomesGoddessModeMaxHealth
+			end
+			-- Goddess Mode is not active, and we don't ignore health modifiers (non-bosses)
+		elseif not unit.ModsNikkelMHadesBiomesIgnoreModdedHealthModifiers then
 			local scalingBiome = mod.EnemyBelongsToBiome[unit.Name or ""] or currentRun.CurrentRoom.RoomSetName
 			local healthBufferBonus = mod.ModdedUnitHealthBufferMultiplierBonus[scalingBiome] or
 					mod.ModdedUnitHealthBufferMultiplierBonus.Default
@@ -444,7 +450,7 @@ function mod.ModsNikkelMHadesBiomesDoUnlockRoomExits(run, room)
 
 	for index, door in ipairs(exitDoorsIPairs) do
 		if room.PersistentRoomForDoors and room.DoorRoomHistory ~= nil and room.DoorRoomHistory[door.ObjectId] ~= nil then
-			door.Room = game.ShallowCopyTable(run.RoomHistory[room.DoorRoomHistory[door.ObjectId]]) or {}
+			door.Room = game.ShallowCopyTable(run.RoomHistory[room.DoorRoomHistory[door.ObjectId]])
 			-- Restore any missing data that may have been stripped for saving
 			local originalRoomData = game.RoomData[door.Room.Name]
 			if originalRoomData ~= nil then

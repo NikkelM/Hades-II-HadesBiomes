@@ -257,6 +257,7 @@ local function on_ready()
 	end
 	-- Used in some imported files
 	mod.EncounteredInstallationIssues = false
+	mod.InstallationPending = false
 
 	-- File handling and other generic functions required at install time
 	import "Scripts/Meta/Constants.lua"
@@ -286,24 +287,7 @@ local function on_ready()
 		end
 	end
 
-	-- We need to always import the ScreenText and ShellText files early as we might need to show an unsuccessful install screen with localized text
-	import "Game/Text/de/ScreenText.de.sjson.lua"
-	import "Game/Text/el/ScreenText.el.sjson.lua"
-	import "Game/Text/en/ScreenText.en.sjson.lua"
-	import "Game/Text/es/ScreenText.es.sjson.lua"
-	import "Game/Text/fr/ScreenText.fr.sjson.lua"
-	import "Game/Text/it/ScreenText.it.sjson.lua"
-	import "Game/Text/ja/ScreenText.ja.sjson.lua"
-	import "Game/Text/ko/ScreenText.ko.sjson.lua"
-	import "Game/Text/pl/ScreenText.pl.sjson.lua"
-	import "Game/Text/pt-BR/ScreenText.pt-BR.sjson.lua"
-	import "Game/Text/ru/ScreenText.ru.sjson.lua"
-	import "Game/Text/tr/ScreenText.tr.sjson.lua"
-	import "Game/Text/uk/ScreenText.uk.sjson.lua"
-	import "Game/Text/zh-CN/ScreenText.zh-CN.sjson.lua" -- Decoding the Hades II file fails, so this does nothing
-	import "Game/Text/zh-TW/ScreenText.zh-TW.sjson.lua"
-	DebugLogScriptImportProgress("ScreenText SJSON")
-
+	-- We need to always import the ShellText files early as we might need to show an unsuccessful install screen with localized text
 	import "Game/Text/de/ShellText.de.sjson.lua" -- Decoding the Hades II file fails, so this does nothing
 	import "Game/Text/el/ShellText.el.sjson.lua"
 	import "Game/Text/en/ShellText.en.sjson.lua"
@@ -321,11 +305,14 @@ local function on_ready()
 	import "Game/Text/zh-TW/ShellText.zh-TW.sjson.lua"
 	DebugLogScriptImportProgress("ShellText SJSON")
 
+	import "Scripts/Meta/AnimationDuplicatesDataEnemies.lua"
+	import "Scripts/Meta/AnimationDuplicatesDataEnemyAnimations.lua"
 	import "Scripts/Meta/AnimationDuplicatesDataFx.lua"
 	import "Scripts/Meta/AnimationDuplicatesDataGUIAnimations.lua"
-	import "Scripts/Meta/AnimationDuplicatesDataPortraits.lua"
 	import "Scripts/Meta/AnimationDuplicatesDataNPCs.lua"
+	import "Scripts/Meta/AnimationDuplicatesDataPortraits.lua"
 	import "Scripts/Meta/ScreenDataInstallation.lua"
+	import "Scripts/Meta/SpeedrunPresentation.lua"
 	import "Scripts/Meta/StorytellerVoicelines.lua"
 	import "Scripts/Meta/ZagreusFieldVoicelines.lua"
 	DebugLogScriptImportProgress("additional meta")
@@ -405,45 +392,35 @@ local function on_ready()
 	if config.debugging.firstTimeSetup then
 		-- Pre-install: Create/Copy files that are required before the loading bar starts
 		mod.InstallationPending = true
-		setupSuccessful = mod.CreateRequiredHookTargetFiles()
+		setupSuccessful = mod.CreatePreLoadingBarFiles()
 	end
 
+	-- When the lua state reloads to load a save the hooks do not run again, so a pending install can never complete and must be treated as a broken one instead
+	local canCompleteInstall = mod.InstallationPending and game.GameState == nil
+
 	if setupSuccessful then
-		-- Only check if all required files exist here if we are not waiting on an install, and haven't successfully checked them before
+		-- Only check if all required files exist here if we are not waiting on an install that can still complete, and haven't successfully checked them before
 		-- After the installation completes, mod.CheckRequiredFiles is called again, so we are not missing the check
-		if not mod.InstallationPending and numMissingFiles == -1 then
+		if not canCompleteInstall and numMissingFiles == -1 then
 			numMissingFiles = mod.CheckRequiredFiles(false)
 		end
 
-		if numMissingFiles == 0 or mod.InstallationPending then
+		if numMissingFiles == 0 or canCompleteInstall then
 			-- General data needed for map generation/display
 			import "Game/MapGroups.sjson.lua"
 			DebugLogScriptImportProgress("MapGroups SJSON")
 
 			-- SJSON changes
 			import "Game/Animations/Model/Hero_Melinoe_Animation_Personality.sjson.lua"
-			import "Game/Animations/CharacterAnimationsEnemies.sjson.lua"
-			DebugLogScriptImportProgress("Character Animation SJSON")
+			DebugLogScriptImportProgress("Hero Animation SJSON")
 
-			-- Must be loaded after CharacterAnimationsEnemies, as it inherits some animations from it
-			import "Game/Animations/EnemyAnimations.sjson.lua"
-			DebugLogScriptImportProgress("Enemy Animation SJSON")
-
-			import "Game/Animations/GUI_Boons_VFX.sjson.lua"
-			import "Game/Animations/GUI_HUD_VFX.sjson.lua"
 			import "Game/Animations/GUI_Portraits_VFX.sjson.lua"
 			import "Game/Animations/GUI_Screens_VFX.sjson.lua"
-			import "Game/Animations/GUI_VFX.sjson.lua"
 			DebugLogScriptImportProgress("GUI Animation SJSON")
-
-			import "Game/Animations/Items_General_VFX.sjson.lua"
-			import "Game/Animations/Items_Harvest_VFX.sjson.lua"
-			DebugLogScriptImportProgress("Item Animation SJSON")
 
 			import "Game/Animations/Enemy_1Base_VFX.sjson.lua"
 			import "Game/Animations/Melinoe_Spell_VFX.sjson.lua"
 			import "Game/Animations/Melinoe_Zeus_VFX.sjson.lua"
-			import "Game/Animations/Obstacle_1Base_VFX.sjson.lua"
 			import "Game/Animations/Obstacle_Asphodel_VFX.sjson.lua"
 			import "Game/Animations/Obstacle_Deprecated_VFX.sjson.lua"
 			import "Game/Animations/Obstacle_General_VFX.sjson.lua"
@@ -455,16 +432,10 @@ local function on_ready()
 
 			import "Game/Weapons/EnemyWeapons.sjson.lua"
 
-			-- Must be loaded before the other projectile files
-			import "Game/Projectiles/Projectiles.sjson.lua"
 			import "Game/Projectiles/EnemyProjectiles.sjson.lua"
-			import "Game/Projectiles/Enemy_BiomeN_Projectiles.sjson.lua"
-			import "Game/Projectiles/Enemy_Traps_Projectiles.sjson.lua"
-			DebugLogScriptImportProgress("Projectile and Weapon SJSON")
+			DebugLogScriptImportProgress("Projectile SJSON")
 
 			import "Game/Obstacles/Asphodel.sjson.lua"
-			import "Game/Obstacles/Chaos.sjson.lua"
-			import "Game/Obstacles/ClockworkTartarus.sjson.lua"
 			import "Game/Obstacles/Elysium.sjson.lua"
 			import "Game/Obstacles/Gameplay.sjson.lua"
 			import "Game/Obstacles/Graybox.sjson.lua"
@@ -482,109 +453,6 @@ local function on_ready()
 			-- The ScreenText files depend on icons in here
 			import "Scripts/UIData.lua"
 			DebugLogScriptImportProgress("HadesTextUtils and UIData")
-
-			-- Localizations, custom texts
-			import "Game/Text/en/Subtitles.en.sjson.lua"
-
-			import "Game/Text/de/CodexText.de.sjson.lua"
-			import "Game/Text/el/CodexText.el.sjson.lua"
-			import "Game/Text/en/CodexText.en.sjson.lua"
-			import "Game/Text/es/CodexText.es.sjson.lua"
-			import "Game/Text/fr/CodexText.fr.sjson.lua"
-			import "Game/Text/it/CodexText.it.sjson.lua"
-			import "Game/Text/ja/CodexText.ja.sjson.lua"
-			import "Game/Text/ko/CodexText.ko.sjson.lua"
-			import "Game/Text/pl/CodexText.pl.sjson.lua"
-			import "Game/Text/pt-BR/CodexText.pt-BR.sjson.lua"
-			import "Game/Text/ru/CodexText.ru.sjson.lua"
-			import "Game/Text/tr/CodexText.tr.sjson.lua"
-			import "Game/Text/uk/CodexText.uk.sjson.lua"
-			import "Game/Text/zh-CN/CodexText.zh-CN.sjson.lua"
-			import "Game/Text/zh-TW/CodexText.zh-TW.sjson.lua"
-			DebugLogScriptImportProgress("CodexText SJSON")
-
-			import "Game/Text/de/HelpText.de.sjson.lua"
-			import "Game/Text/el/HelpText.el.sjson.lua"
-			import "Game/Text/en/HelpText.en.sjson.lua"
-			import "Game/Text/es/HelpText.es.sjson.lua"
-			import "Game/Text/fr/HelpText.fr.sjson.lua"
-			import "Game/Text/it/HelpText.it.sjson.lua"
-			import "Game/Text/ja/HelpText.ja.sjson.lua"
-			import "Game/Text/ko/HelpText.ko.sjson.lua"
-			import "Game/Text/pl/HelpText.pl.sjson.lua"
-			import "Game/Text/pt-BR/HelpText.pt-BR.sjson.lua"
-			import "Game/Text/ru/HelpText.ru.sjson.lua"
-			import "Game/Text/tr/HelpText.tr.sjson.lua"
-			import "Game/Text/uk/HelpText.uk.sjson.lua"
-			import "Game/Text/zh-CN/HelpText.zh-CN.sjson.lua"
-			import "Game/Text/zh-TW/HelpText.zh-TW.sjson.lua"
-			DebugLogScriptImportProgress("HelpText SJSON")
-
-			import "Game/Text/de/MiscText.de.sjson.lua"
-			import "Game/Text/el/MiscText.el.sjson.lua"
-			import "Game/Text/en/MiscText.en.sjson.lua"
-			import "Game/Text/es/MiscText.es.sjson.lua"
-			import "Game/Text/fr/MiscText.fr.sjson.lua"
-			import "Game/Text/it/MiscText.it.sjson.lua"
-			import "Game/Text/ja/MiscText.ja.sjson.lua"
-			import "Game/Text/ko/MiscText.ko.sjson.lua"
-			import "Game/Text/pl/MiscText.pl.sjson.lua"
-			import "Game/Text/pt-BR/MiscText.pt-BR.sjson.lua"
-			import "Game/Text/ru/MiscText.ru.sjson.lua"
-			import "Game/Text/tr/MiscText.tr.sjson.lua"
-			import "Game/Text/uk/MiscText.uk.sjson.lua"
-			import "Game/Text/zh-CN/MiscText.zh-CN.sjson.lua"
-			import "Game/Text/zh-TW/MiscText.zh-TW.sjson.lua"
-			DebugLogScriptImportProgress("MiscText SJSON")
-
-			import "Game/Text/de/TraitText.de.sjson.lua"
-			import "Game/Text/el/TraitText.el.sjson.lua"
-			import "Game/Text/en/TraitText.en.sjson.lua"
-			import "Game/Text/es/TraitText.es.sjson.lua"
-			import "Game/Text/fr/TraitText.fr.sjson.lua"
-			import "Game/Text/it/TraitText.it.sjson.lua"
-			import "Game/Text/ja/TraitText.ja.sjson.lua"
-			import "Game/Text/ko/TraitText.ko.sjson.lua"
-			import "Game/Text/pl/TraitText.pl.sjson.lua"
-			import "Game/Text/pt-BR/TraitText.pt-BR.sjson.lua"
-			import "Game/Text/ru/TraitText.ru.sjson.lua"
-			import "Game/Text/tr/TraitText.tr.sjson.lua"
-			import "Game/Text/uk/TraitText.uk.sjson.lua"
-			import "Game/Text/zh-CN/TraitText.zh-CN.sjson.lua"
-			import "Game/Text/zh-TW/TraitText.zh-TW.sjson.lua"
-			DebugLogScriptImportProgress("TraitText SJSON")
-
-			import "Game/Text/de/_LootData_Chaos.de.sjson.lua"
-			import "Game/Text/el/_LootData_Chaos.el.sjson.lua"
-			import "Game/Text/es/_LootData_Chaos.es.sjson.lua"
-			import "Game/Text/fr/_LootData_Chaos.fr.sjson.lua"
-			import "Game/Text/it/_LootData_Chaos.it.sjson.lua"
-			import "Game/Text/ja/_LootData_Chaos.ja.sjson.lua"
-			import "Game/Text/ko/_LootData_Chaos.ko.sjson.lua"
-			import "Game/Text/pl/_LootData_Chaos.pl.sjson.lua"
-			import "Game/Text/pt-BR/_LootData_Chaos.pt-BR.sjson.lua"
-			import "Game/Text/ru/_LootData_Chaos.ru.sjson.lua"
-			import "Game/Text/tr/_LootData_Chaos.tr.sjson.lua"
-			import "Game/Text/uk/_LootData_Chaos.uk.sjson.lua"
-			import "Game/Text/zh-CN/_LootData_Chaos.zh-CN.sjson.lua"
-			import "Game/Text/zh-TW/_LootData_Chaos.zh-TW.sjson.lua"
-			DebugLogScriptImportProgress("Chaos LootData SJSON")
-
-			import "Game/Text/de/_NPCData_Skelly.de.sjson.lua"
-			import "Game/Text/el/_NPCData_Skelly.el.sjson.lua"
-			import "Game/Text/es/_NPCData_Skelly.es.sjson.lua"
-			import "Game/Text/fr/_NPCData_Skelly.fr.sjson.lua"
-			import "Game/Text/it/_NPCData_Skelly.it.sjson.lua"
-			import "Game/Text/ja/_NPCData_Skelly.ja.sjson.lua"
-			import "Game/Text/ko/_NPCData_Skelly.ko.sjson.lua"
-			import "Game/Text/pl/_NPCData_Skelly.pl.sjson.lua"
-			import "Game/Text/pt-BR/_NPCData_Skelly.pt-BR.sjson.lua"
-			import "Game/Text/ru/_NPCData_Skelly.ru.sjson.lua"
-			import "Game/Text/tr/_NPCData_Skelly.tr.sjson.lua"
-			import "Game/Text/uk/_NPCData_Skelly.uk.sjson.lua"
-			import "Game/Text/zh-CN/_NPCData_Skelly.zh-CN.sjson.lua"
-			import "Game/Text/zh-TW/_NPCData_Skelly.zh-TW.sjson.lua"
-			DebugLogScriptImportProgress("Skelly NPCData SJSON")
 
 			-- Imports enemy, encounter and room data from Hades to Hades II - ALWAYS requires a Hades installation
 			-- Done first, as the EncounterData depends on the EnemySets
@@ -661,12 +529,16 @@ local function on_ready()
 			import "Scripts/HeroData.lua"
 			import "Scripts/KeywordData.lua"
 			import "Scripts/LootData.lua"
+			import "Scripts/LootData_Aphrodite.lua"
 			import "Scripts/LootData_Ares.lua"
 			import "Scripts/LootData_Artemis.lua"
 			import "Scripts/LootData_Athena.lua"
 			import "Scripts/LootData_Chaos.lua"
+			import "Scripts/LootData_Demeter.lua"
 			import "Scripts/LootData_Dionysus.lua"
 			import "Scripts/LootData_Hermes.lua"
+			import "Scripts/LootData_Poseidon.lua"
+			import "Scripts/LootData_Zeus.lua"
 			import "Scripts/MarketData.lua"
 			import "Scripts/MetaUpgradeData.lua"
 			import "Scripts/ResourceData.lua"
@@ -776,11 +648,29 @@ local function on_ready()
 			lastImportTime = os.clock()
 
 			-- E.g. ThanatosElysiumIntro encounter is missing, will be caught when importing EncounterDataElysium.lua
-			if mod.EncounteredInstallationIssues ~= true then
-				mod.HiddenConfig.IsValidInstallation = true
+			if mod.EncounteredInstallationIssues == true then
+				mod.HiddenConfig.IsValidInstallation = false
+				if mod.HiddenConfig.InstallationFailReason == "" then
+					mod.HiddenConfig.InstallationFailReason = "MissingFiles"
+				end
 				mod.SaveCachedSjsonFile("hiddenConfig.sjson", mod.HiddenConfig)
 				---@diagnostic disable-next-line: undefined-global
+				public.IsValidInstallation = false
+
+				mod.DebugPrint(
+					"The mod ran into issues during installation and is not active, see the errors above. Please check the log and re-run the installation by setting the \"firstTimeSetup\" and \"uninstall\" in the config to true.",
+					1)
+			else
+				mod.HiddenConfig.IsValidInstallation = true
+				---@diagnostic disable-next-line: undefined-global
 				public.IsValidInstallation = true
+
+				-- Only persist a valid installation once mod.FinalizeInstallation has actually verified the copied files
+				-- Writing it here while an install is pending would mark a broken install as valid if the game is closed before verification completes
+				if not mod.InstallationPending then
+					mod.HiddenConfig.InstallationFailReason = ""
+					mod.SaveCachedSjsonFile("hiddenConfig.sjson", mod.HiddenConfig)
+				end
 
 				-- Check for any incompatible installed mods to display a warning to the user
 				if mod.AreIncompatibleModsInstalled() then
@@ -838,7 +728,6 @@ local function on_ready_late()
 	import "Scripts/InteractLogic_Late.lua"
 	import "Scripts/MarketLogic_Late.lua"
 	import "Scripts/ObjectiveLogic_Late.lua"
-	import "Scripts/Meta/PonyMenuLogic_Late.lua"
 	import "Scripts/PowersLogic_Late.lua"
 	import "Scripts/ResourceLogic_Late.lua"
 	import "Scripts/RewardPresentation_Late.lua"
@@ -847,6 +736,8 @@ local function on_ready_late()
 	import "Scripts/RoomPresentation_Late.lua"
 	import "Scripts/RunClearLogic_Late.lua"
 	import "Scripts/WeaponUpgradeLogic_Late.lua"
+
+	import "Scripts/Meta/PonyMenuLogic_Late.lua"
 end
 
 local function on_reload()
