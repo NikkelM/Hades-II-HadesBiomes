@@ -541,6 +541,7 @@ local function on_ready()
 			import "Scripts/LootData_Zeus.lua"
 			import "Scripts/MarketData.lua"
 			import "Scripts/MetaUpgradeData.lua"
+			import "Scripts/NPCData_Odysseus.lua"
 			import "Scripts/ResourceData.lua"
 			import "Scripts/RequirementsData.lua"
 			import "Scripts/ShrineData.lua"

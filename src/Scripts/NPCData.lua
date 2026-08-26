@@ -180,6 +180,17 @@ local function applyNPCGlobalModifications(base, npcModifications)
 	end
 end
 
+-- Replace status animations showing a character has dialogue available with the H1 variants
+local function applyModdedStatusAnimations(npcData)
+	for key, value in pairs(npcData) do
+		if key == "StatusAnimation" and type(value) == "string" then
+			npcData[key] = mod.ModdedStatusAnimations[value] or value
+		elseif type(value) == "table" then
+			applyModdedStatusAnimations(value)
+		end
+	end
+end
+
 local npcModifications = {
 	NPC_Sisyphus_01 = {
 		ModsNikkelMHadesBiomesIsModdedEnemy = true,
@@ -2989,10 +3000,6 @@ local npcChoiceMappings = {
 				Find = "DeathArea",
 				Replace = "RoomOpening",
 			},
-			StatusAnimation = {
-				Find = "StatusIconWantsToSmooch",
-				Replace = "StatusIconWantsAffection",
-			},
 		},
 		-- Replace requirements referencing the CurrentRun to reference PrevRun instead
 		AlwaysReplaceKeysIfExist = {
@@ -3154,12 +3161,6 @@ local npcChoiceMappings = {
 	},
 	NPC_FurySister_01 = {
 		TextLineGroups = { "InteractTextLineSets", "RepeatableTextLineSets", "GiftTextLineSets" },
-		AlwaysReplaceIfExist = {
-			StatusAnimation = {
-				Find = "StatusIconWantsToSmooch",
-				Replace = "StatusIconWantsAffection",
-			},
-		},
 		-- Replace requirements referencing the CurrentRun to reference PrevRun instead
 		AlwaysReplaceKeysIfExist = {
 			RequiresRunCleared = "RequiresLastRunCleared",
@@ -3185,5 +3186,8 @@ mod.NPCData.ModsNikkelMHadesBiomes_NPC_Bouldy_01.RepeatableTextLineSets.BouldyCh
 
 applyNPCChoiceMappings(mod.NPCData, npcChoiceMappings)
 applyNPCGlobalModifications(mod.NPCData, npcModifications)
+applyModdedStatusAnimations(mod.NPCData)
+-- To also replace in the new romance dialogues
+applyModdedStatusAnimations(npcModifications)
 
 mod.ApplyModificationsAndInheritEnemyData(mod.NPCData, npcModifications, {}, {})

@@ -1,0 +1,35 @@
+1. Rotate hue
+   This turns the gold into red while preserving the shape, the alpha and the greyscale pixels exactly.
+
+2. Darken the lower (originally orange) end of the gradient
+   Hue rotation preserves Value, but the gold gradient's top-to-bottom separation came mostly from luminance.
+   #FFD000 has luminance 0.664 and #FF9B00 has 0.447, a ratio of 0.674.
+   After rotation the reds sit at 0.239 and 0.213, a ratio of 0.891, so the two halves visually collapse together.
+   The fix is a ramp keyed to each pixel's ORIGINAL hue: the yellow end is left alone and the orange end is
+   multiplied down in Value, which restores (and here slightly exceeds) the original separation.
+
+Per-icon parameters:
+
+  icon                        hue shift   lower-end Value multiplier ("floor")
+  WantsToTalk                   -36 deg   0.80
+  WantsToTalk_Important         -40 deg   0.74
+
+The two hue shifts differ because the Important icon's gold sits at a higher hue (mean 51.9 deg vs 43.5 deg).
+-40 on the Important icon lands its dominant colour on #FF3600, the same hue as the base icon at -36.
+Using -36 on both would leave the Important icon visibly more orange than the base one.
+
+The floors were chosen by eye from a comparison sheet, not by formula.
+For reference, floor 0.86 reproduces the gold original's separation exactly on the base icon.
+
+
+Reproducing it (GIMP, approximate)
+----------------------------------
+The hue step is exact in GIMP. The ramp is not, because it is keyed to per-pixel original hue.
+
+  1. Open the H1 original.
+  2. Colors > Hue-Saturation, select Master, set Hue to -36 (base) or -40 (Important), click OK.
+     This is safe. Greyscale pixels are hue-invariant, so the bubble and outline cannot change.
+  3. For the darkening, do NOT use Lightness or Saturation on Master.
+     Those are not hue-invariant and WILL darken the white bubble (measured: up to 32/255 shift).
+     Switch to the R (red) range tab first, then reduce Lightness by roughly 12 to 15.
+     This approximates the ramp but applies it flat across the mark rather than graded.

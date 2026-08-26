@@ -1181,3 +1181,15 @@ public.DuplicateTextLineSetNames = {
 	["ZeusWithDemeter01"] = true,
 	-- #endregion
 }
+
+mod.ModdedStatusAnimations = {
+	StatusIconWantsToTalk = "ModsNikkelMHadesBiomes_StatusIconWantsToTalk",
+	StatusIconWantsToTalkImportant = "ModsNikkelMHadesBiomes_StatusIconWantsToTalkImportant",
+	StatusIconWantsToTalkImportant_NPC = "ModsNikkelMHadesBiomes_StatusIconWantsToTalkImportant_NPC",
+	StatusIconWantsToTalkImportant_Odysseus = "ModsNikkelMHadesBiomes_StatusIconWantsToTalkImportant_Odysseus",
+	StatusIconWantsToTalkImportant_Skelly = "ModsNikkelMHadesBiomes_StatusIconWantsToTalkImportant_Skelly",
+	StatusIconWantsToTalkImportant_ChronosStory = "ModsNikkelMHadesBiomes_StatusIconWantsToTalkImportant_ChronosStory",
+	StatusIconWantsToTalkImportant_Hypnos = "ModsNikkelMHadesBiomes_StatusIconWantsToTalkImportant_Hypnos",
+	StatusIconWantsAffection = "ModsNikkelMHadesBiomes_StatusIconWantsAffection",
+	StatusIconWantsToSmooch = "ModsNikkelMHadesBiomes_StatusIconWantsAffection",
+}

@@ -429,7 +429,7 @@ game.EnemyData.NPC_Skelly_01.InteractTextLineSets.ModsNikkelMHadesBiomes_HadesSt
 	Name = "ModsNikkelMHadesBiomes_HadesStatueIntro01",
 	PlayOnce = true,
 	UseableOffSource = true,
-	StatusAnimation = "StatusIconWantsToTalkImportant_Skelly",
+	StatusAnimation = "ModsNikkelMHadesBiomes_StatusIconWantsToTalkImportant_Skelly",
 	GameStateRequirements = {
 		-- Vanilla trophy quest must already be unlocked
 		{
@@ -470,7 +470,7 @@ game.EnemyData.NPC_Skelly_01.InteractTextLineSets.ModsNikkelMHadesBiomes_HadesSt
 	Name = "ModsNikkelMHadesBiomes_HadesStatueUnveil01",
 	PlayOnce = true,
 	UseableOffSource = true,
-	StatusAnimation = "StatusIconWantsToTalkImportant_Skelly",
+	StatusAnimation = "ModsNikkelMHadesBiomes_StatusIconWantsToTalkImportant_Skelly",
 	GameStateRequirements = {
 		{
 			PathTrue = { "GameState", "TextLinesRecord", "ModsNikkelMHadesBiomes_HadesStatueIntro01" },
@@ -519,7 +519,7 @@ game.EnemyData.NPC_Skelly_01.InteractTextLineSets.ModsNikkelMHadesBiomes_HadesSt
 	Name = "ModsNikkelMHadesBiomes_HadesStatueUnveil02",
 	PlayOnce = true,
 	UseableOffSource = true,
-	StatusAnimation = "StatusIconWantsToTalkImportant_Skelly",
+	StatusAnimation = "ModsNikkelMHadesBiomes_StatusIconWantsToTalkImportant_Skelly",
 	GameStateRequirements = {
 		{
 			PathTrue = { "GameState", "TextLinesRecord", "ModsNikkelMHadesBiomes_HadesStatueUnveil01" },
@@ -582,7 +582,7 @@ game.EnemyData.NPC_Skelly_01.InteractTextLineSets.ModsNikkelMHadesBiomes_HadesSt
 	Name = "ModsNikkelMHadesBiomes_HadesStatueUnveil03",
 	PlayOnce = true,
 	UseableOffSource = true,
-	StatusAnimation = "StatusIconWantsToTalkImportant_Skelly",
+	StatusAnimation = "ModsNikkelMHadesBiomes_StatusIconWantsToTalkImportant_Skelly",
 	GameStateRequirements = {
 		{
 			PathTrue = { "GameState", "TextLinesRecord", "ModsNikkelMHadesBiomes_HadesStatueUnveil02" },
@@ -649,7 +649,7 @@ game.EnemyData.NPC_Skelly_01.InteractTextLineSets.ModsNikkelMHadesBiomes_SkellyH
 			PathFalse = { "GameState", "TraitsTaken", "ModsNikkelMHadesBiomesGoddessModeTrait" },
 		},
 	},
-	StatusAnimation = "StatusIconWantsToTalkImportant_Skelly",
+	StatusAnimation = "ModsNikkelMHadesBiomes_StatusIconWantsToTalkImportant_Skelly",
 	EndVoiceLines = {
 		PreLineWait = 0.35,
 		ObjectType = "NPC_Skelly_01",

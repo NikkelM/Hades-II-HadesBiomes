@@ -120,6 +120,80 @@ mod.HadesGUIAnimationAdditions = {
 			{ DurationFrames = 0 },
 		},
 	},
+	-- #region Modded status icons
+	{
+		Name = "ModsNikkelMHadesBiomes_StatusIconWantsToTalk",
+		InheritFrom = "StatusIconWantsToTalk",
+		FilePath = "GUIModded\\Icons\\Status\\WantsToTalk_ModdedRed",
+		ChainTo = "ModsNikkelMHadesBiomes_StatusIconWantsToTalk_End",
+	},
+	{
+		Name = "ModsNikkelMHadesBiomes_StatusIconWantsToTalk_End",
+		InheritFrom = "StatusIconWantsToTalk_End",
+		FilePath = "GUIModded\\Icons\\Status\\WantsToTalk_ModdedRed",
+	},
+	{
+		Name = "ModsNikkelMHadesBiomes_StatusIconWantsToTalkImportant",
+		InheritFrom = "StatusIconWantsToTalkImportant",
+		FilePath = "GUIModded\\Icons\\Status\\WantsToTalk_Important_ModdedRed",
+		ChainTo = "ModsNikkelMHadesBiomes_StatusIconWantsToTalkImportant_End",
+	},
+	{
+		Name = "ModsNikkelMHadesBiomes_StatusIconWantsToTalkImportant_End",
+		InheritFrom = "StatusIconWantsToTalkImportant_End",
+		FilePath = "GUIModded\\Icons\\Status\\WantsToTalk_Important_ModdedRed",
+	},
+	{
+		Name = "ModsNikkelMHadesBiomes_StatusIconWantsToTalkImportant_NPC",
+		InheritFrom = "StatusIconWantsToTalkImportant_NPC",
+		FilePath = "GUIModded\\Icons\\Status\\WantsToTalk_Important_ModdedRed",
+		ChainTo = "ModsNikkelMHadesBiomes_StatusIconWantsToTalkImportant_NPC_End",
+	},
+	{
+		Name = "ModsNikkelMHadesBiomes_StatusIconWantsToTalkImportant_NPC_End",
+		InheritFrom = "StatusIconWantsToTalkImportant_NPC_End",
+		FilePath = "GUIModded\\Icons\\Status\\WantsToTalk_Important_ModdedRed",
+	},
+	{
+		Name = "ModsNikkelMHadesBiomes_StatusIconWantsToTalkImportant_Odysseus",
+		InheritFrom = "StatusIconWantsToTalkImportant_NPC",
+		FilePath = "GUIModded\\Icons\\Status\\WantsToTalk_Important_ModdedRed",
+		ChainTo = "ModsNikkelMHadesBiomes_StatusIconWantsToTalkImportant_NPC_End",
+		OffsetZ = 20,
+	},
+	{
+		Name = "ModsNikkelMHadesBiomes_StatusIconWantsToTalkImportant_Skelly",
+		InheritFrom = "StatusIconWantsToTalkImportant_NPC",
+		FilePath = "GUIModded\\Icons\\Status\\WantsToTalk_Important_ModdedRed",
+		ChainTo = "ModsNikkelMHadesBiomes_StatusIconWantsToTalkImportant_NPC_End",
+		OffsetZ = 30,
+	},
+	{
+		Name = "ModsNikkelMHadesBiomes_StatusIconWantsToTalkImportant_ChronosStory",
+		InheritFrom = "StatusIconWantsToTalkImportant_NPC",
+		FilePath = "GUIModded\\Icons\\Status\\WantsToTalk_Important_ModdedRed",
+		ChainTo = "ModsNikkelMHadesBiomes_StatusIconWantsToTalkImportant_NPC_End",
+		OffsetZ = 50,
+	},
+	{
+		Name = "ModsNikkelMHadesBiomes_StatusIconWantsToTalkImportant_Hypnos",
+		InheritFrom = "StatusIconWantsToTalkImportant_NPC",
+		FilePath = "GUIModded\\Icons\\Status\\WantsToTalk_Important_ModdedRed",
+		ChainTo = "ModsNikkelMHadesBiomes_StatusIconWantsToTalkImportant_NPC_End",
+		OffsetZ = 30,
+	},
+	{
+		Name = "ModsNikkelMHadesBiomes_StatusIconWantsAffection",
+		InheritFrom = "StatusIconWantsAffection",
+		FilePath = "GUIModded\\Icons\\Status\\WantsToSmooch",
+		ChainTo = "ModsNikkelMHadesBiomes_StatusIconWantsAffection_End",
+	},
+	{
+		Name = "ModsNikkelMHadesBiomes_StatusIconWantsAffection_End",
+		InheritFrom = "StatusIconWantsAffection_End",
+		FilePath = "GUIModded\\Icons\\Status\\WantsToSmooch",
+	},
+	-- #endregion
 }
 
 mod.HadesGUIAnimationModifications = {
