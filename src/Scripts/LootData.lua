@@ -201,6 +201,11 @@ function mod.AddNarrativeDataEntries(newTextLines, narrativeDataKey, textLineTyp
 			data.PreEventFunctionArgs = nil
 		end
 
+		local ownerIsEnemyData = game.LootData[narrativeDataKey] == nil
+		if ownerIsEnemyData and textLineType == "InteractTextLineSets" and data.PlayOnce and data.StatusAnimation == nil then
+			data.StatusAnimation = mod.ModdedStatusAnimations.StatusIconWantsToTalk
+		end
+
 		data.GameStateRequirements = data.GameStateRequirements or {}
 		-- All modded text lines can only appear in modded runs, unless they are meant to play in the Crossroads after any kind of run
 		if not args.SkipModdedRunRequirement then
