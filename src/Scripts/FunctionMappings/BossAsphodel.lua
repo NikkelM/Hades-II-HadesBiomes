@@ -376,3 +376,30 @@ function mod.MarkSpawnKillRecord(enemy)
 		game.SessionMapState.SpawnKillRecord[enemy.ObjectId] = true
 	end
 end
+
+-- Store the spawn point the head occupied, so CreateAlliedEnemy knows where to put it
+function mod.HydraHeadDeath(unit)
+	if unit.OccupyingSpawnPointId ~= nil and game.EnemyData[unit.Name] ~= nil then
+		game.EnemyData[unit.Name].SpellSummonSpawnOnId = unit.OccupyingSpawnPointId
+	end
+end
+
+-- When a head is spawned, have it kill a potential allied/resurrected head on its spawn point
+function mod.HydraHeadSpawn(enemy)
+	if enemy.AlwaysTraitor then
+		-- CreateAlliedEnemy doesn't record the spawn point it used, so take it from the one the head stored when it died
+		enemy.OccupyingSpawnPointId = enemy.OccupyingSpawnPointId or (game.EnemyData[enemy.Name] or {}).SpellSummonSpawnOnId
+		mod.RaisedHydraHeads = mod.RaisedHydraHeads or {}
+		table.insert(mod.RaisedHydraHeads, enemy)
+	elseif mod.RaisedHydraHeads ~= nil then
+		for i = #mod.RaisedHydraHeads, 1, -1 do
+			local raisedHead = mod.RaisedHydraHeads[i]
+			if raisedHead.IsDead then
+				table.remove(mod.RaisedHydraHeads, i)
+			elseif raisedHead.OccupyingSpawnPointId == enemy.OccupyingSpawnPointId then
+				game.thread(game.Kill, raisedHead)
+				table.remove(mod.RaisedHydraHeads, i)
+			end
+		end
+	end
+end

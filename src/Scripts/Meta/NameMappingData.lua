@@ -497,14 +497,14 @@ mod.HadesHelpTextCopyKeys = {
 	Combat_PermanentEnraged = true,
 	Pierced = true,
 	Escaped = true,
-	-- AssistNotAvailable = true, -- Duplicate
-	-- AssistAvailableHint = true, -- Duplicate
+	-- AssistNotAvailable = false, -- Duplicate
+	-- AssistAvailableHint = false, -- Duplicate
 	PoisonStack = true,
-	-- DevotionMessage = true, -- Duplicate
+	-- DevotionMessage = false, -- Duplicate
 	-- #endregion
 	-- #region Interaction prompts
 	UseLeaveRoomAsphodel = true,
-	-- UseLeaveRoomAsphodel_Reroll = true, -- Broken keybind reference, replaced
+	-- UseLeaveRoomAsphodel_Reroll = false, -- Broken keybind reference, replaced
 	UseLeaveRoomAsphodel_CannotReroll = true,
 	GiftBouldyUseText = true,
 	UseTalkToSisyphus = true,
@@ -520,8 +520,8 @@ mod.HadesHelpTextCopyKeys = {
 	UseTalkToMusician = true,
 	UseLute01 = true,
 	UseTalkToFury = true,
-	-- UseForbiddenItem = true, -- Duplicate
-	-- UseCharonStoreDiscount = true, -- Duplicate
+	-- UseForbiddenItem = false, -- Duplicate
+	-- UseCharonStoreDiscount = false, -- Duplicate
 	-- #endregion
 	-- #region Cerberus Messages
 	ClearedCerberus_Title = true,
@@ -567,10 +567,10 @@ mod.HadesHelpTextCopyKeys = {
 	-- #endregion
 	-- #region Bouldy Blessings
 	BouldyBlessing_None = true,
-	-- GainedBouldyBlessing = true, -- Duplicate
+	-- GainedBouldyBlessing = false, -- Duplicate
 	-- #endregion
 	-- #region ShrinePointDoor
-	ShrinePointGate = true,
+	-- ShrinePointGate = false, -- Adding new one with different description
 	UseShrinePointDoor_Locked_PreReward = true,
 	UseShrinePointDoor_Locked_PostReward = true,
 	UseShrinePointDoor_Unlocked = true,
@@ -582,7 +582,7 @@ mod.HadesHelpTextCopyKeys = {
 	-- #region Combat Objectives
 	Objective_ThanatosKills = true,
 	-- Objective_SurvivalTimer = false, -- Manually added, as the formatting is different
-	-- Objective_PlayerKills = true, -- Duplicate
+	-- Objective_PlayerKills = false, -- Duplicate
 	-- #endregion
 	-- #region Enemies
 	Swarmer = true,
@@ -686,9 +686,9 @@ mod.HadesHelpTextCopyKeys = {
 	NPC_Persephone_Home_01 = true,
 	EndingComplete = true,
 	EpilogueComplete = true,
-	-- NPC_Bouldy_01 = true, -- Duplicate
-	-- NPC_Hades_01 = true, -- Duplicate
-	-- NPC_Hades_Story_02 = true, -- Using alias
+	-- NPC_Bouldy_01 = false, -- Duplicate
+	-- NPC_Hades_01 = false, -- Duplicate
+	-- NPC_Hades_Story_02 = false, -- Using alias
 	Achilles = true,
 	-- #endregion
 	-- #region GameOutroData (Post-Ending)

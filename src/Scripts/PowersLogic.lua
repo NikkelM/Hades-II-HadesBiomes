@@ -45,6 +45,38 @@ modutil.mod.Path.Wrap("HadesInvisibility", function(base)
 	return base()
 end)
 
+-- Only allow one auto-resurrect boon to trigger per enemy
+modutil.mod.Path.Wrap("RaiseKilledEnemy", function(base, enemy, args)
+	local currentRoom = game.CurrentRun.CurrentRoom
+	if enemy == nil or enemy.ModsNikkelMHadesBiomesWasRaised then
+		return
+	end
+	if enemy.UniqueRaise and currentRoom ~= nil and currentRoom.ModsNikkelMHadesBiomes_AssistUnitName == enemy.Name then
+		return
+	end
+
+	local raiseDeadCount = game.MapState.RaiseDeadCount
+
+	base(enemy, args)
+
+	-- An enemy was successfully resurrected in the base call, claim it
+	if game.MapState.RaiseDeadCount ~= raiseDeadCount then
+		mod.ClaimRaisedEnemy(enemy)
+	end
+end)
+
+function mod.ClaimRaisedEnemy(enemy)
+	-- Each enemy may only be resurrected once
+	enemy.ModsNikkelMHadesBiomesWasRaised = true
+
+	local currentRoom = game.CurrentRun.CurrentRoom
+	local enemyData = game.EnemyData[enemy.Name]
+	-- Prevent Night Bloom from summoning an enemy that was already summoned by another effect (it checks the name)
+	if enemyData ~= nil and enemyData.SpellSummonSpawnOnId ~= nil and currentRoom.SummonEnemyName == enemy.Name then
+		currentRoom.SummonEnemyName = nil
+	end
+end
+
 -- Same as vanilla, but for the modded assist unit from Orpheus' God of the Dead boon
 function mod.CleanupOrpheusRaiseDeadEncounter(currentRoom)
 	local assistUnit = game.ActiveEnemies[currentRoom.ModsNikkelMHadesBiomes_DestroyAssistUnitOnEncounterEndId]

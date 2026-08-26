@@ -143,6 +143,7 @@ local encounterModifications = {
 		BlockAthenaEncounterKeepsake = true,
 		CanEncounterSkip = false,
 		BlockNextBiomeEnemyShrineUpgrade = true,
+		SkipCleanupRaiseDead = true,
 	},
 }
 

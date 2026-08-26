@@ -2014,6 +2014,11 @@ local enemyModifications = {
 		SpawnEvents = {
 			{ FunctionName = _PLUGIN.guid .. "." .. "CreateTethers",       Threaded = true, },
 			{ FunctionName = _PLUGIN.guid .. "." .. "MarkSpawnKillRecord", },
+			{ FunctionName = _PLUGIN.guid .. "." .. "HydraHeadSpawn", },
+		},
+		-- Remembers the spawn point, so we can respawn it there when resurrected by e.g. Night Bloom
+		KillEnemyEvents = {
+			{ FunctionName = _PLUGIN.guid .. "." .. "HydraHeadDeath" },
 		},
 		Tethers = {
 			[1] = { Distance = 83, FirstDrawBehind = true, ParentDeathAnimation = "HydraNeckDeath" },
@@ -2022,12 +2027,20 @@ local enemyModifications = {
 		-- Stops the armour outline from being added, which doesn't look correctly (whole enemy is coloured instead of just the outline)
 		HasOutline = true,
 		BlockCharm = true,
-		BlockRaiseDead = true,
+		BlockRaiseDead = false,
+		ImmobileRaise = true,
+		-- The tethers aren't scaled along with the head, so keep the raised head at its original size
+		AlliedScaleMultiplier = 1.0,
 		BlockRespawnShrineUpgrade = true,
 		IgnoreSprintPhasingStasisStun = true,
 		-- Neck tethers would not be removed
 		ImmuneToPolymorph = true,
 		ModsNikkelMHadesBiomesEffectVfxOffsetZ = 170,
+	},
+	HydraHeadSummoner = {
+		SpellSummonDataOverrides = {
+			WeaponOptions = { "HydraBite", "HydraSlam" },
+		},
 	},
 	HydraTooth = {
 		StunAnimations = { Default = "HydraToothLanded" },

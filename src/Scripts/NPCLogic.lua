@@ -568,6 +568,9 @@ function mod.OrpheusRaiseKilledEnemy(enemy, args)
 	if game.MapState.OrpheusRaiseDeadCount then
 		return
 	end
+	if enemy.ModsNikkelMHadesBiomesWasRaised then
+		return
+	end
 	if not game.RandomChance(args.SummonChance * game.GetTotalHeroTraitValue("LuckMultiplier", { IsMultiplier = true })) then
 		return
 	end
@@ -578,11 +581,16 @@ function mod.OrpheusRaiseKilledEnemy(enemy, args)
 			end
 		end
 	end
+	-- Don't summon a second copy of a unique enemy was already resurrected
+	if enemy.UniqueRaise and game.CurrentRun.CurrentRoom.AssistUnitName == enemy.Name then
+		return
+	end
 
 	local enemyName = enemy.Name
 	local enemyData = game.EnemyData[enemyName]
 	if enemyData and ((not enemyData.IsBoss and not enemyData.BlockRaiseDead) or enemyData.ForceAllowRaiseDead) then
 		game.IncrementTableValue(game.MapState, "OrpheusRaiseDeadCount")
+		mod.ClaimRaisedEnemy(enemy)
 		local tempObstacle = SpawnObstacle({ Name = "BlankObstacle", DestinationId = enemy.ObjectId })
 		local summonArgs = game.ShallowCopyTable(game.WeaponData.WeaponSpellSummon.SummonMultipliers) or {}
 		if args.MaxHealthMultiplier then

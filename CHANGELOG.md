@@ -19,6 +19,7 @@ Other fixes and improvements:
 - Reduced mod install/update time by ~50% by switching to a new internal file copy process.
 - Reduced mod load time by up to ~60% by moving work previously done at each game start and save load to install-time activities, and optimizing some recurring setup processes.
 - Added an on-screen indicator if any setting in the "Speedrunning" category is enabled.
+- Balancing: The small heads summoned by Lernie can now be resurrected with "Night Bloom", "Sun Worshipper" or "God of the Dead".
 - Balancing: You can now destroy the butterflies created by Soul Spawners with your attacks and specials.
 - Balancing: Exalted Shades can no longer create Lone Shades when dying.
 - Balancing: Slightly reduced the base encounter difficulty of wing-end combat rooms in the Temple of Styx.
