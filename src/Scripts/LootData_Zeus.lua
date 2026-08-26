@@ -135,6 +135,8 @@ local newPortedInteractTextLines = {
 			InsertAfterNarrativeTextLine = "ZeusAboutDemeter03",
 		},
 		PlayOnce = true,
+		PreEventFunctionName = "BoonInteractPresentation",
+		PreEventFunctionArgs = { PickupWait = 1.0, },
 		RequiredTextLines = { "ZeusFirstPickUp", "PersephoneAboutOlympianReunionQuest01", },
 		{
 			Cue = "/VO/ZagreusField_4336",

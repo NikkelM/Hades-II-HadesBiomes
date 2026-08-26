@@ -7,6 +7,8 @@ local newPortedInteractTextLines = {
 			CreateNewPriorityGroup = true,
 		},
 		PlayOnce = true,
+		PreEventFunctionName = "BoonInteractPresentation",
+		PreEventFunctionArgs = { PickupWait = 1.0, },
 		GameStateRequirements = {
 			{
 				-- Been on the Surface before
@@ -142,6 +144,8 @@ local newPortedInteractTextLines = {
 			InsertAfterNarrativeTextLine = "DemeterAboutZeus01",
 		},
 		PlayOnce = true,
+		PreEventFunctionName = "BoonInteractPresentation",
+		PreEventFunctionArgs = { PickupWait = 1.0, },
 		RequiredTextLines = { "DemeterFirstPickUp", "PersephoneAboutOlympianReunionQuest01" },
 		{
 			Cue = "/VO/ZagreusField_4344",

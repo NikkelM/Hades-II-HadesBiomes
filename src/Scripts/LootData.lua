@@ -97,6 +97,7 @@ end
 ---`StripProperties`: A list of property keys within each TextLineSet that should be set to nil
 ---`SkipModdedRunRequirement`: Prevents adding the `CurrentRun.ModsNikkelMHadesBiomesIsModdedRun` requirement to the given textLines
 ---`SkipUseRecordRequirement`: Prevents adding the `UseRecord` gate, which Crossroads NPCs must do because interacting records a use before the just-in-time eligibility recheck
+---`IsWorldNpc`: Skips the Chaos boon effects and uses the NPC interaction presentation
 function mod.AddNarrativeDataEntries(newTextLines, narrativeDataKey, textLineType, args)
 	args = args or {}
 	local textLinePriorityType = args.TextLinePriorityType
@@ -107,6 +108,7 @@ function mod.AddNarrativeDataEntries(newTextLines, narrativeDataKey, textLineTyp
 	local dummyVoiceBank = args.DummyVoiceBank
 	local ignoreDuplicates = args.IgnoreDuplicates
 	local stripProperties = args.StripProperties
+	local isWorldNpc = args.IsWorldNpc
 
 	if narrativeDataKey == nil or textLineType == nil then
 		mod.DebugPrint("A required parameter is missing!", 1)
@@ -190,9 +192,13 @@ function mod.AddNarrativeDataEntries(newTextLines, narrativeDataKey, textLineTyp
 		-- Mark as modded textline
 		data.ModsNikkelMHadesBiomesIsModdedTextLine = true
 		-- Don't play the Chaos effect on Chaos' own boons, Devotion MakeUp voicelines, and NPCs in the world (not by boon)
-		if narrativeDataKey == "TrialUpgrade" or textLineType == "MakeUpTextLines" or narrativeDataKey:find("^NPC_") then
+		if narrativeDataKey == "TrialUpgrade" or textLineType == "MakeUpTextLines" or isWorldNpc then
 			-- This will prevent using the Chaos effects on boon pickup, which would double up
 			data.ModsNikkelMHadesBiomesIsModdedTrialUpgradeTextLine = true
+		end
+		if isWorldNpc and data.PreEventFunctionName == "BoonInteractPresentation" then
+			data.PreEventFunctionName = "AngleNPCToHero"
+			data.PreEventFunctionArgs = nil
 		end
 
 		data.GameStateRequirements = data.GameStateRequirements or {}

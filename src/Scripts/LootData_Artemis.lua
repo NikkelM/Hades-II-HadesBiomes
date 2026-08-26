@@ -7,6 +7,8 @@ local newPortedInteractTextLines = {
 			CreateNewPriorityGroup = true,
 		},
 		PlayOnce = true,
+		PreEventFunctionName = "BoonInteractPresentation",
+		PreEventFunctionArgs = { PickupWait = 1.0, },
 		RequiredTextLines = { "ArtemisFirstPickUp", "PersephoneAboutOlympianReunionQuest01", },
 		{
 			Cue = "/VO/ZagreusField_4341",
@@ -68,6 +70,8 @@ local newPortedInteractTextLines = {
 		-- 	Text =
 		-- 	"There's only one heavenly archer I know of. Well, several, really. Anyway! In the name of Hades! Olympus? I accept this message."
 		-- },
+		PreEventFunctionName = "BoonInteractPresentation",
+		PreEventFunctionArgs = { PickupWait = 1.0, },
 		{
 			Cue = "/VO/Artemis_0011",
 			PortraitExitWait = 1.25,
@@ -1713,5 +1717,6 @@ mod.AddNarrativeDataEntries(newPortedInteractTextLines, "NPC_Artemis_Field_01", 
 		VoiceBankMappings = { Artemis = { "Modsnikkelmhadesbiomesartemis", "ZagreusField" } },
 		CueMappings = { Artemis_ = "Modsnikkelmhadesbiomesartemis_" },
 		PortraitMappings = { Artemis_ = "ModsNikkelMHadesBiomes_Portrait_Artemis_Default_01" },
+		IsWorldNpc = true,
 	}
 )

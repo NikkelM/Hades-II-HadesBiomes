@@ -2404,7 +2404,7 @@ local newModdedInteractTextLines = {
 			},
 		},
 		{
-			Cue = "/VO/ModsNikkelMHadesBiomes_Chaos_ChaosAboutNightmareRuns01_0000",
+			Cue = "/VO/Modsnikkelmhadesbiomescustomchaos_0000",
 			SkipContextArt = true,
 			SecretMusic = "/Music/ChaosTheme_MC",
 			SecretMusicActiveStems = { "ChaosBass" },
@@ -2413,7 +2413,7 @@ local newModdedInteractTextLines = {
 			"Welcome, Spawn of Hades, to the place you call Tartarus. You have entered the gateway I opened for you in the place between the realms, where the Unseen reside; have you not? Respond."
 		},
 		{
-			Cue = "/VO/ModsNikkelMHadesBiomes_Melinoe_ChaosAboutNightmareRuns01_0000",
+			Cue = "/VO/Modsnikkelmhadesbiomescustommelinoe_0000",
 			UsePlayerSource = true,
 			PostLineRemoveContextArt = true,
 			SecretMusic = "/Music/ChaosTheme_MC",
@@ -2426,7 +2426,7 @@ local newModdedInteractTextLines = {
 			"Almighty Chaos, indeed I have traveled through the portal you opened within the Crossroads. How is it possible that I'm here? This place you say is Tartarus, it feels familiar, but... different."
 		},
 		{
-			Cue = "/VO/ModsNikkelMHadesBiomes_Chaos_ChaosAboutNightmareRuns01_0001",
+			Cue = "/VO/Modsnikkelmhadesbiomescustomchaos_0001",
 			SkipContextArt = true,
 			SecretMusic = "/Music/ChaosTheme_MC",
 			SecretMusicActiveStems = { "ChaosBass" },
@@ -2454,14 +2454,14 @@ local newModdedInteractTextLines = {
 		PreEventFunctionName = "ChaosInteractPresentation",
 		PreEventFunctionArgs = { PickupWait = 1.0, },
 		{
-			Cue = "/VO/ModsNikkelMHadesBiomes_Chaos_ChaosAboutNightmareRuns02A_0000",
+			Cue = "/VO/Modsnikkelmhadesbiomescustomchaos_0002",
 			SecretMusicActiveStems = { "ChaosBass" },
 			PreContentSound = "/SFX/Menu Sounds/ChaosMiscSFX",
 			Text =
 			"The place in which you find yourself this night, it elicits discomfort in you, does it not? Respond."
 		},
 		{
-			Cue = "/VO/ModsNikkelMHadesBiomes_Melinoe_ChaosAboutNightmareRuns02A_0000",
+			Cue = "/VO/Modsnikkelmhadesbiomescustommelinoe_0001",
 			UsePlayerSource = true,
 			SecretMusicMutedStems = { "ChaosBass" },
 			PreLineAnim = "MelTalkPensive01",
@@ -2472,7 +2472,7 @@ local newModdedInteractTextLines = {
 			"It does, Almighty Chaos. Before, you mentioned that you set me on my brother's path, yet I don't know what I'm looking for in this altered version of Tartarus."
 		},
 		{
-			Cue = "/VO/ModsNikkelMHadesBiomes_Chaos_ChaosAboutNightmareRuns02A_0001",
+			Cue = "/VO/Modsnikkelmhadesbiomescustomchaos_0003",
 			SecretMusicActiveStems = { "ChaosBass" },
 			PreContentSound = "/SFX/Menu Sounds/ChaosBoonChange",
 			Text =
@@ -2497,14 +2497,14 @@ local newModdedInteractTextLines = {
 		PreEventFunctionName = "ChaosInteractPresentation",
 		PreEventFunctionArgs = { PickupWait = 1.0, },
 		{
-			Cue = "/VO/ModsNikkelMHadesBiomes_Chaos_ChaosAboutNightmareRuns02A_0000",
+			Cue = "/VO/Modsnikkelmhadesbiomescustomchaos_0002",
 			SecretMusicActiveStems = { "ChaosBass" },
 			PreContentSound = "/SFX/Menu Sounds/ChaosMiscSFX",
 			Text =
 			"The place in which you find yourself this night, it elicits discomfort in you, does it not? Respond."
 		},
 		{
-			Cue = "/VO/ModsNikkelMHadesBiomes_Melinoe_ChaosAboutNightmareRuns02B_0000",
+			Cue = "/VO/Modsnikkelmhadesbiomescustommelinoe_0002",
 			UsePlayerSource = true,
 			SecretMusicMutedStems = { "ChaosBass" },
 			PreLineAnim = "MelTalkPensive01",
@@ -2515,7 +2515,7 @@ local newModdedInteractTextLines = {
 			"It does, Almighty Chaos. Another night, I encountered the Fury Megaera, and I recalled one of my brother's interactions with her. Were these {#Emph}memories{#Prev}, or imagination?"
 		},
 		{
-			Cue = "/VO/ModsNikkelMHadesBiomes_Chaos_ChaosAboutNightmareRuns02B_0000",
+			Cue = "/VO/Modsnikkelmhadesbiomescustomchaos_0004",
 			SecretMusicActiveStems = { "ChaosBass" },
 			PreContentSound = "/SFX/Menu Sounds/ChaosBoonChange",
 			Text =
@@ -2540,14 +2540,14 @@ local newModdedInteractTextLines = {
 		PreEventFunctionName = "ChaosInteractPresentation",
 		PreEventFunctionArgs = { PickupWait = 1.0, },
 		{
-			Cue = "/VO/ModsNikkelMHadesBiomes_Chaos_ChaosAboutNightmareRuns02C_0000",
+			Cue = "/VO/Modsnikkelmhadesbiomescustomchaos_0005",
 			SecretMusicActiveStems = { "ChaosBass" },
 			PreContentSound = "/SFX/Menu Sounds/ChaosMiscSFX",
 			Text =
 			"Since our last interaction, you have learned more about what links you to your brother in this realm, have you not? Respond."
 		},
 		{
-			Cue = "/VO/ModsNikkelMHadesBiomes_Melinoe_ChaosAboutNightmareRuns02C_0000",
+			Cue = "/VO/Modsnikkelmhadesbiomescustommelinoe_0003",
 			UsePlayerSource = true,
 			SecretMusicMutedStems = { "ChaosBass" },
 			PreLineAnim = "MelTalkPensive01",
@@ -2558,7 +2558,7 @@ local newModdedInteractTextLines = {
 			"Another night, I encountered the Fury Megaera, and I recalled one of my brother's interactions with her. Were these {#Emph}memories{#Prev}, or imagination?"
 		},
 		{
-			Cue = "/VO/ModsNikkelMHadesBiomes_Chaos_ChaosAboutNightmareRuns02C_0001",
+			Cue = "/VO/Modsnikkelmhadesbiomescustomchaos_0006",
 			SecretMusicActiveStems = { "ChaosBass" },
 			PreContentSound = "/SFX/Menu Sounds/ChaosBoonChange",
 			Text =
@@ -2577,7 +2577,7 @@ local newModdedInteractTextLines = {
 		PreEventFunctionName = "ChaosInteractPresentation",
 		PreEventFunctionArgs = { PickupWait = 1.0, },
 		{
-			Cue = "/VO/ModsNikkelMHadesBiomes_Chaos_ChaosAboutZagreusEscapeAttempts01_0000",
+			Cue = "/VO/Modsnikkelmhadesbiomescustomchaos_0007",
 			SecretMusicActiveStems = { "ChaosBass" },
 			PreContentSound = "/SFX/Menu Sounds/ChaosBoonChange",
 			Text =
@@ -2593,7 +2593,7 @@ local newModdedInteractTextLines = {
 		PreEventFunctionName = "ChaosInteractPresentation",
 		PreEventFunctionArgs = { PickupWait = 1.0, },
 		{
-			Cue = "/VO/ModsNikkelMHadesBiomes_Chaos_ChaosAboutZagreusEscapeAttempts02_0000",
+			Cue = "/VO/Modsnikkelmhadesbiomescustomchaos_0008",
 			SecretMusicActiveStems = { "ChaosBass" },
 			PreContentSound = "/SFX/Menu Sounds/ChaosMiscSFX",
 			Text =
@@ -2616,7 +2616,7 @@ local newModdedInteractTextLines = {
 		PreEventFunctionName = "ChaosInteractPresentation",
 		PreEventFunctionArgs = { PickupWait = 1.0, },
 		{
-			Cue = "/VO/ModsNikkelMHadesBiomes_Chaos_ChaosAboutOlympianAid01_0000",
+			Cue = "/VO/Modsnikkelmhadesbiomescustomchaos_0009",
 			SecretMusicActiveStems = { "ChaosBass" },
 			PreContentSound = "/SFX/Menu Sounds/ChaosMiscSFX",
 			Text =
@@ -2640,7 +2640,7 @@ local newModdedInteractTextLines = {
 			},
 		},
 		{
-			Cue = "/VO/ModsNikkelMHadesBiomes_Chaos_ChaosAboutModdedRandomBounties01_0000",
+			Cue = "/VO/Modsnikkelmhadesbiomescustomchaos_0010",
 			SecretMusicActiveStems = { "ChaosBass" },
 			PreContentSound = "/SFX/Menu Sounds/ChaosMiscSFX",
 			Text =
@@ -2666,7 +2666,7 @@ local newModdedInteractTextLines = {
 			}
 		},
 		{
-			Cue = "/VO/ModsNikkelMHadesBiomes_Chaos_ChaosAboutModdedRandomBounties02_0000",
+			Cue = "/VO/Modsnikkelmhadesbiomescustomchaos_0011",
 			SecretMusicActiveStems = { "ChaosBass" },
 			PreContentSound = "/SFX/Menu Sounds/ChaosMiscSFX",
 			Text =
@@ -2680,7 +2680,7 @@ mod.AddNarrativeDataEntries(newModdedInteractTextLines, "TrialUpgrade", "Interac
 		TextLinePriorityType = "InteractTextLinePriorities",
 		VoiceBankMappings = { Chaos = { "Modsnikkelmhadesbiomeschaos", "ZagreusField" } },
 		CueMappings = { Chaos_ = "Modsnikkelmhadesbiomeschaos_" },
-		PortraitMappings = { ModsNikkelMHadesBiomes_Chaos_ = "ModsNikkelMHadesBiomes_Portrait_Chaos_Default_01" },
+		PortraitMappings = { Modsnikkelmhadesbiomescustomchaos_ = "ModsNikkelMHadesBiomes_Portrait_Chaos_Default_01" },
 		DummyCues = { "/VO/ChaosKeepsake_0280" },
 		DummyVoiceBank = "ChaosKeepsake",
 	}

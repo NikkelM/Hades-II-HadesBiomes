@@ -8,6 +8,8 @@ local newPortedInteractTextLines = {
 		PlayOnce = true,
 		-- Always allow, to not block this if Hermes wasn't met in a modded run yet
 		-- RequiredTextLines = { "AthenaFirstPickUp", },
+		PreEventFunctionName = "BoonInteractPresentation",
+		PreEventFunctionArgs = { PickupWait = 1.0, },
 		{
 			Cue = "/VO/ZagreusField_0789",
 			Portrait = "Portrait_Zag_Default_01",
@@ -74,6 +76,8 @@ local newPortedInteractTextLines = {
 			InsertAfterNarrativeTextLine = "AresKillQuest01",
 		},
 		PlayOnce = true,
+		PreEventFunctionName = "BoonInteractPresentation",
+		PreEventFunctionArgs = { PickupWait = 1.0, },
 		RequiredTextLines = { "AresFirstPickUp", "PersephoneAboutOlympianReunionQuest01", },
 		{
 			Cue = "/VO/ZagreusField_4340",
