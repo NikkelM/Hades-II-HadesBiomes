@@ -31,14 +31,19 @@ local tentCosmetics = {
 		Id = _PLUGIN.guid .. "." .. "Cosmetic_FanPoster_Theseus",
 		Name = {
 			en = "Wall-Scroll, Theseus",
+			fr = "Bannière, Thésée",
 		},
 		Description = {
 			en =
 			"{$Keywords.CosmeticAltAdd}: Portrays the Champion of Elysium and passionate rival of your brother.",
+			fr =
+			"{$Keywords.CosmeticAltAdd} : Représente le Champion de l'Élysée et l'ardent rival de votre frère.",
 		},
 		FlavorText = {
 			en =
 			"Bonded with the Bull of Minos Asterius, his foe-turned-friend, the shades of Elysium now cheer for his victories, save one, who has always supported your brother.",
+			fr =
+			"Lié au Taureau de Minos Astérion, son ennemi devenu ami, il voit désormais les ombres de l'Élysée acclamer ses victoires, à l'exception d'une seule, qui a toujours soutenu votre frère.",
 		},
 		CosmeticsGroup = "Cosmetic_FanPoster01",
 		InsertAfterCosmetic = "Cosmetic_FanPoster01b",
@@ -79,14 +84,19 @@ local tentCosmetics = {
 		Id = _PLUGIN.guid .. "." .. "Cosmetic_FanPoster_Aphrodite",
 		Name = {
 			en = "Wall-Scroll, Aphrodite",
+			fr = "Bannière, Aphrodite",
 		},
 		Description = {
 			en =
 			"{$Keywords.CosmeticAltAdd}: Portrays the Goddess of Love, Beauty, and certainly not least of all, Passion.",
+			fr =
+			"{$Keywords.CosmeticAltAdd} : Représente la déesse de l'Amour, de la Beauté et, non des moindres, de la Passion.",
 		},
 		FlavorText = {
 			en =
 			"Amongst the many hardships imposed by your task, this scroll serves as a reminder that love can be found even in the darkest of places.",
+			fr =
+			"Parmi les nombreuses épreuves qu'impose votre tâche, cette bannière rappelle que l'amour peut se trouver jusque dans les lieux les plus sombres.",
 		},
 		CosmeticsGroup = "Cosmetic_FanPoster01",
 		InsertAfterCosmetic = _PLUGIN.guid .. "." .. "Cosmetic_FanPoster_Theseus",
@@ -114,14 +124,19 @@ local tentCosmetics = {
 		Id = _PLUGIN.guid .. "." .. "Cosmetic_TentTable_Hellish",
 		Name = {
 			en = "Table, Hellish",
+			fr = "Table, Infernale",
 		},
 		Description = {
 			en =
 			"{$Keywords.CosmeticSwap}: Warm to the touch surface, with an unsteady pattern set within a deep red frame.",
+			fr =
+			"{$Keywords.CosmeticSwap} : Surface tiède au toucher, parcourue d'un motif irrégulier serti dans un cadre rouge profond.",
 		},
 		FlavorText = {
 			en =
 			"Where this table once stood has been lost to time, but the uneven pattern etched into its surface seems to want to break free from its confines.",
+			fr =
+			"Le lieu où se dressait jadis cette table s'est perdu dans le temps, mais le motif irrégulier gravé dans sa surface semble vouloir s'échapper de son cadre.",
 		},
 		CosmeticsGroup = "Cosmetic_TentTable01",
 		InsertAfterCosmetic = "Cosmetic_TentTable01c",
@@ -144,14 +159,19 @@ local tentCosmetics = {
 		Id = _PLUGIN.guid .. "." .. "Cosmetic_TentTable_Serpentine",
 		Name = {
 			en = "Table, Serpentine",
+			fr = "Table, Serpentine",
 		},
 		Description = {
 			en =
 			"{$Keywords.CosmeticSwap}: Coiled surface, the pattern on this table seems to re-arrange itself each time you look at it.",
+			fr =
+			"{$Keywords.CosmeticSwap} : Enroulé sur lui-même, le motif de cette table semble se réagencer chaque fois que vous la regardez.",
 		},
 		FlavorText = {
 			en =
 			"At night, when the surrounding forest is still, it can sometimes seem as though a faint hissing can be heard from this table.",
+			fr =
+			"La nuit, quand la forêt alentour s'apaise, il semble parfois qu'un léger sifflement s'échappe de cette table.",
 		},
 		CosmeticsGroup = "Cosmetic_TentTable01",
 		InsertAfterCosmetic = _PLUGIN.guid .. "." .. "Cosmetic_TentTable_Hellish",
@@ -176,14 +196,19 @@ local tentCosmetics = {
 		Id = _PLUGIN.guid .. "." .. "Cosmetic_TentCandle_Tartarus",
 		Name = {
 			en = "Candle, Tartarus",
+			fr = "Bougie, Tartare",
 		},
 		Description = {
 			en =
 			"{$Keywords.CosmeticSwap}: Poured from aged wax and set within a holder of dark, green stone.",
+			fr =
+			"{$Keywords.CosmeticSwap} : Coulée dans une cire ancienne et fichée dans un support de pierre sombre et verdâtre.",
 		},
 		FlavorText = {
 			en =
 			"Before the Titan Chronos took hold of Tartarus, its sheer endless chambers were illuminated by countless candles such as this one, spreading their eerie green glow.",
+			fr =
+			"Avant que le Titan Chronos ne s'empare du Tartare, ses salles quasi infinies étaient éclairées par d'innombrables bougies comme celle-ci, répandant leur inquiétante lueur verte.",
 		},
 		CosmeticsGroup = "Cosmetic_TentCandle01",
 		InsertAfterCosmetic = "Cosmetic_TentCandle01",
@@ -206,14 +231,19 @@ local tentCosmetics = {
 		Id = _PLUGIN.guid .. "." .. "Cosmetic_TentCandle_Elysian",
 		Name = {
 			en = "Candle, Elysian",
+			fr = "Bougie, Élyséenne",
 		},
 		Description = {
 			en =
 			"{$Keywords.CosmeticSwap}: Poured from the finest wax and scented with the sweetest fragrances of Elysium's gardens.",
+			fr =
+			"{$Keywords.CosmeticSwap} : Coulée dans la plus fine des cires et parfumée des senteurs les plus douces des jardins de l'Élysée.",
 		},
 		FlavorText = {
 			en =
 			"Listing all the different flowers and other ingredients used in the making of this candle would be a task to rival that of the Princess of the Underworld's own.",
+			fr =
+			"Énumérer toutes les fleurs et autres ingrédients ayant servi à la fabrication de cette bougie serait une tâche digne de rivaliser avec celle de la Princesse des Enfers.",
 		},
 		CosmeticsGroup = "Cosmetic_TentCandle01",
 		InsertAfterCosmetic = _PLUGIN.guid .. "." .. "Cosmetic_TentCandle_Tartarus",
@@ -249,14 +279,19 @@ local tentCosmetics = {
 		Id = _PLUGIN.guid .. "." .. "Cosmetic_TentBlanket_Chthonic",
 		Name = {
 			en = "Bedding, Chthonic",
+			fr = "Literie, Chthonienne",
 		},
 		Description = {
 			en =
 			"{$Keywords.CosmeticSwap}: Ornate and cushioned, with a familiar and soothing smell.",
+			fr =
+			"{$Keywords.CosmeticSwap} : Ornée et moelleuse, dégageant une odeur familière et apaisante.",
 		},
 		FlavorText = {
 			en =
 			"Whilst the Lord Hades of the Underworld is not known for his sense of style, the Queen Persephone certainly has a taste for the finer things.",
+			fr =
+			"Si le seigneur Hadès n'est guère réputé pour son sens du style, la reine Perséphone, elle, a le goût des belles choses.",
 		},
 		CosmeticsGroup = "Cosmetic_TentBlanket01",
 		InsertAfterCosmetic = "Cosmetic_TentBlanket01c",
@@ -284,14 +319,19 @@ local tentCosmetics = {
 		Id = _PLUGIN.guid .. "." .. "Cosmetic_TentBlanket_Infernal",
 		Name = {
 			en = "Bedding, Infernal",
+			fr = "Literie, Infernale",
 		},
 		Description = {
 			en =
 			"{$Keywords.CosmeticSwap}: Deep crimson and weathered, this bedding has a special place in your heart.",
+			fr =
+			"{$Keywords.CosmeticSwap} : D'un rouge foncé et patiné, cette literie occupe une place particulière dans votre cœur.",
 		},
 		FlavorText = {
 			en =
 			"When lying under this blanket, you can feel the connection to your brother in a time long past grow stronger than ever.",
+			fr =
+			"Allongée sous cette couverture, vous sentez le lien qui vous unit à votre frère, en des temps depuis longtemps révolus, se renforcer plus que jamais.",
 		},
 		CosmeticsGroup = "Cosmetic_TentBlanket01",
 		InsertAfterCosmetic = _PLUGIN.guid .. "." .. "Cosmetic_TentBlanket_Chthonic",
@@ -319,14 +359,19 @@ local tentCosmetics = {
 		Id = _PLUGIN.guid .. "." .. "Cosmetic_TentBlanket_Olympic",
 		Name = {
 			en = "Bedding, Olympic",
+			fr = "Literie, Olympienne",
 		},
 		Description = {
 			en =
 			"{$Keywords.CosmeticSwap}: Subdued and yet elegant, with subtle motifs of your extended family.",
+			fr =
+			"{$Keywords.CosmeticSwap} : Sobre et pourtant élégante, ornée de motifs discrets à l'effigie de votre famille éloignée.",
 		},
 		FlavorText = {
 			en =
 			"Even in times of war, the Gods upon Mount Olympus can find ways to rest and gather their strength in style.",
+			fr =
+			"Même en temps de guerre, les dieux du mont Olympe savent trouver le moyen de se reposer et de reprendre des forces avec élégance.",
 		},
 		CosmeticsGroup = "Cosmetic_TentBlanket01",
 		InsertAfterCosmetic = _PLUGIN.guid .. "." .. "Cosmetic_TentBlanket_Infernal",
@@ -354,14 +399,19 @@ local tentCosmetics = {
 		Id = _PLUGIN.guid .. "." .. "Cosmetic_TentBlanket_Chariot",
 		Name = {
 			en = "Bedding, Racer",
+			fr = "Literie, Char",
 		},
 		Description = {
 			en =
 			"{$Keywords.CosmeticSwap}: Sturdy and swift, and heavily inspired by a particular type of foe.",
+			fr =
+			"{$Keywords.CosmeticSwap} : Robuste et véloce, largement inspirée d'un certain type d'ennemi.",
 		},
 		FlavorText = {
 			en =
 			"Headmistress Hecate deeply regrets the day she allowed the young Princess to procure this particular piece.",
+			fr =
+			"La Maîtresse Hécate regrette amèrement le jour où elle a laissé la jeune Princesse se procurer cette pièce.",
 		},
 		CosmeticsGroup = "Cosmetic_TentBlanket01",
 		InsertAfterCosmetic = _PLUGIN.guid .. "." .. "Cosmetic_TentBlanket_Olympic",
@@ -414,14 +464,19 @@ local tentCosmetics = {
 		Id = _PLUGIN.guid .. "." .. "Cosmetic_TentShelf_Brooding",
 		Name = {
 			en = "Shelving, Brooding",
+			fr = "Étagères, Sombres",
 		},
 		Description = {
 			en =
 			"{$Keywords.CosmeticSwap}: Offers seemingly endless storage space with a moody touch.",
+			fr =
+			"{$Keywords.CosmeticSwap} : Offrent un espace de rangement quasi infini, avec une touche de mélancolie.",
 		},
 		FlavorText = {
 			en =
 			"The benefit of limited choice is that one can focus on what truly matters. The Princess of the Underworld and her father are similarly pragmatic in this regard.",
+			fr =
+			"L'avantage du choix limité, c'est qu'il permet de se concentrer sur l'essentiel. La Princesse des Enfers et son père font preuve du même pragmatisme à cet égard.",
 		},
 		CosmeticsGroup = "Cosmetic_TentShelf01",
 		InsertAfterCosmetic = "Cosmetic_TentShelf01b",
@@ -448,14 +503,19 @@ local tentCosmetics = {
 		Id = _PLUGIN.guid .. "." .. "Cosmetic_TentShelf_Royal",
 		Name = {
 			en = "Shelving, Royal",
+			fr = "Étagères, Royales",
 		},
 		Description = {
 			en =
 			"{$Keywords.CosmeticSwap}: Offers deep storage space with an intimidating touch.",
+			fr =
+			"{$Keywords.CosmeticSwap} : Offrent un vaste espace de rangement, avec une touche intimidante.",
 		},
 		FlavorText = {
 			en =
 			"To perfect one's craft, immersing oneself in literature is paramount. The shelves of this design have proven the optimal choice for storing the tomes required for such a pursuit.",
+			fr =
+			"Pour parfaire son art, il est primordial de se plonger dans la littérature. Les étagères de ce modèle se sont révélées idéales pour ranger les tomes qu'exige une telle quête.",
 		},
 		CosmeticsGroup = "Cosmetic_TentShelf01",
 		InsertAfterCosmetic = _PLUGIN.guid .. "." .. "Cosmetic_TentShelf_Brooding",
@@ -500,14 +560,19 @@ local mainHubAreaCosmetics = {
 		Id = _PLUGIN.guid .. "." .. "Cosmetic_Banner_Infernal",
 		Name = {
 			en = "Banner, Infernal",
+			fr = "Bannière, Infernale",
 		},
 		Description = {
 			en =
 			"{$Keywords.CosmeticAltAdd}: A fear-invoking scroll set on a standard before the great {#BoldFormatGraftDark}Tree of Life{#Prev}.",
+			fr =
+			"{$Keywords.CosmeticAltAdd} : Un parchemin inspirant la crainte, dressé sur un étendard devant le grand {#BoldFormatGraftDark}Arbre de Vie{#Prev}.",
 		},
 		FlavorText = {
 			en =
 			"Eerily resembles the Pact of Punishment once served to your brother, Zagreus, when once he sought to escape the Underworld.",
+			fr =
+			"Rappelle étrangement le Pacte des Châtiments jadis proposé à votre frère, Zagreus, lorsqu'il cherchait à s'échapper des Enfers.",
 		},
 		CosmeticsGroup = "Cosmetic_HecateKey",
 		InsertAfterCosmetic = "Cosmetic_HecateKey",
@@ -537,14 +602,19 @@ local mainHubAreaCosmetics = {
 		Id = _PLUGIN.guid .. "." .. "Cosmetic_Banner_Divine",
 		Name = {
 			en = "Banner, Divine",
+			fr = "Bannière, Divine",
 		},
 		Description = {
 			en =
 			"{$Keywords.CosmeticAltAdd}: A gift from the heavens, set on a standard before the great {#BoldFormatGraftDark}Tree of Life{#Prev}.",
+			fr =
+			"{$Keywords.CosmeticAltAdd} : Un présent des cieux, dressé sur un étendard devant le grand {#BoldFormatGraftDark}Arbre de Vie{#Prev}.",
 		},
 		FlavorText = {
 			en =
 			"Many of the shades that found their way into the Crossroads were deemed unworthy of passage to Elysium. This banner serves to inspire hope in those who see it.",
+			fr =
+			"Nombre des ombres ayant trouvé refuge à la Croisée ont été jugées indignes de l'accès à l'Élysée. Cette bannière est là pour leur redonner espoir.",
 		},
 		CosmeticsGroup = "Cosmetic_HecateKey",
 		InsertAfterCosmetic = _PLUGIN.guid .. "." .. "Cosmetic_Banner_Infernal",
@@ -574,14 +644,19 @@ local mainHubAreaCosmetics = {
 		Id = _PLUGIN.guid .. "." .. "Cosmetic_Banner_Resistance",
 		Name = {
 			en = "Banner, Resistance",
+			fr = "Bannière, Résistance",
 		},
 		Description = {
 			en =
 			"{$Keywords.CosmeticAltAdd}: A show of strength and determination, set on a standard before the great {#BoldFormatGraftDark}Tree of Life{#Prev}.",
+			fr =
+			"{$Keywords.CosmeticAltAdd} : Une démonstration de force et de détermination, dressée sur un étendard devant le grand {#BoldFormatGraftDark}Arbre de Vie{#Prev}.",
 		},
 		FlavorText = {
 			en =
 			"To know what one has to gain, one must know what has been lost. The Princess of the Underworld understands this all too well.",
+			fr =
+			"Pour savoir ce que l'on a à gagner, il faut savoir ce que l'on a perdu. La Princesse des Enfers ne le sait que trop bien.",
 		},
 		CosmeticsGroup = "Cosmetic_HecateKey",
 		InsertAfterCosmetic = _PLUGIN.guid .. "." .. "Cosmetic_Banner_Divine",
@@ -620,14 +695,19 @@ local mainHubAreaCosmetics = {
 		Id = _PLUGIN.guid .. "." .. "Cosmetic_Pillars_Divine",
 		Name = {
 			en = "Pillars, Divine",
+			fr = "Piliers, Divins",
 		},
 		Description = {
 			en =
 			"{$Keywords.CosmeticSwap}: Awe-inspiring monoliths that stand tall to either side of the {#BoldFormatGraftDark}Cauldron{#Prev}.",
+			fr =
+			"{$Keywords.CosmeticSwap} : Des monolithes impressionnants qui se dressent de part et d'autre du {#BoldFormatGraftDark}Chaudron{#Prev}.",
 		},
 		FlavorText = {
 			en =
 			"So numerous are the splendors of Elysium, that it was only a matter of time for some of its grandeur to find its way into the Crossroads.",
+			fr =
+			"Les splendeurs de l'Élysée sont si nombreuses qu'il était inévitable qu'un peu de sa grandeur finisse par gagner la Croisée.",
 		},
 		CosmeticsGroup = "Cosmetic_CauldronPillars01",
 		InsertAfterCosmetic = "Cosmetic_CauldronPillars01c",
@@ -655,14 +735,19 @@ local mainHubAreaCosmetics = {
 		Id = _PLUGIN.guid .. "." .. "Cosmetic_Pillars_Gilded",
 		Name = {
 			en = "Pillars, Gilded",
+			fr = "Piliers, Dorés",
 		},
 		Description = {
 			en =
 			"{$Keywords.CosmeticSwap}: Ancient monoliths that stand tall to either side of the {#BoldFormatGraftDark}Cauldron{#Prev}.",
+			fr =
+			"{$Keywords.CosmeticSwap} : D'anciens monolithes qui se dressent de part et d'autre du {#BoldFormatGraftDark}Chaudron{#Prev}.",
 		},
 		FlavorText = {
 			en =
 			"Pillars such as these hold up the grand halls in the Temple of Styx, just out of reach of mortals, hidden beneath the surface.",
+			fr =
+			"Des piliers de ce genre soutiennent les grandes salles du Temple du Styx, hors de portée des mortels, dissimulées sous la surface.",
 		},
 		CosmeticsGroup = "Cosmetic_CauldronPillars01",
 		InsertAfterCosmetic = _PLUGIN.guid .. "." .. "Cosmetic_Pillars_Divine",
@@ -690,14 +775,19 @@ local mainHubAreaCosmetics = {
 		Id = _PLUGIN.guid .. "." .. "Cosmetic_Pillars_Serpentine",
 		Name = {
 			en = "Pillars, Serpentine",
+			fr = "Piliers, Serpentins",
 		},
 		Description = {
 			en =
 			"{$Keywords.CosmeticSwap}: Constraining monoliths that stand tall to either side of the {#BoldFormatGraftDark}Cauldron{#Prev}.",
+			fr =
+			"{$Keywords.CosmeticSwap} : Des monolithes oppressants qui se dressent de part et d'autre du {#BoldFormatGraftDark}Chaudron{#Prev}.",
 		},
 		FlavorText = {
 			en =
 			"Your animal familiars may need some convincing to approach these pillars, but they remind you of home, somehow.",
+			fr =
+			"Vos familiers auront peut-être besoin d'être convaincus pour approcher ces piliers, mais ceux-ci vous rappellent votre foyer, d'une certaine manière.",
 		},
 		CosmeticsGroup = "Cosmetic_CauldronPillars01",
 		InsertAfterCosmetic = _PLUGIN.guid .. "." .. "Cosmetic_Pillars_Gilded",
@@ -721,14 +811,19 @@ local mainHubAreaCosmetics = {
 		Id = _PLUGIN.guid .. "." .. "Cosmetic_Pillars_Deathly",
 		Name = {
 			en = "Pillars, Deathly",
+			fr = "Piliers, Mortuaires",
 		},
 		Description = {
 			en =
 			"{$Keywords.CosmeticSwap}: Improvised monoliths that stand tall to either side of the {#BoldFormatGraftDark}Cauldron{#Prev}.",
+			fr =
+			"{$Keywords.CosmeticSwap} : Des monolithes improvisés qui se dressent de part et d'autre du {#BoldFormatGraftDark}Chaudron{#Prev}.",
 		},
 		FlavorText = {
 			en =
 			"There is no waste in the Underworld, and so even the most macabre of materials can be repurposed into something functional, and perhaps even beautiful.",
+			fr =
+			"Rien ne se perd aux Enfers, et même les matériaux les plus macabres peuvent être transformés en quelque chose d'utile, voire de beau.",
 		},
 		CosmeticsGroup = "Cosmetic_CauldronPillars01",
 		InsertAfterCosmetic = _PLUGIN.guid .. "." .. "Cosmetic_Pillars_Serpentine",
@@ -756,14 +851,19 @@ local mainHubAreaCosmetics = {
 		Id = _PLUGIN.guid .. "." .. "Cosmetic_Pillars_Infinite",
 		Name = {
 			en = "Pillars, Infinite",
+			fr = "Piliers, Infinis",
 		},
 		Description = {
 			en =
 			"{$Keywords.CosmeticSwap}: Impossible monoliths that stand tall to either side of the {#BoldFormatGraftDark}Cauldron{#Prev}.",
+			fr =
+			"{$Keywords.CosmeticSwap} : D'impossibles monolithes qui se dressent de part et d'autre du {#BoldFormatGraftDark}Chaudron{#Prev}.",
 		},
 		FlavorText = {
 			en =
 			"Chaos does as they please, and though they are in their essence the opposite of structure, these pillars with their endless patterns seem to embody both concepts at once.",
+			fr =
+			"Chaos agit à sa guise et, bien qu'il soit par essence le contraire de toute structure, ces piliers aux motifs sans fin semblent incarner les deux notions à la fois.",
 		},
 		CosmeticsGroup = "Cosmetic_CauldronPillars01",
 		InsertAfterCosmetic = _PLUGIN.guid .. "." .. "Cosmetic_Pillars_Deathly",
@@ -795,14 +895,19 @@ local mainHubAreaCosmetics = {
 		Id = _PLUGIN.guid .. "." .. "Cosmetic_Rug_Ancient",
 		Name = {
 			en = "Rug, Ancient",
+			fr = "Tapis, Antique",
 		},
 		Description = {
 			en =
 			"{$Keywords.CosmeticAltAdd}: A time-worn piece, near to where {$Keywords.CharOdysseus} typically resides.",
+			fr =
+			"{$Keywords.CosmeticAltAdd} : Une pièce usée par le temps, près de l'endroit où {$Keywords.CharOdysseus} se tient habituellement.",
 		},
 		FlavorText = {
 			en =
 			"This storied rug is rumoured to have once belonged to Sisyphus, the Founder and King of the City of Ephyra, which has since fallen into ruin at the hands of the Titan of Time.",
+			fr =
+			"Ce tapis chargé d'histoire aurait jadis appartenu à Sisyphe, fondateur et roi de la cité d'Éphyre, depuis tombée en ruine par la main du Titan du Temps.",
 		},
 		CosmeticsGroup = "Cosmetic_OdysseusRug",
 		InsertAfterCosmetic = "Cosmetic_OdysseusRug",
@@ -825,14 +930,19 @@ local mainHubAreaCosmetics = {
 		Id = _PLUGIN.guid .. "." .. "Cosmetic_Rug_Heroic",
 		Name = {
 			en = "Rug, Heroic",
+			fr = "Tapis, Héroïque",
 		},
 		Description = {
 			en =
 			"{$Keywords.CosmeticAltAdd}: A piece that has seen many spectacles, near to where {$Keywords.CharOdysseus} typically resides.",
+			fr =
+			"{$Keywords.CosmeticAltAdd} : Une pièce témoin de bien des exploits, près de l'endroit où {$Keywords.CharOdysseus} se tient habituellement.",
 		},
 		FlavorText = {
 			en =
 			"This rug emits an aura of valor and strength, and only permits the most worthy of shades to tread upon it.",
+			fr =
+			"Ce tapis dégage une aura de bravoure et de force, et ne permet qu'aux ombres les plus dignes de le fouler.",
 		},
 		CosmeticsGroup = "Cosmetic_OdysseusRug",
 		InsertAfterCosmetic = _PLUGIN.guid .. "." .. "Cosmetic_Rug_Ancient",
@@ -863,14 +973,19 @@ local mainHubAreaCosmetics = {
 		Id = _PLUGIN.guid .. "." .. "Cosmetic_War_Table_Heroic",
 		Name = {
 			en = "War Table, Heroic",
+			fr = "Table de guerre, Héroïque",
 		},
 		Description = {
 			en =
 			"{$Keywords.CosmeticSwap}: To inspire heroic deeds, near to where {$Keywords.CharOdysseus} typically resides.",
+			fr =
+			"{$Keywords.CosmeticSwap} : Pour inspirer les actes héroïques, près de l'endroit où {$Keywords.CharOdysseus} se tient habituellement.",
 		},
 		FlavorText = {
 			en =
 			"Odysseus is no stranger to the logistics of war, and knows well the value of a sturdy table upon which to plan one's campaigns.",
+			fr =
+			"Ulysse n'est pas étranger à la logistique de la guerre, et connaît bien la valeur d'une table solide sur laquelle planifier ses campagnes.",
 		},
 		CosmeticsGroup = "Cosmetic_OdysseusTable01",
 		InsertAfterCosmetic = "Cosmetic_OdysseusTable01",
@@ -902,14 +1017,19 @@ local mainHubAreaCosmetics = {
 		Id = _PLUGIN.guid .. "." .. "Cosmetic_Lantern_Infernal",
 		Name = {
 			en = "Lanterns, Infernal",
+			fr = "Lanternes, Infernales",
 		},
 		Description = {
 			en =
 			"{$Keywords.CosmeticSwap}: Caged shades illuminate the Crossroads with a light born in Tartarus.",
+			fr =
+			"{$Keywords.CosmeticSwap} : Des ombres en cage éclairent la Croisée d'une lumière née au Tartare.",
 		},
 		FlavorText = {
 			en =
 			"Some skulls are so numb that they believe they can escape from Tartarus. It is unclear how these ones ended up in the Crossroads.",
+			fr =
+			"Certains crânes sont si vides qu'ils croient pouvoir s'échapper du Tartare. On ignore comment ceux-ci ont atterri à la Croisée.",
 		},
 		CosmeticsGroup = "Cosmetic_MainLanterns01",
 		InsertAfterCosmetic = "Cosmetic_MainLanterns01b",
@@ -946,14 +1066,19 @@ local mainHubAreaCosmetics = {
 		Id = _PLUGIN.guid .. "." .. "Cosmetic_Lantern_Gilded",
 		Name = {
 			en = "Lanterns, Gilded",
+			fr = "Lanternes, Dorées",
 		},
 		Description = {
 			en =
 			"{$Keywords.CosmeticSwap}: Slim glass tubes illuminate the Crossroads with a pulsing, purplish light.",
+			fr =
+			"{$Keywords.CosmeticSwap} : De fins tubes de verre éclairent la Croisée d'une lumière violacée et pulsante.",
 		},
 		FlavorText = {
 			en =
 			"Though the Underworld is not as devoid of light as one might think, these lanterns seem to harness a light unlike any other.",
+			fr =
+			"Si les Enfers ne sont pas aussi dépourvus de lumière qu'on pourrait le croire, ces lanternes semblent exploiter une clarté sans pareille.",
 		},
 		CosmeticsGroup = "Cosmetic_MainLanterns01",
 		InsertAfterCosmetic = _PLUGIN.guid .. "." .. "Cosmetic_Lantern_Infernal",
@@ -984,14 +1109,19 @@ local mainHubAreaCosmetics = {
 		Id = _PLUGIN.guid .. "." .. "Cosmetic_Cauldron_Infernal",
 		Name = {
 			en = "Cauldron, Infernal",
+			fr = "Chaudron, Infernal",
 		},
 		Description = {
 			en =
 			"{$Keywords.CosmeticSwap}: Forged within the searing heat of Asphodel, and adorned with deathly motifs.",
+			fr =
+			"{$Keywords.CosmeticSwap} : Forgé dans la chaleur brûlante de l'Asphodèle et orné de motifs mortuaires.",
 		},
 		FlavorText = {
 			en =
 			"Some incantations are said to be most powerful when uttered in the presence of metals originating from the deepest pits of the underworld.",
+			fr =
+			"Certaines incantations seraient plus puissantes lorsqu'elles sont prononcées en présence de métaux venus des plus profonds abîmes des Enfers.",
 		},
 		CosmeticsGroup = "Cosmetic_Cauldron01",
 		InsertAfterCosmetic = "Cosmetic_Cauldron01b",
@@ -1032,14 +1162,19 @@ local mainHubAreaCosmetics = {
 		Id = _PLUGIN.guid .. "." .. "Cosmetic_Cauldron_Infinite",
 		Name = {
 			en = "Cauldron, Infinite",
+			fr = "Chaudron, Infini",
 		},
 		Description = {
 			en =
 			"{$Keywords.CosmeticSwap}: Forged by unknown powers in the deep void of Chaos itself.",
+			fr =
+			"{$Keywords.CosmeticSwap} : Forgé par des puissances inconnues dans le vide profond de Chaos lui-même.",
 		},
 		FlavorText = {
 			en =
 			"Everything was born from Chaos, and to it everything shall return. This cauldron is said to embody that very principle.",
+			fr =
+			"Tout est né de Chaos, et tout y retournera. Ce chaudron incarnerait ce principe même.",
 		},
 		CosmeticsGroup = "Cosmetic_Cauldron01",
 		InsertAfterCosmetic = _PLUGIN.guid .. "." .. "Cosmetic_Cauldron_Infernal",
@@ -1087,14 +1222,19 @@ local mainHubAreaCosmetics = {
 		Id = _PLUGIN.guid .. "." .. "Cosmetic_HypnosPedestal_Coned",
 		Name = {
 			en = "Pillarets, Coned",
+			fr = "Pilastre, Coniques",
 		},
 		Description = {
 			en =
 			"{$Keywords.CosmeticSwap}: Numerous nature-imitating columns encircling where {$Keywords.CharHypnos} typically resides.",
+			fr =
+			"{$Keywords.CosmeticSwap} : De nombreuses colonnes imitant la nature encerclent l'endroit où {$Keywords.CharHypnos} se tient habituellement.",
 		},
 		FlavorText = {
 			en =
 			"Trees are often associated with sleepiness and dreams by mortals, so it is only befitting that a symbol of theirs should stand watch here.",
+			fr =
+			"Les mortels associent souvent les arbres au sommeil et aux rêves, il est donc tout indiqué qu'un de leurs symboles monte la garde ici.",
 		},
 		CosmeticsGroup = "Cosmetic_HypnosPedestal01",
 		InsertAfterCosmetic = "Cosmetic_HypnosPedestal01b",
@@ -1137,14 +1277,19 @@ local tavernaCosmetics = {
 		Id = _PLUGIN.guid .. "." .. "Cosmetic_TavernaChairs_Infernal",
 		Name = {
 			en = "Benches, Infernal",
+			fr = "Bancs, Infernaux",
 		},
 		Description = {
 			en =
 			"{$Keywords.CosmeticSwap}: Lightly cushioned seating, for all in the {#BoldFormatGraftDark}Taverna{#Prev}.",
+			fr =
+			"{$Keywords.CosmeticSwap} : Des sièges légèrement rembourrés, pour tous ceux de la {#BoldFormatGraftDark}Taverne{#Prev}.",
 		},
 		FlavorText = {
 			en =
 			"Though the shades residing in the Crossroads don't need to sit anymore, some of them enjoy reminiscing of the old House of Hades when relaxing on these benches.",
+			fr =
+			"Bien que les ombres résidant à la Croisée n'aient plus besoin de s'asseoir, certaines aiment se remémorer l'ancienne Maison d'Hadès en se détendant sur ces bancs.",
 		},
 		CosmeticsGroup = "Cosmetic_TavernaChairs01",
 		InsertAfterCosmetic = "Cosmetic_TavernaChairs01c",
@@ -1175,14 +1320,19 @@ local tavernaCosmetics = {
 		Id = _PLUGIN.guid .. "." .. "Cosmetic_TavernaChairs_Springtime",
 		Name = {
 			en = "Benches, Springtime",
+			fr = "Bancs, Printaniers",
 		},
 		Description = {
 			en =
 			"{$Keywords.CosmeticSwap}: Neatly arranged individual seating, for all in the {#BoldFormatGraftDark}Taverna{#Prev}.",
+			fr =
+			"{$Keywords.CosmeticSwap} : Des sièges individuels soigneusement disposés, pour tous ceux de la {#BoldFormatGraftDark}Taverne{#Prev}.",
 		},
 		FlavorText = {
 			en =
 			"Whilst the Underworld does not experience seasons as does the Surface, the Crossroads is in an inbetween state that allows those residing within them to enjoy the fresh smells it brings.",
+			fr =
+			"Si les Enfers ne connaissent pas les saisons comme la Surface, la Croisée se trouve dans un entre-deux qui permet à ses habitants de profiter des senteurs fraîches qu'elles apportent.",
 		},
 		CosmeticsGroup = "Cosmetic_TavernaChairs01",
 		InsertAfterCosmetic = _PLUGIN.guid .. "." .. "Cosmetic_TavernaChairs_Infernal",
@@ -1216,14 +1366,19 @@ local tavernaCosmetics = {
 		Id = _PLUGIN.guid .. "." .. "Cosmetic_TavernaTables_Infernal",
 		Name = {
 			en = "Tables, Infernal",
+			fr = "Tables, Infernales",
 		},
 		Description = {
 			en =
 			"{$Keywords.CosmeticSwap}: Hewn from purest marble and adorned with deathly motifs, for all in the {#BoldFormatGraftDark}Taverna{#Prev}.",
+			fr =
+			"{$Keywords.CosmeticSwap} : Taillées dans le marbre le plus pur et ornées de motifs mortuaires, pour tous ceux de la {#BoldFormatGraftDark}Taverne{#Prev}.",
 		},
 		FlavorText = {
 			en =
 			"There is no shortage of stone of any kind in the Underworld, and it is no surprise that furnishings from the House of Hades were made of the finest such materials.",
+			fr =
+			"La pierre, sous toutes ses formes, ne manque pas aux Enfers, et il n'est guère surprenant que le mobilier de la Maison d'Hadès ait été fait des plus belles matières.",
 		},
 		CosmeticsGroup = "Cosmetic_TavernaTables01",
 		InsertAfterCosmetic = "Cosmetic_TavernaTables01c",
@@ -1254,14 +1409,19 @@ local tavernaCosmetics = {
 		Id = _PLUGIN.guid .. "." .. "Cosmetic_TavernaTables_Springtime",
 		Name = {
 			en = "Tables, Springtime",
+			fr = "Tables, Printanières",
 		},
 		Description = {
 			en =
 			"{$Keywords.CosmeticSwap}: Decorated with imagery of fruits and flowers, for all in the {#BoldFormatGraftDark}Taverna{#Prev}.",
+			fr =
+			"{$Keywords.CosmeticSwap} : Décorées de motifs de fruits et de fleurs, pour tous ceux de la {#BoldFormatGraftDark}Taverne{#Prev}.",
 		},
 		FlavorText = {
 			en =
 			"In the gloom atmosphere of the Crossroads and the Princess of the Underworld's task, these tables bring a touch of brightness and life to those who gather around them.",
+			fr =
+			"Dans l'atmosphère lugubre de la Croisée et de la tâche de la Princesse des Enfers, ces tables apportent une touche de clarté et de vie à ceux qui s'y rassemblent.",
 		},
 		CosmeticsGroup = "Cosmetic_TavernaTables01",
 		InsertAfterCosmetic = _PLUGIN.guid .. "." .. "Cosmetic_TavernaTables_Infernal",
@@ -1294,14 +1454,19 @@ local tavernaCosmetics = {
 		Id = _PLUGIN.guid .. "." .. "Cosmetic_TavernaCauldron_Royal",
 		Name = {
 			en = "Cooking-Pot, Royal",
+			fr = "Marmite, Royale",
 		},
 		Description = {
 			en =
 			"{$Keywords.CosmeticSwap}: Well-crafted heat-conducting receptacle, in the middle of the {#BoldFormatGraftDark}Taverna{#Prev}.",
+			fr =
+			"{$Keywords.CosmeticSwap} : Un récipient conducteur de chaleur de belle facture, au centre de la {#BoldFormatGraftDark}Taverne{#Prev}.",
 		},
 		FlavorText = {
 			en =
 			"It is said this pot once stood in the lounge of the House of Hades, used by it's head Chef to cook meals for Lord Hades and his family and guests.",
+			fr =
+			"On raconte que cette marmite trônait jadis dans le salon de la Maison d'Hadès, où le chef cuisinier préparait les repas du seigneur Hadès, de sa famille et de ses invités.",
 		},
 		CosmeticsGroup = "Cosmetic_TavernaCauldron01",
 		InsertAfterCosmetic = "Cosmetic_TavernaCauldron02",
@@ -1338,14 +1503,19 @@ local tavernaCosmetics = {
 		Id = _PLUGIN.guid .. "." .. "Cosmetic_TavernaStarMosaic_Furious",
 		Name = {
 			en = "Mosaic, Furious",
+			fr = "Mosaïque, Furieuse",
 		},
 		Description = {
 			en =
 			"{$Keywords.CosmeticSwap}: Simple natural stones with coloured glass inlays form this central flooring in the {#BoldFormatGraftDark}Taverna{#Prev}.",
+			fr =
+			"{$Keywords.CosmeticSwap} : De simples pierres naturelles serties d'incrustations de verre coloré composent ce sol central de la {#BoldFormatGraftDark}Taverne{#Prev}.",
 		},
 		FlavorText = {
 			en =
 			"The three furies Megaera, Alecto and Tisiphone do not care for lavish designs and decorations, but can appreciate the craftsmanship that went into this mosaic.",
+			fr =
+			"Les trois Furies, Mégère, Alecto et Tisiphone, n'ont que faire des décors fastueux, mais savent apprécier le savoir-faire déployé dans cette mosaïque.",
 		},
 		CosmeticsGroup = "Cosmetic_TavernaStarMosaic",
 		InsertAfterCosmetic = "Cosmetic_TavernaStarMosaic",
@@ -1379,14 +1549,19 @@ local tavernaCosmetics = {
 		Id = _PLUGIN.guid .. "." .. "Cosmetic_TavernaStarMosaic_Gilded",
 		Name = {
 			en = "Mosaic, Gilded",
+			fr = "Mosaïque, Dorée",
 		},
 		Description = {
 			en =
 			"{$Keywords.CosmeticSwap}: Strange, petal-like stones form this central flooring in the {#BoldFormatGraftDark}Taverna{#Prev}.",
+			fr =
+			"{$Keywords.CosmeticSwap} : D'étranges pierres en forme de pétales composent ce sol central de la {#BoldFormatGraftDark}Taverne{#Prev}.",
 		},
 		FlavorText = {
 			en =
 			"The four corners of this mosaic are said to point towards the four rivers of the Underworld: Styx, Acheron, Lethe, and Phlegethon.",
+			fr =
+			"Les quatre coins de cette mosaïque indiqueraient les quatre fleuves des Enfers : le Styx, l'Achéron, le Léthé et le Phlégéthon.",
 		},
 		CosmeticsGroup = "Cosmetic_TavernaStarMosaic",
 		InsertAfterCosmetic = _PLUGIN.guid .. "." .. "Cosmetic_TavernaStarMosaic_Furious",
@@ -1419,14 +1594,19 @@ local tavernaCosmetics = {
 		Id = _PLUGIN.guid .. "." .. "Cosmetic_TavernaStarMosaic_Royal",
 		Name = {
 			en = "Mosaic, Royal",
+			fr = "Mosaïque, Royale",
 		},
 		Description = {
 			en =
 			"{$Keywords.CosmeticSwap}: Gold patterns inset to white stones form this central flooring in the {#BoldFormatGraftDark}Taverna{#Prev}.",
+			fr =
+			"{$Keywords.CosmeticSwap} : Des motifs dorés incrustés dans des pierres blanches composent ce sol central de la {#BoldFormatGraftDark}Taverne{#Prev}.",
 		},
 		FlavorText = {
 			en =
 			"Lord Hades of the Underworld is not known for any display of wealth, but also did not order this mosaic be removed once he discovered its existence.",
+			fr =
+			"Le seigneur Hadès n'est guère porté sur l'étalage de richesses, mais il n'a pas non plus ordonné le retrait de cette mosaïque lorsqu'il en a découvert l'existence.",
 		},
 		CosmeticsGroup = "Cosmetic_TavernaStarMosaic",
 		InsertAfterCosmetic = _PLUGIN.guid .. "." .. "Cosmetic_TavernaStarMosaic_Gilded",
@@ -1461,14 +1641,19 @@ local tavernaCosmetics = {
 		Id = _PLUGIN.guid .. "." .. "Cosmetic_MainHangingTassles_Deathly",
 		Name = {
 			en = "Tassels, Deathly",
+			fr = "Pompons, Mortuaires",
 		},
 		Description = {
 			en =
 			"{$Keywords.CosmeticSwap}: Protective and decorative intimidating charms near to the Princess' tent.",
+			fr =
+			"{$Keywords.CosmeticSwap} : Des charmes protecteurs et décoratifs à l'aspect intimidant, près de la tente de la Princesse.",
 		},
 		FlavorText = {
 			en =
 			"Some forget that while most living beings enter the Underworld as shades, they also leave behind the mortal part of themselves on the Surface.",
+			fr =
+			"Certains oublient que si la plupart des êtres vivants entrent aux Enfers sous forme d'ombres, ils laissent aussi derrière eux, à la Surface, leur part mortelle.",
 		},
 		CosmeticsGroup = "Cosmetic_MainHangingTassles01",
 		InsertAfterCosmetic = "Cosmetic_MainHangingTassles01b",
@@ -1505,14 +1690,19 @@ local tavernaCosmetics = {
 		Id = _PLUGIN.guid .. "." .. "Cosmetic_Cosmetic_MainHangingRope_Deathly",
 		Name = {
 			en = "Rope, Deathly",
+			fr = "Corde, Mortuaire",
 		},
 		Description = {
 			en =
 			"{$Keywords.CosmeticSwap}: Bound remembrances of the dead hanging above the {#BoldFormatGraftDark}Cauldron{#Prev}.",
+			fr =
+			"{$Keywords.CosmeticSwap} : Des souvenirs des morts liés ensemble, suspendus au-dessus du {#BoldFormatGraftDark}Chaudron{#Prev}.",
 		},
 		FlavorText = {
 			en =
 			"They channel the energy of souls departing from the Surface, to enhance the potency of the Princess' concoctions.",
+			fr =
+			"Ils canalisent l'énergie des âmes qui quittent la Surface, afin d'accroître la puissance des concoctions de la Princesse.",
 		},
 		CosmeticsGroup = "Cosmetic_MainHangingRope01",
 		InsertAfterCosmetic = "Cosmetic_MainHangingRope01a",
@@ -1550,14 +1740,19 @@ local tavernaCosmetics = {
 		Id = _PLUGIN.guid .. "." .. "Cosmetic_TavernaMusicStage_Serpentine",
 		Name = {
 			en = "Stage, Serpentine",
+			fr = "Estrade, Serpentine",
 		},
 		Description = {
 			en =
 			"{$Keywords.CosmeticAltAdd}: Cold and strong flooring directly beneath the {$Keywords.MusicPlayer}.",
+			fr =
+			"{$Keywords.CosmeticAltAdd} : Un sol froid et solide, directement sous {$Keywords.MusicPlayer}.",
 		},
 		FlavorText = {
 			en =
 			"Snakes are not commonly what comes to mind when one thinks of music, but the rhythmic movement of their bodies and swaying motion of their necks can enchant the unsuspecting observer just as well.",
+			fr =
+			"Les serpents ne sont pas ce qui vient d'abord à l'esprit quand on pense à la musique, mais le mouvement rythmé de leur corps et le balancement de leur cou peuvent envoûter tout aussi bien l'observateur imprudent.",
 		},
 		CosmeticsGroup = "Cosmetic_TavernaMusicStage01",
 		InsertAfterCosmetic = "Cosmetic_TavernaMusicStage02",
@@ -1597,14 +1792,19 @@ local tavernaCosmetics = {
 		Id = _PLUGIN.guid .. "." .. "Cosmetic_TavernaMusicStage_Royal",
 		Name = {
 			en = "Stage, Royal",
+			fr = "Estrade, Royale",
 		},
 		Description = {
 			en =
 			"{$Keywords.CosmeticAltAdd}: Imposing and commanding flooring directly beneath the {$Keywords.MusicPlayer}.",
+			fr =
+			"{$Keywords.CosmeticAltAdd} : Un sol imposant et majestueux, directement sous {$Keywords.MusicPlayer}.",
 		},
 		FlavorText = {
 			en =
 			"Good music is known to focus the attention of entire crowds on the one performing it, and this stage will give them something to feast their eyes on as well.",
+			fr =
+			"La bonne musique sait capter sur celui qui la joue l'attention de foules entières, et cette estrade leur donnera aussi de quoi se rincer l'œil.",
 		},
 		CosmeticsGroup = "Cosmetic_TavernaMusicStage01",
 		InsertAfterCosmetic = _PLUGIN.guid .. "." .. "Cosmetic_TavernaMusicStage_Serpentine",
@@ -1657,14 +1857,19 @@ local preRunCosmetics = {
 		Id = _PLUGIN.guid .. "." .. "Cosmetic_ExitCharm_Achilles",
 		Name = {
 			en = "Charm, Antos",
+			fr = "Breloque, Antos",
 		},
 		Description = {
 			en =
 			"{$Keywords.CosmeticAltAdd}: Strategic embellishment to the warded gateways leading both above and below.",
+			fr =
+			"{$Keywords.CosmeticAltAdd} : Un ornement stratégique pour les portails protégés menant en haut comme en bas.",
 		},
 		FlavorText = {
 			en =
 			"Recovered from the belongings of your brother Zagreus in his bedchamber, this charm was given to him by his mentor and friend Achilles.",
+			fr =
+			"Récupérée parmi les affaires de votre frère Zagreus dans sa chambre, cette breloque lui fut offerte par son mentor et ami Achille.",
 		},
 		CosmeticsGroup = "Cosmetic_ExitCharm",
 		InsertAfterCosmetic = "Cosmetic_ExitCharm05",
@@ -1700,14 +1905,19 @@ local preRunCosmetics = {
 		Id = _PLUGIN.guid .. "." .. "Cosmetic_ExitCharm_Dusa",
 		Name = {
 			en = "Charm, Fidi",
+			fr = "Breloque, Fidi",
 		},
 		Description = {
 			en =
 			"{$Keywords.CosmeticAltAdd}: Reptilian embellishment to the warded gateways leading both above and below.",
+			fr =
+			"{$Keywords.CosmeticAltAdd} : Un ornement reptilien pour les portails protégés menant en haut comme en bas.",
 		},
 		FlavorText = {
 			en =
 			"Recovered from the belongings of your brother Zagreus in his bedchamber, this charm was given to him by his servant and trusted companion Dusa.",
+			fr =
+			"Récupérée parmi les affaires de votre frère Zagreus dans sa chambre, cette breloque lui fut offerte par sa servante et fidèle compagne Dusa.",
 		},
 		CosmeticsGroup = "Cosmetic_ExitCharm",
 		InsertAfterCosmetic = _PLUGIN.guid .. "." .. "Cosmetic_ExitCharm_Achilles",
@@ -1735,14 +1945,19 @@ local preRunCosmetics = {
 		Id = _PLUGIN.guid .. "." .. "Cosmetic_ExitCharm_Megaera",
 		Name = {
 			en = "Charm, Battie",
+			fr = "Breloque, Battie",
 		},
 		Description = {
 			en =
 			"{$Keywords.CosmeticAltAdd}: Furious embellishment to the warded gateways leading both above and below.",
+			fr =
+			"{$Keywords.CosmeticAltAdd} : Un ornement furieux pour les portails protégés menant en haut comme en bas.",
 		},
 		FlavorText = {
 			en =
 			"Recovered from the belongings of your brother Zagreus in his bedchamber, this charm was given to him by the Fury Megaera herself, as a token of her complex affections.",
+			fr =
+			"Récupérée parmi les affaires de votre frère Zagreus dans sa chambre, cette breloque lui fut offerte par la Furie Mégère elle-même, en gage de sa complexe affection.",
 		},
 		CosmeticsGroup = "Cosmetic_ExitCharm",
 		InsertAfterCosmetic = _PLUGIN.guid .. "." .. "Cosmetic_ExitCharm_Dusa",
@@ -1772,14 +1987,19 @@ local preRunCosmetics = {
 		Id = _PLUGIN.guid .. "." .. "Cosmetic_ExitCharm_Sisyphus",
 		Name = {
 			en = "Charm, Shady",
+			fr = "Breloque, Shady",
 		},
 		Description = {
 			en =
 			"{$Keywords.CosmeticAltAdd}: Steadfast embellishment to the warded gateways leading both above and below.",
+			fr =
+			"{$Keywords.CosmeticAltAdd} : Un ornement inébranlable pour les portails protégés menant en haut comme en bas.",
 		},
 		FlavorText = {
 			en =
 			"Recovered from the belongings of your brother Zagreus in his bedchamber, this charm was given to him by the shade Sisyphus and depicts his trusted rock companion, Bouldy.",
+			fr =
+			"Récupérée parmi les affaires de votre frère Zagreus dans sa chambre, cette breloque lui fut offerte par l'ombre de Sisyphe et représente son fidèle compagnon de pierre, Bouldy.",
 		},
 		CosmeticsGroup = "Cosmetic_ExitCharm",
 		InsertAfterCosmetic = _PLUGIN.guid .. "." .. "Cosmetic_ExitCharm_Megaera",
@@ -1808,14 +2028,19 @@ local preRunCosmetics = {
 		Id = _PLUGIN.guid .. "." .. "Cosmetic_ExitCharm_Skelly",
 		Name = {
 			en = "Charm, Rib",
+			fr = "Breloque, Rib",
 		},
 		Description = {
 			en =
 			"{$Keywords.CosmeticAltAdd}: Skeletal embellishment to the warded gateways leading both above and below.",
+			fr =
+			"{$Keywords.CosmeticAltAdd} : Un ornement squelettique pour les portails protégés menant en haut comme en bas.",
 		},
 		FlavorText = {
 			en =
 			"Recovered from the belongings of your brother Zagreus in his bedchamber, this charm was given to him by his buddy Skelly, and bears a striking resemblance to Commander Schelemeus...",
+			fr =
+			"Récupérée parmi les affaires de votre frère Zagreus dans sa chambre, cette breloque lui fut offerte par son copain Skelly, et ressemble étrangement au Commandant...",
 		},
 		CosmeticsGroup = "Cosmetic_ExitCharm",
 		InsertAfterCosmetic = _PLUGIN.guid .. "." .. "Cosmetic_ExitCharm_Sisyphus",
@@ -1880,14 +2105,19 @@ local preRunCosmetics = {
 		Id = _PLUGIN.guid .. "." .. "Cosmetic_ExitCharm_Thanatos",
 		Name = {
 			en = "Charm, Mort",
+			fr = "Breloque, Mort",
 		},
 		Description = {
 			en =
 			"{$Keywords.CosmeticAltAdd}: Scurrying embellishment to the warded gateways leading both above and below.",
+			fr =
+			"{$Keywords.CosmeticAltAdd} : Un ornement trottinant pour les portails protégés menant en haut comme en bas.",
 		},
 		FlavorText = {
 			en =
 			"Recovered from the belongings of your brother Zagreus in his bedchamber, this charm was given to him by Thanatos, God of the Dead, occasional ally and more than that.",
+			fr =
+			"Récupérée parmi les affaires de votre frère Zagreus dans sa chambre, cette breloque lui fut offerte par Thanatos, dieu de la Mort, allié occasionnel et bien plus encore.",
 		},
 		CosmeticsGroup = "Cosmetic_ExitCharm",
 		InsertAfterCosmetic = _PLUGIN.guid .. "." .. "Cosmetic_ExitCharm_Skelly",
@@ -1922,14 +2152,19 @@ local preRunCosmetics = {
 		Id = _PLUGIN.guid .. "." .. "Cosmetic_ExitCharm_Cerberus",
 		Name = {
 			en = "Charm, Solo",
+			fr = "Breloque, Solo",
 		},
 		Description = {
 			en =
 			"{$Keywords.CosmeticAltAdd}: Pettable embellishment to the warded gateways leading both above and below.",
+			fr =
+			"{$Keywords.CosmeticAltAdd} : Un ornement à caresser pour les portails protégés menant en haut comme en bas.",
 		},
 		FlavorText = {
 			en =
 			"Recovered from the belongings of your brother Zagreus in his bedchamber, this charm depicts the hound of hell, in it's most terrifying form.",
+			fr =
+			"Récupérée parmi les affaires de votre frère Zagreus dans sa chambre, cette breloque représente le chien des Enfers sous sa forme la plus terrifiante.",
 		},
 		CosmeticsGroup = "Cosmetic_ExitCharm",
 		InsertAfterCosmetic = _PLUGIN.guid .. "." .. "Cosmetic_ExitCharm_Thanatos",
@@ -1961,14 +2196,19 @@ local preRunCosmetics = {
 		Id = _PLUGIN.guid .. "." .. "Cosmetic_SkellyFloor_Fancy",
 		Name = {
 			en = "Dais, Fancy",
+			fr = "Piédestal, Raffiné",
 		},
 		Description = {
 			en =
 			"{$Keywords.CosmeticSwap}: Intricate stone platform, set right where {$Keywords.CharSkelly} typically resides.",
+			fr =
+			"{$Keywords.CosmeticSwap} : Une plateforme de pierre finement ouvragée, là où {$Keywords.CharSkelly} se tient habituellement.",
 		},
 		FlavorText = {
 			en =
 			"With symbolisms as could be found in the House of Hades in times past, the Commander should be suitably inspired to great deeds while standing upon this dais.",
+			fr =
+			"Avec des symboles tels qu'on en trouvait jadis dans la Maison d'Hadès, le Commandant devrait être dûment inspiré à de grands exploits en se tenant sur ce piédestal.",
 		},
 		CosmeticsGroup = "Cosmetic_SkellyFloor01",
 		InsertAfterCosmetic = "Cosmetic_SkellyFloor01c",
@@ -2004,14 +2244,19 @@ local preRunCosmetics = {
 		Id = _PLUGIN.guid .. "." .. "Cosmetic_SkellyFloor_Olympian",
 		Name = {
 			en = "Dais, Olympian",
+			fr = "Piédestal, Olympien",
 		},
 		Description = {
 			en =
 			"{$Keywords.CosmeticSwap}: Watchful stone platform, set right where {$Keywords.CharSkelly} typically resides.",
+			fr =
+			"{$Keywords.CosmeticSwap} : Une plateforme de pierre vigilante, là où {$Keywords.CharSkelly} se tient habituellement.",
 		},
 		FlavorText = {
 			en =
 			"What better way for the Commander to prove that he is favoured by the gods themselves, than to stand upon a dais crafted in their honour?",
+			fr =
+			"Quoi de mieux, pour que le Commandant prouve qu'il a la faveur des dieux eux-mêmes, que de se tenir sur un piédestal façonné en leur honneur ?",
 		},
 		CosmeticsGroup = "Cosmetic_SkellyFloor01",
 		InsertAfterCosmetic = _PLUGIN.guid .. "." .. "Cosmetic_SkellyFloor_Fancy",
@@ -2043,14 +2288,19 @@ local preRunCosmetics = {
 		Id = _PLUGIN.guid .. "." .. "Cosmetic_SkellyFloor_Psychopomp",
 		Name = {
 			en = "Dais, Psychopomp",
+			fr = "Piédestal, Psychopompe",
 		},
 		Description = {
 			en =
 			"{$Keywords.CosmeticSwap}: Rich stone platform, set right where {$Keywords.CharSkelly} typically resides.",
+			fr =
+			"{$Keywords.CosmeticSwap} : Une riche plateforme de pierre, là où {$Keywords.CharSkelly} se tient habituellement.",
 		},
 		FlavorText = {
 			en =
 			"Stories speak of a wretch not dissimilar to the Commander, who once was employed by a certain ferryman to assist with an important matter in the House of Hades.",
+			fr =
+			"Les récits parlent d'un gueux assez semblable au Commandant, jadis employé par un certain nocher pour l'assister dans une affaire d'importance à la Maison d'Hadès.",
 		},
 		CosmeticsGroup = "Cosmetic_SkellyFloor01",
 		InsertAfterCosmetic = _PLUGIN.guid .. "." .. "Cosmetic_SkellyFloor_Olympian",
@@ -2088,14 +2338,19 @@ local preRunCosmetics = {
 		Id = _PLUGIN.guid .. "." .. "Cosmetic_TrainingDummy_Scarecrow",
 		Name = {
 			en = "Effigies, Scary",
+			fr = "Effigies, Effrayantes",
 		},
 		Description = {
 			en =
 			"{$Keywords.CosmeticSwap}: Bird-repelling targets for martial training, set behind where {$Keywords.CharSkelly} typically resides.",
+			fr =
+			"{$Keywords.CosmeticSwap} : Des cibles d'entraînement au combat qui font fuir les oiseaux, derrière l'endroit où {$Keywords.CharSkelly} se tient habituellement.",
 		},
 		FlavorText = {
 			en =
 			"Though he would never complain about it to the Princess, the Commander has been seen to shoo away the occasional bird that mistook him for a resting place.",
+			fr =
+			"Bien qu'il ne s'en plaindrait jamais auprès de la Princesse, on a vu le Commandant chasser plus d'un oiseau l'ayant pris pour un perchoir.",
 		},
 		CosmeticsGroup = "Cosmetic_TrainingDummy01",
 		InsertAfterCosmetic = "Cosmetic_TrainingDummy01c",
@@ -2135,14 +2390,19 @@ local preRunCosmetics = {
 		Id = _PLUGIN.guid .. "." .. "Cosmetic_TrainingDummy_Psychopomp",
 		Name = {
 			en = "Effigies, Psychopomp",
+			fr = "Effigies, Psychopompes",
 		},
 		Description = {
 			en =
 			"{$Keywords.CosmeticSwap}: Ever-present targets for martial training, set behind where {$Keywords.CharSkelly} typically resides.",
+			fr =
+			"{$Keywords.CosmeticSwap} : Des cibles d'entraînement au combat omniprésentes, derrière l'endroit où {$Keywords.CharSkelly} se tient habituellement.",
 		},
 		FlavorText = {
 			en =
 			"The boatman Charon can be in many places at once, and is always watching, even if only through the eyes of his many associates.",
+			fr =
+			"Le nocher Charon peut se trouver en plusieurs lieux à la fois, et il observe toujours, ne serait-ce qu'à travers les yeux de ses nombreux associés.",
 		},
 		CosmeticsGroup = "Cosmetic_TrainingDummy01",
 		InsertAfterCosmetic = _PLUGIN.guid .. "." .. "Cosmetic_TrainingDummy_Scarecrow",
@@ -2188,14 +2448,19 @@ local preRunCosmetics = {
 		Id = _PLUGIN.guid .. "." .. "Cosmetic_SkellyStatue_Daemonic",
 		Name = {
 			en = "Statue, Daemonic",
+			fr = "Statue, Démoniaque",
 		},
 		Description = {
 			en =
 			"{$Keywords.CosmeticAltAdd}: Stone slab reduced by chisel to the unmistakable form of the fearsome Hound of Hell, Cerberus.",
+			fr =
+			"{$Keywords.CosmeticAltAdd} : Un bloc de pierre réduit au ciseau jusqu'à prendre la forme reconnaissable entre toutes du redoutable Chien des Enfers, Cerbère.",
 		},
 		FlavorText = {
 			en =
 			"Every shade in the Underworld knows of Cerberus, the three-headed guardian of the House of Hades. Few have seen him themselves, yet all know of his terrifying appearance.",
+			fr =
+			"Toutes les ombres des Enfers connaissent Cerbère, le gardien à trois têtes de la Maison d'Hadès. Peu l'ont vu de leurs yeux, et pourtant toutes savent à quel point son allure est terrifiante.",
 		},
 		CosmeticsGroup = "Cosmetic_SkellyZagreusStatue",
 		InsertAfterCosmetic = "Cosmetic_SkellyZagreusStatue",
@@ -2250,14 +2515,19 @@ CosmeticsAPI.RegisterCardBackPack({
 	Id = _PLUGIN.guid .. "." .. "Cosmetic_Arcana_Biomes",
 	Name = {
 		en = "Arcana, Far-Travelled",
+		fr = "Arcanes, Grand Voyage",
 	},
 	Description = {
 		en =
 		"{$Keywords.CosmeticDeck}: Set of {#UpgradeFormatDark}4 {#Prev}alternate themes, featuring the Underworld regions Zagreus once escaped from.",
+		fr =
+		"{$Keywords.CosmeticDeck} : Un ensemble de {#UpgradeFormatDark}4 {#Prev}thèmes alternatifs, à l'effigie des régions des Enfers dont Zagreus s'est jadis échappé.",
 	},
 	FlavorText = {
 		en =
 		"Your brother's journey through his father's domain was a deadly one, but also filled with extraordinary sights.",
+		fr =
+		"Le périple de votre frère à travers le domaine de son père fut mortel, mais aussi rempli de spectacles extraordinaires.",
 	},
 	IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Icons\\Arcana\\Arcana_Biomes_Icon",
 	Cost = {
@@ -2330,14 +2600,19 @@ CosmeticsAPI.RegisterCardBackPack({
 	Id = _PLUGIN.guid .. "." .. "Cosmetic_Arcana_Bosses",
 	Name = {
 		en = "Arcana, Antagonistic",
+		fr = "Arcanes, Antagonistes",
 	},
 	Description = {
 		en =
 		"{$Keywords.CosmeticDeck}: Set of {#UpgradeFormatDark}4 {#Prev}alternate themes, featuring some of the Underworld's most notorious safe-keepers.",
+		fr =
+		"{$Keywords.CosmeticDeck} : Un ensemble de {#UpgradeFormatDark}4 {#Prev}thèmes alternatifs, à l'effigie de quelques-uns des gardiens les plus redoutés des Enfers.",
 	},
 	FlavorText = {
 		en =
 		"Escaping the Underworld, while not impossible, is made that much more difficult through its various wardens.",
+		fr =
+		"S'échapper des Enfers, sans être impossible, est rendu bien plus ardu par leurs divers gardiens.",
 	},
 	IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Icons\\Arcana\\Arcana_Bosses_Icon",
 	Cost = {
@@ -2397,14 +2672,19 @@ CosmeticsAPI.RegisterCardBackPack({
 	Id = _PLUGIN.guid .. "." .. "Cosmetic_Arcana_Gods",
 	Name = {
 		en = "Arcana, Olympian",
+		fr = "Arcanes, Olympiens",
 	},
 	Description = {
 		en =
 		"{$Keywords.CosmeticDeck}: Set of {#UpgradeFormatDark}12 {#Prev}alternate themes, featuring the various Olympian Gods and Goddesses aiding you on your journey.",
+		fr =
+		"{$Keywords.CosmeticDeck} : Un ensemble de {#UpgradeFormatDark}12 {#Prev}thèmes alternatifs, à l'effigie des différents dieux et déesses de l'Olympe qui vous aident dans votre périple.",
 	},
 	FlavorText = {
 		en =
 		"It is widely known that Gods can be vain, so it is no wonder they go out of their way to ensure they are ever on your mind.",
+		fr =
+		"Il est bien connu que les dieux peuvent être vaniteux, il n'est donc pas étonnant qu'ils se donnent tant de mal pour rester constamment présents à votre esprit.",
 	},
 	IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Icons\\Arcana\\Arcana_Gods_Icon",
 	Cost = {
