@@ -68,7 +68,7 @@ modutil.mod.Path.Wrap("GetRandomEligibleTextLines", function(base, source, textL
 			end
 		end
 
-		-- This should always be nil for modded conversations, since H1 enemies don't have the NarrativeData entries
+		-- Ported NPCs that have been given a NarrativeData priority table are ordered by it, everything else falls back to the tiers below
 		if priorities ~= nil then
 			for k, priority in ipairs(priorities) do
 				if type(priority) == "table" then

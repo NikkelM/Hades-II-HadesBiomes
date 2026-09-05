@@ -80,6 +80,35 @@ local function insertAfterLine(priorityTable, target, entry, textLineKey, create
 	mod.DebugPrint("InsertAfterNarrativeTextLine target '" .. tostring(target) .. "' not found for " .. textLineKey, 1)
 	return false
 end
+
+---Applies the portrait, cue and text rewrites to a single voice line
+local function applyLineMappings(line, cueMappings, portraitMappings)
+	if line.Cue ~= nil then
+		-- Update portraits, must be done before the Cues are modified
+		for cuePrefix, portraitName in pairs(portraitMappings) do
+			if line.Cue:find("^/VO/" .. cuePrefix) then
+				line.Portrait = portraitName
+			elseif line.Portrait then
+				-- Update Zagreus portrait references
+				if line.Portrait:find("^Portrait_Zag_") then
+					line.Portrait = line.Portrait:gsub("^Portrait_Zag_", "ModsNikkelMHadesBiomes_Portrait_Zag_")
+				end
+			end
+		end
+
+		-- Translate Cues to reference the new VoiceBank(s)
+		for cuePrefix, cueMapping in pairs(cueMappings) do
+			if line.Cue:find("^/VO/" .. cuePrefix) then
+				line.Cue = line.Cue:gsub("^/VO/" .. cuePrefix, "/VO/" .. cueMapping)
+			end
+		end
+	end
+
+	-- Fix Prev/PreviousFormat
+	if line.Text then
+		line.Text = string.gsub(line.Text, "{#PreviousFormat}", "{#Prev}")
+	end
+end
 -- #endregion
 
 ---Add modded narrative text lines into NarrativeData and LootData/EnemyData with priority placement and voicebank mapping.
@@ -238,33 +267,19 @@ function mod.AddNarrativeDataEntries(newTextLines, narrativeDataKey, textLineTyp
 				insertedDummyCue = true
 			end
 
-			-- Update portraits, must be done before the Cues are modified
-			for cuePrefix, portraitName in pairs(portraitMappings) do
-				if line.Cue:find("^/VO/" .. cuePrefix) then
-					line.Portrait = portraitName
-				elseif line.Portrait then
-					-- Update Zagreus portrait references
-					if line.Portrait:find("^Portrait_Zag_") then
-						line.Portrait = line.Portrait:gsub("^Portrait_Zag_", "ModsNikkelMHadesBiomes_Portrait_Zag_")
-					end
-				end
-			end
-
-			-- Translate Cues to reference the new VoiceBank(s)
-			for cuePrefix, cueMapping in pairs(cueMappings) do
-				if line.Cue:find("^/VO/" .. cuePrefix) then
-					line.Cue = line.Cue:gsub("^/VO/" .. cuePrefix, "/VO/" .. cueMapping)
-				end
-			end
-
-			-- Fix Prev/PreviousFormat
-			if line.Text then
-				line.Text = string.gsub(line.Text, "{#PreviousFormat}", "{#Prev}")
-			end
+			-- Update portraits, cues and formatting
+			applyLineMappings(line, cueMappings, portraitMappings)
 
 			-- Insert PresetEventArgs
 			if textLineType == "RejectionTextLines" then
 				line.PreLineFunctionArgs = game.PresetEventArgs.RejectionBoonInteract
+			end
+		end
+
+		for _, endVoiceLine in ipairs(data.EndVoiceLines or {}) do
+			applyLineMappings(endVoiceLine, cueMappings, portraitMappings)
+			for _, groupedVoiceLine in ipairs(endVoiceLine) do
+				applyLineMappings(groupedVoiceLine, cueMappings, portraitMappings)
 			end
 		end
 		-- #endregion

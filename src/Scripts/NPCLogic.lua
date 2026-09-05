@@ -978,6 +978,306 @@ end
 
 -- #endregion
 
+-- #region Skelly
+mod.StatueDefinitions = {
+	{
+		-- Bronze/GoalShrinePointClear = 8
+		DrapedName = "ModsNikkelMHadesBiomes_HouseStatueDraped01",
+		UnveiledName = "ModsNikkelMHadesBiomes_HouseStatueSkelly01",
+		LocationX = 4583,
+		LocationY = 4839,
+		FlipHorizontal = false,
+		HSV = { 0.55, 0, 0.15 },
+		UnveiledScale = 0.44,
+		ConversationName = "ModsNikkelMHadesBiomes_HadesStatueUnveil01",
+	},
+	{
+		-- Silver/GoalShrinePointClear = 16
+		DrapedName = "ModsNikkelMHadesBiomes_HouseStatueDraped01",
+		UnveiledName = "ModsNikkelMHadesBiomes_HouseStatueSkelly02",
+		LocationX = 4753,
+		LocationY = 4729,
+		FlipHorizontal = true,
+		HSV = { 0.7, 0, 0 },
+		UnveiledScale = 0.44,
+		ConversationName = "ModsNikkelMHadesBiomes_HadesStatueUnveil02",
+	},
+	{
+		-- Gold/GoalShrinePointClear = 32
+		DrapedName = "ModsNikkelMHadesBiomes_HouseStatueDraped01",
+		UnveiledName = "ModsNikkelMHadesBiomes_HouseStatueSkelly04",
+		LocationX = 4973,
+		LocationY = 4759,
+		FlipHorizontal = false,
+		HSV = nil,
+		UnveiledScale = 0.44,
+		ConversationName = "ModsNikkelMHadesBiomes_HadesStatueUnveil03",
+	},
+}
+
+function mod.GetNumUnlockedHadesStatues()
+	if game.GameState.TextLinesRecord["ModsNikkelMHadesBiomes_HadesStatueUnveil03"] then
+		return 3
+	elseif game.GameState.TextLinesRecord["ModsNikkelMHadesBiomes_HadesStatueUnveil02"] then
+		return 2
+	elseif game.GameState.TextLinesRecord["ModsNikkelMHadesBiomes_HadesStatueUnveil01"] then
+		return 1
+	end
+	return 0
+end
+
+function mod.ShouldShowHadesStatues()
+	-- Already introduced - always show
+	if game.GameState.TextLinesRecord["ModsNikkelMHadesBiomes_HadesStatueIntro01"] then
+		return true
+	end
+	-- Vanilla trophy quest must already be unlocked (player knows the concept)
+	if not game.GameState.TextLinesRecord["SkellyAboutTrophyQuest01"] then
+		return false
+	end
+	-- Player must have completed enough modded runs
+	if (game.GameState.ModsNikkelMHadesBiomesClearedRunsCache or 0) < 3 then
+		return false
+	end
+	return true
+end
+
+function mod.SpawnHadesSkellyStatues(source, args)
+	if not mod.HiddenConfig.IsValidInstallation then
+		mod.DebugPrint(
+			"The mod installation is invalid due to: " ..
+			(mod.HiddenConfig.InstallationFailReason or "UnknownReason") .. ", not spawning the Skelly statues.", 2)
+		return false
+	end
+
+	-- Move the Mana Fountain to make space for the statues
+	-- Always do this, even if the statues aren't unlocked yet, to prevent confusion when it would suddenly move otherwise
+	local manaFountainId = GetIdsByType({ Name = "ManaFountain" })[1]
+	if manaFountainId ~= nil and manaFountainId ~= 0 then
+		Teleport({ Id = manaFountainId, OffsetX = 5564, OffsetY = 4801 })
+	end
+
+	if not mod.ShouldShowHadesStatues() then
+		return
+	end
+
+	-- Check if the Skelly and ZagreusHome voicebanks should be loaded
+	local skellyId = GetIdsByType({ Name = "NPC_Skelly_01" })[1]
+	if skellyId ~= nil then
+		local skelly = game.ActiveEnemies[skellyId]
+		if skelly and skelly.NextInteractLines and game.Contains(mod.SkellyModdedCrossroadsConversations, skelly.NextInteractLines.Name) then
+			game.LoadVoiceBanks({ "Modsnikkelmhadesbiomesskelly", "Modsnikkelmhadesbiomeszagreushome" })
+		end
+	end
+
+	local numUnlocked = mod.GetNumUnlockedHadesStatues()
+
+	-- Store references for interaction and unveil presentation
+	mod.HadesStatueObstacles = {}
+
+	for i, statueDefinition in ipairs(mod.StatueDefinitions) do
+		local isUnlocked = (i <= numUnlocked)
+		local obstacleName = isUnlocked and statueDefinition.UnveiledName or statueDefinition.DrapedName
+		local obstacle = {}
+
+		obstacle.ObjectId = SpawnObstacle({
+			Name = obstacleName,
+			Group = "Standing",
+			AttachedTable = statueDefinition,
+			LocationX = statueDefinition.LocationX,
+			LocationY = statueDefinition.LocationY,
+		})
+		obstacle.ActivateIds = { obstacle.ObjectId }
+
+		if isUnlocked then
+			SetScale({ Id = obstacle.ObjectId, Fraction = statueDefinition.UnveiledScale })
+			obstacle.UseText = "UseSkellyStatue"
+		else
+			if statueDefinition.HSV ~= nil then
+				SetHSV({ Id = obstacle.ObjectId, HSV = statueDefinition.HSV, ValueChangeType = "Absolute" })
+			end
+			obstacle.UseText = "UseLockedSkellyStatue"
+		end
+
+		obstacle.InteractDistance = 300
+		obstacle.OnUsedFunctionName = _PLUGIN.guid .. "." .. "SkellyStatueAdmire"
+		obstacle.ExclusiveOnHitFunctionName = "StatueHitPresentation"
+		obstacle.ExclusiveOnHitFunctionArgs = {}
+
+		if statueDefinition.FlipHorizontal then
+			FlipHorizontal({ Id = obstacle.ObjectId })
+		end
+
+		game.SetupObstacle(obstacle)
+		mod.HadesStatueObstacles[i] = obstacle
+	end
+end
+
+function mod.SkellyStatueAdmire(source, args)
+	-- Disable interaction on all modded statues during admire
+	local allStatueIds = {}
+	for _, obstacle in ipairs(mod.HadesStatueObstacles) do
+		table.insert(allStatueIds, obstacle.ObjectId)
+	end
+
+	UseableOff({ Ids = allStatueIds })
+	AddInputBlock({ Name = "AdmiringStatue" })
+	game.FreezePlayerUnit("AdmiringStatue")
+	AngleTowardTarget({ Id = game.CurrentRun.Hero.ObjectId, DestinationId = source.ObjectId })
+
+	if source.UseText == "UseSkellyStatue" then
+		game.thread(game.PlayVoiceLines, game.HeroVoiceLines.ModsNikkelMHadesBiomes_TrophyAdmirationVoiceLines, true)
+	else
+		game.thread(game.PlayVoiceLines, game.HeroVoiceLines.ModsNikkelMHadesBiomes_TrophyLockedVoiceLines, true)
+	end
+
+	local unequipAnimation = game.GetEquippedWeaponValue("UnequipAnimation") or "MelinoeIdleWeaponless"
+	SetAnimation({ Name = unequipAnimation, DestinationId = game.CurrentRun.Hero.ObjectId })
+	game.wait(0.6)
+	SetAnimation({ Name = "MelTalkPensive01", DestinationId = game.CurrentRun.Hero.ObjectId })
+	game.wait(2.0)
+	SetAnimation({ Name = "MelTalkPensive01ReturnToIdle", DestinationId = game.CurrentRun.Hero.ObjectId })
+
+	game.UnfreezePlayerUnit("AdmiringStatue")
+	RemoveInputBlock({ Name = "AdmiringStatue" })
+
+	game.wait(8.0, game.RoomThreadName)
+	UseableOn({ Ids = allStatueIds })
+end
+
+function mod.HadesStatueUnveilPresentation(source, args)
+	AddInputBlock({ Name = "HadesStatueUnveil" })
+
+	local statueIndex = args.StatueIndex
+	local obstacle = mod.HadesStatueObstacles[statueIndex]
+	if obstacle == nil then
+		RemoveInputBlock({ Name = "HadesStatueUnveil" })
+		return
+	end
+
+	local statueDefinition = mod.StatueDefinitions[statueIndex]
+	if statueDefinition == nil then
+		RemoveInputBlock({ Name = "HadesStatueUnveil" })
+		return
+	end
+
+	game.thread(game.PlayVoiceLines, game.HeroVoiceLines.ModsNikkelMHadesBiomes_TrophyUnlockedVoiceLines, true, source)
+	game.wait(1.0)
+	LockCamera({ Id = obstacle.ObjectId, OffsetY = -300, Duration = 1.0, EaseIn = 1.0 })
+	PlaySound({ Name = "/Leftovers/World Sounds/MapZoomInShortHigh" })
+	game.wait(1.7)
+
+	-- Fade out, swap draped for unveiled behind the fade
+	game.FullScreenFadeOutAnimation()
+	game.wait(0.5)
+	SetAnimation({ DestinationId = game.ScreenAnchors.DialogueBackgroundId, Name = "DialogueBackgroundOut" })
+
+	SetAlpha({ Id = obstacle.ObjectId, Fraction = 0.0, Duration = 1.0 })
+	PlaySound({ Name = "/Leftovers/Menu Sounds/EmoteExcitement" })
+	PlaySound({ Name = "/Leftovers/Menu Sounds/RobesInteract", Id = obstacle.ObjectId })
+	game.wait(0.3)
+	Destroy({ Id = game.ScreenAnchors.DialogueBackgroundId })
+
+	-- Destroy the draped obstacle and spawn the unveiled version
+	Destroy({ Id = obstacle.ObjectId })
+
+	local newObstacle = {}
+	newObstacle.ObjectId = SpawnObstacle({
+		Name = statueDefinition.UnveiledName,
+		Group = "Standing",
+		LocationX = statueDefinition.LocationX,
+		LocationY = statueDefinition.LocationY,
+	})
+	newObstacle.ActivateIds = { newObstacle.ObjectId }
+	SetScale({ Id = newObstacle.ObjectId, Fraction = statueDefinition.UnveiledScale })
+	if statueDefinition.FlipHorizontal then
+		FlipHorizontal({ Id = newObstacle.ObjectId })
+	end
+
+	newObstacle.UseText = "UseSkellyStatue"
+	newObstacle.InteractDistance = 300
+	newObstacle.OnUsedFunctionName = _PLUGIN.guid .. "." .. "SkellyStatueAdmire"
+	newObstacle.ExclusiveOnHitFunctionName = "StatueHitPresentation"
+	newObstacle.ExclusiveOnHitFunctionArgs = {}
+	game.SetupObstacle(newObstacle)
+	mod.HadesStatueObstacles[statueIndex] = newObstacle
+
+	PlaySound({ Name = "/Leftovers/SFX/RobeFlutter", Id = newObstacle.ObjectId })
+	game.wait(0.2)
+	PlaySound({ Name = "/Leftovers/SFX/RobeFlutter", Id = newObstacle.ObjectId })
+	game.wait(3.0)
+	PlaySound({ Name = "/SFX/Menu Sounds/HadesTextDisappearFade" })
+	game.FullScreenFadeInAnimation()
+	PlaySound({ Name = "/Leftovers/Menu Sounds/EmoteAffection" })
+
+	game.thread(game.CrowdReactionPresentationEventSource, source, args)
+
+	game.wait(0.5)
+
+	-- Subtitle banner (matches vanilla SkellyStatueUnveil pattern)
+	game.DisplayInfoBanner(nil, {
+		Text = "SkellyStatue_Unlocked",
+		SubtitleText = args.Subtitle,
+		Delay = 0.75,
+		TextColor = game.Color.Turquoise,
+		Layer = "Overlay",
+		FontScale = 0.9,
+		AnimationName = "LocationBackingIrisGenericIn",
+		AnimationOutName = "LocationBackingIrisGenericOut",
+		Duration = 3.95
+	})
+	game.CreateDialogueBackground()
+
+	-- Return camera to hero
+	LockCamera({ Id = game.CurrentRun.Hero.ObjectId, Duration = 1.0, EaseIn = 1.0 })
+	PlaySound({ Name = "/Leftovers/World Sounds/MapZoomInShortHigh" })
+	game.wait(1.0)
+	RemoveInputBlock({ Name = "HadesStatueUnveil" })
+end
+
+function mod.HadesTrophyQuestUnlockedFirstPresentation(room, args)
+	game.wait(1.0)
+	local trophyId = GetIdsByType({ Name = "ModsNikkelMHadesBiomes_HouseStatueDraped01" })[1]
+	AddInputBlock({ Name = "HadesTrophyQuestUnlockedFirstPresentation" })
+	game.HideCombatUI("HadesTrophyQuestUnlockedFirstPresentation")
+	ClearCameraClamp({ LerpTime = 1.35 })
+	game.thread(game.PlayVoiceLines, game.HeroVoiceLines.ModsNikkelMHadesBiomes_TrophyQuestUnlockedVoiceLines, true)
+
+	game.CutsceneAddLetterbox()
+
+	game.wait(1.35)
+
+	PanCamera({ Id = trophyId, Duration = 2.8, EaseIn = 0, EaseOut = 0.5 })
+	PlaySound({ Name = "/Leftovers/World Sounds/MapZoomInShortHigh" })
+	PlaySound({ Name = "/Leftovers/Menu Sounds/EmoteExcitement", Delay = 2.4 })
+
+	game.wait(4.6)
+
+	PlaySound({ Name = "/Leftovers/World Sounds/MapZoomInShortHigh" })
+	PanCamera({ Id = CurrentRun.Hero.ObjectId, Duration = 2.2 })
+
+	game.wait(0.5)
+
+	RemoveInputBlock({ Name = "HadesTrophyQuestUnlockedFirstPresentation" })
+	game.ShowCombatUI("HadesTrophyQuestUnlockedFirstPresentation")
+
+	Move({ Id = game.ScreenAnchors.LetterBoxTop, Angle = 90, Distance = 150, EaseIn = 0.99, EaseOut = 1.0, Duration = 1.15 })
+	Move({ Id = game.ScreenAnchors.LetterBoxBottom, Angle = 270, Distance = 150, EaseIn = 0.99, EaseOut = 1.0, Duration = 1.15 })
+
+	game.GameState.ModsNikkelMHadesBiomesCustomFlags.ModsNikkelMHadesBiomes_HadesTrophyQuestFirstUnlockedPresentation = true
+
+	game.thread(mod.HadesTrophyQuestReturnPresentationEnd)
+end
+
+function mod.HadesTrophyQuestReturnPresentationEnd()
+	game.wait(0.85)
+	local cameraClamps = game.CurrentHubRoom.CameraClamps or game.GetDefaultClampIds()
+	SetCameraClamp({ Ids = cameraClamps, SoftClamp = game.CurrentHubRoom.SoftClamp })
+	SetAlpha({ Ids = { game.ScreenAnchors.LetterBoxTop, game.ScreenAnchors.LetterBoxBottom }, Fraction = 0, Duration = 0.4 })
+	game.ShowCombatUI()
+end
+-- #endregion
+
 -- #region Dream Run NPC trait scaling
 
 -- Track traits whose TraitData entries have been replaced with scaled deep copies
