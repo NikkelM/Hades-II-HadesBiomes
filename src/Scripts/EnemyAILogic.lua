@@ -50,8 +50,8 @@ end)
 
 modutil.mod.Path.Wrap("ProcessAttackSlots", function(base, enemy, aiData)
 	-- Safety check in case the target object no longer exists
-	local targetLocation = aiData.TargetId and GetLocation({ Id = aiData.TargetId })
-	if targetLocation == nil or targetLocation == {} then
+	local targetLocation = aiData.TargetId and GetLocation({ Id = aiData.TargetId }) or {}
+	if targetLocation.X == nil or targetLocation.Y == nil then
 		aiData.TargetId = game.CurrentRun.Hero.ObjectId
 	end
 
