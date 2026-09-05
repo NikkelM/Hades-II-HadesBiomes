@@ -299,85 +299,640 @@ local hadesNPCNames = {
 }
 game.NarrativeData.ConversationOrder = game.CombineTables(game.NarrativeData.ConversationOrder, hadesNPCNames)
 
--- Gifting
-local hadesNPCGiftLinePriorities = {
+local hadesNPCNarrativeData = {
 	NPC_Sisyphus_01 = {
-		"SisyphusGift01",
-		"SisyphusGift02",
-		"SisyphusGift03",
-		"SisyphusGift04",
-		"SisyphusGift05",
-		"SisyphusGift06",
-		"SisyphusGift07_A",
-		-- "SisyphusGift08_A", -- If you haven't had Ambrosia with others - would be very rare, so we just exclude it
-		"SisyphusGift08_B",
-		"SisyphusGift09_A",
+		InteractTextLinePriorities = {
+			-- Key story
+			"SisyphusFirstMeeting",
+			"SisyphusLiberationQuestComplete",
+			"SisyphusLiberationQuest_Beginning_01",
+			-- Immediate contextual
+			"SisyphusAboutAboutSingersReunionQuest01",
+			"SisyphusPostEpilogue01",
+			"SisyphusPostEnding01",
+			"SisyphusRunCleared01",
+			{
+				"SisyphusAboutLegendary01",
+				"SisyphusAboutLegendary02",
+			},
+			{
+				"SisyphusAboutKeepsake01",
+				"SisyphusAboutKeepsake02",
+			},
+			"SisyphusAboutBouldy01",
+			{
+				"SisyphusMeeting_AboutFury01",
+				"SisyphusAboutAlecto01",
+				"SisyphusAboutTisiphone01",
+			},
+			{
+				"SisyphusMeeting_AboutMegAndThanatos01",
+				"SisyphusMeeting_AboutMegAndThanatos02",
+			},
+			{
+				"SisyphusMeeting_FuryVictorious01",
+				"SisyphusMeeting_FuryDefeated01",
+			},
+			"SisyphusRunProgress01",
+			-- Unblock key story dialogues
+			{
+				"SisyphusMeeting06",
+				"SisyphusMeeting07",
+				"SisyphusBackstory02",
+				"SisyphusBackstory03",
+			},
+			-- Story
+			{
+				"SisyphusLiberationQuestAftermath01",
+				"SisyphusLiberationQuestAftermath02",
+				"SisyphusPostEpilogue02",
+			},
+			{
+				"MegaeraWithSisyphus01_FollowUp",
+				"MegaeraWithSisyphus02_FollowUp",
+				"MegaeraWithSisyphus03_FollowUp",
+				"ThanatosWithSisyphus01_FollowUp",
+				"ThanatosWithSisyphus02_FollowUp",
+				"ThanatosWithSisyphus03_FollowUp",
+			},
+			-- Evergreen/Lower priority story
+			{
+				"SisyphusAboutThanatosRelationship01",
+				"SisyphusHighRelationship01",
+				"SisyphusMeeting02_A",
+				"SisyphusMeeting02",
+				"SisyphusMeeting03",
+				"SisyphusMeeting04",
+				"SisyphusMeeting05",
+				"SisyphusMeeting08",
+				"SisyphusBackstory01",
+				"SisyphusBackstory04",
+				"SisyphusBackstory05",
+				"SisyphusBackstory06",
+				"SisyphusAboutBouldy02",
+				"SisyphusAboutBouldy03",
+				"SisyphusAboutBouldy04",
+				"SisyphusMeeting_FuryDefeated02",
+				"SisyphusLiberationQuestAftermath03",
+				"SisyphusPostEpilogue03",
+				"SisyphusRunCleared02",
+			},
+		},
+		GiftTextLinePriorities = {
+			"SisyphusGift01",
+			"SisyphusGift02",
+			"SisyphusGift03",
+			"SisyphusGift04",
+			"SisyphusGift05",
+			"SisyphusGift06",
+			"SisyphusGift07_A",
+			-- "SisyphusGift08_A", -- If you haven't had Ambrosia with others - would be very rare, so we just exclude it
+			"SisyphusGift08_B",
+			"SisyphusGift09_A",
+		},
 	},
 	NPC_Orpheus_01 = {
-		"OrpheusGift01",
-		"OrpheusGift02",
-		"OrpheusGift03",
-		"OrpheusGift04",
-		"OrpheusGift04_B",
-		"OrpheusGift05",
-		"OrpheusGift06",
-		"OrpheusGift07",
-		"OrpheusGift08",
+		InteractTextLinePriorities = {
+			-- Key story
+			{
+				"OrpheusFirstMeeting",
+				"OrpheusFirstMeeting_Alt",
+			},
+			{
+				"OrpheusSingsAgain01",
+				"OrpheusSingsAgain01_B",
+				"OrpheusSingsAgain01_C",
+				"OrpheusSingsAgain01_D",
+			},
+			"OrpheusSingsAgain02",
+			{
+				"OrpheusSingsAgain03",
+				"OrpheusSingsAgain03_B",
+			},
+			"OrpheusAboutSingersReunionQuest01",
+			"OrpheusAboutSingersReunionQuestComplete01",
+			"OrpheusAboutMusicPlaying01",
+			-- Immediate contextual
+			"OrpheusPostEpilogue01",
+			"OrpheusPostEnding01",
+			{
+				"OrpheusMusicProgress01",
+				"OrpheusMusicProgress02",
+				"OrpheusMusicProgress03",
+				"OrpheusMusicProgress04",
+			},
+			{
+				"OrpheusAboutDistantMemory01",
+				"OrpheusAboutDistantMemory02",
+			},
+			-- Unblock key story dialogues
+			{
+				"OrpheusMiscMeeting02",
+				"OrpheusMiscMeeting03",
+				"OrpheusMiscMeeting04",
+				"OrpheusMiscMeeting05",
+				"OrpheusMiscMeeting06",
+				"OrpheusMiscMeeting06_B",
+				"OrpheusMiscMeeting07",
+				"OrpheusAboutEurydice01",
+				"OrpheusAboutEurydice01_B",
+				"OrpheusAboutEurydice02",
+				"OrpheusAboutEurydice02_B",
+				"OrpheusAboutEurydice06",
+				"OrpheusAboutEurydice03",
+				"OrpheusProgressWithEurydice01",
+				"OrpheusProgressWithEurydice02",
+				"OrpheusTallTale01",
+				"OrpheusTallTale02",
+				"OrpheusTallTale03",
+				"OrpheusTallTale04",
+				"OrpheusTallTale05",
+				"OrpheusTallTale06",
+			},
+			-- Story
+			{
+				"OrpheusAboutSingersReunionQuestComplete02",
+				"OrpheusAboutSingersReunionQuestComplete03",
+			},
+			{
+				"OrpheusAboutEurydice04",
+				"OrpheusAboutEurydice05",
+				"OrpheusAboutEurydice06Extra",
+			},
+			{
+				"OrpheusWithHades01",
+				"OrpheusWithHades02",
+				"OrpheusWithHades03",
+				"OrpheusWithHades04",
+				"OrpheusWithAchilles01",
+				"OrpheusWithAchilles02",
+				"OrpheusWithPersephone01",
+			},
+			-- Evergreen/Lower priority story
+			{
+				"OrpheusMiscMeeting01",
+				"OrpheusTallTale07",
+				"OrpheusTallTale08",
+				"OrpheusAboutSinging01",
+				"OrpheusAboutNyx01",
+				"OrpheusAboutPressure01",
+				"OrpheusAboutHades01",
+				"OrpheusAboutHermes01",
+				"OrpheusAboutMusicStand01",
+			},
+		},
+		GiftTextLinePriorities = {
+			"OrpheusGift01",
+			"OrpheusGift02",
+			"OrpheusGift03",
+			"OrpheusGift04",
+			"OrpheusGift04_B",
+			"OrpheusGift05",
+			"OrpheusGift06",
+			"OrpheusGift07",
+			"OrpheusGift08",
+		},
+	},
+	NPC_Orpheus_Story_01 = {
+		InteractTextLinePriorities = {
+			"OrpheusWithEurydice01",
+			"OrpheusWithEurydiceEndTheme01",
+			{
+				"OrpheusWithEurydice02",
+				"OrpheusWithEurydice03",
+			},
+		},
 	},
 	NPC_Eurydice_01 = {
-		"EurydiceGift01",
-		"EurydiceGift02",
-		"EurydiceGift03",
-		"EurydiceGift04",
-		"EurydiceGift05",
-		"EurydiceGift06",
-		"EurydiceGift07",
-		"EurydiceGift08",
+		InteractTextLinePriorities = {
+			-- Key story
+			{
+				"EurydiceFirstMeeting01_A",
+				"EurydiceFirstMeeting01_B",
+				"EurydiceFirstMeeting01_C",
+			},
+			"EurydiceAboutSingersReunionQuestComplete01",
+			-- Immediate contextual
+			"EurydicePostEpilogue01",
+			{
+				"EurydiceAboutAcorn01",
+				"EurydiceAboutAcorn02",
+				"EurydiceAboutDistantMemory01",
+			},
+			-- Unblock key story dialogues
+			{
+				"EurydiceMentionsOrpheus01",
+				"EurydiceMentionsOrpheus01_B",
+				"EurydiceAboutOrpheus01",
+				"EurydiceAboutOrpheus01_B",
+				"EurydiceAboutOrpheus02",
+				"EurydiceAboutOrpheus03",
+				"EurydiceAboutOrpheus04",
+				"EurydiceProgressWithOrpheus01",
+				"EurydiceProgressWithOrpheus02",
+				"EurydiceProgressWithOrpheus_SongReaction01",
+				"EurydiceProgressWithOrpheus03",
+			},
+			-- Story
+			{
+				"EurydiceAboutSingersReunionQuestComplete02",
+				"EurydiceAboutSingersReunionQuestComplete03",
+				"EurydiceAboutSingersReunionQuestComplete04",
+				"EurydiceAboutSingersReunionQuestComplete05",
+				"EurydiceAboutPersephone01",
+				"EurydiceAboutPersephone01_B",
+				"EurydicePostEpilogue02",
+			},
+			-- Evergreen/Lower priority story
+			{
+				"EurydiceLowHealth01",
+				"EurydiceLowHealth02",
+				"EurydiceLowHealth03",
+				"EurydiceLowHealth04",
+			},
+			{
+				"EurydiceMiscMeeting01",
+				"EurydiceMiscMeeting02",
+				"EurydiceMiscMeeting03",
+				"EurydiceMiscMeeting04",
+				"EurydiceMiscMeeting05",
+				"EurydiceMiscMeeting06",
+				"EurydiceAboutNymphs01",
+				"EurydiceAboutMusic01",
+				"EurydiceAboutLove01",
+				"EurydiceAboutOnions01",
+				"EurydiceAboutHermes01",
+			},
+			-- 36 repeatable and skipped conversations omitted so they keep rotating
+		},
+		GiftTextLinePriorities = {
+			"EurydiceGift01",
+			"EurydiceGift02",
+			"EurydiceGift03",
+			"EurydiceGift04",
+			"EurydiceGift05",
+			"EurydiceGift06",
+			"EurydiceGift07",
+			"EurydiceGift08",
+		},
 	},
 	NPC_Patroclus_01 = {
-		"PatroclusGift01",
-		"PatroclusGift02",
-		"PatroclusGift03",
-		"PatroclusGift04",
-		"PatroclusGift05",
-		"PatroclusGift06",
-		"PatroclusGift07_A",
-		"PatroclusGift08_A"
+		InteractTextLinePriorities = {
+			-- Key story
+			"PatroclusFirstMeeting",
+			"PatroclusWithAchilles01",
+			"PatroclusAboutMyrmidonReunionQuest01",
+			-- Immediate contextual
+			"PatroclusAfterMyrmidonReunionQuest01",
+			"PatroclusPostEpilogue01",
+			"PatroclusPostEnding01",
+			{
+				"PatroclusAboutBracer01A",
+				"PatroclusAboutBracer01B",
+				"PatroclusAboutBracer01C",
+				"PatroclusAboutBracer01D",
+				"PatroclusAboutBracer01E",
+			},
+			{
+				"PatroclusAboutAchillesAspect01",
+				"PatroclusAboutAchillesAspect02",
+			},
+			{
+				"PatroclusAboutKeepsake01",
+				"PatroclusAboutKeepsake02",
+			},
+			{
+				"PatroclusAboutLegendary01",
+			},
+			-- Unblock key story dialogues
+			{
+				"PatroclusMeeting02",
+				"PatroclusMeeting02B",
+				"PatroclusMeeting03",
+				"PatroclusMeeting04",
+				"PatroclusMeeting05",
+				"PatroclusMeeting06",
+				"PatroclusMeeting06B",
+				"PatroclusAboutAchilles01A",
+				"PatroclusAboutAchilles01B",
+				"PatroclusAboutAchilles01C_01",
+				"PatroclusAboutAchilles01C_02",
+				"PatroclusAboutAchilles02",
+				"PatroclusAboutAchilles03A",
+				"PatroclusAboutAchilles03B",
+				"PatroclusAboutAchilles04",
+				"PatroclusAboutAchilles05",
+				"PatroclusAboutAchilles06",
+			},
+			-- Story
+			"PatroclusAfterMyrmidonReunionQuest02",
+			{
+				"PatroclusWithAchilles02",
+				"PatroclusWithAchilles03",
+			},
+			{
+				"PatroclusAboutTheseus01",
+				"PatroclusAboutTheseus02",
+				"PatroclusAboutTheseus03",
+				"PatroclusAboutMinotaur01",
+			},
+			-- Evergreen/Lower priority story
+			{
+				"PatroclusLowHealth01",
+				"PatroclusLowHealth02",
+			},
+			{
+				"PatroclusMeeting07",
+				"PatroclusMeeting07B",
+				"PatroclusMeeting08",
+				"PatroclusMeeting09",
+				"PatroclusMeeting10",
+				"PatroclusMeeting11",
+				"PatroclusAboutYoungAchilles01",
+				"PatroclusAboutWar01",
+				"PatroclusAboutHeroes01",
+				"PatroclusAboutGods01",
+				"PatroclusAboutLove01_A",
+				"PatroclusAboutLove01_B",
+				"PatroclusAboutFishing01",
+				"PatroclusAboutTrinkets01",
+			},
+		},
+		GiftTextLinePriorities = {
+			"PatroclusGift01",
+			"PatroclusGift02",
+			"PatroclusGift03",
+			"PatroclusGift04",
+			"PatroclusGift05",
+			"PatroclusGift06",
+			"PatroclusGift07_A",
+			"PatroclusGift08_A"
+		},
 	},
 	NPC_Thanatos_01 = {
-		"ThanatosGift01",
-		"ThanatosGift02",
-		"ThanatosGift03",
-		"ThanatosGift04",
-		"ThanatosGift04_B",
-		"ThanatosGift05",
-		"ThanatosGift06",
-		"ThanatosGift07_A",
-		"ThanatosGift08",
-		"ThanatosGift09",
-		"ThanatosGift10",
+		InteractTextLinePriorities = {
+			-- Key story
+			{
+				"ThanatosHomeFirstMeeting",
+				"ThanatosHomeFirstMeetingAlt",
+			},
+			{
+				"ModsNikkelMHadesBiomes_BecameCloseWithThanatos01_Trigger",
+				"ModsNikkelMHadesBiomes_BecameCloseWithThanatos01_B_Trigger",
+			},
+			{
+				"ThanatosBackstory01",
+				"ThanatosBackstory01_B",
+			},
+			"ThanatosBackstory02",
+			"ThanatosAboutRelationship01",
+			-- Immediate contextual
+			"ThanatosPostEpilogue01",
+			"ThanatosPostEnding01",
+			"ThanatosPostEnding02",
+			"ThanatosRunCleared01",
+			{
+				"ThanatosHomeRunProgress01",
+				"ThanatosHomeRunProgress02",
+			},
+			{
+				"ThanatosAboutSingersReunionQuestComplete01",
+				"ThanatosAboutMyrmidonReunionQuestComplete01",
+				"ThanatosAboutSisyphusLiberationQuestComplete01",
+			},
+			{
+				"ThanatosAboutQuestLog01",
+			},
+			-- Story
+			{
+				"ThanatosAboutRelationship02",
+				"ThanatosAboutRelationship03",
+				"ThanatosAboutBeingCloseWithDusa01",
+				"ThanatosAboutBeingCloseWithMegaera01",
+			},
+			{
+				"ThanatosAboutAres01",
+				"ThanatosAboutSkelly01",
+			},
+			{
+				"ThanatosAboutDeath01",
+				"ThanatosAboutDeath02",
+				"ThanatosAboutDeath03",
+			},
+			{
+				"ThanatosAboutPersephone01",
+				"ThanatosAboutPersephoneMeeting02",
+				"ThanatosAfterPersephoneMeeting03",
+				"ThanatosHomeMiscMeeting01",
+				"ThanatosWithHades01",
+				"ThanatosWithHades02",
+				"ThanatosWithHades03",
+				"ThanatosWithHades04",
+				"ThanatosWithHypnos01",
+				"ThanatosWithHypnos02",
+				"ThanatosAboutHypnos01",
+				"ThanatosAboutHypnos02",
+				"ThanatosWithHypnos03",
+				"ThanatosWithHypnos04",
+				"ThanatosWithHypnos05",
+				"ThanatosWithHypnos06",
+				"ThanatosWithHypnos07",
+				"ThanatosAboutHypnos03",
+				"ThanatosWithHypnos08",
+				"ThanatosWithPersephone01",
+				"ThanatosWithPersephone02",
+			},
+			-- Evergreen/Lower priority story
+			{
+				"ThanatosAboutNyxAndDusa01",
+				"ThanatosAboutNyxAndDusa02",
+				"ThanatosAboutNyxAndDusa03",
+				"ThanatosAboutNyxAndDusa04",
+				"ThanatosAboutNyxAndAres01",
+				"ThanatosAboutNyxAndChaos01",
+				"ThanatosWithNyx01",
+				"ThanatosWithNyx02",
+			},
+			{
+				"ThanatosWithMegaera01",
+				"ThanatosAboutMegaera01",
+				"ThanatosAboutMegaera02",
+				"ThanatosAboutSisyphus01",
+				"ThanatosAboutAchilles01",
+				"ThanatosAboutCharon01",
+				"ThanatosAboutCharon02",
+				"ThanatosAboutCharon02A",
+				"ThanatosAboutCharonFight01",
+				"ThanatosAboutStaying01",
+				"ThanatosAboutShifting01",
+				"ThanatosAboutSurface01",
+				"ThanatosAboutSurface01_B",
+				"ThanatosAboutBalcony01",
+				"ThanatosAboutErisAspect01",
+				"ThanatosAboutNemesisAspect01",
+			},
+		},
+		GiftTextLinePriorities = {
+			"ThanatosGift01",
+			"ThanatosGift02",
+			"ThanatosGift03",
+			"ThanatosGift04",
+			"ThanatosGift04_B",
+			"ThanatosGift05",
+			"ThanatosGift06",
+			"ThanatosGift07_A",
+			"ThanatosGift08",
+			"ThanatosGift09",
+			"ThanatosGift10",
+		},
 	},
 	NPC_FurySister_01 = {
-		"MegaeraGift01",
-		"MegaeraGift02",
-		"MegaeraGift03",
-		"MegaeraGift04",
-		"MegaeraGift05",
-		"MegaeraGift06",
-		"MegaeraGift07",
-		"MegaeraGift08",
-		"MegaeraGift09",
-		"MegaeraGift10",
+		InteractTextLinePriorities = {
+			-- Meeting continues, might have weird interactions if not on top
+			{
+				"MegaeraMeeting02Cont",
+				"MegaeraMeeting04Cont",
+				"MegaeraMeeting04Cont_Alt",
+			},
+			-- Key story
+			{
+				"MegaeraMeeting01",
+				"MegaeraMeeting01_B",
+				"MegaeraMeeting01_Alt",
+				"MegaeraMeeting01_Alt_B",
+			},
+			{
+				"ModsNikkelMHadesBiomes_MegaeraBedroom01_Trigger",
+				"ModsNikkelMHadesBiomes_MegaeraBedroom02_Trigger",
+				"ModsNikkelMHadesBiomes_MegaeraBedroom02B_Trigger",
+			},
+			{
+				"ModsNikkelMHadesBiomes_BecameCloseWithMegaera01_Trigger",
+				"ModsNikkelMHadesBiomes_BecameCloseWithMegaera01_B_Trigger",
+			},
+			{
+				"MegaeraAboutRelationship01",
+				"MegaeraAboutRelationship01B",
+			},
+			{
+				"MegaeraBuildingTrust01",
+				"MegaeraBuildingTrust01_B",
+			},
+			-- Immediate contextual
+			"MegaeraPostEpilogue01",
+			"MegaeraPostEnding01",
+			{
+				"MegaeraRunCleared01",
+				"MegaeraRunCleared01_Alt",
+				"MegaeraAboutPersephoneMeeting01",
+				"MegaeraAboutPersephoneMeeting01_Alt",
+			},
+			{
+				"MegaeraAboutBeingCloseWithThanatos01",
+			},
+			{
+				"MegaeraAboutLegendary01",
+				"MegaeraAboutDusaLegendary01",
+			},
+			{
+				"MegaeraAboutDusaPromotion01",
+				"MegaeraAboutOrpheus01",
+				"MegaeraAboutSingersReunionQuestComplete01",
+				"MegaeraAboutSisyphusLiberationQuest01",
+			},
+			{
+				"MegaeraAboutSisyphus01",
+				"MegaeraAboutThanatos01",
+				"MegaeraAboutZagreusPromotion01",
+			},
+			{
+				"MegaeraRunProgress01",
+				"MegaeraRunProgress01_Alt",
+				"MegaeraRunProgress02",
+			},
+			{
+				"MegaeraAboutRepeatedLosses01",
+			},
+			-- Story
+			{
+				"MegaeraMirrorProgress01",
+				"MegaeraMeeting02",
+				"MegaeraMeeting03",
+				"MegaeraMeeting03_Alt",
+				"MegaeraMeeting04",
+				"MegaeraMeeting04_Alt",
+				"MegaeraMeeting05",
+				"MegaeraPostEnding03",
+			},
+			{
+				"MegaeraAboutRelationship02",
+				"MegaeraAboutRelationship03",
+			},
+			{
+				"MegaeraAboutSisters01",
+				"MegaeraAboutSisters02",
+				"MegaeraAboutTisiphone01",
+				"MegaeraAboutTisiphone02",
+				"MegaeraAboutAlecto01",
+			},
+			{
+				"MegaeraAboutPact01",
+				"MegaeraPactProgress01",
+				"MegaeraPactProgress01_B",
+			},
+			{
+				"MegaeraWithHades01",
+				"MegaeraWithNyx01",
+				"MegaeraWithHypnos01",
+				"MegaeraWithHypnos02",
+				"MegaeraWithHypnos03",
+				"MegaeraAboutHypnos01",
+			},
+			{
+				"MegaeraWithPersephone01",
+				"MegaeraAboutDusaVsNyx01",
+			},
+			-- Evergreen/Lower priority story
+			{
+				"MegaeraAboutPersephoneMeeting02",
+				"MegaeraAboutPersephoneMeeting03",
+				"MegaeraRunProgress03",
+				"MegaeraAboutDusaVsNyx02",
+				"MegaeraAboutDusaVsNyx03",
+				"MegaeraMirrorProgress02",
+				"MegaeraMirrorProgress02B",
+				"MegaeraMirrorProgress02C",
+				"MegaeraGhostAdminProgress01",
+				"MegaeraGhostAdminProgress02",
+				"MegaeraWithHades02",
+				"MegaeraWithHades03",
+				"MegaeraWithHades04",
+				"MegaeraWithNyx02",
+				"MegaeraWithNyx03",
+				"MegaeraWithNyx04",
+				"MegaeraWithNyx05",
+				"MegaeraWithNyx06",
+			},
+		},
+		GiftTextLinePriorities = {
+			"MegaeraGift01",
+			"MegaeraGift02",
+			"MegaeraGift03",
+			"MegaeraGift04",
+			"MegaeraGift05",
+			"MegaeraGift06",
+			"MegaeraGift07",
+			"MegaeraGift08",
+			"MegaeraGift09",
+			"MegaeraGift10",
+		},
 	},
-	-- NPC_Achilles_01 = {},
-	-- NPC_Dusa_01 = {},
-	-- TODO When Hypnos is added, port his gift textline priorities here since we will reimplement his gifting
 }
--- Create dummy entries to allow the relationship bar to be built in the Codex
+
+-- Create the entries, defaulting the gift priorities so the relationship bar can still be built in the Codex
 for _, npcName in ipairs(hadesNPCNames) do
-	game.NarrativeData[npcName] = {
-		GiftTextLinePriorities = hadesNPCGiftLinePriorities[npcName] or {},
-	}
+	game.NarrativeData[npcName] = hadesNPCNarrativeData[npcName] or {}
+	game.NarrativeData[npcName].GiftTextLinePriorities = game.NarrativeData[npcName].GiftTextLinePriorities or {}
 end
 
 -- Events
