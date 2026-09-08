@@ -290,6 +290,17 @@ function mod.GetUninteractedGodThisRunForTheseus()
 		end
 	end
 
+	-- For Nightmare Fear: Don't choose the God the Vow of Betrayal has chosen already
+	local betrayalRoomWeapon = game.SessionMapState and game.SessionMapState.NightmareFearChosenPassiveRoomWeapon
+	if betrayalRoomWeapon ~= nil and #notInteractedGods > 1 then
+		for index, godName in ipairs(notInteractedGods) do
+			if godName .. "RoomWeapon" == betrayalRoomWeapon then
+				table.remove(notInteractedGods, index)
+				break
+			end
+		end
+	end
+
 	local randomGod = game.GetRandomValue(notInteractedGods)
 	-- Mapping the god names to the .pkg names used in Hades II
 	local randomGodMap = {

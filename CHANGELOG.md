@@ -15,6 +15,7 @@ Other fixes and improvements:
 - Melinoë will now react to Theseus calling upon a God's Aid.
 - Picking up a boon from Hermes while in a Zagreus' Journey run may now have him deliver a message from the first game's Dionysus to you (as Dionysus cannot be encountered during Zagreus' Journey runs), allowing you to experience his storyline.
 - Added all resources that can be found during Zagreus' Journey runs to the Wretched Broker to allow trading them for the equivalent resources from Hades II (they will show after completing any new run).
+- If the Vow of Betrayal from the [Nightmare Fear](https://thunderstore.io/c/hades-ii/p/ReadEmAndWeep/Nightmare_Fear/) mod is active during Theseus' boss fight, he will not call upon the God that has been chosen by the Vow.
 - Added new speedrunning settings to disable the Barge of Death, Asterius and Tiny Vermin miniboss encounters, either all at once or individually.
 - Added an on-screen indicator that is shown while any of the speedrunning settings are enabled.
 - Added a new Minor Prophecy unlocked by talking to Poseidon in the Nightmare Realm.
