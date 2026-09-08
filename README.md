@@ -127,6 +127,7 @@ If you do not have a GitHub account, you can also join the [Hades II Modding Dis
 - zannc ([GitHub](https://github.com/excellent-ae), @dwbl. on [Discord](https://discord.gg/KuMbyrN)), Creator of [Shared Keepsake Port](https://thunderstore.io/c/hades-ii/p/zannc/SharedKeepsakePort/) (automatically installed with this mod)
 - zerp ([GitHub](https://github.com/adi1998), @zerp on [Discord](https://discord.gg/KuMbyrN)), Additional Testing & Bugfixes
 - @Aunuch on [Discord](https://discord.gg/KuMbyrN), Collaborator on the mod's Key Art
+- @JeanDupin ([GitHub](https://github.com/JeanDupin)), French localization
 - ...and the many other modding community members that tested early versions, provided feedback and reported bugs!
 
 ### Contribute Yourself!

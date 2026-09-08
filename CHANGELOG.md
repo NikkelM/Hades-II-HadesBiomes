@@ -11,6 +11,7 @@
 - Fixed: Goddess Mode does not reduce boss health. Enabling it will now reduce boss health by about 25% of the difference between the health they had in Hades and the health they have with Goddess Mode disabled.
 
 Other fixes and improvements:
+- Added French localization (by [@JeanDupin](https://github.com/JeanDupin)).
 - Melinoë will now react to Theseus calling upon a God's Aid.
 - Picking up a boon from Hermes while in a Zagreus' Journey run may now have him deliver a message from the first game's Dionysus to you (as Dionysus cannot be encountered during Zagreus' Journey runs), allowing you to experience his storyline.
 - Added all resources that can be found during Zagreus' Journey runs to the Wretched Broker to allow trading them for the equivalent resources from Hades II (they will show after completing any new run).

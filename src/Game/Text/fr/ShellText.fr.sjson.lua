@@ -11,7 +11,7 @@ local order = {
 local newData = {}
 
 local installHadesModsFailureText =
-"Are you trying to install {#DialogLegendaryFormat}Zagreus' Journey{#Prev}? Make sure you {#DialogLegendaryFormat}uninstall mods for Hades {#Prev}first! Delete the {#DialogLegendaryFormat}Mods {#Prev}folder in your Hades installation, and {#DialogLegendaryFormat}run modimporter.exe{#Prev}! Then reinstall the mod by setting {#DialogLegendaryFormat}firstTimeSetup {#Prev}and {#DialogLegendaryFormat}uninstall {#Prev}to {#DialogLegendaryFormat}true {#Prev}in the mod's config in your mod manager. "
+"Essayez-vous d'installer {#DialogLegendaryFormat}Zagreus' Journey{#Prev} ? Assurez-vous d'abord de {#DialogLegendaryFormat}désintaller vos mods d'Hades I{#Prev}. Supprimez ou renommez le dossier {#DialogLegendaryFormat}Mods {#Prev}de votre installation d'Hades, puis lancez {#DialogLegendaryFormat}modimporter.exe{#Prev}. Réinstallez ensuite le mod en réglant {#DialogLegendaryFormat}firstTimeSetup {#Prev}et {#DialogLegendaryFormat}uninstall {#Prev} sur {#DialogLegendaryFormat}true {#Prev}dans la config du mod."
 
 local modifiedEntries = {
 	FileAccessErrorPC = {
