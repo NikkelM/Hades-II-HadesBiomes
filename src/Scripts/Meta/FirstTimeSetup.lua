@@ -6,14 +6,30 @@ local function copyFile(src, dest)
 	end
 
 	mod.DebugPrint("[Install] Copying file " .. src .. " to " .. dest, 4)
-	local copied, copyError = rom.path.copy_file(src, dest)
-	if not copied then
-		mod.DebugPrint("Could not copy " .. src .. " to " .. dest .. ": " .. tostring(copyError), 1)
-		mod.EncounteredInstallationIssues = true
-		return false
+	local copied, copyError
+	local copyRetryAttempts = 3
+	for attempt = 1, copyRetryAttempts do
+		copied, copyError = rom.path.copy_file(src, dest)
+		if copied then
+			return true
+		end
+
+		if not rom.path.exists(src) then
+			break
+		end
+
+		if attempt < copyRetryAttempts then
+			mod.DebugPrint("[Install] Copy attempt " .. attempt .. " of " .. copyRetryAttempts .. " failed for " .. dest ..
+				", retrying: " .. tostring(copyError), 2)
+			local waitUntil = os.clock() + 0.25 * attempt
+			repeat until os.clock() >= waitUntil
+		end
 	end
 
-	return true
+	mod.DebugPrint("Could not copy " .. src .. " to " .. dest .. ": " .. tostring(copyError), 1)
+	mod.EncounteredInstallationIssues = true
+
+	return false
 end
 
 local function copyFiles(fileMappings, srcBasePath, destBasePath, extension, nameHint, usePluginData, destUsePluginData)
@@ -672,73 +688,73 @@ local installSteps = {
 	end },
 
 	Styx = { "1080p .bik batch 1", function()
-		copyFiles(getBikBatch(bikBatchBoundaries1080p, 1), "Content\\Movies\\", "Content\\Movies\\1080p\\", ".bik", "1080p Hades Animation ",
-			false, true)
+		copyFiles(getBikBatch(bikBatchBoundaries1080p, 1), "Content\\Movies\\", "Content\\Movies\\1080p\\", ".bik",
+			"1080p Hades Animation ", false, true)
 	end },
 
 	Surface = { "1080p .bik batch 2", function()
-		copyFiles(getBikBatch(bikBatchBoundaries1080p, 2), "Content\\Movies\\", "Content\\Movies\\1080p\\", ".bik", "1080p Hades Animation ",
-			false, true)
+		copyFiles(getBikBatch(bikBatchBoundaries1080p, 2), "Content\\Movies\\", "Content\\Movies\\1080p\\", ".bik",
+			"1080p Hades Animation ", false, true)
 	end },
 
 	Tartarus = { "1080p .bik batch 3", function()
-		copyFiles(getBikBatch(bikBatchBoundaries1080p, 3), "Content\\Movies\\", "Content\\Movies\\1080p\\", ".bik", "1080p Hades Animation ",
-			false, true)
+		copyFiles(getBikBatch(bikBatchBoundaries1080p, 3), "Content\\Movies\\", "Content\\Movies\\1080p\\", ".bik",
+			"1080p Hades Animation ", false, true)
 	end },
 
 	Temple = { "1080p .bik batch 4", function()
-		copyFiles(getBikBatch(bikBatchBoundaries1080p, 4), "Content\\Movies\\", "Content\\Movies\\1080p\\", ".bik", "1080p Hades Animation ",
-			false, true)
+		copyFiles(getBikBatch(bikBatchBoundaries1080p, 4), "Content\\Movies\\", "Content\\Movies\\1080p\\", ".bik",
+			"1080p Hades Animation ", false, true)
 	end },
 
 	Travel = { "1080p .bik batch 5", function()
-		copyFiles(getBikBatch(bikBatchBoundaries1080p, 5), "Content\\Movies\\", "Content\\Movies\\1080p\\", ".bik", "1080p Hades Animation ",
-			false, true)
+		copyFiles(getBikBatch(bikBatchBoundaries1080p, 5), "Content\\Movies\\", "Content\\Movies\\1080p\\", ".bik",
+			"1080p Hades Animation ", false, true)
 	end },
 
 	MapGroups = { "1080p .bik batch 6", function()
-		copyFiles(getBikBatch(bikBatchBoundaries1080p, 6), "Content\\Movies\\", "Content\\Movies\\1080p\\", ".bik", "1080p Hades Animation ",
-			false, true)
+		copyFiles(getBikBatch(bikBatchBoundaries1080p, 6), "Content\\Movies\\", "Content\\Movies\\1080p\\", ".bik",
+			"1080p Hades Animation ", false, true)
 	end },
 
 	Hero_Melinoe_Animation_Personality = { "1080p .bik batch 7", function()
-		copyFiles(getBikBatch(bikBatchBoundaries1080p, 7), "Content\\Movies\\", "Content\\Movies\\1080p\\", ".bik", "1080p Hades Animation ",
-			false, true)
+		copyFiles(getBikBatch(bikBatchBoundaries1080p, 7), "Content\\Movies\\", "Content\\Movies\\1080p\\", ".bik",
+			"1080p Hades Animation ", false, true)
 	end },
 
 	Enemy_1Base_VFX = { "1080p .bik batch 8", function()
-		copyFiles(getBikBatch(bikBatchBoundaries1080p, 8), "Content\\Movies\\", "Content\\Movies\\1080p\\", ".bik", "1080p Hades Animation ",
-			false, true)
+		copyFiles(getBikBatch(bikBatchBoundaries1080p, 8), "Content\\Movies\\", "Content\\Movies\\1080p\\", ".bik",
+			"1080p Hades Animation ", false, true)
 	end },
 
 	GUI_Portraits_VFX = { "1080p .bik batch 9", function()
-		copyFiles(getBikBatch(bikBatchBoundaries1080p, 9), "Content\\Movies\\", "Content\\Movies\\1080p\\", ".bik", "1080p Hades Animation ",
-			false, true)
+		copyFiles(getBikBatch(bikBatchBoundaries1080p, 9), "Content\\Movies\\", "Content\\Movies\\1080p\\", ".bik",
+			"1080p Hades Animation ", false, true)
 	end },
 
 	GUI_Screens_VFX = { "720p .bik batch 1", function()
-		copyFiles(getBikBatch(bikBatchBoundaries720p, 1), "Content\\Movies\\720p\\", "Content\\Movies\\720p\\", ".bik", "720p Hades Animation ",
-			false, true)
+		copyFiles(getBikBatch(bikBatchBoundaries720p, 1), "Content\\Movies\\720p\\", "Content\\Movies\\720p\\", ".bik",
+			"720p Hades Animation ", false, true)
 	end },
 
 	Melinoe_Spell_VFX = { "720p .bik batch 2", function()
-		copyFiles(getBikBatch(bikBatchBoundaries720p, 2), "Content\\Movies\\720p\\", "Content\\Movies\\720p\\", ".bik", "720p Hades Animation ",
-			false, true)
+		copyFiles(getBikBatch(bikBatchBoundaries720p, 2), "Content\\Movies\\720p\\", "Content\\Movies\\720p\\", ".bik",
+			"720p Hades Animation ", false, true)
 	end },
 
 	Melinoe_Zeus_VFX = { "720p .bik batch 3", function()
-		copyFiles(getBikBatch(bikBatchBoundaries720p, 3), "Content\\Movies\\720p\\", "Content\\Movies\\720p\\", ".bik", "720p Hades Animation ",
-			false, true)
+		copyFiles(getBikBatch(bikBatchBoundaries720p, 3), "Content\\Movies\\720p\\", "Content\\Movies\\720p\\", ".bik",
+			"720p Hades Animation ", false, true)
 	end },
 
 	Obstacle_Asphodel_VFX = { "720p .bik batch 4", function()
-		copyFiles(getBikBatch(bikBatchBoundaries720p, 4), "Content\\Movies\\720p\\", "Content\\Movies\\720p\\", ".bik", "720p Hades Animation ",
-			false, true)
+		copyFiles(getBikBatch(bikBatchBoundaries720p, 4), "Content\\Movies\\720p\\", "Content\\Movies\\720p\\", ".bik",
+			"720p Hades Animation ", false, true)
 	end },
 
 	Obstacle_Deprecated_VFX = { "720p .bik batch 5", function()
-		copyFiles(getBikBatch(bikBatchBoundaries720p, 5), "Content\\Movies\\720p\\", "Content\\Movies\\720p\\", ".bik", "720p Hades Animation ",
-			false, true)
+		copyFiles(getBikBatch(bikBatchBoundaries720p, 5), "Content\\Movies\\720p\\", "Content\\Movies\\720p\\", ".bik",
+			"720p Hades Animation ", false, true)
 	end },
 }
 
