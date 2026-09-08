@@ -2650,6 +2650,12 @@ local enemyModifications = {
 			[4] = { DataOverrides = { HealthMultiplier = 1.8 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.8 } },
 		},
 		SubtitleColor = game.Color.TheseusVoice,
+		LowHealthVoiceLines = {
+			[14] = { GameStateRequirements = { { PathFromSource = true, Path = { "AIStageActive" }, IsNone = { 2 } } } },
+			[15] = { GameStateRequirements = { { PathFromSource = true, Path = { "AIStageActive" }, IsNone = { 2 } } } },
+			[16] = { RequiredAnyUnitAlive = { "Minotaur", "Minotaur2" } },
+			[17] = { GameStateRequirements = { { PathFromSource = true, Path = { "AIStageActive" }, IsNone = { 2 } } } },
+		},
 		-- Doesn't seem to be used
 		OnTouchdownFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesUnitTouchdown",
 		OnTouchdownFunctionArgs = {

@@ -34,7 +34,7 @@ Other fixes and improvements:
 - Fixed: The projectiles created by the Spreaders in Asphodel, and the small projectiles created by the Splitters in Elysium have the Hades II graphic instead of the Hades graphic.
 - Fixed: If Melinoë exits "Unseen Ire" while the Bone Hydra performs the dart attack, the game may crash.
 - Fixed: Theseus immediately snaps to look at Melinoë after his dialogue completes instead of gradually turning.
-- Fixed: Theseus may comment on things he does on his Chariot even when he is no longer mounted (this was also a bug in the original game).
+- Fixed: Theseus may refer to his Chariot even when he is no longer mounted (this was also a bug in the original game).
 - Fixed: Shells fired by the Argent Skull can become irretrievable if they were supposed to return to Melinoë during dialogue playing between phases in Hades' boss fight.
 - Fixed: Wretched Witches summoned by Hades during his boss fight fire three bursts of three large projectiles that split into five smaller projectiles, instead of one burst of three large projectiles that split into ten smaller projectiles.
 - Fixed: Damage taken from the Tiny Vermin is categorized as damage taken from Crawlers in the Damage Taken record in the run clear screen.
