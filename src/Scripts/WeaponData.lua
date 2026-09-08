@@ -1836,6 +1836,14 @@ local weaponModifications = {
 		AIData = {
 			ImmuneToProjectileSlow = true,
 			DeepInheritance = true,
+			PreAttackVoiceLines = {
+				[2] = {
+					[34] = { GameStateRequirements = { { PathFromSource = true, Path = { "AIStageActive" }, IsNone = { 2 } } } },
+					[35] = { GameStateRequirements = { { PathFromSource = true, Path = { "AIStageActive" }, IsNone = { 2 } } } },
+					[36] = { GameStateRequirements = { { PathFromSource = true, Path = { "AIStageActive" }, IsNone = { 2 } } } },
+					[37] = { GameStateRequirements = { { PathFromSource = true, Path = { "AIStageActive" }, IsNone = { 2 } } } },
+				},
+			},
 		},
 		GodUpgradeWeaponSwap = {
 			ApolloUpgrade = "ModsNikkelMHadesBiomes_TheseusSpearThrowApollo",
