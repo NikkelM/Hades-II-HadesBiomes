@@ -739,6 +739,8 @@ local function on_ready_late()
 	import "Scripts/WeaponUpgradeLogic_Late.lua"
 
 	import "Scripts/Meta/PonyMenuLogic_Late.lua"
+
+	mod.FinishedLoading = true
 end
 
 local function on_reload()

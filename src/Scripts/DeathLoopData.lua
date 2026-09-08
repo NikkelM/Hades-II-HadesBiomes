@@ -58,7 +58,7 @@ function mod.HadesRunStartDoorExists()
 end
 
 function mod.SpawnHadesRunStartDoor(source, args)
-	if mod.HadesRunStartDoorExists() then
+	if mod.HadesRunStartDoorExists() or not mod.FinishedLoading then
 		return
 	end
 
@@ -130,7 +130,7 @@ function mod.EnsureHadesRunStartDoorExists(room)
 	end
 
 	-- Only spawn on a valid installation
-	if not mod.HiddenConfig or not mod.HiddenConfig.IsValidInstallation then
+	if not mod.HiddenConfig or not mod.HiddenConfig.IsValidInstallation or not mod.FinishedLoading then
 		return
 	end
 

@@ -276,8 +276,6 @@ OnAnyLoad {
 		-- This engine function hook does not get reset on lua state reset it seems, so if the mod was uninstalled during game start, we don't want to run it when loading a save
 		if not config.enabled then return end
 
-		-- #region SJSON Hook validation
-		-- Note: Enemies.sjson is currently the sjson file that is loaded before all others, meaning we reset the table there
 		local sjsonLoads = mod.CachedSjsonLoadsFile or mod.TryLoadCachedSjsonFile("sjsonLoads.sjson") or {}
 		local sjsonLoadCount = 0
 
@@ -285,10 +283,21 @@ OnAnyLoad {
 			sjsonLoadCount = sjsonLoadCount + 1
 		end
 
-		-- Any install failure screens will be shown first
-		-- The sjson hook failure screen will only be shown in the Crossroads, or if we are in a modded run
-		if not (game.CurrentHubRoom ~= nil and not mod.HiddenConfig.IsValidInstallation)
-				and (sjsonLoadCount ~= mod.ExpectedNumSjsonHooks and (game.CurrentHubRoom or (game.CurrentRun and game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun))) then
+		-- Any install failure screens will be shown before the half-loaded or sjson screens can show
+		-- Will only be shown in the Crossroads, or if we are in a modded run
+		if not mod.FinishedLoading
+				-- Not in the hub OR the installation is valid - this ensures invalid install screens show first if we are in a hub room
+				and (game.CurrentHubRoom == nil or mod.HiddenConfig.IsValidInstallation)
+				and (game.CurrentHubRoom or (game.CurrentRun and game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun)) then
+			mod.DebugPrint(
+				"The mod did not finish loading correctly, though it seems to be installed properly. Please check the log above for errors and try reinstalling the mod.",
+				1)
+			-- Not passing any args so that the generic invalid install screen is shown
+			mod.OpenModInstallScreen()
+			-- Will only be shown in the Crossroads, or if we are in a modded run
+		elseif sjsonLoadCount ~= mod.ExpectedNumSjsonHooks
+				and (game.CurrentHubRoom == nil or mod.HiddenConfig.IsValidInstallation)
+				and (game.CurrentHubRoom or (game.CurrentRun and game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun)) then
 			mod.DebugPrint(
 				sjsonLoadCount ..
 				" sjson hooks were executed during this game start, but " ..
@@ -298,9 +307,7 @@ OnAnyLoad {
 				mod.DebugPrint(" - " .. sjsonFileName, 1)
 			end
 			mod.OpenModInstallScreen({ IsSjsonLoadError = true })
-			-- #endregion
 
-			-- #region Install screens
 			-- Only show the install screen if we are in the Crossroads
 		elseif game.CurrentHubRoom ~= nil and game.CurrentHubRoom.Name == "Hub_PreRun" then
 			-- If an uninstall was just attempted, but failed
@@ -340,7 +347,6 @@ OnAnyLoad {
 				end
 			end
 		end
-		-- #endregion
 	end
 }
 
