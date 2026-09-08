@@ -1,66 +1,70 @@
 function mod.ConfirmHadesInstallation()
-	mod.hadesGameFolder = config.debugging.hadesGameFolder
+	mod.hadesGameFolder = config.debugging.hadesGameFolder or "root"
 
 	-- Clean leading/trailing quotes, spaces and apostrophes from user-provided path
-	if mod.hadesGameFolder ~= nil then
-		mod.hadesGameFolder = mod.hadesGameFolder:gsub("^[\"'%s]+", ""):gsub("[\"'%s]+$", "")
-	end
+	mod.hadesGameFolder = mod.hadesGameFolder:gsub("^[\"'%s]+", ""):gsub("[\"'%s]+$", "")
 
+	local candidateFolders = {}
 	-- "root" means we look for the Hades folder in the same parent directory as Hades II
 	if mod.hadesGameFolder == "root" or mod.hadesGameFolder == "" then
-		local hadesTwoContentFolder = rom.paths.Content()
-		mod.hadesGameFolder = rom.path.combine(rom.path.get_parent(rom.path.get_parent(hadesTwoContentFolder)), "Hades")
+		local sharedFolder = rom.path.get_parent(rom.path.get_parent(rom.paths.Content()))
+		for _ = 1, 3 do
+			if sharedFolder == "" then
+				break
+			end
+
+			-- Steam
+			table.insert(candidateFolders, rom.path.combine(sharedFolder, "Hades"))
+			-- Epic Games
+			table.insert(candidateFolders, rom.path.combine(sharedFolder, "Hades\\Hades"))
+			-- Microsoft Store
+			table.insert(candidateFolders, rom.path.combine(sharedFolder, "Hades\\Content"))
+			sharedFolder = rom.path.get_parent(sharedFolder)
+		end
+	else
+		table.insert(candidateFolders, mod.hadesGameFolder)
+		-- In case the user pointed at the x64/x86 subfolder, or at the folder above a Microsoft Store install
+		local parentFolder = rom.path.get_parent(mod.hadesGameFolder)
+		if parentFolder ~= "" then
+			table.insert(candidateFolders, parentFolder)
+		end
+		table.insert(candidateFolders, rom.path.combine(mod.hadesGameFolder, "Content"))
 	end
 
-	-- Check if the Hades installation is valid (by just confirming the .exe exists)
-	local exePath = rom.path.combine(mod.hadesGameFolder, "x64\\Hades.exe")
-	-- Check for a regular Steam or Epic installation first
-	if not rom.path.exists(exePath) then
-		-- If not found, check for the Path one level up, in case the user misunderstood the instructions and provided the "x64" or "x86" subfolders
-		local parentExePath = rom.path.combine(rom.path.get_parent(mod.hadesGameFolder), "x64\\Hades.exe")
-		if not rom.path.exists(parentExePath) then
-			-- If not found, the user may have Hades installed from the Microsoft Store, which uses a different path for the .exe
-			local microsoftExePath = rom.path.combine(mod.hadesGameFolder, "Content\\Hades.exe")
-			if not rom.path.exists(microsoftExePath) then
-				-- If not found, check for the Microsoft Store Path one Content level up, in case the user misunderstood the instructions
-				local microsoftBackupExePath = rom.path.combine(mod.hadesGameFolder, "Hades.exe")
-				if not rom.path.exists(microsoftBackupExePath) then
-					-- Set the invalid installation flag
-					mod.HiddenConfig.IsValidInstallation = false
-					mod.HiddenConfig.InstallationFailReason = "NoHadesInstallationFound"
-					mod.SaveCachedSjsonFile("hiddenConfig.sjson", mod.HiddenConfig)
-					---@diagnostic disable-next-line: undefined-global
-					public.IsValidInstallation = false
-
-					mod.DebugPrint(
-						"The mod tried finding your Hades installation at \"" ..
-						exePath .. "\" (Steam/Epic) or \"" ..
-						microsoftExePath ..
-						"\" (Microsoft Store/Game Pass), but did not find it. Please set the correct path in the config file through your mod manager. Use \"root\" if the Hades folder is in the same folder as the Hades II folder.",
-						1)
-
-					return false
-				end
-			else
-				-- If the microsoft path exists, the hadesGameFolder needs to go one "Content" level deeper
-				mod.hadesGameFolder = rom.path.combine(mod.hadesGameFolder, "Content")
+	for _, candidateFolder in ipairs(candidateFolders) do
+		-- Steam and Epic ship the executable in an x64 subfolder, the Microsoft Store version sits directly in the game folder
+		if rom.path.exists(rom.path.combine(candidateFolder, "x64\\Hades.exe")) or rom.path.exists(rom.path.combine(candidateFolder, "Hades.exe")) then
+			if candidateFolder ~= mod.hadesGameFolder then
 				mod.DebugPrint(
 					"Corrected the hadesGameFolder path from " ..
-					config.debugging.hadesGameFolder .. " to " .. mod.hadesGameFolder, 4)
-				config.debugging.hadesGameFolder = mod.hadesGameFolder
+					tostring(config.debugging.hadesGameFolder) .. " to " .. candidateFolder, 4)
+				config.debugging.hadesGameFolder = candidateFolder
 			end
-		else
-			-- If the parent path exists, the hadesGameFolder needs to go one level up
-			mod.hadesGameFolder = rom.path.get_parent(mod.hadesGameFolder)
-			mod.DebugPrint(
-				"Corrected the hadesGameFolder path from " ..
-				config.debugging.hadesGameFolder .. " to " .. mod.hadesGameFolder, 4)
-			config.debugging.hadesGameFolder = mod.hadesGameFolder
+
+			mod.hadesGameFolder = candidateFolder
+			mod.DebugPrint("Hades installation found at " .. mod.hadesGameFolder, 3)
+			return true
 		end
 	end
 
-	mod.DebugPrint("Hades installation found at " .. mod.hadesGameFolder, 3)
-	return true
+	-- Set the invalid installation flag
+	mod.HiddenConfig.IsValidInstallation = false
+	mod.HiddenConfig.InstallationFailReason = "NoHadesInstallationFound"
+	mod.SaveCachedSjsonFile("hiddenConfig.sjson", mod.HiddenConfig)
+	---@diagnostic disable-next-line: undefined-global
+	public.IsValidInstallation = false
+
+	mod.DebugPrint(
+		"The mod looked for your Hades installation in the following locations, but did not find it: \"" ..
+		table.concat(candidateFolders, "\", \"") ..
+		"\". Please set the \"hadesGameFolder\" path in the config file through your mod manager, or leave it as \"root\" to search next to your Hades II installation automatically." ..
+		"\nThe path must point at the folder that contains the Hades executable, which by default is:" ..
+		"\n - Steam: C:\\Program Files (x86)\\Steam\\steamapps\\common\\Hades" ..
+		"\n - Epic Games: C:\\Program Files\\Epic Games\\Hades\\Hades" ..
+		"\n - Microsoft Store/Game Pass: C:\\XboxGames\\Hades\\Content",
+		1)
+
+	return false
 end
 
 function mod.AreIncompatibleModsInstalled()
