@@ -132,15 +132,9 @@ If you do not have a GitHub account, you can also join the [Hades II Modding Dis
 
 ### Contribute Yourself!
 
-You can contribute to this mod by providing translations!
-The mod adds many different kinds of text, such as for the new resources, boons etc.<br>
-If you would like to translate some or all of these into your native language, you can find all texts in the [data/Hell2Modding-SJSON/Text/\<language shorthand\>](https://github.com/NikkelM/Hades-II-HadesBiomes/tree/main/data/Hell2Modding-SJSON/Text) folder of the mod's repository.
-To translate an entry, remove the comments/leading `//` and replace everything except content in curly `{}` brackets (which are formatting placeholders) with your translation.
-If you decide to translate a category, please translate all texts in that category to ensure consistency for players.
+You can contribute to this mod by translating the text it adds into your native language!
 
-For Cosmetics, texts are located in [src/Scripts/CosmeticsData.lua](https://github.com/NikkelM/Hades-II-HadesBiomes/tree/main/src/Scripts/CosmeticsData.lua), directly assigned to each cosmetic item.
-
-After translating your chosen texts, open a Pull Request with your changes on GitHub, and they will be included in the next release!
+See the [Contribute a Translation wiki page](https://github.com/NikkelM/Hades-II-HadesBiomes/wiki/Contribute-a-Translation) for more information on what needs translating, and how to do so.
 
 <!-- ## Image Gallery -->
 
