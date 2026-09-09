@@ -79,12 +79,16 @@ function mod.AreIncompatibleModsInstalled()
 	return anyIncompatible
 end
 
+---Removes a file if it exists.
+---Failures are recorded in mod.EncounteredUninstallationIssues, as every removal goes through here.
+---@param filePath string The absolute path of the file to remove.
 function mod.RemoveFile(filePath)
 	if rom.path.exists(filePath) then
 		mod.DebugPrint("[Uninstall] Removing file: " .. filePath, 4)
 		local success, err = os.remove(filePath)
 		if not success then
-			mod.DebugPrint("[Uninstall] Error removing file: " .. err, 1)
+			mod.DebugPrint("[Uninstall] Error removing file: " .. tostring(err), 1)
+			mod.EncounteredUninstallationIssues = true
 		end
 	end
 end

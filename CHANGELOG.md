@@ -57,6 +57,7 @@ Other fixes and improvements:
 - Fixed: If the mod is unable to copy individual files due to transient issues during the installation process, it immediately fails. It will now retry up to two additional times.
 - Fixed: The mod is unable to automatically find the Hades installation through the "root" setting if either game is installed through the Epic Games Store or the Microsoft Store.
 - Fixed: If the mod fails to load properly, the Chaos Gate may still spawn and be enterable, but will cause a crash once entered.
+- Fixed: If files cannot be removed during uninstallation, the mod reports the uninstallation as successful and leaves them behind.
 - Fixed: If the plugins_data folder for the mod is read-only and the installation fails due to it, the mod doesn't recognize this correctly.
 - Fixed: If the mod was installed before 0.1.0, some leftover package files may have remained in the game install directory after updating, which will now be removed correctly.
 <!--Releasenotes end-->

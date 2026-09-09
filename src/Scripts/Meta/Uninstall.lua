@@ -50,6 +50,7 @@ end
 
 function mod.Uninstall()
 	mod.DebugPrint("Uninstalling mod - removing files added by the mod", 3)
+	mod.EncounteredUninstallationIssues = false
 	local contentRoot = rom.paths.Content()
 	local pluginsDataContentRoot = rom.path.combine(rom.paths.plugins_data(), _PLUGIN.guid, "Content")
 
@@ -109,7 +110,11 @@ function mod.Uninstall()
 	end
 
 	config.debugging.uninstall = false
-	mod.DebugPrint("Uninstallation complete.", 3)
+	if mod.EncounteredUninstallationIssues then
+		mod.DebugPrint("Uninstallation finished, but some files could not be removed - see the errors above.", 1)
+	else
+		mod.DebugPrint("Uninstallation complete.", 3)
+	end
 
-	return true
+	return not mod.EncounteredUninstallationIssues
 end
