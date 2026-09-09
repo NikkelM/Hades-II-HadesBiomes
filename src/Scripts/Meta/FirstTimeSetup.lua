@@ -1,5 +1,10 @@
 -- Copies a file from src to dest
 local function copyFile(src, dest)
+	-- A file that could not be copied leaves a broken installation no matter what else succeeds, so the first failure aborts the rest
+	if mod.EncounteredInstallationIssues then
+		return false
+	end
+
 	if rom.path.exists(dest) then
 		mod.DebugPrint("File already exists and will not be overwritten: " .. dest, 2)
 		return true
@@ -26,7 +31,8 @@ local function copyFile(src, dest)
 		end
 	end
 
-	mod.DebugPrint("Could not copy " .. src .. " to " .. dest .. ": " .. tostring(copyError), 1)
+	mod.DebugPrint("[Install] Could not copy " .. src .. " to " .. dest .. ": " .. tostring(copyError), 1)
+	mod.DebugPrint("[Install] Aborting the installation, as it cannot complete successfully without this file.", 1)
 	mod.EncounteredInstallationIssues = true
 
 	return false
@@ -632,8 +638,9 @@ local function copyMapTextFiles()
 		if not mod.MapTextFileNames[src] then
 			local srcPath = rom.path.combine(mod.hadesGameFolder, "Content\\Maps\\" .. src .. ".map_text")
 			local destPath = rom.path.combine(rom.paths.plugins_data(), _PLUGIN.guid, "Content\\Maps\\" .. dest .. ".map_text")
-			copyFile(srcPath, destPath)
-			rom.data.register_plugin_file(dest .. ".map_text", destPath)
+			if copyFile(srcPath, destPath) then
+				rom.data.register_plugin_file(dest .. ".map_text", destPath)
+			end
 		end
 	end
 end
@@ -763,6 +770,10 @@ local installSteps = {
 ---@param hookId string The identifier matching an entry in the installSteps table
 function mod.RunInstallStep(hookId)
 	if not mod.InstallationPending then return end
+	if mod.EncounteredInstallationIssues then
+		mod.DebugPrint("[Install] Skipping hookId \"" .. hookId .. "\", the installation already failed.", 2)
+		return
+	end
 	if not installSteps[hookId] then
 		mod.DebugPrint("[Install] No install step found for hookId: " .. hookId, 1)
 		return

@@ -55,6 +55,7 @@ Other fixes and improvements:
 - Fixed: The vanilla Hades II intro video plays before Zagreus' Journey fresh file runs.
 - Fixed: The main menu logo is briefly misaligned at the beginning for non-16:9 aspect ratios.
 - Fixed: If the mod is unable to copy individual files due to transient issues during the installation process, it immediately fails. It will now retry up to two additional times.
+- Fixed: If a file cannot be copied during installation, the mod continues installing even though the installation will already be broken.
 - Fixed: The mod is unable to automatically find the Hades installation through the "root" setting if either game is installed through the Epic Games Store or the Microsoft Store.
 - Fixed: If the mod fails to load properly, the Chaos Gate may still spawn and be enterable, but will cause a crash once entered.
 - Fixed: If files cannot be removed during uninstallation, the mod reports the uninstallation as successful and leaves them behind.
