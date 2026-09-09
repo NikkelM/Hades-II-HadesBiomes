@@ -38,6 +38,7 @@ Other fixes and improvements:
 - Fixed: Voice lines that depend on repeatedly dying in or clearing an Asphodel or Elysium room never play.
 - Fixed: Shells fired by the Argent Skull can become irretrievable if they were supposed to return to Melinoë during dialogue playing between phases in Hades' boss fight.
 - Fixed: Wretched Witches summoned by Hades during his boss fight fire three bursts of three large projectiles that split into five smaller projectiles, instead of one burst of three large projectiles that split into ten smaller projectiles.
+- Fixed: Zagreus and Persephone do not speak when the boat arrives at the door to the House of Hades during the ending sequence.
 - Fixed: Damage taken from the Tiny Vermin is categorized as damage taken from Crawlers in the Damage Taken record in the run clear screen.
 - Fixed: Dire Brimstones and Dire Snaketones can be imbued with the "Bruiser" elite perk which makes them stun Melinoë when they hit her, causing infinite stuns due to the rapid-fire nature of their attacks.
 - Fixed: Clones created by Elite enemies with the "Cloner" perk can create Revenants, Lone Shades, Exalted Shades, or be resurrected by Night Bloom.

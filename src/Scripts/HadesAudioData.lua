@@ -2463,6 +2463,25 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 			{ Cue = "/VO/Modsnikkelmhadesbiomespersephone_0098" },
 		},
 	},
+	ReturnBoatRideVoiceLines = {
+		{
+			PreLineWait = 4.0,
+			UsePlayerSource = true,
+			RequiredRoom = "Return06",
+			SkipAnim = true,
+			-- We're here!
+			{ Cue = "/VO/ZagreusField_3678" },
+		},
+		{
+			PreLineWait = 1.2,
+			ObjectType = "ModsNikkelMHadesBiomes_NPC_Persephone_01",
+			RequiredRoom = "Return06",
+			SkipAnim = true,
+			-- We're here!
+			-- Custom: Replaced Persephone_ with Modsnikkelmhadesbiomespersephone_
+			{ Cue = "/VO/Modsnikkelmhadesbiomespersephone_0099" },
+		},
+	},
 	SunriseOverlookVoiceLines = {
 		BreakIfPlayed = true,
 		PreLineWait = 2.8,

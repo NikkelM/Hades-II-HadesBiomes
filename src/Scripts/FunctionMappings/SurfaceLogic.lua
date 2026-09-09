@@ -518,6 +518,10 @@ function mod.HandleReturnBoatRideIntro(eventSource, args)
 	mod.HandleReturnBoatRide(eventSource, { NextMap = "Return02" })
 end
 
+function mod.HandleReturnBoatRideAudio(eventSource, args)
+	game.thread(game.PlayVoiceLines, game.GlobalVoiceLines.ReturnBoatRideVoiceLines, true)
+end
+
 function mod.HandleReturnBoatRideOutro(eventSource, args)
 	local heroId = game.CurrentRun.Hero.ObjectId
 	local invisibleTargets = GetIdsByType({ Name = "InvisibleTarget" })

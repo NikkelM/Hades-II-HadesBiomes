@@ -266,6 +266,8 @@ game.GlobalVoiceLines.SurfaceBoatSightedVoiceLines = game.GlobalVoiceLines.Surfa
 		mod.GlobalVoiceLines.SurfaceBoatSightedVoiceLines
 game.GlobalVoiceLines.StartingBoatRideVoiceLines = game.GlobalVoiceLines.StartingBoatRideVoiceLines or
 		mod.GlobalVoiceLines.StartingBoatRideVoiceLines
+game.GlobalVoiceLines.ReturnBoatRideVoiceLines = game.GlobalVoiceLines.ReturnBoatRideVoiceLines or
+		mod.GlobalVoiceLines.ReturnBoatRideVoiceLines
 game.GlobalVoiceLines.SunriseOverlookVoiceLines = game.GlobalVoiceLines.SunriseOverlookVoiceLines or
 		mod.GlobalVoiceLines.SunriseOverlookVoiceLines
 game.GlobalVoiceLines.StorytellerEndingVoiceLines = game.GlobalVoiceLines.StorytellerEndingVoiceLines or
