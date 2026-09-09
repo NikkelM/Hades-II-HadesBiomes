@@ -35,6 +35,7 @@ Other fixes and improvements:
 - Fixed: If Melinoë exits "Unseen Ire" while the Bone Hydra performs the dart attack, the game may crash.
 - Fixed: Theseus immediately snaps to look at Melinoë after his dialogue completes instead of gradually turning.
 - Fixed: Theseus may refer to his Chariot even when he is no longer mounted (this was also a bug in the original game).
+- Fixed: Voice lines that depend on repeatedly dying in or clearing an Asphodel or Elysium room never play.
 - Fixed: Shells fired by the Argent Skull can become irretrievable if they were supposed to return to Melinoë during dialogue playing between phases in Hades' boss fight.
 - Fixed: Wretched Witches summoned by Hades during his boss fight fire three bursts of three large projectiles that split into five smaller projectiles, instead of one burst of three large projectiles that split into ten smaller projectiles.
 - Fixed: Damage taken from the Tiny Vermin is categorized as damage taken from Crawlers in the Damage Taken record in the run clear screen.

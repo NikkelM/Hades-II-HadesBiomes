@@ -401,12 +401,9 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 							or roomName
 				end
 			elseif requirementType == "nameTable" then
-				for i, roomName in ipairs(requirements[roomRequirement]) do
-					requirements[roomRequirement][i].Name =
-							mod.AsphodelRoomNameMappings[roomName.Name]
-							or mod.ElysiumRoomNameMappings[roomName.Name]
-							or roomName.Name
-				end
+				local roomName = requirements[roomRequirement].Name
+				requirements[roomRequirement].Name = mod.AsphodelRoomNameMappings[roomName] or
+						mod.ElysiumRoomNameMappings[roomName] or roomName
 			elseif requirementType == "keyTable" then
 				local mappedRequirements = {}
 				for roomName, value in pairs(requirements[roomRequirement]) do
