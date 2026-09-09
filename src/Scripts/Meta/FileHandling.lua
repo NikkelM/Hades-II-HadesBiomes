@@ -34,13 +34,6 @@ function mod.ConfirmHadesInstallation()
 	for _, candidateFolder in ipairs(candidateFolders) do
 		-- Steam and Epic ship the executable in an x64 subfolder, the Microsoft Store version sits directly in the game folder
 		if rom.path.exists(rom.path.combine(candidateFolder, "x64\\Hades.exe")) or rom.path.exists(rom.path.combine(candidateFolder, "Hades.exe")) then
-			if candidateFolder ~= mod.hadesGameFolder then
-				mod.DebugPrint(
-					"Corrected the hadesGameFolder path from " ..
-					tostring(config.debugging.hadesGameFolder) .. " to " .. candidateFolder, 4)
-				config.debugging.hadesGameFolder = candidateFolder
-			end
-
 			mod.hadesGameFolder = candidateFolder
 			mod.DebugPrint("Hades installation found at " .. mod.hadesGameFolder, 3)
 			return true
