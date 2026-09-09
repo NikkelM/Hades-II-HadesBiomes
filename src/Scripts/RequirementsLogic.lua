@@ -522,12 +522,11 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 			NPC_Hades_01 = "NPC_Hades_Field_01",
 			NPC_Nyx_01 = "NPC_Nyx_Story_01",
 		}
+		local mappedInteractions = {}
 		for npcName, interactCount in pairs(requirements.RequiredMinNPCInteractions) do
-			if npcNameMappings[npcName] ~= nil then
-				requirements.RequiredMinNPCInteractions[npcNameMappings[npcName]] = interactCount
-				requirements.RequiredMinNPCInteractions[npcName] = nil
-			end
+			mappedInteractions[npcNameMappings[npcName] or npcName] = interactCount
 		end
+		requirements.RequiredMinNPCInteractions = mappedInteractions
 	end
 
 	-- ChanceToPlay is already taken care of in the Hades II function call
