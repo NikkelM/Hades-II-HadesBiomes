@@ -3861,17 +3861,20 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 	end
 
 	if requirements.RequiresNewMusicTracks ~= nil then
-		local anyTrue = false
-		for trackName, trackData in pairs(MusicPlayerTrackData) do
-			if game.GameState.WorldUpgrades[trackData.Name] and not game.GameState.WorldUpgradesViewed[trackData.Name] then
-				-- Owned but not viewed
-				anyTrue = true
-				break
-			end
-		end
-		if not anyTrue then
-			return false
-		end
+		-- local anyTrue = false
+		-- for trackName, trackData in pairs(MusicPlayerTrackData) do
+		-- 	if game.GameState.WorldUpgrades[trackData.Name] and not game.GameState.WorldUpgradesViewed[trackData.Name] then
+		-- 		-- Owned but not viewed
+		-- 		anyTrue = true
+		-- 		break
+		-- 	end
+		-- end
+		-- if not anyTrue then
+		-- 	return false
+		-- end
+
+		-- Only used in GlobalVoiceLines.OpenedMusicPlayerMenuVoiceLines which is not in the mod and won't be
+		return false
 	end
 
 	return true

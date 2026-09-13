@@ -3028,6 +3028,21 @@ local enemyModifications = {
 	-- #endregion
 	-- #region STYX - Bosses
 	Hades = {
+		ActivateRequirements = {
+			RequiredFalseFlags = mod.NilValue,
+			OrRequirements = {
+				{
+					{
+						PathTrue = { "CurrentRun", "IsDreamRun" }
+					},
+				},
+				{
+					{
+						PathFalse = { "GameState", "Flags", "HadesEndingFlag" }
+					},
+				},
+			},
+		},
 		-- Base Health: 17000
 		-- Base EM Health: 22000
 		-- Chronos Health: 20000

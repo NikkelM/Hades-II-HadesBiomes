@@ -4921,7 +4921,7 @@ mod.EnemyData = {
 		{
 			AggroAI,
 		},
-		PostAggroAI = SkyAttackerAI,
+		PostAggroAI = "SkyAttackerAI",
 		AIAggroRange = 600,
 		AIWanderDistance = 0,
 		WakeUpDelay = 0.3,
