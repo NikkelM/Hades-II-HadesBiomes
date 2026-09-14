@@ -20,7 +20,7 @@ local newIcons = {
 	-- #endregion
 	-- #region ShrineChallenge/Erebus Gates
 	ShrinePointSmall = {
-		TexturePath = "GUIModded\\Icons\\ShrinePoint_Small",
+		TexturePath = "GUI\\Icons\\ShrinePoint",
 		UseTooltip = true,
 	},
 	ShrinePointLarge = {
