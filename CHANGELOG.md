@@ -17,13 +17,12 @@ Other fixes and improvements:
 - Added all resources that can be found during Zagreus' Journey runs to the Wretched Broker to allow trading them for the equivalent resources from Hades II (they will show after completing any new run).
 - If the Vow of Betrayal from the [Nightmare Fear](https://thunderstore.io/c/hades-ii/p/ReadEmAndWeep/Nightmare_Fear/) mod is active during Theseus' boss fight, he will not call upon the God that has been chosen by the Vow.
 - Added new speedrunning settings to disable the Barge of Death, Asterius and Tiny Vermin miniboss encounters, either all at once or individually.
-- Added an on-screen indicator that is shown while any of the speedrunning settings are enabled.
+- Added an on-screen indicator if any setting in the "Speedrunning" category is enabled.
 - Added a new Minor Prophecy unlocked by talking to Poseidon in the Nightmare Realm.
 - Added NPCs added by Zagreus' Journey to [PonyMenu](https://thunderstore.io/c/hades-ii/p/PonyWarrior/PonyMenu/).
 - Modernized the way the game chooses NPC dialogues to make story-related and contextual dialogues trigger more reliably before unrelated/evergreen dialogues.
 - Reduced mod install/update time by ~50% by switching to a new internal file copy process.
 - Reduced mod load time by up to ~60% by moving work previously done at each game start and save load to install-time activities, and optimizing some recurring setup processes.
-- Added an on-screen indicator if any setting in the "Speedrunning" category is enabled.
 - Balancing: The small heads summoned by Lernie can now be resurrected with "Night Bloom", "Sun Worshipper" or "God of the Dead".
 - Balancing: You can now destroy the butterflies created by Soul Spawners with your attacks and specials.
 - Balancing: Exalted Shades can no longer create Lone Shades when dying.
