@@ -31,7 +31,8 @@ Other fixes and improvements:
 - Balancing: Blocked a number of additional Elite perks from certain enemy types.
 - Balancing: Reworked "Lament of Orpheus" to no longer require defeating the enemy that originally damaged you to be able to trigger it again, and also be able to freeze enemies that are currently on cooldown from being frozen normally.
 - Fixed: When entering a room, enemies can spawn very close to the entrance, which can cause unfair situations where enemies attack before you gain control.
-- Fixed: Melinoë cna walk through some decorations that should be impassable in Eurydice's chamber.
+- Fixed: The game may crash when dying to a trap against Alecto while she has just started to charge her rage meter. 
+- Fixed: Melinoë can walk through some decorations that should be impassable in Eurydice's chamber.
 - Fixed: The shine animation on Golden Urns in Asphodel is slightly misaligned with the urn itself.
 - Fixed: The projectiles created by the Spreaders in Asphodel, and the small projectiles created by the Splitters in Elysium have the Hades II graphic instead of the Hades graphic.
 - Fixed: If Melinoë exits "Unseen Ire" while the Bone Hydra performs the dart attack, the game may crash.

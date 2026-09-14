@@ -68,6 +68,9 @@ mod.HadesFxAnimationModifications = {
 	-- #endregion
 
 	-- #region TARTARUS
+	HarpyBuildRageFx = {
+		ChainTo = "null",
+	},
 	TisiphoneFogIn = {
 		EndAlpha = 0.899,
 	},
