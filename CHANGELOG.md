@@ -36,6 +36,7 @@ Other fixes and improvements:
 - Fixed: Theseus immediately snaps to look at Melinoë after his dialogue completes instead of gradually turning.
 - Fixed: Theseus may refer to his Chariot even when he is no longer mounted (this was also a bug in the original game).
 - Fixed: Voice lines that depend on repeatedly dying in or clearing an Asphodel or Elysium room never play.
+- Fixed: Biome background music may be missing after certain special encounters.
 - Fixed: Shells fired by the Argent Skull can become irretrievable if they were supposed to return to Melinoë during dialogue playing between phases in Hades' boss fight.
 - Fixed: Wretched Witches summoned by Hades during his boss fight fire three bursts of three large projectiles that split into five smaller projectiles, instead of one burst of three large projectiles that split into ten smaller projectiles.
 - Fixed: Hades may not spawn during Dream Dives if you have cleared exactly nine regular Zagreus' Journey runs.
