@@ -50,6 +50,7 @@ Other fixes and improvements:
 - Fixed: The boons presented by Orpheus & Eurydice once they are reunited may be in a different order than expected.
 - Fixed: Meeting Orpheus is not counted towards the unlock conditions of the "Close at Heart" Minor Prophecy.
 - Fixed: There is a typo in the description of Orpheus' "Hymn to Zagreus" boon.
+- Fixed: If "Gold Gold Gold" from Echo triggers in a shop room in a Zagreus' Journey region, the extra reward may spawn out of bounds and softlock the run.
 - Fixed: After getting closer to Megaera while already close with Thanatos, the game will think you got with Megaera before Thanatos, which can change some future dialogue eligibilities.
 - Fixed: Thanatos shows an interaction prompt even when he has nothing left to say after his encounter.
 - Fixed: Melinoë doesn't look at directly at Thanatos during romance dialogues, instead looking off somewhere to the side.

@@ -419,9 +419,11 @@ local roomReplacements = {
 
 	-- SHOPS
 	X_Shop01 = {
+		StoreDuplicateItemId = 515385,
 		Binks = mod.NilValue,
 	},
 	X_PreBoss01 = {
+		StoreDuplicateItemId = 547715,
 		Binks = mod.NilValue,
 	},
 

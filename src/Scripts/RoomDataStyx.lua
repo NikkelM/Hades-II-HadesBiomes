@@ -423,6 +423,7 @@ local roomReplacements = {
 
 	D_Hub = {
 		LegalEncounters = { "ModsNikkelMHadesBiomes_StyxHubShop" },
+		StoreDuplicateItemId = 556736,
 		-- Same as EncounterDataStyx.ModsNikkelMHadesBiomes_StyxHubShop.StartRoomUnthreadedEvents
 		RestoreUnlockRoomExitsUnthreadedEvents = {
 			{ FunctionName = "ActivatePrePlaced", Args = { FractionMin = 1.0, FractionMax = 1.0, LegalTypes = { "NPC_FurySister_01" }, }, },
