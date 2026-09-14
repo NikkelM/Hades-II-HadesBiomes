@@ -47,6 +47,11 @@ mod.HadesEnemyAnimationsModifications = {
 		SortMode = "Isometric",
 	},
 	-- #endregion
+	-- #region ASPHODEL
+	Asphodel_Vase_01d_Shine = {
+		OffsetY = -128,
+	},
+	-- #endregion
 	-- #region STYX
 	ModsNikkelMHadesBiomesHadesTombstoneSpawn = {
 		FilePath =
