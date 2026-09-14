@@ -28,7 +28,8 @@ local newIcons = {
 		UseTooltip = true,
 	},
 	ShrinePointSmall_Active = {
-		TexturePath = "GUIModded\\Icons\\ShrinePoint_Small_Active",
+		-- Using the Hades II Fear icon instead of the heat icon to not confuse people
+		TexturePath = "GUI\\Icons\\ShrinePoint",
 		UseTooltip = true,
 	},
 	-- #endregion
