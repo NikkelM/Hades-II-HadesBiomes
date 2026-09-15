@@ -42,7 +42,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "HermesSecondPickUp",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AthenaFirstPickUp",
+			InsertAfterNarrativeTextLine = "HermesAboutUltimateProgress01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -61,7 +61,8 @@ local newPortedInteractTextLines = {
 	{
 		Name = "HermesAboutCharonFight01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "DionysusAboutOrpheus01",
+			InsertAfterNarrativeTextLine = "HermesAboutTyphonReveal01",
+			CreateNewPriorityGroup = true,
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -134,7 +135,8 @@ local newPortedInteractTextLines = {
 	{
 		Name = "HermesAboutPersephoneMeeting01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "DionysusAboutOrpheus02",
+			InsertAfterNarrativeTextLine = "HermesSecondPickUp",
+			CreateNewPriorityGroup = true,
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -154,7 +156,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "HermesPostEnding01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "DionysusAboutOrpheus02",
+			InsertAfterNarrativeTextLine = "HermesAboutPersephoneMeeting01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -174,7 +176,7 @@ local newPortedInteractTextLines = {
 		-- Used to be called HermesPostEnding01 as well, but was a duplicate with a SuperPriority textline
 		Name = "HermesPostEnding02",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "DionysusAboutOrpheus02",
+			InsertAfterNarrativeTextLine = "HermesPostEnding01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -395,7 +397,8 @@ local newPortedInteractTextLines = {
 	{
 		Name = "HermesAboutThanatos01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "DionysusAboutOrpheus02",
+			InsertAfterTextLineGroupContaining = "DionysusAboutOrpheus01",
+			CreateNewPriorityGroup = true,
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -1517,7 +1520,8 @@ local newPortedInteractTextLines = {
 	{
 		Name = "HermesFirstRunCleared01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "HermesExpectingMiscOlympian01",
+			InsertAfterNarrativeTextLine = "HermesAboutTyphonReveal01",
+			CreateNewPriorityGroup = true,
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -1535,7 +1539,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "HermesRunCleared01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "HermesExpectingMiscOlympian01",
+			InsertAfterNarrativeTextLine = "HermesFirstRunCleared01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -1552,7 +1556,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "HermesRunCleared02",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "HermesExpectingMiscOlympian01",
+			InsertAfterNarrativeTextLine = "HermesRunCleared01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -1571,7 +1575,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "HermesRunClearedNewRecord01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "HermesExpectingMiscOlympian01",
+			InsertAfterNarrativeTextLine = "HermesFirstRunCleared01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -1591,7 +1595,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "HermesRunClearedNewRecord02",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "HermesExpectingMiscOlympian01",
+			InsertAfterNarrativeTextLine = "HermesFirstRunCleared01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -1611,7 +1615,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "HermesRunClearedNewRecord03",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "HermesExpectingMiscOlympian01",
+			InsertAfterNarrativeTextLine = "HermesFirstRunCleared01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -1631,7 +1635,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "HermesRunClearedNewRecord04",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "HermesExpectingMiscOlympian01",
+			InsertAfterNarrativeTextLine = "HermesFirstRunCleared01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -1651,7 +1655,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "HermesRunClearedNewRecord05",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "HermesExpectingMiscOlympian01",
+			InsertAfterNarrativeTextLine = "HermesFirstRunCleared01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -1671,7 +1675,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "HermesRunClearedNewRecord06",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "HermesExpectingMiscOlympian01",
+			InsertAfterNarrativeTextLine = "HermesFirstRunCleared01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -1691,7 +1695,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "HermesRunClearStreak01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "HermesExpectingMiscOlympian01",
+			InsertAfterNarrativeTextLine = "HermesFirstRunCleared01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -1710,7 +1714,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "HermesRunClearStreakBroken01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "HermesExpectingMiscOlympian01",
+			InsertAfterNarrativeTextLine = "HermesFirstRunCleared01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",

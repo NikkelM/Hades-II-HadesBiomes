@@ -3,8 +3,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "ChaosSurfaceQuestComplete",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAtFirstPriority = true,
-			CreateNewPriorityGroup = true,
+			InsertAfterNarrativeTextLine = "ChaosAboutStyx01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "ChaosInteractPresentation",
@@ -840,7 +839,8 @@ local newPortedInteractTextLines = {
 	{
 		Name = "ChaosAboutStyx01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "ChaosAboutOlympians01",
+			InsertAfterNarrativeTextLine = "ChaosAboutSurfaceAppearance01",
+			CreateNewPriorityGroup = true,
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "ChaosInteractPresentation",
@@ -860,7 +860,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "ChaosSurfaceQuest01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "ChaosAboutOlympians01",
+			InsertAfterNarrativeTextLine = "ChaosAboutStyx01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "ChaosInteractPresentation",
@@ -2375,11 +2375,15 @@ local newPortedInteractTextLines = {
 	},
 	-- #endregion
 }
-newPortedInteractTextLines = mod.FilterTextLineSetsByName(newPortedInteractTextLines, {
-	ChaosAboutStyx01 = true,
-	ChaosSurfaceQuest01 = true,
-	ChaosSurfaceQuestComplete = true,
-}, true)
+local portedInteractTextLinesByName = {}
+for _, textLineSet in ipairs(newPortedInteractTextLines) do
+	portedInteractTextLinesByName[textLineSet.Name] = textLineSet
+end
+newPortedInteractTextLines = {
+	portedInteractTextLinesByName.ChaosAboutStyx01,
+	portedInteractTextLinesByName.ChaosSurfaceQuest01,
+	portedInteractTextLinesByName.ChaosSurfaceQuestComplete,
+}
 mod.AddNarrativeDataEntries(newPortedInteractTextLines, "TrialUpgrade", "InteractTextLineSets",
 	{
 		TextLinePriorityType = "InteractTextLinePriorities",
@@ -2395,9 +2399,9 @@ local newModdedInteractTextLines = {
 	{
 		Name = "ModsNikkelMHadesBiomes_ChaosAboutNightmareRuns01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			-- Keep every custom and ported dialogue before the Hades II dialogues
+			-- Place before the first vanilla Chaos dialogue, to ensure it will play in RoomOpening instead of that one
+			-- The ChaosFirstPickUp will still play normally the first time you enter a Chaos Gate, as this voiceline is additionally gated on only playing in RoomOpening
 			InsertAtFirstPriority = true,
-			CreateNewPriorityGroup = true,
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "ChaosInteractPresentation",
@@ -2445,7 +2449,8 @@ local newModdedInteractTextLines = {
 	{
 		Name = "ModsNikkelMHadesBiomes_ChaosAboutNightmareRuns02A",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "ModsNikkelMHadesBiomes_ChaosAboutNightmareRuns01",
+			InsertAfterNarrativeTextLine = "ChaosAboutSurface01",
+			CreateNewPriorityGroup = true,
 		},
 		GameStateRequirements = {
 			{
@@ -2531,7 +2536,7 @@ local newModdedInteractTextLines = {
 	{
 		Name = "ModsNikkelMHadesBiomes_ChaosAboutNightmareRuns02C",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "ModsNikkelMHadesBiomes_ChaosAboutNightmareRuns02B",
+			InsertAfterTextLineGroupContaining = "ModsNikkelMHadesBiomes_ChaosAboutNightmareRuns02A",
 		},
 		GameStateRequirements = {
 			{
@@ -2575,7 +2580,7 @@ local newModdedInteractTextLines = {
 	{
 		Name = "ModsNikkelMHadesBiomes_ChaosAboutZagreusEscapeAttempts01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterTextLineGroupContaining = "ModsNikkelMHadesBiomes_ChaosAboutNightmareRuns01",
+			InsertAfterNarrativeTextLine = "ChaosGrantsDarkness01_B",
 			CreateNewPriorityGroup = true,
 		},
 		PlayOnce = true,
@@ -2608,7 +2613,7 @@ local newModdedInteractTextLines = {
 	{
 		Name = "ModsNikkelMHadesBiomes_ChaosAboutOlympianAid01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "ModsNikkelMHadesBiomes_ChaosAboutZagreusEscapeAttempts02",
+			InsertAfterNarrativeTextLine = "ModsNikkelMHadesBiomes_ChaosAboutZagreusEscapeAttempts01",
 		},
 		GameStateRequirements = {
 			{
@@ -2633,7 +2638,8 @@ local newModdedInteractTextLines = {
 	{
 		Name = "ModsNikkelMHadesBiomes_ChaosAboutModdedRandomBounties01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "ModsNikkelMHadesBiomes_ChaosAboutOlympianAid01",
+			-- Ensure it has higher priority than the vanilla random-bounty voicelines, so it definitely plays before them if both are eligible
+			InsertAfterNarrativeTextLine = "ChaosAboutBountyChaosIntro01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "ChaosInteractPresentation",

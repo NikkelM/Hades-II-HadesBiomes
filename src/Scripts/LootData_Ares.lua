@@ -34,7 +34,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "AresKillQuest01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterTextLineGroupContaining = "AresFirstPickUp",
+			InsertAfterNarrativeTextLine = "AresPostTrueEndingAboutTyphon01",
 			CreateNewPriorityGroup = true,
 		},
 		PlayOnce = true,
