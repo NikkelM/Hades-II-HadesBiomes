@@ -38,6 +38,16 @@ local function dialogueNameExistsInHadesTwo(name)
 	return hadesTwoDialogueNames[name] == true
 end
 
+function mod.FilterTextLineSetsByName(textLineSets, names, includeMatches)
+	local filteredTextLineSets = {}
+	for _, textLineSet in ipairs(textLineSets) do
+		if (names[textLineSet.Name] == true) == includeMatches then
+			table.insert(filteredTextLineSets, textLineSet)
+		end
+	end
+	return filteredTextLineSets
+end
+
 local function insertAfterGroup(priorityTable, target, entry, textLineKey)
 	for i, group in ipairs(priorityTable) do
 		if type(group) == "table" then

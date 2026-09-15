@@ -3,9 +3,7 @@ game.EncounterSets.TartarusEncountersDefault = {
 	"GeneratedTartarus", "GeneratedTartarus", "GeneratedTartarus",
 	"GeneratedTartarus", "GeneratedTartarus", "GeneratedTartarus", "SurvivalTartarus",
 	"GeneratedTartarus", "GeneratedTartarus", "GeneratedTartarus", "SurvivalTartarus",
-	"ThanatosTartarus",
-	-- Custom
-	"ArtemisCombatTartarus",
+	"ThanatosTartarus"
 }
 game.EncounterSets.TartarusEncountersNoSurvival = { "GeneratedTartarus" }
 -- #endregion
@@ -38,25 +36,14 @@ game.EncounterSets.EncounterEventsHydraPhase = {
 game.EncounterSets.ElysiumEncountersDefault = {
 	"GeneratedElysium", "GeneratedElysium", "GeneratedElysium",
 	"GeneratedElysium", "GeneratedElysium", "GeneratedElysium",
-	"GeneratedElysium", "GeneratedElysium", "GeneratedElysium",
-	"GeneratedElysium", "GeneratedElysium", "GeneratedElysium",
-	"ThanatosElysium", "ThanatosElysium",
-	"ThanatosElysiumIntro", "ThanatosElysiumIntro", "ThanatosElysiumIntro", "ThanatosElysiumIntro",
-	-- Custom
-	"ArtemisCombatElysium",
-	"AthenaCombatElysium",
+	"GeneratedElysium", "GeneratedElysium", "GeneratedElysium", "ThanatosElysium",
+	"ThanatosElysiumIntro", "ThanatosElysiumIntro", "ThanatosElysiumIntro"
 }
 -- #endregion
 
 -- #region STYX
 game.EncounterSets.StyxEncountersMini = {
 	"GeneratedStyxMini", "GeneratedStyxMini", "GeneratedStyxMini", "GeneratedStyxMini",
-}
-game.EncounterSets.StyxEncountersWingEnd = {
-	"GeneratedStyx", "GeneratedStyx", "GeneratedStyx",
-	"GeneratedStyx",
-	-- Custom
-	"AthenaCombatStyx",
 }
 -- #endregion
 

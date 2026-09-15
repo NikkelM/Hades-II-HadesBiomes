@@ -2964,6 +2964,31 @@ local newPortedInteractTextLines = {
 	-- #endregion
 }
 
+newPortedInteractTextLines = mod.FilterTextLineSetsByName(newPortedInteractTextLines, {
+	HermesAboutCharonFight01 = true,
+	HermesAboutCharonFight02 = true,
+	HermesAboutEurydice01 = true,
+	HermesAboutEurydice02 = true,
+	HermesAboutOrpheus01 = true,
+	HermesAboutPersephoneMeeting01 = true,
+	HermesAboutThanatos01 = true,
+	HermesBeatCharonQuest01 = true,
+	HermesBeatCharonQuestComplete = true,
+	HermesFirstRunCleared01 = true,
+	HermesPostEnding01 = true,
+	HermesPostEnding02 = true,
+	HermesRunCleared01 = true,
+	HermesRunCleared02 = true,
+	HermesRunClearedNewRecord01 = true,
+	HermesRunClearedNewRecord02 = true,
+	HermesRunClearedNewRecord03 = true,
+	HermesRunClearedNewRecord04 = true,
+	HermesRunClearedNewRecord05 = true,
+	HermesRunClearedNewRecord06 = true,
+	HermesRunClearStreak01 = true,
+	HermesRunClearStreakBroken01 = true,
+	HermesSecondPickUp = true,
+}, true)
 mod.AddNarrativeDataEntries(newPortedInteractTextLines, "HermesUpgrade", "InteractTextLineSets",
 	{
 		TextLinePriorityType = "InteractTextLinePriorities",
@@ -3228,11 +3253,3 @@ local newPortedLootBoughtTextLines = {
 		},
 	},
 }
-mod.AddNarrativeDataEntries(newPortedLootBoughtTextLines, "HermesUpgrade", "BoughtTextLines",
-	{
-		TextLinePriorityType = "BoughtTextLinePriorities",
-		VoiceBankMappings = { Hermes = { "Modsnikkelmhadesbiomeshermes" } },
-		CueMappings = { Hermes_ = "Modsnikkelmhadesbiomeshermes_" },
-		PortraitMappings = { Hermes_ = "ModsNikkelMHadesBiomes_Portrait_Hermes_Default_01" },
-	}
-)

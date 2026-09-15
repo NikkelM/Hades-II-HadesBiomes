@@ -39,7 +39,7 @@ local encounterReplacements = {
 		-- The original from Hades is 8
 		-- ActiveEnemyCapMax = 8,
 		-- The original from Hades is 900
-		BaseDifficulty = 950,
+		BaseDifficulty = 1000,
 		StartRoomUnthreadedEvents = {
 			{ FunctionName = "HandleEncounterPreSpawns" },
 		},

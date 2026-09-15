@@ -247,10 +247,6 @@ function mod.GetUninteractedGodThisRunForTheseus()
 		NPC_Dionysus_01 = true,    -- DionysusUpgrade = true, -- not in Hades II as a normal god, and not possible to get in modded run
 		PoseidonUpgrade = true,
 		ZeusUpgrade = true,
-		ApolloUpgrade = true,   -- Only exists in Hades II
-		HeraUpgrade = true,     -- Only exists in Hades II
-		HephaestusUpgrade = true, -- Only exists in Hades II
-		HestiaUpgrade = true,   -- Only exists in Hades II
 	}
 	local nonLootDataGods = {
 		NPC_Artemis_Field_01 = {

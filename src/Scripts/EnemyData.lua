@@ -1311,7 +1311,7 @@ local enemyModifications = {
 	Harpy2 = {
 		-- Base Health: 4600
 		-- EM Health: 4900
-		MaxHealth = 11200,
+		MaxHealth = 11100,
 		ModsNikkelMHadesBiomesGoddessModeMaxHealth = 8200,
 		CauseOfDeathVoiceLines = {
 			Queue = "Interrupt",
@@ -2014,11 +2014,6 @@ local enemyModifications = {
 		SpawnEvents = {
 			{ FunctionName = _PLUGIN.guid .. "." .. "CreateTethers",       Threaded = true, },
 			{ FunctionName = _PLUGIN.guid .. "." .. "MarkSpawnKillRecord", },
-			{ FunctionName = _PLUGIN.guid .. "." .. "HydraHeadSpawn", },
-		},
-		-- Remembers the spawn point, so we can respawn it there when resurrected by e.g. Night Bloom
-		KillEnemyEvents = {
-			{ FunctionName = _PLUGIN.guid .. "." .. "HydraHeadDeath" },
 		},
 		Tethers = {
 			[1] = { Distance = 83, FirstDrawBehind = true, ParentDeathAnimation = "HydraNeckDeath" },
@@ -2027,20 +2022,12 @@ local enemyModifications = {
 		-- Stops the armour outline from being added, which doesn't look correctly (whole enemy is coloured instead of just the outline)
 		HasOutline = true,
 		BlockCharm = true,
-		BlockRaiseDead = false,
-		ImmobileRaise = true,
-		-- The tethers aren't scaled along with the head, so keep the raised head at its original size
-		AlliedScaleMultiplier = 1.0,
+		BlockRaiseDead = true,
 		BlockRespawnShrineUpgrade = true,
 		IgnoreSprintPhasingStasisStun = true,
 		-- Neck tethers would not be removed
 		ImmuneToPolymorph = true,
 		ModsNikkelMHadesBiomesEffectVfxOffsetZ = 170,
-	},
-	HydraHeadSummoner = {
-		SpellSummonDataOverrides = {
-			WeaponOptions = { "HydraBite", "HydraSlam" },
-		},
 	},
 	HydraTooth = {
 		StunAnimations = { Default = "HydraToothLanded" },
@@ -2102,7 +2089,6 @@ local enemyModifications = {
 		BlockRaiseDead = true,
 		BlockRespawnShrineUpgrade = true,
 		BlockCharm = true,
-		NeverLeavesShadeMerc = true,
 		AIOptions = { _PLUGIN.guid .. "." .. "PickupAI", },
 		AIPickupRange = 45,
 		RespawningVoiceLines = mod.NilValue,

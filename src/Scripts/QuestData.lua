@@ -48,7 +48,6 @@ local newQuestOrderData = {
 	"ModsNikkelMHadesBiomes_QuestEliteAttributeKills",
 	"ModsNikkelMHadesBiomes_QuestMiniBossKills",
 	"ModsNikkelMHadesBiomes_QuestClearedExtremeMeasuresRun",
-	"ModsNikkelMHadesBiomes_PoseidonBeatTheseus",
 	"ModsNikkelMHadesBiomes_AresEarnKills",
 	"ModsNikkelMHadesBiomes_QuestShutdownThanatos",
 	"ModsNikkelMHadesBiomes_QuestThanatosKeepsakeHighPercentage",

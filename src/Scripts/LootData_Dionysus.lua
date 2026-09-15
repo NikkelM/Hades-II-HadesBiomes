@@ -923,6 +923,28 @@ local newHermesDeliveredDialogues = {
 	},
 	-- #endregion
 }
+newHermesDeliveredDialogues = mod.FilterTextLineSetsByName(newHermesDeliveredDialogues, {
+	DionysusAboutAmbrosia01 = true,
+	DionysusAboutAmbrosia02 = true,
+	DionysusAboutAmbrosia03 = true,
+	DionysusAboutAmbrosia04 = true,
+	DionysusAboutMegRelationship01 = true,
+	DionysusAboutMegRelationship02 = true,
+	DionysusAboutNectar02 = true,
+	DionysusAboutOrpheus01 = true,
+	DionysusAboutOrpheus02 = true,
+	DionysusAboutSingersReunionQuest01 = true,
+	DionysusAboutThanRelationship01 = true,
+	DionysusAboutYarn01 = true,
+	DionysusFirstPickUp = true,
+	DionysusHighRelationship01 = true,
+	DionysusHighRelationship02 = true,
+	DionysusPostGiftPickup01 = true,
+	DionysusPostGiftPickup02 = true,
+	DionysusRunProgress03 = true,
+	DionysusVsMeg01 = true,
+	DionysusVsTheseus01 = true,
+}, true)
 
 mod.AddHermesDeliveredDialogues(newHermesDeliveredDialogues,
 	{ Hermes = { "Modsnikkelmhadesbiomesdionysus", "ZagreusField" } }, { Dionysus_ = "Modsnikkelmhadesbiomesdionysus_" },

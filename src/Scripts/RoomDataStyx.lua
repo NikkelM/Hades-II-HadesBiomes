@@ -895,7 +895,6 @@ local roomModifications = {
 		HasExorcismPoint = false,
 	},
 	BaseStyxWingEnd = {
-		LegalEncounters = game.EncounterSets.StyxEncountersWingEnd,
 		NextRoomEntranceFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesReturnToStyxHubPresentation",
 		IneligibleRewards = { "Devotion" },
 		-- Turn on the Bass stem, and play the outro music from the Drums section after the end combat rooms

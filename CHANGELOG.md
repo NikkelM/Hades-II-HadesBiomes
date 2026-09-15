@@ -1,32 +1,23 @@
 # Changelog
 
-## v2.0.0
+## v1.3.0
 
 <!--Releasenotes start-->
 ### Patch Highlights:
-- You may now naturally encounter Artemis and Athena in Zagreus' Journey, and they will use their dialogues from the first game when you speak to one of them.
-- Picking up boons from Aphrodite, Ares, Chaos, Demeter, Hermes, Poseidon or Zeus while in a Zagreus' Journey run will now use their respective dialogues and advance their storylines from the first game.
-- Theseus may now call upon the aid of Apollo, Hestia, Hera and Hephaestus.
-- Balancing: Slightly reduced health and armour of non-boss enemies in all biomes.
-- Fixed: Goddess Mode does not reduce boss health. Enabling it will now reduce boss health by about 25% of the difference between the health they had in Hades and the health they have with Goddess Mode disabled.
-
-Other fixes and improvements:
 - Added French localization (by [@JeanDupin](https://github.com/JeanDupin)).
-- Melinoë will now react to Theseus calling upon a God's Aid.
-- Picking up a boon from Hermes while in a Zagreus' Journey run may now have him deliver a message from the first game's Dionysus to you (as Dionysus cannot be encountered during Zagreus' Journey runs), allowing you to experience his storyline.
-- Added all resources that can be found during Zagreus' Journey runs to the Wretched Broker to allow trading them for the equivalent resources from Hades II (they will show after completing any new run).
-- If the Vow of Betrayal from the [Nightmare Fear](https://thunderstore.io/c/hades-ii/p/ReadEmAndWeep/Nightmare_Fear/) mod is active during Theseus' boss fight, he will not call upon the God that has been chosen by the Vow.
-- Added new speedrunning settings to disable the Barge of Death, Asterius and Tiny Vermin miniboss encounters, either all at once or individually.
-- Added an on-screen indicator if any setting in the "Speedrunning" category is enabled.
-- Added a new Minor Prophecy unlocked by talking to Poseidon in the Nightmare Realm.
-- Added NPCs added by Zagreus' Journey to [PonyMenu](https://thunderstore.io/c/hades-ii/p/PonyWarrior/PonyMenu/).
 - Modernized the way the game chooses NPC dialogues to make story-related and contextual dialogues trigger more reliably before unrelated/evergreen dialogues.
 - Reduced mod install/update time by ~50% by switching to a new internal file copy process.
 - Reduced mod load time by up to ~60% by moving work previously done at each game start and save load to install-time activities, and optimizing some recurring setup processes.
-- Balancing: The small heads summoned by Lernie can now be resurrected with "Night Bloom", "Sun Worshipper" or "God of the Dead".
+- Fixed: Goddess Mode does not reduce boss health. Enabling it will now reduce boss health by about 25% of the difference between the health they had in Hades and the health they have with Goddess Mode disabled.
+- Fixed: Hades may not spawn during Dream Dives if you have cleared exactly nine regular Zagreus' Journey runs.
+
+Other fixes and improvements:
+- Melinoë will now react to Theseus calling upon a God's Aid.
+- If the Vow of Betrayal from the [Nightmare Fear](https://thunderstore.io/c/hades-ii/p/ReadEmAndWeep/Nightmare_Fear/) mod is active during Theseus' boss fight, he will not call upon the God that has been chosen by the Vow.
+- Added new speedrunning settings to disable the Barge of Death, Asterius and Tiny Vermin miniboss encounters, either all at once or individually.
+- Added an on-screen indicator if any setting in the "Speedrunning" category is enabled.
+- Added NPCs added by Zagreus' Journey to [PonyMenu](https://thunderstore.io/c/hades-ii/p/PonyWarrior/PonyMenu/).
 - Balancing: You can now destroy the butterflies created by Soul Spawners with your attacks and specials.
-- Balancing: Exalted Shades can no longer create Lone Shades when dying.
-- Balancing: Slightly reduced the base encounter difficulty of wing-end combat rooms in the Temple of Styx.
 - Balancing: Blocked a number of additional Elite perks from certain enemy types.
 - Balancing: Reworked "Lament of Orpheus" to no longer require defeating the enemy that originally damaged you to be able to trigger it again, and also be able to freeze enemies that are currently on cooldown from being frozen normally.
 - Fixed: When entering a room, enemies can spawn very close to the entrance, which can cause unfair situations where enemies attack before you gain control.
@@ -41,11 +32,11 @@ Other fixes and improvements:
 - Fixed: Biome background music may be missing after certain special encounters.
 - Fixed: Shells fired by the Argent Skull can become irretrievable if they were supposed to return to Melinoë during dialogue playing between phases in Hades' boss fight.
 - Fixed: Wretched Witches summoned by Hades during his boss fight fire three bursts of three large projectiles that split into five smaller projectiles, instead of one burst of three large projectiles that split into ten smaller projectiles.
-- Fixed: Hades may not spawn during Dream Dives if you have cleared exactly nine regular Zagreus' Journey runs.
 - Fixed: Zagreus and Persephone do not speak when the boat arrives at the door to the House of Hades during the ending sequence.
 - Fixed: Damage taken from the Tiny Vermin is categorized as damage taken from Crawlers in the Damage Taken record in the run clear screen.
-- Fixed: Dire Brimstones and Dire Snaketones can be imbued with the "Bruiser" elite perk which makes them stun Melinoë when they hit her, causing infinite stuns due to the rapid-fire nature of their attacks.
+- Fixed: Dire Brimstones and Dire Snakestones can be imbued with the "Bruiser" elite perk which makes them stun Melinoë when they hit her, causing infinite stuns due to the rapid-fire nature of their attacks.
 - Fixed: Clones created by Elite enemies with the "Cloner" perk can create Revenants, Lone Shades, Exalted Shades, or be resurrected by Night Bloom.
+- Fixed: Multiple resurrection effects can trigger from the same enemy death.
 - Fixed: After killing certain enemies while also inflicting a freeze effect on them at the same time, the associated VFX can continue sliding over the ground for a split second.
 - Fixed: The prompt to enter Erebus Gates shows the Hades Heat icon instead of the Hades II Fear icon.
 - Fixed: The voiceline that is supposed to play when attempting to interact with the locked Keepsake Cabinet in post-boss rooms may not play in some cases.

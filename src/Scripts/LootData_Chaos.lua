@@ -2375,6 +2375,11 @@ local newPortedInteractTextLines = {
 	},
 	-- #endregion
 }
+newPortedInteractTextLines = mod.FilterTextLineSetsByName(newPortedInteractTextLines, {
+	ChaosAboutStyx01 = true,
+	ChaosSurfaceQuest01 = true,
+	ChaosSurfaceQuestComplete = true,
+}, true)
 mod.AddNarrativeDataEntries(newPortedInteractTextLines, "TrialUpgrade", "InteractTextLineSets",
 	{
 		TextLinePriorityType = "InteractTextLinePriorities",
@@ -2410,7 +2415,7 @@ local newModdedInteractTextLines = {
 			SecretMusicActiveStems = { "ChaosBass" },
 			PreContentSound = "/SFX/Menu Sounds/ChaosMiscSFX",
 			Text =
-			"Welcome, Spawn of Hades, to the place you call Tartarus. You have entered the gateway I opened for you in the place between the realms, where the Unseen reside; have you not? Respond."
+			"Welcome, Spawn of Hades, to the place you call Tartarus. I conclude that you have entered the gateway I opened for you in the place between the realms, where the Unseen reside? Respond."
 		},
 		{
 			Cue = "/VO/Modsnikkelmhadesbiomescustommelinoe_0000",
@@ -2423,7 +2428,7 @@ local newModdedInteractTextLines = {
 			PostLineAnim = "MelinoeIdleWeaponless",
 			PostLineAnimTarget = "Hero",
 			Text =
-			"Almighty Chaos, indeed I have traveled through the portal you opened within the Crossroads. How is it possible that I'm here? This place you say is Tartarus, it feels familiar, but... different."
+			"Almighty Chaos, indeed I have traveled through the portal you opened within the Crossroads. How is it possible I am here? This Tartarus, it feels familiar, but... different."
 		},
 		{
 			Cue = "/VO/Modsnikkelmhadesbiomescustomchaos_0001",
@@ -2469,14 +2474,14 @@ local newModdedInteractTextLines = {
 			PostLineAnim = "MelinoeIdleWeaponless",
 			PostLineAnimTarget = "Hero",
 			Text =
-			"It does, Almighty Chaos. Before, you mentioned that you set me on my brother's path, yet I don't know what I'm looking for in this altered version of Tartarus."
+			"It does, Almighty Chaos. Before, you mentioned that you set me on my brother's path, yet I do not know what I am looking for in this altered version of Tartarus."
 		},
 		{
 			Cue = "/VO/Modsnikkelmhadesbiomescustomchaos_0003",
 			SecretMusicActiveStems = { "ChaosBass" },
 			PreContentSound = "/SFX/Menu Sounds/ChaosBoonChange",
 			Text =
-			"Your brother once sought to escape from your father's house. I have set you upon that same path within this {$Keywords.ModsNikkelMHadesBiomesModdedRoute}. In your own time, you shall come to understand your brother's motivations more deeply."
+			"Your brother once sought to escape from your father's house. I have set you upon that same path within this {$Keywords.ModsNikkelMHadesBiomesModdedRoute}. In your own time, you will find to understand your brother's motivations more deeply."
 		},
 	},
 	-- Second meeting, has met Megaera/experienced Zagreus' voicelines
@@ -2512,7 +2517,7 @@ local newModdedInteractTextLines = {
 			PostLineAnim = "MelinoeIdleWeaponless",
 			PostLineAnimTarget = "Hero",
 			Text =
-			"It does, Almighty Chaos. Another night, I encountered the Fury Megaera, and I recalled one of my brother's interactions with her. Were these {#Emph}memories{#Prev}, or imagination?"
+			"It does, Almighty Chaos. Another night, I encountered the Fury Megaera, and I recalled one of my brother's interactions with her. Were these memories, or imagination?"
 		},
 		{
 			Cue = "/VO/Modsnikkelmhadesbiomescustomchaos_0004",
@@ -2555,14 +2560,14 @@ local newModdedInteractTextLines = {
 			PostLineAnim = "MelinoeIdleWeaponless",
 			PostLineAnimTarget = "Hero",
 			Text =
-			"Another night, I encountered the Fury Megaera, and I recalled one of my brother's interactions with her. Were these {#Emph}memories{#Prev}, or imagination?"
+			"Another night, I encountered the Fury Megaera, and I recalled one of my brother's interactions with her. Were these memories, or imagination?"
 		},
 		{
 			Cue = "/VO/Modsnikkelmhadesbiomescustomchaos_0006",
 			SecretMusicActiveStems = { "ChaosBass" },
 			PreContentSound = "/SFX/Menu Sounds/ChaosBoonChange",
 			Text =
-			"All that you recall has happened, in this reality or another. Continue seeking understanding of your brother's path, as I shall observe your progress."
+			"All that you recall has happened, in this reality or another. Continue seeking understanding of your brother's path, as I will observe your progress."
 		},
 	},
 	-- #endregion
@@ -2581,7 +2586,7 @@ local newModdedInteractTextLines = {
 			SecretMusicActiveStems = { "ChaosBass" },
 			PreContentSound = "/SFX/Menu Sounds/ChaosBoonChange",
 			Text =
-			"I have inferred from our previous interactions that you have taken an interest in your brother's story. My conclusion was that it would be quite amusing to let you walk the path he took when once he attempted to learn more about your shared past. This conclusion has proven correct."
+			"I have inferred from our previous interactions that you have taken an interest in your brother's story. I concluded that it would be quite amusing to let you walk the path he took when once he attempted to learn more about your shared past. This conclusion has proven correct."
 		},
 	},
 	{
@@ -2597,7 +2602,7 @@ local newModdedInteractTextLines = {
 			SecretMusicActiveStems = { "ChaosBass" },
 			PreContentSound = "/SFX/Menu Sounds/ChaosMiscSFX",
 			Text =
-			"I recall the many times that your brother entered my realm during his quest; in much the same way that many of his attempts resembled each other, so do yours compare to his. Yet, none shall ever be the same, for each is unique in its own way. I often ponder the implications of this."
+			"I recall the many times that your brother entered my realm during his quest; much in the same way that many of his attempts likened to each other, so do yours compare to his. Yet, none shall ever be the same, for each is unique in its own way. I often ponder the implications of this."
 		},
 	},
 	{
@@ -2620,7 +2625,7 @@ local newModdedInteractTextLines = {
 			SecretMusicActiveStems = { "ChaosBass" },
 			PreContentSound = "/SFX/Menu Sounds/ChaosMiscSFX",
 			Text =
-			"You shall by now have noticed that while you seem to be reliving your brother's memories, not all aspects of this {$Keywords.ModsNikkelMHadesBiomesModdedRoute} align with his experiences. Part of you is still bound to your own reality, and so is your connection to Olympus."
+			"You will since have noticed that while you seem to be reliving your brother's memories, not all aspects of this {$Keywords.ModsNikkelMHadesBiomesModdedRoute} align with his experiences. Part of you is still bound to your own reality, and so is your connection to Olympus."
 		},
 	},
 	-- #endregion
@@ -2670,7 +2675,7 @@ local newModdedInteractTextLines = {
 			SecretMusicActiveStems = { "ChaosBass" },
 			PreContentSound = "/SFX/Menu Sounds/ChaosMiscSFX",
 			Text =
-			"Your own abilities allow you to alter the events you perceive as memories of your brother's past. Peering into these altered realities through the Pitch-Black Stone grants me the ability to explore possibilities even further removed from what has been."
+			"Your own abilities allow you to alter the events you perceive as memories of your brother's past. Peering into these altered realities through the Pitch-Black Stone further grants me the ability to explore possibilities even further removed from what has been."
 		},
 	},
 	-- #endregion

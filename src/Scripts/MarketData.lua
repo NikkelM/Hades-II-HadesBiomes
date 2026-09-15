@@ -308,7 +308,7 @@ local newMarketCropValues = {
 
 -- #region Resource Trades
 local regionTradeOrder = { "Tartarus", "Asphodel", "Elysium", "Styx" }
-local resourceTypeTradeOrder = { "Plant", "Crop", "Ore", "BossResource" }
+local resourceTypeTradeOrder = { "BossResource" }
 local vanillaTradeTargets = {
 	Tartarus = {
 		Plant = { "PlantFMoly", "PlantNMoss" },
@@ -404,10 +404,23 @@ mod.NewBrokerBossTradeCategory = {
 			Value = 1,
 		},
 		{
-			Path = { "GameState", "LifetimeResourcesGained" },
-			SumOf = mod.NewBrokerTradeCostResources,
-			Comparison = ">=",
-			Value = 10,
+			PathTrue = { "GameState", "LifetimeResourcesGained", "ModsNikkelMHadesBiomes_BossResourceTartarus" },
+		},
+		OrRequirements = {
+			{
+				{
+					Path = { "GameState", "LifetimeResourcesGained", "MixerFBoss" },
+					Comparison = ">=",
+					Value = 3,
+				},
+			},
+			{
+				{
+					Path = { "GameState", "LifetimeResourcesGained", "MixerNBoss" },
+					Comparison = ">=",
+					Value = 3,
+				},
+			},
 		},
 	},
 }
