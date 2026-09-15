@@ -170,6 +170,7 @@ function mod.BossIntroHades(eventSource, args)
 	end
 
 	if eventSource.Encounter.Name == "BossHadesPeaceful" then
+		game.AddTimerBlock(game.CurrentRun, "InterBiome")
 		game.CurrentRun.ActiveBiomeTimer = false
 	end
 end

@@ -16,6 +16,7 @@ Other fixes and improvements:
 - Balancing: The small heads summoned by Lernie can now be resurrected with "Night Bloom", "Sun Worshipper" or "God of the Dead".
 - Balancing: Exalted Shades can no longer create Lone Shades when dying.
 - Balancing: Slightly reduced the base encounter difficulty of wing-end combat rooms in the Temple of Styx.
+- Fixed: The in-game timer continues running after Hades lets Melinoë pass on the tenth clear.
 <!--Releasenotes end-->
 
 ## v1.3.0
