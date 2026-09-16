@@ -262,8 +262,12 @@ modutil.mod.Path.Wrap("DoPatches", function(base)
 			end
 		end
 
+		if game.GameState.ModsNikkelMHadesBiomesPatchRevision < 14 then
+			game.GameState.ModsNikkelMHadesBiomesCustomCounters = game.GameState.ModsNikkelMHadesBiomesCustomCounters or {}
+		end
+
 		-- IMPORTANT: This must be incremented every time this function is changed
-		game.GameState.ModsNikkelMHadesBiomesPatchRevision = 13
+		game.GameState.ModsNikkelMHadesBiomesPatchRevision = 14
 	end
 
 	return base()

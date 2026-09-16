@@ -371,8 +371,17 @@ local encounterModifications = {
 		NextRoomResumeMusic = true,
 	},
 	Story_Sisyphus_01 = {
-		-- Set ineligible if the player has unlocked Orpheus but never met him - force Orpheus on the next run
 		GameStateRequirements = {
+			{
+				FunctionName = _PLUGIN.guid .. "." .. "IsPairedEncounterEligible",
+				FunctionArgs = {
+					NPCName = "NPC_Sisyphus_01",
+					OtherEncounterName = "Story_Orpheus_01",
+					OtherNPCName = "NPC_Orpheus_01",
+					MaxConsecutiveAppearances = 2,
+				},
+			},
+		-- Set ineligible if the player has unlocked Orpheus but never met him - force Orpheus on the next run
 			OrRequirements = {
 				-- Either hasn't unlocked Orpheus yet
 				{
@@ -437,6 +446,10 @@ local encounterModifications = {
 				Args = {
 					TrackName = "/Music/MusicExploration1_MC",
 				},
+			},
+			[10] = {
+				FunctionName = _PLUGIN.guid .. "." .. "RecordPairedEncounterAppearance",
+				Args = { OtherEncounterName = "Story_Orpheus_01" },
 			},
 		},
 
@@ -682,6 +695,15 @@ local encounterModifications = {
 			{
 				PathTrue = { "GameState", "WorldUpgrades", "ModsNikkelMHadesBiomes_OrpheusUnlockItem" },
 			},
+			{
+				FunctionName = _PLUGIN.guid .. "." .. "IsPairedEncounterEligible",
+				FunctionArgs = {
+					NPCName = "NPC_Orpheus_01",
+					OtherEncounterName = "Story_Sisyphus_01",
+					OtherNPCName = "NPC_Sisyphus_01",
+					MaxConsecutiveAppearances = 2,
+				},
+			},
 			RequiredFalseCosmeticPurchaseable = "ModsNikkelMHadesBiomes_OrpheusEurydiceQuestItem",
 			RequiredFalseFlags = { "OrpheusReunionInProgress" },
 			-- Changed from ThisRun to LastRun to make Orpheus ineligible if he was in Asphodel in the previous run
@@ -708,7 +730,11 @@ local encounterModifications = {
 					TrackOffsetMax = 120.0,
 				},
 			},
-			[4] = mod.NilValue,
+			[4] = {
+				FunctionName = _PLUGIN.guid .. "." .. "RecordPairedEncounterAppearance",
+				Args = { OtherEncounterName = "Story_Sisyphus_01" },
+				GameStateRequirements = mod.NilValue,
+			},
 			[5] = mod.NilValue,
 			[6] = mod.NilValue,
 			[7] = mod.NilValue,

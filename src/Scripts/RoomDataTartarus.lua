@@ -1031,13 +1031,6 @@ local roomModifications = {
 
 		LegalEncounters = {
 			"Story_Sisyphus_01",
-			"Story_Sisyphus_01",
-			"Story_Sisyphus_01",
-			"Story_Sisyphus_01",
-			"Story_Orpheus_01",
-			"Story_Orpheus_01",
-			"Story_Orpheus_01",
-			"Story_Orpheus_01",
 			"Story_Orpheus_01",
 		},
 
