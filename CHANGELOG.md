@@ -7,13 +7,13 @@
 - You may now naturally encounter Artemis and Athena in Zagreus' Journey, and they will use their dialogues from the first game when you speak to one of them.
 - Picking up boons from Aphrodite, Ares, Chaos, Demeter, Hermes, Poseidon or Zeus while in a Zagreus' Journey run will now use their respective dialogues and advance their storylines from the first game.
 - Theseus may now call upon the aid of Apollo, Hestia, Hera and Hephaestus.
+- Added a new "cheat" config option to immediately unlock all (non-story) incantations.
 - Balancing: Slightly reduced health and armour of non-boss enemies in all biomes.
 - Balancing: Encounters should now be more cleanly separated into 1-3 distinct waves, with fewer waves that keep spawning in new enemies one after another.
 
 Other fixes and improvements:
 - Picking up a boon from Hermes while in a Zagreus' Journey run may now have him deliver a message from the first game's Dionysus to you (as Dionysus cannot be encountered during Zagreus' Journey runs), allowing you to experience his storyline.
 - Added all resources that can be found during Zagreus' Journey runs to the Wretched Broker to allow trading them for the equivalent resources from Hades II (they will show after completing any new run).
-- Added a new "cheat" config option to immediately unlock all (non-story) incantations.
 - Added a new "cheat" config option to immediately unlock all cosmetics (except badges).
 - Added a new Minor Prophecy revealed by talking to Poseidon in the Nightmare Realm.
 - The "A True Nightmare" Minor Prophecy can now only be revealed if the [Dream Dive Tweaks](https://thunderstore.io/c/hades-ii/p/zerp/DreamDiveTweaks/) mod is also installed (*It would be quite difficult to complete otherwise*).
