@@ -13,7 +13,8 @@
 Other fixes and improvements:
 - Picking up a boon from Hermes while in a Zagreus' Journey run may now have him deliver a message from the first game's Dionysus to you (as Dionysus cannot be encountered during Zagreus' Journey runs), allowing you to experience his storyline.
 - Added all resources that can be found during Zagreus' Journey runs to the Wretched Broker to allow trading them for the equivalent resources from Hades II (they will show after completing any new run).
-- Added a new Minor Prophecy unlocked by talking to Poseidon in the Nightmare Realm.
+- Added a new Minor Prophecy revealed by talking to Poseidon in the Nightmare Realm.
+- The "A True Nightmare" Minor Prophecy can now only be revealed if the [Dream Dive Tweaks](https://thunderstore.io/c/hades-ii/p/zerp/DreamDiveTweaks/) mod is also installed (*It would be quite difficult to complete otherwise*).
 - Balancing: There can now only be a limited number of "large" enemies alive at once during an encounter, similar to what was the case in the first game.
 - Balancing: The small heads summoned by Lernie can now be resurrected with "Night Bloom", "Sun Worshipper" or "God of the Dead".
 - Balancing: Exalted Shades can no longer create Lone Shades when dying.

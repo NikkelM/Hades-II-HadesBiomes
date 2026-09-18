@@ -6,9 +6,10 @@ game.ScreenData.QuestLog.ComponentData.InfoBoxTitle.TextArgs.TextSymbolScale = 0
 
 local flippedArcanaActive = mod.IsOtherModActive("ReadEmAndWeep-Flip_the_Arcana_Mod")
 local nighmareFearActive = mod.IsOtherModActive("ReadEmAndWeep-Nightmare_Fear")
+local dreamDiveTweaksActive = mod.IsOtherModActive("zerp-DreamDiveTweaks")
 
 -- #region The order of the quests in the Quest log, these will be appended to the end of the vanilla list
--- Current number of quests: 43 (41 base + one flipped + one nightmare)
+-- Current number of quests: 43 (40 base + one Dream Dive Tweaks + one flipped + one nightmare)
 local newQuestOrderData = {
 	-- key / mission-critical
 	"ModsNikkelMHadesBiomes_QuestSisyphusLiberation",
@@ -54,9 +55,21 @@ local newQuestOrderData = {
 	"ModsNikkelMHadesBiomes_QuestThanatosKeepsakeHighPercentage",
 	"ModsNikkelMHadesBiomes_QuestHitlessErebusEncounters",
 	"ModsNikkelMHadesBiomes_QuestDefeatCharonWithCharonAspect",
-	"ModsNikkelMHadesBiomes_QuestDreamDiveEMBosses",
 	"ModsNikkelMHadesBiomes_QuestDreamDiveCharonAndZagreus",
 }
+
+if dreamDiveTweaksActive then
+	local insertIndex = nil
+	for index, questKey in ipairs(newQuestOrderData) do
+		if questKey == "ModsNikkelMHadesBiomes_QuestDreamDiveCharonAndZagreus" then
+			insertIndex = index
+			break
+		end
+	end
+	if insertIndex then
+		table.insert(newQuestOrderData, insertIndex, "ModsNikkelMHadesBiomes_QuestDreamDiveEMBosses")
+	end
+end
 
 if flippedArcanaActive then
 	local insertIndex = nil
@@ -1450,39 +1463,6 @@ local newQuestData = {
 		CustomIncompleteString = "ModsNikkelMHadesBiomes_QuestDreamDiveCharonAndZagreus_Condition",
 		CustomCompleteString = "ModsNikkelMHadesBiomes_QuestDreamDiveCharonAndZagreus_Cleared",
 	},
-	-- Defeat EM Chronos, Typhon, and Hades in a single Dream Dive
-	ModsNikkelMHadesBiomes_QuestDreamDiveEMBosses = {
-		InheritFrom = { "DefaultQuestItem", "DefaultFatesQuest" },
-		RewardResourceName = "WeaponPointsRare",
-		RewardResourceAmount = 5,
-		UnlockGameStateRequirements = {
-			-- Must have beaten EM Chronos at least once
-			{
-				PathTrue = { "GameState", "EncountersCompletedCache", "BossChronos02" },
-			},
-			-- Must have beaten EM Typhon at least once
-			{
-				PathTrue = { "GameState", "EncountersCompletedCache", "BossTyphonHead02" },
-			},
-			-- Must have beaten EM Hades at least once
-			{
-				PathTrue = { "GameState", "TextLinesRecord", "LordHadesExtremeMeasuresDefeat01" },
-			},
-			-- Must have completed at least three Dream Dives
-			{
-				Path = { "GameState", "ClearedDreamRunsCache" },
-				Comparison = ">=",
-				Value = 3,
-			},
-		},
-		CompleteGameStateRequirements = {
-			{
-				PathTrue = { "GameState", "ModsNikkelMHadesBiomesCustomFlags", "ModsNikkelMHadesBiomes_DreamDiveDefeatedEMChronosTyphonHades" },
-			},
-		},
-		CustomIncompleteString = "ModsNikkelMHadesBiomes_QuestDreamDiveEMBosses_Condition",
-		CustomCompleteString = "ModsNikkelMHadesBiomes_QuestDreamDiveEMBosses_Cleared",
-	},
 	-- Defeat Charon with the Aspect of Charon
 	ModsNikkelMHadesBiomes_QuestDefeatCharonWithCharonAspect = {
 		InheritFrom = { "DefaultQuestItem", "DefaultKillQuest" },
@@ -1510,9 +1490,48 @@ local newQuestData = {
 }
 mod.AddTableKeysSkipDupes(game.QuestData, newQuestData)
 
+if dreamDiveTweaksActive then
+	local dreamDiveTweaksNewQuestData = {
+		-- Defeat EM Chronos, Typhon, and Hades in a single Dream Dive
+		ModsNikkelMHadesBiomes_QuestDreamDiveEMBosses = {
+			InheritFrom = { "DefaultQuestItem", "DefaultFatesQuest" },
+			RewardResourceName = "WeaponPointsRare",
+			RewardResourceAmount = 5,
+			UnlockGameStateRequirements = {
+				-- Must have beaten EM Chronos at least once
+				{
+					PathTrue = { "GameState", "EncountersCompletedCache", "BossChronos02" },
+				},
+				-- Must have beaten EM Typhon at least once
+				{
+					PathTrue = { "GameState", "EncountersCompletedCache", "BossTyphonHead02" },
+				},
+				-- Must have beaten EM Hades at least once
+				{
+					PathTrue = { "GameState", "TextLinesRecord", "LordHadesExtremeMeasuresDefeat01" },
+				},
+				-- Must have completed at least three Dream Dives
+				{
+					Path = { "GameState", "ClearedDreamRunsCache" },
+					Comparison = ">=",
+					Value = 3,
+				},
+			},
+			CompleteGameStateRequirements = {
+				{
+					PathTrue = { "GameState", "ModsNikkelMHadesBiomesCustomFlags", "ModsNikkelMHadesBiomes_DreamDiveDefeatedEMChronosTyphonHades" },
+				},
+			},
+			CustomIncompleteString = "ModsNikkelMHadesBiomes_QuestDreamDiveEMBosses_Condition",
+			CustomCompleteString = "ModsNikkelMHadesBiomes_QuestDreamDiveEMBosses_Cleared",
+		},
+	}
+	mod.AddTableKeysSkipDupes(game.QuestData, dreamDiveTweaksNewQuestData)
+end
+
 if flippedArcanaActive then
-	-- Clearing with each flipped Arcana Card/MetaUpgrade
 	local flippedArcanaNewQuestData = {
+		-- Clearing with each flipped Arcana Card/MetaUpgrade
 		ModsNikkelMHadesBiomes_QuestFlippedMetaUpgrades = {
 			InheritFrom = { "DefaultQuestItem", "DefaultUnseenQuest" },
 			RewardResourceName = "CardUpgradePoints",
@@ -1560,8 +1579,8 @@ if flippedArcanaActive then
 end
 
 if nighmareFearActive then
-	-- Clearing with each Nightmare Fear Vow
 	local nighmareFearNewQuestData = {
+		-- Clearing with each Nightmare Fear Vow
 		ModsNikkelMHadesBiomes_QuestNightmareFearPactUpgrades = {
 			InheritFrom = { "DefaultQuestItem", "DefaultUnseenQuest" },
 			RewardResourceName = "WeaponPointsRare",
