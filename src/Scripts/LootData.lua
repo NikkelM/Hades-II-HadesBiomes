@@ -177,9 +177,12 @@ function mod.AddNarrativeDataEntries(newTextLines, narrativeDataKey, textLineTyp
 		return
 	end
 
-	-- Update the vanilla dialogues to NOT play in modded runs, since these don't have priority tables
 	local devotionTextLines = { "RejectionTextLines", "MakeUpTextLines" }
-	if game.Contains(devotionTextLines, textLineType) then
+	local isDevotionTextLine = game.Contains(devotionTextLines, textLineType)
+	local useRecordExemptTextLines = { "DuoPickupTextLines", "BoughtTextLines", "RejectionTextLines", "MakeUpTextLines" }
+	local isUseRecordExemptTextLine = game.Contains(useRecordExemptTextLines, textLineType)
+	-- Update the vanilla dialogues to NOT play in modded runs, since these don't have priority tables
+	if isDevotionTextLine then
 		for _, textLineData in pairs(game.LootData[narrativeDataKey][textLineType]) do
 			textLineData.GameStateRequirements = textLineData.GameStateRequirements or {}
 			table.insert(textLineData.GameStateRequirements,
@@ -240,9 +243,9 @@ function mod.AddNarrativeDataEntries(newTextLines, narrativeDataKey, textLineTyp
 		if not args.SkipModdedRunRequirement then
 			table.insert(data.GameStateRequirements, { PathTrue = { "CurrentRun", "ModsNikkelMHadesBiomesIsModdedRun" } })
 		end
-		-- This requirement was missing in Hades' god boon pickup textlines
-		-- NPCs must skip it, as RecordUse fires on interact before the just-in-time eligibility recheck, which would disqualify the line being played
-		if not args.SkipUseRecordRequirement then
+		-- Standard loot text lines should not replay after the god has already been used this run
+		-- Contextual loot text lines must remain eligible after the god has already been used this run
+		if not args.SkipUseRecordRequirement and not isUseRecordExemptTextLine then
 			table.insert(data.GameStateRequirements, { PathFalse = { "CurrentRun", "UseRecord", narrativeDataKey } })
 		end
 
