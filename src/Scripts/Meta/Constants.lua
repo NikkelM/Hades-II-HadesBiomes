@@ -463,7 +463,10 @@ mod.BossResourceNames = {
 mod.AllNewResourceNames = game.ConcatTableValuesIPairs(game.DeepCopyTable(mod.NonBossResourceNames),
 	game.DeepCopyTable(mod.BossResourceNames))
 
--- Populated in the loops in CosmeticData.lua
+-- DO NOT change the name of this, as this would invalidate the unlock for anyone who has already performed the incantation
+mod.UnlockCosmeticsIncantationName = "ModsNikkelMHadesBiomesUnlockCosmeticsIncantation"
+
+-- All purchasable mod cosmetic IDs, populated during registration in CosmeticsData.lua
 mod.ModdedCosmeticIds = {}
 
 -- Song names/Ids from Hades OST for the Music Maker

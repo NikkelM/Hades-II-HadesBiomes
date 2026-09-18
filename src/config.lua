@@ -19,6 +19,10 @@ local config = {
       z_SpeedrunDisableTinyVermin = false,
     },
   },
+  cheats = {
+    z_UnlockGameplayIncantations = false,
+    z_UnlockAllCosmetics = false,
+  },
   debugging = {
     hadesGameFolder = "root",
     logLevel = 4,
@@ -59,6 +63,12 @@ local configDesc = {
       z_SpeedrunDisableTinyVermin =
       "If enabled, the Tiny Vermin miniboss in Styx will never appear.",
     },
+  },
+  cheats = {
+    z_UnlockGameplayIncantations =
+    "NOT REVERSIBLE! If enabled, permanently unlocks all non-story incantations added by Zagreus' Journey. Disabling this later on does not undo the unlocks.",
+    z_UnlockAllCosmetics =
+    "NOT REVERSIBLE! If enabled, permanently unlocks all cosmetics and Arcana card-back packs added by Zagreus' Journey. Does not grant the badges you can unlock at the Spirit Mixer. Disabling this later on does not undo the unlocks.",
   },
   debugging = {
     hadesGameFolder =

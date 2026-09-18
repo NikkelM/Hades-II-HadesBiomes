@@ -73,6 +73,7 @@ local newIncantations = {
 	ModsNikkelMHadesBiomes_OrpheusUnlockItem = {
 		ModsNikkelMHadesBiomesInsertAfterItem = "ModsNikkelMHadesBiomes_SisyphusQuestItem",
 		ModsNikkelMHadesBiomesCauldronCategory = "WorldUpgradeScreen_ModsNikkelMHadesBiomes_Critical",
+		ModsNikkelMHadesBiomesCanAutoUnlock = true,
 
 		InheritFrom = { "DefaultHubItem", "DefaultCriticalItem" },
 
@@ -93,6 +94,7 @@ local newIncantations = {
 	ModsNikkelMHadesBiomes_UnlockPostBossGiftRackIncantation = {
 		ModsNikkelMHadesBiomesInsertAfterItem = "ModsNikkelMHadesBiomes_OrpheusUnlockItem",
 		ModsNikkelMHadesBiomesCauldronCategory = "WorldUpgradeScreen_ModsNikkelMHadesBiomes_Critical",
+		ModsNikkelMHadesBiomesCanAutoUnlock = true,
 
 		InheritFrom = { "DefaultHubItem", "DefaultCriticalItem" },
 
@@ -118,6 +120,7 @@ local newIncantations = {
 	ModsNikkelMHadesBiomes_UnlockInRunWellShopsIncantation = {
 		ModsNikkelMHadesBiomesInsertAfterItem = "ModsNikkelMHadesBiomes_UnlockPostBossGiftRackIncantation",
 		ModsNikkelMHadesBiomesCauldronCategory = "WorldUpgradeScreen_ModsNikkelMHadesBiomes_Critical",
+		ModsNikkelMHadesBiomesCanAutoUnlock = true,
 
 		InheritFrom = { "DefaultHubItem", "DefaultCriticalItem" },
 
@@ -147,6 +150,7 @@ local newIncantations = {
 	ModsNikkelMHadesBiomes_UnlockPostBossWellShopsIncantation = {
 		ModsNikkelMHadesBiomesInsertAfterItem = "ModsNikkelMHadesBiomes_UnlockInRunWellShopsIncantation",
 		ModsNikkelMHadesBiomesCauldronCategory = "WorldUpgradeScreen_ModsNikkelMHadesBiomes_Critical",
+		ModsNikkelMHadesBiomesCanAutoUnlock = true,
 
 		InheritFrom = { "DefaultHubItem", "DefaultCriticalItem" },
 
@@ -188,6 +192,7 @@ local newIncantations = {
 	ModsNikkelMHadesBiomes_UnlockInRunSellShopsIncantation = {
 		ModsNikkelMHadesBiomesInsertAfterItem = "ModsNikkelMHadesBiomes_UnlockPostBossWellShopsIncantation",
 		ModsNikkelMHadesBiomesCauldronCategory = "WorldUpgradeScreen_ModsNikkelMHadesBiomes_Critical",
+		ModsNikkelMHadesBiomesCanAutoUnlock = true,
 
 		InheritFrom = { "DefaultHubItem", "DefaultCriticalItem" },
 
@@ -215,6 +220,7 @@ local newIncantations = {
 	ModsNikkelMHadesBiomes_UnlockPostBossSellShopsIncantation = {
 		ModsNikkelMHadesBiomesInsertAfterItem = "ModsNikkelMHadesBiomes_UnlockInRunSellShopsIncantation",
 		ModsNikkelMHadesBiomesCauldronCategory = "WorldUpgradeScreen_ModsNikkelMHadesBiomes_Critical",
+		ModsNikkelMHadesBiomesCanAutoUnlock = true,
 
 		InheritFrom = { "DefaultHubItem", "DefaultCriticalItem" },
 
@@ -255,6 +261,7 @@ local newIncantations = {
 	ModsNikkelMHadesBiomes_UnlockTartarusReprieveIncantation = {
 		ModsNikkelMHadesBiomesInsertAfterItem = "ModsNikkelMHadesBiomes_UnlockPostBossSellShopsIncantation",
 		ModsNikkelMHadesBiomesCauldronCategory = "WorldUpgradeScreen_ModsNikkelMHadesBiomes_Critical",
+		ModsNikkelMHadesBiomesCanAutoUnlock = true,
 
 		InheritFrom = { "DefaultHubItem", "DefaultCriticalItem" },
 
@@ -278,6 +285,7 @@ local newIncantations = {
 	ModsNikkelMHadesBiomes_UnlockAsphodelReprieveIncantation = {
 		ModsNikkelMHadesBiomesInsertAfterItem = "ModsNikkelMHadesBiomes_UnlockTartarusReprieveIncantation",
 		ModsNikkelMHadesBiomesCauldronCategory = "WorldUpgradeScreen_ModsNikkelMHadesBiomes_Critical",
+		ModsNikkelMHadesBiomesCanAutoUnlock = true,
 
 		InheritFrom = { "DefaultHubItem", "DefaultCriticalItem" },
 
@@ -311,6 +319,7 @@ local newIncantations = {
 	ModsNikkelMHadesBiomes_UnlockElysiumReprieveIncantation = {
 		ModsNikkelMHadesBiomesInsertAfterItem = "ModsNikkelMHadesBiomes_UnlockAsphodelReprieveIncantation",
 		ModsNikkelMHadesBiomesCauldronCategory = "WorldUpgradeScreen_ModsNikkelMHadesBiomes_Critical",
+		ModsNikkelMHadesBiomesCanAutoUnlock = true,
 
 		InheritFrom = { "DefaultHubItem", "DefaultCriticalItem" },
 
@@ -346,6 +355,7 @@ local newIncantations = {
 	ModsNikkelMHadesBiomes_BreakableValue1Incantation = {
 		ModsNikkelMHadesBiomesInsertAfterItem = "ModsNikkelMHadesBiomes_UnlockElysiumReprieveIncantation",
 		ModsNikkelMHadesBiomesCauldronCategory = "WorldUpgradeScreen_ModsNikkelMHadesBiomes_Critical",
+		ModsNikkelMHadesBiomesCanAutoUnlock = true,
 
 		InheritFrom = { "DefaultHubItem", "DefaultCriticalItem" },
 
@@ -379,6 +389,7 @@ local newIncantations = {
 	ModsNikkelMHadesBiomes_BreakableValue2Incantation = {
 		ModsNikkelMHadesBiomesInsertAfterItem = "ModsNikkelMHadesBiomes_BreakableValue1Incantation",
 		ModsNikkelMHadesBiomesCauldronCategory = "WorldUpgradeScreen_ModsNikkelMHadesBiomes_Critical",
+		ModsNikkelMHadesBiomesCanAutoUnlock = true,
 
 		InheritFrom = { "DefaultHubItem", "DefaultCriticalItem" },
 
@@ -403,6 +414,7 @@ local newIncantations = {
 	ModsNikkelMHadesBiomes_BreakableValue3Incantation = {
 		ModsNikkelMHadesBiomesInsertAfterItem = "ModsNikkelMHadesBiomes_BreakableValue2Incantation",
 		ModsNikkelMHadesBiomesCauldronCategory = "WorldUpgradeScreen_ModsNikkelMHadesBiomes_Critical",
+		ModsNikkelMHadesBiomesCanAutoUnlock = true,
 
 		InheritFrom = { "DefaultHubItem", "DefaultCriticalItem" },
 
@@ -429,6 +441,7 @@ local newIncantations = {
 	ModsNikkelMHadesBiomes_UnlockInfernalTrovesIncantation = {
 		ModsNikkelMHadesBiomesInsertAfterItem = "ModsNikkelMHadesBiomes_BreakableValue3Incantation",
 		ModsNikkelMHadesBiomesCauldronCategory = "WorldUpgradeScreen_ModsNikkelMHadesBiomes_Critical",
+		ModsNikkelMHadesBiomesCanAutoUnlock = true,
 
 		InheritFrom = { "DefaultHubItem", "DefaultCriticalItem" },
 
@@ -456,6 +469,7 @@ local newIncantations = {
 	ModsNikkelMHadesBiomes_UnlockMoonMonumentsIncantation = {
 		ModsNikkelMHadesBiomesInsertAfterItem = "ModsNikkelMHadesBiomes_UnlockInfernalTrovesIncantation",
 		ModsNikkelMHadesBiomesCauldronCategory = "WorldUpgradeScreen_ModsNikkelMHadesBiomes_Critical",
+		ModsNikkelMHadesBiomesCanAutoUnlock = true,
 
 		InheritFrom = { "DefaultHubItem", "DefaultCriticalItem" },
 
@@ -500,6 +514,7 @@ local newIncantations = {
 	ModsNikkelMHadesBiomes_UnlockShrinePointGatesIncantation = {
 		ModsNikkelMHadesBiomesInsertAfterItem = "ModsNikkelMHadesBiomes_UnlockMoonMonumentsIncantation",
 		ModsNikkelMHadesBiomesCauldronCategory = "WorldUpgradeScreen_ModsNikkelMHadesBiomes_Critical",
+		ModsNikkelMHadesBiomesCanAutoUnlock = true,
 
 		InheritFrom = { "DefaultHubItem", "DefaultCriticalItem" },
 
@@ -613,7 +628,7 @@ local newIncantations = {
 		},
 	},
 	-- DO NOT change the name of this, as this would invalidate the unlock for anyone who has already performed the incantation
-	ModsNikkelMHadesBiomesUnlockCosmeticsIncantation = {
+	[mod.UnlockCosmeticsIncantationName] = {
 		ModsNikkelMHadesBiomesInsertAfterItem = "ModsNikkelMHadesBiomes_ChangeHydraNameToLernieIncantation",
 		ModsNikkelMHadesBiomesCauldronCategory = "WorldUpgradeScreen_ModsNikkelMHadesBiomes_Critical",
 
@@ -701,6 +716,19 @@ local sortedIncantationNames = getSortedIncantations(newIncantations)
 -- The modded category is defined in GhostAdminData_Items.lua
 for _, incantationName in pairs(sortedIncantationNames) do
 	local incantationData = newIncantations[incantationName]
+	if incantationData.ModsNikkelMHadesBiomesCanAutoUnlock then
+		incantationData.GameStateRequirements = {
+			OrRequirements = {
+				incantationData.GameStateRequirements or {},
+				{
+					{
+						PathTrue = { "GameState", "WorldUpgradesAdded", incantationName },
+					},
+				},
+			},
+		}
+	end
+
 	local insertAfterItem = incantationData.ModsNikkelMHadesBiomesInsertAfterItem
 	local cauldronCategory = incantationData.ModsNikkelMHadesBiomesCauldronCategory or
 			"WorldUpgradeScreen_ModsNikkelMHadesBiomes_Critical"

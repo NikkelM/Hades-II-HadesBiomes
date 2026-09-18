@@ -13,6 +13,8 @@
 Other fixes and improvements:
 - Picking up a boon from Hermes while in a Zagreus' Journey run may now have him deliver a message from the first game's Dionysus to you (as Dionysus cannot be encountered during Zagreus' Journey runs), allowing you to experience his storyline.
 - Added all resources that can be found during Zagreus' Journey runs to the Wretched Broker to allow trading them for the equivalent resources from Hades II (they will show after completing any new run).
+- Added a new "cheat" config option to immediately unlock all (non-story) incantations.
+- Added a new "cheat" config option to immediately unlock all cosmetics (except badges).
 - Added a new Minor Prophecy revealed by talking to Poseidon in the Nightmare Realm.
 - The "A True Nightmare" Minor Prophecy can now only be revealed if the [Dream Dive Tweaks](https://thunderstore.io/c/hades-ii/p/zerp/DreamDiveTweaks/) mod is also installed (*It would be quite difficult to complete otherwise*).
 - Balancing: There can now only be a limited number of "large" enemies alive at once during an encounter, similar to what was the case in the first game.
@@ -25,6 +27,7 @@ Other fixes and improvements:
 - Fixed: Blood Triad progress and indicators are cleared when enemies teleport.
 - Fixed: The in-game timer continues running after Hades lets Melinoë pass on the tenth clear.
 - Fixed: A small number of enemy attacks may have unintended behaviour in rare cases, caused by legacy properties not being migrated correctly due to unstable ordering.
+- Fixed: Unlocking Arcana card-back packs does not count towards the completion of "A Simple Job".
 <!--Releasenotes end-->
 
 ## v1.3.0

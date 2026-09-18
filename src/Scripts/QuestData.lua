@@ -255,7 +255,7 @@ local newQuestData = {
 				PathTrue = { "GameState", "QuestsCompleted", "QuestCosmeticsSmall" },
 			},
 			{
-				PathTrue = { "GameState", "WorldUpgradesAdded", "ModsNikkelMHadesBiomesUnlockCosmeticsIncantation" },
+				PathTrue = { "GameState", "WorldUpgradesAdded", mod.UnlockCosmeticsIncantationName },
 			},
 		},
 		CompleteGameStateRequirements = {

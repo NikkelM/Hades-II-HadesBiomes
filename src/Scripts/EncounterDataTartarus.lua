@@ -381,12 +381,18 @@ local encounterModifications = {
 					MaxConsecutiveAppearances = 2,
 				},
 			},
-		-- Set ineligible if the player has unlocked Orpheus but never met him - force Orpheus on the next run
+			-- After meeting Sisyphus, set him ineligible if the player has unlocked Orpheus but never met him
 			OrRequirements = {
 				-- Either hasn't unlocked Orpheus yet
 				{
 					{
 						PathFalse = { "GameState", "WorldUpgrades", "ModsNikkelMHadesBiomes_OrpheusUnlockItem" },
+					},
+				},
+				-- Or hasn't met Sisyphus yet (in case the player used the unlock-all-incantations config)
+				{
+					{
+						PathFalse = { "GameState", "TextLinesRecord", "SisyphusFirstMeeting" },
 					},
 				},
 				-- Or has unlocked AND met Orpheus
@@ -694,6 +700,10 @@ local encounterModifications = {
 		GameStateRequirements = {
 			{
 				PathTrue = { "GameState", "WorldUpgrades", "ModsNikkelMHadesBiomes_OrpheusUnlockItem" },
+			},
+			-- Need to have met Sisyphus before (in case the player used the unlock-all-incantations config)
+			{
+				PathTrue = { "GameState", "TextLinesRecord", "SisyphusFirstMeeting" },
 			},
 			{
 				FunctionName = _PLUGIN.guid .. "." .. "IsPairedEncounterEligible",

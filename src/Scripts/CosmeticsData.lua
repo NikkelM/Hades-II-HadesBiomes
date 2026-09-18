@@ -1340,7 +1340,7 @@ for _, cosmeticData in ipairs(tentCosmetics) do
 		cosmeticData.GameStateRequirements = {}
 	end
 	table.insert(cosmeticData.GameStateRequirements, {
-		PathTrue = { "GameState", "WorldUpgradesAdded", "ModsNikkelMHadesBiomesUnlockCosmeticsIncantation" },
+		PathTrue = { "GameState", "WorldUpgradesAdded", mod.UnlockCosmeticsIncantationName },
 	})
 	table.insert(mod.ModdedCosmeticIds, cosmeticData.Id)
 	CosmeticsAPI.RegisterCosmetic(cosmeticData)
@@ -3097,7 +3097,7 @@ for _, cosmeticData in ipairs(mainHubAreaCosmetics) do
 		cosmeticData.GameStateRequirements = {}
 	end
 	table.insert(cosmeticData.GameStateRequirements, {
-		PathTrue = { "GameState", "WorldUpgradesAdded", "ModsNikkelMHadesBiomesUnlockCosmeticsIncantation" },
+		PathTrue = { "GameState", "WorldUpgradesAdded", mod.UnlockCosmeticsIncantationName },
 	})
 	table.insert(mod.ModdedCosmeticIds, cosmeticData.Id)
 	CosmeticsAPI.RegisterCosmetic(cosmeticData)
@@ -4457,7 +4457,7 @@ for _, cosmeticData in ipairs(tavernaCosmetics) do
 		cosmeticData.GameStateRequirements = {}
 	end
 	table.insert(cosmeticData.GameStateRequirements, {
-		PathTrue = { "GameState", "WorldUpgradesAdded", "ModsNikkelMHadesBiomesUnlockCosmeticsIncantation" },
+		PathTrue = { "GameState", "WorldUpgradesAdded", mod.UnlockCosmeticsIncantationName },
 	})
 	table.insert(mod.ModdedCosmeticIds, cosmeticData.Id)
 	CosmeticsAPI.RegisterCosmetic(cosmeticData)
@@ -5961,7 +5961,7 @@ for _, cosmeticData in ipairs(preRunCosmetics) do
 		cosmeticData.GameStateRequirements = {}
 	end
 	table.insert(cosmeticData.GameStateRequirements, {
-		PathTrue = { "GameState", "WorldUpgradesAdded", "ModsNikkelMHadesBiomesUnlockCosmeticsIncantation" },
+		PathTrue = { "GameState", "WorldUpgradesAdded", mod.UnlockCosmeticsIncantationName },
 	})
 	table.insert(mod.ModdedCosmeticIds, cosmeticData.Id)
 	CosmeticsAPI.RegisterCosmetic(cosmeticData)
@@ -5970,6 +5970,7 @@ end
 
 -- #region Arcana Card Backs
 -- #region Biomes Pack
+table.insert(mod.ModdedCosmeticIds, _PLUGIN.guid .. ".Cosmetic_Arcana_Biomes")
 CosmeticsAPI.RegisterCardBackPack({
 	Id = _PLUGIN.guid .. "." .. "Cosmetic_Arcana_Biomes",
 	Name = {
@@ -6063,7 +6064,7 @@ CosmeticsAPI.RegisterCardBackPack({
 	},
 	GameStateRequirements = {
 		{
-			PathTrue = { "GameState", "WorldUpgradesAdded", "ModsNikkelMHadesBiomesUnlockCosmeticsIncantation" },
+			PathTrue = { "GameState", "WorldUpgradesAdded", mod.UnlockCosmeticsIncantationName },
 		},
 		{
 			Path = { "GameState", "ModsNikkelMHadesBiomesCompletedRunsCache" },
@@ -6120,6 +6121,7 @@ CosmeticsAPI.RegisterCardBack({
 })
 -- #endregion
 -- #region Bosses Pack
+table.insert(mod.ModdedCosmeticIds, _PLUGIN.guid .. ".Cosmetic_Arcana_Bosses")
 CosmeticsAPI.RegisterCardBackPack({
 	Id = _PLUGIN.guid .. "." .. "Cosmetic_Arcana_Bosses",
 	Name = {
@@ -6213,7 +6215,7 @@ CosmeticsAPI.RegisterCardBackPack({
 	},
 	GameStateRequirements = {
 		{
-			PathTrue = { "GameState", "WorldUpgradesAdded", "ModsNikkelMHadesBiomesUnlockCosmeticsIncantation" },
+			PathTrue = { "GameState", "WorldUpgradesAdded", mod.UnlockCosmeticsIncantationName },
 		},
 		{
 			Path = { "GameState", "ModsNikkelMHadesBiomesClearedRunsCache" },
@@ -6257,6 +6259,7 @@ CosmeticsAPI.RegisterCardBack({
 })
 -- #endregion
 -- #region Gods Pack
+table.insert(mod.ModdedCosmeticIds, _PLUGIN.guid .. ".Cosmetic_Arcana_Gods")
 CosmeticsAPI.RegisterCardBackPack({
 	Id = _PLUGIN.guid .. "." .. "Cosmetic_Arcana_Gods",
 	Name = {
@@ -6349,7 +6352,7 @@ CosmeticsAPI.RegisterCardBackPack({
 	},
 	GameStateRequirements = {
 		{
-			PathTrue = { "GameState", "WorldUpgradesAdded", "ModsNikkelMHadesBiomesUnlockCosmeticsIncantation" },
+			PathTrue = { "GameState", "WorldUpgradesAdded", mod.UnlockCosmeticsIncantationName },
 		},
 		{
 			Path = { "GameState", "ModsNikkelMHadesBiomesCompletedRunsCache" },
