@@ -2392,7 +2392,6 @@ local newModdedInteractTextLines = {
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
 			-- Keep every custom and ported dialogue before the Hades II dialogues
 			InsertAtFirstPriority = true,
-			CreateNewPriorityGroup = true,
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "ChaosInteractPresentation",
@@ -2441,6 +2440,7 @@ local newModdedInteractTextLines = {
 		Name = "ModsNikkelMHadesBiomes_ChaosAboutNightmareRuns02A",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
 			InsertAfterNarrativeTextLine = "ModsNikkelMHadesBiomes_ChaosAboutNightmareRuns01",
+			CreateNewPriorityGroup = true,
 		},
 		GameStateRequirements = {
 			{
@@ -2570,7 +2570,7 @@ local newModdedInteractTextLines = {
 	{
 		Name = "ModsNikkelMHadesBiomes_ChaosAboutZagreusEscapeAttempts01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterTextLineGroupContaining = "ModsNikkelMHadesBiomes_ChaosAboutNightmareRuns01",
+			InsertAfterTextLineGroupContaining = "ModsNikkelMHadesBiomes_ChaosAboutNightmareRuns02A",
 			CreateNewPriorityGroup = true,
 		},
 		PlayOnce = true,
