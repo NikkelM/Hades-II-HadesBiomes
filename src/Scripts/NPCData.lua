@@ -856,6 +856,7 @@ local npcModifications = {
 						},
 						TextLineSet = {
 							BecameCloseWithThanatos01 = {
+								UseableOffSource = true,
 								GameStateRequirements = {},
 								-- Removed for context
 								-- {
@@ -1040,6 +1041,7 @@ local npcModifications = {
 						},
 						TextLineSet = {
 							BecameCloseWithThanatos01_B = {
+								UseableOffSource = true,
 								GameStateRequirements = {},
 								-- Removed for context
 								-- {
