@@ -737,6 +737,7 @@ local function on_ready_late()
 	import "Scripts/RoomLogic_Late.lua"
 	import "Scripts/RoomPresentation_Late.lua"
 	import "Scripts/RunClearLogic_Late.lua"
+	import "Scripts/ShrineLogic_Late.lua"
 	import "Scripts/WeaponUpgradeLogic_Late.lua"
 
 	import "Scripts/Meta/PonyMenuLogic_Late.lua"
