@@ -18,6 +18,7 @@ Other fixes and improvements:
 - Balancing: There can now only be a limited number of "large" enemies alive at once during an encounter, similar to what was the case in the first game.
 - Balancing: The small heads summoned by Lernie can now be resurrected with "Night Bloom", "Sun Worshipper" or "God of the Dead".
 - Balancing: Exalted Shades can no longer create Lone Shades when dying.
+- Balancing: Brimstones can no longer appear during Unseen Sigil challenges in Tartarus (which you need to clear without taking damage).
 - Balancing: Slightly reduced the base encounter difficulty of wing-end combat rooms in the Temple of Styx.
 - Balancing: The shared Tartarus story room now prioritizes Sisyphus or Orpheus if only one has an unplayed one-time conversation, and neither can appear more than twice in a row.
 - Fixed: An interaction prompt shows for Thanatos when he is about to leave after his romance dialogue.

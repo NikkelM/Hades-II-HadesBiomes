@@ -103,7 +103,7 @@ local encounterReplacements = {
 
 	PerfectClearChallengeTartarus = {
 		InheritFrom = { "PerfectClearChallenge", "GeneratedTartarus" },
-		EnemySet = game.EnemySets.EnemiesBiome1,
+		EnemySet = game.EnemySets.EnemiesBiome1_PerfectClearChallenge,
 		DreamBiomeData = "nil",
 	},
 	EliteChallengeTartarus = {

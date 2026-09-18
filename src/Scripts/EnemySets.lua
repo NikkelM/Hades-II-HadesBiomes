@@ -98,6 +98,22 @@ local additionalEnemySets = {
 		"HeavyRangedElite",
 	},
 	-- Custom
+	-- Excluding HeavyRanged for the lock-on hit feeling unfair sometimes
+	EnemiesBiome1_PerfectClearChallenge = {
+		"Swarmer",
+		"SwarmerElite",
+		"LightSpawner",
+		"ThiefMineLayer",
+		"ThiefMineLayerElite",
+		"PunchingBagUnit",
+		"PunchingBagUnitElite",
+		"HeavyMelee",
+		"HeavyMeleeElite",
+		"DisembodiedHand",
+		"DisembodiedHandElite",
+		"LightRanged",
+		"LightRangedElite",
+	},
 	EnemiesBiome1_EliteChallenge = {
 		"HeavyMeleeElite",
 		"PunchingBagUnitElite",
