@@ -62,14 +62,14 @@ local encounterReplacements = {
 	},
 	GeneratedTartarus = {
 		-- The original from Hades is 2.3
-		ActiveEnemyCapBase = 2.6,
+		ActiveEnemyCapBase = 4,
+		-- The original from Hades is 8
+		ActiveEnemyCapMax = 10,
 		-- The original from Hades is 30
 		-- Also change the DifficultyModifier in OpeningGenerated
 		BaseDifficulty = 32,
 		-- The original from Hades is 0.35
-		ActiveEnemyCapDepthRamp = 0.4,
-		-- The original from Hades is 11
-		DepthDifficultyRamp = 12,
+		ActiveEnemyCapDepthRamp = 0.5,
 		DreamBiomeData = {
 			[1] = { DataOverrides = { MoneyDropCapMin = 10, MoneyDropCapMax = 15, MoneyDropCapDepthRamp = 0 } },
 			[2] = { DataOverrides = { MoneyDropCapMin = 10, MoneyDropCapMax = 20, MoneyDropCapDepthRamp = 0, ActiveEnemyCapDepthRamp = 0.5 } },

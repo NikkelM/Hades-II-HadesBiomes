@@ -51,6 +51,8 @@ local encounterReplacements = {
 	GeneratedAsphodel = {
 		-- The original from Hades is 5.0
 		ActiveEnemyCapBase = 5.7,
+		-- The original from Hades is 8
+		ActiveEnemyCapMax = 9,
 		-- The original from Hades is 170
 		BaseDifficulty = 172,
 		-- The original from Hades is 1.0
