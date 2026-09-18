@@ -13,9 +13,13 @@ local function applyModificationsAndInheritProjectileData(base, modifications, p
 
 	-- Process data inheritance and add the new data to the game's global
 	base = mod.AddTableKeysSkipDupes(game.ProjectileData, base, nil)
+
+	-- Normalize all keys before processing inheritance so children cannot inherit legacy keys
 	for projectileName, projectileData in pairs(base) do
 		mod.RenameKeys(projectileData, projectileKeyReplacements, projectileName)
+	end
 
+	for projectileName, projectileData in pairs(base) do
 		game.ProcessDataInheritance(projectileData, game.ProjectileData)
 		base[projectileName] = projectileData
 	end

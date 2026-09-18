@@ -266,8 +266,9 @@ local function applyModificationsAndInheritWeaponData(base, modifications, repla
 
 	-- Process data inheritance and add the new data to the game's global
 	base = mod.AddTableKeysSkipDupes(game.WeaponData, base, nil)
+
+	-- Normalize all keys before processing inheritance so children cannot inherit legacy keys
 	for weaponName, weaponData in pairs(base) do
-		-- Replace keys that were renamed between the games
 		-- Need to replace this property first, as others might change other properties to FireInterval
 		if weaponData.AIData and weaponData.AIData.FireInterval then
 			weaponData.AIData.DumbFireInterval = weaponData.AIData.FireInterval
@@ -278,7 +279,9 @@ local function applyModificationsAndInheritWeaponData(base, modifications, repla
 			weaponData.ShrineAIDataOverwrites.FireInterval = nil
 		end
 		mod.RenameKeys(weaponData, weaponKeyReplacements, weaponName)
+	end
 
+	for weaponName, weaponData in pairs(base) do
 		-- Update cooldowns on voicelines, as the Hades format no longer works for Hades II for some reason
 		local voicelineTables = {
 			"PreAttackVoiceLines",
