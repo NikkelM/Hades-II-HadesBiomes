@@ -20,9 +20,10 @@ Other fixes and improvements:
 - Balancing: Exalted Shades can no longer create Lone Shades when dying.
 - Balancing: Slightly reduced the base encounter difficulty of wing-end combat rooms in the Temple of Styx.
 - Balancing: The shared Tartarus story room now prioritizes Sisyphus or Orpheus if only one has an unplayed one-time conversation, and neither can appear more than twice in a row.
-- Fixed: A small number of enemy attacks may have unintended behaviour in rare cases, caused by legacy properties not being migrated correctly due to unstable ordering.
 - Fixed: An interaction prompt shows for Thanatos when he is about to leave after his romance dialogue.
+- Fixed: Blood Triad progress and indicators are cleared when enemies teleport.
 - Fixed: The in-game timer continues running after Hades lets Melinoë pass on the tenth clear.
+- Fixed: A small number of enemy attacks may have unintended behaviour in rare cases, caused by legacy properties not being migrated correctly due to unstable ordering.
 <!--Releasenotes end-->
 
 ## v1.3.0
