@@ -936,7 +936,6 @@ local enemyModifications = {
 	-- #region TARTARUS
 	-- #region TARTARUS - Regular
 	BaseGlutton = {
-		LargeUnitCap = mod.NilValue,
 		ModsNikkelMHadesBiomesEffectVfxOffsetZ = 130,
 		DreamBiomeData = tartarusEnemyDreamBiomeData,
 	},
@@ -950,7 +949,6 @@ local enemyModifications = {
 		EliteAttributeOptions = game.CombineTables(game.EnemySets.GenericEliteAttributes, { "Rifts", "Metallic", }),
 	},
 	BaseThug = {
-		LargeUnitCap = mod.NilValue,
 		ModsNikkelMHadesBiomesEffectVfxOffsetZ = 130,
 		DreamBiomeData = tartarusEnemyDreamBiomeData,
 	},
@@ -983,7 +981,6 @@ local enemyModifications = {
 	},
 	BaseCaster = {
 		AIAggroRange = 1250,
-		LargeUnitCap = mod.NilValue,
 	},
 	LightRanged = {
 		StunAnimations = { Default = "EnemyWretchCasterOnHit" },
@@ -1518,6 +1515,7 @@ local enemyModifications = {
 		-- Flag that indicates the enemy is originally from Hades II, and we are just overwriting some properties
 		-- Used e.g. for the Zeus Blitz effect location
 		ModsNikkelMHadesBiomesOriginalHadesTwoEnemy = true,
+		LargeUnitCap = 5,
 		LoadPackages = { "BiomeB", },
 		ActivateFx = "EnemySummonRuneMedium",
 		ActivateFx2 = "nil",
@@ -1528,6 +1526,7 @@ local enemyModifications = {
 	},
 	HadesBloodlessNakedElite = {
 		ModsNikkelMHadesBiomesOriginalHadesTwoEnemy = true,
+		LargeUnitCap = 5,
 		GenusName = "BloodlessNaked_Elite",
 		LoadPackages = { "BiomeB", },
 		ActivateFx = "EnemySummonRuneMedium",
@@ -1546,6 +1545,7 @@ local enemyModifications = {
 	},
 	BloodlessNakedBerserker = {
 		ModsNikkelMHadesBiomesOriginalHadesTwoEnemy = true,
+		LargeUnitCap = 5,
 		GenusName = "BloodlessBerserker",
 		LoadPackages = { "BiomeB", },
 		RequiredIntroEncounter = "BerserkerIntro",
@@ -1558,6 +1558,7 @@ local enemyModifications = {
 	},
 	BloodlessNakedBerserkerElite = {
 		ModsNikkelMHadesBiomesOriginalHadesTwoEnemy = true,
+		LargeUnitCap = 5,
 		GenusName = "BloodlessBerserker_Elite",
 		LoadPackages = { "BiomeB", },
 		ActivateFx = "EnemySummonRuneMedium",
@@ -1571,6 +1572,7 @@ local enemyModifications = {
 	},
 	HadesBloodlessWaveFist = {
 		ModsNikkelMHadesBiomesOriginalHadesTwoEnemy = true,
+		LargeUnitCap = 5,
 		LoadPackages = { "BiomeB", },
 		RequiredIntroEncounter = "WaveFistIntro",
 		ActivateFx = "EnemySummonRune",
@@ -1582,6 +1584,7 @@ local enemyModifications = {
 	},
 	HadesBloodlessWaveFistElite = {
 		ModsNikkelMHadesBiomesOriginalHadesTwoEnemy = true,
+		LargeUnitCap = 5,
 		GenusName = "BloodlessWaveFist_Elite",
 		LoadPackages = { "BiomeB", },
 		ActivateFx = "EnemySummonRune",
@@ -1594,6 +1597,7 @@ local enemyModifications = {
 	},
 	HadesBloodlessGrenadier = {
 		ModsNikkelMHadesBiomesOriginalHadesTwoEnemy = true,
+		LargeUnitCap = 5,
 		LoadPackages = { "BiomeB", },
 		ActivateFx = "EnemySummonRune",
 		ActivateFx2 = "nil",
@@ -1604,6 +1608,7 @@ local enemyModifications = {
 	},
 	HadesBloodlessGrenadierElite = {
 		ModsNikkelMHadesBiomesOriginalHadesTwoEnemy = true,
+		LargeUnitCap = 5,
 		GenusName = "BloodlessGrenadier_Elite",
 		LoadPackages = { "BiomeB", },
 		ActivateFx = "EnemySummonRune",
@@ -1616,6 +1621,7 @@ local enemyModifications = {
 	},
 	HadesBloodlessSelfDestruct = {
 		ModsNikkelMHadesBiomesOriginalHadesTwoEnemy = true,
+		LargeUnitCap = 5,
 		LoadPackages = { "BiomeB", },
 		RequiredIntroEncounter = "SelfDestructIntro",
 		ActivateFx = "EnemySummonRune",
@@ -1627,6 +1633,7 @@ local enemyModifications = {
 	},
 	HadesBloodlessSelfDestructElite = {
 		ModsNikkelMHadesBiomesOriginalHadesTwoEnemy = true,
+		LargeUnitCap = 5,
 		GenusName = "BloodlessSelfDestruct_Elite",
 		LoadPackages = { "BiomeB", },
 		ActivateFx = "EnemySummonRune",
@@ -1639,6 +1646,7 @@ local enemyModifications = {
 	},
 	HadesBloodlessPitcher = {
 		ModsNikkelMHadesBiomesOriginalHadesTwoEnemy = true,
+		LargeUnitCap = 5,
 		LoadPackages = { "BiomeB", },
 		RequiredIntroEncounter = "PitcherIntro",
 		ActivateFx = "EnemySummonRune",
@@ -1650,6 +1658,7 @@ local enemyModifications = {
 	},
 	HadesBloodlessPitcherElite = {
 		ModsNikkelMHadesBiomesOriginalHadesTwoEnemy = true,
+		LargeUnitCap = 5,
 		GenusName = "BloodlessPitcher_Elite",
 		LoadPackages = { "BiomeB", },
 		ActivateFx = "EnemySummonRune",
@@ -1668,6 +1677,7 @@ local enemyModifications = {
 	},
 	HadesSpreadShotUnit = {
 		ModsNikkelMHadesBiomesOriginalHadesTwoEnemy = true,
+		LargeUnitCap = 6,
 		LoadPackages = { "BiomeB", },
 		WeaponOptions = { "HadesSpreadShotBolt" },
 		ActivateFx = "EnemySummonRuneMedium",
@@ -1679,6 +1689,7 @@ local enemyModifications = {
 	},
 	HadesSpreadShotUnitElite = {
 		ModsNikkelMHadesBiomesOriginalHadesTwoEnemy = true,
+		LargeUnitCap = 6,
 		GenusName = "SpreadShotUnit_Elite",
 		LoadPackages = { "BiomeB", },
 		WeaponOptions = { "HadesSpreadShotBoltElite" },
@@ -2279,7 +2290,6 @@ local enemyModifications = {
 		DreamBiomeData = elysiumEnemyDreamBiomeData,
 	},
 	Chariot = {
-		LargeUnitCap = mod.NilValue,
 		StunAnimations = { Default = "ChariotOnHit" },
 		DreamBiomeData = elysiumEnemyDreamBiomeData,
 		-- IgnoreCastSlow = true,
@@ -2342,7 +2352,6 @@ local enemyModifications = {
 		},
 	},
 	ChariotSuicide = {
-		LargeUnitCap = mod.NilValue,
 		StunAnimations = { Default = "ChariotSuicideOnHit" },
 		BlockRaiseDead = true,
 		BlockRespawnShrineUpgrade = true,
@@ -2846,7 +2855,6 @@ local enemyModifications = {
 	-- #region STYX
 	-- #region STYX - Regular
 	SatyrRanged = {
-		LargeUnitCap = mod.NilValue,
 		StunAnimations = { Default = "SatyrOnHit" },
 		DreamBiomeData = styxEnemyDreamBiomeData,
 		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
@@ -2866,7 +2874,6 @@ local enemyModifications = {
 		),
 	},
 	RatThug = {
-		LargeUnitCap = mod.NilValue,
 		StunAnimations = { Default = "EnemyRatThugOnHit" },
 		DreamBiomeData = styxEnemyDreamBiomeData,
 		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
