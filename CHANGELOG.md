@@ -30,6 +30,7 @@ Other fixes and improvements:
 - Fixed: An interaction prompt shows for Thanatos when he is about to leave after his romance dialogue.
 - Fixed: The in-game timer continues running after Hades lets Melinoë pass on the tenth clear.
 - Fixed: Blood Triad progress and indicators are cleared when enemies teleport.
+- Fixed: After buying one of two identical items in the Styx Hub with "Travel Deal" active, returning from a wing may cause the replacement item to have disappeared.
 - Fixed: A small number of enemy attacks may have unintended behaviour in rare cases, caused by legacy properties not being migrated correctly due to unstable ordering.
 - Fixed: Dying to poison does not credit the enemy that poisoned you when viewing the run at the Learned Sage.
 - Fixed: The displayed resurrection chance of "God of the Dead" does not account for "Success Rate".
