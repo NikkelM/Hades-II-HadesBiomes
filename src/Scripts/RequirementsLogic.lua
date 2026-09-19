@@ -407,8 +407,7 @@ function mod.RecordPairedEncounterAppearance(source, args)
 	end
 
 	game.GameState.ModsNikkelMHadesBiomesCustomCounters = game.GameState.ModsNikkelMHadesBiomesCustomCounters or {}
-	game.GameState.ModsNikkelMHadesBiomesCustomCounters[encounterName] =
-			(game.GameState.ModsNikkelMHadesBiomesCustomCounters[encounterName] or 0) + 1
+	game.IncrementTableValue(game.GameState.ModsNikkelMHadesBiomesCustomCounters, encounterName)
 	game.GameState.ModsNikkelMHadesBiomesCustomCounters[args.OtherEncounterName] = 0
 end
 

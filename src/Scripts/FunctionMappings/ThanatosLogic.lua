@@ -267,8 +267,7 @@ function mod.HandleThanatosEncounterReward(thanatos, args)
 	end
 
 	-- Need to move his kills into CurrentRun as otherwise they are not kept in the save
-	game.CurrentRun.ModsNikkelMHadesBiomesTotalThanatosKills = (game.CurrentRun.ModsNikkelMHadesBiomesTotalThanatosKills or 0) +
-			(encounter.ThanatosKills or 0)
+	game.IncrementTableValue(game.CurrentRun, "ModsNikkelMHadesBiomesTotalThanatosKills", encounter.ThanatosKills or 0)
 
 	game.NPCRewardDropPreProcessArgs(thanatos.KillChallengeArgs)
 	game.NPCRewardDrop(thanatos, thanatos.KillChallengeArgs)

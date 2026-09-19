@@ -532,8 +532,7 @@ function mod.UseLyre(usee, args)
 	CreateAnimation({ DestinationId = usee.ObjectId, Name = "HouseMusicNotesShower" })
 
 	game.IncrementTableValue(game.GameState.ItemInteractions, "ModsNikkelMHadesBiomes_HouseLyre01", 1)
-	game.CurrentRun.CurrentRoom.ModsNikkelMHadesBiomesNumLyreUses = (game.CurrentRun.CurrentRoom.ModsNikkelMHadesBiomesNumLyreUses or 0) +
-			1
+	game.IncrementTableValue(game.CurrentRun.CurrentRoom, "ModsNikkelMHadesBiomesNumLyreUses")
 
 	AngleTowardTarget({ Id = game.CurrentRun.Hero.ObjectId, DestinationId = usee.ObjectId })
 	SetAnimation({ Name = "Melinoe_InteractToEquip", DestinationId = game.CurrentRun.Hero.ObjectId })
