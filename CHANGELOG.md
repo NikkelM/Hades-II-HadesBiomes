@@ -28,11 +28,14 @@ Other fixes and improvements:
 - Balancing: The cooldown of the freeze effect applied by "Lament of Orpheus" is now affected by "Seismic Servo".
 - Balancing: Owning "God of the Dead" now makes "Success Rate" from Hermes eligible.
 - Fixed: An interaction prompt shows for Thanatos when he is about to leave after his romance dialogue.
+- Fixed: Player summons are destroyed when either of Theseus or Asterius is defeated in their boss fight, instead of after both have been defeated.
+- Fixed: After buying one of two identical items in the Styx Hub with "Travel Deal" active, returning from a wing may cause the replacement item to have disappeared.
 - Fixed: The in-game timer continues running after Hades lets Melinoë pass on the tenth clear.
 - Fixed: Blood Triad progress and indicators are cleared when enemies teleport.
-- Fixed: After buying one of two identical items in the Styx Hub with "Travel Deal" active, returning from a wing may cause the replacement item to have disappeared.
 - Fixed: A small number of enemy attacks may have unintended behaviour in rare cases, caused by legacy properties not being migrated correctly due to unstable ordering.
+- Fixed: During Dream Dives, if the "Vow of Menace" is active and wants to replace certain non-replaceable enemies, those enemies incorrectly receive the scaling from the next biome, instead of their own.
 - Fixed: Dying to poison does not credit the enemy that poisoned you when viewing the run at the Learned Sage.
+- Fixed: Some enemies summoned by Hades are not credited correctly if they killed you when viewing the run at the Learned Sage.
 - Fixed: The displayed resurrection chance of "God of the Dead" does not account for "Success Rate".
 - Fixed: Unlocking Arcana card-back packs does not count towards the completion of "A Simple Job".
 - Fixed: Various typos in incantation texts.

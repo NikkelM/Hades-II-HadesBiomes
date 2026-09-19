@@ -91,6 +91,7 @@ function mod.TheseusMinotaurKillPresentation(unit, args)
 
 	unit.MutePermanent = true
 	if bothBossesDead then
+		game.DisableAllyUnits()
 		-- For DreamRun compatibility
 		unit.OnDeathFunctionArgs = unit.OnDeathFunctionArgs or {}
 		unit.OnDeathFunctionArgs.IsBiomeBoss = true
@@ -128,6 +129,7 @@ function mod.MinotaurFinalStageTransition(boss, currentRun, aiStage)
 		currentRun.CurrentRoom.Encounter.BossKillPresentation = true
 		boss.SkipOnDeathSpawnEncounter = true
 		game.DestroyRequiredKills({ BlockLoot = true, SkipIds = { boss.ObjectId } })
+		game.DisableAllyUnits()
 		mod.MinotaurEarlyExitPresentation(boss, currentRun)
 		game.Kill(boss, { SkipOnDeathFunction = true, Silent = true, SkipDestroyDelay = true, })
 	else
