@@ -19,6 +19,7 @@ ModsNikkelMHadesBiomes_UnlockShrinePointGatesIncantation - Erebus Gates - after 
 ModsNikkelMHadesBiomes_WorldUpgradeBadgeSeller - Unlock Hades Badges - after completing the story and having the vanilla badge seller upgrade
 ModsNikkelMHadesBiomes_HouseLyre01 - Unlock Lyre in Orpheus' story chamber for practicing - after OrpheusAboutMusicPlaying01
 ModsNikkelMHadesBiomes_ChangeHydraNameToLernieIncantation - Rename the Bone Hydra to Lernie in Asphodel - beating the Hydra 20 times
+ModsNikkelMHadesBiomes_HideElysiumPoisonMessageIncantation - Hide the automatic poison message - after seeing it twice in Elysium
 ModsNikkelMHadesBiomesUnlockCosmeticsIncantation - New Cosmetics - after completing 2 runs
 WorldUpgradeMusicPlayerModsNikkelMUnlockHadesMusic - New Music for the Music Maker - from Hades_OST_for_the_Music_Maker - after 1 run and meeting Orpheus
 ]] --
@@ -627,9 +628,28 @@ local newIncantations = {
 			},
 		},
 	},
+	ModsNikkelMHadesBiomes_HideElysiumPoisonMessageIncantation = {
+		ModsNikkelMHadesBiomesInsertAfterItem = "ModsNikkelMHadesBiomes_ChangeHydraNameToLernieIncantation",
+		ModsNikkelMHadesBiomesCauldronCategory = "WorldUpgradeScreen_ModsNikkelMHadesBiomes_Critical",
+
+		InheritFrom = { "DefaultHubItem", "DefaultCriticalItem" },
+
+		Icon = "NikkelM-HadesBiomesCrossroads\\Cauldron\\cauldron_elysium",
+		Cost = {
+			ModsNikkelMHadesBiomes_PlantElysium = 1,
+			ModsNikkelMHadesBiomes_OreStyx = 2,
+		},
+		GameStateRequirements = {
+			{
+				Path = { "GameState", "ModsNikkelMHadesBiomesElysiumPoisonMessagesShown" },
+				Comparison = ">=",
+				Value = 2,
+			},
+		},
+	},
 	-- DO NOT change the name of this, as this would invalidate the unlock for anyone who has already performed the incantation
 	[mod.UnlockCosmeticsIncantationName] = {
-		ModsNikkelMHadesBiomesInsertAfterItem = "ModsNikkelMHadesBiomes_ChangeHydraNameToLernieIncantation",
+		ModsNikkelMHadesBiomesInsertAfterItem = "ModsNikkelMHadesBiomes_HideElysiumPoisonMessageIncantation",
 		ModsNikkelMHadesBiomesCauldronCategory = "WorldUpgradeScreen_ModsNikkelMHadesBiomes_Critical",
 
 		InheritFrom = { "DefaultHubItem", "DefaultCriticalItem" },

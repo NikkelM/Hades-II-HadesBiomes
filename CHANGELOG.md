@@ -16,6 +16,7 @@ Other fixes and improvements:
 - Added all resources that can be found during Zagreus' Journey runs to the Wretched Broker to allow trading them for the equivalent resources from Hades II (they will show after completing any new run).
 - Added a new "cheat" config option to immediately unlock all cosmetics (except badges).
 - Added a new Minor Prophecy revealed by talking to Poseidon in the Nightmare Realm.
+- Replaced the config option for hiding the automatic Elysium poison reminder with a new incantation.
 - The "A True Nightmare" Minor Prophecy can now only be revealed if the [Dream Dive Tweaks](https://thunderstore.io/c/hades-ii/p/zerp/DreamDiveTweaks/) mod is also installed (*It would be quite difficult to complete otherwise*).
 - Balancing: There can now only be a limited number of "large" enemies alive at once during an encounter, similar to what was the case in the first game.
 - Balancing: The shared Tartarus story room now prioritizes Sisyphus or Orpheus if only one has an unplayed one-time conversation, and neither can appear more than twice in a row.

@@ -117,10 +117,10 @@ function mod.StartStyxPoisonPresentation(unit)
 		unit.TimesPoisoned = unit.TimesPoisoned + 1
 	end
 
-	-- The "Poison will wear off automatically!" message applies outside of Styx only, on the first poison of the run, unless disabled via config
+	-- The "Poison will wear off automatically!" message applies outside of Styx only, on the first poison of the run, until disabled through the incantation
 	local showElysiumPoisonMessage = game.CurrentRun.CurrentRoom.RoomSetName ~= "Styx" and
 			not game.CurrentRun.ModsNikkelMHadesBiomesShownElysiumPoisonMessage and
-			not config.gameplay.z_HideElysiumPoisonMessage
+			not game.GameState.WorldUpgradesAdded["ModsNikkelMHadesBiomes_HideElysiumPoisonMessageIncantation"]
 
 	-- Only show this text if we won't show the custom text
 	if game.CheckCooldown("PoisonAppliedTextCooldown", 1.5) and not showElysiumPoisonMessage then
@@ -143,8 +143,11 @@ function mod.StartStyxPoisonPresentation(unit)
 			game.thread(game.InCombatText, fountainId, "UsePoisonCure", 1.75)
 		end
 	elseif showElysiumPoisonMessage then
-		-- We are not in Styx, it's the first time we've been poisoned in this run, and the message is not disabled through the config
+		-- We are not in Styx, it's the first time we've been poisoned in this run, and the message hasn't been disabled through the incantation
 		game.CurrentRun.ModsNikkelMHadesBiomesShownElysiumPoisonMessage = true
+		if game.CurrentRun.CurrentRoom.RoomSetName == "Elysium" then
+			game.IncrementTableValue(game.GameState, "ModsNikkelMHadesBiomesElysiumPoisonMessagesShown")
+		end
 		game.thread(game.InCombatTextArgs, {
 			TargetId = game.CurrentRun.Hero.ObjectId,
 			Text = "ModsNikkelMHadesBiomesPoisonedNoCureHint",

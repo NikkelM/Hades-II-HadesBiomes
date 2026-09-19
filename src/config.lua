@@ -2,7 +2,6 @@ local config = {
   enabled = true,
   gameplay = {
     z_ExcludeFromDreamDives = false,
-    z_HideElysiumPoisonMessage = false,
   },
   accessibility = {
     z_GoddessMode = false,
@@ -38,8 +37,6 @@ local configDesc = {
   "Whether the mod is enabled or not. Do not disable this while in a Zagreus' Journey run or region!",
   gameplay = {
     z_ExcludeFromDreamDives = "If enabled, Tartarus, Asphodel, Elysium and Styx will NOT appear in Dream Dives.",
-    z_HideElysiumPoisonMessage =
-    "If enabled, the \"Poison will wear off automatically!\" message that appears when poisoned in Elysium will not be shown.",
   },
   accessibility = {
     z_GoddessMode =
