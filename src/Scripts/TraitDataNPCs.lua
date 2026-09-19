@@ -813,7 +813,7 @@ local newTraitData = {
 			{
 				Key = "SummonChance",
 				ExtractAs = "SummonChance",
-				Format = "Percent",
+				Format = "LuckModifiedPercent",
 			},
 		},
 	},
@@ -977,3 +977,6 @@ local newTraitData = {
 }
 
 game.OverwriteTableKeys(game.TraitData, newTraitData)
+
+-- Make Success Rate be eligible if God of the Dead is owned
+table.insert(game.TraitRequirements.LuckyBoon.OneOf, "ModsNikkelMHadesBiomesOrpheusBossFightMusicBoon")

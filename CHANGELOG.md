@@ -26,11 +26,13 @@ Other fixes and improvements:
 - Balancing: Exalted Shades can no longer create Lone Shades when dying.
 - Balancing: Slightly reduced the base encounter difficulty of wing-end combat rooms in the Temple of Styx.
 - Balancing: The cooldown of the freeze effect applied by "Lament of Orpheus" is now affected by "Seismic Servo".
+- Balancing: Owning "God of the Dead" now makes "Success Rate" from Hermes eligible.
 - Fixed: An interaction prompt shows for Thanatos when he is about to leave after his romance dialogue.
-- Fixed: Blood Triad progress and indicators are cleared when enemies teleport.
 - Fixed: The in-game timer continues running after Hades lets Melinoë pass on the tenth clear.
+- Fixed: Blood Triad progress and indicators are cleared when enemies teleport.
 - Fixed: A small number of enemy attacks may have unintended behaviour in rare cases, caused by legacy properties not being migrated correctly due to unstable ordering.
 - Fixed: Dying to poison does not credit the enemy that poisoned you when viewing the run at the Learned Sage.
+- Fixed: The displayed resurrection chance of "God of the Dead" does not account for "Success Rate".
 - Fixed: Unlocking Arcana card-back packs does not count towards the completion of "A Simple Job".
 - Fixed: Various typos in incantation texts.
 <!--Releasenotes end-->
