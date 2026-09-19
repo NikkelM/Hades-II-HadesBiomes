@@ -852,7 +852,7 @@ local newTraitData = {
 			{
 				Key = "Cooldown",
 				ExtractAs = "Cooldown",
-				Format = "Duration",
+				Format = "SpeedModifiedDuration",
 			},
 			{
 				Key = "ReportedWeaponMultiplier",

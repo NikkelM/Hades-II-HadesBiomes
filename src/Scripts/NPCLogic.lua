@@ -646,7 +646,13 @@ function mod.OrpheusApplyRoot(victim, functionArgs, triggerArgs)
 	-- 	return
 	-- end
 
-	if not victim or victim.SkipModifiers or not game.CheckCooldown("ModsNikkelMHadesBiomesOrpheusRetaliateRoot", functionArgs.Cooldown) then
+	if not victim or victim.SkipModifiers then
+		return
+	end
+
+	local cooldown = functionArgs.Cooldown *
+			game.GetTotalHeroTraitValue("OlympianRechargeMultiplier", { IsMultiplier = true })
+	if not game.CheckCooldown("ModsNikkelMHadesBiomesOrpheusRetaliateRoot", cooldown) then
 		return
 	end
 
@@ -654,7 +660,7 @@ function mod.OrpheusApplyRoot(victim, functionArgs, triggerArgs)
 
 	local traitData = game.GetHeroTrait("ModsNikkelMHadesBiomesOrpheusOrpheusSong1Boon") or {}
 	if traitData then
-		game.TraitUIActivateTrait(traitData, { FlashOnActive = true, Duration = functionArgs.Cooldown })
+		game.TraitUIActivateTrait(traitData, { FlashOnActive = true, Duration = cooldown })
 	end
 
 	-- Apply Root to all enemies in the room
@@ -1275,6 +1281,7 @@ function mod.HadesTrophyQuestReturnPresentationEnd()
 	SetAlpha({ Ids = { game.ScreenAnchors.LetterBoxTop, game.ScreenAnchors.LetterBoxBottom }, Fraction = 0, Duration = 0.4 })
 	game.ShowCombatUI()
 end
+
 -- #endregion
 
 -- #region Dream Run NPC trait scaling

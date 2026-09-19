@@ -25,6 +25,7 @@ Other fixes and improvements:
 - Balancing: Revenants created by the "Vow of Return" in Asphodel will now be picked up automatically when they land on lava.
 - Balancing: Exalted Shades can no longer create Lone Shades when dying.
 - Balancing: Slightly reduced the base encounter difficulty of wing-end combat rooms in the Temple of Styx.
+- Balancing: The cooldown of the freeze effect applied by "Lament of Orpheus" is now affected by "Seismic Servo".
 - Fixed: An interaction prompt shows for Thanatos when he is about to leave after his romance dialogue.
 - Fixed: Blood Triad progress and indicators are cleared when enemies teleport.
 - Fixed: The in-game timer continues running after Hades lets Melinoë pass on the tenth clear.
