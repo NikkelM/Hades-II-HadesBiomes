@@ -29,6 +29,7 @@ Other fixes and improvements:
 - Fixed: Blood Triad progress and indicators are cleared when enemies teleport.
 - Fixed: The in-game timer continues running after Hades lets Melinoë pass on the tenth clear.
 - Fixed: A small number of enemy attacks may have unintended behaviour in rare cases, caused by legacy properties not being migrated correctly due to unstable ordering.
+- Fixed: Dying to poison does not credit the enemy that poisoned you when viewing the run at the Learned Sage.
 - Fixed: Unlocking Arcana card-back packs does not count towards the completion of "A Simple Job".
 - Fixed: Various typos in incantation texts.
 <!--Releasenotes end-->

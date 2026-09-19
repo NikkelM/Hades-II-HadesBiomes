@@ -27,7 +27,7 @@ modutil.mod.Path.Wrap("KillHero", function(base, victim, triggerArgs)
 			end
 
 			if killer == nil or game.TableLength(killer) == 0 then
-				if triggerArgs.Victim and triggerArgs.Victim.CurrentlyPoisoned and triggerArgs.EffectName == "StyxPoison" then
+				if triggerArgs.EffectName == "StyxPoison" and game.CurrentRun.ModsNikkelMHadesBiomesStyxPoisonLastInflictedBy ~= nil then
 					killer = killer or {}
 					killer.Name = game.CurrentRun.ModsNikkelMHadesBiomesStyxPoisonLastInflictedBy
 				end
