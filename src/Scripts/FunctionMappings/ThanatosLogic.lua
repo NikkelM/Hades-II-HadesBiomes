@@ -365,7 +365,7 @@ function mod.TrackThanatosChallengeProgress(encounter, victim, killer)
 	elseif victim ~= nil and victim.TimeOfLastPlayerDamage ~= nil and game._worldTime - victim.TimeOfLastPlayerDamage < maxTimeSincePlayerDamage then
 		-- Might be an environment kill, but the player recently damaged the enemy, so we count it as a player kill
 		encounter.PlayerKills = encounter.PlayerKills + 1
-		game.UpdateObjectiveDescription("PlayerKills", "Objective_PlayerKills", "PlayerKills", encounter.PlayerKills)
+		game.UpdateObjective("PlayerKills", "PlayerKills", encounter.PlayerKills, { Pulse = true })
 	end
 end
 
