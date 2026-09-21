@@ -36,6 +36,7 @@ Other fixes and improvements:
 - Fixed: During Dream Dives, if the "Vow of Menace" is active and wants to replace certain non-replaceable enemies, those enemies incorrectly receive the scaling from the next biome, instead of their own.
 - Fixed: Dying to poison does not credit the enemy that poisoned you when viewing the run at the Learned Sage.
 - Fixed: Some enemies summoned by Hades are not credited correctly if they killed you when viewing the run at the Learned Sage.
+- Fixed: Music can sometimes stutter and cut out during gameplay when a lot of different audio sources try to play at once.
 - Fixed: The displayed resurrection chance of "God of the Dead" does not account for "Success Rate".
 - Fixed: Unlocking Arcana card-back packs does not count towards the completion of "A Simple Job".
 - Fixed: Various typos in incantation texts.
