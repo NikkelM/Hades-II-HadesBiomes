@@ -180,11 +180,9 @@ local newNamedRequirements = {
 	ModsNikkelMHadesBiomesHadesEM4Beaten = {
 		OrRequirements = {
 			{
-				-- Using this instead of the textline as the textline may be delayed by the first clear dialogue
+				-- Set when the actual BossHades encounter is cleared on EM4
 				{
-					Path = { "GameState", "ModsNikkelMHadesBiomes_ClearedWithShrineUpgrades", "Styx", "BossDifficultyShrineUpgrade" },
-					Comparison = ">=",
-					Value = 4,
+					PathTrue = { "GameState", "ModsNikkelMHadesBiomesCustomFlags", "ModsNikkelMHadesBiomes_HadesEM4Beaten" },
 				},
 			},
 			{
