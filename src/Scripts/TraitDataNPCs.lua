@@ -839,7 +839,7 @@ local newTraitData = {
 			Name = _PLUGIN.guid .. "." .. "OrpheusApplyRoot",
 			FunctionArgs = {
 				EffectName = "ChillEffect",
-				Cooldown = 10,
+				Cooldown = 14,
 				ReportValues = {
 					Cooldown = "Cooldown",
 				},
