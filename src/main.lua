@@ -37,7 +37,8 @@ chalk = mods["SGG_Modding-Chalk"]
 reload = mods["SGG_Modding-ReLoad"]
 
 ---@module "config"
-config = chalk.auto "config.lua"
+local configFile
+config, configFile = chalk.auto "config.lua"
 -- ^ this updates our `.cfg` file in the config folder!
 ---@diagnostic disable-next-line: undefined-global
 public.config = config -- so other mods can access our config
@@ -48,12 +49,6 @@ local function migrateAndPruneConfig()
 		return
 	end
 
-	local configFile = nil
-	for _, candidate in pairs(rom.config.config_files) do
-		if candidate.owner_guid == _PLUGIN.guid then
-			configFile = candidate
-		end
-	end
 	if configFile == nil then
 		rom.log.warning(
 			"Config file could not be loaded during config migration, config is likely outdated, please manually set the correct values again and report this issue!")
