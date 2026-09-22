@@ -12,7 +12,7 @@
 - Balancing: Encounters should now be more cleanly separated into 1-3 distinct waves, with fewer waves that keep spawning in new enemies one after another.
 
 Other fixes and improvements:
-- Added low-resolution texture packages to reduce system requirements and improve performance on less powerful hardware such as laptops.
+- Added low-resolution texture packages to reduce system requirements and improve performance on less powerful devices such as laptops.
 - Added an in-game settings menu to the imgui overlay (default key `Insert`).
 - Picking up a boon from Hermes while in a Zagreus' Journey run may now have him deliver a message from the first game's Dionysus to you (as Dionysus cannot be encountered during Zagreus' Journey runs), allowing you to experience his storyline.
 - Added all resources that can be found during Zagreus' Journey runs to the Wretched Broker to allow trading them for the equivalent resources from Hades II (they will show after completing any new run).
