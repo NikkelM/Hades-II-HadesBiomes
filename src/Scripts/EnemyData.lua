@@ -1443,7 +1443,10 @@ local enemyModifications = {
 		},
 		AIStages = {
 			[2] = { ThreadedFunctions = { _PLUGIN.guid .. "." .. "Harpy3MapTransition", }, },
-			[3] = { ThreadedFunctions = { _PLUGIN.guid .. "." .. "Harpy3MapTransition", }, },
+			[3] = {
+				ThreadedFunctions = { _PLUGIN.guid .. "." .. "Harpy3MapTransition", },
+				UnequipWeapons = { "HarpyLightningLine", "HarpySlowBeam360", },
+			},
 		},
 		-- Using OnKillVoiceLines from Harpy
 		OnKillGlobalVoiceLines = mod.NilValue,
