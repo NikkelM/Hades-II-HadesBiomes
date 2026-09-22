@@ -783,9 +783,10 @@ function mod.IsVersionOlderThan(version, comparedTo)
 	return versionKey(version) < versionKey(comparedTo)
 end
 
-if config.debugging.enableVanillaDebugPrint then
-	modutil.mod.Path.Wrap("DebugPrint", function(base, args)
+modutil.mod.Path.Wrap("DebugPrint", function(base, args)
+	if config.debugging.enableVanillaDebugPrint then
 		mod.DebugPrint(args.Text, 4)
-		return base(args)
-	end)
-end
+	end
+
+	return base(args)
+end)

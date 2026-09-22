@@ -139,6 +139,8 @@ local function on_ready()
 	local startTime = os.clock()
 	local lastImportTime = startTime
 
+	mod.ConfigDescriptions = configDescriptions
+
 	local function DebugLogScriptImportProgress(scriptName)
 		mod.DebugPrint(
 			"[Script Loading] Imported " .. scriptName .. " file(s), took " .. (os.clock() - lastImportTime) .. " seconds", 4)
@@ -200,11 +202,12 @@ local function on_ready()
 	import "Scripts/Meta/AnimationDuplicatesDataGUIAnimations.lua"
 	import "Scripts/Meta/AnimationDuplicatesDataNPCs.lua"
 	import "Scripts/Meta/AnimationDuplicatesDataPortraits.lua"
+	import "Scripts/Meta/ImGui.lua"
 	import "Scripts/Meta/ScreenDataInstallation.lua"
 	import "Scripts/Meta/SpeedrunPresentation.lua"
 	import "Scripts/Meta/StorytellerVoicelines.lua"
 	import "Scripts/Meta/ZagreusFieldVoicelines.lua"
-	DebugLogScriptImportProgress("additional meta")
+	DebugLogScriptImportProgress("meta script")
 
 	-- If we should proceed after confirming the installation - if not, we don't confirm, as we only want to uninstall anyways
 	local shouldProceed = config.enabled and (not config.debugging.uninstall or config.debugging.firstTimeSetup)

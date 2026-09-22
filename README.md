@@ -84,7 +84,7 @@ If the mod was installed successfully, you will see a new logo appear in the mai
 Please also keep the following in mind:
 
 - You must uninstall your **Hades 1** mods (rename or delete the `Mods` folder and run `modimporter.exe`) before using this mod. Zagreus' Journey **is** compatible with other Hades II mods.
-- If Hades and Hades II are installed in different parent folders (e.g. through different storefronts), set the `hadesGameFolder` in the mod's [configuration file](https://github.com/NikkelM/Hades-II-HadesBiomes/wiki/Configuration) to your Hades install path.
+- If Hades and Hades II are installed in different parent folders (e.g. through different storefronts), press `Insert` (or whichever other key you configured for the overlay) in a loaded save to open the modding overlay, expand `Zagreus' Journey Settings`, then `Debugging`, set `hadesGameFolder` to your Hades installation path, and restart the game.
 - Is your Hades II installed through Epic Games? You may need to follow [this FAQ entry](https://sgg-modding.github.io/Hades2ModWiki/docs/installing-mods/getting-started#i-own-hades-ii-on-epic-games-and-mods-do-not-work-when-playing-what-can-i-do) if mods don't seem to be active.
 - Installing the mod on Steam Deck? Follow the [Steam Deck guide](https://sgg-modding.github.io/Hades2ModWiki/docs/installing-mods/steam-deck) in the wiki.
 - Installing the mod on Mac? Follow the [Mac guide](https://sgg-modding.github.io/Hades2ModWiki/docs/installing-mods/mac) in the wiki.
@@ -102,10 +102,11 @@ The mod offers a number of configuration options to allow you to customize your 
 
 You can find an explanation of all configuration options [on this wiki page](https://github.com/NikkelM/Hades-II-HadesBiomes/wiki/Configuration).
 
-Note that the configuration file is only created after the first game start with the mod enabled in your mod manager.
+To change them, press `Insert` (or whichever other key you configured for the overlay) in a loaded save to open the modding overlay, then expand `Zagreus' Journey Settings`.
 
-If you are using r2modman or the Thunderstore Mod Manager, you can modify the config directly through the mod manager, in the `Config editor` tab.
-Make sure to save your changes once done.
+> [!WARNING]
+> The options marked `NOT REVERSIBLE` under the `Cheats` section permanently unlock mod content.
+> Disabling them later won't undo those unlocks.
 
 ### Feedback & Bug Reports
 
