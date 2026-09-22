@@ -34,21 +34,31 @@ This will create a new package named `NikkelM-NewPackageName.pkg` and the corres
 
 ## Generate 720p package sources
 
-Use `development\Packages\Z_Generate720pSources.py` to recreate the 720p package sources, so you don't need to maintain them separately.
+Use `development\Packages\Z_Generate720pSources.py` to recreate the generated `_source_720p` folders.
+These folders are reproducible and don't need to be tracked.
 The script currently supports:
 
+- `ModsNikkelMHadesBiomesPortraits`
 - `NikkelM-HadesBiomesMainMenu`
+- `NikkelM-HadesBiomesCosmetics`
+- `NikkelM-HadesBiomesCosmeticsCardbacks`
+- `NikkelM-HadesBiomesCrossroads`
+- `NikkelM-HadesBiomesFxModded`
+- `NikkelM-HadesBiomesGUIModded`
 - `ModsNikkelMHadesBiomesFxOriginal`
 - `ModsNikkelMHadesBiomesGUIOriginal`
 - `ModsNikkelMHadesBiomesTheseusGodFxOriginal`
 
-Run the script without package names to process every configured package `python development\Packages\Z_Generate720pSources.py`
+Run the script without package names to process every configured package: `python development\Packages\Z_Generate720pSources.py`
 
 Pass one or more package names as positional arguments to process only those packages: `python development\Packages\Z_Generate720pSources.py ModsNikkelMHadesBiomesFxOriginal ModsNikkelMHadesBiomesGUIOriginal`
 
-For each package, the script recreates its `<1080 source name>_720p` folder using the 1080p `_source` folder.
-For every PNG, it first checks the matching path in the configured extracted Hades 1 `Content\Win\Packages\720p\<Package>\textures` folders and copies the native PNG plus the manifest.
-If no native counterpart exists, it resizes each dimension to `round(dimension / 1.5)` using premultiplied-alpha Lanczos resampling, writes exact per-axis `scaleRatio` metadata, and scales source hull metadata when present; both textures in `NikkelM-HadesBiomesMainMenu` use this automatic custom scaling path because they have no native Hades 1 counterparts.
+For each package, the script recreates its `<1080 source name>_720p` folder from the canonical 1080p `_source` folder.
+For every PNG, it looks for a native Hades 1 720p PNG and JSON sidecar through the configured package roots and path aliases.
+It uses that native asset only when its logical `originalSize` matches the current shipped 1080p package manifest.
+
+If no native counterpart exists, the asset is forced custom, or the native logical size differs, the script scales the mod's canonical 1080p source using premultiplied-alpha Lanczos resampling, writes exact per-axis `scaleRatio` metadata, and scales source hull metadata when present.
+The entire `NikkelM-HadesBiomesMainMenu` package uses this custom-scaling path.
 
 The default Hades 1 packages root is `D:\Program Files (x86)\Steam\steamapps\common\Hades\Content\Win\Packages`.
 Override it with `--hades-packages-root` for one invocation, or set the `HADES_PACKAGES_ROOT` environment variable.
