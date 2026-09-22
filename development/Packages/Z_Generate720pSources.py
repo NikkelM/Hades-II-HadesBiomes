@@ -2,14 +2,85 @@ import argparse
 import json
 import os
 from pathlib import Path
+import re
 import shutil
 import subprocess
 import tempfile
 
+from deppth2.sggpio import PackageReader
 from PIL import Image, ImageChops
 
 
+GUID_PACKAGE_PATTERN = re.compile(r"^[a-z0-9]+(\w+[a-z0-9])?-\w+$", re.IGNORECASE | re.ASCII)
+
+
 PACKAGE_SOURCES = {
+    "ModsNikkelMHadesBiomesPortraits": {
+        "source": "ModsNikkelMHadesBiomesPortraits_source",
+        "hades_packages": ("GUI",),
+        "aliases": (
+            ("GUIModded/FamilyPortraits/", "GUI/FamilyPortraits/"),
+            ("GUIModded/Icons/ShrinePoint_Small.png", "GUI/Icons/ShrinePoint_Small.png"),
+            (
+                "GUIModded/Icons/ShrinePoint_Small_Active.png",
+                "GUI/Icons/ShrinePoint_Small_Active.png",
+            ),
+            ("GUIModded/Icons/Status/", "GUI/Icons/Status/"),
+            (
+                "GUIModded/Screens/ShopIcons/release_parchment_23.png",
+                "GUI/Screens/ShopIcons/release_parchment_23.png",
+            ),
+        ),
+    },
+    "NikkelM-HadesBiomesMainMenu": {
+        "source": "NikkelM-HadesBiomesMainMenu_source",
+        "hades_packages": (),
+    },
+    "NikkelM-HadesBiomesCosmetics": {
+        "source": "NikkelM-HadesBiomesCosmetics_source",
+        "hades_packages": (),
+    },
+    "NikkelM-HadesBiomesCosmeticsCardbacks": {
+        "source": "NikkelM-HadesBiomesCosmeticsCardbacks_source",
+        "hades_packages": (),
+    },
+    "NikkelM-HadesBiomesCrossroads": {
+        "source": "NikkelM-HadesBiomesCrossroads_source",
+        "hades_packages": ("DeathArea", "RoomManager"),
+        "aliases": (
+            (
+                "Cauldron/cosmetic_sealedDocument_01.png",
+                "GUI/Screens/CosmeticIcons/cosmetic_sealedDocument_01.png",
+            ),
+        ),
+    },
+    "NikkelM-HadesBiomesFxModded": {
+        "source": "NikkelM-HadesBiomesFxModded_source",
+        "hades_packages": ("Fx", "RoomManager"),
+        "aliases": (
+            (
+                "Fx/ModsNikkelMHadesBiomesHadesStunTotemSpawn/"
+                "ModsNikkelMHadesBiomesHadesStunTotemSpawn",
+                "Fx/HadesStunTotemSpawn/HadesStunTotemSpawn",
+            ),
+            ("Resources/Boss/BloodPickup/", "Fx/BloodPickup/"),
+            ("Resources/Boss/Key/", "Fx/Key/"),
+            ("Resources/Boss/SuperGems/", "Fx/SuperGems/"),
+        ),
+        "custom_prefixes": (
+            "Fx/RoomRewardAvailable-Front/",
+            "Fx/RoomRewardAvailable-Front_MetaReward/",
+        ),
+    },
+    "NikkelM-HadesBiomesGUIModded": {
+        "source": "NikkelM-HadesBiomesGUIModded_source",
+        "hades_packages": ("GUI",),
+        "aliases": (
+            ("GUIModded/Icons/Super.png", "GUI/Icons/Super.png"),
+            ("GUIModded/UnlockTextBG/", "GUI/UnlockTextBG/"),
+            ("GUIModded/VictoryBG/", "GUI/VictoryBG/"),
+        ),
+    },
     "ModsNikkelMHadesBiomesFxOriginal": {
         "source": "ModsNikkelMHadesBiomesFxOriginal_source",
         "hades_packages": ("Fx",),
@@ -48,6 +119,19 @@ def find_native_source(relative_path, native_roots):
     raise RuntimeError(f"Multiple different native 720p sources found for {relative_path}: {candidates}")
 
 
+def mapped_native_path(relative_path, aliases):
+    relative_string = relative_path.as_posix()
+    for source_prefix, native_prefix in aliases:
+        if relative_string.startswith(source_prefix):
+            return Path(native_prefix + relative_string[len(source_prefix) :])
+    return relative_path
+
+
+def is_forced_custom(relative_path, custom_prefixes):
+    relative_string = relative_path.as_posix()
+    return any(relative_string.startswith(prefix) for prefix in custom_prefixes)
+
+
 def scaled_hull(source_hull, width_ratio, height_ratio):
     return [
         {
@@ -56,6 +140,61 @@ def scaled_hull(source_hull, width_ratio, height_ratio):
         }
         for point in source_hull
     ]
+
+
+def logical_texture_name(package_name, relative_path):
+    relative_name = str(relative_path.with_suffix("")).replace("/", "\\")
+    if GUID_PACKAGE_PATTERN.match(package_name):
+        return f"{package_name}\\{relative_name}"
+    return relative_name
+
+
+def load_original_sizes(package_name, repository_root):
+    manifest_path = (
+        repository_root
+        / "data"
+        / "Content"
+        / "Packages"
+        / f"{package_name}.pkg_manifest"
+    )
+    manifest_entries = PackageReader.load_package(str(manifest_path), True)
+    original_sizes = {}
+    for atlas in manifest_entries.values():
+        for subatlas in atlas.subAtlases:
+            size = (
+                subatlas["originalSize"]["x"],
+                subatlas["originalSize"]["y"],
+            )
+            existing_size = original_sizes.get(subatlas["name"])
+            if existing_size is not None and existing_size != size:
+                raise RuntimeError(
+                    f"Different originalSize values found for {subatlas['name']}: "
+                    f"{existing_size} and {size}"
+                )
+            original_sizes[subatlas["name"]] = size
+    return original_sizes
+
+
+def apply_original_size(destination_png, original_size):
+    metadata_path = destination_png.with_suffix(".json")
+    metadata = json.loads(metadata_path.read_text(encoding="utf-8-sig"))
+    with Image.open(destination_png) as image:
+        metadata["scaleRatio"] = {
+            "x": original_size[0] / image.width,
+            "y": original_size[1] / image.height,
+        }
+    metadata_path.write_text(
+        json.dumps(metadata, indent=2) + "\n",
+        encoding="utf-8",
+    )
+
+
+def native_original_size(native_png):
+    metadata = json.loads(native_png.with_suffix(".json").read_text(encoding="utf-8-sig"))
+    original_size = metadata.get("originalSize")
+    if original_size is None:
+        return None
+    return original_size["x"], original_size["y"]
 
 
 def scale_custom_source(source_png, destination_png):
@@ -69,9 +208,10 @@ def scale_custom_source(source_png, destination_png):
         source_width, source_height = source_image.size
         target_width = max(1, round(source_width / 1.5))
         target_height = max(1, round(source_height / 1.5))
-        target_image = source_image.resize(
-            (target_width, target_height),
-            Image.Resampling.LANCZOS,
+        target_image = (
+            source_image.convert("RGBa")
+            .resize((target_width, target_height), Image.Resampling.LANCZOS)
+            .convert("RGBA")
         )
         destination_png.parent.mkdir(parents=True, exist_ok=True)
         target_image.save(destination_png)
@@ -97,12 +237,16 @@ def scale_custom_source(source_png, destination_png):
 
 def generate_source(package_name, packages_root, hades_packages_root):
     package_data = PACKAGE_SOURCES[package_name]
+    repository_root = packages_root.parents[1]
     source_root = packages_root / package_data["source"]
     destination_root = packages_root / f"{package_data['source']}_720p"
     native_roots = [
-        hades_packages_root / "720p" / package_name / "textures"
-        for package_name in package_data["hades_packages"]
+        hades_packages_root / "720p" / native_package_name / "textures"
+        for native_package_name in package_data["hades_packages"]
     ]
+    aliases = package_data.get("aliases", ())
+    custom_prefixes = package_data.get("custom_prefixes", ())
+    original_sizes = load_original_sizes(package_name, repository_root)
 
     if not source_root.exists():
         raise RuntimeError(f"Source folder does not exist: {source_root}")
@@ -117,7 +261,18 @@ def generate_source(package_name, packages_root, hades_packages_root):
         for source_png in sorted(source_root.rglob("*.png")):
             relative_path = source_png.relative_to(source_root)
             destination_png = temporary_root / relative_path
-            native_png = find_native_source(relative_path, native_roots)
+            logical_name = logical_texture_name(package_name, relative_path)
+            if logical_name not in original_sizes:
+                raise RuntimeError(
+                    f"Current 1080p manifest does not contain {logical_name}"
+                )
+            original_size = original_sizes[logical_name]
+            native_path = mapped_native_path(relative_path, aliases)
+            native_png = None
+            if not is_forced_custom(relative_path, custom_prefixes):
+                native_png = find_native_source(native_path, native_roots)
+                if native_png is not None and native_original_size(native_png) != original_size:
+                    native_png = None
             if native_png is not None:
                 native_json = native_png.with_suffix(".json")
                 if not native_json.exists():
@@ -129,6 +284,7 @@ def generate_source(package_name, packages_root, hades_packages_root):
             else:
                 scale_custom_source(source_png, destination_png)
                 custom_count += 1
+            apply_original_size(destination_png, original_size)
 
         if destination_root.exists():
             shutil.rmtree(destination_root)
