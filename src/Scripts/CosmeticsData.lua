@@ -4777,10 +4777,8 @@ local preRunCosmetics = {
 		AnimationScale = 2,
 		GameStateRequirements = {
 			{
-				Path = { "GameState", "EnemyKills", },
-				SumOf = { "Harpy", "Harpy2", "Harpy3", },
-				Comparison = ">=",
-				Value = 5,
+				-- Megaera has given you her companion
+				PathTrue = { "GameState", "TextLinesRecord", "MegaeraGift07" }
 			},
 			NamedRequirements = { "T4Cosmetic" },
 		},
