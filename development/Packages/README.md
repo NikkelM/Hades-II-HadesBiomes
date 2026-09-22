@@ -32,6 +32,32 @@ To include hulls, set the `-iH True` flag.
 
 This will create a new package named `NikkelM-NewPackageName.pkg` and the corresponding `NikkelM-NewPackageName.pkg_manifest`.
 
+## Generate 720p package sources
+
+Use `development\Packages\Z_Generate720pSources.py` to recreate the 720p package sources, so you don't need to maintain them separately.
+The script currently supports:
+
+- `ModsNikkelMHadesBiomesFxOriginal`
+- `ModsNikkelMHadesBiomesGUIOriginal`
+- `ModsNikkelMHadesBiomesTheseusGodFxOriginal`
+
+Run the script without package names to process every configured package `python development\Packages\Z_Generate720pSources.py`
+
+Pass one or more package names as positional arguments to process only those packages: `python development\Packages\Z_Generate720pSources.py ModsNikkelMHadesBiomesFxOriginal ModsNikkelMHadesBiomesGUIOriginal`
+
+For each package, the script recreates its `<1080 source name>_720p` folder using the 1080p `_source` folder.
+For every PNG, it first checks the matching path in the configured extracted Hades 1 `Content\Win\Packages\720p\<Package>\textures` folders and copies the native PNG plus the manifest.
+If no native counterpart exists, it resizes each dimension to `round(dimension / 1.5)` using Lanczos, writes the exact `scaleRatio` metadata, and scales any existing source hull metadata.
+
+The default Hades 1 packages root is `D:\Program Files (x86)\Steam\steamapps\common\Hades\Content\Win\Packages`.
+Override it with `--hades-packages-root` for one invocation, or set the `HADES_PACKAGES_ROOT` environment variable.
+
+Add `--pack` to run `deppth2 hpk -c BC7` and copy the generated `.pkg` and `.pkg_manifest` files into `data\Content\Packages\720p`:
+
+```powershell
+python development\Packages\Z_Generate720pSources.py --pack
+```
+
 ## For Original Biome Packages
 
 For the original biome packages in the "Original Biomes" subfolder, they already have the manifests and atlases set up, as extracted from the Hades game files.
