@@ -19,6 +19,7 @@ Other fixes and improvements:
 - Added a new Minor Prophecy revealed by talking to Poseidon in the Nightmare Realm.
 - Replaced the config option for hiding the automatic Elysium poison reminder with a new incantation.
 - The "A True Nightmare" Minor Prophecy can now only be revealed if the [Dream Dive Tweaks](https://thunderstore.io/c/hades-ii/p/zerp/DreamDiveTweaks/) mod is also installed (*It would be quite difficult to complete otherwise*).
+- "Charm, Battie" is now unlocked by progressing Megaera's relationship instead of by the number of times you have beaten her.
 - Balancing: There can now only be a limited number of "large" enemies alive at once during an encounter, similar to what was the case in the first game.
 - Balancing: The shared Tartarus story room now prioritizes Sisyphus or Orpheus if only one has an unplayed one-time conversation, and neither can appear more than twice in a row.
 - Balancing: Brimstones can no longer appear during Erebus Gate and Unseen Sigil challenges in Tartarus (which you need to clear without taking damage).
