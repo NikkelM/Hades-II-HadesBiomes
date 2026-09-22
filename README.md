@@ -77,7 +77,7 @@ To install the mod, follow these simple steps:
 
 1. Install [r2modman](https://thunderstore.io/c/hades-ii/p/ebkr/r2modman/) (use `Manual Download`, then run the setup executable).
 2. Find _Zagreus' Journey_ on the `Online` tab, or use `Install with Mod Manager` on the [mod's Thunderstore page](https://thunderstore.io/c/hades-ii/p/NikkelM/Zagreus_Journey/). All dependencies are installed automatically.
-3. Start the game through the mod manager using `Start Modded`. The loading screen on first launch will take longer than usual while the mod installs required files (~5GB additional disk space is needed in total).
+3. Start the game through the mod manager using `Start Modded`. The loading screen on first launch will take longer than usual while the mod installs required files (~5.5GB additional disk space is needed in total).
 
 If the mod was installed successfully, you will see a new logo appear in the main menu.
 

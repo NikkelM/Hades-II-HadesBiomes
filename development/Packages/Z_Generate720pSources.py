@@ -155,6 +155,7 @@ def load_original_sizes(package_name, repository_root):
         / "data"
         / "Content"
         / "Packages"
+        / "1080p"
         / f"{package_name}.pkg_manifest"
     )
     manifest_entries = PackageReader.load_package(str(manifest_path), True)
