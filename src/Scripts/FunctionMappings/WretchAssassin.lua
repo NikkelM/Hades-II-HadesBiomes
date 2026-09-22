@@ -1,3 +1,9 @@
+local bloodTriadEffectNames = {
+	"ComboAttackIndicator",
+	"ComboSpecialIndicator",
+	"ComboExIndicator",
+}
+
 function mod.EnemyHandleInvisibleAttack(enemy, weaponAIData, args)
 	args = args or {}
 	if enemy.IsInvisible and not weaponAIData.KeepInvisibility then
@@ -33,6 +39,11 @@ function mod.EnemyHandleInvisibleAttack(enemy, weaponAIData, args)
 		SetThingProperty({ DestinationId = enemy.ObjectId, Property = "StopsProjectiles", Value = true })
 		enemy.SkipInvulnerableOnHitPresentation = false
 		game.wait(game.CalcEnemyWait(enemy, weaponAIData.InvisibilityFadeInDuration), enemy.AIThreadName)
+		for _, effectName in ipairs(bloodTriadEffectNames) do
+			if enemy.ActiveEffects and enemy.ActiveEffects[effectName] then
+				game.UpdateEffectStacks(enemy, effectName)
+			end
+		end
 	end
 end
 
@@ -47,7 +58,19 @@ function mod.EnemyInvisibility(enemy, weaponAIData, args)
 	enemy.LastInvisibilityTime = enemy.LastInvisibilityTime or 0
 
 	if game._worldTime - enemy.LastInvisibilityTime >= weaponAIData.InvisibilityInterval then
-		ClearEffect({ Id = enemy.ObjectId, All = true })
+		ClearEffect({ Id = enemy.ObjectId, All = true, ExcludeNames = bloodTriadEffectNames })
+		for _, effectName in ipairs(bloodTriadEffectNames) do
+			local effectData = game.EffectData[effectName]
+			local displayAnchorId = effectData and enemy.CreatedDisplayAnchors and
+					enemy.CreatedDisplayAnchors[enemy.ObjectId .. effectData.DisplaySuffix]
+			if displayAnchorId then
+				SetAlpha({
+					Id = displayAnchorId,
+					Fraction = 0,
+					Duration = weaponAIData.InvisibilityFadeOutDuration,
+				})
+			end
+		end
 		enemy.SkipInvulnerableOnHitPresentation = true
 
 		local alpha = args.Alpha or 0.0

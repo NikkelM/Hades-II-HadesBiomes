@@ -10,15 +10,32 @@ table.insert(game.TraitData.TemporaryForcedSecretDoorTrait.GameStateRequirements
 
 -- Enable Hades' final boss damage boon in modded runs
 table.insert(game.TraitData.HadesPreDamageBoon.EncounterPreDamage.ValidRooms, "D_Boss01")
+
 -- Point Dream Run text to modded versions that include Hades as a valid target
-if not config.gameplay.z_ExcludeFromDreamDives then
-	game.TraitData.HadesPreDamageBoon.CustomNameWithRequirements.Name =
-	"ModsNikkelMHadesBiomes_HadesPreDamageBoon_DreamRun"
-	game.TraitData.HadesPreDamageBoon.DreamRunStatLines = { "ModsNikkelMHadesBiomes_ChronosDamageStatDisplay_DreamRun" }
-	game.TraitData.HadesChronosDebuffBoon.CustomNameWithRequirements.Name =
-	"ModsNikkelMHadesBiomes_HadesChronosDebuffBoon_DreamRun"
-	game.TraitData.HadesChronosDebuffBoon.DreamRunStatLines = { "ModsNikkelMHadesBiomes_ChronosDebuffStatDisplay_DreamRun" }
+local originalHadesPreDamageBoonName = game.TraitData.HadesPreDamageBoon.CustomNameWithRequirements.Name
+local originalHadesPreDamageBoonStatLines = game.DeepCopyTable(game.TraitData.HadesPreDamageBoon.DreamRunStatLines)
+local originalHadesChronosDebuffBoonName = game.TraitData.HadesChronosDebuffBoon.CustomNameWithRequirements.Name
+local originalHadesChronosDebuffBoonStatLines = game.DeepCopyTable(game.TraitData.HadesChronosDebuffBoon
+	.DreamRunStatLines)
+
+function mod.ApplyDreamDiveExclusionConfig()
+	if config.gameplay.z_ExcludeFromDreamDives then
+		game.TraitData.HadesPreDamageBoon.CustomNameWithRequirements.Name = originalHadesPreDamageBoonName
+		game.TraitData.HadesPreDamageBoon.DreamRunStatLines = game.DeepCopyTable(originalHadesPreDamageBoonStatLines)
+		game.TraitData.HadesChronosDebuffBoon.CustomNameWithRequirements.Name = originalHadesChronosDebuffBoonName
+		game.TraitData.HadesChronosDebuffBoon.DreamRunStatLines = game.DeepCopyTable(originalHadesChronosDebuffBoonStatLines)
+	else
+		game.TraitData.HadesPreDamageBoon.CustomNameWithRequirements.Name =
+		"ModsNikkelMHadesBiomes_HadesPreDamageBoon_DreamRun"
+		game.TraitData.HadesPreDamageBoon.DreamRunStatLines = { "ModsNikkelMHadesBiomes_ChronosDamageStatDisplay_DreamRun" }
+		game.TraitData.HadesChronosDebuffBoon.CustomNameWithRequirements.Name =
+		"ModsNikkelMHadesBiomes_HadesChronosDebuffBoon_DreamRun"
+		game.TraitData.HadesChronosDebuffBoon.DreamRunStatLines =
+		{ "ModsNikkelMHadesBiomes_ChronosDebuffStatDisplay_DreamRun" }
+	end
 end
+
+mod.ApplyDreamDiveExclusionConfig()
 
 -- Hidden trait to scale the player model during modded biomes
 -- Uses the SetupFunction mechanism so it re-applies on every room start and save reload, matching Circe's pattern

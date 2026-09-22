@@ -936,7 +936,6 @@ local enemyModifications = {
 	-- #region TARTARUS
 	-- #region TARTARUS - Regular
 	BaseGlutton = {
-		LargeUnitCap = mod.NilValue,
 		ModsNikkelMHadesBiomesEffectVfxOffsetZ = 130,
 		DreamBiomeData = tartarusEnemyDreamBiomeData,
 	},
@@ -950,7 +949,6 @@ local enemyModifications = {
 		EliteAttributeOptions = game.CombineTables(game.EnemySets.GenericEliteAttributes, { "Rifts", "Metallic", }),
 	},
 	BaseThug = {
-		LargeUnitCap = mod.NilValue,
 		ModsNikkelMHadesBiomesEffectVfxOffsetZ = 130,
 		DreamBiomeData = tartarusEnemyDreamBiomeData,
 	},
@@ -983,7 +981,6 @@ local enemyModifications = {
 	},
 	BaseCaster = {
 		AIAggroRange = 1250,
-		LargeUnitCap = mod.NilValue,
 	},
 	LightRanged = {
 		StunAnimations = { Default = "EnemyWretchCasterOnHit" },
@@ -1446,7 +1443,10 @@ local enemyModifications = {
 		},
 		AIStages = {
 			[2] = { ThreadedFunctions = { _PLUGIN.guid .. "." .. "Harpy3MapTransition", }, },
-			[3] = { ThreadedFunctions = { _PLUGIN.guid .. "." .. "Harpy3MapTransition", }, },
+			[3] = {
+				ThreadedFunctions = { _PLUGIN.guid .. "." .. "Harpy3MapTransition", },
+				UnequipWeapons = { "HarpyLightningLine", "HarpySlowBeam360", },
+			},
 		},
 		-- Using OnKillVoiceLines from Harpy
 		OnKillGlobalVoiceLines = mod.NilValue,
@@ -1518,6 +1518,7 @@ local enemyModifications = {
 		-- Flag that indicates the enemy is originally from Hades II, and we are just overwriting some properties
 		-- Used e.g. for the Zeus Blitz effect location
 		ModsNikkelMHadesBiomesOriginalHadesTwoEnemy = true,
+		LargeUnitCap = 5,
 		LoadPackages = { "BiomeB", },
 		ActivateFx = "EnemySummonRuneMedium",
 		ActivateFx2 = "nil",
@@ -1528,6 +1529,8 @@ local enemyModifications = {
 	},
 	HadesBloodlessNakedElite = {
 		ModsNikkelMHadesBiomesOriginalHadesTwoEnemy = true,
+		BlockNextBiomeEnemyShrineUpgrade = true,
+		LargeUnitCap = 5,
 		GenusName = "BloodlessNaked_Elite",
 		LoadPackages = { "BiomeB", },
 		ActivateFx = "EnemySummonRuneMedium",
@@ -1539,13 +1542,15 @@ local enemyModifications = {
 		BlockAttributes = { "Blink", "Fog", },
 		EliteAttributeOptions = game.CombineTables(game.EnemySets.GenericEliteAttributes, { "Rifts", }),
 	},
-	HadesBloodlessNakedEliteSuperElite = {
+	BloodlessNakedSuperElite = {
 		GenusName = "BloodlessNaked_Elite",
+		RunHistoryKilledByName = "BloodlessNaked",
 		BlockAttributes = { "Blink", "Fog", },
 		EliteAttributeOptions = game.CombineTables(game.EnemySets.GenericEliteAttributes, { "Rifts", }),
 	},
 	BloodlessNakedBerserker = {
 		ModsNikkelMHadesBiomesOriginalHadesTwoEnemy = true,
+		LargeUnitCap = 5,
 		GenusName = "BloodlessBerserker",
 		LoadPackages = { "BiomeB", },
 		RequiredIntroEncounter = "BerserkerIntro",
@@ -1558,6 +1563,8 @@ local enemyModifications = {
 	},
 	BloodlessNakedBerserkerElite = {
 		ModsNikkelMHadesBiomesOriginalHadesTwoEnemy = true,
+		BlockNextBiomeEnemyShrineUpgrade = true,
+		LargeUnitCap = 5,
 		GenusName = "BloodlessBerserker_Elite",
 		LoadPackages = { "BiomeB", },
 		ActivateFx = "EnemySummonRuneMedium",
@@ -1571,6 +1578,7 @@ local enemyModifications = {
 	},
 	HadesBloodlessWaveFist = {
 		ModsNikkelMHadesBiomesOriginalHadesTwoEnemy = true,
+		LargeUnitCap = 5,
 		LoadPackages = { "BiomeB", },
 		RequiredIntroEncounter = "WaveFistIntro",
 		ActivateFx = "EnemySummonRune",
@@ -1582,6 +1590,8 @@ local enemyModifications = {
 	},
 	HadesBloodlessWaveFistElite = {
 		ModsNikkelMHadesBiomesOriginalHadesTwoEnemy = true,
+		BlockNextBiomeEnemyShrineUpgrade = true,
+		LargeUnitCap = 5,
 		GenusName = "BloodlessWaveFist_Elite",
 		LoadPackages = { "BiomeB", },
 		ActivateFx = "EnemySummonRune",
@@ -1594,6 +1604,7 @@ local enemyModifications = {
 	},
 	HadesBloodlessGrenadier = {
 		ModsNikkelMHadesBiomesOriginalHadesTwoEnemy = true,
+		LargeUnitCap = 5,
 		LoadPackages = { "BiomeB", },
 		ActivateFx = "EnemySummonRune",
 		ActivateFx2 = "nil",
@@ -1604,6 +1615,8 @@ local enemyModifications = {
 	},
 	HadesBloodlessGrenadierElite = {
 		ModsNikkelMHadesBiomesOriginalHadesTwoEnemy = true,
+		BlockNextBiomeEnemyShrineUpgrade = true,
+		LargeUnitCap = 5,
 		GenusName = "BloodlessGrenadier_Elite",
 		LoadPackages = { "BiomeB", },
 		ActivateFx = "EnemySummonRune",
@@ -1616,6 +1629,7 @@ local enemyModifications = {
 	},
 	HadesBloodlessSelfDestruct = {
 		ModsNikkelMHadesBiomesOriginalHadesTwoEnemy = true,
+		LargeUnitCap = 5,
 		LoadPackages = { "BiomeB", },
 		RequiredIntroEncounter = "SelfDestructIntro",
 		ActivateFx = "EnemySummonRune",
@@ -1627,6 +1641,8 @@ local enemyModifications = {
 	},
 	HadesBloodlessSelfDestructElite = {
 		ModsNikkelMHadesBiomesOriginalHadesTwoEnemy = true,
+		BlockNextBiomeEnemyShrineUpgrade = true,
+		LargeUnitCap = 5,
 		GenusName = "BloodlessSelfDestruct_Elite",
 		LoadPackages = { "BiomeB", },
 		ActivateFx = "EnemySummonRune",
@@ -1639,6 +1655,7 @@ local enemyModifications = {
 	},
 	HadesBloodlessPitcher = {
 		ModsNikkelMHadesBiomesOriginalHadesTwoEnemy = true,
+		LargeUnitCap = 5,
 		LoadPackages = { "BiomeB", },
 		RequiredIntroEncounter = "PitcherIntro",
 		ActivateFx = "EnemySummonRune",
@@ -1650,6 +1667,8 @@ local enemyModifications = {
 	},
 	HadesBloodlessPitcherElite = {
 		ModsNikkelMHadesBiomesOriginalHadesTwoEnemy = true,
+		BlockNextBiomeEnemyShrineUpgrade = true,
+		LargeUnitCap = 5,
 		GenusName = "BloodlessPitcher_Elite",
 		LoadPackages = { "BiomeB", },
 		ActivateFx = "EnemySummonRune",
@@ -1661,13 +1680,15 @@ local enemyModifications = {
 		BlockAttributes = { "Blink", "Fog", },
 		EliteAttributeOptions = game.CombineTables(game.EnemySets.GenericEliteAttributes, { "Hex", "Metallic", }),
 	},
-	HadesBloodlessPitcherSuperElite = {
+	BloodlessPitcherSuperElite = {
 		GenusName = "BloodlessPitcher_Elite",
+		RunHistoryKilledByName = "BloodlessPitcher",
 		BlockAttributes = { "Blink", "Fog", },
 		EliteAttributeOptions = game.CombineTables(game.EnemySets.GenericEliteAttributes, { "Hex", "Metallic", }),
 	},
 	HadesSpreadShotUnit = {
 		ModsNikkelMHadesBiomesOriginalHadesTwoEnemy = true,
+		LargeUnitCap = 6,
 		LoadPackages = { "BiomeB", },
 		WeaponOptions = { "HadesSpreadShotBolt" },
 		ActivateFx = "EnemySummonRuneMedium",
@@ -1679,6 +1700,7 @@ local enemyModifications = {
 	},
 	HadesSpreadShotUnitElite = {
 		ModsNikkelMHadesBiomesOriginalHadesTwoEnemy = true,
+		LargeUnitCap = 6,
 		GenusName = "SpreadShotUnit_Elite",
 		LoadPackages = { "BiomeB", },
 		WeaponOptions = { "HadesSpreadShotBoltElite" },
@@ -1692,6 +1714,7 @@ local enemyModifications = {
 	-- Normal/new Hades enemies for Asphodel
 	FreezeShotUnit = {
 		StunAnimations = { Default = "EnemyMedusaOnHit" },
+		BlockNextBiomeEnemyShrineUpgrade = true,
 		ManualDeathAnimation = false,
 		DreamBiomeData = asphodelEnemyDreamBiomeData,
 		DestroyDelay = 3.0,
@@ -1707,10 +1730,12 @@ local enemyModifications = {
 		DreamBiomeData = asphodelEnemyDreamBiomeData,
 	},
 	RangedBurrowerElite = {
+		BlockNextBiomeEnemyShrineUpgrade = true,
 		BlockAttributes = { "Blink", "Orbit", "Beams", "Frenzy" },
 		EliteAttributeOptions = game.CombineTables(game.EnemySets.GenericEliteAttributes, { "Hex", }),
 	},
 	RangedBurrowerSuperElite = {
+		RunHistoryKilledByName = "RangedBurrower",
 		-- Give it the elite weapon instead of the normal one
 		WeaponOptions = { "RangedBurrowerBurrow", "RangedBurrowerWeaponElite" },
 		BlockAttributes = { "Blink", "Orbit", },
@@ -1837,6 +1862,7 @@ local enemyModifications = {
 		IgnoreSprintPhasingStasisStun = true,
 	},
 	HitAndRunUnitSuperElite = {
+		RunHistoryKilledByName = "HitAndRunUnit",
 		BlockRaiseDead = false,
 		IgnoreSprintPhasingStasisStun = true,
 	},
@@ -2014,6 +2040,11 @@ local enemyModifications = {
 		SpawnEvents = {
 			{ FunctionName = _PLUGIN.guid .. "." .. "CreateTethers",       Threaded = true, },
 			{ FunctionName = _PLUGIN.guid .. "." .. "MarkSpawnKillRecord", },
+			{ FunctionName = _PLUGIN.guid .. "." .. "HydraHeadSpawn", },
+		},
+		-- Remembers the spawn point, so we can respawn it there when resurrected by e.g. Night Bloom
+		KillEnemyEvents = {
+			{ FunctionName = _PLUGIN.guid .. "." .. "HydraHeadDeath" },
 		},
 		Tethers = {
 			[1] = { Distance = 83, FirstDrawBehind = true, ParentDeathAnimation = "HydraNeckDeath" },
@@ -2022,12 +2053,20 @@ local enemyModifications = {
 		-- Stops the armour outline from being added, which doesn't look correctly (whole enemy is coloured instead of just the outline)
 		HasOutline = true,
 		BlockCharm = true,
-		BlockRaiseDead = true,
+		BlockRaiseDead = false,
+		ImmobileRaise = true,
+		-- The tethers aren't scaled along with the head, so keep the raised head at its original size
+		AlliedScaleMultiplier = 1.0,
 		BlockRespawnShrineUpgrade = true,
 		IgnoreSprintPhasingStasisStun = true,
 		-- Neck tethers would not be removed
 		ImmuneToPolymorph = true,
 		ModsNikkelMHadesBiomesEffectVfxOffsetZ = 170,
+	},
+	HydraHeadSummoner = {
+		SpellSummonDataOverrides = {
+			WeaponOptions = { "HydraBite", "HydraSlam" },
+		},
 	},
 	HydraTooth = {
 		StunAnimations = { Default = "HydraToothLanded" },
@@ -2121,6 +2160,7 @@ local enemyModifications = {
 	},
 	ShadeSpearUnit = {
 		StunAnimations = { Default = "ShadeSpear_OnHit" },
+		BlockNextBiomeEnemyShrineUpgrade = true,
 		OnDeathFireWeapons = { "ShadeDeathSpawn" },
 		DefaultAIData = {
 			LeapSpeed = 1800,
@@ -2150,6 +2190,7 @@ local enemyModifications = {
 		BlockAttributes = { "Fog", "Blink" },
 	},
 	ShadeSpearUnitSuperElite = {
+		RunHistoryKilledByName = "ShadeSpearUnit",
 		OnDeathFireWeapons = { "ShadeDeathSpawnSuperElite" },
 		EliteAttributeOptions = game.CombineTables(
 			game.EnemySets.GenericEliteAttributes,
@@ -2184,6 +2225,7 @@ local enemyModifications = {
 		},
 	},
 	ShadeBowUnitSuperElite = {
+		RunHistoryKilledByName = "ShadeBowUnit",
 		OnDeathFireWeapons = { "ShadeDeathSpawnSuperElite" },
 		EliteAttributeOptions = game.CombineTables(
 			game.CombineTables(
@@ -2200,6 +2242,7 @@ local enemyModifications = {
 	},
 	ShadeShieldUnit = {
 		StunAnimations = { Default = "ShadeShield_OnHit" },
+		BlockNextBiomeEnemyShrineUpgrade = true,
 		OnDeathFireWeapons = { "ShadeDeathSpawn" },
 		ProjectileBlockPresentationFunctionName = "UnitInvulnerableHitPresentation",
 		InvulnerableHitFx = "ShadeShieldBlock",
@@ -2219,6 +2262,7 @@ local enemyModifications = {
 		},
 	},
 	ShadeShieldUnitSuperElite = {
+		RunHistoryKilledByName = "ShadeShieldUnit",
 		OnDeathFireWeapons = { "ShadeDeathSpawnSuperElite" },
 		EliteAttributeOptions = game.CombineTables(
 			game.EnemySets.GenericEliteAttributes,
@@ -2247,6 +2291,7 @@ local enemyModifications = {
 		},
 	},
 	ShadeSwordUnitSuperElite = {
+		RunHistoryKilledByName = "ShadeSwordUnit",
 		OnDeathFireWeapons = { "ShadeDeathSpawnSuperElite" },
 		EliteAttributeOptions = game.CombineTables(
 			game.EnemySets.GenericEliteAttributes,
@@ -2266,10 +2311,8 @@ local enemyModifications = {
 		DreamBiomeData = elysiumEnemyDreamBiomeData,
 	},
 	Chariot = {
-		LargeUnitCap = mod.NilValue,
 		StunAnimations = { Default = "ChariotOnHit" },
 		DreamBiomeData = elysiumEnemyDreamBiomeData,
-		-- IgnoreCastSlow = true,
 		DefaultAIData = {
 			PreAttackAngleTowardTarget = false,
 			AttackDistanceBuffer = 0,
@@ -2313,6 +2356,7 @@ local enemyModifications = {
 		},
 	},
 	ChariotSuperElite = {
+		RunHistoryKilledByName = "Chariot",
 		DefaultAIData = {
 			RamEffectProperties = {
 				{
@@ -2329,12 +2373,11 @@ local enemyModifications = {
 		},
 	},
 	ChariotSuicide = {
-		LargeUnitCap = mod.NilValue,
 		StunAnimations = { Default = "ChariotSuicideOnHit" },
+		BlockNextBiomeEnemyShrineUpgrade = true,
 		BlockRaiseDead = true,
 		BlockRespawnShrineUpgrade = true,
 		BlockCharm = true,
-		-- IgnoreCastSlow = true,
 		DefaultAIData = {
 			PreAttackAngleTowardTarget = false,
 			AttackDistanceBuffer = 0,
@@ -2484,6 +2527,7 @@ local enemyModifications = {
 		ManualDeathAnimation = false,
 		PreBossAISetupFunctionName = "SetupComboPartners",
 		ImmuneToPolymorph = true,
+		SkipDisableAllyUnitsOnDeath = true,
 		ModsNikkelMHadesBiomesEffectVfxOffsetZ = 160,
 		EnragedPresentation = _PLUGIN.guid .. "." .. "TheseusEnragedPresentation",
 		PostActivateEvents = {
@@ -2637,6 +2681,12 @@ local enemyModifications = {
 			[4] = { DataOverrides = { HealthMultiplier = 1.8 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.8 } },
 		},
 		SubtitleColor = game.Color.TheseusVoice,
+		LowHealthVoiceLines = {
+			[14] = { GameStateRequirements = { { PathFromSource = true, Path = { "AIStageActive" }, IsNone = { 2 } } } },
+			[15] = { GameStateRequirements = { { PathFromSource = true, Path = { "AIStageActive" }, IsNone = { 2 } } } },
+			[16] = { RequiredAnyUnitAlive = { "Minotaur", "Minotaur2" } },
+			[17] = { GameStateRequirements = { { PathFromSource = true, Path = { "AIStageActive" }, IsNone = { 2 } } } },
+		},
 		-- Doesn't seem to be used
 		OnTouchdownFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesUnitTouchdown",
 		OnTouchdownFunctionArgs = {
@@ -2653,6 +2703,7 @@ local enemyModifications = {
 		ManualDeathAnimation = false,
 		PreBossAISetupFunctionName = "SetupComboPartners",
 		ImmuneToPolymorph = true,
+		SkipDisableAllyUnitsOnDeath = true,
 		AdditionalEnemySetupFunctionName = _PLUGIN.guid .. "." .. "SelectTheseusGod",
 		EnragedPresentation = _PLUGIN.guid .. "." .. "TheseusEnragedPresentation",
 		OnDamagedFunctionName = _PLUGIN.guid .. "." .. "TheseusDamaged",
@@ -2803,13 +2854,30 @@ local enemyModifications = {
 		},
 		ModsNikkelMHadesBiomesEffectVfxOffsetZ = 160,
 	},
+	ModsNikkelMHadesBiomes_HestiaDevotionTracker = {
+		InheritFrom = { "HestiaUpgradeRoomWeapon" },
+		WakeUpDelay = 0.25,
+		WeaponOptions = { "ModsNikkelMHadesBiomes_DevotionHestia" },
+	},
+	ModsNikkelMHadesBiomes_HestiaDevotionWanderer = {
+		InheritFrom = { "HestiaUpgradeRoomWeapon" },
+		WakeUpDelay = "nil",
+		WakeUpDelayMin = 0.4,
+		WakeUpDelayMax = 1.3,
+		WeaponOptions = { "ModsNikkelMHadesBiomes_DevotionHestia" },
+		DefaultAIData = {
+			-- Don't track/target the player directly, move more randomly
+			RandomTargetAngle = true,
+			TargetOffsetDistanceMin = 150,
+			TargetOffsetDistanceMax = 400,
+		},
+	},
 	-- #endregion
 	-- #endregion
 
 	-- #region STYX
 	-- #region STYX - Regular
 	SatyrRanged = {
-		LargeUnitCap = mod.NilValue,
 		StunAnimations = { Default = "SatyrOnHit" },
 		DreamBiomeData = styxEnemyDreamBiomeData,
 		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
@@ -2829,7 +2897,6 @@ local enemyModifications = {
 		),
 	},
 	RatThug = {
-		LargeUnitCap = mod.NilValue,
 		StunAnimations = { Default = "EnemyRatThugOnHit" },
 		DreamBiomeData = styxEnemyDreamBiomeData,
 		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
@@ -2991,6 +3058,21 @@ local enemyModifications = {
 	-- #endregion
 	-- #region STYX - Bosses
 	Hades = {
+		ActivateRequirements = {
+			RequiredFalseFlags = mod.NilValue,
+			OrRequirements = {
+				{
+					{
+						PathTrue = { "CurrentRun", "IsDreamRun" }
+					},
+				},
+				{
+					{
+						PathFalse = { "GameState", "Flags", "HadesEndingFlag" }
+					},
+				},
+			},
+		},
 		-- Base Health: 17000
 		-- Base EM Health: 22000
 		-- Chronos Health: 20000

@@ -8,8 +8,10 @@ local newHermesDeliveredDialogues = {
 			HermesDeliveredDialoguesSkipIntroLine = true,
 		},
 		PlayOnce = true,
+		PreEventFunctionName = "BoonInteractPresentation",
+		PreEventFunctionArgs = { PickupWait = 1.0, },
 		{
-			Cue = "/VO/ModsNikkelMHadesBiomes_Hermes_AthenaFirstPickUp_0000",
+			Cue = "/VO/Modsnikkelmhadesbiomescustomhermes_0000",
 			Speaker = "HermesUpgrade",
 			Portrait = "ModsNikkelMHadesBiomes_Portrait_Hermes_Default_01",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
@@ -85,6 +87,8 @@ local newAthenaExclusivePortedInteractTextLines = {
 		-- 	Text =
 		-- 	"It's got to be her. Then, here goes nothing... {#DialogueItalicFormat}Ahem{#PreviousFormat}. In the name of Hades! Olympus, I accept this message."
 		-- },
+		PreEventFunctionName = "BoonInteractPresentation",
+		PreEventFunctionArgs = { PickupWait = 1.0, },
 		{
 			Cue = "/VO/Athena_0002",
 			PortraitExitWait = 1.25,
@@ -924,11 +928,16 @@ local newAthenaExclusivePortedInteractTextLines = {
 	},
 	-- #endregion
 }
-mod.AddNarrativeDataEntries(
-	newAthenaExclusivePortedInteractTextLines, "NPC_Athena_01", "InteractTextLineSets", "InteractTextLinePriorities",
-	{ Athena = { "Modsnikkelmhadesbiomesathena", "ZagreusField" } }, { Athena_ = "Modsnikkelmhadesbiomesathena_" },
-	{ Athena_ = "ModsNikkelMHadesBiomes_Portrait_Athena_Default_01" }, nil, nil, true,
-	{ "PreEventFunctionName", "PreEventFunctionArgs" }
+mod.AddNarrativeDataEntries(newAthenaExclusivePortedInteractTextLines, "NPC_Athena_01", "InteractTextLineSets",
+	{
+		TextLinePriorityType = "InteractTextLinePriorities",
+		VoiceBankMappings = { Athena = { "Modsnikkelmhadesbiomesathena", "ZagreusField" } },
+		CueMappings = { Athena_ = "Modsnikkelmhadesbiomesathena_" },
+		PortraitMappings = { Athena_ = "ModsNikkelMHadesBiomes_Portrait_Athena_Default_01" },
+		IgnoreDuplicates = true,
+		StripProperties = { "PreEventFunctionName", "PreEventFunctionArgs" },
+		IsWorldNpc = true,
+	}
 )
 -- #endregion
 
@@ -942,6 +951,8 @@ local newAthenaOlympianReunionTextLines = {
 			CreateNewPriorityGroup = true,
 		},
 		PlayOnce = true,
+		PreEventFunctionName = "BoonInteractPresentation",
+		PreEventFunctionArgs = { PickupWait = 1.0, },
 		RequiredTextLines = { "AthenaFirstPickUp", "PersephoneAboutOlympianReunionQuest01" },
 		{
 			Cue = "/VO/ZagreusField_4338",
@@ -1869,20 +1880,30 @@ local athenaPriorityTextLines = game.ConcatTableValuesIPairs(
 		game.ConcatTableValuesIPairs(newAthenaOlympianReunionTextLines, newAthenaPriorityTextLines),
 		newAthenaRelationshipTextLines),
 	newAthenaLateStoryTextLines) or {}
-mod.AddNarrativeDataEntries(
-	athenaPriorityTextLines, "NPC_Athena_01", "InteractTextLineSets", "InteractTextLinePriorities",
-	{ Athena = { "Modsnikkelmhadesbiomesathena", "ZagreusField" } }, { Athena_ = "Modsnikkelmhadesbiomesathena_" },
-	{ Athena_ = "ModsNikkelMHadesBiomes_Portrait_Athena_Default_01" }, nil, nil, true,
-	{ "PreEventFunctionName", "PreEventFunctionArgs" }
+mod.AddNarrativeDataEntries(athenaPriorityTextLines, "NPC_Athena_01", "InteractTextLineSets",
+	{
+		TextLinePriorityType = "InteractTextLinePriorities",
+		VoiceBankMappings = { Athena = { "Modsnikkelmhadesbiomesathena", "ZagreusField" } },
+		CueMappings = { Athena_ = "Modsnikkelmhadesbiomesathena_" },
+		PortraitMappings = { Athena_ = "ModsNikkelMHadesBiomes_Portrait_Athena_Default_01" },
+		IgnoreDuplicates = true,
+		StripProperties = { "PreEventFunctionName", "PreEventFunctionArgs" },
+		IsWorldNpc = true,
+	}
 )
 
 local exclusiveAthenaContextualTextLines = game.ConcatTableValuesIPairs(
 	game.ConcatTableValuesIPairs(newAthenaExclusivePostGiftTextLines, newAthenaExclusiveRunTextLines),
 	newAthenaExclusiveContextualTextLines) or {}
-mod.AddNarrativeDataEntries(
-	exclusiveAthenaContextualTextLines, "NPC_Athena_01", "InteractTextLineSets", "InteractTextLinePriorities",
-	{ Athena = { "Modsnikkelmhadesbiomesathena", "ZagreusField" } }, { Athena_ = "Modsnikkelmhadesbiomesathena_" },
-	{ Athena_ = "ModsNikkelMHadesBiomes_Portrait_Athena_Default_01" }, nil, nil, true,
-	{ "PreEventFunctionName", "PreEventFunctionArgs" }
+mod.AddNarrativeDataEntries(exclusiveAthenaContextualTextLines, "NPC_Athena_01", "InteractTextLineSets",
+	{
+		TextLinePriorityType = "InteractTextLinePriorities",
+		VoiceBankMappings = { Athena = { "Modsnikkelmhadesbiomesathena", "ZagreusField" } },
+		CueMappings = { Athena_ = "Modsnikkelmhadesbiomesathena_" },
+		PortraitMappings = { Athena_ = "ModsNikkelMHadesBiomes_Portrait_Athena_Default_01" },
+		IgnoreDuplicates = true,
+		StripProperties = { "PreEventFunctionName", "PreEventFunctionArgs" },
+		IsWorldNpc = true,
+	}
 )
 -- #endregion

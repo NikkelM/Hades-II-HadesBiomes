@@ -13,5 +13,8 @@ modutil.mod.Path.Wrap("EndDreamRunPresentation", function(base)
 		game.CurrentRun.CurrentRoom.BlockHadesOverlay = false
 	end
 
-	return base()
+	base()
+
+	-- Don't track this run as a modded run for the run history or in the Crossroads
+	game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun = false
 end)

@@ -2,7 +2,6 @@ local config = {
   enabled = true,
   gameplay = {
     z_ExcludeFromDreamDives = false,
-    z_HideElysiumPoisonMessage = false,
   },
   accessibility = {
     z_GoddessMode = false,
@@ -19,6 +18,10 @@ local config = {
       z_SpeedrunDisableTinyVermin = false,
     },
   },
+  cheats = {
+    z_UnlockGameplayIncantations = false,
+    z_UnlockAllCosmetics = false,
+  },
   debugging = {
     hadesGameFolder = "root",
     logLevel = 4,
@@ -34,8 +37,6 @@ local configDesc = {
   "Whether the mod is enabled or not. Do not disable this while in a Zagreus' Journey run or region!",
   gameplay = {
     z_ExcludeFromDreamDives = "If enabled, Tartarus, Asphodel, Elysium and Styx will NOT appear in Dream Dives.",
-    z_HideElysiumPoisonMessage =
-    "If enabled, the \"Poison will wear off automatically!\" message that appears when poisoned in Elysium will not be shown.",
   },
   accessibility = {
     z_GoddessMode =
@@ -60,18 +61,27 @@ local configDesc = {
       "If enabled, the Tiny Vermin miniboss in Styx will never appear.",
     },
   },
+  cheats = {
+    z_UnlockGameplayIncantations =
+    "NOT REVERSIBLE! If enabled, permanently unlocks all non-story incantations added by Zagreus' Journey. Disabling this later on does not undo the unlocks.",
+    z_UnlockAllCosmetics =
+    "NOT REVERSIBLE! If enabled, permanently unlocks all cosmetics and Arcana card-back packs added by Zagreus' Journey. Does not grant the badges you can unlock at the Spirit Mixer. Disabling this later on does not undo the unlocks.",
+  },
   debugging = {
     hadesGameFolder =
-    "The path to the Hades game folder. When set to \"root\", resolves to the \"Hades\" directory in the same parent directory as your Hades II installation. Leave this at \"root\" if you have both games installed through the same store and on the same drive. Otherwise, set to the full path of your Hades installation, e.g. C:\\Program Files (x86)\\Steam\\steamapps\\common\\Hades for Steam, C:\\Program Files (x86)\\Epic Games\\Games\\Hades for Epic Games or C:\\Xbox\\Hades for the Microsoft Store.",
+    "The path to the Hades game folder. When set to \"root\", resolves to the \"Hades\" directory in the same parent directory as your Hades II installation. Leave this at \"root\" if you have both games installed through the same store and on the same drive. Otherwise, set to the full path of your Hades installation, e.g. C:\\Program Files (x86)\\Steam\\steamapps\\common\\Hades for Steam, C:\\Program Files (x86)\\Epic Games\\Games\\Hades for Epic Games or C:\\Xbox\\Hades for the Microsoft Store. A full game restart is required after changing this setting.",
     logLevel =
     "What kinds of logs should be printed to the console, inclusive all previous log levels. Set a higher level to see more detailed logs. Set to one of: Off/No logs (0), Errors (1), Warnings (2), Info (3), Debug (4)",
     enableVanillaDebugPrint =
     "If enabled, the mod will also log vanilla debug events. Enable this if asked to by the developer.",
     firstTimeSetup =
-    "If enabled, the mod will copy required files from the Hades installation path to the mod installation directory when the game is restarted. These files will be removed if you later uninstall the mod. After installation, this is automatically disabled. You normally do not need to change this yourself. Only enable this when you want to manually re-install the mod.",
+    "Requires a full game restart to take effect. If enabled, the mod will copy required files from the Hades installation path to the mod installation directory at the next game start. These files will be removed if you later uninstall the mod. You normally do not need to change this setting. To reinstall the mod, enable both \"firstTimeSetup\" and \"uninstall\", then restart the game.",
     uninstall =
-    "[Deprecated - you should no longer need to use this] Enable this and restart the game to uninstall the mod, which removes files that were copied copied from your Hades installation path to the mod installation directory. Uninstalling the mod in the mod manager has the same effect. To re-install, enable both \"uninstall\" and \"firstTimeSetup\". If \"firstTimeSetup\" is not also enabled, the mod will be disabled after uninstalling.",
+    "[Deprecated - you should no longer need to use this] Requires a full game restart to take effect. If enabled, the mod will remove files that were copied from your Hades installation path to the mod installation directory. Uninstalling the mod in the mod manager has the same effect. To reinstall the mod, enable both \"uninstall\" and \"firstTimeSetup\", then restart the game. If \"firstTimeSetup\" is not also enabled, the mod will be disabled after uninstalling.",
   },
 }
+
+---@diagnostic disable-next-line: lowercase-global
+configDescriptions = configDesc
 
 return config, configDesc

@@ -22,8 +22,8 @@ modutil.mod.Path.Context.Wrap.Static("OpenMarketScreen", function(marketScreenAr
 		if game.IsGameStateEligible(nil, mod.NewBrokerBossTradeCategory.GameStateRequirements) and not args.ModsNikkelMHadesBiomesRequestedRegeneration and game.CurrentRun.MarketItems ~= nil then
 			-- Check if our new category is present already
 			for _, category in pairs(game.CurrentRun.MarketItems) do
-				-- Does this category contain one of our new boss resources as a Cost? Then it's our custom category
-				if category and category[1] and category[1].Cost and game.ContainsAnyKey(category[1].Cost, game.GetAllKeys(mod.NewBossResourceData)) then
+				-- Does this category contain one of our new resources as a Cost? Then it's our custom category
+				if category and category[1] and category[1].Cost and game.ContainsAnyKey(category[1].Cost, mod.NewBrokerTradeCostResources) then
 					return marketItems
 				end
 			end
@@ -42,6 +42,17 @@ modutil.mod.Path.Context.Wrap.Static("OpenMarketScreen", function(marketScreenAr
 	end)
 end)
 
+modutil.mod.Path.Context.Wrap.Static("HandleMarketPurchase", function()
+	modutil.mod.Path.Wrap("ModifyTextBox", function(base, args)
+		-- Switch back to the resource key the player just interacted with before showing the backup key
+		if mod.ActiveTradeCostResourceKey ~= nil and args.Id == mod.ActiveTradeResourceButtonId then
+			args.Text = game.GameState.Resources[mod.ActiveTradeCostResourceKey] or 0
+		end
+
+		return base(args)
+	end)
+end)
+
 modutil.mod.Path.Context.Wrap.Static("MarketScreenUpdateResourceStatus", function(originalScreen)
 	modutil.mod.Path.Wrap("ModifyTextBox", function(base, args)
 		local category = modutil.mod.Locals.Stacked(2).category or {}
@@ -50,12 +61,14 @@ modutil.mod.Path.Context.Wrap.Static("MarketScreenUpdateResourceStatus", functio
 			local screen = modutil.mod.Locals.Stacked(2).screen
 			-- If we are showing the amount we have of the dummy modded resource, display ??? since there is no amount, and set the new animation
 			if args.Id == screen.Components.BasicResourceButton.Id then
-				local resourceData = game.ResourceData[currencyResourceName]
+				-- While buying, keep showing the resource being traded in rather than the dummy one
+				local resourceKey = mod.ActiveTradeCostResourceKey or currencyResourceName
+				local resourceData = game.ResourceData[resourceKey]
 				SetAnimation({
 					DestinationId = screen.Components.BasicResourceButton.Id,
 					Name = resourceData.TextIconPath or resourceData.IconPath or resourceData.Icon
 				})
-				args.Text = "???"
+				args.Text = mod.ActiveTradeCostResourceKey and (game.GameState.Resources[resourceKey] or 0) or "???"
 			end
 		end
 

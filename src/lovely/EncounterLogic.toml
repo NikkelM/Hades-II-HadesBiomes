@@ -1,0 +1,13 @@
+[manifest]
+version = "1.0.0"
+priority = 0
+
+# GetNextSpawn can return nil when native LargeUnitCap blocks every remaining candidate
+[[patches]]
+[patches.pattern]
+target = "EncounterLogic.lua"
+pattern = "if EnemyData[spawnInfo.Name] ~= nil and EnemyData[spawnInfo.Name].ActiveCapWeight ~= nil then"
+position = "at"
+payload = "if spawnInfo ~= nil and EnemyData[spawnInfo.Name] ~= nil and EnemyData[spawnInfo.Name].ActiveCapWeight ~= nil then"
+match_indent = true
+times = 2

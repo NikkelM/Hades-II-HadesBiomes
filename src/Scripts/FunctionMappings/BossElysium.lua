@@ -91,6 +91,7 @@ function mod.TheseusMinotaurKillPresentation(unit, args)
 
 	unit.MutePermanent = true
 	if bothBossesDead then
+		game.DisableAllyUnits()
 		-- For DreamRun compatibility
 		unit.OnDeathFunctionArgs = unit.OnDeathFunctionArgs or {}
 		unit.OnDeathFunctionArgs.IsBiomeBoss = true
@@ -128,6 +129,7 @@ function mod.MinotaurFinalStageTransition(boss, currentRun, aiStage)
 		currentRun.CurrentRoom.Encounter.BossKillPresentation = true
 		boss.SkipOnDeathSpawnEncounter = true
 		game.DestroyRequiredKills({ BlockLoot = true, SkipIds = { boss.ObjectId } })
+		game.DisableAllyUnits()
 		mod.MinotaurEarlyExitPresentation(boss, currentRun)
 		game.Kill(boss, { SkipOnDeathFunction = true, Silent = true, SkipDestroyDelay = true, })
 	else
@@ -247,6 +249,10 @@ function mod.GetUninteractedGodThisRunForTheseus()
 		NPC_Dionysus_01 = true,    -- DionysusUpgrade = true, -- not in Hades II as a normal god, and not possible to get in modded run
 		PoseidonUpgrade = true,
 		ZeusUpgrade = true,
+		ApolloUpgrade = true,   -- Only exists in Hades II
+		HeraUpgrade = true,     -- Only exists in Hades II
+		HephaestusUpgrade = true, -- Only exists in Hades II
+		HestiaUpgrade = true,   -- Only exists in Hades II
 	}
 	local nonLootDataGods = {
 		NPC_Artemis_Field_01 = {
@@ -286,6 +292,17 @@ function mod.GetUninteractedGodThisRunForTheseus()
 		end
 	end
 
+	-- For Nightmare Fear: Don't choose the God the Vow of Betrayal has chosen already
+	local betrayalRoomWeapon = game.SessionMapState and game.SessionMapState.NightmareFearChosenPassiveRoomWeapon
+	if betrayalRoomWeapon ~= nil and #notInteractedGods > 1 then
+		for index, godName in ipairs(notInteractedGods) do
+			if godName .. "RoomWeapon" == betrayalRoomWeapon then
+				table.remove(notInteractedGods, index)
+				break
+			end
+		end
+	end
+
 	local randomGod = game.GetRandomValue(notInteractedGods)
 	-- Mapping the god names to the .pkg names used in Hades II
 	local randomGodMap = {
@@ -297,6 +314,10 @@ function mod.GetUninteractedGodThisRunForTheseus()
 		NPC_Dionysus_01 = "Dionysus",
 		PoseidonUpgrade = "Poseidon",
 		ZeusUpgrade = "Zeus",
+		ApolloUpgrade = "Apollo",
+		HeraUpgrade = "Hera",
+		HephaestusUpgrade = "Hephaestus",
+		HestiaUpgrade = "Hestia",
 	}
 	return randomGodMap[randomGod] or randomGod
 end
@@ -325,20 +346,45 @@ function mod.TheseusGodAI(enemy, currentRun)
 	game.thread(mod.DoTheseusSuperPresentation, enemy, weaponAIData)
 
 	game.wait(0.1)
-	-- Updated to use Hades II function
-	-- AttackOnce(enemy, currentRun, GetTargetId(enemy, weaponAIData), weaponAIData)
+
+	-- For Hestia's wrath, which is just her devotion room weapons instead of the classic projectiles
+	mod.SpawnTheseusGodUnits(enemy, weaponAIData, currentRun)
+
 	weaponAIData.TargetId = GetTargetId(enemy, weaponAIData)
 	game.DoAttack(enemy, weaponAIData)
 	game.wait(3.0)
 
 	-- Fire passive god weapon
-	enemy.DumbFireWeapons = enemy.DumbFireWeapons or {}
 	local dumbFireWeaponName = "Theseus" .. theseusGodName .. "Passive"
-	table.insert(enemy.DumbFireWeapons, dumbFireWeaponName)
-	game.ActivateDumbFireWeapons(currentRun, enemy)
+	local dumbFireAIData = game.WeaponData[dumbFireWeaponName] and game.WeaponData[dumbFireWeaponName].AIData
+	-- Only spawn dumbfire weapons if this god's wrath doesn't use custom units (Hestia)
+	if not mod.SpawnTheseusGodUnits(enemy, dumbFireAIData, currentRun) then
+		enemy.DumbFireWeapons = enemy.DumbFireWeapons or {}
+		table.insert(enemy.DumbFireWeapons, dumbFireWeaponName)
+		game.ActivateDumbFireWeapons(currentRun, enemy)
+	end
 
 	-- Switch back to regular AI
 	game.SetAI(game.AttackerAI, enemy, currentRun)
+end
+
+function mod.SpawnTheseusGodUnits(enemy, aiData, currentRun)
+	local spawnUnits = aiData ~= nil and aiData.ModsNikkelMHadesBiomesSpawnUnits
+	if not spawnUnits then
+		return false
+	end
+
+	for _, unitName in ipairs(spawnUnits) do
+		local spawnedUnit = game.DeepCopyTable(game.EnemyData[unitName]) or {}
+		spawnedUnit.ObjectId = SpawnUnit({
+			Name = unitName,
+			Group = "Standing",
+			DestinationId = enemy.ObjectId,
+		})
+		game.thread(game.SetupUnit, spawnedUnit, currentRun)
+	end
+
+	return true
 end
 
 function mod.DoTheseusSuperPresentation(enemy, weaponAIData)

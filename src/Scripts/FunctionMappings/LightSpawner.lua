@@ -87,8 +87,7 @@ function mod.ModsNikkelMHadesBiomesSpawnerAI(enemy, aiData)
 							SpawnNearId = spawnNearId,
 							SpawnRadius = aiData.SpawnRadius,
 							SpawnRadiusMin = aiData.SpawnRadiusMin,
-							RequiredSpawnPoint =
-									aiData.RequiredSpawnPointType
+							RequiredSpawnPoint = aiData.RequiredSpawnPointType
 						})
 					spawnPointId = newSpawnPoint
 				elseif aiData.SpawnTowardSpawnPoints then

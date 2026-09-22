@@ -80,30 +80,72 @@ local function insertAfterLine(priorityTable, target, entry, textLineKey, create
 	mod.DebugPrint("InsertAfterNarrativeTextLine target '" .. tostring(target) .. "' not found for " .. textLineKey, 1)
 	return false
 end
+
+---Applies the portrait, cue and text rewrites to a single voice line
+local function applyLineMappings(line, cueMappings, portraitMappings)
+	if line.Cue ~= nil then
+		-- Update portraits, must be done before the Cues are modified
+		for cuePrefix, portraitName in pairs(portraitMappings) do
+			if line.Cue:find("^/VO/" .. cuePrefix) then
+				line.Portrait = portraitName
+			elseif line.Portrait then
+				-- Update Zagreus portrait references
+				if line.Portrait:find("^Portrait_Zag_") then
+					line.Portrait = line.Portrait:gsub("^Portrait_Zag_", "ModsNikkelMHadesBiomes_Portrait_Zag_")
+				end
+			end
+		end
+
+		-- Translate Cues to reference the new VoiceBank(s)
+		for cuePrefix, cueMapping in pairs(cueMappings) do
+			if line.Cue:find("^/VO/" .. cuePrefix) then
+				line.Cue = line.Cue:gsub("^/VO/" .. cuePrefix, "/VO/" .. cueMapping)
+			end
+		end
+	end
+
+	-- Fix Prev/PreviousFormat
+	if line.Text then
+		line.Text = string.gsub(line.Text, "{#PreviousFormat}", "{#Prev}")
+	end
+end
 -- #endregion
 
 ---Add modded narrative text lines into NarrativeData and LootData/EnemyData with priority placement and voicebank mapping.
 ---@param newTextLines table<integer, table> Text line sets keyed by text line id, each including `ModsNikkelMHadesBiomes_TextLineMetadata`
 ---@param narrativeDataKey string Key in `game.NarrativeData` and `game.LootData`/`game.EnemyData`
 ---@param textLineType string Field name on LootData/EnemyData to store sets (e.g. "InteractTextLineSets")
----@param textLinePriorityType string|nil Field name on NarrativeData priority table (e.g. "InteractTextLinePriorities")
----@param voiceBankMappings table<string, table<string>> Voicebank mapping to load modded voicebanks with vanilla loads
----@param cueMappings table<string, string> Cue prefix mapping, applied to `/VO/<Find>` -> `/VO/<ReplaceWith>`
----@param portraitMappings table<string, string> Mappings of Cue prefixes to Portrait names
----@param dummyCues table<integer, string>|nil If not nil, a random cue from this table will be played when the loot is picked up, in place of an actual voiced dialogue
----@param dummyVoiceBank string|nil If `dummyCues` is set, this voicebank will be loaded for it
----@param ignoreDuplicates boolean|nil If true, the duplicates check will ignore these textlines. Only use for tables where you knowingly add duplicates
----@param stripProperties table|nil A list of property keys within each TextLineSet that should be set to nil
-function mod.AddNarrativeDataEntries(newTextLines, narrativeDataKey, textLineType, textLinePriorityType,
-																		 voiceBankMappings, cueMappings, portraitMappings, dummyCues, dummyVoiceBank,
-																		 ignoreDuplicates, stripProperties)
-	if narrativeDataKey == nil or textLineType == nil or voiceBankMappings == nil or cueMappings == nil or portraitMappings == nil then
+---@param args table|nil Optional parameters:
+---`TextLinePriorityType`: Field name on the NarrativeData priority table (e.g. "InteractTextLinePriorities")
+---`VoiceBankMappings`: Voicebank mapping to load modded voicebanks with vanilla loads
+---`CueMappings`: Cue prefix mapping, applied to `/VO/<Find>` -> `/VO/<ReplaceWith>`
+---`PortraitMappings`: Mappings of Cue prefixes to Portrait names
+---`DummyCues`: A random cue from this table is played when the loot is picked up, in place of an actual voiced dialogue
+---`DummyVoiceBank`: Loaded for `DummyCues`, and required whenever that is set
+---`IgnoreDuplicates`: Skips the duplicates check. Only use for tables where you knowingly add duplicates
+---`StripProperties`: A list of property keys within each TextLineSet that should be set to nil
+---`SkipModdedRunRequirement`: Prevents adding the `CurrentRun.ModsNikkelMHadesBiomesIsModdedRun` requirement to the given textLines
+---`SkipUseRecordRequirement`: Prevents adding the `UseRecord` gate, which Crossroads NPCs must do because interacting records a use before the just-in-time eligibility recheck
+---`IsWorldNpc`: Skips the Chaos boon effects and uses the NPC interaction presentation
+function mod.AddNarrativeDataEntries(newTextLines, narrativeDataKey, textLineType, args)
+	args = args or {}
+	local textLinePriorityType = args.TextLinePriorityType
+	local voiceBankMappings = args.VoiceBankMappings or {}
+	local cueMappings = args.CueMappings or {}
+	local portraitMappings = args.PortraitMappings or {}
+	local dummyCues = args.DummyCues
+	local dummyVoiceBank = args.DummyVoiceBank
+	local ignoreDuplicates = args.IgnoreDuplicates
+	local stripProperties = args.StripProperties
+	local isWorldNpc = args.IsWorldNpc
+
+	if narrativeDataKey == nil or textLineType == nil then
 		mod.DebugPrint("A required parameter is missing!", 1)
 		return
 	end
 	if dummyCues ~= nil and dummyVoiceBank == nil then
 		mod.DebugPrint(
-			"dummyCues is set but dummyVoiceBank is nil, both must be set to use a dummy cue! For " ..
+			"args.DummyCues is set but args.DummyVoiceBank is nil, both must be set to use a dummy cue! For " ..
 			narrativeDataKey ", " .. textLineType, 1)
 		return
 	end
@@ -135,9 +177,12 @@ function mod.AddNarrativeDataEntries(newTextLines, narrativeDataKey, textLineTyp
 		return
 	end
 
-	-- Update the vanilla dialogues to NOT play in modded runs, since these don't have priority tables
 	local devotionTextLines = { "RejectionTextLines", "MakeUpTextLines" }
-	if game.Contains(devotionTextLines, textLineType) then
+	local isDevotionTextLine = game.Contains(devotionTextLines, textLineType)
+	local useRecordExemptTextLines = { "DuoPickupTextLines", "BoughtTextLines", "RejectionTextLines", "MakeUpTextLines" }
+	local isUseRecordExemptTextLine = game.Contains(useRecordExemptTextLines, textLineType)
+	-- Update the vanilla dialogues to NOT play in modded runs, since these don't have priority tables
+	if isDevotionTextLine then
 		for _, textLineData in pairs(game.LootData[narrativeDataKey][textLineType]) do
 			textLineData.GameStateRequirements = textLineData.GameStateRequirements or {}
 			table.insert(textLineData.GameStateRequirements,
@@ -169,7 +214,8 @@ function mod.AddNarrativeDataEntries(newTextLines, narrativeDataKey, textLineTyp
 		-- Safety net for duplicates that are not yet tracked in public.DuplicateTextLineSetNames
 		if mod.HiddenConfig.DeveloperMode and not ignoreDuplicates and not public.DuplicateTextLineSetNames[originalName] and dialogueNameExistsInHadesTwo(originalName) then
 			mod.DebugPrint(
-				"Text line set '" .. originalName .. "' already exists in Hades II but is not in public.DuplicateTextLineSetNames.",
+				"Text line set '" ..
+				originalName .. "' already exists in Hades II but is not in public.DuplicateTextLineSetNames.",
 				1)
 		end
 
@@ -178,16 +224,30 @@ function mod.AddNarrativeDataEntries(newTextLines, narrativeDataKey, textLineTyp
 		-- Mark as modded textline
 		data.ModsNikkelMHadesBiomesIsModdedTextLine = true
 		-- Don't play the Chaos effect on Chaos' own boons, Devotion MakeUp voicelines, and NPCs in the world (not by boon)
-		if narrativeDataKey == "TrialUpgrade" or textLineType == "MakeUpTextLines" or narrativeDataKey == "NPC_Artemis_Field_01" or narrativeDataKey == "NPC_Athena_01" then
+		if narrativeDataKey == "TrialUpgrade" or textLineType == "MakeUpTextLines" or isWorldNpc then
 			-- This will prevent using the Chaos effects on boon pickup, which would double up
 			data.ModsNikkelMHadesBiomesIsModdedTrialUpgradeTextLine = true
 		end
+		if isWorldNpc and data.PreEventFunctionName == "BoonInteractPresentation" then
+			data.PreEventFunctionName = "AngleNPCToHero"
+			data.PreEventFunctionArgs = nil
+		end
+
+		local ownerIsEnemyData = game.LootData[narrativeDataKey] == nil
+		if ownerIsEnemyData and textLineType == "InteractTextLineSets" and data.PlayOnce and data.StatusAnimation == nil then
+			data.StatusAnimation = mod.ModdedStatusAnimations.StatusIconWantsToTalk
+		end
 
 		data.GameStateRequirements = data.GameStateRequirements or {}
-		-- All modded text lines can only appear in modded runs
-		table.insert(data.GameStateRequirements, { PathTrue = { "CurrentRun", "ModsNikkelMHadesBiomesIsModdedRun" } })
-		-- This requirement was missing in Hades' textlines
-		table.insert(data.GameStateRequirements, { PathFalse = { "CurrentRun", "UseRecord", narrativeDataKey } })
+		-- All modded text lines can only appear in modded runs, unless they are meant to play in the Crossroads after any kind of run
+		if not args.SkipModdedRunRequirement then
+			table.insert(data.GameStateRequirements, { PathTrue = { "CurrentRun", "ModsNikkelMHadesBiomesIsModdedRun" } })
+		end
+		-- Standard loot text lines should not replay after the god has already been used this run
+		-- Contextual loot text lines must remain eligible after the god has already been used this run
+		if not args.SkipUseRecordRequirement and not isUseRecordExemptTextLine then
+			table.insert(data.GameStateRequirements, { PathFalse = { "CurrentRun", "UseRecord", narrativeDataKey } })
+		end
 
 		-- Strip keys
 		for _, stripProperty in ipairs(stripProperties or {}) do
@@ -210,33 +270,19 @@ function mod.AddNarrativeDataEntries(newTextLines, narrativeDataKey, textLineTyp
 				insertedDummyCue = true
 			end
 
-			-- Update portraits, must be done before the Cues are modified
-			for cuePrefix, portraitName in pairs(portraitMappings) do
-				if line.Cue:find("^/VO/" .. cuePrefix) then
-					line.Portrait = portraitName
-				elseif line.Portrait then
-					-- Update Zagreus portrait references
-					if line.Portrait:find("^Portrait_Zag_") then
-						line.Portrait = line.Portrait:gsub("^Portrait_Zag_", "ModsNikkelMHadesBiomes_Portrait_Zag_")
-					end
-				end
-			end
-
-			-- Translate Cues to reference the new VoiceBank(s)
-			for cuePrefix, cueMapping in pairs(cueMappings) do
-				if line.Cue:find("^/VO/" .. cuePrefix) then
-					line.Cue = line.Cue:gsub("^/VO/" .. cuePrefix, "/VO/" .. cueMapping)
-				end
-			end
-
-			-- Fix Prev/PreviousFormat
-			if line.Text then
-				line.Text = string.gsub(line.Text, "{#PreviousFormat}", "{#Prev}")
-			end
+			-- Update portraits, cues and formatting
+			applyLineMappings(line, cueMappings, portraitMappings)
 
 			-- Insert PresetEventArgs
 			if textLineType == "RejectionTextLines" then
 				line.PreLineFunctionArgs = game.PresetEventArgs.RejectionBoonInteract
+			end
+		end
+
+		for _, endVoiceLine in ipairs(data.EndVoiceLines or {}) do
+			applyLineMappings(endVoiceLine, cueMappings, portraitMappings)
+			for _, groupedVoiceLine in ipairs(endVoiceLine) do
+				applyLineMappings(groupedVoiceLine, cueMappings, portraitMappings)
 			end
 		end
 		-- #endregion
@@ -406,8 +452,13 @@ function mod.AddHermesDeliveredDialogues(deliveries, voiceBankMappings, cueMappi
 		delivery.EndEvents = { { FunctionName = _PLUGIN.guid .. "." .. "SetHermesDeliveryArgs", }, }
 	end
 
-	mod.AddNarrativeDataEntries(deliveries, "HermesUpgrade", "InteractTextLineSets", "InteractTextLinePriorities",
-		voiceBankMappings, cueMappings, portraitMappings)
+	mod.AddNarrativeDataEntries(deliveries, "HermesUpgrade", "InteractTextLineSets",
+		{
+			TextLinePriorityType = "InteractTextLinePriorities",
+			VoiceBankMappings = voiceBankMappings,
+			CueMappings = cueMappings,
+			PortraitMappings = portraitMappings,
+		})
 end
 
 function mod.SetHermesDeliveryArgs(source, eventArgs, args)

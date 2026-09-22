@@ -16,9 +16,23 @@ modutil.mod.Path.Wrap("MarketScreenMouseOverItem", function(base, button)
 	end
 end)
 
+modutil.mod.Path.Wrap("HandleMarketPurchase", function(base, screen, button)
+	local category = screen.ItemCategories[screen.ActiveCategoryIndex]
+	if category ~= nil and category.Name == mod.NewBrokerBossTradeCategory.Name and button.Data ~= nil and button.Data.Cost ~= nil then
+		mod.ActiveTradeCostResourceKey = next(button.Data.Cost)
+		mod.ActiveTradeResourceButtonId = screen.Components.BasicResourceButton.Id
+	end
+
+	base(screen, button)
+
+	mod.ActiveTradeCostResourceKey = nil
+	mod.ActiveTradeResourceButtonId = nil
+end)
+
 modutil.mod.Path.Wrap("MarketScreenMouseOffItem", function(base, button)
 	local screen = button.Screen
 
+	mod.ActiveTradeCostResourceKey = nil
 	if screen.SelectedItem and screen.SelectedItem.Category and screen.SelectedItem.Category.Name == mod.NewBrokerBossTradeCategory.Name then
 		local resourceKey = mod.NewBrokerBossTradeCategory.CurrencyResourceName
 		local resourceData = game.ResourceData[resourceKey]

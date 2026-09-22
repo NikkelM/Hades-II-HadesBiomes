@@ -2463,6 +2463,25 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 			{ Cue = "/VO/Modsnikkelmhadesbiomespersephone_0098" },
 		},
 	},
+	ReturnBoatRideVoiceLines = {
+		{
+			PreLineWait = 4.0,
+			UsePlayerSource = true,
+			RequiredRoom = "Return06",
+			SkipAnim = true,
+			-- We're here!
+			{ Cue = "/VO/ZagreusField_3678" },
+		},
+		{
+			PreLineWait = 1.2,
+			ObjectType = "ModsNikkelMHadesBiomes_NPC_Persephone_01",
+			RequiredRoom = "Return06",
+			SkipAnim = true,
+			-- We're here!
+			-- Custom: Replaced Persephone_ with Modsnikkelmhadesbiomespersephone_
+			{ Cue = "/VO/Modsnikkelmhadesbiomespersephone_0099" },
+		},
+	},
 	SunriseOverlookVoiceLines = {
 		BreakIfPlayed = true,
 		PreLineWait = 2.8,
@@ -6858,5 +6877,41 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 		{ Cue = "/VO/MelinoeField_1063", Text = "Should try an incantation back home..." },
 		{ Cue = "/VO/MelinoeField_1061", Text = "I'll have to use the cauldron first." },
 	},
+	-- #region Theseus Wrath Reaction
+	TheseusWrathReactionVoiceLines_F = {
+		RandomRemaining = true,
+		BreakIfPlayed = true,
+		PreLineWait = 0.5,
+		SuccessiveChanceToPlay = 0.33,
+		UsePlayerSource = true,
+		PlayOnceFromTableThisRun = true,
+
+		{ Cue = "/VO/MelinoeField_0535", Text = "Wha...?",       PlayFirst = true },
+		{ Cue = "/VO/MelinoeField_0536", Text = "What?!" },
+		{ Cue = "/VO/MelinoeField_1470", Text = "Oh, come on..." },
+		{ Cue = "/VO/MelinoeField_1472", Text = "Blood and..." },
+		{ Cue = "/VO/MelinoeField_1473", Text = "{#Emph}Augh..." },
+		{ Cue = "/VO/Melinoe_1956",      Text = "Damn it!" },
+		{ Cue = "/VO/Melinoe_1957",      Text = "Blood and...!" },
+		{ Cue = "/VO/MelinoeField_3286", Text = "Here we go..." },
+	},
+	TheseusWrathReactionVoiceLines_M = {
+		RandomRemaining = true,
+		BreakIfPlayed = true,
+		PreLineWait = 0.5,
+		SuccessiveChanceToPlay = 0.33,
+		UsePlayerSource = true,
+		PlayOnceFromTableThisRun = true,
+
+		{ Cue = "/VO/MelinoeField_0535", Text = "Wha...?",       PlayFirst = true },
+		{ Cue = "/VO/MelinoeField_0536", Text = "What?!" },
+		{ Cue = "/VO/MelinoeField_1470", Text = "Oh, come on..." },
+		{ Cue = "/VO/MelinoeField_1472", Text = "Blood and..." },
+		{ Cue = "/VO/MelinoeField_1473", Text = "{#Emph}Augh..." },
+		{ Cue = "/VO/Melinoe_1956",      Text = "Damn it!" },
+		{ Cue = "/VO/Melinoe_1957",      Text = "Blood and...!" },
+		{ Cue = "/VO/MelinoeField_3286", Text = "Here we go..." },
+	},
+	-- #endregion
 	-- #endregion
 }

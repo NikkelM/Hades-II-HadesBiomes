@@ -62,14 +62,14 @@ local encounterReplacements = {
 	},
 	GeneratedTartarus = {
 		-- The original from Hades is 2.3
-		ActiveEnemyCapBase = 2.6,
+		ActiveEnemyCapBase = 4,
+		-- The original from Hades is 8
+		ActiveEnemyCapMax = 10,
 		-- The original from Hades is 30
 		-- Also change the DifficultyModifier in OpeningGenerated
 		BaseDifficulty = 32,
 		-- The original from Hades is 0.35
-		ActiveEnemyCapDepthRamp = 0.4,
-		-- The original from Hades is 11
-		DepthDifficultyRamp = 12,
+		ActiveEnemyCapDepthRamp = 0.5,
 		DreamBiomeData = {
 			[1] = { DataOverrides = { MoneyDropCapMin = 10, MoneyDropCapMax = 15, MoneyDropCapDepthRamp = 0 } },
 			[2] = { DataOverrides = { MoneyDropCapMin = 10, MoneyDropCapMax = 20, MoneyDropCapDepthRamp = 0, ActiveEnemyCapDepthRamp = 0.5 } },
@@ -103,7 +103,7 @@ local encounterReplacements = {
 
 	PerfectClearChallengeTartarus = {
 		InheritFrom = { "PerfectClearChallenge", "GeneratedTartarus" },
-		EnemySet = game.EnemySets.EnemiesBiome1,
+		EnemySet = game.EnemySets.EnemiesBiome1_PerfectClearChallenge,
 		DreamBiomeData = "nil",
 	},
 	EliteChallengeTartarus = {
@@ -371,13 +371,28 @@ local encounterModifications = {
 		NextRoomResumeMusic = true,
 	},
 	Story_Sisyphus_01 = {
-		-- Set ineligible if the player has unlocked Orpheus but never met him - force Orpheus on the next run
 		GameStateRequirements = {
+			{
+				FunctionName = _PLUGIN.guid .. "." .. "IsPairedEncounterEligible",
+				FunctionArgs = {
+					NPCName = "NPC_Sisyphus_01",
+					OtherEncounterName = "Story_Orpheus_01",
+					OtherNPCName = "NPC_Orpheus_01",
+					MaxConsecutiveAppearances = 2,
+				},
+			},
+			-- After meeting Sisyphus, set him ineligible if the player has unlocked Orpheus but never met him
 			OrRequirements = {
 				-- Either hasn't unlocked Orpheus yet
 				{
 					{
 						PathFalse = { "GameState", "WorldUpgrades", "ModsNikkelMHadesBiomes_OrpheusUnlockItem" },
+					},
+				},
+				-- Or hasn't met Sisyphus yet (in case the player used the unlock-all-incantations config)
+				{
+					{
+						PathFalse = { "GameState", "TextLinesRecord", "SisyphusFirstMeeting" },
 					},
 				},
 				-- Or has unlocked AND met Orpheus
@@ -437,6 +452,10 @@ local encounterModifications = {
 				Args = {
 					TrackName = "/Music/MusicExploration1_MC",
 				},
+			},
+			[10] = {
+				FunctionName = _PLUGIN.guid .. "." .. "RecordPairedEncounterAppearance",
+				Args = { OtherEncounterName = "Story_Orpheus_01" },
 			},
 		},
 
@@ -682,6 +701,19 @@ local encounterModifications = {
 			{
 				PathTrue = { "GameState", "WorldUpgrades", "ModsNikkelMHadesBiomes_OrpheusUnlockItem" },
 			},
+			-- Need to have met Sisyphus before (in case the player used the unlock-all-incantations config)
+			{
+				PathTrue = { "GameState", "TextLinesRecord", "SisyphusFirstMeeting" },
+			},
+			{
+				FunctionName = _PLUGIN.guid .. "." .. "IsPairedEncounterEligible",
+				FunctionArgs = {
+					NPCName = "NPC_Orpheus_01",
+					OtherEncounterName = "Story_Sisyphus_01",
+					OtherNPCName = "NPC_Sisyphus_01",
+					MaxConsecutiveAppearances = 2,
+				},
+			},
 			RequiredFalseCosmeticPurchaseable = "ModsNikkelMHadesBiomes_OrpheusEurydiceQuestItem",
 			RequiredFalseFlags = { "OrpheusReunionInProgress" },
 			-- Changed from ThisRun to LastRun to make Orpheus ineligible if he was in Asphodel in the previous run
@@ -708,7 +740,11 @@ local encounterModifications = {
 					TrackOffsetMax = 120.0,
 				},
 			},
-			[4] = mod.NilValue,
+			[4] = {
+				FunctionName = _PLUGIN.guid .. "." .. "RecordPairedEncounterAppearance",
+				Args = { OtherEncounterName = "Story_Sisyphus_01" },
+				GameStateRequirements = mod.NilValue,
+			},
 			[5] = mod.NilValue,
 			[6] = mod.NilValue,
 			[7] = mod.NilValue,

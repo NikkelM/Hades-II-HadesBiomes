@@ -1,0 +1,91 @@
+{
+  Projectiles = [
+    // #region Asphodel
+    {
+      // For the HydraCrusher weapon
+      Name = "ModsNikkelMHadesBiomesHydraCrusher"
+      InheritFrom = "PolyphemusBoulder"
+      DetonateFx = "HydraCrusherFx"
+      DetonateSound = "/SFX/Enemy Sounds/CrusherAttackImpact"
+      Damage = 12
+      DamageRadius = 380
+      DamageRadiusScaleY = 0.6
+      MaxSpeed = 2000.0
+      SpawnOnDeath = "null"
+      ImmunityKey = "null"
+      Thing = {
+        Graphic = "HydraCrusher"
+        AttachedAnim = "HydraCrusherShadowStart"
+      }
+    }
+    // #endregion
+    // #region Elysium
+    // #region Theseus God Calls
+    {
+      Name = "ModsNikkelMHadesBiomes_TheseusApolloBolt"
+      InheritFrom = "DevotionApollo"
+      TotalFuse = 0.15
+    }
+    {
+      Name = "ModsNikkelMHadesBiomes_TheseusApolloBoltPassive"
+      InheritFrom = "DevotionApollo"
+      // Three detonations
+      TotalFuse = 0.45
+    }
+    {
+      Name = "ModsNikkelMHadesBiomes_TheseusHeraBolt"
+      InheritFrom = "DevotionHera"
+      Damage = 5
+      DieWithOwner = false
+    }
+    {
+      Name = "ModsNikkelMHadesBiomes_TheseusHeraBoltPassive"
+      InheritFrom = "ModsNikkelMHadesBiomes_TheseusHeraBolt"
+      Damage = 15
+    }
+    {
+      Name = "ModsNikkelMHadesBiomes_TheseusHestiaFire"
+      InheritFrom = "DevotionHestiaFire"
+      TotalFuse = 3.0
+    }
+    {
+      Name = "ModsNikkelMHadesBiomes_TheseusHestiaBall"
+      InheritFrom = "DevotionHestia"
+      SpawnOnDetonate = "ModsNikkelMHadesBiomes_TheseusHestiaFire"
+    }
+    {
+      Name = "ModsNikkelMHadesBiomes_TheseusHephaestusSlam"
+      InheritFrom = "DevotionHephaestus"
+      TotalFuse = 0.7
+      Damage = 10
+      DamageRadius = 380.0
+      DieWithOwner = false
+    }
+    {
+      Name = "ModsNikkelMHadesBiomes_TheseusHephaestusSlamPassive"
+      InheritFrom = "ModsNikkelMHadesBiomes_TheseusHephaestusSlam"
+      DamageRadius = 320.0
+    }
+    // #endregion
+    // #endregion
+    // #region Traps
+    {
+      Name = "ModsNikkelMHadesBiomesRubbleFall"
+      InheritFrom = "RubbleFall"
+      DamageRadius = 300
+    }
+    {
+      Name = "ModsNikkelMHadesBiomesRubbleFallLarge"
+      InheritFrom = "RubbleFall"
+      Damage = 300
+      DetonateGraphic = "RadialNovaRubbleLarge"
+      DamageRadius = 450
+    }
+    {
+      // Overwrites the DamageRadius of the WarningDecal, doesn't change anything else
+      Name = "ModsNikkelMHadesBiomesBlastWarningDecalElysium"
+      DamageRadius = 450.0
+    }
+    // #endregion
+  ]
+}

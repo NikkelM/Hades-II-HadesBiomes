@@ -323,6 +323,94 @@ function mod.GetPreviousModdedRun()
 	return nil
 end
 
+local function hasEligiblePlayOnceTextLine(currentRun, npcName)
+	local npcData = game.EnemyData[npcName]
+	if npcData == nil then
+		return false
+	end
+
+	for _, textLineSet in pairs(npcData.InteractTextLineSets or {}) do
+		if textLineSet.PlayOnce then
+			local eligibilityArgs = { PartnerName = textLineSet.Partner }
+			local eligibilityTextLineSet = game.CheckPartnerConversationData(textLineSet)
+			if game.IsTextLineEligible(currentRun, npcData, eligibilityTextLineSet, nil, nil, eligibilityArgs) then
+				return true
+			end
+		end
+	end
+
+	return false
+end
+
+function mod.IsPairedEncounterEligible(source, args, requirementArgs)
+	-- To prevent recursion when checking the other encounter's eligibility
+	if requirementArgs ~= nil and requirementArgs.ModsNikkelMHadesBiomesSkipPairedEncounterSelection then
+		return true
+	end
+
+	args = args or {}
+	local encounterName = source and source.Name
+	if encounterName == nil or args.NPCName == nil or args.OtherEncounterName == nil or args.OtherNPCName == nil then
+		mod.DebugPrint(
+			"IsPairedEncounterEligible is missing required arguments: encounterName = " ..
+			(encounterName or "nil") .. " args.NPCName = " .. (args.NPCName or "nil") ..
+			" args.OtherEncounterName = " .. (args.OtherEncounterName or "nil") ..
+			" args.OtherNPCName = " .. (args.OtherNPCName or "nil"), 1)
+		return false
+	end
+
+	local otherEncounter = game.EncounterData[args.OtherEncounterName]
+	local otherEncounterIsEligible = otherEncounter ~= nil and
+			game.IsGameStateEligible(otherEncounter, otherEncounter.GameStateRequirements,
+				{ ModsNikkelMHadesBiomesSkipPairedEncounterSelection = true })
+
+	-- Never exclude this encounter if the other is not eligible (excluding this function call, which was skipped)
+	-- We know that without this function call, there is always one of the two eligible
+	if not otherEncounterIsEligible then
+		return true
+	end
+
+	local counters = game.GameState.ModsNikkelMHadesBiomesCustomCounters or {}
+	local maxConsecutiveAppearances = args.MaxConsecutiveAppearances or 2
+	local encounterCount = counters[encounterName] or 0
+	local otherEncounterCount = counters[args.OtherEncounterName] or 0
+	-- If we've seen this encounter MaxConsecutiveAppearances times already, choose the other encounter
+	-- This overrides the check below for if the other encounter has a PlayOnce and this one doesn't
+	-- If the other encounter has been seen MaxConsecutiveAppearances already, we always choose this encounter
+	if encounterCount >= maxConsecutiveAppearances then
+		return false
+	elseif otherEncounterCount >= maxConsecutiveAppearances then
+		return true
+	end
+
+	-- Dream Dives skip dialogue, so as long as we don't hit the MaxConsecutiveAppearances, both encounters can be eligible and choose at random
+	if game.CurrentRun.IsDreamRun then
+		return true
+	end
+
+	local hasPlayOnce = hasEligiblePlayOnceTextLine(game.CurrentRun, args.NPCName)
+	local otherHasPlayOnce = hasEligiblePlayOnceTextLine(game.CurrentRun, args.OtherNPCName)
+
+	-- Make this encounter eligible if it has a PlayOnce line ready, or if it doesn't, if the other also doesn't have one ready
+	-- Make this encounter ineligible if it doesn't have a PlayOnce line ready but the other does
+	return hasPlayOnce or not otherHasPlayOnce
+end
+
+function mod.RecordPairedEncounterAppearance(source, args)
+	args = args or {}
+	local encounterName = source and source.Name
+	if encounterName == nil or args.OtherEncounterName == nil then
+		mod.DebugPrint(
+			"RecordPairedEncounterAppearance is missing required arguments: encounterName = " ..
+			(encounterName or "nil") .. " args.OtherEncounterName = " .. (args.OtherEncounterName or "nil"), 1)
+		return
+	end
+
+	game.GameState.ModsNikkelMHadesBiomesCustomCounters = game.GameState.ModsNikkelMHadesBiomesCustomCounters or {}
+	game.IncrementTableValue(game.GameState.ModsNikkelMHadesBiomesCustomCounters, encounterName)
+	game.GameState.ModsNikkelMHadesBiomesCustomCounters[args.OtherEncounterName] = 0
+end
+
 function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, args)
 	if args == nil then
 		args = {}
@@ -401,12 +489,9 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 							or roomName
 				end
 			elseif requirementType == "nameTable" then
-				for i, roomName in ipairs(requirements[roomRequirement]) do
-					requirements[roomRequirement][i].Name =
-							mod.AsphodelRoomNameMappings[roomName.Name]
-							or mod.ElysiumRoomNameMappings[roomName.Name]
-							or roomName.Name
-				end
+				local roomName = requirements[roomRequirement].Name
+				requirements[roomRequirement].Name = mod.AsphodelRoomNameMappings[roomName] or
+						mod.ElysiumRoomNameMappings[roomName] or roomName
 			elseif requirementType == "keyTable" then
 				local mappedRequirements = {}
 				for roomName, value in pairs(requirements[roomRequirement]) do
@@ -525,12 +610,11 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 			NPC_Hades_01 = "NPC_Hades_Field_01",
 			NPC_Nyx_01 = "NPC_Nyx_Story_01",
 		}
+		local mappedInteractions = {}
 		for npcName, interactCount in pairs(requirements.RequiredMinNPCInteractions) do
-			if npcNameMappings[npcName] ~= nil then
-				requirements.RequiredMinNPCInteractions[npcNameMappings[npcName]] = interactCount
-				requirements.RequiredMinNPCInteractions[npcName] = nil
-			end
+			mappedInteractions[npcNameMappings[npcName] or npcName] = interactCount
 		end
+		requirements.RequiredMinNPCInteractions = mappedInteractions
 	end
 
 	-- ChanceToPlay is already taken care of in the Hades II function call
@@ -3865,17 +3949,20 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 	end
 
 	if requirements.RequiresNewMusicTracks ~= nil then
-		local anyTrue = false
-		for trackName, trackData in pairs(MusicPlayerTrackData) do
-			if game.GameState.WorldUpgrades[trackData.Name] and not game.GameState.WorldUpgradesViewed[trackData.Name] then
-				-- Owned but not viewed
-				anyTrue = true
-				break
-			end
-		end
-		if not anyTrue then
-			return false
-		end
+		-- local anyTrue = false
+		-- for trackName, trackData in pairs(MusicPlayerTrackData) do
+		-- 	if game.GameState.WorldUpgrades[trackData.Name] and not game.GameState.WorldUpgradesViewed[trackData.Name] then
+		-- 		-- Owned but not viewed
+		-- 		anyTrue = true
+		-- 		break
+		-- 	end
+		-- end
+		-- if not anyTrue then
+		-- 	return false
+		-- end
+
+		-- Only used in GlobalVoiceLines.OpenedMusicPlayerMenuVoiceLines which is not in the mod and won't be
+		return false
 	end
 
 	return true

@@ -47,7 +47,7 @@ It is highly recommended that you complete the main story of the first Hades gam
 - Decorate the Crossroads with **55+** new cosmetics, including new **Cauldrons**, **Arcana Card Backs**, and **Charms** inspired by Zagreus' companions from the first game.
 - Discover and complete **40+** new Minor Prophecies at the Fated List.
 - Complete **24** new testaments by clearing the new bosses using each of your weapons with new fear levels.
-- Discover and perform **20+** new incantations to unlock gameplay features and progress story events in Zagreus' Journey.
+- Discover and perform **20+** new incantations to unlock gameplay features and progress story events in Zagreus' Journey (use the mod config if you want to immediately unlock all of them).
 - Unlock **six** of the original game's keepsakes by forging relationships with Sisyphus, Eurydice, Patroclus, Orpheus, Megaera and Thanatos through the [Shared Keepsake Port](https://thunderstore.io/c/hades-ii/p/zannc/SharedKeepsakePort/) mod integration (automatically installed with this mod).
 - Challenge yourself with a set of new **Chaos Trials**, including randomized "Chaos Within" trials in the spirit of (Great) Chaos Above and Below.
 - Advance through **50** new cosmetic-only ranks at the Spirit Mixer, from the lowly "_Alpha Warden_" to the feared "_Unseen One_".
@@ -77,14 +77,14 @@ To install the mod, follow these simple steps:
 
 1. Install [r2modman](https://thunderstore.io/c/hades-ii/p/ebkr/r2modman/) (use `Manual Download`, then run the setup executable).
 2. Find _Zagreus' Journey_ on the `Online` tab, or use `Install with Mod Manager` on the [mod's Thunderstore page](https://thunderstore.io/c/hades-ii/p/NikkelM/Zagreus_Journey/). All dependencies are installed automatically.
-3. Start the game through the mod manager using `Start Modded`. The loading screen on first launch will take longer than usual while the mod installs required files (~5GB additional disk space is needed in total).
+3. Start the game through the mod manager using `Start Modded`. The loading screen on first launch will take longer than usual while the mod installs required files (~5.5GB additional disk space is needed in total).
 
 If the mod was installed successfully, you will see a new logo appear in the main menu.
 
 Please also keep the following in mind:
 
 - You must uninstall your **Hades 1** mods (rename or delete the `Mods` folder and run `modimporter.exe`) before using this mod. Zagreus' Journey **is** compatible with other Hades II mods.
-- If Hades and Hades II are installed in different parent folders (e.g. through different storefronts), set the `hadesGameFolder` in the mod's [configuration file](https://github.com/NikkelM/Hades-II-HadesBiomes/wiki/Configuration) to your Hades install path.
+- If Hades and Hades II are installed in different parent folders (e.g. through different storefronts), press `Insert` (or whichever other key you configured for the overlay) in a loaded save to open the modding overlay, expand `Zagreus' Journey Settings`, then `Debugging`, set `hadesGameFolder` to your Hades installation path, and restart the game.
 - Is your Hades II installed through Epic Games? You may need to follow [this FAQ entry](https://sgg-modding.github.io/Hades2ModWiki/docs/installing-mods/getting-started#i-own-hades-ii-on-epic-games-and-mods-do-not-work-when-playing-what-can-i-do) if mods don't seem to be active.
 - Installing the mod on Steam Deck? Follow the [Steam Deck guide](https://sgg-modding.github.io/Hades2ModWiki/docs/installing-mods/steam-deck) in the wiki.
 - Installing the mod on Mac? Follow the [Mac guide](https://sgg-modding.github.io/Hades2ModWiki/docs/installing-mods/mac) in the wiki.
@@ -102,10 +102,11 @@ The mod offers a number of configuration options to allow you to customize your 
 
 You can find an explanation of all configuration options [on this wiki page](https://github.com/NikkelM/Hades-II-HadesBiomes/wiki/Configuration).
 
-Note that the configuration file is only created after the first game start with the mod enabled in your mod manager.
+To change them, press `Insert` (or whichever other key you configured for the overlay) in a loaded save to open the modding overlay, then expand `Zagreus' Journey Settings`.
 
-If you are using r2modman or the Thunderstore Mod Manager, you can modify the config directly through the mod manager, in the `Config editor` tab.
-Make sure to save your changes once done.
+> [!WARNING]
+> The options marked `NOT REVERSIBLE` under the `Cheats` section permanently unlock mod content.
+> Disabling them later won't undo those unlocks.
 
 ### Feedback & Bug Reports
 
@@ -127,19 +128,14 @@ If you do not have a GitHub account, you can also join the [Hades II Modding Dis
 - zannc ([GitHub](https://github.com/excellent-ae), @dwbl. on [Discord](https://discord.gg/KuMbyrN)), Creator of [Shared Keepsake Port](https://thunderstore.io/c/hades-ii/p/zannc/SharedKeepsakePort/) (automatically installed with this mod)
 - zerp ([GitHub](https://github.com/adi1998), @zerp on [Discord](https://discord.gg/KuMbyrN)), Additional Testing & Bugfixes
 - @Aunuch on [Discord](https://discord.gg/KuMbyrN), Collaborator on the mod's Key Art
+- @JeanDupin ([GitHub](https://github.com/JeanDupin)), French localization
 - ...and the many other modding community members that tested early versions, provided feedback and reported bugs!
 
 ### Contribute Yourself!
 
-You can contribute to this mod by providing translations!
-The mod adds many different kinds of text, such as for the new resources, boons etc.<br>
-If you would like to translate some or all of these into your native language, you can find all texts in the [data/Hell2Modding-SJSON/Text/\<language shorthand\>](https://github.com/NikkelM/Hades-II-HadesBiomes/tree/main/data/Hell2Modding-SJSON/Text) folder of the mod's repository.
-To translate an entry, remove the comments/leading `//` and replace everything except content in curly `{}` brackets (which are formatting placeholders) with your translation.
-If you decide to translate a category, please translate all texts in that category to ensure consistency for players.
+You can contribute to this mod by translating the text it adds into your native language!
 
-For Cosmetics, texts are located in [src/Scripts/CosmeticsData.lua](https://github.com/NikkelM/Hades-II-HadesBiomes/tree/main/src/Scripts/CosmeticsData.lua), directly assigned to each cosmetic item.
-
-After translating your chosen texts, open a Pull Request with your changes on GitHub, and they will be included in the next release!
+See the [Contribute a Translation wiki page](https://github.com/NikkelM/Hades-II-HadesBiomes/wiki/Contribute-a-Translation) for more information on what needs translating, and how to do so.
 
 <!-- ## Image Gallery -->
 

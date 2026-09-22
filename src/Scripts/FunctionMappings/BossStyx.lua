@@ -170,6 +170,7 @@ function mod.BossIntroHades(eventSource, args)
 	end
 
 	if eventSource.Encounter.Name == "BossHadesPeaceful" then
+		game.AddTimerBlock(game.CurrentRun, "InterBiome")
 		game.CurrentRun.ActiveBiomeTimer = false
 	end
 end
@@ -357,10 +358,14 @@ function mod.HadesPhaseTransition(boss, currentRun, aiStage)
 end
 
 function mod.HadesKillPresentation(unit, args)
-	-- Track EM Hades defeat for Dream Dive quest (modded boss uses same encounter name for normal/EM)
-	if game.CurrentRun.IsDreamRun and game.IsBossDifficultyShrineUpgradeActive() then
-		game.CurrentRun.ModsNikkelMHadesBiomes_DreamDiveDefeatedEMHades = true
-		mod.CheckDreamDiveQuestCompletion()
+	-- Track EM Hades defeat for the regular and Dream Dive quests
+	if game.IsBossDifficultyShrineUpgradeActive() then
+		if game.CurrentRun.IsDreamRun then
+			game.CurrentRun.ModsNikkelMHadesBiomes_DreamDiveDefeatedEMHades = true
+			mod.CheckDreamDiveQuestCompletion()
+		else
+			game.GameState.ModsNikkelMHadesBiomesCustomFlags.ModsNikkelMHadesBiomes_HadesEM4Beaten = true
+		end
 	end
 
 	unit.InTransition = true

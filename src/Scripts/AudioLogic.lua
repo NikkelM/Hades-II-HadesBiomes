@@ -43,14 +43,32 @@ modutil.mod.Path.Wrap("AudioStateInit", function(base, triggerArgs)
 	return base(triggerArgs)
 end)
 
+modutil.mod.Path.Wrap("MusicPlayer", function(base, trackName, musicInfo, destinationId, args)
+	local startedTrack = base(trackName, musicInfo, destinationId, args)
+
+	-- To fix a base game desync where Music volume is set to 0, but not marked as paused
+	-- Nothing ever resumes it, which causes the missing music in desync cases for Eurydice and Thanatos
+	if startedTrack and game.AudioState.SecretMusicId ~= nil and game.AudioState.MusicId ~= nil then
+		game.AudioState.MusicPaused = true
+		game.AudioState.ModsNikkelMHadesBiomesMusicSilenced = true
+	end
+
+	return startedTrack
+end)
+
 modutil.mod.Path.Wrap("ResumeMusic", function(base, args)
 	if game.CurrentRun and game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun then
-		if not game.AudioState.MusicPaused then
+		if game.AudioState.SecretMusicId ~= nil then
 			return
 		end
 	end
 
-	return base(args)
+	base(args)
+
+	if game.AudioState.ModsNikkelMHadesBiomesMusicSilenced then
+		SetVolume({ Id = game.AudioState.MusicId, Value = 1.0, Duration = args and args.Duration or 0.2 })
+		game.AudioState.ModsNikkelMHadesBiomesMusicSilenced = nil
+	end
 end)
 
 -- Called in some boss intros - just in case there is no Music playing (either paused or MusicId == nil), we resume it/create it
@@ -58,10 +76,9 @@ function mod.SafetyResumeBossMusic()
 	if game.AudioState == nil then
 		return
 	end
-	if game.AudioState.MusicId ~= nil and game.AudioState.MusicId ~= 0 and game.AudioState.MusicPaused then
+	if game.AudioState.MusicId ~= nil and game.AudioState.MusicId ~= 0 then
 		game.ResumeMusic()
-	end
-	if game.AudioState.MusicId == nil or game.AudioState.MusicId == 0 then
+	else
 		game.MusicMixer({ PlayBiomeMusic = true, MusicSection = 0, UseRoomMusicSection = true, })
 	end
 end

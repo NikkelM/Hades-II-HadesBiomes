@@ -1,24 +1,46 @@
 -- Copies a file from src to dest
 local function copyFile(src, dest)
+	-- A file that could not be copied leaves a broken installation no matter what else succeeds, so the first failure aborts the rest
+	if mod.EncounteredInstallationIssues then
+		return false
+	end
+
 	if rom.path.exists(dest) then
 		mod.DebugPrint("File already exists and will not be overwritten: " .. dest, 2)
 		return true
 	end
 
-	mod.DebugPrint("Copying file " .. src .. " to " .. dest, 4)
-	local copied, copyError = rom.path.copy_file(src, dest)
-	if not copied then
-		mod.DebugPrint("Could not copy " .. src .. " to " .. dest .. ": " .. tostring(copyError), 1)
-		mod.EncounteredInstallationIssues = true
-		return false
+	mod.DebugPrint("[Install] Copying file " .. src .. " to " .. dest, 4)
+	local copied, copyError
+	local copyRetryAttempts = 3
+	for attempt = 1, copyRetryAttempts do
+		copied, copyError = rom.path.copy_file(src, dest)
+		if copied then
+			return true
+		end
+
+		if not rom.path.exists(src) then
+			break
+		end
+
+		if attempt < copyRetryAttempts then
+			mod.DebugPrint("[Install] Copy attempt " .. attempt .. " of " .. copyRetryAttempts .. " failed for " .. dest ..
+				", retrying: " .. tostring(copyError), 2)
+			local waitUntil = os.clock() + 0.25 * attempt
+			repeat until os.clock() >= waitUntil
+		end
 	end
 
-	return true
+	mod.DebugPrint("[Install] Could not copy " .. src .. " to " .. dest .. ": " .. tostring(copyError), 1)
+	mod.DebugPrint("[Install] Aborting the installation, as it cannot complete successfully without this file.", 1)
+	mod.EncounteredInstallationIssues = true
+
+	return false
 end
 
 local function copyFiles(fileMappings, srcBasePath, destBasePath, extension, nameHint, usePluginData, destUsePluginData)
 	nameHint = nameHint or ""
-	mod.DebugPrint("Copying " .. nameHint .. extension .. " files...", 3)
+	mod.DebugPrint("[Install] Copying " .. nameHint .. extension .. " files...", 3)
 	for key, value in pairs(fileMappings) do
 		local src, dest
 		if type(key) == "number" then
@@ -68,7 +90,7 @@ local function removeDeprecatedAnimationProperties(animationsFile)
 end
 
 local function applyModificationsAndCopySjsonFiles(fileMappings, srcBasePath, modifications)
-	mod.DebugPrint("Copying .sjson files...", 3)
+	mod.DebugPrint("[Install] Copying .sjson files...", 3)
 	for key, value in pairs(fileMappings) do
 		local src, dest
 		if type(key) == "number" then
@@ -86,7 +108,7 @@ local function applyModificationsAndCopySjsonFiles(fileMappings, srcBasePath, mo
 			local fileData = mod.DecodeSjsonFile(srcPath)
 			mod.ApplyNestedSjsonModifications(fileData.Animations, modifications[src] or {})
 			removeDeprecatedAnimationProperties(fileData)
-			mod.DebugPrint("Copying file " .. srcPath .. " to " .. sjsonDataRelativePath, 4)
+			mod.DebugPrint("[Install] Copying file " .. srcPath .. " to " .. sjsonDataRelativePath, 4)
 			mod.WriteSjsonData(sjsonDataRelativePath, fileData)
 		else
 			mod.DebugPrint("File already exists and will not be overwritten: " .. sjsonDataRelativePath, 2)
@@ -330,7 +352,7 @@ local function copyHadesTextFiles()
 				if rom.path.exists(rom.path.combine(_PLUGIN.sjson_data_path, sjsonDataRelativePath)) then
 					mod.DebugPrint("File already exists and will not be overwritten: " .. sjsonDataRelativePath, 2)
 				else
-					mod.DebugPrint("Copying " .. fileName .. " entries for language: " .. language, 4)
+					mod.DebugPrint("[Install] Copying " .. fileName .. " entries for language: " .. language, 4)
 
 					local hadesFile = rom.path.combine(mod.hadesGameFolder,
 						"Content\\Game\\Text\\" .. language .. "\\" .. fileName .. "." .. language .. ".sjson")
@@ -368,7 +390,7 @@ local function copyHadesNPCTexts()
 	for _, language in ipairs(mod.HelpTextLanguages) do
 		for fileName, allowedSpeakers in pairs(mod.NPCTextFileNames) do
 			if not (mod.HadesHelpTextFileSkipMap[fileName] and mod.HadesHelpTextFileSkipMap[fileName][language]) then
-				mod.DebugPrint("Copying " .. fileName .. " files for language: " .. language, 4)
+				mod.DebugPrint("[Install] Copying " .. fileName .. " files for language: " .. language, 4)
 
 				local sjsonDataRelativePath = "Text\\" ..
 						language .. "\\Z_" .. fileName .. "ModsNikkelMHadesBiomes." .. language .. ".sjson"
@@ -616,8 +638,9 @@ local function copyMapTextFiles()
 		if not mod.MapTextFileNames[src] then
 			local srcPath = rom.path.combine(mod.hadesGameFolder, "Content\\Maps\\" .. src .. ".map_text")
 			local destPath = rom.path.combine(rom.paths.plugins_data(), _PLUGIN.guid, "Content\\Maps\\" .. dest .. ".map_text")
-			copyFile(srcPath, destPath)
-			rom.data.register_plugin_file(dest .. ".map_text", destPath)
+			if copyFile(srcPath, destPath) then
+				rom.data.register_plugin_file(dest .. ".map_text", destPath)
+			end
 		end
 	end
 end
@@ -672,73 +695,73 @@ local installSteps = {
 	end },
 
 	Styx = { "1080p .bik batch 1", function()
-		copyFiles(getBikBatch(bikBatchBoundaries1080p, 1), "Content\\Movies\\", "Content\\Movies\\1080p\\", ".bik", "1080p Hades Animation ",
-			false, true)
+		copyFiles(getBikBatch(bikBatchBoundaries1080p, 1), "Content\\Movies\\", "Content\\Movies\\1080p\\", ".bik",
+			"1080p Hades Animation ", false, true)
 	end },
 
 	Surface = { "1080p .bik batch 2", function()
-		copyFiles(getBikBatch(bikBatchBoundaries1080p, 2), "Content\\Movies\\", "Content\\Movies\\1080p\\", ".bik", "1080p Hades Animation ",
-			false, true)
+		copyFiles(getBikBatch(bikBatchBoundaries1080p, 2), "Content\\Movies\\", "Content\\Movies\\1080p\\", ".bik",
+			"1080p Hades Animation ", false, true)
 	end },
 
 	Tartarus = { "1080p .bik batch 3", function()
-		copyFiles(getBikBatch(bikBatchBoundaries1080p, 3), "Content\\Movies\\", "Content\\Movies\\1080p\\", ".bik", "1080p Hades Animation ",
-			false, true)
+		copyFiles(getBikBatch(bikBatchBoundaries1080p, 3), "Content\\Movies\\", "Content\\Movies\\1080p\\", ".bik",
+			"1080p Hades Animation ", false, true)
 	end },
 
 	Temple = { "1080p .bik batch 4", function()
-		copyFiles(getBikBatch(bikBatchBoundaries1080p, 4), "Content\\Movies\\", "Content\\Movies\\1080p\\", ".bik", "1080p Hades Animation ",
-			false, true)
+		copyFiles(getBikBatch(bikBatchBoundaries1080p, 4), "Content\\Movies\\", "Content\\Movies\\1080p\\", ".bik",
+			"1080p Hades Animation ", false, true)
 	end },
 
 	Travel = { "1080p .bik batch 5", function()
-		copyFiles(getBikBatch(bikBatchBoundaries1080p, 5), "Content\\Movies\\", "Content\\Movies\\1080p\\", ".bik", "1080p Hades Animation ",
-			false, true)
+		copyFiles(getBikBatch(bikBatchBoundaries1080p, 5), "Content\\Movies\\", "Content\\Movies\\1080p\\", ".bik",
+			"1080p Hades Animation ", false, true)
 	end },
 
 	MapGroups = { "1080p .bik batch 6", function()
-		copyFiles(getBikBatch(bikBatchBoundaries1080p, 6), "Content\\Movies\\", "Content\\Movies\\1080p\\", ".bik", "1080p Hades Animation ",
-			false, true)
+		copyFiles(getBikBatch(bikBatchBoundaries1080p, 6), "Content\\Movies\\", "Content\\Movies\\1080p\\", ".bik",
+			"1080p Hades Animation ", false, true)
 	end },
 
 	Hero_Melinoe_Animation_Personality = { "1080p .bik batch 7", function()
-		copyFiles(getBikBatch(bikBatchBoundaries1080p, 7), "Content\\Movies\\", "Content\\Movies\\1080p\\", ".bik", "1080p Hades Animation ",
-			false, true)
+		copyFiles(getBikBatch(bikBatchBoundaries1080p, 7), "Content\\Movies\\", "Content\\Movies\\1080p\\", ".bik",
+			"1080p Hades Animation ", false, true)
 	end },
 
 	Enemy_1Base_VFX = { "1080p .bik batch 8", function()
-		copyFiles(getBikBatch(bikBatchBoundaries1080p, 8), "Content\\Movies\\", "Content\\Movies\\1080p\\", ".bik", "1080p Hades Animation ",
-			false, true)
+		copyFiles(getBikBatch(bikBatchBoundaries1080p, 8), "Content\\Movies\\", "Content\\Movies\\1080p\\", ".bik",
+			"1080p Hades Animation ", false, true)
 	end },
 
 	GUI_Portraits_VFX = { "1080p .bik batch 9", function()
-		copyFiles(getBikBatch(bikBatchBoundaries1080p, 9), "Content\\Movies\\", "Content\\Movies\\1080p\\", ".bik", "1080p Hades Animation ",
-			false, true)
+		copyFiles(getBikBatch(bikBatchBoundaries1080p, 9), "Content\\Movies\\", "Content\\Movies\\1080p\\", ".bik",
+			"1080p Hades Animation ", false, true)
 	end },
 
 	GUI_Screens_VFX = { "720p .bik batch 1", function()
-		copyFiles(getBikBatch(bikBatchBoundaries720p, 1), "Content\\Movies\\720p\\", "Content\\Movies\\720p\\", ".bik", "720p Hades Animation ",
-			false, true)
+		copyFiles(getBikBatch(bikBatchBoundaries720p, 1), "Content\\Movies\\720p\\", "Content\\Movies\\720p\\", ".bik",
+			"720p Hades Animation ", false, true)
 	end },
 
 	Melinoe_Spell_VFX = { "720p .bik batch 2", function()
-		copyFiles(getBikBatch(bikBatchBoundaries720p, 2), "Content\\Movies\\720p\\", "Content\\Movies\\720p\\", ".bik", "720p Hades Animation ",
-			false, true)
+		copyFiles(getBikBatch(bikBatchBoundaries720p, 2), "Content\\Movies\\720p\\", "Content\\Movies\\720p\\", ".bik",
+			"720p Hades Animation ", false, true)
 	end },
 
 	Melinoe_Zeus_VFX = { "720p .bik batch 3", function()
-		copyFiles(getBikBatch(bikBatchBoundaries720p, 3), "Content\\Movies\\720p\\", "Content\\Movies\\720p\\", ".bik", "720p Hades Animation ",
-			false, true)
+		copyFiles(getBikBatch(bikBatchBoundaries720p, 3), "Content\\Movies\\720p\\", "Content\\Movies\\720p\\", ".bik",
+			"720p Hades Animation ", false, true)
 	end },
 
 	Obstacle_Asphodel_VFX = { "720p .bik batch 4", function()
-		copyFiles(getBikBatch(bikBatchBoundaries720p, 4), "Content\\Movies\\720p\\", "Content\\Movies\\720p\\", ".bik", "720p Hades Animation ",
-			false, true)
+		copyFiles(getBikBatch(bikBatchBoundaries720p, 4), "Content\\Movies\\720p\\", "Content\\Movies\\720p\\", ".bik",
+			"720p Hades Animation ", false, true)
 	end },
 
 	Obstacle_Deprecated_VFX = { "720p .bik batch 5", function()
-		copyFiles(getBikBatch(bikBatchBoundaries720p, 5), "Content\\Movies\\720p\\", "Content\\Movies\\720p\\", ".bik", "720p Hades Animation ",
-			false, true)
+		copyFiles(getBikBatch(bikBatchBoundaries720p, 5), "Content\\Movies\\720p\\", "Content\\Movies\\720p\\", ".bik",
+			"720p Hades Animation ", false, true)
 	end },
 }
 
@@ -747,6 +770,10 @@ local installSteps = {
 ---@param hookId string The identifier matching an entry in the installSteps table
 function mod.RunInstallStep(hookId)
 	if not mod.InstallationPending then return end
+	if mod.EncounteredInstallationIssues then
+		mod.DebugPrint("[Install] Skipping hookId \"" .. hookId .. "\", the installation already failed.", 2)
+		return
+	end
 	if not installSteps[hookId] then
 		mod.DebugPrint("[Install] No install step found for hookId: " .. hookId, 1)
 		return

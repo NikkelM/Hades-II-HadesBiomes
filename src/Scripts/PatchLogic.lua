@@ -1,6 +1,34 @@
 modutil.mod.Path.Wrap("DoPatches", function(base)
 	if game.GameState ~= nil then
-		-- IMPORTANT: Whenever this function is changed, increase the PatchRevision number at the end of this function
+		-- #region Config automatic unlocks
+		if config.cheats.z_UnlockGameplayIncantations then
+			for incantationName, incantationData in pairs(game.WorldUpgradeData) do
+				if incantationData.ModsNikkelMHadesBiomesCanAutoUnlock and not game.GameState.WorldUpgradesAdded[incantationName] then
+					game.UnlockWorldUpgrade(incantationName)
+				end
+			end
+			mod.DebugPrint("Permanently unlocked all gameplay incantations!", 3)
+		end
+
+		if config.cheats.z_UnlockAllCosmetics then
+			-- Also unlock the cosmetics incantation to be consistent
+			if not game.GameState.WorldUpgradesAdded[mod.UnlockCosmeticsIncantationName] then
+				game.UnlockWorldUpgrade(mod.UnlockCosmeticsIncantationName)
+			end
+
+			for _, cosmeticName in ipairs(mod.ModdedCosmeticIds) do
+				if game.WorldUpgradeData[cosmeticName] ~= nil then
+					-- Mark ownership without changing WorldUpgrades, which tracks currently equipped cosmetics
+					game.GameState.WorldUpgradesAdded[cosmeticName] = true
+					game.GameState.WorldUpgradesViewed[cosmeticName] = true
+					game.GameState.WorldUpgradesRevealed[cosmeticName] = true
+				end
+			end
+			mod.DebugPrint("Permanently unlocked all cosmetics!", 3)
+		end
+		--#endregion
+
+		-- IMPORTANT: Whenever the revision-gated patches below are changed, increase the PatchRevision number at the end of this function
 		-- All required checks will run once with the previous GameState's PatchRevision number, and then the PatchRevision number will be updated to the latest one
 		game.GameState.ModsNikkelMHadesBiomesPatchRevision = game.GameState.ModsNikkelMHadesBiomesPatchRevision or 0
 		mod.DebugPrint(
@@ -262,8 +290,12 @@ modutil.mod.Path.Wrap("DoPatches", function(base)
 			end
 		end
 
+		if game.GameState.ModsNikkelMHadesBiomesPatchRevision < 14 then
+			game.GameState.ModsNikkelMHadesBiomesCustomCounters = game.GameState.ModsNikkelMHadesBiomesCustomCounters or {}
+		end
+
 		-- IMPORTANT: This must be incremented every time this function is changed
-		game.GameState.ModsNikkelMHadesBiomesPatchRevision = 13
+		game.GameState.ModsNikkelMHadesBiomesPatchRevision = 14
 	end
 
 	return base()

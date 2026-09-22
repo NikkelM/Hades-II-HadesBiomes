@@ -413,10 +413,11 @@ modutil.mod.Path.Wrap("LoadPackages", function(base, args)
 	return base(args)
 end)
 
-modutil.mod.Path.Wrap("SetupHeroObject", function(base, room, applyLuaUpgrades)
-	base(room, applyLuaUpgrades)
+function mod.ApplyGoddessModeConfig()
+	if game.CurrentRun == nil or game.CurrentRun.Hero == nil then
+		return
+	end
 
-	-- Add the Goddess Mode boon if in a modded run and the config is turned on
 	if config.accessibility.z_GoddessMode and game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and game.CurrentHubRoom == nil then
 		if not game.HeroHasTrait("ModsNikkelMHadesBiomesGoddessModeTrait") then
 			game.AddTraitToHero({ TraitName = "ModsNikkelMHadesBiomesGoddessModeTrait", SkipUIUpdate = true })
@@ -427,6 +428,12 @@ modutil.mod.Path.Wrap("SetupHeroObject", function(base, room, applyLuaUpgrades)
 		game.RemoveTrait(game.CurrentRun.Hero, "ModsNikkelMHadesBiomesGoddessModeTrait")
 		game.UpdateHeroTraitDictionary()
 	end
+end
+
+modutil.mod.Path.Wrap("SetupHeroObject", function(base, room, applyLuaUpgrades)
+	base(room, applyLuaUpgrades)
+
+	mod.ApplyGoddessModeConfig()
 end)
 
 -- This is essentially the same function as vanilla, and only inserts the logic to upgrade consumable rewards for Styx miniboss rooms and ShrineChallenge/Erebus rooms

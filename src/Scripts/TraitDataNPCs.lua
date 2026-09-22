@@ -813,7 +813,7 @@ local newTraitData = {
 			{
 				Key = "SummonChance",
 				ExtractAs = "SummonChance",
-				Format = "Percent",
+				Format = "LuckModifiedPercent",
 			},
 		},
 	},
@@ -839,7 +839,7 @@ local newTraitData = {
 			Name = _PLUGIN.guid .. "." .. "OrpheusApplyRoot",
 			FunctionArgs = {
 				EffectName = "ChillEffect",
-				Cooldown = 10,
+				Cooldown = 14,
 				ReportValues = {
 					Cooldown = "Cooldown",
 				},
@@ -852,7 +852,7 @@ local newTraitData = {
 			{
 				Key = "Cooldown",
 				ExtractAs = "Cooldown",
-				Format = "Duration",
+				Format = "SpeedModifiedDuration",
 			},
 			{
 				Key = "ReportedWeaponMultiplier",
@@ -977,3 +977,6 @@ local newTraitData = {
 }
 
 game.OverwriteTableKeys(game.TraitData, newTraitData)
+
+-- Make Success Rate be eligible if God of the Dead is owned
+table.insert(game.TraitRequirements.LuckyBoon.OneOf, "ModsNikkelMHadesBiomesOrpheusBossFightMusicBoon")

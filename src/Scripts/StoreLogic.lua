@@ -3,11 +3,12 @@ modutil.mod.Path.Wrap("FillInShopOptions", function(base, args)
 		args = {}
 	end
 
+	local room = game.CurrentRun.CurrentRoom
 	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun then
 		-- In Hades II RunShopGeneration(), the room name is set to the previous room's name by accident
-		args.RoomName = game.CurrentRun.CurrentRoom.Name
+		args.RoomName = room.Name
 
-		if args.RoomName and game.RoomData[args.RoomName] and game.RoomData[args.RoomName].PersistentStore then
+		if room.PersistentStore then
 			local store = mod.GetPreviousStore(args)
 			if store ~= nil then
 				return store
@@ -17,7 +18,7 @@ modutil.mod.Path.Wrap("FillInShopOptions", function(base, args)
 	local store = base(args)
 
 	-- Save the store manually for the next time we need it
-	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and args.RoomName and game.RoomData[args.RoomName] and game.RoomData[args.RoomName].PersistentStore then
+	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and room.PersistentStore then
 		game.CurrentRun.ModsNikkelMHadesBiomesPersistentStore = store
 	end
 
@@ -39,25 +40,44 @@ function mod.GetPreviousStore(args)
 end
 
 modutil.mod.Path.Wrap("RemoveStoreItem", function(base, args)
+	local room = game.CurrentRun.CurrentRoom
+	local storeOptions
+	local storeIndex
+
+	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and room.PersistentStore then
+		local lootPoints = game.GetIdsByType({ Name = "LootPoint" })
+		table.sort(lootPoints)
+		for _, itemData in pairs(room.Store.SpawnedStoreItems) do
+			if itemData.ObjectId == args.Id then
+				storeIndex = game.GetIndex(lootPoints, itemData.KitId)
+				args.ModsNikkelMHadesBiomesStoreIndex = storeIndex
+				storeOptions = room.Store.StoreOptions
+				room.Store.StoreOptions = { [storeIndex] = storeOptions[storeIndex] }
+				break
+			end
+		end
+	end
+
 	base(args)
 
-	local roomName = game.CurrentRun.CurrentRoom.Name
-	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and roomName and game.RoomData[roomName] and game.RoomData[roomName].PersistentStore then
-		if game.CurrentRun.CurrentRoom.FirstPurchase then
+	if storeOptions then
+		storeOptions[storeIndex] = room.Store.StoreOptions[storeIndex]
+		room.Store.StoreOptions = storeOptions
+
+		if room.FirstPurchase then
 			game.CurrentRun.ModsNikkelMHadesBiomesDHubFirstPurchaseDone = true
 		end
 
 		-- Ensure the persisted store is always up to date
-		game.CurrentRun.ModsNikkelMHadesBiomesPersistentStore.StoreOptions = game.DeepCopyTable(game.CurrentRun.CurrentRoom
-			.Store.StoreOptions)
+		game.CurrentRun.ModsNikkelMHadesBiomesPersistentStore.StoreOptions = game.DeepCopyTable(room.Store.StoreOptions)
 	end
 end)
 
 modutil.mod.Path.Wrap("GetShopCostMultiplier", function(base)
-	local roomName = game.CurrentRun.CurrentRoom.Name
+	local room = game.CurrentRun.CurrentRoom
 	-- The FirstPurchase property is not correctly saved in the room, so we need to manually set it in case there already was a first purchase in the room
-	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and roomName and game.RoomData[roomName] and game.RoomData[roomName].PersistentStore and game.CurrentRun.ModsNikkelMHadesBiomesDHubFirstPurchaseDone then
-		game.CurrentRun.CurrentRoom.FirstPurchase = true
+	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and room.PersistentStore and game.CurrentRun.ModsNikkelMHadesBiomesDHubFirstPurchaseDone then
+		room.FirstPurchase = true
 	end
 
 	local multiplier = base()
@@ -76,15 +96,12 @@ modutil.mod.Path.Context.Wrap("RestockWorldItem", function(replacedIndex, restoc
 	-- Bypass the PersistentStore cache so FillInShopOptions generates fresh options for the restock
 	modutil.mod.Path.Wrap("FillInShopOptions", function(base, fillArgs)
 		local room = game.CurrentRun.CurrentRoom
-		local roomData = room and room.Name and game.RoomData[room.Name]
-		local hadPersistentStore = roomData and roomData.PersistentStore
-		roomData.PersistentStore = false
+		local persistentStore = room.PersistentStore
+		room.PersistentStore = false
 
 		local result = base(fillArgs)
 
-		if hadPersistentStore then
-			roomData.PersistentStore = true
-		end
+		room.PersistentStore = persistentStore
 
 		return result
 	end)
@@ -94,11 +111,9 @@ modutil.mod.Path.Context.Wrap("RestockWorldItem", function(replacedIndex, restoc
 
 		local room = game.CurrentRun.CurrentRoom
 		-- Store the new item in the same index in the StoreOptions as the previous one
-		if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and room.Name and game.RoomData[room.Name] and game.RoomData[room.Name].PersistentStore then
-			if room.Store and room.Store.StoreOptions and room.Store.StoreOptions[replacedIndex] == nil then
-				room.Store.StoreOptions[replacedIndex] = itemData
-				game.CurrentRun.ModsNikkelMHadesBiomesPersistentStore.StoreOptions = game.DeepCopyTable(room.Store.StoreOptions)
-			end
+		if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and room.PersistentStore then
+			room.Store.StoreOptions[args.ModsNikkelMHadesBiomesStoreIndex or replacedIndex] = itemData
+			game.CurrentRun.ModsNikkelMHadesBiomesPersistentStore.StoreOptions = game.DeepCopyTable(room.Store.StoreOptions)
 		end
 	end)
 end)

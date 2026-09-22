@@ -37,65 +37,43 @@ chalk = mods["SGG_Modding-Chalk"]
 reload = mods["SGG_Modding-ReLoad"]
 
 ---@module "config"
-config = chalk.auto "config.lua"
+local configFile
+config, configFile = chalk.auto "config.lua"
 -- ^ this updates our `.cfg` file in the config folder!
 ---@diagnostic disable-next-line: undefined-global
 public.config = config -- so other mods can access our config
 
 -- #region Config migration
--- Version for mod_settings config handling
---[==[
-local function snapshotConfigSections()
-	local sections = {}
-	local ok, configFolder = pcall(rom.paths.config)
-	if not ok or configFolder == nil then
-		return sections
-	end
-	local file = io.open(rom.path.combine(configFolder, _PLUGIN.guid .. ".cfg"), "r")
-	if file == nil then
-		return sections
-	end
-	local currentSection = nil
-	for line in file:lines() do
-		-- Strip a leading UTF-8 BOM and surrounding whitespace, then ignore blank lines and comments
-		local trimmed = line:gsub("^\239\187\191", ""):match("^%s*(.-)%s*$")
-		if trimmed ~= "" and trimmed:sub(1, 1) ~= "#" then
-			local section = trimmed:match("^%[(.+)%]$")
-			if section ~= nil then
-				currentSection = section
-				sections[currentSection] = sections[currentSection] or {}
-			elseif currentSection ~= nil then
-				local key = trimmed:match("^(.-)%s*=")
-				if key ~= nil and key ~= "" then
-					sections[currentSection][key] = true
-				end
-			end
-		end
-	end
-	file:close()
-	return sections
-end
-
-local function migrateFlatConfigToNested(preMigrationSections)
+local function migrateAndPruneConfig()
 	if not config.enabled then
 		return
 	end
 
-	local configFile = nil
-	for _, candidate in pairs(rom.config.config_files) do
-		if candidate.owner_guid == _PLUGIN.guid then
-			configFile = candidate
-			break
-		end
-	end
 	if configFile == nil then
 		rom.log.warning(
 			"Config file could not be loaded during config migration, config is likely outdated, please manually set the correct values again and report this issue!")
 		return
 	end
 
+	local flatKeys = {}
+	local file = io.open(configFile.config_file_path, "r")
+	if file ~= nil then
+		local currentSection = nil
+		for line in file:lines() do
+			local section = line:match("^%s*%[(.+)%]%s*$")
+			if section ~= nil then
+				currentSection = section
+			elseif currentSection == "config" then
+				local key = line:match("^%s*([^#][^=]-)%s*=")
+				if key ~= nil then
+					flatKeys[key] = true
+				end
+			end
+		end
+		file:close()
+	end
+
 	-- Maps each old flat key to the nested path it moved to
-	-- Ensure to update this when updating where these keys live in the nested structure for players updating later on!
 	local migrations = {
 		hadesGameFolder = { "debugging", "hadesGameFolder" },
 		logLevel = { "debugging", "logLevel" },
@@ -103,7 +81,6 @@ local function migrateFlatConfigToNested(preMigrationSections)
 		firstTimeSetup = { "debugging", "firstTimeSetup" },
 		uninstall = { "debugging", "uninstall" },
 		z_ExcludeFromDreamDives = { "gameplay", "z_ExcludeFromDreamDives" },
-		z_HideElysiumPoisonMessage = { "gameplay", "z_HideElysiumPoisonMessage" },
 		z_GoddessMode = { "accessibility", "z_GoddessMode" },
 		z_FadeToBlackEnteringHades = { "accessibility", "z_FadeToBlackEnteringHades" },
 		z_SpeedrunForceTwoSack = { "speedrunning", "z_SpeedrunForceTwoSack" },
@@ -111,107 +88,9 @@ local function migrateFlatConfigToNested(preMigrationSections)
 		z_SpeedrunFreshFileZagreusJourneyRun = { "speedrunning", "z_SpeedrunFreshFileZagreusJourneyRun" },
 	}
 
-	local flatSection = preMigrationSections["config"] or {}
-	local didMigrate = false
+	local migrationFailed = false
 	for oldKey, newPath in pairs(migrations) do
-		-- Only act while the old flat key still exists as an orphan in the user's .cfg
-		if flatSection[oldKey] then
-			-- rom.mod_settings exposes each config section as a userdata proxy, so a navigable container is userdata (a scalar or nil means the path is wrong)
-			local node = config
-			for i = 1, #newPath - 1 do
-				if type(node) ~= "userdata" then
-					break
-				end
-				---@diagnostic disable-next-line: cast-local-type
-				node = node[newPath[i]]
-			end
-			local leafKey = newPath[#newPath]
-			-- Only migrate when the whole destination path resolves and the target key already exists (a non-existent target means the migration map is wrong)
-			if type(node) == "userdata" and node[leafKey] ~= nil then
-				node[leafKey] = configFile:bind("config", oldKey, node[leafKey], ""):get()
-				configFile:remove("config", oldKey)
-				didMigrate = true
-				rom.log.info("Migrated config '" .. oldKey .. "' to '" .. table.concat(newPath, ".") .. "'")
-			else
-				rom.log.warning("Skipped migrating config '" ..
-					oldKey .. "' to '" .. table.concat(newPath, ".") .. "': destination not found.")
-			end
-		end
-	end
-
-	if didMigrate then
-		configFile:save()
-	end
-end
-migrateFlatConfigToNested(snapshotConfigSections())
-]==]
-
--- Reads the raw .cfg text to capture which keys exist under each section before the migration touches anything
-local function snapshotConfigSections()
-	local sections = {}
-	local ok, configFolder = pcall(rom.paths.config)
-	if not ok or configFolder == nil then
-		return sections
-	end
-	local file = io.open(rom.path.combine(configFolder, _PLUGIN.guid .. ".cfg"), "r")
-	if file == nil then
-		return sections
-	end
-	local currentSection = nil
-	for line in file:lines() do
-		-- Strip a leading UTF-8 BOM and surrounding whitespace, then ignore blank lines and comments
-		local trimmed = line:gsub("^\239\187\191", ""):match("^%s*(.-)%s*$")
-		if trimmed ~= "" and trimmed:sub(1, 1) ~= "#" then
-			local section = trimmed:match("^%[(.+)%]$")
-			if section ~= nil then
-				currentSection = section
-				sections[currentSection] = sections[currentSection] or {}
-			elseif currentSection ~= nil then
-				local key = trimmed:match("^(.-)%s*=")
-				if key ~= nil and key ~= "" then
-					sections[currentSection][key] = true
-				end
-			end
-		end
-	end
-	file:close()
-	return sections
-end
-
-local function migrateFlatConfigToNested(preMigrationSections)
-	if not config.enabled then
-		return
-	end
-
-	local configFile = chalk.original(config)
-	if configFile == nil then
-		rom.log.warning(
-			"Config file could not be loaded during config migration, config is likely outdated, please manually set the correct values again and report this issue!")
-		return
-	end
-
-	-- Maps each old flat key to the nested path it moved to
-	-- Ensure to update this when updating where these keys live in the nested structure for players updating later on!
-	local migrations = {
-		hadesGameFolder = { "debugging", "hadesGameFolder" },
-		logLevel = { "debugging", "logLevel" },
-		enableVanillaDebugPrint = { "debugging", "enableVanillaDebugPrint" },
-		firstTimeSetup = { "debugging", "firstTimeSetup" },
-		uninstall = { "debugging", "uninstall" },
-		z_ExcludeFromDreamDives = { "gameplay", "z_ExcludeFromDreamDives" },
-		z_HideElysiumPoisonMessage = { "gameplay", "z_HideElysiumPoisonMessage" },
-		z_GoddessMode = { "accessibility", "z_GoddessMode" },
-		z_FadeToBlackEnteringHades = { "accessibility", "z_FadeToBlackEnteringHades" },
-		z_SpeedrunForceTwoSack = { "speedrunning", "z_SpeedrunForceTwoSack" },
-		z_SpeedrunSkipOpeningThanatos = { "speedrunning", "z_SpeedrunSkipOpeningThanatos" },
-		z_SpeedrunFreshFileZagreusJourneyRun = { "speedrunning", "z_SpeedrunFreshFileZagreusJourneyRun" },
-	}
-
-	local flatSection = preMigrationSections["config"] or {}
-	local didMigrate = false
-	for oldKey, newPath in pairs(migrations) do
-		-- Only act while the old flat key still exists as an orphan in the user's .cfg
-		if flatSection[oldKey] then
+		if flatKeys[oldKey] then
 			local node = config
 			for i = 1, #newPath - 1 do
 				if type(node) ~= "table" then
@@ -221,25 +100,35 @@ local function migrateFlatConfigToNested(preMigrationSections)
 				node = node[newPath[i]]
 			end
 			local leafKey = newPath[#newPath]
-			-- Only migrate when the whole destination path resolves and the target key already exists (a non-existent target means the migration map is wrong)
 			if type(node) == "table" and node[leafKey] ~= nil then
 				node[leafKey] = configFile:bind("config", oldKey, node[leafKey], ""):get()
 				configFile:remove("config", oldKey)
-				didMigrate = true
 				rom.log.info("Migrated config '" .. oldKey .. "' to '" .. table.concat(newPath, ".") .. "'")
 			else
+				migrationFailed = true
 				rom.log.warning("Skipped migrating config '" ..
 					oldKey .. "' to '" .. table.concat(newPath, ".") .. "': destination not found.")
 			end
 		end
 	end
 
-	if didMigrate then
-		configFile:save()
+	if migrationFailed then
+		return
 	end
+
+	-- Chalk retains keys missing from config.lua as inaccessible orphaned entries
+	-- Reload from an empty file to clear them, then save the currently bound config values
+	local writableConfigFile, errorMessage = io.open(configFile.config_file_path, "w")
+	if writableConfigFile == nil then
+		rom.log.warning("Could not prune removed config entries: " .. tostring(errorMessage))
+		return
+	end
+	writableConfigFile:close()
+	configFile:reload()
+	configFile:save()
 end
 
-migrateFlatConfigToNested(snapshotConfigSections())
+migrateAndPruneConfig()
 -- #endregion
 
 ---@module "NikkelM-Cosmetics_API"
@@ -249,6 +138,8 @@ local function on_ready()
 	mod = modutil.mod.Mod.Register(_PLUGIN.guid)
 	local startTime = os.clock()
 	local lastImportTime = startTime
+
+	mod.ConfigDescriptions = configDescriptions
 
 	local function DebugLogScriptImportProgress(scriptName)
 		mod.DebugPrint(
@@ -311,11 +202,12 @@ local function on_ready()
 	import "Scripts/Meta/AnimationDuplicatesDataGUIAnimations.lua"
 	import "Scripts/Meta/AnimationDuplicatesDataNPCs.lua"
 	import "Scripts/Meta/AnimationDuplicatesDataPortraits.lua"
+	import "Scripts/Meta/ImGui.lua"
 	import "Scripts/Meta/ScreenDataInstallation.lua"
 	import "Scripts/Meta/SpeedrunPresentation.lua"
 	import "Scripts/Meta/StorytellerVoicelines.lua"
 	import "Scripts/Meta/ZagreusFieldVoicelines.lua"
-	DebugLogScriptImportProgress("additional meta")
+	DebugLogScriptImportProgress("meta script")
 
 	-- If we should proceed after confirming the installation - if not, we don't confirm, as we only want to uninstall anyways
 	local shouldProceed = config.enabled and (not config.debugging.uninstall or config.debugging.firstTimeSetup)
@@ -541,6 +433,8 @@ local function on_ready()
 			import "Scripts/LootData_Zeus.lua"
 			import "Scripts/MarketData.lua"
 			import "Scripts/MetaUpgradeData.lua"
+			import "Scripts/NPCData_Odysseus.lua"
+			import "Scripts/NPCData_Skelly.lua"
 			import "Scripts/ResourceData.lua"
 			import "Scripts/RequirementsData.lua"
 			import "Scripts/ShrineData.lua"
@@ -735,9 +629,12 @@ local function on_ready_late()
 	import "Scripts/RoomLogic_Late.lua"
 	import "Scripts/RoomPresentation_Late.lua"
 	import "Scripts/RunClearLogic_Late.lua"
+	import "Scripts/ShrineLogic_Late.lua"
 	import "Scripts/WeaponUpgradeLogic_Late.lua"
 
 	import "Scripts/Meta/PonyMenuLogic_Late.lua"
+
+	mod.FinishedLoading = true
 end
 
 local function on_reload()

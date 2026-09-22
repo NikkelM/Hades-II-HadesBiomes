@@ -349,6 +349,8 @@ local newPortedInteractTextLines = {
 			InsertAfterNarrativeTextLine = "DionysusAboutOrpheus02",
 		},
 		PlayOnce = true,
+		PreEventFunctionName = "BoonInteractPresentation",
+		PreEventFunctionArgs = { PickupWait = 1.0, },
 		RequiredTextLines = { "HermesFirstPickUp", "PersephoneAboutOlympianReunionQuest01", },
 		{
 			Cue = "/VO/ZagreusField_4343",
@@ -2962,10 +2964,13 @@ local newPortedInteractTextLines = {
 	-- #endregion
 }
 
-mod.AddNarrativeDataEntries(
-	newPortedInteractTextLines, "HermesUpgrade", "InteractTextLineSets", "InteractTextLinePriorities",
-	{ Hermes = { "Modsnikkelmhadesbiomeshermes" } }, { Hermes_ = "Modsnikkelmhadesbiomeshermes_" },
-	{ Hermes_ = "ModsNikkelMHadesBiomes_Portrait_Hermes_Default_01" }
+mod.AddNarrativeDataEntries(newPortedInteractTextLines, "HermesUpgrade", "InteractTextLineSets",
+	{
+		TextLinePriorityType = "InteractTextLinePriorities",
+		VoiceBankMappings = { Hermes = { "Modsnikkelmhadesbiomeshermes" } },
+		CueMappings = { Hermes_ = "Modsnikkelmhadesbiomeshermes_" },
+		PortraitMappings = { Hermes_ = "ModsNikkelMHadesBiomes_Portrait_Hermes_Default_01" },
+	}
 )
 
 local newPortedLootBoughtTextLines = {
@@ -3223,8 +3228,11 @@ local newPortedLootBoughtTextLines = {
 		},
 	},
 }
-mod.AddNarrativeDataEntries(
-	newPortedLootBoughtTextLines, "HermesUpgrade", "BoughtTextLines", "BoughtTextLinePriorities",
-	{ Hermes = { "Modsnikkelmhadesbiomeshermes" } }, { Hermes_ = "Modsnikkelmhadesbiomeshermes_" },
-	{ Hermes_ = "ModsNikkelMHadesBiomes_Portrait_Hermes_Default_01" }
+mod.AddNarrativeDataEntries(newPortedLootBoughtTextLines, "HermesUpgrade", "BoughtTextLines",
+	{
+		TextLinePriorityType = "BoughtTextLinePriorities",
+		VoiceBankMappings = { Hermes = { "Modsnikkelmhadesbiomeshermes" } },
+		CueMappings = { Hermes_ = "Modsnikkelmhadesbiomeshermes_" },
+		PortraitMappings = { Hermes_ = "ModsNikkelMHadesBiomes_Portrait_Hermes_Default_01" },
+	}
 )

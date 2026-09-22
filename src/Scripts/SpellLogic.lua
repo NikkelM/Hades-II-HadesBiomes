@@ -60,3 +60,14 @@ modutil.mod.Path.Wrap("EndSpellTransform", function(base)
 		end
 	end
 end)
+
+modutil.mod.Path.Wrap("SpellSummon", function(base, triggerArgs, weaponData)
+	local currentRoom = game.CurrentRun.CurrentRoom
+	local enemyData = currentRoom ~= nil and game.EnemyData[currentRoom.SummonEnemyName]
+	-- Don't allow Night Bloom to summon a unique enemy that has already been raised by another boon
+	if enemyData and enemyData.UniqueRaise and currentRoom.ModsNikkelMHadesBiomes_AssistUnitName == enemyData.Name then
+		return
+	end
+
+	return base(triggerArgs, weaponData)
+end)

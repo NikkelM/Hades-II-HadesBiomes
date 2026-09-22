@@ -89,6 +89,11 @@ function mod.ApplyModificationsAndInheritEncounterData(base, modifications, repl
 		encounterData.Name = encounterName
 
 		game.ProcessDataInheritance(encounterData, game.EncounterData)
+
+		if encounterData.PreSpawnMinPlayerDistance ~= nil and encounterData.PreSpawnMinEndPointDistance == nil then
+			encounterData.PreSpawnMinEndPointDistance = encounterData.PreSpawnMinPlayerDistance
+		end
+
 		base[encounterName] = encounterData
 	end
 	-- Don't skip duplicates, since we have already added all the data before

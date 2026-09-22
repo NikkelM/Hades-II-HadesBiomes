@@ -463,7 +463,10 @@ mod.BossResourceNames = {
 mod.AllNewResourceNames = game.ConcatTableValuesIPairs(game.DeepCopyTable(mod.NonBossResourceNames),
 	game.DeepCopyTable(mod.BossResourceNames))
 
--- Populated in the loops in CosmeticData.lua
+-- DO NOT change the name of this, as this would invalidate the unlock for anyone who has already performed the incantation
+mod.UnlockCosmeticsIncantationName = "ModsNikkelMHadesBiomesUnlockCosmeticsIncantation"
+
+-- All purchasable mod cosmetic IDs, populated during registration in CosmeticsData.lua
 mod.ModdedCosmeticIds = {}
 
 -- Song names/Ids from Hades OST for the Music Maker
@@ -595,7 +598,11 @@ mod.ModdedPlayerScaleMultiplier = 0.9
 
 mod.IncreasedZoomFractionOffset = 0.13
 
-mod.ExitToHadesFadeColour = config.accessibility.z_FadeToBlackEnteringHades and game.Color.Black or game.Color.White
+function mod.ApplyExitToHadesFadeColourConfig()
+	mod.ExitToHadesFadeColour = config.accessibility.z_FadeToBlackEnteringHades and game.Color.Black or game.Color.White
+end
+
+mod.ApplyExitToHadesFadeColourConfig()
 
 -- Populated in ApplyModificationsAndInheritEnemyData()
 mod.AllRequiredKillModdedEnemyNames = {}
@@ -1180,4 +1187,16 @@ public.DuplicateTextLineSetNames = {
 	["ZeusWithAres01"] = true,
 	["ZeusWithDemeter01"] = true,
 	-- #endregion
+}
+
+mod.ModdedStatusAnimations = {
+	StatusIconWantsToTalk = "ModsNikkelMHadesBiomes_StatusIconWantsToTalk",
+	StatusIconWantsToTalkImportant = "ModsNikkelMHadesBiomes_StatusIconWantsToTalkImportant",
+	StatusIconWantsToTalkImportant_NPC = "ModsNikkelMHadesBiomes_StatusIconWantsToTalkImportant_NPC",
+	StatusIconWantsToTalkImportant_Odysseus = "ModsNikkelMHadesBiomes_StatusIconWantsToTalkImportant_Odysseus",
+	StatusIconWantsToTalkImportant_Skelly = "ModsNikkelMHadesBiomes_StatusIconWantsToTalkImportant_Skelly",
+	StatusIconWantsToTalkImportant_ChronosStory = "ModsNikkelMHadesBiomes_StatusIconWantsToTalkImportant_ChronosStory",
+	StatusIconWantsToTalkImportant_Hypnos = "ModsNikkelMHadesBiomes_StatusIconWantsToTalkImportant_Hypnos",
+	StatusIconWantsAffection = "ModsNikkelMHadesBiomes_StatusIconWantsAffection",
+	StatusIconWantsToSmooch = "ModsNikkelMHadesBiomes_StatusIconWantsAffection",
 }

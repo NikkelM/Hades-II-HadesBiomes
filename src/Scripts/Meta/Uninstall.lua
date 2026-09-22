@@ -1,5 +1,5 @@
 local function removeFiles(fileMappings, rootPath, basePath, extension)
-	mod.DebugPrint("Removing " .. extension .. " files...", 3)
+	mod.DebugPrint("[Uninstall] Removing " .. extension .. " files...", 3)
 	for src, dest in pairs(fileMappings) do
 		mod.RemoveFile(rom.path.combine(rootPath, basePath .. dest .. extension))
 	end
@@ -8,7 +8,7 @@ end
 -- Removes all SJSON files from the SJSON data directory
 local function removeSjsonDataFiles()
 	if not rom.path.exists(_PLUGIN.sjson_data_path) then return end
-	mod.DebugPrint("Removing .sjson files...", 3)
+	mod.DebugPrint("[Uninstall] Removing .sjson files...", 3)
 
 	for src, dest in pairs(mod.SjsonFileMappings) do
 		mod.RemoveFile(rom.path.combine(_PLUGIN.sjson_data_path, dest .. ".sjson"))
@@ -50,6 +50,7 @@ end
 
 function mod.Uninstall()
 	mod.DebugPrint("Uninstalling mod - removing files added by the mod", 3)
+	mod.EncounteredUninstallationIssues = false
 	local contentRoot = rom.paths.Content()
 	local pluginsDataContentRoot = rom.path.combine(rom.paths.plugins_data(), _PLUGIN.guid, "Content")
 
@@ -109,7 +110,11 @@ function mod.Uninstall()
 	end
 
 	config.debugging.uninstall = false
-	mod.DebugPrint("Uninstallation complete.", 3)
+	if mod.EncounteredUninstallationIssues then
+		mod.DebugPrint("Uninstallation finished, but some files could not be removed - see the errors above.", 1)
+	else
+		mod.DebugPrint("Uninstallation complete.", 3)
+	end
 
-	return true
+	return not mod.EncounteredUninstallationIssues
 end

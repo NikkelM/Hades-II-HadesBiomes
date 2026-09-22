@@ -424,9 +424,11 @@ local roomReplacements = {
 
 	-- SHOPS
 	Y_Shop01 = {
+		StoreDuplicateItemId = 522218,
 		Binks = mod.NilValue,
 	},
 	Y_PreBoss01 = {
+		StoreDuplicateItemId = 543253,
 		Binks = mod.NilValue,
 	},
 
@@ -487,6 +489,24 @@ local roomReplacements = {
 				-- So...!
 				{ Cue = "/VO/Theseus_0463" },
 			},
+		},
+		ExitVoiceLines = {
+			PreLineWait = 0.35,
+			RandomRemaining = true,
+			BreakIfPlayed = true,
+			-- SuccessiveChanceToPlay = 0.33,
+			SkipCooldownCheckIfNonePlayed = true,
+			Cooldowns = {
+				{ Name = "MelinoeAnyQuipSpeech" },
+				{ Name = "MelinoeRoomExitVoiceLines", Time = 25 },
+			},
+			{ Cue = "/VO/MelinoeField_4244", Text = "Enjoy the rest of your evening, everyone!",    PlayFirst = true },
+			{ Cue = "/VO/Melinoe_4319",      Text = "Farewell, everyone." },
+			{ Cue = "/VO/MelinoeField_4993", Text = "Was that enough of a good show?" },
+			{ Cue = "/VO/MelinoeField_4994", Text = "No one crosses the Unseen!" },
+			{ Cue = "/VO/MelinoeField_4995", Text = "It's impolite to stare you know!" },
+			{ Cue = "/VO/MelinoeField_4997", Text = "Glory to Elysium!" },
+			{ Cue = "/VO/MelinoeField_4998", Text = "Had enough glory for one night?" },
 		},
 	},
 

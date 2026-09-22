@@ -106,7 +106,10 @@ mod.AddTableKeysSkipDupes(hadesHouseObstacleTable.Obstacles, hadesObstacleAdditi
 -- mod.ApplyNestedSjsonModifications(hadesHouseObstacleTable.Obstacles, obstacleModifications)
 
 -- Modifications to existing obstacles in Hades II
--- local hadesTwoObstacleModifications = {}
+local hadesTwoObstacleModifications = {
+	-- Obstacles that shouldn't be passable
+	HouseKitchenIslandShelf01 = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
+}
 
 sjson.hook(hadesTwoHouseObstacleFile, function(data)
 	mod.RunInstallStep("House")
@@ -116,5 +119,5 @@ sjson.hook(hadesTwoHouseObstacleFile, function(data)
 	mod.SaveCachedSjsonFile("sjsonLoads.sjson", sjsonLoads)
 
 	mod.AddTableKeysSkipDupes(data.Obstacles, hadesHouseObstacleTable.Obstacles, "Name")
-	-- mod.ApplyNestedSjsonModifications(data.Obstacles, hadesTwoObstacleModifications)
+	mod.ApplyNestedSjsonModifications(data.Obstacles, hadesTwoObstacleModifications)
 end)

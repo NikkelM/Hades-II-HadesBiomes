@@ -13,9 +13,13 @@ local function applyModificationsAndInheritProjectileData(base, modifications, p
 
 	-- Process data inheritance and add the new data to the game's global
 	base = mod.AddTableKeysSkipDupes(game.ProjectileData, base, nil)
+
+	-- Normalize all keys before processing inheritance so children cannot inherit legacy keys
 	for projectileName, projectileData in pairs(base) do
 		mod.RenameKeys(projectileData, projectileKeyReplacements, projectileName)
+	end
 
+	for projectileName, projectileData in pairs(base) do
 		game.ProcessDataInheritance(projectileData, game.ProjectileData)
 		base[projectileName] = projectileData
 	end
@@ -48,6 +52,15 @@ local addProjectiles = {
 	ThanatosDeathCurseAoE = {
 		OnHitFunctionNames = { _PLUGIN.guid .. "." .. "CurseHealthBar" },
 	},
+	-- #region Theseus
+	ModsNikkelMHadesBiomes_TheseusApolloBolt = game.DeepCopyTable(game.ProjectileData.DevotionApollo),
+	ModsNikkelMHadesBiomes_TheseusApolloBoltPassive = game.DeepCopyTable(game.ProjectileData.DevotionApollo),
+	ModsNikkelMHadesBiomes_TheseusHeraBolt = game.DeepCopyTable(game.ProjectileData.DevotionHera),
+	ModsNikkelMHadesBiomes_TheseusHeraBoltPassive = game.DeepCopyTable(game.ProjectileData.DevotionHera),
+	ModsNikkelMHadesBiomes_TheseusHestiaBall = game.DeepCopyTable(game.ProjectileData.DevotionHestia),
+	ModsNikkelMHadesBiomes_TheseusHephaestusSlam = game.DeepCopyTable(game.ProjectileData.DevotionHephaestus),
+	ModsNikkelMHadesBiomes_TheseusHephaestusSlamPassive = game.DeepCopyTable(game.ProjectileData.DevotionHephaestus),
+	-- #endregion
 }
 
 for projectileName, projectileData in pairs(addProjectiles) do

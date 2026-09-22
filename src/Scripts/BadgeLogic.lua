@@ -79,7 +79,7 @@ function mod.ModsNikkelMHadesBiomesBadgeSellerUse(usee, args)
 
 	if nextBadgeData.ResourceCost ~= nil then
 		if not game.HasResources(nextBadgeData.ResourceCost) then
-			game.BadgeCannotAffordPresentation(usee, nextBadgeData)
+			game.BadgeCannotAffordPresentation(usee)
 			return
 		end
 

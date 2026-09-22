@@ -36,6 +36,7 @@ local hadesTwoObstacleModifications = {
 	AsphodelHydraRock02a = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
 	AsphodelHydraRock03 = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
 	AsphodelHydraRock03a = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
+	AsphodelTree01 = { InheritFrom = "1_BaseInvulnerableImpassableObstacle", },
 }
 
 sjson.hook(hadesTwoAsphodelObstacleFile, function(data)

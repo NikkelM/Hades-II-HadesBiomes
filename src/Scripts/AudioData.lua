@@ -266,6 +266,8 @@ game.GlobalVoiceLines.SurfaceBoatSightedVoiceLines = game.GlobalVoiceLines.Surfa
 		mod.GlobalVoiceLines.SurfaceBoatSightedVoiceLines
 game.GlobalVoiceLines.StartingBoatRideVoiceLines = game.GlobalVoiceLines.StartingBoatRideVoiceLines or
 		mod.GlobalVoiceLines.StartingBoatRideVoiceLines
+game.GlobalVoiceLines.ReturnBoatRideVoiceLines = game.GlobalVoiceLines.ReturnBoatRideVoiceLines or
+		mod.GlobalVoiceLines.ReturnBoatRideVoiceLines
 game.GlobalVoiceLines.SunriseOverlookVoiceLines = game.GlobalVoiceLines.SunriseOverlookVoiceLines or
 		mod.GlobalVoiceLines.SunriseOverlookVoiceLines
 game.GlobalVoiceLines.StorytellerEndingVoiceLines = game.GlobalVoiceLines.StorytellerEndingVoiceLines or
@@ -480,6 +482,11 @@ game.HeroVoiceLines.ModsNikkelMHadesBiomes_TrophyUnlockedVoiceLines = mod.HeroVo
 
 game.HeroVoiceLines.ModsNikkelMHadesBiomes_GiftRackLockedVoiceLines = mod.HeroVoiceLines
 		.ModsNikkelMHadesBiomes_GiftRackLockedVoiceLines
+
+game.HeroVoiceLines.TheseusWrathReactionVoiceLines_M = game.HeroVoiceLines.TheseusWrathReactionVoiceLines_M or
+		mod.HeroVoiceLines.TheseusWrathReactionVoiceLines_M
+game.HeroVoiceLines.TheseusWrathReactionVoiceLines_F = game.HeroVoiceLines.TheseusWrathReactionVoiceLines_F or
+		mod.HeroVoiceLines.TheseusWrathReactionVoiceLines_F
 -- #endregion
 
 -- #region Chaos Gate voiceline adjustments for Orpheus Chaos boon (free entry)

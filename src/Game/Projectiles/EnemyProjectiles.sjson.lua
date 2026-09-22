@@ -470,6 +470,78 @@ local hadesProjectilesModifications = {
 }
 
 local addProjectiles = {
+	-- #region ELYSIUM - Theseus god spear recolours
+	{
+		Name = "ModsNikkelMHadesBiomes_TheseusSpearSpinApollo",
+		InheritFrom = "TheseusSpearSpin",
+		DetonateFx = "ModsNikkelMHadesBiomes_TheseusSpearSwipeApollo",
+	},
+	{
+		Name = "ModsNikkelMHadesBiomes_TheseusSpearThrowApollo",
+		InheritFrom = "TheseusSpearThrow",
+		Thing = { Graphic = "ModsNikkelMHadesBiomes_SpearThrowProjectileTheseusApollo" },
+		ImpactFx = "ModsNikkelMHadesBiomes_TheseusSpearImpactApollo",
+	},
+	{
+		Name = "ModsNikkelMHadesBiomes_TheseusSpearThrowReturnApollo",
+		InheritFrom = "TheseusSpearThrowReturn",
+		Thing = { Graphic = "ModsNikkelMHadesBiomes_SpearThrowProjectileTheseusApollo" },
+		ImpactFx = "ModsNikkelMHadesBiomes_TheseusSpearImpactApollo",
+	},
+	{
+		Name = "ModsNikkelMHadesBiomes_TheseusSpearSpinHera",
+		InheritFrom = "TheseusSpearSpin",
+		DetonateFx = "ModsNikkelMHadesBiomes_TheseusSpearSwipeHera",
+	},
+	{
+		Name = "ModsNikkelMHadesBiomes_TheseusSpearThrowHera",
+		InheritFrom = "TheseusSpearThrow",
+		Thing = { Graphic = "ModsNikkelMHadesBiomes_SpearThrowProjectileTheseusHera" },
+		ImpactFx = "ModsNikkelMHadesBiomes_TheseusSpearImpactHera",
+	},
+	{
+		Name = "ModsNikkelMHadesBiomes_TheseusSpearThrowReturnHera",
+		InheritFrom = "TheseusSpearThrowReturn",
+		Thing = { Graphic = "ModsNikkelMHadesBiomes_SpearThrowProjectileTheseusHera" },
+		ImpactFx = "ModsNikkelMHadesBiomes_TheseusSpearImpactHera",
+	},
+	{
+		Name = "ModsNikkelMHadesBiomes_TheseusSpearSpinHestia",
+		InheritFrom = "TheseusSpearSpin",
+		DetonateFx = "ModsNikkelMHadesBiomes_TheseusSpearSwipeHestia",
+	},
+	{
+		Name = "ModsNikkelMHadesBiomes_TheseusSpearThrowHestia",
+		InheritFrom = "TheseusSpearThrow",
+		Thing = { Graphic = "ModsNikkelMHadesBiomes_SpearThrowProjectileTheseusHestia" },
+		ImpactFx = "ModsNikkelMHadesBiomes_TheseusSpearImpactHestia",
+	},
+	{
+		Name = "ModsNikkelMHadesBiomes_TheseusSpearThrowReturnHestia",
+		InheritFrom = "TheseusSpearThrowReturn",
+		Thing = { Graphic = "ModsNikkelMHadesBiomes_SpearThrowProjectileTheseusHestia" },
+		ImpactFx = "ModsNikkelMHadesBiomes_TheseusSpearImpactHestia",
+	},
+	{
+		Name = "ModsNikkelMHadesBiomes_TheseusSpearSpinHephaestus",
+		InheritFrom = "TheseusSpearSpin",
+		DetonateFx = "ModsNikkelMHadesBiomes_TheseusSpearSwipeHephaestus",
+	},
+	{
+		Name = "ModsNikkelMHadesBiomes_TheseusSpearThrowHephaestus",
+		InheritFrom = "TheseusSpearThrow",
+		Thing = { Graphic = "ModsNikkelMHadesBiomes_SpearThrowProjectileTheseusHephaestus" },
+		ImpactFx = "ModsNikkelMHadesBiomes_TheseusSpearImpactHephaestus",
+	},
+	{
+		Name = "ModsNikkelMHadesBiomes_TheseusSpearThrowReturnHephaestus",
+		InheritFrom = "TheseusSpearThrowReturn",
+		Thing = { Graphic = "ModsNikkelMHadesBiomes_SpearThrowProjectileTheseusHephaestus" },
+		ImpactFx = "ModsNikkelMHadesBiomes_TheseusSpearImpactHephaestus",
+	},
+	-- #endregion
+
+	-- #region STYX
 	{
 		Name = "HadesCrawlerRush",
 		InheritFrom = "CrawlerRush",
@@ -548,6 +620,7 @@ local addProjectiles = {
 			},
 		},
 	},
+	-- #endregion
 }
 
 local renamedProjectileModifications = {}

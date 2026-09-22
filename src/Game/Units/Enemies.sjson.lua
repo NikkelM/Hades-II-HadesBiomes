@@ -133,6 +133,17 @@ local enemyAdditions = {
 	},
 	-- #endregion
 
+	-- #region ELYSIUM
+	{
+		Name = "ModsNikkelMHadesBiomes_HestiaDevotionTracker",
+		InheritFrom = "HestiaUpgradeRoomWeapon",
+	},
+	{
+		Name = "ModsNikkelMHadesBiomes_HestiaDevotionWanderer",
+		InheritFrom = "HestiaUpgradeRoomWeapon",
+	},
+	-- #endregion
+
 	-- #region STYX
 	{
 		Name = "ModsNikkelMHadesBiomesHadesTombstone",
