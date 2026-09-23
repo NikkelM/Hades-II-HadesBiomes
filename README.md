@@ -17,7 +17,7 @@ Check out the [Zagreus' Journey 1.0 Release Trailer](https://www.youtube.com/wat
 - [So, someone put Hades 1 in Hades 2 and it's amazing. | Haelian](https://www.youtube.com/watch?v=SIVrJya47YQ)
 - [They put Hades 1 in Hades 2 and it's PERFECT | Boated](https://www.youtube.com/watch?v=HYf_z8IV4LE)
 
-![Zagreus' Journey](./img/Key%20Art/KeyArt.png)
+<a href="https://www.youtube.com/watch?v=rxuTLSPqIEE" target="_blank"><img src="./img/Key%20Art/KeyArt.png" alt="Zagreus' Journey"></a>
 
 <div style="display: flex; justify-content: space-between;">
   <img src="https://github.com/NikkelM/Hades-II-HadesBiomes/raw/main/img/screenshots/face_your_father.jpg" alt="Face your Father" width="49.7%">
