@@ -135,7 +135,7 @@ modutil.mod.Path.Wrap("GodLootPickupPresentation", function(base, loot, args)
 		end
 
 		-- The effects come from ChaosInteractPresentation() (slightly adjusted for no colour grading and ChaosBassStart() call)
-		if loot.NextInteractLines and loot.NextInteractLines.ModsNikkelMHadesBiomesIsModdedTextLine and not loot.NextInteractLines.ModsNikkelMHadesBiomesIsModdedTrialUpgradeTextLine then
+		if loot.NextInteractLines and loot.NextInteractLines.ModsNikkelMHadesBiomesIsModdedTextLine and loot.NextInteractLines.PlayOnce and not loot.NextInteractLines.ModsNikkelMHadesBiomesIsModdedTrialUpgradeTextLine then
 			-- To not play the default sound from the base function
 			loot.PickupSound = "/EmptyCue"
 
