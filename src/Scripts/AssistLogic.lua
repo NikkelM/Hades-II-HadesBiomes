@@ -26,7 +26,7 @@ game.OnControlPressed({
 		if mod.CanFireAssist() then
 			mod.DoAssist()
 		elseif game.GameState.LastAssistTrait ~= nil then
-			mod.AssistFailedPresentation()
+			mod.AssistFailedPresentation(game.CurrentRun.Hero)
 		end
 	end,
 })
@@ -84,7 +84,12 @@ function mod.DoAssist()
 	local assistData = traitData.AddAssist
 	game.CurrentRun.CurrentRoom.UsedAssist = true
 	local presentationState = mod.DoAssistPresentation(assistData, {
+		ApplyPlayerSlow = true,
+		PlayAssistReactionVoiceLines = true,
+		PlayCrowdReaction = true,
+		SecondPortraitOffsetY = 10,
 		SetHeroAnimation = true,
+		SpeedUpHeroTeam = true,
 		UsePlayerRumble = true,
 	})
 
@@ -117,6 +122,7 @@ function mod.DoAssist()
 	if assistData.FunctionName ~= nil then
 		game.CallFunctionName(assistData.FunctionName, assistData)
 	end
+	game.thread(mod.AssistCompletePresentation, assistData)
 
 	game.UseTraitData(game.CurrentRun.Hero, traitData)
 	game.UpdateTraitNumber(traitData)

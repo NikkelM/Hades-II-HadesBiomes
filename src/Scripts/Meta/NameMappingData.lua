@@ -1437,6 +1437,13 @@ mod.HadesHelpTextAliases = {
 	CharZagreus = "Zagreus",
 	NPC_FurySister_Story_01 = "NPC_FurySister_01",
 	NPC_Thanatos_Story_01 = "NPC_Thanatos_01",
+	-- Mapping to the normal version to not display a placeholder text after H2 changes the description for 0-use traits
+	FuryAssistTrait_Inactive = "FuryAssistTrait",
+	ThanatosAssistTrait_Inactive = "ThanatosAssistTrait",
+	SisyphusAssistTrait_Inactive = "SisyphusAssistTrait",
+	SkellyAssistTrait_Inactive = "SkellyAssistTrait",
+	DusaAssistTrait_Inactive = "DusaAssistTrait",
+	AchillesPatroclusAssistTrait_Inactive = "AchillesPatroclusAssistTrait",
 }
 
 -- Keys to be removed from the CodexText files before hooking them into Hades II

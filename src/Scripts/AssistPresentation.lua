@@ -21,6 +21,7 @@ function mod.DoAssistPresentation(assistData, args)
 		game.thread(game.DoRumble,
 			{ { LeftTriggerStart = 2, LeftTriggerStrengthFraction = 0.4, LeftTriggerFrequencyFraction = 0.15, LeftTriggerTimeout = 0.3, }, })
 	end
+	game.thread(game.PlayVoiceLines, game.HeroVoiceLines.AssistActivatedVoiceLines, true)
 
 	AdjustFullscreenBloom({ Name = "LastKillBloom", Duration = 0 })
 
@@ -52,9 +53,15 @@ function mod.DoAssistPresentation(assistData, args)
 	game.waitUnmodified(0.32)
 
 	game.HideCombatUI(presentationState.CombatUIHideKey)
-	if not args.UsePlayerRumble then
-		Rumble({ RightFraction = 0.7, Duration = 0.3 })
+	if args.ApplyPlayerSlow then
+		ApplyEffect({
+			DestinationId = heroId,
+			Id = heroId,
+			EffectName = "ShoutSelfSlow",
+			DataProperties = game.EffectData.ShoutSelfSlow.DataProperties,
+		})
 	end
+	Rumble({ RightFraction = 0.7, Duration = 0.3 })
 
 	AdjustFullscreenBloom({ Name = "LightningStrike", Duration = 0 })
 	AdjustFullscreenBloom({ Name = "WrathPhase2", Duration = 0.1, Delay = 0 })
@@ -97,7 +104,11 @@ function mod.DoAssistPresentation(assistData, args)
 			Group = "Combat_UI",
 			DestinationId = heroId,
 		})
-		Teleport({ Id = secondPortrait, OffsetX = 60, OffsetY = (1080 / 2) + 80 + wrathPresentationOffsetY })
+		Teleport({
+			Id = secondPortrait,
+			OffsetX = 60,
+			OffsetY = (1080 / 2) + 80 + wrathPresentationOffsetY + (args.SecondPortraitOffsetY or 0),
+		})
 		DrawScreenRelative({ Id = secondPortrait })
 		CreateAnimation({ Name = assistData.AssistPresentationPortrait2, DestinationId = secondPortrait, Scale = 1 })
 	end
@@ -116,10 +127,13 @@ function mod.DoAssistPresentation(assistData, args)
 		Color = assistData.AssistPresentationColor or game.Color.Red,
 	})
 
-	local wrathVignette = SpawnObstacle({
+	local wrathVignette = CreateScreenObstacle({
 		Name = "BlankObstacle",
 		Group = "FX_Standing_Top",
-		DestinationId = heroId,
+		X = game.ScreenCenterX,
+		Y = game.ScreenCenterY,
+		ScaleX = game.ScreenScaleX,
+		ScaleY = game.ScreenScaleY,
 	})
 	CreateAnimation({ Name = "WrathVignette", DestinationId = wrathVignette, Color = game.Color.Red })
 
@@ -167,6 +181,25 @@ function mod.DoAssistPresentation(assistData, args)
 
 	RemoveInputBlock({ Name = presentationState.InputBlockName })
 
+	if args.PlayAssistReactionVoiceLines then
+		for _, enemy in pairs(game.ActiveEnemies) do
+			if enemy.AssistReactionVoiceLines ~= nil then
+				game.thread(game.PlayVoiceLines, enemy.AssistReactionVoiceLines, nil, enemy)
+			end
+		end
+	end
+	if args.PlayCrowdReaction then
+		game.thread(game.CrowdReactionPresentation, {
+			AnimationNames = { "StatusIconSmile", "StatusIconOhBoy", "StatusIconEmbarrassed" },
+			Sound = "/SFX/TheseusCrowdCheer",
+			ReactionChance = 0.05,
+			Requirements = { RequiredRoom = "C_Boss01" },
+			Delay = 1,
+			Shake = true,
+			RadialBlur = true,
+		})
+	end
+
 	SetAlpha({ Id = portrait, Fraction = 0, Duration = 0.12, TimeModifierFraction = 0 })
 	if secondPortrait ~= nil then
 		SetAlpha({ Id = secondPortrait, Fraction = 0, Duration = 0.12, TimeModifierFraction = 0 })
@@ -182,6 +215,11 @@ end
 function mod.RestoreAssistVulnerability(invulnerabilityName, delay)
 	game.waitUnmodified(delay)
 	game.SetPlayerVulnerable(invulnerabilityName)
+end
+
+function mod.AssistCompletePresentation(assistData)
+	game.wait(1.35, game.RoomThreadName)
+	game.thread(game.PlayVoiceLines, game.HeroVoiceLines.AssistCompletedVoiceLines, true)
 end
 
 function mod.DoAssistPresentationPostWeapon(assistData, presentationState)
@@ -211,18 +249,32 @@ function mod.DoAssistPresentationPostWeapon(assistData, presentationState)
 		presentationState.VulnerabilityRestoreDelay)
 end
 
-function mod.AssistFailedPresentation()
-	if not game.IsInputAllowed({}) then
+function mod.AssistFailedPresentation(attacker)
+	attacker = attacker or game.CurrentRun.Hero
+	if (attacker.IsDead and game.CurrentHubRoom ~= nil and not game.CurrentHubRoom.AllowAssistFailedPresentation) or not game.IsInputAllowed({}) then
 		return
 	end
 
-	game.thread(game.InCombatText, game.CurrentRun.Hero.ObjectId, "AssistNotAvailable", 0.75,
-		{ ShadowScale = 0.66, ShadowScaleX = 0.9 })
-	PlaySound({ Name = "/Leftovers/SFX/OutOfAmmo2", Id = game.CurrentRun.Hero.ObjectId })
+	game.thread(game.InCombatTextArgs, {
+		TargetId = attacker.ObjectId,
+		Text = "AssistNotAvailable",
+		Duration = 0.75,
+		Cooldown = 2,
+		ShadowScale = 0.66,
+		ShadowScaleX = 0.9,
+	})
+	game.thread(game.PlayVoiceLines, game.HeroVoiceLines.AssistUnavailableVoiceLines)
+	PlaySound({ Name = "/Leftovers/SFX/OutOfAmmo2", Id = attacker.ObjectId })
 	CreateAnimation({
 		Name = "SuperNotChargedFlare",
-		DestinationId = game.CurrentRun.Hero.ObjectId,
+		DestinationId = attacker.ObjectId,
 		Scale = 0.5,
 		OffsetZ = 160,
 	})
+
+	for _, enemy in pairs(game.ActiveEnemies) do
+		if enemy.AssistFailedReactionVoiceLines ~= nil then
+			game.thread(game.PlayVoiceLines, enemy.AssistFailedReactionVoiceLines, nil, enemy)
+		end
+	end
 end

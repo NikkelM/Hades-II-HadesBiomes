@@ -1,3 +1,5 @@
+-- TODO: Add the owner voice banks through SpeakerNames on each future assist trait
+
 local newTraitData = {
 	AssistTrait = {
 		InheritFrom = { "GiftTrait" },
@@ -32,6 +34,7 @@ local newTraitData = {
 		InRackIcon = "Keepsake_Sisiyphus_Plush_Menu",
 		Icon = "Keepsake_Sisiyphus_Plush",
 		EquipSound = "/SFX/Menu Sounds/KeepsakeSisyphusLegendary",
+		SpeakerNames = { "Sisyphus" },
 		PreEquipWeapons = { "NPC_Sisyphus_01_Assist" },
 		AddAssist = {
 			FunctionName = _PLUGIN.guid .. "." .. "SisyphusLootSprinkle",

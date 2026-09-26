@@ -487,6 +487,13 @@ game.HeroVoiceLines.TheseusWrathReactionVoiceLines_M = game.HeroVoiceLines.These
 		mod.HeroVoiceLines.TheseusWrathReactionVoiceLines_M
 game.HeroVoiceLines.TheseusWrathReactionVoiceLines_F = game.HeroVoiceLines.TheseusWrathReactionVoiceLines_F or
 		mod.HeroVoiceLines.TheseusWrathReactionVoiceLines_F
+
+game.HeroVoiceLines.AssistActivatedVoiceLines = game.HeroVoiceLines.AssistActivatedVoiceLines or
+		mod.HeroVoiceLines.AssistActivatedVoiceLines
+game.HeroVoiceLines.AssistCompletedVoiceLines = game.HeroVoiceLines.AssistCompletedVoiceLines or
+		mod.HeroVoiceLines.AssistCompletedVoiceLines
+game.HeroVoiceLines.AssistUnavailableVoiceLines = game.HeroVoiceLines.AssistUnavailableVoiceLines or
+		mod.HeroVoiceLines.AssistUnavailableVoiceLines
 -- #endregion
 
 -- #region Chaos Gate voiceline adjustments for Orpheus Chaos boon (free entry)
