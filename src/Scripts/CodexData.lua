@@ -30,6 +30,15 @@ local storyNPCNames = {
 	"NPC_Orpheus_01",
 }
 
+local assistTraitNames = {
+	"FuryAssistTrait",
+	"ThanatosAssistTrait",
+	"SisyphusAssistTrait",
+	"SkellyAssistTrait",
+	"DusaAssistTrait",
+	"AchillesPatroclusAssistTrait",
+}
+
 -- For duplicate Portraits, see mod.HadesPortraitAnimationAdditions
 local hadesCodexOrdering = {
 	[mod.CodexChapterName] = {
@@ -37,6 +46,9 @@ local hadesCodexOrdering = {
 		"Tartarus", "Asphodel", "Elysium", "Styx", "Challenge", "Surface",
 		-- NPCs
 		"NPC_Sisyphus_01", "NPC_Orpheus_01", "NPC_Eurydice_01", "NPC_Patroclus_01", "NPC_Thanatos_01",
+		-- Companions
+		"FuryAssistTrait", "ThanatosAssistTrait", "SisyphusAssistTrait", "SkellyAssistTrait", "DusaAssistTrait",
+		"AchillesPatroclusAssistTrait",
 		-- Enemies
 		"HeavyMelee", "LightRanged", "PunchingBagUnit", "ThiefMineLayer", "WretchAssassinMiniboss", "Swarmer", "LightSpawner",
 		"DisembodiedHand", "HeavyRanged", "HeavyRangedSplitterMiniboss", "NPC_FurySister_01", "Harpy2", "Harpy3",
@@ -170,6 +182,22 @@ updatedCodexData.SavedEntries.NPC_Thanatos_01.Entries[3].UnlockGameStateRequirem
 		Value = 15,
 	}
 }
+
+for _, assistTraitName in ipairs(assistTraitNames) do
+	local assistCodexEntry = game.DeepCopyTable(hadesCodexData.Keepsakes.Entries[assistTraitName])
+	assistCodexEntry.ModsNikkelMHadesBiomesSkipShowKillCount = true
+	for _, entry in ipairs(assistCodexEntry.Entries) do
+		entry.UnlockGameStateRequirements = {
+			{
+				Path = { "GameState", "TraitUses", assistTraitName },
+				Comparison = ">=",
+				Value = entry.UnlockThreshold,
+			},
+		}
+		entry.UnlockThreshold = nil
+	end
+	updatedCodexData.SavedEntries[assistTraitName] = assistCodexEntry
+end
 
 updatedCodexData.SavedEntries.Harpy2 = hadesCodexData.ChthonicGods.Entries.Harpy2
 updatedCodexData.SavedEntries.Harpy2.Image = "ModsNikkelMHadesBiomes_" .. updatedCodexData.SavedEntries.Harpy2.Image

@@ -22,6 +22,16 @@ function mod.ModifyHadesHelpTextEntries(inputHelpTextTable)
 			if entry.Description then
 				entry.Description = string.gsub(entry.Description, "{#PreviousFormat}", "{#Prev}")
 				entry.Description = string.gsub(entry.Description, "{!Icons.Currency_Small}", "{!Icons.Currency}")
+				entry.Description = string.gsub(entry.Description, "{!Icons.HealthRestore_Small}", "{!Icons.HealthRestore}")
+				entry.Description = string.gsub(entry.Description, "{AS}", "{SI}")
+				if string.find(entry.Id, "AssistTrait") then
+					entry.Description = string.gsub(entry.Description,
+						"{%$TooltipData%.(Tooltip[%w_]+)}",
+						"{$TooltipData.ExtractData.%1}")
+				end
+				if string.find(entry.Id, "SisyphusAssistTrait") then
+					entry.Description = string.gsub(entry.Description, "{!Icons.MetaPoint_Small}", "{!Icons.MetaCurrency}")
+				end
 				entry.Description = string.gsub(entry.Description, " \\Column 380", "")
 			end
 			table.insert(hadesHelpTextCopiedEntries, entry)

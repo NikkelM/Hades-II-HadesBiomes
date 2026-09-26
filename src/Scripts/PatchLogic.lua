@@ -294,8 +294,17 @@ modutil.mod.Path.Wrap("DoPatches", function(base)
 			game.GameState.ModsNikkelMHadesBiomesCustomCounters = game.GameState.ModsNikkelMHadesBiomesCustomCounters or {}
 		end
 
+		if game.GameState.ModsNikkelMHadesBiomesPatchRevision < 15 then
+			game.GameState.AssistUnlocks = game.GameState.AssistUnlocks or {}
+			if game.GameState.TextLinesRecord["SisyphusGift07_A"] and not game.GameState.GiftPresentation.SisyphusAssistTrait then
+				game.GameState.GiftPresentation.SisyphusAssistTrait = true
+				game.GameState.NewKeepsakeItem.SisyphusAssistTrait = true
+			end
+		end
+
 		-- IMPORTANT: This must be incremented every time this function is changed
 		game.GameState.ModsNikkelMHadesBiomesPatchRevision = 14
+		-- game.GameState.ModsNikkelMHadesBiomesPatchRevision = 15
 	end
 
 	return base()

@@ -470,6 +470,24 @@ local hadesProjectilesModifications = {
 }
 
 local addProjectiles = {
+	{
+		Name = "NPC_Sisyphus_01_Assist",
+		InheritFrom = "RubbleFall",
+		DetonateFx = "BouldyImpact",
+		Damage = 1000,
+		DamageRadius = 350.0,
+		DamageRadiusScaleX = 1.175,
+		DamageRadiusScaleY = 0.56,
+		ImpactVelocity = 0,
+		AffectsFriends = false,
+		AffectsSelf = false,
+		AffectsEnemies = true,
+		CanCrit = false,
+		MaxVictimZ = 9999,
+		UseVulnerability = false,
+		IgnoreCoverageAngles = true,
+		ImmunityDuration = 0.2,
+	},
 	-- #region ELYSIUM - Theseus god spear recolours
 	{
 		Name = "ModsNikkelMHadesBiomes_TheseusSpearSpinApollo",
@@ -846,8 +864,10 @@ end)
 
 -- Assign to mod so we can check if the projectile exists in WeaponData.lua
 mod.HadesSjsonProjectilesTable = {}
-for _, projectile in ipairs(hadesProjectilesTable.Projectiles) do
-	if projectile.Name then
-		mod.HadesSjsonProjectilesTable[projectile.Name] = true
+for _, projectiles in ipairs({ hadesProjectilesTable.Projectiles, addProjectiles }) do
+	for _, projectile in ipairs(projectiles) do
+		if projectile.Name then
+			mod.HadesSjsonProjectilesTable[projectile.Name] = true
+		end
 	end
 end

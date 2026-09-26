@@ -40,6 +40,14 @@ hadesWeaponsTable.Weapons = mod.AddTableKeysSkipDupes(hadesTwoWeaponsTable.Weapo
 local hadesTwoPlayerWeaponsFile = rom.path.combine(rom.paths.Content(), "Game\\Weapons\\PlayerWeapons.sjson")
 
 local hadesWeaponAdditions = {
+	NPC_Sisyphus_01_Assist = {
+		Name = "NPC_Sisyphus_01_Assist",
+		InheritFrom = "1_BaseMagicWeapon",
+		Type = "GUN",
+		FireSound = "/Leftovers/SFX/MeteorStrikeQuiet",
+		Projectile = "NPC_Sisyphus_01_Assist",
+		FireFx = "null",
+	},
 	HarpyLungeAlectoRage = {
 		Name = "HarpyLungeAlectoRage",
 		InheritFrom = "HarpyLungeAlecto",

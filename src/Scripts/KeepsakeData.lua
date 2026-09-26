@@ -18,3 +18,24 @@ game.GiftData.NPC_Achilles_01.UnlockGameStateRequirements.RequiredTextLines = { 
 -- game.GiftData.NPC_Dusa_01.UnlockGameStateRequirements = game.GiftData.NPC_Dusa_01.UnlockGameStateRequirements or
 -- 		{}
 -- game.GiftData.NPC_Dusa_01.UnlockGameStateRequirements.RequiredTextLines = { "DusaLoungeRenovationQuestComplete", }
+
+-- #region Assist Traits
+table.insert(game.GiftData.NPC_Sisyphus_01, {
+	Gift = "SisyphusAssistTrait",
+	GameStateRequirements = {
+		{
+			PathTrue = { "GameState", "TextLinesRecord", "SisyphusGift07_A" },
+		},
+	},
+})
+
+table.insert(game.ScreenData.KeepsakeRack.ItemOrder, "SisyphusAssistTrait")
+
+table.insert(game.ScreenData.KeepsakeRack.ComponentData.Order, "ModsNikkelMHadesBiomesAssistEquippedFrame")
+game.ScreenData.KeepsakeRack.ComponentData.ModsNikkelMHadesBiomesAssistEquippedFrame = {
+	Graphic = "BlankObstacle",
+	AnimationName = "AwardMenuItemEquippedIn",
+	Alpha = 0,
+	GroupName = "Combat_Menu_TraitTray",
+}
+-- #endregion

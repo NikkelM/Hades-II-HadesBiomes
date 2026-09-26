@@ -732,6 +732,16 @@ mod.HadesFxAnimationAdditions = {
 	-- #endregion
 	-- #endregion
 	-- #endregion
+
+	-- #region Assist units
+	{
+		Name = "ModsNikkelMHadesBiomesBouldyFall",
+		InheritFrom = "BouldyIdle",
+		RandomRotation = true,
+		RandomRotationSpeedMin = -1200,
+		RandomRotationSpeedMax = 1200,
+	},
+	-- #endregion
 }
 
 -- Duplicate Fx animation, saved here due to the animations not being hooked, but copied directly

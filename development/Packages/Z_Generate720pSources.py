@@ -83,7 +83,7 @@ PACKAGE_SOURCES = {
     },
     "ModsNikkelMHadesBiomesFxOriginal": {
         "source": "ModsNikkelMHadesBiomesFxOriginal_source",
-        "hades_packages": ("Fx",),
+        "hades_packages": ("Fx", "NPC_Sisyphus_01_Assist"),
     },
     "ModsNikkelMHadesBiomesGUIOriginal": {
         "source": "ModsNikkelMHadesBiomesGUIOriginal_source",
