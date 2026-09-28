@@ -4,6 +4,7 @@ import os
 from pathlib import Path
 import re
 import shutil
+import stat
 import subprocess
 import tempfile
 
@@ -17,7 +18,7 @@ GUID_PACKAGE_PATTERN = re.compile(r"^[a-z0-9]+(\w+[a-z0-9])?-\w+$", re.IGNORECAS
 PACKAGE_SOURCES = {
     "ModsNikkelMHadesBiomesPortraits": {
         "source": "ModsNikkelMHadesBiomesPortraits_source",
-        "hades_packages": ("GUI",),
+        "hades_packages": ("GUI", "NPC_Sisyphus_01_Assist"),
         "aliases": (
             ("GUIModded/FamilyPortraits/", "GUI/FamilyPortraits/"),
             ("GUIModded/Icons/ShrinePoint_Small.png", "GUI/Icons/ShrinePoint_Small.png"),
@@ -83,7 +84,7 @@ PACKAGE_SOURCES = {
     },
     "ModsNikkelMHadesBiomesFxOriginal": {
         "source": "ModsNikkelMHadesBiomesFxOriginal_source",
-        "hades_packages": ("Fx", "NPC_Sisyphus_01_Assist"),
+        "hades_packages": ("Fx",),
     },
     "ModsNikkelMHadesBiomesGUIOriginal": {
         "source": "ModsNikkelMHadesBiomesGUIOriginal_source",
@@ -99,6 +100,11 @@ PACKAGE_SOURCES = {
         ),
     },
 }
+
+
+def remove_readonly(function, path, _):
+    os.chmod(path, stat.S_IWRITE)
+    function(path)
 
 
 def images_match(first_path, second_path):
@@ -288,7 +294,7 @@ def generate_source(package_name, packages_root, hades_packages_root):
             apply_original_size(destination_png, original_size)
 
         if destination_root.exists():
-            shutil.rmtree(destination_root)
+            shutil.rmtree(destination_root, onexc=remove_readonly)
         try:
             temporary_root.replace(destination_root)
         except PermissionError:
