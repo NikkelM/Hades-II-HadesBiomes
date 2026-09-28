@@ -1200,3 +1200,12 @@ mod.ModdedStatusAnimations = {
 	StatusIconWantsAffection = "ModsNikkelMHadesBiomes_StatusIconWantsAffection",
 	StatusIconWantsToSmooch = "ModsNikkelMHadesBiomes_StatusIconWantsAffection",
 }
+
+mod.AssistTraitNames = {
+	"FuryAssistTrait",
+	"ThanatosAssistTrait",
+	"SisyphusAssistTrait",
+	"SkellyAssistTrait",
+	"DusaAssistTrait",
+	"AchillesPatroclusAssistTrait",
+}

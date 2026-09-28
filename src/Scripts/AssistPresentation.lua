@@ -193,7 +193,12 @@ function mod.DoAssistPresentation(assistData, args)
 			AnimationNames = { "StatusIconSmile", "StatusIconOhBoy", "StatusIconEmbarrassed" },
 			Sound = "/SFX/TheseusCrowdCheer",
 			ReactionChance = 0.05,
-			Requirements = { RequiredRoom = "C_Boss01" },
+			Requirements = {
+				{
+					Path = { "CurrentRun", "CurrentRoom", "Name" },
+					IsAny = { "Y_Boss01" },
+				},
+			},
 			Delay = 1,
 			Shake = true,
 			RadialBlur = true,

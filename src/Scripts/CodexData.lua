@@ -30,15 +30,6 @@ local storyNPCNames = {
 	"NPC_Orpheus_01",
 }
 
-local assistTraitNames = {
-	"FuryAssistTrait",
-	"ThanatosAssistTrait",
-	"SisyphusAssistTrait",
-	"SkellyAssistTrait",
-	"DusaAssistTrait",
-	"AchillesPatroclusAssistTrait",
-}
-
 -- For duplicate Portraits, see mod.HadesPortraitAnimationAdditions
 local hadesCodexOrdering = {
 	[mod.CodexChapterName] = {
@@ -183,7 +174,7 @@ updatedCodexData.SavedEntries.NPC_Thanatos_01.Entries[3].UnlockGameStateRequirem
 	}
 }
 
-for _, assistTraitName in ipairs(assistTraitNames) do
+for _, assistTraitName in ipairs(mod.AssistTraitNames) do
 	local assistCodexEntry = game.DeepCopyTable(hadesCodexData.Keepsakes.Entries[assistTraitName])
 	assistCodexEntry.ModsNikkelMHadesBiomesSkipShowKillCount = true
 	for _, entry in ipairs(assistCodexEntry.Entries) do

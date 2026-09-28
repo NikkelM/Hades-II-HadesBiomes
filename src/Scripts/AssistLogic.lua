@@ -68,7 +68,7 @@ function mod.CanFireAssist()
 	if (traitData.RemainingUses or 0) <= 0 then
 		return false
 	end
-	if traitData.AddAssist.GameStateRequirements ~= nil and not game.IsGameStateEligible(game.CurrentRun, traitData.AddAssist.GameStateRequirements) then
+	if traitData.AddAssist.GameStateRequirements ~= nil and not game.IsGameStateEligible(traitData, traitData.AddAssist.GameStateRequirements) then
 		return false
 	end
 
