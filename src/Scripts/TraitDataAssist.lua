@@ -8,6 +8,7 @@ local newTraitData = {
 		ShowInHUD = true,
 		HUDScale = 0.435,
 		HideInRunHistory = true,
+		NoFrame = true,
 		ActiveSlotOffsetIndex = 1,
 		FrameRarities = {
 			Common = "Frame_Keepsake_Rank1",
