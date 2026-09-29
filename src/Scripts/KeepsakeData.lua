@@ -38,6 +38,15 @@ table.insert(game.GiftData.NPC_Thanatos_01, {
 	},
 })
 
+table.insert(game.GiftData.NPC_Achilles_01, {
+	Gift = "AchillesPatroclusAssistTrait",
+	GameStateRequirements = {
+		{
+			PathTrue = { "GameState", "TextLinesRecord", "AchillesGift07_A" },
+		},
+	},
+})
+
 table.insert(game.GiftData.NPC_Sisyphus_01, {
 	Gift = "SisyphusAssistTrait",
 	GameStateRequirements = {

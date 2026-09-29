@@ -119,6 +119,50 @@ end
 
 -- #endregion
 
+-- #region Achilles and Patroclus
+function mod.AchillesPatroclusAssist(assistData)
+	game.wait(0.7, game.RoomThreadName)
+	local firstTargetId = GetClosest({
+		Id = game.CurrentRun.Hero.ObjectId,
+		DestinationName = "EnemyTeam",
+		IgnoreInvulnerable = true,
+		IgnoreHomingIneligible = true,
+		Distance = assistData.Range,
+	})
+	local weapons = game.ShallowCopyTable(assistData.AssistWeapons)
+	local firstWeapon = game.RemoveRandomValue(weapons)
+	local secondWeapon = game.RemoveRandomValue(weapons)
+
+	FireWeaponFromUnit({
+		Weapon = firstWeapon,
+		Id = game.CurrentRun.Hero.ObjectId,
+		DestinationId = firstTargetId,
+		FireFromTarget = true,
+	})
+
+	game.wait(1.8, game.RoomThreadName)
+	local targetIds = GetClosestIds({
+		Id = game.CurrentRun.Hero.ObjectId,
+		DestinationName = "EnemyTeam",
+		IgnoreInvulnerable = true,
+		IgnoreHomingIneligible = true,
+		Distance = assistData.Range,
+		MaximumCount = 2,
+	})
+	local secondTargetId = targetIds[1]
+	if secondTargetId == firstTargetId and targetIds[2] then
+		secondTargetId = targetIds[2]
+	end
+	FireWeaponFromUnit({
+		Weapon = secondWeapon,
+		Id = game.CurrentRun.Hero.ObjectId,
+		DestinationId = secondTargetId,
+		FireFromTarget = true,
+	})
+end
+
+-- #endregion
+
 -- #region Sisyphus
 function mod.SisyphusAssistTouchdown(bouldy, args)
 	FireWeaponFromUnit({

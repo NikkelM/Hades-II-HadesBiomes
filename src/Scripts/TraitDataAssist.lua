@@ -105,6 +105,60 @@ local newTraitData = {
 			},
 		},
 	},
+	AchillesPatroclusAssistTrait = {
+		InheritFrom = { "AssistTrait" },
+		InRackTitle = "AchillesPatroclusAssistTrait_Rack",
+		InRackIcon = "Keepsake_Achilles_Plush_Menu",
+		Icon = "Keepsake_Achilles_Plush",
+		EquipSound = "/SFX/Menu Sounds/KeepsakeAchillesLegendary",
+		SpeakerNames = { "Modsnikkelmhadesbiomesachilles", "Patroclus" },
+		PreEquipWeapons = { "NPC_Achilles_01_Assist", "NPC_Patroclus_01_Assist" },
+		AddAssist = {
+			FunctionName = _PLUGIN.guid .. "." .. "AchillesPatroclusAssist",
+			AssistWeapons = { "NPC_Achilles_01_Assist", "NPC_Patroclus_01_Assist" },
+			Range = 1500,
+			GameStateRequirements = {
+				{
+					PathFalse = { "CurrentRun", "CurrentRoom", "BlockHadesAssistTraits" },
+				},
+			},
+			AssistPresentationPortrait = "Portrait_MaleGhost_Default_01",
+			AssistPresentationPortraitOffsetX = 3,
+			AssistPresentationPortraitOffsetY = 105,
+			AssistPresentationPortrait2 = "Portrait_Patroclus_Neutral_01",
+			AssistPresentationColor = { 140, 255, 200, 255 },
+			AssistPostWeaponSlowDuration = 0.05,
+		},
+		AssistDamage = 1500,
+		RemainingUses = { BaseValue = 1 },
+		DoesNotAutomaticallyExpire = true,
+		ExtractValues = {
+			{
+				Key = "AssistDamage",
+				ExtractAs = "TooltipDamage",
+			},
+			{
+				Key = "RemainingUses",
+				ExtractAs = "TooltipKeepsakeUses",
+			},
+		},
+		SignOffData = {
+			{
+				GameStateRequirements = {
+					{
+						PathTrue = { "GameState", "TextLinesRecord", "AchillesGift09_A" },
+					},
+					{
+						PathTrue = { "GameState", "TextLinesRecord", "PatroclusGift08_A" },
+					},
+				},
+				Text = "AchillesPatroclusSignoff_AssistMax",
+			},
+			{
+				Text = "AchillesPatroclusSignoff",
+			},
+		},
+	},
 	ThanatosAssistTrait = {
 		InheritFrom = { "AssistTrait" },
 		InRackTitle = "ThanatosAssistTrait_Rack",

@@ -99,7 +99,7 @@ function mod.DoAssistPresentation(assistData, args)
 	if assistData.AssistPresentationPortrait2 ~= nil then
 		secondPortrait = SpawnObstacle({
 			Name = "BlankObstacle",
-			Group = "Combat_UI",
+			Group = "Combat_Menu",
 			DestinationId = heroId,
 		})
 		Teleport({
