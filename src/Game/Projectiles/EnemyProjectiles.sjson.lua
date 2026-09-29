@@ -470,6 +470,63 @@ local hadesProjectilesModifications = {
 }
 
 local addProjectiles = {
+	-- #region Companions/Assist traits
+	{
+		Name = "NPC_FurySister_01_Assist",
+		InheritFrom = "1_BaseMagicProjectile",
+		DetonateFx = "FuryHellfire",
+		Type = "INSTANT",
+		DetonateSound = "null",
+		Fuse = 0.6,
+		UseStartLocation = true,
+		StartFx = "MegaeraAssist",
+		AffectsEnemies = true,
+		AffectsFriends = false,
+		Range = 1.0,
+		DamageRadius = 350,
+		DamageRadiusScaleY = 0.58,
+		NumPenetrations = 9999,
+		AffectsSelf = false,
+		CheckUnitImpact = false,
+		CheckObstacleImpact = false,
+		UnlimitedUnitPenetration = true,
+		Damage = 2500,
+		ImpactVelocity = 0,
+		UseArmor = false,
+		UseVulnerability = false,
+		CanCrit = false,
+		GroupName = "FX_Terrain",
+		ImmunityDuration = 1.0,
+		Thing = {
+			Graphic = "FuryHellfirePreviewDecalDark",
+			RotateGeometry = false,
+			Scale = 1.0,
+			Color = {
+				Red = 1.0,
+				Green = 1.0,
+				Blue = 1.0,
+				Opacity = 1.0,
+			},
+			Points = {
+				{
+					X = 0,
+					Y = 8,
+				},
+				{
+					X = 32,
+					Y = 0,
+				},
+				{
+					X = 0,
+					Y = -8,
+				},
+				{
+					X = -32,
+					Y = 0,
+				},
+			},
+		},
+	},
 	{
 		Name = "NPC_Sisyphus_01_Assist",
 		InheritFrom = "RubbleFall",
@@ -488,6 +545,7 @@ local addProjectiles = {
 		IgnoreCoverageAngles = true,
 		ImmunityDuration = 0.2,
 	},
+	-- #endregion
 	-- #region ELYSIUM - Theseus god spear recolours
 	{
 		Name = "ModsNikkelMHadesBiomes_TheseusSpearSpinApollo",

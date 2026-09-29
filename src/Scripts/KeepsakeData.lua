@@ -20,6 +20,15 @@ game.GiftData.NPC_Achilles_01.UnlockGameStateRequirements.RequiredTextLines = { 
 -- game.GiftData.NPC_Dusa_01.UnlockGameStateRequirements.RequiredTextLines = { "DusaLoungeRenovationQuestComplete", }
 
 -- #region Assist Traits
+table.insert(game.GiftData.NPC_FurySister_01, {
+	Gift = "FuryAssistTrait",
+	GameStateRequirements = {
+		{
+			PathTrue = { "GameState", "TextLinesRecord", "MegaeraGift07" },
+		},
+	},
+})
+
 table.insert(game.GiftData.NPC_Sisyphus_01, {
 	Gift = "SisyphusAssistTrait",
 	GameStateRequirements = {

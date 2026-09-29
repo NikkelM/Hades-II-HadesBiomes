@@ -18,7 +18,7 @@ GUID_PACKAGE_PATTERN = re.compile(r"^[a-z0-9]+(\w+[a-z0-9])?-\w+$", re.IGNORECAS
 PACKAGE_SOURCES = {
     "ModsNikkelMHadesBiomesPortraits": {
         "source": "ModsNikkelMHadesBiomesPortraits_source",
-        "hades_packages": ("GUI", "NPC_Sisyphus_01_Assist"),
+        "hades_packages": ("GUI", "NPC_Sisyphus_01_Assist", "Fx"),
         "aliases": (
             (
                 "GUI/Screens/AwardMenu/Legendary/Equipped.png",

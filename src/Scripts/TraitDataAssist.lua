@@ -27,6 +27,86 @@ local newTraitData = {
 		},
 	},
 
+	-- #region Megaera
+	FuryAssistTrait = {
+		InheritFrom = { "AssistTrait" },
+		InRackTitle = "FuryAssistTrait_Rack",
+		InRackIcon = "Keepsake_Meg_Plush_Menu",
+		Icon = "Keepsake_Meg_Plush",
+		EquipSound = "/SFX/Menu Sounds/KeepsakeMegLegendary",
+		SpeakerNames = { "MegaeraField" },
+		PreEquipWeapons = { "NPC_FurySister_01_Assist" },
+		AddAssist = {
+			WeaponName = "NPC_FurySister_01_Assist",
+			GameStateRequirements = {
+				{
+					PathFalse = { "CurrentRun", "CurrentRoom", "BlockHadesAssistTraits" },
+				},
+				{
+					Path = { "CurrentRun", "CurrentRoom", "Name" },
+					IsNone = { "A_Boss01", "A_Boss02", "A_Boss03" },
+				},
+			},
+			AssistPresentationPortrait = "Portrait_FurySister01_Default_01",
+			AssistPresentationPortraitOffsetY = 55,
+			AssistPresentationColor = { 200, 0, 255, 255 },
+			AssistPostWeaponSlowDuration = 0.1,
+		},
+		AssistDamage = 2500,
+		RemainingUses = { BaseValue = 1 },
+		DoesNotAutomaticallyExpire = true,
+		ExtractValues = {
+			{
+				Key = "AssistDamage",
+				ExtractAs = "TooltipDamage",
+			},
+			{
+				Key = "RemainingUses",
+				ExtractAs = "TooltipKeepsakeUses",
+			},
+		},
+		SignOffData = {
+			{
+				GameStateRequirements = {
+					{
+						Path = { "GameState", "TextLinesRecord" },
+						HasAny = {
+							"BecameCloseWithMegaera01Meg_GoToHer",
+							"BecameCloseWithMegaera01_BMeg_GoToHer",
+						},
+					},
+					{
+						Path = { "GameState", "TextLinesRecord" },
+						HasNone = {
+							"BecameCloseWithMegaera01Meg_BackOff",
+							"BecameCloseWithMegaera01_BMeg_BackOff",
+						},
+					},
+				},
+				Text = "MegaeraSignoff_AssistMax_A",
+			},
+			{
+				GameStateRequirements = {
+					{
+						PathTrue = { "GameState", "TextLinesRecord", "MegaeraGift10" },
+					},
+					{
+						Path = { "GameState", "TextLinesRecord" },
+						HasNone = {
+							"BecameCloseWithMegaera01Meg_GoToHer",
+							"BecameCloseWithMegaera01_BMeg_GoToHer",
+						},
+					},
+				},
+				Text = "MegaeraSignoff_AssistMax_B",
+			},
+			{
+				Text = "MegaeraSignoff",
+			},
+		},
+	},
+	-- #endregion
+
 	-- #region Sisyphus
 	SisyphusAssistTrait = {
 		InheritFrom = { "AssistTrait" },
