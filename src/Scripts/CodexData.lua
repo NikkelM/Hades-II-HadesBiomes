@@ -187,6 +187,7 @@ for _, assistTraitName in ipairs(mod.AssistTraitNames) do
 		}
 		entry.UnlockThreshold = nil
 	end
+	assistCodexEntry.Image = "ModsNikkelMHadesBiomes_" .. assistCodexEntry.Image
 	updatedCodexData.SavedEntries[assistTraitName] = assistCodexEntry
 end
 
