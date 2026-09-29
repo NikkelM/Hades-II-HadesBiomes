@@ -55,6 +55,14 @@ local hadesWeaponAdditions = {
 		ProjectileAngleOffset = 0,
 		ProjectileAngleOffsetScaleY = 0.75,
 	},
+	NPC_Thanatos_01_Assist = {
+		Name = "NPC_Thanatos_01_Assist",
+		InheritFrom = "1_BaseMagicWeapon",
+		Type = "GUN",
+		Projectile = "NPC_Thanatos_01_Assist",
+		FireSound = "/SFX/ThanatosAOERift",
+		FireFx = "null",
+	},
 	NPC_Sisyphus_01_Assist = {
 		Name = "NPC_Sisyphus_01_Assist",
 		InheritFrom = "1_BaseMagicWeapon",

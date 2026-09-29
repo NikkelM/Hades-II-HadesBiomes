@@ -9,6 +9,7 @@ local newTraitData = {
 		HUDScale = 0.435,
 		HideInRunHistory = true,
 		NoFrame = true,
+		ModsNikkelMHadesBiomesCabinetIconScale = 0.37,
 		ActiveSlotOffsetIndex = 1,
 		FrameRarities = {
 			Common = "Frame_Keepsake_Rank1",
@@ -27,8 +28,6 @@ local newTraitData = {
 			},
 		},
 	},
-
-	-- #region Megaera
 	FuryAssistTrait = {
 		InheritFrom = { "AssistTrait" },
 		InRackTitle = "FuryAssistTrait_Rack",
@@ -106,9 +105,88 @@ local newTraitData = {
 			},
 		},
 	},
-	-- #endregion
-
-	-- #region Sisyphus
+	ThanatosAssistTrait = {
+		InheritFrom = { "AssistTrait" },
+		InRackTitle = "ThanatosAssistTrait_Rack",
+		InRackIcon = "Keepsake_Thanatos_Plush_Menu",
+		Icon = "Keepsake_Thanatos_Plush",
+		ModsNikkelMHadesBiomesCabinetIconScale = 0.33,
+		EquipSound = "/SFX/Menu Sounds/KeepsakeThanatosLegendary",
+		SpeakerNames = { "Thanatos", "ThanatosField" },
+		PreEquipWeapons = { "NPC_Thanatos_01_Assist" },
+		AddAssist = {
+			WeaponName = "NPC_Thanatos_01_Assist",
+			GameStateRequirements = {
+				{
+					PathFalse = { "CurrentRun", "CurrentRoom", "BlockHadesAssistTraits" },
+				},
+				{
+					Path = { "CurrentRun", "CurrentRoom", "Encounter", "Name" },
+					IsNone = {
+						"ThanatosTartarus",
+						"ThanatosAsphodel",
+						"ThanatosElysium",
+						"ThanatosElysiumIntro",
+					},
+				},
+			},
+			AssistPresentationPortrait = "Portrait_Thanatos_Default_01",
+			AssistPresentationPortraitOffsetY = 45,
+			AssistPresentationColor = { 200, 0, 255, 255 },
+		},
+		AssistDamage = 3500,
+		RemainingUses = { BaseValue = 1 },
+		DoesNotAutomaticallyExpire = true,
+		ExtractValues = {
+			{
+				Key = "AssistDamage",
+				ExtractAs = "TooltipDamage",
+			},
+			{
+				Key = "RemainingUses",
+				ExtractAs = "TooltipKeepsakeUses",
+			},
+		},
+		SignOffData = {
+			{
+				GameStateRequirements = {
+					{
+						Path = { "GameState", "TextLinesRecord" },
+						HasAny = {
+							"BecameCloseWithThanatos01Than_GoToHim",
+							"BecameCloseWithThanatos01_BThan_GoToHim",
+						},
+					},
+					{
+						Path = { "GameState", "TextLinesRecord" },
+						HasNone = {
+							"BecameCloseWithThanatos01Than_BackOff",
+							"BecameCloseWithThanatos01_BThan_BackOff",
+						},
+					},
+				},
+				Text = "ThanatosSignoff_AssistMax_A",
+			},
+			{
+				GameStateRequirements = {
+					{
+						PathTrue = { "GameState", "TextLinesRecord", "ThanatosGift10" },
+					},
+					{
+						Path = { "GameState", "TextLinesRecord" },
+						HasNone = {
+							"BecameCloseWithThanatos01Than_GoToHim",
+							"BecameCloseWithThanatos01_BThan_GoToHim",
+						},
+					},
+				},
+				Text = "ThanatosSignoff_AssistMax_B",
+			},
+			{
+				Text = "ThanatosSignoff",
+			},
+		},
+	},
 	SisyphusAssistTrait = {
 		InheritFrom = { "AssistTrait" },
 		InRackTitle = "SisyphusAssistTrait_Rack",
@@ -174,7 +252,6 @@ local newTraitData = {
 			},
 		},
 	},
-	-- #endregion
 }
 
 mod.AddTableKeysSkipDupes(game.TraitData, newTraitData)

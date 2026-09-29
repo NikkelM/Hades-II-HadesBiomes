@@ -1,4 +1,3 @@
-local assistIconScale = 0.43
 local assistFrameScale = 1.0
 local assistSelectedFrameScaleX = 0.72
 local assistSelectedFrameScaleY = 0.66
@@ -68,6 +67,8 @@ local function createUnlockedAssistIcon(screen, components, createKeepsakeIcon, 
 	local assistRankOffsetY = 8
 	local assistBackingScale = 0.75
 	local assistButtonKeyAppend = "Assist"
+	local traitData = game.TraitData[itemData.Gift]
+	local iconScale = traitData.ModsNikkelMHadesBiomesCabinetIconScale
 	local buttonKey = "UpgradeToggle" .. index .. assistButtonKeyAppend
 	components[buttonKey .. "StaticBacking"] = CreateScreenComponent({
 		Name = "BlankObstacle",
@@ -101,8 +102,8 @@ local function createUnlockedAssistIcon(screen, components, createKeepsakeIcon, 
 	button.OnPressedFunctionName = _PLUGIN.guid .. "." .. "HandleAssistToggle"
 	button.OnMouseOverFunctionName = _PLUGIN.guid .. "." .. "MouseOverAssist"
 	button.OnMouseOffFunctionName = _PLUGIN.guid .. "." .. "MouseOffAssist"
-	button.ModsNikkelMHadesBiomesBaseScale = assistIconScale
-	SetScale({ Id = button.Id, Fraction = assistIconScale })
+	button.ModsNikkelMHadesBiomesBaseScale = iconScale
+	SetScale({ Id = button.Id, Fraction = iconScale })
 	Teleport({ Id = button.Id, OffsetX = x, OffsetY = y + assistIconOffsetY })
 	Teleport({
 		Id = components[button.ButtonKey .. "Rank"].Id,
@@ -198,7 +199,6 @@ function mod.MouseOffLockedAssist(button)
 end
 
 function mod.MouseOverAssist(button)
-	local assistHoverIconScale = 0.48
 	game.MouseOverKeepsake(button)
 	local screen = button.Screen
 	SetAlpha({ Id = screen.Components.HoverFrame.Id, Fraction = 0, Duration = 0 })
@@ -215,7 +215,7 @@ function mod.MouseOverAssist(button)
 	})
 	SetScale({
 		Id = button.Id,
-		Fraction = assistHoverIconScale,
+		Fraction = button.ModsNikkelMHadesBiomesBaseScale + 0.05,
 		Duration = 0.1,
 		EaseIn = 0,
 		EaseOut = 1,
@@ -240,7 +240,7 @@ function mod.MouseOffAssist(button)
 	SetAlpha({ Id = screen.Components.ModsNikkelMHadesBiomesAssistHoverFrame.Id, Fraction = 0, Duration = 0 })
 	SetScale({
 		Id = button.Id,
-		Fraction = button.ModsNikkelMHadesBiomesBaseScale or assistIconScale,
+		Fraction = button.ModsNikkelMHadesBiomesBaseScale,
 		Duration = 0.1,
 		EaseIn = 0,
 		EaseOut = 1,
