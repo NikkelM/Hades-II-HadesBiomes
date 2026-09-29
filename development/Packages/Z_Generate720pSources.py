@@ -20,6 +20,14 @@ PACKAGE_SOURCES = {
         "source": "ModsNikkelMHadesBiomesPortraits_source",
         "hades_packages": ("GUI", "NPC_Sisyphus_01_Assist"),
         "aliases": (
+            (
+                "GUI/Screens/AwardMenu/Legendary/Equipped.png",
+                "GUI/Screens/AwardMenu/Equipped.png",
+            ),
+            (
+                "GUI/Screens/AwardMenu/Legendary/KeepsakeHighlight/",
+                "GUI/Screens/AwardMenu/KeepsakeHighlight/",
+            ),
             ("GUIModded/FamilyPortraits/", "GUI/FamilyPortraits/"),
             ("GUIModded/Icons/ShrinePoint_Small.png", "GUI/Icons/ShrinePoint_Small.png"),
             (
@@ -31,6 +39,9 @@ PACKAGE_SOURCES = {
                 "GUIModded/Screens/ShopIcons/release_parchment_23.png",
                 "GUI/Screens/ShopIcons/release_parchment_23.png",
             ),
+        ),
+        "custom_prefixes": (
+            "GUI/Screens/AwardMenu/Legendary/Locked.png",
         ),
     },
     "NikkelM-HadesBiomesMainMenu": {

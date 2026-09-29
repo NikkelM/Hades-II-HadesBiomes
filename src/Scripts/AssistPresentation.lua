@@ -1,5 +1,4 @@
 function mod.DoAssistPresentation(assistData, args)
-	args = args or {}
 	local currentRun = game.CurrentRun
 	local heroId = currentRun.Hero.ObjectId
 	local presentationState = {
@@ -9,7 +8,6 @@ function mod.DoAssistPresentation(assistData, args)
 		CombatUIHideKey = args.CombatUIHideKey or "ModsNikkelMHadesBiomesAssistPresentationPortrait",
 		EffectAnchorCleanupDelay = args.EffectAnchorCleanupDelay or 0.5,
 		UseShoutPresentationCleanup = args.UseShoutPresentationCleanup,
-		VulnerabilityRestoreDelay = args.VulnerabilityRestoreDelay or 0.4,
 	}
 
 	game.SetPlayerInvulnerable(presentationState.InvulnerabilityName)
@@ -152,10 +150,7 @@ function mod.DoAssistPresentation(assistData, args)
 	DrawScreenRelative({ Id = fullscreenAlertDisplacementFx })
 
 	game.AddSimSpeedChange(presentationState.SimSpeedName, { Fraction = 0.1, LerpTime = 0.06 })
-	if args.SpeedUpHeroTeam then
-		SetThingProperty({ Property = "ElapsedTimeMultiplier", Value = 3, ValueChangeType = "Multiply", DataValue = false, DestinationNames = { "HeroTeam" } })
-		presentationState.HeroElapsedTimeMultiplierChanged = true
-	end
+	SetThingProperty({ Property = "ElapsedTimeMultiplier", Value = 3, ValueChangeType = "Multiply", DataValue = false, DestinationNames = { "HeroTeam" } })
 
 	Move({ Id = portrait, Angle = 8, Distance = 800, Duration = 0.2, EaseIn = 0.2, EaseOut = 1, TimeModifierFraction = 0 })
 	if secondPortrait ~= nil then
@@ -217,11 +212,6 @@ function mod.DoAssistPresentation(assistData, args)
 	return presentationState
 end
 
-function mod.RestoreAssistVulnerability(invulnerabilityName, delay)
-	game.waitUnmodified(delay)
-	game.SetPlayerVulnerable(invulnerabilityName)
-end
-
 function mod.AssistCompletePresentation(assistData)
 	game.wait(1.35, game.RoomThreadName)
 	game.thread(game.PlayVoiceLines, game.HeroVoiceLines.AssistCompletedVoiceLines, true)
@@ -229,33 +219,26 @@ end
 
 function mod.DoAssistPresentationPostWeapon(assistData, presentationState)
 	game.AddSimSpeedChange(presentationState.SimSpeedName, { Fraction = 0.3, LerpTime = 0.3 })
-	if presentationState.HeroElapsedTimeMultiplierChanged then
-		SetThingProperty({ Property = "ElapsedTimeMultiplier", Value = 1.0, ValueChangeType = "Absolute", DataValue = false, DestinationNames = { "HeroTeam" } })
-	end
+	SetThingProperty({ Property = "ElapsedTimeMultiplier", Value = 1.0, ValueChangeType = "Absolute", DataValue = false, DestinationNames = { "HeroTeam" } })
 	game.waitUnmodified(assistData.AssistPostWeaponSlowDuration or 0)
-	if presentationState.HeroElapsedTimeMultiplierChanged then
-		SetThingProperty({ Property = "ElapsedTimeMultiplier", Value = 1.0, ValueChangeType = "Absolute", DataValue = false, DestinationNames = { "HeroTeam" } })
-	end
+	SetThingProperty({ Property = "ElapsedTimeMultiplier", Value = 1.0, ValueChangeType = "Absolute", DataValue = false, DestinationNames = { "HeroTeam" } })
 	game.RemoveSimSpeedChange(presentationState.SimSpeedName, { LerpTime = 0.3 })
 	game.ShowCombatUI(presentationState.CombatUIHideKey)
 
-	if presentationState.DisplacementFxId ~= nil then
-		if presentationState.UseShoutPresentationCleanup then
-			game.thread(game.CleanUpShoutPresentation, nil, nil, { presentationState.DisplacementFxId })
-		else
-			game.thread(game.DestroyOnDelay, { presentationState.DisplacementFxId }, 0.5)
-		end
+	if presentationState.UseShoutPresentationCleanup then
+		game.thread(game.CleanUpShoutPresentation, nil, nil, { presentationState.DisplacementFxId })
+	else
+		game.thread(game.DestroyOnDelay, { presentationState.DisplacementFxId }, 0.5)
 	end
-	if presentationState.EffectAnchorId ~= nil then
-		game.thread(game.DestroyOnDelay, { presentationState.EffectAnchorId }, presentationState.EffectAnchorCleanupDelay)
-	end
+	game.thread(game.DestroyOnDelay, { presentationState.EffectAnchorId }, presentationState.EffectAnchorCleanupDelay)
 
-	game.thread(mod.RestoreAssistVulnerability, presentationState.InvulnerabilityName,
-		presentationState.VulnerabilityRestoreDelay)
+	game.thread(function()
+		game.waitUnmodified(0.4)
+		game.SetPlayerVulnerable(presentationState.InvulnerabilityName)
+	end)
 end
 
 function mod.AssistFailedPresentation(attacker)
-	attacker = attacker or game.CurrentRun.Hero
 	if (attacker.IsDead and game.CurrentHubRoom ~= nil and not game.CurrentHubRoom.AllowAssistFailedPresentation) or not game.IsInputAllowed({}) then
 		return
 	end

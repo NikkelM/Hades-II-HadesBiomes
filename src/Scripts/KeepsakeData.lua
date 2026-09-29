@@ -29,13 +29,20 @@ table.insert(game.GiftData.NPC_Sisyphus_01, {
 	},
 })
 
-table.insert(game.ScreenData.KeepsakeRack.ItemOrder, "SisyphusAssistTrait")
-
 table.insert(game.ScreenData.KeepsakeRack.ComponentData.Order, "ModsNikkelMHadesBiomesAssistEquippedFrame")
 game.ScreenData.KeepsakeRack.ComponentData.ModsNikkelMHadesBiomesAssistEquippedFrame = {
 	Graphic = "BlankObstacle",
-	AnimationName = "AwardMenuItemEquippedIn",
+	AnimationName = "ModsNikkelMHadesBiomesLegendaryMenuItemEquipped",
 	Alpha = 0,
-	GroupName = "Combat_Menu_TraitTray",
+	Scale = 1,
+	GroupName = "Combat_Menu_Overlay_Additive",
+}
+
+table.insert(game.ScreenData.KeepsakeRack.ComponentData.Order, "ModsNikkelMHadesBiomesAssistHoverFrame")
+game.ScreenData.KeepsakeRack.ComponentData.ModsNikkelMHadesBiomesAssistHoverFrame = {
+	Graphic = "BlankObstacle",
+	Alpha = 0,
+	Scale = 1,
+	GroupName = "Combat_Menu_Overlay_Additive",
 }
 -- #endregion

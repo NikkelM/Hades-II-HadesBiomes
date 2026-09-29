@@ -1364,7 +1364,7 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 	end
 	if requirements.RequiredUsedAssistInRoomThisRun ~= nil then
 		local usedAssistInRequiredRoom = false
-		for _, roomData in pairs(game.CurrentRun.RoomHistory or {}) do
+		for _, roomData in pairs(game.CurrentRun.RoomHistory) do
 			if roomData.Name == requirements.RequiredUsedAssistInRoomThisRun and roomData.UsedAssist then
 				usedAssistInRequiredRoom = true
 				break

@@ -873,7 +873,6 @@ function mod.HandleHadesAssistPresentation(enemy, weaponAIData, currentRun)
 		InvulnerabilityName = "Super",
 		SimSpeedName = "Assist",
 		SourceId = enemy.ObjectId,
-		SpeedUpHeroTeam = true,
 		UseShoutPresentationCleanup = true,
 	})
 	game.thread(mod.DoCerberusAssistPresentation, presentationState.EffectAnchorId)

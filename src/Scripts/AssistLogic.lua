@@ -33,14 +33,6 @@ game.OnControlPressed({
 -- #endregion
 
 -- #region General logic
-function mod.GetEquippedAssistTrait()
-	if game.GameState.LastAssistTrait == nil or game.CurrentRun == nil or game.CurrentRun.Hero == nil then
-		return nil
-	end
-
-	return game.GetHeroTrait(game.GameState.LastAssistTrait)
-end
-
 function mod.CanFireAssist()
 	if game.CurrentRun.Hero == nil then
 		return false
@@ -55,7 +47,7 @@ function mod.CanFireAssist()
 		return false
 	end
 
-	local traitData = mod.GetEquippedAssistTrait()
+	local traitData = game.GetHeroTrait(game.GameState.LastAssistTrait)
 	if traitData == nil then
 		return false
 	end
@@ -65,7 +57,7 @@ function mod.CanFireAssist()
 	if traitData.AddAssist.WeaponName ~= nil and not game.Contains(traitData.PreEquipWeapons or {}, traitData.AddAssist.WeaponName) then
 		return false
 	end
-	if (traitData.RemainingUses or 0) <= 0 then
+	if traitData.RemainingUses == 0 then
 		return false
 	end
 	if traitData.AddAssist.GameStateRequirements ~= nil and not game.IsGameStateEligible(traitData, traitData.AddAssist.GameStateRequirements) then
@@ -76,11 +68,7 @@ function mod.CanFireAssist()
 end
 
 function mod.DoAssist()
-	local traitData = mod.GetEquippedAssistTrait()
-	if traitData == nil or traitData.AddAssist == nil then
-		return
-	end
-
+	local traitData = game.GetHeroTrait(game.GameState.LastAssistTrait)
 	local assistData = traitData.AddAssist
 	game.CurrentRun.CurrentRoom.UsedAssist = true
 	local presentationState = mod.DoAssistPresentation(assistData, {
@@ -89,7 +77,6 @@ function mod.DoAssist()
 		PlayCrowdReaction = true,
 		SecondPortraitOffsetY = 10,
 		SetHeroAnimation = true,
-		SpeedUpHeroTeam = true,
 		UsePlayerRumble = true,
 	})
 
