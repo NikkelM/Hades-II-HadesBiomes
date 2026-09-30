@@ -24,6 +24,7 @@ function mod.EquipAssist(heroUnit, traitName, args)
 	if traitData.SpeakerNames then
 		game.LoadVoiceBanks(traitData.SpeakerNames, nil, true)
 	end
+	mod.LoadAssistSfxBanks(traitData.SfxBankNames)
 end
 
 function mod.UpdateAssistEquippedFrame(screen)
@@ -300,13 +301,15 @@ function mod.HandleAssistToggle(screen, button)
 	end
 
 	local traitName = button.Data.Gift
+	local traitData = game.TraitData[traitName]
+	mod.LoadAssistSfxBanks(traitData.SfxBankNames)
 	if game.GameState.LastAssistTrait == traitName then
 		game.GameState.LastAssistTrait = nil
 	else
 		game.GameState.LastAssistTrait = traitName
 	end
 
-	PlaySound({ Name = game.TraitData[traitName].EquipSound or "/Leftovers/Menu Sounds/TalismanPowderDownLEGENDARY" })
+	PlaySound({ Name = traitData.EquipSound or "/Leftovers/Menu Sounds/TalismanPowderDownLEGENDARY" })
 	mod.UpdateAssistEquippedFrame(screen)
 	game.KeepsakeScreenUpdateActionBar(screen, button)
 end

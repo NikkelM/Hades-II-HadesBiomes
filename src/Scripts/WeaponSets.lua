@@ -34,3 +34,5 @@ game.WeaponSets.ExpireProjectileExcludeProjectileNames = game.CombineTablesIPair
 	game.WeaponSets.ExpireProjectileExcludeProjectileNames,
 	hadesExpireProjectileExcludeProjectileNames
 )
+
+game.UnitSets.PlayerSummons.TrainingMeleeSummon = true

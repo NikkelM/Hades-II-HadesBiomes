@@ -3542,6 +3542,181 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 	-- #region Run Start
 	ModsNikkelMHadesBiomes_EmptyStartNewHadesRunVoiceLines = {},
 	-- #endregion
+	-- #region Assists
+	SkellySummonTauntVoiceLines = {
+		{
+			RandomRemaining = true,
+			PostLineWait = 10.5,
+			ThreadName = "RoomThread",
+			GameStateRequirements = {
+				{
+					Path = { "CurrentRun", "Hero", "TraitDictionary" },
+					HasAny = { "SkellyAssistTrait" },
+				},
+				{
+					PathFalse = { "CurrentRun", "Hero", "IsDead" },
+				},
+				{
+					PathNotEmpty = { "RequiredKillEnemies" },
+				},
+				{
+					Path = { "CurrentRun", "CurrentRoom", "Encounter", "Name" },
+					IsNone = { "BossHarpy1", "BossHarpy2", "BossHarpy3", "BossHydra", "BossHades" },
+				},
+			},
+			ObjectType = "TrainingMeleeSummon",
+			-- I'll hold them off, boyo, you do your thing!
+			-- { Cue = "/VO/Skelly_0339", RequiredMinKillEnemies = 2 },
+			-- Forget about me, boyo! Save yourself!
+			-- { Cue = "/VO/Skelly_0340", RequiredMinKillEnemies = 3 },
+			-- Oh I got your back, there, pal!
+			{ Cue = "/VO/Skelly_0341" },
+			-- Come on, bozo, pick on someone your own size!
+			{ Cue = "/VO/Skelly_0322" },
+			-- Waaaaaaaa I'm an important target!!
+			{ Cue = "/VO/Skelly_0326" },
+			-- Whoever kills me gets a big promotion!
+			{
+				Cue = "/VO/Skelly_0327",
+				GameStateRequirements = {
+					{ Path = { "RequiredKillEnemies" }, UseLength = true, Comparison = ">=", Value = 2 },
+				},
+			},
+			-- Hah what a bunch of bozos!!
+			{
+				Cue = "/VO/Skelly_0332",
+				GameStateRequirements = {
+					{ Path = { "RequiredKillEnemies" }, UseLength = true, Comparison = ">=", Value = 2 },
+				},
+			},
+			-- Look at all these guys, come on!
+			{
+				Cue = "/VO/Skelly_0333",
+				GameStateRequirements = {
+					{ Path = { "RequiredKillEnemies" }, UseLength = true, Comparison = ">=", Value = 3 },
+				},
+			},
+			-- Heeey bozo, let's see what you got!
+			{ Cue = "/VO/Skelly_0334" },
+			-- You bozos look like you could use some practice!
+			{
+				Cue = "/VO/Skelly_0337",
+				GameStateRequirements = {
+					{ Path = { "RequiredKillEnemies" }, UseLength = true, Comparison = ">=", Value = 2 },
+				},
+			},
+			-- You mess with my pal, you mess with me!
+			{ Cue = "/VO/Skelly_0338" },
+			-- Your mama presses olive oil!
+			{ Cue = "/VO/Skelly_0394" },
+			-- Hey pick on somebody my size!
+			{ Cue = "/VO/Skelly_0395" },
+			-- Think you can break these bones?
+			{ Cue = "/VO/Skelly_0396" },
+			-- Nyah-nyah come get me!
+			{ Cue = "/VO/Skelly_0397" },
+			-- Nyah, come get me and all that!
+			{ Cue = "/VO/Skelly_0398" },
+			-- Hope I don't die and drop this precious loot!
+			{ Cue = "/VO/Skelly_0399" },
+			-- You don't have what it takes!!
+			{ Cue = "/VO/Skelly_0400" },
+			-- Hey, may I have your attention for a sec?
+			{ Cue = "/VO/Skelly_0401" },
+			-- Don't mean to interrupt!!
+			{ Cue = "/VO/Skelly_0402" },
+			-- Come on, you bozos, do it!
+			{
+				Cue = "/VO/Skelly_0403",
+				GameStateRequirements = {
+					{ Path = { "RequiredKillEnemies" }, UseLength = true, Comparison = ">=", Value = 2 },
+				},
+			},
+			-- I'm here, kill me, you bozos!
+			{
+				Cue = "/VO/Skelly_0404",
+				GameStateRequirements = {
+					{ Path = { "RequiredKillEnemies" }, UseLength = true, Comparison = ">=", Value = 2 },
+				},
+			},
+			-- Come on, kill me, you goofs!
+			{
+				Cue = "/VO/Skelly_0405",
+				GameStateRequirements = {
+					{ Path = { "RequiredKillEnemies" }, UseLength = true, Comparison = ">=", Value = 2 },
+				},
+			},
+			-- Come on! Get me already!
+			{ Cue = "/VO/Skelly_0406" },
+			-- Come on, kill me!
+			{ Cue = "/VO/Skelly_0407" },
+			-- Come on, kill me, I'm here!!
+			{ Cue = "/VO/Skelly_0408" },
+			-- Kill me, I'm here!
+			{ Cue = "/VO/Skelly_0409" },
+			-- Come on, do it, kill me!!
+			{ Cue = "/VO/Skelly_0410" },
+			-- What's the matter, scared?!
+			{ Cue = "/VO/Skelly_0411" },
+			-- You want a piece of me you guys?!
+			{
+				Cue = "/VO/Skelly_0412",
+				GameStateRequirements = {
+					{ Path = { "RequiredKillEnemies" }, UseLength = true, Comparison = ">=", Value = 2 },
+				},
+			},
+			-- Come on, you bozos, let's see what you got!
+			{
+				Cue = "/VO/Skelly_0413",
+				GameStateRequirements = {
+					{ Path = { "RequiredKillEnemies" }, UseLength = true, Comparison = ">=", Value = 2 },
+				},
+			},
+			-- Hey bozos, over here!
+			{
+				Cue = "/VO/Skelly_0414",
+				GameStateRequirements = {
+					{ Path = { "RequiredKillEnemies" }, UseLength = true, Comparison = ">=", Value = 2 },
+				},
+			},
+			-- Got some real fancy bozos over here!
+			-- { Cue = "/VO/Skelly_0415", RequiredMinKillEnemies = 2 },
+			-- These guys don't look so tough!
+			{
+				Cue = "/VO/Skelly_0416",
+				GameStateRequirements = {
+					{ Path = { "RequiredKillEnemies" }, UseLength = true, Comparison = ">=", Value = 2 },
+				},
+			},
+			-- Oh I can take a hit!!
+			{ Cue = "/VO/Skelly_0417" },
+			-- Come give me your best shot!!
+			{ Cue = "/VO/Skelly_0418" },
+			-- You won't take me alive!!
+			{ Cue = "/VO/Skelly_0419" },
+			-- You beat me, I'll just keep coming back!
+			{ Cue = "/VO/Skelly_0574" },
+			-- Go on and sock it to me, here!
+			{ Cue = "/VO/Skelly_0575" },
+			-- Can't even kill an unarmed skeleton!
+			{ Cue = "/VO/Skelly_0576" },
+			-- How about a stationary target for a change?
+			{ Cue = "/VO/Skelly_0577" },
+			-- Want me to move, make me!
+			{ Cue = "/VO/Skelly_0578" },
+			-- Come give me your best shot!
+			{ Cue = "/VO/Skelly_0579" },
+			-- Oh, help me, boyo, I'm so scared!
+			-- { Cue = "/VO/Skelly_0580" },
+			-- Ahahaha, please!
+			{ Cue = "/VO/Skelly_0581" },
+			-- Woo, hoohoohoohoo!
+			{ Cue = "/VO/Skelly_0582" },
+			-- You know who you're dealing with?
+			{ Cue = "/VO/Skelly_0583" },
+		},
+	},
+	-- #endregion
 }
 
 mod.HeroVoiceLines = mod.HeroVoiceLines or {

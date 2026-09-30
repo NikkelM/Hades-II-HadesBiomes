@@ -163,6 +163,41 @@ end
 
 -- #endregion
 
+-- #region Skelly
+function mod.SkellyAssist()
+	local enemyData = game.EnemyData.TrainingMeleeSummon
+	local newEnemy = game.DeepCopyTable(enemyData)
+	newEnemy.BlocksLootInteraction = false
+	newEnemy.ObjectId = SpawnUnit({
+		Name = enemyData.Name,
+		Group = "Standing",
+		DestinationId = game.CurrentRun.Hero.ObjectId,
+		OffsetX = 0,
+		OffsetY = 0,
+	})
+	game.thread(game.CreateAlliedEnemyPresentation, newEnemy)
+	game.SetupUnit(newEnemy, game.CurrentRun, { SkipPresentation = true })
+	game.thread(function()
+		game.waitUnmodified(2)
+		for _, voiceLines in ipairs(newEnemy.OnActivationFinishedVoiceLines) do
+			game.PlayVoiceLines(voiceLines, nil, newEnemy)
+		end
+	end)
+	game.CreateHealthBar(newEnemy)
+	game.UpdateHealthBar(newEnemy, 0, { Force = true })
+
+	game.MapState.TauntTargetIds[newEnemy.ObjectId] = true
+end
+
+function mod.SkellyAssistDeath(unit)
+	if unit.OnDeathVoiceLines then
+		game.thread(game.PlayVoiceLines, unit.OnDeathVoiceLines, nil, unit)
+	end
+	game.MapState.TauntTargetIds[unit.ObjectId] = nil
+end
+
+-- #endregion
+
 -- #region Sisyphus
 function mod.SisyphusAssistTouchdown(bouldy, args)
 	FireWeaponFromUnit({

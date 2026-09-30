@@ -117,6 +117,12 @@ mod.HadesCharacterAnimationsEnemiesModifications = {
 		SortMode = "Isometric",
 	},
 	-- #endregion
+
+	-- #region OTHER
+	EnemySkeletonDead = {
+		Scale = 0.735,
+	},
+	-- #endregion
 }
 
 mod.HadesCharacterAnimationsEnemiesAdditions = {

@@ -323,8 +323,14 @@ mod.BikFileNames = {
 	-- Patroclus
 	"NPC_PatroclusIdleSitting_Bink",
 	"NPC_PatroclusIdleStanding_Bink",
-	"NPC_AchillesKeepSake_Bink",
 	"NPC_PatroclusKeepSake_Bink",
+	-- Achilles
+	"NPC_AchillesKeepSake_Bink",
+	-- Skelly
+	"SkellyAssistTrait_Bink",
+	"Enemy_Skeleton_OnHit_Bink",
+	"Enemy_Skeleton_Dead_Bink",
+	"Enemy_Skeleton_Idle_Bink",
 	-- #endregion
 	-- #region STYX
 	-- Cerberus

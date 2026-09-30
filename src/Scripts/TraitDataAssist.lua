@@ -9,6 +9,7 @@ local newTraitData = {
 		HUDScale = 0.435,
 		HideInRunHistory = true,
 		NoFrame = true,
+		SfxBankNames = { mod.AudioFileMappings.Sounds },
 		ModsNikkelMHadesBiomesCabinetIconScale = 0.37,
 		ActiveSlotOffsetIndex = 1,
 		FrameRarities = {
@@ -303,6 +304,52 @@ local newTraitData = {
 			},
 			{
 				Text = "SisyphusBouldySignoff",
+			},
+		},
+	},
+	SkellyAssistTrait = {
+		InheritFrom = { "AssistTrait" },
+		InRackTitle = "SkellyAssistTrait_Rack",
+		InRackIcon = "Keepsake_Skelly_Plush_Menu",
+		Icon = "Keepsake_Skelly_Plush",
+		EquipSound = "/SFX/Menu Sounds/KeepsakeSkellyLegendary",
+		SpeakerNames = { "Modsnikkelmhadesbiomesskelly" },
+		AddAssist = {
+			FunctionName = _PLUGIN.guid .. "." .. "SkellyAssist",
+			GameStateRequirements = {
+				{
+					Path = { "CurrentRun", "CurrentRoom", "Name" },
+					IsNone = { "CharonFight01" },
+				},
+			},
+			AssistPresentationPortrait = "ModsNikkelMHadesBiomes_Portrait_Skelly_Default_01",
+			AssistPresentationColor = { 96, 64, 255, 255 },
+			AssistPresentationPortraitOffsetY = 35,
+		},
+		RemainingUses = { BaseValue = 1 },
+		DoesNotAutomaticallyExpire = true,
+		ExtractHealth = 300,
+		ExtractValues = {
+			{
+				Key = "RemainingUses",
+				ExtractAs = "TooltipKeepsakeUses",
+			},
+			{
+				Key = "ExtractHealth",
+				ExtractAs = "TooltipHealth",
+			},
+		},
+		SignOffData = {
+			{
+				GameStateRequirements = {
+					{
+						PathTrue = { "GameState", "TextLinesRecord", "SkellyGift09" },
+					},
+				},
+				Text = "SkellySignoff_AssistMax",
+			},
+			{
+				Text = "SkellySignoff",
 			},
 		},
 	},

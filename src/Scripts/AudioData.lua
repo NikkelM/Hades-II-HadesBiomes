@@ -147,43 +147,47 @@ local requiredGlobalVoiceLineModifications = {
 	-- },
 	HadesPostBossVoiceLines = {
 		Find = "Intercom_",
-		Replace = "Modsnikkelmhadesbiomesintercom_",
+		Replace = mod.VoiceoverFileNames.Intercom .. "_",
 	},
 	MegaeraGreetingVoiceLines = {
 		Find = "MegaeraHome_",
-		Replace = "Modsnikkelmhadesbiomesmegaerahome_",
+		Replace = mod.VoiceoverFileNames.MegaeraHome .. "_",
 	},
 	SurvivalEncounterStartVoiceLines = {
 		Find = "Intercom_",
-		Replace = "Modsnikkelmhadesbiomesintercom_",
+		Replace = mod.VoiceoverFileNames.Intercom .. "_",
 	},
 	SurvivalEncounterSurvivedVoiceLines = {
 		Find = "Intercom_",
-		Replace = "Modsnikkelmhadesbiomesintercom_",
+		Replace = mod.VoiceoverFileNames.Intercom .. "_",
 	},
 	PerfectClearEncounterStartVoiceLines = {
 		Find = "Intercom_",
-		Replace = "Modsnikkelmhadesbiomesintercom_",
+		Replace = mod.VoiceoverFileNames.Intercom .. "_",
 	},
 	PerfectClearEncounterFailedVoiceLines = {
 		Find = "Intercom_",
-		Replace = "Modsnikkelmhadesbiomesintercom_",
+		Replace = mod.VoiceoverFileNames.Intercom .. "_",
 	},
 	PerfectClearEncounterQuicklyFailedVoiceLines = {
 		Find = "Intercom_",
-		Replace = "Modsnikkelmhadesbiomesintercom_",
+		Replace = mod.VoiceoverFileNames.Intercom .. "_",
 	},
 	PerfectClearEncounterClearedVoiceLines = {
 		Find = "Intercom_",
-		Replace = "Modsnikkelmhadesbiomesintercom_",
+		Replace = mod.VoiceoverFileNames.Intercom .. "_",
 	},
 	PersephoneFishCaughtVoiceLines = {
 		Find = "Persephone_",
-		Replace = "Modsnikkelmhadesbiomespersephone_",
+		Replace = mod.VoiceoverFileNames.Persephone .. "_",
 	},
 	ModsNikkelMHadesBiomes_FishNotCaughtVoiceLines = {
 		Find = "Persephone_",
-		Replace = "Modsnikkelmhadesbiomespersephone_",
+		Replace = mod.VoiceoverFileNames.Persephone .. "_",
+	},
+	SkellySummonTauntVoiceLines = {
+		Find = "Skelly_",
+		Replace = mod.VoiceoverFileNames.Skelly .. "_",
 	},
 }
 local function processCue(data, replacement)
@@ -340,6 +344,9 @@ game.GlobalVoiceLines.ModsNikkelMHadesBiomes_SaluteVoiceLines = game.GlobalVoice
 game.GlobalVoiceLines.ModsNikkelMHadesBiomes_EmptyStartNewHadesRunVoiceLines = game.GlobalVoiceLines
 		.ModsNikkelMHadesBiomes_EmptyStartNewHadesRunVoiceLines or
 		mod.GlobalVoiceLines.ModsNikkelMHadesBiomes_EmptyStartNewHadesRunVoiceLines
+
+game.GlobalVoiceLines.SkellySummonTauntVoiceLines = game.GlobalVoiceLines.SkellySummonTauntVoiceLines or
+		mod.GlobalVoiceLines.SkellySummonTauntVoiceLines
 
 -- #region Hades II GlobalVoiceLines modifications
 -- Add modded boss rooms to SeleneVictoryVoiceLines OrRequirements

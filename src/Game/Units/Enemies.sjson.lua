@@ -65,8 +65,18 @@ local hadesEnemiesModifications = {
 	},
 	-- #endregion
 
-	-- #region ENVIRONMENT
+	-- #region OTHER
 	Breakable = { InheritFrom = "1_BaseDestructible", },
+	TrainingMeleeSummon = {
+		Life = {
+			HomingEligible = true,
+			ProjectilesAlwaysPenetrate = false,
+			TriggerOnHit = true,
+		},
+		Thing = {
+			StopsProjectiles = true,
+		},
+	},
 	-- #endregion
 }
 

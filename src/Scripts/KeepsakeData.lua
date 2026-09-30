@@ -56,6 +56,15 @@ table.insert(game.GiftData.NPC_Sisyphus_01, {
 	},
 })
 
+table.insert(game.GiftData.NPC_Skelly_01, {
+	Gift = "SkellyAssistTrait",
+	GameStateRequirements = {
+		{
+			PathTrue = { "GameState", "TextLinesRecord", "SkellyGift07" },
+		},
+	},
+})
+
 table.insert(game.ScreenData.KeepsakeRack.ComponentData.Order, "ModsNikkelMHadesBiomesAssistEquippedFrame")
 game.ScreenData.KeepsakeRack.ComponentData.ModsNikkelMHadesBiomesAssistEquippedFrame = {
 	Graphic = "BlankObstacle",
