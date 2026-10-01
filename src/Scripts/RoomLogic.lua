@@ -355,6 +355,15 @@ modutil.mod.Path.Wrap("EndEncounterEffects", function(base, currentRun, currentR
 		game.thread(mod.CleanupOrpheusRaiseDeadEncounter, currentRoom)
 	end
 
+	if currentRoom.ModsNikkelMHadesBiomesDusaAssistUnitId ~= nil then
+		local dusaAssist = game.ActiveEnemies[currentRoom.ModsNikkelMHadesBiomesDusaAssistUnitId]
+		ExpireProjectiles({ Name = "DusaFreezeShotNonHoming" })
+		if dusaAssist ~= nil then
+			game.thread(game.Kill, dusaAssist)
+		end
+		currentRoom.ModsNikkelMHadesBiomesDusaAssistUnitId = nil
+	end
+
 	-- Must be in a normal modded run (not a Dream Run) for the minor prophecy to be fulfilled
 	if currentRun.ModsNikkelMHadesBiomesIsModdedRun and not currentRun.IsDreamRun then
 		if game.HeroHasTrait(mod.SharedKeepsakePortThanatosKeepsakeTrait) then

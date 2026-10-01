@@ -640,6 +640,38 @@ mod.HadesPortraitAnimationAdditions = {
 		FilePath = "Portraits\\ModsNikkelMHadesBiomesCodex\\CodexPortrait_Patroclus",
 	},
 	-- #endregion
+	-- #region Companions
+	{
+		Name = "ModsNikkelMHadesBiomes_Codex_Portrait_FuryAssistTrait",
+		InheritFrom = "Codex_Portrait_Base_01",
+		FilePath = "Portraits\\ModsNikkelMHadesBiomesCodex\\CodexPortrait_AssistTraitMeg",
+	},
+	{
+		Name = "ModsNikkelMHadesBiomes_Codex_Portrait_ThanatosAssistTrait",
+		InheritFrom = "Codex_Portrait_Base_01",
+		FilePath = "Portraits\\ModsNikkelMHadesBiomesCodex\\CodexPortrait_AssistTraitThanatos",
+	},
+	{
+		Name = "ModsNikkelMHadesBiomes_Codex_Portrait_SisyphusAssistTrait",
+		InheritFrom = "Codex_Portrait_Base_01",
+		FilePath = "Portraits\\ModsNikkelMHadesBiomesCodex\\CodexPortrait_AssistTraitSisyphus",
+	},
+	{
+		Name = "ModsNikkelMHadesBiomes_Codex_Portrait_SkellyAssistTrait",
+		InheritFrom = "Codex_Portrait_Base_01",
+		FilePath = "Portraits\\ModsNikkelMHadesBiomesCodex\\CodexPortrait_AssistTraitSkelly",
+	},
+	{
+		Name = "ModsNikkelMHadesBiomes_Codex_Portrait_DusaAssistTrait",
+		InheritFrom = "Codex_Portrait_Base_01",
+		FilePath = "Portraits\\ModsNikkelMHadesBiomesCodex\\CodexPortrait_AssistTraitDusa",
+	},
+	{
+		Name = "ModsNikkelMHadesBiomes_Codex_Portrait_AchillesPatroclusAssistTrait",
+		InheritFrom = "Codex_Portrait_Base_01",
+		FilePath = "Portraits\\ModsNikkelMHadesBiomesCodex\\CodexPortrait_AssistTraitAchilles",
+	},
+	-- #endregion
 	-- #region Enemies Tartarus
 	{
 		Name = "ModsNikkelMHadesBiomes_Codex_Portrait_Thug",

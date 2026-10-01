@@ -1,8 +1,54 @@
+local assistRequirementKeys = {
+	AssistUpgradeLevel = true,
+	RequiredAnyAssistKeepsake = true,
+	RequiredAssistKeepsake = true,
+	RequiresMaxAssistTrait = true,
+	RequiresUsedAssistLastRoom = true,
+	RequiredUsedAssistInRoomThisRun = true,
+}
+
+local assistTraitRequirementKeys = {
+	RequiredFalseTrait = true,
+	RequiredFalseTraits = true,
+	RequiredOneOfTraits = true,
+	RequiredTrait = true,
+}
+
+local function hasAssistRequirementFields(requirements)
+	if type(requirements) ~= "table" then
+		return false
+	end
+
+	for requirementName in pairs(assistRequirementKeys) do
+		if requirements[requirementName] ~= nil then
+			return true
+		end
+	end
+
+	for requirementName in pairs(assistTraitRequirementKeys) do
+		local value = requirements[requirementName]
+		if game.Contains(mod.AssistTraitNames, value) then
+			return true
+		end
+		if type(value) == "table" then
+			for _, traitName in pairs(value) do
+				if game.Contains(mod.AssistTraitNames, traitName) then
+					return true
+				end
+			end
+		end
+	end
+
+	return false
+end
+
 modutil.mod.Path.Wrap("IsGameStateEligible", function(base, source, requirements, args)
 	local isEligible = base(source, requirements, args)
+	source = source or { Name = "Unknown" }
 
 	-- If it's a modded run and the already existing requirements are met, also check the Hades requirements
-	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and isEligible then
+	-- Also check Hades requirements if we are testing H1 companion/Assist requirements
+	if isEligible and (game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun or source.AddAssist ~= nil or hasAssistRequirementFields(requirements)) then
 		return mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, args)
 	end
 
@@ -12,7 +58,7 @@ end)
 modutil.mod.Path.Wrap("IsVoiceLineEligible", function(base, line, prevLine, parentLine, source, args)
 	local isEligible = base(line, prevLine, parentLine, source, args)
 
-	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and isEligible then
+	if isEligible and (game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun or hasAssistRequirementFields(line)) then
 		return mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, line, args)
 	end
 
@@ -66,7 +112,17 @@ end)
 modutil.mod.Path.Wrap("IsTextLineEligible", function(base, currentRun, source, line, prevLine, parentLine, args)
 	local isEligible = base(currentRun, source, line, prevLine, parentLine, args)
 
-	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and isEligible then
+	local shouldCheckLineRequirements = (game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun or hasAssistRequirementFields(line))
+	if not shouldCheckLineRequirements then
+		for _, cue in ipairs(line) do
+			if type(cue) == "table" and hasAssistRequirementFields(cue) then
+				shouldCheckLineRequirements = true
+				break
+			end
+		end
+	end
+
+	if isEligible and shouldCheckLineRequirements then
 		-- Check if the whole line is eligible
 		if not mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, line, args) then
 			return false
@@ -465,6 +521,7 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 		RequiredRoomLastRun = "string",
 		RequiredFalseRoomLastRun = "string",
 		RequiredAnyRoomsLastRun = "table",
+		RequiredUsedAssistInRoomThisRun = "string",
 		RequiredDeathRoom = "string",
 		RequiredAnyDeathRooms = "table",
 		RequiredFalseDeathRoom = "string",
@@ -1295,21 +1352,26 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 		end
 	end
 
-	if requirements.RequiredAnyKeepsakes ~= nil and not Contains(requirements.RequiredAnyKeepsakes, game.GameState.LastAwardTrait) then --
+	if requirements.RequiredAnyKeepsakes ~= nil and not game.Contains(requirements.RequiredAnyKeepsakes, game.GameState.LastAwardTrait) then --
 		return false
 	end
 
 	if requirements.RequiresUsedAssistLastRoom then
-		local prevRoom = GetPreviousRoom(game.CurrentRun)
+		local prevRoom = game.GetPreviousRoom(game.CurrentRun)
 		if prevRoom == nil or not prevRoom.UsedAssist then
 			return false
 		end
 	end
 	if requirements.RequiredUsedAssistInRoomThisRun ~= nil then
-		for roomOrder, roomData in pairs(game.CurrentRun.RoomHistory) do
-			if roomData.Name == requirements.RequiredUsedAssistInRoomThisRun and not roomData.UsedAssist then
-				return false
+		local usedAssistInRequiredRoom = false
+		for _, roomData in pairs(game.CurrentRun.RoomHistory) do
+			if roomData.Name == requirements.RequiredUsedAssistInRoomThisRun and roomData.UsedAssist then
+				usedAssistInRequiredRoom = true
+				break
 			end
+		end
+		if not usedAssistInRequiredRoom then
+			return false
 		end
 	end
 

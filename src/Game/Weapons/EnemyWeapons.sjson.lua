@@ -40,6 +40,61 @@ hadesWeaponsTable.Weapons = mod.AddTableKeysSkipDupes(hadesTwoWeaponsTable.Weapo
 local hadesTwoPlayerWeaponsFile = rom.path.combine(rom.paths.Content(), "Game\\Weapons\\PlayerWeapons.sjson")
 
 local hadesWeaponAdditions = {
+	-- #region Companions/Assist traits
+	NPC_FurySister_01_Assist = {
+		Name = "NPC_FurySister_01_Assist",
+		InheritFrom = "1_BaseMagicWeapon",
+		Type = "GUN",
+		Projectile = "NPC_FurySister_01_Assist",
+		ChargeSound = "/SFX/Enemy Sounds/Megaera/EmoteCharging",
+		FireFx = "null",
+		NumProjectiles = 7,
+		ProjectileInterval = 0.1,
+		ProjectileSpacing = 350,
+		ProjectileOffsetStart = "CENTER",
+		ProjectileAngleOffset = 0,
+		ProjectileAngleOffsetScaleY = 0.75,
+	},
+	NPC_Achilles_01_Assist = {
+		Name = "NPC_Achilles_01_Assist",
+		InheritFrom = "1_BaseMagicWeapon",
+		Type = "GUN",
+		FireGraphic = "null",
+		Projectile = "NPC_Achilles_01_Assist",
+		ChargeSound = "/SFX/Enemy Sounds/Megaera/EmoteCharging",
+		FireFx = "null",
+		NumProjectiles = 1,
+		ProjectileInterval = 0.1,
+	},
+	NPC_Patroclus_01_Assist = {
+		Name = "NPC_Patroclus_01_Assist",
+		InheritFrom = "1_BaseMagicWeapon",
+		Type = "GUN",
+		FireGraphic = "null",
+		Projectile = "NPC_Patroclus_01_Assist",
+		ChargeSound = "/SFX/Enemy Sounds/Megaera/EmoteCharging",
+		FireFx = "null",
+		NumProjectiles = 1,
+		ProjectileInterval = 0.1,
+	},
+	NPC_Thanatos_01_Assist = {
+		Name = "NPC_Thanatos_01_Assist",
+		InheritFrom = "1_BaseMagicWeapon",
+		Type = "GUN",
+		Projectile = "NPC_Thanatos_01_Assist",
+		FireSound = "/SFX/ThanatosAOERift",
+		FireFx = "null",
+	},
+	NPC_Sisyphus_01_Assist = {
+		Name = "NPC_Sisyphus_01_Assist",
+		InheritFrom = "1_BaseMagicWeapon",
+		Type = "GUN",
+		FireSound = "/Leftovers/SFX/MeteorStrikeQuiet",
+		Projectile = "NPC_Sisyphus_01_Assist",
+		FireFx = "null",
+	},
+	-- #endregion
+	-- #region TARTARUS
 	HarpyLungeAlectoRage = {
 		Name = "HarpyLungeAlectoRage",
 		InheritFrom = "HarpyLungeAlecto",
@@ -48,6 +103,7 @@ local hadesWeaponAdditions = {
 		Name = "HarpyLassoLungeEM",
 		InheritFrom = "HarpyLassoLunge",
 	},
+	-- #endregion
 }
 -- Add the added weapons
 mod.AddTableKeysSkipDupes(hadesWeaponsTable.Weapons, hadesWeaponAdditions, "Name")

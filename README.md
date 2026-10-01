@@ -174,6 +174,7 @@ Congratulations, you've made it to the bottom of the page!
 If you are enjoying this mod and want to say thank you, you can leave a donation on [Ko-Fi](https://ko-fi.com/nikkelm) or [GitHub Sponsors](https://github.com/sponsors/NikkelM).
 
 This mod does not, and never will, use generative AI for any art, voice or music.
+Generative AI has been used for some research and debugging purposes.
 
 ## Disclaimer
 

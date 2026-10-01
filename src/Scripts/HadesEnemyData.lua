@@ -7456,6 +7456,298 @@ mod.EnemyData = {
 		},
 	},
 
+	TrainingMeleeSummon = {
+		InheritFrom = { "BaseVulnerableEnemy" },
+		GenusName = "TrainingMelee",
+		RequiredKill = false,
+		DropItemsOnDeath = false,
+		UseShrineUpgrades = false,
+		DamagedFxStyles = {
+			Default = "HitSparkEnemyDamagedSkeleton",
+			Rapid = "HitSparkEnemyDamagedSkeletonRapid",
+		},
+		MaxHealth = 300,
+		HealthBarOffsetY = -170,
+		HealthBarType = "MediumLarge",
+		SkipDamageText = false,
+		AnimOffsetZ = 200,
+		UnuseableWhenDead = true,
+		SpeechCooldownTime = 9,
+		SkipModifiers = true,
+		IncomingDamageModifiers = {
+			{
+				Name = "Innate",
+				PlayerMultiplier = 0.05,
+			}
+		},
+		Groups = { "GroundEnemies", "TrainingEnemies" },
+		DamagedAnimation = "EnemySkeletonOnHit",
+		Material = "Bone",
+		MeterMultiplier = 0,
+		ActivateRequirements = {
+			RequiredTrueFlags = { "SkellyUnlocked" },
+		},
+		OnActivationFinishedVoiceLines = {
+			{
+				{
+					BreakIfPlayed = true,
+					RandomRemaining = true,
+					PreLineWait = 0.3,
+					PostLineWait = 9.0,
+					RequiredTrait = "SkellyAssistTrait",
+					RequiredRooms = { "A_Boss01", "A_Boss02", "A_Boss03" },
+					SuccessiveChanceToPlayAll = 0.2,
+					-- Hey, hey, what's going on?
+					{ Cue = "/VO/Skelly_0360" },
+					-- Hey, hey, what's going on?
+					{ Cue = "/VO/Skelly_0550" },
+					-- Heya lady!
+					{ Cue = "/VO/Skelly_0551", RequiredInactiveMetaUpgrade = "BossDifficultyShrineUpgrade" },
+					-- You keep that whip away from my pal!
+					{ Cue = "/VO/Skelly_0552" },
+					-- So, what's going on between you two?	
+					{ Cue = "/VO/Skelly_0553", RequiredTextLines = { "MegaeraGift10" },                    RequiredRooms = { "A_Boss01" }, RequiredInactiveMetaUpgrade = "BossDifficultyShrineUpgrade" },
+				},
+				{
+					BreakIfPlayed = true,
+					RandomRemaining = true,
+					PreLineWait = 0.3,
+					PostLineWait = 9.0,
+					RequiredTrait = "SkellyAssistTrait",
+					RequiredRooms = { "B_Boss01", "B_Boss02" },
+					SuccessiveChanceToPlayAll = 0.2,
+					-- Look at the size of that thing!
+					{ Cue = "/VO/Skelly_0361" },
+					-- Hey you big lug, over here!
+					{ Cue = "/VO/Skelly_0554", RequiredPlayed = { "/VO/Skelly_0361" }, },
+					-- Hey Big-Bones, want some of this?!
+					{ Cue = "/VO/Skelly_0555", RequiredPlayed = { "/VO/Skelly_0361" }, },
+					-- Why'd you drag me into this one, pal?!
+					{ Cue = "/VO/Skelly_0556", RequiredPlayed = { "/VO/Skelly_0361" }, },
+					-- Nice bone structure on that thing over there!
+					{ Cue = "/VO/Skelly_0557", RequiredPlayed = { "/VO/Skelly_0361" }, },
+				},
+				{
+					BreakIfPlayed = true,
+					RandomRemaining = true,
+					PreLineWait = 0.3,
+					PostLineWait = 9.0,
+					RequiredTrait = "SkellyAssistTrait",
+					RequiredRooms = { "C_MiniBoss01" },
+					SuccessiveChanceToPlayAll = 0.2,
+					-- Hey toughguy, over here!
+					{ Cue = "/VO/Skelly_0362" },
+					-- Hey, bull boy, what's the matter?
+					{ Cue = "/VO/Skelly_0558" },
+					-- Ooh, help, he's got a double bladed axe!
+					{ Cue = "/VO/Skelly_0559" },
+					-- Charge into this, bull boy!
+					{ Cue = "/VO/Skelly_0560" },
+					-- Remember me, bull boy?!
+					{ Cue = "/VO/Skelly_0561", RequiredTextLines = { "SkellyBackstory05" }, },
+				},
+				{
+					BreakIfPlayed = true,
+					RandomRemaining = true,
+					PreLineWait = 0.3,
+					PostLineWait = 9.0,
+					RequiredTrait = "SkellyAssistTrait",
+					RequiredRooms = { "C_Boss01" },
+					RequiredAnyUnitAlive = { "Theseus", "Theseus2" },
+					SuccessiveChanceToPlayAll = 0.2,
+					-- Wha, is that Theseus?!
+					{ Cue = "/VO/Skelly_0363" },
+					-- The king of Athens, I'm so scared, boyo!
+					-- { Cue = "/VO/Skelly_0562", RequiredPlayed = { "/VO/Skelly_0363" } },
+					-- And the crowd goes nuts!
+					{ Cue = "/VO/Skelly_0563", RequiredPlayed = { "/VO/Skelly_0363" } },
+					-- This one's for you guys out in the cheap seats!
+					{ Cue = "/VO/Skelly_0564", RequiredPlayed = { "/VO/Skelly_0363" } },
+					-- Looks like I made it for the big event!
+					{ Cue = "/VO/Skelly_0565", RequiredPlayed = { "/VO/Skelly_0363" } },
+				},
+				{
+					BreakIfPlayed = true,
+					RandomRemaining = true,
+					PreLineWait = 0.3,
+					PostLineWait = 9.0,
+					RequiredTrait = "SkellyAssistTrait",
+					RequiredEncounters = { "ThanatosTartarus", "ThanatosAsphodel", "ThanatosElysium", "ThanatosElysiumIntro" },
+					SuccessiveChanceToPlayAll = 0.2,
+					-- Hey Thanatos, big fan right here!
+					{ Cue = "/VO/Skelly_0364", RequiredPlayed = { "/VO/Skelly_0566", "/VO/Skelly_0568" } },
+					-- Hey Thanatos, big fan right here!
+					{ Cue = "/VO/Skelly_0566" },
+					-- Whoa hey, it's Thanatos!
+					{ Cue = "/VO/Skelly_0567", RequiredPlayed = { "/VO/Skelly_0566" } },
+					-- Ooh it's that Thanatos!
+					{ Cue = "/VO/Skelly_0568", RequiredPlayed = { "/VO/Skelly_0566" } },
+					-- Don't kill me, Thanatos!
+					{ Cue = "/VO/Skelly_0569", RequiredPlayed = { "/VO/Skelly_0566" } },
+				},
+				{
+					BreakIfPlayed = true,
+					RandomRemaining = true,
+					PreLineWait = 0.3,
+					PostLineWait = 9.0,
+					RequiredTrait = "SkellyAssistTrait",
+					RequiredRooms = { "D_Boss01" },
+					SuccessiveChanceToPlay = 0.2,
+					-- Uh, hey, uh... hey!
+					{ Cue = "/VO/Skelly_0365" },
+					-- Uh, must have taken a wrong turn somewhere!
+					{ Cue = "/VO/Skelly_0570", RequiredPlayed = { "/VO/Skelly_0365" }, },
+					-- Hey, what you doing all the way up here?
+					{ Cue = "/VO/Skelly_0571", RequiredPlayed = { "/VO/Skelly_0365" }, },
+					-- Whoa it's Papa, you're in trouble, pal!
+					{ Cue = "/VO/Skelly_0572", RequiredPlayed = { "/VO/Skelly_0365" }, },
+					-- Think this one's between you and Papa, pal!
+					{ Cue = "/VO/Skelly_0573", RequiredPlayed = { "/VO/Skelly_0365" }, },
+				},
+				-- {
+				-- 	BreakIfPlayed = true,
+				-- 	RandomRemaining = true,
+				-- 	PreLineWait = 0.3,
+				-- 	PostLineWait = 9.0,
+				-- 	RequiredTrait = "SkellyAssistTrait",
+				-- 	RequiresUsedAssistLastRoom = true,
+				-- 	SuccessiveChanceToPlay = 0.2,
+				-- 	-- Need my services again, boyo?
+				-- 	{ Cue = "/VO/Skelly_0366" },
+				-- },
+				{
+					BreakIfPlayed = true,
+					RandomRemaining = true,
+					PreLineWait = 0.3,
+					PostLineWait = 9.0,
+					RequiredTrait = "SkellyAssistTrait",
+					RequiresInRun = true,
+					-- What's all this riff-raff?
+					{ Cue = "/VO/Skelly_0321" },
+					-- These bozos causing problems, pal?
+					{ Cue = "/VO/Skelly_0323" },
+					-- Nobody messes with my pal!
+					{ Cue = "/VO/Skelly_0324" },
+					-- Hey how's everybody doing?
+					{ Cue = "/VO/Skelly_0325" },
+					-- Waaaaaaaa I'm an important target!!
+					{ Cue = "/VO/Skelly_0326" },
+					-- Whoever kills me gets a big promotion!
+					{ Cue = "/VO/Skelly_0327" },
+					-- Ah boyo this place is a mess!
+					-- { Cue = "/VO/Skelly_0328" },
+					-- Whoa nice place to stand around!
+					{ Cue = "/VO/Skelly_0329" },
+					-- Got here just as soon as I was able, pal!
+					{ Cue = "/VO/Skelly_0330" },
+					-- I shall protect you, pal!
+					{ Cue = "/VO/Skelly_0331" },
+					-- Hah what a bunch of bozos!!
+					{ Cue = "/VO/Skelly_0332" },
+					-- What'd I miss, anything good?
+					{ Cue = "/VO/Skelly_0335" },
+					-- It's standing doing nothing time!
+					{ Cue = "/VO/Skelly_0336" },
+					-- Whoa it is hot in here!
+					{ Cue = "/VO/Skelly_0387", RequiredBiome = "Asphodel" },
+					-- Hey look at all that magma!
+					{ Cue = "/VO/Skelly_0388", RequiredBiome = "Asphodel" },
+					-- This place is pretty nice!
+					{ Cue = "/VO/Skelly_0389", RequiredBiome = "Elysium" },
+					-- Whoa, look at all of this!
+					{ Cue = "/VO/Skelly_0390", RequiredBiome = "Elysium" },
+					-- Hey real fancy place!
+					{ Cue = "/VO/Skelly_0391", RequiredBiome = "Elysium" },
+					-- Whoa this place is a dump!
+					{ Cue = "/VO/Skelly_0392", RequiredBiome = "Styx" },
+					-- The air feels weird up here!
+					{ Cue = "/VO/Skelly_0393", RequiredBiome = "Styx" },
+				},
+			},
+			[2] = game.GlobalVoiceLines.SkellySummonTauntVoiceLines,
+			[3] = game.GlobalVoiceLines.SkellySummonTauntVoiceLines,
+			[4] = game.GlobalVoiceLines.SkellySummonTauntVoiceLines,
+			[5] = game.GlobalVoiceLines.SkellySummonTauntVoiceLines,
+			[6] = game.GlobalVoiceLines.SkellySummonTauntVoiceLines,
+			[7] = game.GlobalVoiceLines.SkellySummonTauntVoiceLines,
+			[8] = game.GlobalVoiceLines.SkellySummonTauntVoiceLines,
+			[9] = game.GlobalVoiceLines.SkellySummonTauntVoiceLines,
+			[10] = game.GlobalVoiceLines.SkellySummonTauntVoiceLines,
+		},
+		OnDeathVoiceLines = {
+			Queue = "Interrupt",
+			{
+				BreakIfPlayed = true,
+				RandomRemaining = true,
+				CooldownTime = 5,
+				SkipAnim = true,
+				RequiresInRun = true,
+				Cooldowns = {
+					{ Name = "SkellyOnDeathSpeech", Time = 20 },
+				},
+				-- Ah dang it!
+				{ Cue = "/VO/Skelly_0342" },
+				-- Ah dang!
+				{ Cue = "/VO/Skelly_0343" },
+				-- Aack!
+				{ Cue = "/VO/Skelly_0344" },
+				-- Whaa?
+				{ Cue = "/VO/Skelly_0345" },
+				-- Blarrgh!
+				{ Cue = "/VO/Skelly_0346" },
+				-- I'm done for!
+				{ Cue = "/VO/Skelly_0347", RequiredKillEnemiesFound = true, },
+				-- I'm out!
+				{ Cue = "/VO/Skelly_0348" },
+				-- Uh, pal?!
+				{ Cue = "/VO/Skelly_0349" },
+				-- AAAAAAAHH!!
+				{ Cue = "/VO/Skelly_0102", },
+				-- Oops got to go!
+				{ Cue = "/VO/Skelly_0104", },
+				-- Dang got to go!
+				{ Cue = "/VO/Skelly_0434", },
+				-- I can't hold out boyo!
+				-- { Cue = "/VO/Skelly_0435", RequiredKillEnemiesFound = true, },
+				-- Avenge me, pal!!
+				{ Cue = "/VO/Skelly_0436", RequiredKillEnemiesFound = true, },
+				-- You got this, boyo, go...!
+				-- { Cue = "/VO/Skelly_0437", RequiredKillEnemiesFound = true, },
+				-- You bozos going to pay!
+				{ Cue = "/VO/Skelly_0438", RequiredMinKillEnemies = 2 },
+				-- I swear I'll be avenged!!
+				{ Cue = "/VO/Skelly_0439", RequiredKillEnemiesFound = true, },
+				-- You haven't seen the last of me!!
+				{ Cue = "/VO/Skelly_0440", RequiredKillEnemiesFound = true, },
+				-- Ack, lucky shot!
+				{ Cue = "/VO/Skelly_0441", RequiredKillEnemiesFound = true, },
+				-- Oof all right I'm out!
+				{ Cue = "/VO/Skelly_0442" },
+				-- Ah! I am slain...!
+				{ Cue = "/VO/Skelly_0592" },
+				-- Aand, I'm dead.
+				{ Cue = "/VO/Skelly_0594" },
+				-- Farewell... boyo...
+				{ Cue = "/VO/Skelly_0595", RequiredTextLines = { "SkellyTrueDeathQuestComplete" } },
+				-- I'm... too young... to die...
+				{ Cue = "/VO/Skelly_0600", RequiredTextLines = { "SkellyTrueDeathQuestComplete" } },
+				-- I don't want to die!
+				{ Cue = "/VO/Skelly_0601" },
+			},
+		},
+		WeaponOptions = {
+			"HeavyMelee",
+		},
+		AIOptions = {
+			"TrainingAI",
+		},
+		AITetherToSpawnLocation = true,
+		AITetherDistance = 0,
+		MoneyDropOnDeath = {
+			Chance = 0,
+		},
+	},
+
 	SimpleMelee =
 	{
 		InheritFrom = { "HeavyMelee" },

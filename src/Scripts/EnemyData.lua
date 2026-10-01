@@ -2,6 +2,33 @@
 
 -- Applies modifications to base enemy objects, and then adds the new encounter objects to the game
 function mod.ApplyModificationsAndInheritEnemyData(base, modifications, replacements, enemyKeyReplacements)
+	local voiceCueMappings = {
+		Storyteller_ = mod.VoiceoverFileNames.Storyteller .. "_",
+		Charon_ = mod.VoiceoverFileNames.Charon .. "_",
+		Persephone_ = mod.VoiceoverFileNames.Persephone .. "_",
+		ZagreusHome_ = mod.VoiceoverFileNames.ZagreusHome .. "_",
+		Intercom_ = mod.VoiceoverFileNames.Intercom .. "_",
+		MegaeraHome_ = mod.VoiceoverFileNames.MegaeraHome .. "_",
+		Skelly_ = mod.VoiceoverFileNames.Skelly .. "_",
+	}
+	local function applyVoiceCueMappings(data)
+		for key, value in pairs(data) do
+			if type(value) == "string" then
+				for cuePrefix, cueMapping in pairs(voiceCueMappings) do
+					if value:find("^/VO/" .. cuePrefix) then
+						data[key] = value:gsub("^/VO/" .. cuePrefix, "/VO/" .. cueMapping)
+						if key == "Cue" and cuePrefix == "Charon_" then
+							data.Portrait = "ModsNikkelMHadesBiomes_Portrait_Charon_Default_01"
+						end
+						break
+					end
+				end
+			elseif type(value) == "table" then
+				applyVoiceCueMappings(value)
+			end
+		end
+	end
+
 	for oldName, newName in pairs(mod.EnemyNameMappings) do
 		mod.UpdatePropertyName(modifications, oldName, newName, {}, "EnemyDataHandler modifications")
 		mod.UpdatePropertyName(replacements, oldName, newName, {}, "EnemyDataHandler replacements")
@@ -204,23 +231,7 @@ function mod.ApplyModificationsAndInheritEnemyData(base, modifications, replacem
 				entry.PostLineFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesSetFlag"
 				entry.PostLineFunctionArgs = { FlagName = entry.SetFlagFalse, Value = false }
 			end
-			if entry.Cue then
-				if entry.Cue:find("^/VO/Storyteller_") then
-					entry.Cue = entry.Cue:gsub("^/VO/Storyteller_", "/VO/Modsnikkelmhadesbiomesstoryteller_")
-				elseif entry.Cue:find("^/VO/Charon_") then
-					entry.Cue = entry.Cue:gsub("^/VO/Charon_", "/VO/Modsnikkelmhadesbiomescharon_")
-					-- Use the H1 portrait
-					entry.Portrait = "ModsNikkelMHadesBiomes_Portrait_Charon_Default_01"
-				elseif entry.Cue:find("^/VO/Persephone_") then
-					entry.Cue = entry.Cue:gsub("^/VO/Persephone_", "/VO/Modsnikkelmhadesbiomespersephone_")
-				elseif entry.Cue:find("^/VO/ZagreusHome_") then
-					entry.Cue = entry.Cue:gsub("^/VO/ZagreusHome_", "/VO/Modsnikkelmhadesbiomeszagreushome_")
-				elseif entry.Cue:find("^/VO/Intercom_") then
-					entry.Cue = entry.Cue:gsub("^/VO/Intercom_", "/VO/Modsnikkelmhadesbiomesintercom_")
-				elseif entry.Cue:find("^/VO/MegaeraHome_") then
-					entry.Cue = entry.Cue:gsub("^/VO/MegaeraHome_", "/VO/Modsnikkelmhadesbiomesmegaerahome_")
-				end
-			end
+			applyVoiceCueMappings(entry)
 		end
 
 		-- Dialogues playing before boss fights or when meeting NPCs
@@ -328,6 +339,8 @@ function mod.ApplyModificationsAndInheritEnemyData(base, modifications, replacem
 			"RespawnedVoiceLines",
 			"PlayerInjuredVoiceLines",
 			"InvulnerableVoiceLines",
+			"OnActivationFinishedVoiceLines",
+			"OnDeathVoiceLines",
 			"OnCharmedVoiceLines",
 			"LowHealthVoiceLines",
 			"CriticalHealthVoiceLines",
@@ -336,6 +349,7 @@ function mod.ApplyModificationsAndInheritEnemyData(base, modifications, replacem
 		}
 		for _, tableName in ipairs(voicelineTables) do
 			if enemyData[tableName] then
+				applyVoiceCueMappings(enemyData[tableName])
 				if enemyData[tableName].CooldownTime then
 					enemyData[tableName].Cooldowns = enemyData[tableName].Cooldowns or {}
 					table.insert(enemyData[tableName].Cooldowns, {
@@ -356,41 +370,6 @@ function mod.ApplyModificationsAndInheritEnemyData(base, modifications, replacem
 						mod.DebugPrint("Added cooldown for voiceline entry in table " .. tableName .. " on enemy " .. enemyName, 4)
 						voicelineEntry.CooldownName = nil
 						voicelineEntry.CooldownTime = nil
-					end
-
-					if voicelineEntry.Cue then
-						if voicelineEntry.Cue:find("^/VO/Storyteller_") then
-							voicelineEntry.Cue = voicelineEntry.Cue:gsub("^/VO/Storyteller_", "/VO/Modsnikkelmhadesbiomesstoryteller_")
-						elseif voicelineEntry.Cue:find("^/VO/Charon_") then
-							voicelineEntry.Cue = voicelineEntry.Cue:gsub("^/VO/Charon_", "/VO/Modsnikkelmhadesbiomescharon_")
-						elseif voicelineEntry.Cue:find("^/VO/Persephone_") then
-							voicelineEntry.Cue = voicelineEntry.Cue:gsub("^/VO/Persephone_", "/VO/Modsnikkelmhadesbiomespersephone_")
-						elseif voicelineEntry.Cue:find("^/VO/ZagreusHome_") then
-							voicelineEntry.Cue = voicelineEntry.Cue:gsub("^/VO/ZagreusHome_", "/VO/Modsnikkelmhadesbiomeszagreushome_")
-						elseif voicelineEntry.Cue:find("^/VO/Intercom_") then
-							voicelineEntry.Cue = voicelineEntry.Cue:gsub("^/VO/Intercom_", "/VO/Modsnikkelmhadesbiomesintercom_")
-						elseif voicelineEntry.Cue:find("^/VO/MegaeraHome_") then
-							voicelineEntry.Cue = voicelineEntry.Cue:gsub("^/VO/MegaeraHome_", "/VO/Modsnikkelmhadesbiomesmegaerahome_")
-						end
-					else
-						-- Handle nested voiceline entries (array of entries)
-						for _, innerEntry in ipairs(voicelineEntry) do
-							if innerEntry.Cue then
-								if innerEntry.Cue:find("^/VO/Storyteller_") then
-									innerEntry.Cue = innerEntry.Cue:gsub("^/VO/Storyteller_", "/VO/Modsnikkelmhadesbiomesstoryteller_")
-								elseif innerEntry.Cue:find("^/VO/Charon_") then
-									innerEntry.Cue = innerEntry.Cue:gsub("^/VO/Charon_", "/VO/Modsnikkelmhadesbiomescharon_")
-								elseif innerEntry.Cue:find("^/VO/Persephone_") then
-									innerEntry.Cue = innerEntry.Cue:gsub("^/VO/Persephone_", "/VO/Modsnikkelmhadesbiomespersephone_")
-								elseif innerEntry.Cue:find("^/VO/ZagreusHome_") then
-									innerEntry.Cue = innerEntry.Cue:gsub("^/VO/ZagreusHome_", "/VO/Modsnikkelmhadesbiomeszagreushome_")
-								elseif innerEntry.Cue:find("^/VO/Intercom_") then
-									innerEntry.Cue = innerEntry.Cue:gsub("^/VO/Intercom_", "/VO/Modsnikkelmhadesbiomesintercom_")
-								elseif innerEntry.Cue:find("^/VO/MegaeraHome_") then
-									innerEntry.Cue = innerEntry.Cue:gsub("^/VO/MegaeraHome_", "/VO/Modsnikkelmhadesbiomesmegaerahome_")
-								end
-							end
-						end
 					end
 				end
 			end
@@ -938,6 +917,164 @@ local enemyModifications = {
 	BaseGlutton = {
 		ModsNikkelMHadesBiomesEffectVfxOffsetZ = 130,
 		DreamBiomeData = tartarusEnemyDreamBiomeData,
+	},
+	TrainingMeleeSummon = {
+		ActivateRequirements = mod.NilValue,
+		DefaultAIData = {},
+		AIOptions = { "IdleAI" },
+		StunAnimations = { Default = "EnemySkeletonOnHit" },
+		OnDeathFunctionName = _PLUGIN.guid .. "." .. "SkellyAssistDeath",
+		ModsNikkelMHadesBiomesForceManualDeathAnimation = true,
+		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
+		OnActivationFinishedVoiceLines = {
+			[1] = {
+				[7] = {
+					RequiredTrait = mod.NilValue,
+					RequiresInRun = mod.NilValue,
+					GameStateRequirements = {
+						{
+							Path = { "CurrentRun", "Hero", "TraitDictionary" },
+							HasAny = { "SkellyAssistTrait" },
+						},
+						{
+							PathFalse = { "CurrentRun", "Hero", "IsDead" },
+						},
+					},
+					[13] = {
+						RequiredBiome = mod.NilValue,
+						GameStateRequirements = {
+							{
+								Path = { "CurrentRun", "CurrentRoom", "RoomSetName" },
+								IsAny = { "Asphodel" },
+							},
+						},
+					},
+					[14] = {
+						RequiredBiome = mod.NilValue,
+						GameStateRequirements = {
+							{
+								Path = { "CurrentRun", "CurrentRoom", "RoomSetName" },
+								IsAny = { "Asphodel" },
+							},
+						},
+					},
+					[15] = {
+						RequiredBiome = mod.NilValue,
+						GameStateRequirements = {
+							{
+								Path = { "CurrentRun", "CurrentRoom", "RoomSetName" },
+								IsAny = { "Elysium" },
+							},
+						},
+					},
+					[16] = {
+						RequiredBiome = mod.NilValue,
+						GameStateRequirements = {
+							{
+								Path = { "CurrentRun", "CurrentRoom", "RoomSetName" },
+								IsAny = { "Elysium" },
+							},
+						},
+					},
+					[17] = {
+						RequiredBiome = mod.NilValue,
+						GameStateRequirements = {
+							{
+								Path = { "CurrentRun", "CurrentRoom", "RoomSetName" },
+								IsAny = { "Elysium" },
+							},
+						},
+					},
+					[18] = {
+						RequiredBiome = mod.NilValue,
+						GameStateRequirements = {
+							{
+								Path = { "CurrentRun", "CurrentRoom", "RoomSetName" },
+								IsAny = { "Styx" },
+							},
+						},
+					},
+					[19] = {
+						RequiredBiome = mod.NilValue,
+						GameStateRequirements = {
+							{
+								Path = { "CurrentRun", "CurrentRoom", "RoomSetName" },
+								IsAny = { "Styx" },
+							},
+						},
+					},
+				},
+			},
+		},
+		OnDeathVoiceLines = {
+			[1] = {
+				RequiresInRun = mod.NilValue,
+				GameStateRequirements = {
+					{
+						PathFalse = { "CurrentRun", "Hero", "IsDead" },
+					},
+				},
+				[6] = {
+					RequiredKillEnemiesFound = mod.NilValue,
+					GameStateRequirements = {
+						{ PathNotEmpty = { "RequiredKillEnemies" } },
+					},
+				},
+				[12] = {
+					RequiredKillEnemiesFound = mod.NilValue,
+					GameStateRequirements = {
+						{ PathNotEmpty = { "RequiredKillEnemies" } },
+					},
+				},
+				[13] = {
+					RequiredMinKillEnemies = mod.NilValue,
+					GameStateRequirements = {
+						{
+							Path = { "RequiredKillEnemies" },
+							UseLength = true,
+							Comparison = ">=",
+							Value = 2,
+						},
+					},
+				},
+				[14] = {
+					RequiredKillEnemiesFound = mod.NilValue,
+					GameStateRequirements = {
+						{ PathNotEmpty = { "RequiredKillEnemies" } },
+					},
+				},
+				[15] = {
+					RequiredKillEnemiesFound = mod.NilValue,
+					GameStateRequirements = {
+						{ PathNotEmpty = { "RequiredKillEnemies" } },
+					},
+				},
+				[16] = {
+					RequiredKillEnemiesFound = mod.NilValue,
+					GameStateRequirements = {
+						{ PathNotEmpty = { "RequiredKillEnemies" } },
+					},
+				},
+				[20] = {
+					RequiredTextLines = mod.NilValue,
+					GameStateRequirements = {
+						{
+							Path = { "GameState", "TextLinesRecord" },
+							HasAll = { "SkellyTrueDeathQuestComplete" },
+						},
+					},
+				},
+				[21] = {
+					RequiredTextLines = mod.NilValue,
+					GameStateRequirements = {
+						{
+							Path = { "GameState", "TextLinesRecord" },
+							HasAll = { "SkellyTrueDeathQuestComplete" },
+						},
+					},
+				},
+			},
+		},
 	},
 	PunchingBagUnit = {
 		StunAnimations = { Default = "EnemyWretchGluttonOnHit" },
@@ -1723,6 +1860,18 @@ local enemyModifications = {
 	},
 	FreezeShotUnitElite = {
 		EliteAttributeOptions = game.CombineTables(game.EnemySets.GenericEliteAttributes, { "Hex", }),
+	},
+	DusaSummon = {
+		HideHealthBar = true,
+		ManualDeathAnimation = false,
+		DestroyDelay = 3.0,
+		ActivateFx = "EnemySummonRuneMedium",
+		DefaultAIData = {
+			DeepInheritance = true,
+			TargetRequiredKillEnemy = true,
+			TargetClosest = true,
+			IgnoreInvulnerable = true,
+		},
 	},
 	RangedBurrower = {
 		StunAnimations = { Default = "EnemyBoneDraconOnHit" },

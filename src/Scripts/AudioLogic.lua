@@ -127,3 +127,10 @@ function mod.OrpheusRoomStartMusicPlayer(source, args)
 		game.SecretMusicPlayer(args.TrackName, args)
 	end
 end
+
+function mod.LoadAssistSfxBanks(bankNames)
+	for _, bankName in ipairs(bankNames or {}) do
+		rom.audio.load_bank(rom.path.combine(_PLUGIN.plugins_data_mod_folder_path,
+			"Content\\Audio\\Desktop\\" .. bankName .. ".bank"))
+	end
+end

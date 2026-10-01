@@ -354,6 +354,12 @@ modutil.mod.Path.Wrap("StartNewRun", function(base, prevRun, args)
 		args.StartingBiome = "Tartarus"
 	end
 
-	return base(prevRun, args)
+	local currentRun = base(prevRun, args)
+
+	mod.EquipAssist(currentRun.Hero, game.GameState.LastAssistTrait, {
+		SkipNewTraitHighlight = true,
+	})
+
+	return currentRun
 end)
 -- #endregion

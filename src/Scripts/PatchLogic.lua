@@ -294,8 +294,25 @@ modutil.mod.Path.Wrap("DoPatches", function(base)
 			game.GameState.ModsNikkelMHadesBiomesCustomCounters = game.GameState.ModsNikkelMHadesBiomesCustomCounters or {}
 		end
 
+		if game.GameState.ModsNikkelMHadesBiomesPatchRevision < 15 then
+			game.GameState.AssistUnlocks = game.GameState.AssistUnlocks or {}
+			for assistTraitName, giftTextLine in pairs({
+				FuryAssistTrait = "MegaeraGift07",
+				ThanatosAssistTrait = "ThanatosGift07_A",
+				SisyphusAssistTrait = "SisyphusGift07_A",
+				SkellyAssistTrait = "SkellyGift07",
+				DusaAssistTrait = "DusaGift07",
+				AchillesPatroclusAssistTrait = "AchillesGift07_A",
+			}) do
+				if game.GameState.TextLinesRecord[giftTextLine] and not game.GameState.GiftPresentation[assistTraitName] then
+					game.GameState.GiftPresentation[assistTraitName] = true
+					game.GameState.NewKeepsakeItem[assistTraitName] = true
+				end
+			end
+		end
+
 		-- IMPORTANT: This must be incremented every time this function is changed
-		game.GameState.ModsNikkelMHadesBiomesPatchRevision = 14
+		game.GameState.ModsNikkelMHadesBiomesPatchRevision = 15
 	end
 
 	return base()

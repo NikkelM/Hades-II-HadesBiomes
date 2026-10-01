@@ -147,9 +147,12 @@ modutil.mod.Path.Wrap("CheckImpactReaction",
 	end)
 
 modutil.mod.Path.Wrap("DisableAllyUnits", function(base)
-	if game.CurrentRun.CurrentRoom.ModsNikkelMHadesBiomes_DestroyAssistUnitOnEncounterEndId then
-		local assistUnit = game.ActiveEnemies
-				[game.CurrentRun.CurrentRoom.ModsNikkelMHadesBiomes_DestroyAssistUnitOnEncounterEndId]
+	local assistUnitIds = {
+		game.CurrentRun.CurrentRoom.ModsNikkelMHadesBiomes_DestroyAssistUnitOnEncounterEndId,
+		game.CurrentRun.CurrentRoom.ModsNikkelMHadesBiomesDusaAssistUnitId,
+	}
+	for _, assistUnitId in pairs(assistUnitIds) do
+		local assistUnit = game.ActiveEnemies[assistUnitId]
 		if assistUnit ~= nil then
 			game.killTaggedThreads(assistUnit.AIThreadName)
 			game.killWaitUntilThreads(assistUnit.AINotifyName)
