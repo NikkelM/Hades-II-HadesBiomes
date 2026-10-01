@@ -61,6 +61,40 @@ function mod.UpdateAssistEquippedFrame(screen)
 	end
 end
 
+local function createAssistHitbox(screen, components, buttonKey, visualButton, x, y)
+	local button = CreateScreenComponent({
+		Name = "ModsNikkelMHadesBiomesAssistSlotButton",
+		X = x,
+		Y = y,
+		Group = "Combat_Menu_Overlay",
+	})
+	SetAnimation({ Name = "Blank", DestinationId = button.Id })
+
+	button.LevelProgressId = visualButton.LevelProgressId
+	button.Data = visualButton.Data
+	button.ButtonKey = visualButton.ButtonKey
+	button.FrameId = visualButton.FrameId
+	button.TraitData = visualButton.TraitData
+	button.BarFillId = visualButton.BarFillId
+	button.BarId = visualButton.BarId
+	button.NewIcon = visualButton.NewIcon
+	button.Blocked = visualButton.Blocked
+	button.Screen = screen
+	button.ModsNikkelMHadesBiomesVisualId = visualButton.Id
+
+	visualButton.OnPressedFunctionName = nil
+	visualButton.OnMouseOverFunctionName = nil
+	visualButton.OnMouseOffFunctionName = nil
+	SetInteractProperty({ DestinationId = visualButton.Id, Property = "FreeFormSelectable", Value = false })
+	UseableOff({ Id = visualButton.Id })
+	screen[visualButton.Id] = nil
+
+	components[buttonKey .. "Icon"] = visualButton
+	components[buttonKey] = button
+	screen[button.Id] = button
+	return button
+end
+
 local function createUnlockedAssistIcon(screen, components, createKeepsakeIcon, index, itemData, x, y)
 	local assistTooltipX = 1250
 	local assistTooltipY = 110
@@ -91,21 +125,23 @@ local function createUnlockedAssistIcon(screen, components, createKeepsakeIcon, 
 		Scale = assistFrameScale,
 	})
 
-	local button = components[buttonKey]
+	local visualButton = components[buttonKey]
 	-- We don't want to add the max-bond sticker to the top-right, as it looks weird on companions
-	local stickerKey = button.ButtonKey .. "Sticker"
+	local stickerKey = visualButton.ButtonKey .. "Sticker"
 	if components[stickerKey] ~= nil then
 		Destroy({ Id = components[stickerKey].Id })
 		components[stickerKey] = nil
-		SetAnimation({ Name = "Keepsake_BackingMenu", DestinationId = button.FrameId })
+		SetAnimation({ Name = "Keepsake_BackingMenu", DestinationId = visualButton.FrameId })
 	end
-	SetAlpha({ Id = button.FrameId, Fraction = 0, Duration = 0 })
+	SetAlpha({ Id = visualButton.FrameId, Fraction = 0, Duration = 0 })
+	SetScale({ Id = visualButton.Id, Fraction = iconScale })
+	Teleport({ Id = visualButton.Id, OffsetX = x, OffsetY = y + assistIconOffsetY })
+
+	local button = createAssistHitbox(screen, components, buttonKey, visualButton, x, y)
 	button.OnPressedFunctionName = _PLUGIN.guid .. "." .. "HandleAssistToggle"
 	button.OnMouseOverFunctionName = _PLUGIN.guid .. "." .. "MouseOverAssist"
 	button.OnMouseOffFunctionName = _PLUGIN.guid .. "." .. "MouseOffAssist"
 	button.ModsNikkelMHadesBiomesBaseScale = iconScale
-	SetScale({ Id = button.Id, Fraction = iconScale })
-	Teleport({ Id = button.Id, OffsetX = x, OffsetY = y + assistIconOffsetY })
 	Teleport({
 		Id = components[button.ButtonKey .. "Rank"].Id,
 		OffsetX = x,
@@ -140,7 +176,13 @@ local function createLockedAssistIcon(screen, components, index, traitName, x, y
 		AlphaTargetDuration = 0.15,
 	})
 	components[buttonKey] = CreateScreenComponent({
-		Name = "ButtonKeepsakeItem",
+		Name = "ModsNikkelMHadesBiomesAssistSlotButton",
+		X = x,
+		Y = y,
+		Group = "Combat_Menu_Overlay",
+	})
+	components[buttonKey .. "Icon"] = CreateScreenComponent({
+		Name = "BlankObstacle",
 		X = x,
 		Y = y,
 		Group = "Combat_Menu_Overlay",
@@ -157,13 +199,16 @@ local function createLockedAssistIcon(screen, components, index, traitName, x, y
 	button.Blocked = true
 	button.ButtonKey = buttonKey
 	button.FrameId = components[buttonKey .. "Frame"].Id
+	button.ModsNikkelMHadesBiomesVisualId = components[buttonKey .. "Icon"].Id
+	button.ModsNikkelMHadesBiomesBaseScale = assistLockedIconScale
 	button.OnMouseOverFunctionName = _PLUGIN.guid .. "." .. "MouseOverLockedAssist"
 	button.OnMouseOffFunctionName = _PLUGIN.guid .. "." .. "MouseOffLockedAssist"
 	button.Screen = screen
 	screen[button.Id] = button
-	SetAnimation({ Name = "Keepsake_Legendary_Locked", DestinationId = button.Id })
-	SetScaleX({ Id = button.Id, Fraction = assistLockedIconScaleX, Duration = 0 })
-	SetScaleY({ Id = button.Id, Fraction = assistLockedIconScaleY, Duration = 0 })
+	SetAnimation({ Name = "Blank", DestinationId = button.Id })
+	SetAnimation({ Name = "Keepsake_Legendary_Locked", DestinationId = button.ModsNikkelMHadesBiomesVisualId })
+	SetScaleX({ Id = button.ModsNikkelMHadesBiomesVisualId, Fraction = assistLockedIconScaleX, Duration = 0 })
+	SetScaleY({ Id = button.ModsNikkelMHadesBiomesVisualId, Fraction = assistLockedIconScaleY, Duration = 0 })
 end
 
 function mod.MouseOverLockedAssist(button)
@@ -176,7 +221,7 @@ function mod.MouseOverLockedAssist(button)
 	PlaySound({ Name = "/SFX/Menu Sounds/MirrorMenuToggleKeepsakes", Id = button.Id })
 
 	local hoverFrame = screen.Components.ModsNikkelMHadesBiomesAssistHoverFrame
-	Teleport({ Id = hoverFrame.Id, DestinationId = button.Id, OffsetY = -24 })
+	Teleport({ Id = hoverFrame.Id, DestinationId = button.ModsNikkelMHadesBiomesVisualId, OffsetY = -24 })
 	SetAnimation({
 		Name = "ModsNikkelMHadesBiomesLegendaryAwardMenuCursorHighlight",
 		DestinationId = hoverFrame.Id,
@@ -216,7 +261,7 @@ function mod.MouseOverAssist(button)
 		DestinationId = hoverFrame.Id,
 	})
 	SetScale({
-		Id = button.Id,
+		Id = button.ModsNikkelMHadesBiomesVisualId,
 		Fraction = button.ModsNikkelMHadesBiomesBaseScale + 0.05,
 		Duration = 0.1,
 		EaseIn = 0,
@@ -241,7 +286,7 @@ function mod.MouseOffAssist(button)
 	local screen = button.Screen
 	SetAlpha({ Id = screen.Components.ModsNikkelMHadesBiomesAssistHoverFrame.Id, Fraction = 0, Duration = 0 })
 	SetScale({
-		Id = button.Id,
+		Id = button.ModsNikkelMHadesBiomesVisualId,
 		Fraction = button.ModsNikkelMHadesBiomesBaseScale,
 		Duration = 0.1,
 		EaseIn = 0,
