@@ -125,7 +125,8 @@ local function createUnlockedAssistIcon(screen, components, createKeepsakeIcon, 
 end
 
 local function createLockedAssistIcon(screen, components, index, traitName, x, y)
-	local assistLockedIconScale = 0.75
+	local assistLockedIconScaleX = 150 / 196
+	local assistLockedIconScaleY = 185 / 246
 	local buttonKey = "ModsNikkelMHadesBiomesAssistLocked" .. index
 	components[buttonKey .. "Frame"] = CreateScreenComponent({
 		Name = "BlankObstacle",
@@ -140,7 +141,6 @@ local function createLockedAssistIcon(screen, components, index, traitName, x, y
 	})
 	components[buttonKey] = CreateScreenComponent({
 		Name = "ButtonKeepsakeItem",
-		Scale = assistLockedIconScale,
 		X = x,
 		Y = y,
 		Group = "Combat_Menu_Overlay",
@@ -157,12 +157,13 @@ local function createLockedAssistIcon(screen, components, index, traitName, x, y
 	button.Blocked = true
 	button.ButtonKey = buttonKey
 	button.FrameId = components[buttonKey .. "Frame"].Id
-	button.ModsNikkelMHadesBiomesBaseScale = assistLockedIconScale
 	button.OnMouseOverFunctionName = _PLUGIN.guid .. "." .. "MouseOverLockedAssist"
 	button.OnMouseOffFunctionName = _PLUGIN.guid .. "." .. "MouseOffLockedAssist"
 	button.Screen = screen
 	screen[button.Id] = button
 	SetAnimation({ Name = "Keepsake_Legendary_Locked", DestinationId = button.Id })
+	SetScaleX({ Id = button.Id, Fraction = assistLockedIconScaleX, Duration = 0 })
+	SetScaleY({ Id = button.Id, Fraction = assistLockedIconScaleY, Duration = 0 })
 end
 
 function mod.MouseOverLockedAssist(button)
@@ -266,6 +267,16 @@ local function createAssistRack(screen, components, createKeepsakeIcon)
 	local assistGridSpacerY = 185
 	screen.LastAssist = game.GameState.LastAssistTrait
 	screen.ModsNikkelMHadesBiomesAssistButtons = {}
+	components.ModsNikkelMHadesBiomesAssistRackBackground = CreateScreenComponent({
+		Name = "BlankObstacle",
+		Animation = "ModsNikkelMHadesBiomesCompanionRackBackground",
+		X = assistGridStartX + assistGridSpacerX / 2 + game.ScreenCenterNativeOffsetX,
+		Y = assistGridStartY + assistGridSpacerY + game.ScreenCenterNativeOffsetY,
+		Group = "Combat_Menu_Overlay",
+		Alpha = 0,
+		AlphaTarget = 1,
+		AlphaTargetDuration = 0.15,
+	})
 
 	local lastAssist = screen.LastAssist
 	screen.LastAssist = nil
@@ -274,7 +285,8 @@ local function createAssistRack(screen, components, createKeepsakeIcon)
 		local y = assistGridStartY + math.floor((index - 1) / 2) * assistGridSpacerY + game.ScreenCenterNativeOffsetY
 		local keepsakeData = game.GetKeepsakeData(traitName)
 		local traitData = game.TraitData[traitName]
-		local unlocked = traitData ~= nil and keepsakeData ~= nil and (game.SessionState.AllKeepsakeUnlocked or game.IsGameStateEligible(keepsakeData.GiftLevelData, keepsakeData.GiftLevelData.GameStateRequirements))
+		local unlocked = traitData ~= nil and keepsakeData ~= nil and
+				(game.SessionState.AllKeepsakeUnlocked or game.IsGameStateEligible(keepsakeData.GiftLevelData, keepsakeData.GiftLevelData.GameStateRequirements))
 
 		if unlocked then
 			local itemData = {

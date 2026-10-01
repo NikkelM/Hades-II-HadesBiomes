@@ -198,6 +198,39 @@ end
 
 -- #endregion
 
+-- #region Dusa
+function mod.DusaAssist(assistData)
+	local enemyData = game.EnemyData.DusaSummon
+	local newEnemy = game.DeepCopyTable(enemyData)
+	newEnemy.BlocksLootInteraction = false
+	newEnemy.ObjectId = SpawnUnit({
+		Name = enemyData.Name,
+		Group = "Standing",
+		DestinationId = game.CurrentRun.Hero.ObjectId,
+		OffsetX = 0,
+		OffsetY = 0,
+	})
+	game.SetupUnit(newEnemy, game.CurrentRun)
+
+	local currentRoom = game.CurrentRun.CurrentRoom
+	currentRoom.ModsNikkelMHadesBiomesDusaAssistUnitId = newEnemy.ObjectId
+	game.thread(mod.EndDusaAssist, newEnemy, assistData, currentRoom)
+end
+
+function mod.EndDusaAssist(enemy, assistData, room)
+	game.wait(assistData.Duration, game.RoomThreadName)
+	if room.ModsNikkelMHadesBiomesDusaAssistUnitId ~= enemy.ObjectId then
+		return
+	end
+
+	room.ModsNikkelMHadesBiomesDusaAssistUnitId = nil
+	game.thread(game.PlayVoiceLines, enemy.AssistEndedVoiceLines, nil, enemy)
+	ExpireProjectiles({ Name = "DusaFreezeShotNonHoming" })
+	game.Kill(enemy)
+end
+
+-- #endregion
+
 -- #region Sisyphus
 function mod.SisyphusAssistTouchdown(bouldy, args)
 	FireWeaponFromUnit({

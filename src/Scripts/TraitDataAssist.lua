@@ -353,6 +353,50 @@ local newTraitData = {
 			},
 		},
 	},
+	DusaAssistTrait = {
+		InheritFrom = { "AssistTrait" },
+		InRackTitle = "DusaAssistTrait_Rack",
+		InRackIcon = "Keepsake_Dusa_Plush_Menu",
+		Icon = "Keepsake_Dusa_Plush",
+		EquipSound = "/SFX/Menu Sounds/KeepsakeDusaLegendary",
+		AddAssist = {
+			FunctionName = _PLUGIN.guid .. "." .. "DusaAssist",
+			Duration = 30,
+			GameStateRequirements = {
+				{
+					PathFalse = { "CurrentRun", "CurrentRoom", "BlockHadesAssistTraits" },
+				},
+			},
+			AssistPresentationPortrait = "Portrait_Dusa_Confident_01",
+			AssistPresentationColor = { 255, 50, 240, 255 },
+		},
+		RemainingUses = { BaseValue = 1 },
+		DoesNotAutomaticallyExpire = true,
+		AssistDuration = 30,
+		ExtractValues = {
+			{
+				Key = "RemainingUses",
+				ExtractAs = "TooltipKeepsakeUses",
+			},
+			{
+				Key = "AssistDuration",
+				ExtractAs = "TooltipDuration",
+			},
+		},
+		SignOffData = {
+			{
+				GameStateRequirements = {
+					{
+						PathTrue = { "GameState", "TextLinesRecord", "BecameCloseWithDusa01" },
+					},
+				},
+				Text = "DusaSignoff_AssistMax",
+			},
+			{
+				Text = "DusaSignoff",
+			},
+		},
+	},
 }
 
 mod.AddTableKeysSkipDupes(game.TraitData, newTraitData)

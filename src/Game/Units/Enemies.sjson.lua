@@ -77,6 +77,11 @@ local hadesEnemiesModifications = {
 			StopsProjectiles = true,
 		},
 	},
+	DusaSummon = {
+		Thing = {
+			ActivateGraphic = "ModsNikkelMHadesBiomesEnemyActivationFadeInDusaContainer",
+		},
+	},
 	-- #endregion
 }
 

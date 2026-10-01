@@ -14,7 +14,7 @@ game.GiftData.NPC_Achilles_01.UnlockGameStateRequirements = game.GiftData.NPC_Ac
 		{}
 game.GiftData.NPC_Achilles_01.UnlockGameStateRequirements.RequiredTextLines = { "MyrmidonReunionQuestComplete" }
 
--- game.GiftData.NPC_Dusa_01 = game.GiftData.NPC_Dusa_01 or {}
+game.GiftData.NPC_Dusa_01 = game.GiftData.NPC_Dusa_01 or {}
 -- game.GiftData.NPC_Dusa_01.UnlockGameStateRequirements = game.GiftData.NPC_Dusa_01.UnlockGameStateRequirements or
 -- 		{}
 -- game.GiftData.NPC_Dusa_01.UnlockGameStateRequirements.RequiredTextLines = { "DusaLoungeRenovationQuestComplete", }
@@ -61,6 +61,15 @@ table.insert(game.GiftData.NPC_Skelly_01, {
 	GameStateRequirements = {
 		{
 			PathTrue = { "GameState", "TextLinesRecord", "SkellyGift07" },
+		},
+	},
+})
+
+table.insert(game.GiftData.NPC_Dusa_01, {
+	Gift = "DusaAssistTrait",
+	GameStateRequirements = {
+		{
+			PathTrue = { "GameState", "TextLinesRecord", "DusaGift07" },
 		},
 	},
 })

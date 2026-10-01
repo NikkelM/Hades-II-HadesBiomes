@@ -36,3 +36,4 @@ game.WeaponSets.ExpireProjectileExcludeProjectileNames = game.CombineTablesIPair
 )
 
 game.UnitSets.PlayerSummons.TrainingMeleeSummon = true
+game.UnitSets.PlayerSummons.DusaSummon = true

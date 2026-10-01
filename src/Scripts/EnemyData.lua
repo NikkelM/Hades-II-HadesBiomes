@@ -1861,6 +1861,18 @@ local enemyModifications = {
 	FreezeShotUnitElite = {
 		EliteAttributeOptions = game.CombineTables(game.EnemySets.GenericEliteAttributes, { "Hex", }),
 	},
+	DusaSummon = {
+		HideHealthBar = true,
+		ManualDeathAnimation = false,
+		DestroyDelay = 3.0,
+		ActivateFx = "EnemySummonRuneMedium",
+		DefaultAIData = {
+			DeepInheritance = true,
+			TargetRequiredKillEnemy = true,
+			TargetClosest = true,
+			IgnoreInvulnerable = true,
+		},
+	},
 	RangedBurrower = {
 		StunAnimations = { Default = "EnemyBoneDraconOnHit" },
 		UseActivatePresentation = false,

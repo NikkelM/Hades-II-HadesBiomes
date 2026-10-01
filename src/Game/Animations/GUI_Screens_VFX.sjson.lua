@@ -79,6 +79,19 @@ local addParentAnimations = {
 }
 
 local addAnimations = {
+	ModsNikkelMHadesBiomesCompanionRackBackground = {
+		Name = "ModsNikkelMHadesBiomesCompanionRackBackground",
+		FilePath = "GUI\\Screens\\AwardMenu\\CompanionSlots\\CompanionRack",
+		Type = "ConstantNoUpdate",
+		AngleFromOwner = "Ignore",
+		EndFrame = 1,
+		NumFrames = 1,
+		StartFrame = 1,
+		ScaleX = 300 / 404,
+		ScaleY = 555 / 756,
+		ScaleFromOwner = "Ignore",
+		Material = "Unlit",
+	},
 	-- #region Run End Screens
 	-- Background image
 	ModsNikkelMHadesBiomes_VictoryScreenIllustration_Elysium = {
