@@ -363,3 +363,12 @@ mod.AddTableKeysSkipDupes(game.CodexData, hadesCodexData)
 game.ScreenData.Codex.ChapterX = 405
 game.ScreenData.Codex.ChapterSpacingX = 84
 game.ScreenData.Codex.CategoryIconOffsetX = -2
+
+table.insert(game.ScreenData.Codex.ComponentData.Order, "ModsNikkelMHadesBiomesAssistHelpText")
+game.ScreenData.Codex.ComponentData.ModsNikkelMHadesBiomesAssistHelpText = {
+	Graphic = "BlankObstacle",
+	X = game.ScreenData.Codex.ComponentData.EnemyStatsText.X,
+	Y = game.ScreenData.Codex.ComponentData.EnemyStatsText.Y,
+	Alpha = 0,
+	TextArgs = game.DeepCopyTable(game.ScreenData.Codex.ComponentData.RelationshipBarHint.TextArgs),
+}
