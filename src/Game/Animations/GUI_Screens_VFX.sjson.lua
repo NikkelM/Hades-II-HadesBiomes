@@ -79,19 +79,6 @@ local addParentAnimations = {
 }
 
 local addAnimations = {
-	ModsNikkelMHadesBiomesCompanionRackBackground = {
-		Name = "ModsNikkelMHadesBiomesCompanionRackBackground",
-		FilePath = "GUI\\Screens\\AwardMenu\\CompanionSlots\\CompanionRack",
-		Type = "ConstantNoUpdate",
-		AngleFromOwner = "Ignore",
-		EndFrame = 1,
-		NumFrames = 1,
-		StartFrame = 1,
-		ScaleX = 300 / 404,
-		ScaleY = 555 / 756,
-		ScaleFromOwner = "Ignore",
-		Material = "Unlit",
-	},
 	-- #region Run End Screens
 	-- Background image
 	ModsNikkelMHadesBiomes_VictoryScreenIllustration_Elysium = {
@@ -261,6 +248,26 @@ local addAnimations = {
 		EaseOut = 1,
 		-- The original H2 outline/logo
 		ChildAnimation = "MainMenuLogoOutline",
+	},
+	-- #endregion
+	-- #region Companions/Assists
+	ModsNikkelMHadesBiomesCompanionRackBackground = {
+		Name = "ModsNikkelMHadesBiomesCompanionRackBackground",
+		FilePath = "GUI\\Screens\\AwardMenu\\CompanionSlots\\CompanionRack",
+		Type = "ConstantNoUpdate",
+		AngleFromOwner = "Ignore",
+		EndFrame = 1,
+		NumFrames = 1,
+		StartFrame = 1,
+		ScaleX = 300 / 404,
+		ScaleY = 555 / 756,
+		ScaleFromOwner = "Ignore",
+		Material = "Unlit",
+	},
+	ModsNikkelMHadesBiomesFrame_Keepsake_Rank5 = {
+		Name = "ModsNikkelMHadesBiomesFrame_Keepsake_Rank5",
+		InheritFrom = "Menu_Frame",
+		FilePath = "GUI\\Screens\\AwardMenu\\Legendary\\AssistRank5",
 	},
 	-- #endregion
 }

@@ -14,18 +14,35 @@ local newTraitData = {
 		ActiveSlotOffsetIndex = 1,
 		FrameRarities = {
 			Common = "Frame_Keepsake_Rank1",
-		},
-		KeepsakeRarityGameStateRequirements = {
-			{},
+			Rare = "Frame_Keepsake_Rank2",
+			Epic = "Frame_Keepsake_Rank3",
+			Heroic = "Frame_Keepsake_Rank4",
+			Legendary = "ModsNikkelMHadesBiomesFrame_Keepsake_Rank5",
 		},
 		ChamberThresholds = mod.NilValue,
 		RecordCacheOnEquip = mod.NilValue,
 		CustomRarityLevels = {
 			"LegendaryKeepsake_Level_1",
+			"LegendaryKeepsake_Level_2",
+			"LegendaryKeepsake_Level_3",
+			"LegendaryKeepsake_Level_4",
+			"LegendaryKeepsake_Level_5",
 		},
 		RarityLevels = {
 			Common = {
 				Multiplier = 1,
+			},
+			Rare = {
+				Multiplier = 2,
+			},
+			Epic = {
+				Multiplier = 3,
+			},
+			Heroic = {
+				Multiplier = 4,
+			},
+			Legendary = {
+				Multiplier = 5,
 			},
 		},
 	},
@@ -35,6 +52,32 @@ local newTraitData = {
 		InRackIcon = "Keepsake_Meg_Plush_Menu",
 		Icon = "Keepsake_Meg_Plush",
 		EquipSound = "/SFX/Menu Sounds/KeepsakeMegLegendary",
+		KeepsakeRarityGameStateRequirements = {
+			{ AssistUpgradeLevel = { Name = "FuryAssistTrait", Level = 0, }, },
+			{ AssistUpgradeLevel = { Name = "FuryAssistTrait", Level = 1, }, },
+			{ AssistUpgradeLevel = { Name = "FuryAssistTrait", Level = 2, }, },
+			{ AssistUpgradeLevel = { Name = "FuryAssistTrait", Level = 3, }, },
+			{ AssistUpgradeLevel = { Name = "FuryAssistTrait", Level = 4, }, },
+		},
+		ModsNikkelMHadesBiomesUpgradeCosts = {
+			{
+				ModsNikkelMHadesBiomes_CropTartarus = 2,
+				GiftPoints = 2
+			},
+			{
+				ModsNikkelMHadesBiomes_CropElysium = 2,
+				GiftPoints = 3
+			},
+			{
+				ModsNikkelMHadesBiomes_CropStyx = 2,
+				SuperGiftPoints = 1
+			},
+			{
+				ModsNikkelMHadesBiomes_CropAsphodel = 2,
+				ModsNikkelMHadesBiomes_BossResourceTartarus = 3,
+				SuperGiftPoints = 2,
+			},
+		},
 		SpeakerNames = { "MegaeraField" },
 		PreEquipWeapons = { "NPC_FurySister_01_Assist" },
 		AddAssist = {
@@ -112,6 +155,32 @@ local newTraitData = {
 		InRackIcon = "Keepsake_Achilles_Plush_Menu",
 		Icon = "Keepsake_Achilles_Plush",
 		EquipSound = "/SFX/Menu Sounds/KeepsakeAchillesLegendary",
+		KeepsakeRarityGameStateRequirements = {
+			{ AssistUpgradeLevel = { Name = "AchillesPatroclusAssistTrait", Level = 0, }, },
+			{ AssistUpgradeLevel = { Name = "AchillesPatroclusAssistTrait", Level = 1, }, },
+			{ AssistUpgradeLevel = { Name = "AchillesPatroclusAssistTrait", Level = 2, }, },
+			{ AssistUpgradeLevel = { Name = "AchillesPatroclusAssistTrait", Level = 3, }, },
+			{ AssistUpgradeLevel = { Name = "AchillesPatroclusAssistTrait", Level = 4, }, },
+		},
+		ModsNikkelMHadesBiomesUpgradeCosts = {
+			{
+				ModsNikkelMHadesBiomes_PlantAsphodel = 2,
+				GiftPoints = 2
+			},
+			{
+				ModsNikkelMHadesBiomes_PlantStyx = 2,
+				GiftPoints = 3
+			},
+			{
+				ModsNikkelMHadesBiomes_PlantElysium = 3,
+				SuperGiftPoints = 1
+			},
+			{
+				ModsNikkelMHadesBiomes_PlantTartarus = 3,
+				ModsNikkelMHadesBiomes_BossResourceElysium = 3,
+				SuperGiftPoints = 2,
+			},
+		},
 		SpeakerNames = { "Modsnikkelmhadesbiomesachilles", "Patroclus" },
 		PreEquipWeapons = { "NPC_Achilles_01_Assist", "NPC_Patroclus_01_Assist" },
 		AddAssist = {
@@ -167,6 +236,32 @@ local newTraitData = {
 		Icon = "Keepsake_Thanatos_Plush",
 		ModsNikkelMHadesBiomesCabinetIconScale = 0.33,
 		EquipSound = "/SFX/Menu Sounds/KeepsakeThanatosLegendary",
+		KeepsakeRarityGameStateRequirements = {
+			{ AssistUpgradeLevel = { Name = "ThanatosAssistTrait", Level = 0, }, },
+			{ AssistUpgradeLevel = { Name = "ThanatosAssistTrait", Level = 1, }, },
+			{ AssistUpgradeLevel = { Name = "ThanatosAssistTrait", Level = 2, }, },
+			{ AssistUpgradeLevel = { Name = "ThanatosAssistTrait", Level = 3, }, },
+			{ AssistUpgradeLevel = { Name = "ThanatosAssistTrait", Level = 4, }, },
+		},
+		ModsNikkelMHadesBiomesUpgradeCosts = {
+			{
+				ModsNikkelMHadesBiomes_CropAsphodel = 2,
+				GiftPoints = 2
+			},
+			{
+				ModsNikkelMHadesBiomes_CropStyx = 2,
+				GiftPoints = 3
+			},
+			{
+				ModsNikkelMHadesBiomes_CropElysium = 2,
+				SuperGiftPoints = 1
+			},
+			{
+				ModsNikkelMHadesBiomes_CropTartarus = 2,
+				ModsNikkelMHadesBiomes_BossResourceAsphodel = 3,
+				SuperGiftPoints = 2,
+			},
+		},
 		SpeakerNames = { "Thanatos", "ThanatosField" },
 		PreEquipWeapons = { "NPC_Thanatos_01_Assist" },
 		AddAssist = {
@@ -248,6 +343,32 @@ local newTraitData = {
 		InRackIcon = "Keepsake_Sisiyphus_Plush_Menu",
 		Icon = "Keepsake_Sisiyphus_Plush",
 		EquipSound = "/SFX/Menu Sounds/KeepsakeSisyphusLegendary",
+		KeepsakeRarityGameStateRequirements = {
+			{ AssistUpgradeLevel = { Name = "SisyphusAssistTrait", Level = 0, }, },
+			{ AssistUpgradeLevel = { Name = "SisyphusAssistTrait", Level = 1, }, },
+			{ AssistUpgradeLevel = { Name = "SisyphusAssistTrait", Level = 2, }, },
+			{ AssistUpgradeLevel = { Name = "SisyphusAssistTrait", Level = 3, }, },
+			{ AssistUpgradeLevel = { Name = "SisyphusAssistTrait", Level = 4, }, },
+		},
+		ModsNikkelMHadesBiomesUpgradeCosts = {
+			{
+				ModsNikkelMHadesBiomes_OreTartarus = 3,
+				GiftPoints = 2
+			},
+			{
+				ModsNikkelMHadesBiomes_OreElysium = 3,
+				GiftPoints = 3
+			},
+			{
+				ModsNikkelMHadesBiomes_OreStyx = 5,
+				SuperGiftPoints = 1
+			},
+			{
+				ModsNikkelMHadesBiomes_OreAsphodel = 5,
+				ModsNikkelMHadesBiomes_BossResourceTartarus = 3,
+				SuperGiftPoints = 2,
+			},
+		},
 		SpeakerNames = { "Sisyphus" },
 		PreEquipWeapons = { "NPC_Sisyphus_01_Assist" },
 		AddAssist = {
@@ -313,6 +434,32 @@ local newTraitData = {
 		InRackIcon = "Keepsake_Skelly_Plush_Menu",
 		Icon = "Keepsake_Skelly_Plush",
 		EquipSound = "/SFX/Menu Sounds/KeepsakeSkellyLegendary",
+		KeepsakeRarityGameStateRequirements = {
+			{ AssistUpgradeLevel = { Name = "SkellyAssistTrait", Level = 0, }, },
+			{ AssistUpgradeLevel = { Name = "SkellyAssistTrait", Level = 1, }, },
+			{ AssistUpgradeLevel = { Name = "SkellyAssistTrait", Level = 2, }, },
+			{ AssistUpgradeLevel = { Name = "SkellyAssistTrait", Level = 3, }, },
+			{ AssistUpgradeLevel = { Name = "SkellyAssistTrait", Level = 4, }, },
+		},
+		ModsNikkelMHadesBiomesUpgradeCosts = {
+			{
+				ModsNikkelMHadesBiomes_OreAsphodel = 3,
+				GiftPoints = 2
+			},
+			{
+				ModsNikkelMHadesBiomes_OreStyx = 3,
+				GiftPoints = 3
+			},
+			{
+				ModsNikkelMHadesBiomes_OreElysium = 5,
+				SuperGiftPoints = 1
+			},
+			{
+				ModsNikkelMHadesBiomes_OreTartarus = 5,
+				ModsNikkelMHadesBiomes_BossResourceStyx = 3,
+				SuperGiftPoints = 2,
+			},
+		},
 		SpeakerNames = { "Modsnikkelmhadesbiomesskelly" },
 		AddAssist = {
 			FunctionName = _PLUGIN.guid .. "." .. "SkellyAssist",
@@ -359,6 +506,32 @@ local newTraitData = {
 		InRackIcon = "Keepsake_Dusa_Plush_Menu",
 		Icon = "Keepsake_Dusa_Plush",
 		EquipSound = "/SFX/Menu Sounds/KeepsakeDusaLegendary",
+		KeepsakeRarityGameStateRequirements = {
+			{ AssistUpgradeLevel = { Name = "DusaAssistTrait", Level = 0, }, },
+			{ AssistUpgradeLevel = { Name = "DusaAssistTrait", Level = 1, }, },
+			{ AssistUpgradeLevel = { Name = "DusaAssistTrait", Level = 2, }, },
+			{ AssistUpgradeLevel = { Name = "DusaAssistTrait", Level = 3, }, },
+			{ AssistUpgradeLevel = { Name = "DusaAssistTrait", Level = 4, }, },
+		},
+		ModsNikkelMHadesBiomesUpgradeCosts = {
+			{
+				ModsNikkelMHadesBiomes_PlantTartarus = 2,
+				GiftPoints = 2
+			},
+			{
+				ModsNikkelMHadesBiomes_PlantElysium = 2,
+				GiftPoints = 3
+			},
+			{
+				ModsNikkelMHadesBiomes_PlantStyx = 3,
+				SuperGiftPoints = 1
+			},
+			{
+				ModsNikkelMHadesBiomes_PlantAsphodel = 3,
+				ModsNikkelMHadesBiomes_BossResourceElysium = 3,
+				SuperGiftPoints = 2,
+			},
+		},
 		AddAssist = {
 			FunctionName = _PLUGIN.guid .. "." .. "DusaAssist",
 			Duration = 30,

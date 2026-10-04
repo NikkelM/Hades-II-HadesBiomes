@@ -2,7 +2,150 @@ local assistFrameScale = 1.0
 local assistSelectedFrameScaleX = 0.72
 local assistSelectedFrameScaleY = 0.66
 local assistSelectedFrameOffsetY = -20
+local assistGridStartX = 1570
+local assistGridStartY = 220
+local assistGridSpacerX = 150
+local assistGridSpacerY = 185
+local assistIconOffsetY = -12
+local assistUpgradePulseThreadName = "ModsNikkelMHadesBiomesAssistUpgradePulse"
 
+-- #region Assist progression
+local function getAssistUpgradeCost(traitName)
+	return game.TraitData[traitName].ModsNikkelMHadesBiomesUpgradeCosts[mod.GetAssistKeepsakeLevel(traitName)]
+end
+
+local function clearAssistUpgradeCostDisplay(screen)
+	if screen.CostIds ~= nil then
+		SetAlpha({ Ids = screen.CostIds, Fraction = 0, Duration = 0.1 })
+		DestroyTextBox({ Ids = screen.CostIds })
+		Destroy({ Ids = screen.CostIds })
+		screen.CostIds = nil
+	end
+
+	screen.ModsNikkelMHadesBiomesAssistUpgradeCost = nil
+end
+
+local function updateAssistButtonTraitData(button)
+	local traitName = button.Data.Gift
+	local level = mod.GetAssistKeepsakeLevel(traitName)
+	local traitData
+	if game.HeroHasTrait(traitName) then
+		traitData = game.GetHeroTrait(traitName)
+	else
+		traitData = game.GetProcessedTraitData({
+			Unit = game.CurrentRun.Hero,
+			TraitName = traitName,
+			Rarity = game.GetRarityKey(level, game.TraitRarityData.TalentRarityUpgradeOrder),
+		})
+	end
+
+	for _, data in ipairs(traitData.SignOffData) do
+		if game.SessionState.AllKeepsakeUnlocked or data.GameStateRequirements == nil or game.IsGameStateEligible(traitData, data.GameStateRequirements) then
+			traitData.SignoffText = data.Text
+			break
+		end
+	end
+
+	game.ExtractValues(game.CurrentRun.Hero, traitData, traitData)
+	button.TraitData = traitData
+	button.Data.Level = level
+	ModifyTextBox({
+		Id = button.Id,
+		Text = game.GetTraitTooltip(traitData),
+		UseDescription = true,
+		LuaKey = "TooltipData",
+		LuaValue = traitData,
+	})
+	SetAnimation({
+		Name = button.Screen.RankAnimations[level],
+		DestinationId = button.Screen.Components[button.ButtonKey .. "Rank"].Id,
+	})
+end
+
+local function cancelAssistUpgradePulse(screen)
+	screen.ModsNikkelMHadesBiomesAssistUpgradePulseGeneration = (screen.ModsNikkelMHadesBiomesAssistUpgradePulseGeneration or 0) +
+			1
+	game.killTaggedThreads(assistUpgradePulseThreadName)
+end
+
+local function pulseAssistUpgradeButton(screen, button, traitName, generation)
+	game.waitUnmodified(1.0)
+	while true do
+		local selectedTrait = screen.SelectedButton and screen.SelectedButton.Data and screen.SelectedButton.Data.Gift
+		if not screen.KeepOpen or not button.Visible or selectedTrait ~= traitName or screen.ModsNikkelMHadesBiomesAssistUpgradePulseGeneration ~= generation then
+			return
+		end
+		CreateAnimation({
+			Name = "SkillProcFeedbackFx",
+			DestinationId = button.Id,
+			GroupName = "ScreenOverlay",
+			OffsetX = -150,
+		})
+		PlaySound({ Name = "/Leftovers/Menu Sounds/EmoteExcitementShort", Id = button.Id })
+		Flash({
+			Id = button.Id,
+			Speed = 2,
+			MinFraction = 0.4,
+			MaxFraction = 1,
+			Color = game.Color.BoonPatchRare,
+			Duration = 0.3,
+			ExpireAfterCycle = true,
+		})
+		game.PulseText({
+			Id = button.Id,
+			Color = game.Color.BoonPatchRare,
+			ThreadName = assistUpgradePulseThreadName,
+			OriginalColor = game.Color.ContextActionLabel,
+			ScaleTarget = 1.25,
+			ScaleDuration = 0.2,
+			HoldDuration = 0.1,
+			StartColorDuration = 0.1,
+			EndColorDuration = 2,
+			ResetDuration = 4.0,
+		})
+		game.waitUnmodified(5.0)
+	end
+end
+
+local function startAssistUpgradePulse(screen, button)
+	local upgradeCost = getAssistUpgradeCost(button.Data.Gift)
+	cancelAssistUpgradePulse(screen)
+
+	if upgradeCost == nil or not game.HasResources(upgradeCost) then
+		return
+	end
+
+	local generation = screen.ModsNikkelMHadesBiomesAssistUpgradePulseGeneration
+	game.thread(pulseAssistUpgradeButton, screen, screen.Components.SaveFirstButton, button.Data.Gift, generation)
+end
+
+modutil.mod.Path.Wrap("GetKeepsakeLevel", function(base, traitName, unmodified)
+	-- Normal keepsake
+	if game.TraitData[traitName].Slot ~= "Assist" then
+		return base(traitName, unmodified)
+	end
+
+	-- Companion
+	if not unmodified and game.HeroHasTrait(traitName) then
+		local traitData = game.GetHeroTrait(traitName)
+		if traitData.Rarity ~= nil then
+			return game.GetRarityValue(traitData.Rarity)
+		end
+	end
+
+	return mod.GetAssistKeepsakeLevel(traitName)
+end)
+
+modutil.mod.Path.Wrap("IsKeepsakeMaxed", function(base, traitName)
+	if game.TraitData[traitName].Slot == "Assist" then
+		return mod.GetAssistKeepsakeLevel(traitName) >= 5
+	end
+
+	return base(traitName)
+end)
+-- #endregion
+
+-- #region Assist equipment
 function mod.EquipAssist(heroUnit, traitName, args)
 	local unit = heroUnit or game.CurrentRun.Hero
 	args = args or {}
@@ -11,8 +154,8 @@ function mod.EquipAssist(heroUnit, traitName, args)
 		return
 	end
 
-	local rarity = args.ForceRarity or game.GetRarityKey(game.GetKeepsakeLevel(traitName))
-	local traitData = game.AddTrait(unit, traitName, rarity, args)
+	local traitData = game.AddTrait(unit, traitName,
+		game.GetRarityKey(mod.GetAssistKeepsakeLevel(traitName), game.TraitRarityData.TalentRarityUpgradeOrder), args)
 	if traitData == nil then
 		return
 	end
@@ -21,6 +164,7 @@ function mod.EquipAssist(heroUnit, traitName, args)
 		game.CurrentRun.TraitCache[traitName] = game.CurrentRun.TraitCache[traitName] or 1
 	end
 
+	-- Load speaker banks and sound bank for the voicelines and effects of the companion
 	if traitData.SpeakerNames then
 		game.LoadVoiceBanks(traitData.SpeakerNames, nil, true)
 	end
@@ -61,6 +205,9 @@ function mod.UpdateAssistEquippedFrame(screen)
 	end
 end
 
+-- #endregion
+
+-- #region Rack construction
 local function createAssistHitbox(screen, components, buttonKey, visualButton, x, y)
 	local button = CreateScreenComponent({
 		Name = "ModsNikkelMHadesBiomesAssistSlotButton",
@@ -92,14 +239,22 @@ local function createAssistHitbox(screen, components, buttonKey, visualButton, x
 	components[buttonKey .. "Icon"] = visualButton
 	components[buttonKey] = button
 	screen[button.Id] = button
+	CreateTextBox({
+		Id = button.Id,
+		Text = game.GetTraitTooltip(button.TraitData),
+		UseDescription = true,
+		Color = game.Color.Transparent,
+		LuaKey = "TooltipData",
+		LuaValue = button.TraitData,
+	})
+
 	return button
 end
 
 local function createUnlockedAssistIcon(screen, components, createKeepsakeIcon, index, itemData, x, y)
 	local assistTooltipX = 1250
 	local assistTooltipY = 110
-	local assistIconOffsetY = -12
-	local assistRankOffsetY = 8
+	local assistRankOffsetY = -2
 	local assistBackingScale = 0.75
 	local assistButtonKeyAppend = "Assist"
 	local traitData = game.TraitData[itemData.Gift]
@@ -142,6 +297,7 @@ local function createUnlockedAssistIcon(screen, components, createKeepsakeIcon, 
 	button.OnMouseOverFunctionName = _PLUGIN.guid .. "." .. "MouseOverAssist"
 	button.OnMouseOffFunctionName = _PLUGIN.guid .. "." .. "MouseOffAssist"
 	button.ModsNikkelMHadesBiomesBaseScale = iconScale
+	updateAssistButtonTraitData(button)
 	Teleport({
 		Id = components[button.ButtonKey .. "Rank"].Id,
 		OffsetX = x,
@@ -200,7 +356,6 @@ local function createLockedAssistIcon(screen, components, index, traitName, x, y
 	button.ButtonKey = buttonKey
 	button.FrameId = components[buttonKey .. "Frame"].Id
 	button.ModsNikkelMHadesBiomesVisualId = components[buttonKey .. "Icon"].Id
-	button.ModsNikkelMHadesBiomesBaseScale = assistLockedIconScale
 	button.OnMouseOverFunctionName = _PLUGIN.guid .. "." .. "MouseOverLockedAssist"
 	button.OnMouseOffFunctionName = _PLUGIN.guid .. "." .. "MouseOffLockedAssist"
 	button.Screen = screen
@@ -211,9 +366,47 @@ local function createLockedAssistIcon(screen, components, index, traitName, x, y
 	SetScaleY({ Id = button.ModsNikkelMHadesBiomesVisualId, Fraction = assistLockedIconScaleY, Duration = 0 })
 end
 
+local function createAssistRack(screen, components, createKeepsakeIcon)
+	screen.LastAssist = game.GameState.LastAssistTrait
+	screen.ModsNikkelMHadesBiomesAssistButtons = {}
+	components.ModsNikkelMHadesBiomesAssistRackBackground = CreateScreenComponent({
+		Name = "BlankObstacle",
+		Animation = "ModsNikkelMHadesBiomesCompanionRackBackground",
+		X = assistGridStartX + assistGridSpacerX / 2 + game.ScreenCenterNativeOffsetX,
+		Y = assistGridStartY + assistGridSpacerY + game.ScreenCenterNativeOffsetY,
+		Group = "Combat_Menu_Overlay",
+		Alpha = 0,
+		AlphaTarget = 1,
+		AlphaTargetDuration = 0.15,
+	})
+
+	for index, traitName in ipairs(mod.AssistTraitNames) do
+		local x = assistGridStartX + ((index - 1) % 2) * assistGridSpacerX + game.ScreenCenterNativeOffsetX
+		local y = assistGridStartY + math.floor((index - 1) / 2) * assistGridSpacerY + game.ScreenCenterNativeOffsetY
+		local keepsakeData = game.GetKeepsakeData(traitName)
+		local unlocked = game.SessionState.AllKeepsakeUnlocked or
+				game.IsGameStateEligible(keepsakeData.GiftLevelData, keepsakeData.GiftLevelData.GameStateRequirements)
+
+		if unlocked then
+			local itemData = {
+				New = game.GameState.NewKeepsakeItem[traitName],
+				Gift = traitName,
+				Level = 1,
+				NPC = keepsakeData.NPCName,
+				Unlocked = true,
+			}
+			createUnlockedAssistIcon(screen, components, createKeepsakeIcon, index, itemData, x, y)
+		else
+			createLockedAssistIcon(screen, components, index, traitName, x, y)
+		end
+	end
+
+	mod.UpdateAssistEquippedFrame(screen)
+end
+-- #endregion
+
+-- #region Rack interactions
 function mod.MouseOverLockedAssist(button)
-	local assistLockedHoverFrameScaleX = 0.78
-	local assistLockedHoverFrameScaleY = 0.74
 	local screen = button.Screen
 	screen.SelectedButton = nil
 	SetAlpha({ Id = screen.Components.HoverFrame.Id, Fraction = 0, Duration = 0 })
@@ -221,19 +414,23 @@ function mod.MouseOverLockedAssist(button)
 	PlaySound({ Name = "/SFX/Menu Sounds/MirrorMenuToggleKeepsakes", Id = button.Id })
 
 	local hoverFrame = screen.Components.ModsNikkelMHadesBiomesAssistHoverFrame
-	Teleport({ Id = hoverFrame.Id, DestinationId = button.ModsNikkelMHadesBiomesVisualId, OffsetY = -24 })
+	Teleport({
+		Id = hoverFrame.Id,
+		DestinationId = button.ModsNikkelMHadesBiomesVisualId,
+		OffsetY = -24,
+	})
 	SetAnimation({
 		Name = "ModsNikkelMHadesBiomesLegendaryAwardMenuCursorHighlight",
 		DestinationId = hoverFrame.Id,
 	})
 	SetScaleX({
 		Id = hoverFrame.Id,
-		Fraction = assistLockedHoverFrameScaleX,
+		Fraction = 0.78,
 		Duration = 0,
 	})
 	SetScaleY({
 		Id = hoverFrame.Id,
-		Fraction = assistLockedHoverFrameScaleY,
+		Fraction = 0.74,
 		Duration = 0,
 	})
 	SetAlpha({ Id = hoverFrame.Id, Fraction = 1, Duration = 0 })
@@ -247,7 +444,31 @@ end
 
 function mod.MouseOverAssist(button)
 	game.MouseOverKeepsake(button)
+
 	local screen = button.Screen
+	local traitUses = button.TraitData.ExtractData.TooltipKeepsakeUses
+	if getAssistUpgradeCost(button.Data.Gift) ~= nil then
+		ModifyTextBox({
+			Id = button.LevelProgressId,
+			Text = traitUses == 1 and "ModsNikkelMHadesBiomes_AssistLevelProgress" or
+					"ModsNikkelMHadesBiomes_AssistLevelProgress_Upgraded",
+			LuaKey = "TempTextData",
+			LuaValue = {
+				CompanionName = button.Data.Gift,
+				TraitUses = traitUses,
+			},
+		})
+	else
+		ModifyTextBox({
+			Id = button.LevelProgressId,
+			Text = "ModsNikkelMHadesBiomes_AssistLevelProgressMax",
+			LuaKey = "TempTextData",
+			LuaValue = {
+				CompanionName = button.Data.Gift,
+				TraitUses = traitUses,
+			},
+		})
+	end
 	SetAlpha({ Id = screen.Components.HoverFrame.Id, Fraction = 0, Duration = 0 })
 
 	local hoverFrame = screen.Components.ModsNikkelMHadesBiomesAssistHoverFrame
@@ -279,6 +500,7 @@ function mod.MouseOverAssist(button)
 		Duration = 0,
 	})
 	SetAlpha({ Id = hoverFrame.Id, Fraction = 1, Duration = 0 })
+	startAssistUpgradePulse(screen, button)
 end
 
 function mod.MouseOffAssist(button)
@@ -305,52 +527,6 @@ function mod.MouseOffAssist(button)
 	})
 end
 
-local function createAssistRack(screen, components, createKeepsakeIcon)
-	local assistGridStartX = 1570
-	local assistGridStartY = 220
-	local assistGridSpacerX = 150
-	local assistGridSpacerY = 185
-	screen.LastAssist = game.GameState.LastAssistTrait
-	screen.ModsNikkelMHadesBiomesAssistButtons = {}
-	components.ModsNikkelMHadesBiomesAssistRackBackground = CreateScreenComponent({
-		Name = "BlankObstacle",
-		Animation = "ModsNikkelMHadesBiomesCompanionRackBackground",
-		X = assistGridStartX + assistGridSpacerX / 2 + game.ScreenCenterNativeOffsetX,
-		Y = assistGridStartY + assistGridSpacerY + game.ScreenCenterNativeOffsetY,
-		Group = "Combat_Menu_Overlay",
-		Alpha = 0,
-		AlphaTarget = 1,
-		AlphaTargetDuration = 0.15,
-	})
-
-	local lastAssist = screen.LastAssist
-	screen.LastAssist = nil
-	for index, traitName in ipairs(mod.AssistTraitNames) do
-		local x = assistGridStartX + ((index - 1) % 2) * assistGridSpacerX + game.ScreenCenterNativeOffsetX
-		local y = assistGridStartY + math.floor((index - 1) / 2) * assistGridSpacerY + game.ScreenCenterNativeOffsetY
-		local keepsakeData = game.GetKeepsakeData(traitName)
-		local traitData = game.TraitData[traitName]
-		local unlocked = traitData ~= nil and keepsakeData ~= nil and
-				(game.SessionState.AllKeepsakeUnlocked or game.IsGameStateEligible(keepsakeData.GiftLevelData, keepsakeData.GiftLevelData.GameStateRequirements))
-
-		if unlocked then
-			local itemData = {
-				New = game.GameState.NewKeepsakeItem[traitName],
-				Gift = traitName,
-				Level = 1,
-				NPC = keepsakeData.NPCName,
-				Unlocked = true,
-			}
-			createUnlockedAssistIcon(screen, components, createKeepsakeIcon, index, itemData, x, y)
-		else
-			createLockedAssistIcon(screen, components, index, traitName, x, y)
-		end
-	end
-	screen.LastAssist = lastAssist
-
-	mod.UpdateAssistEquippedFrame(screen)
-end
-
 -- Allow unequipping companions, unlike keepsakes
 function mod.HandleAssistToggle(screen, button)
 	if not button.Data.Unlocked or button.Blocked then
@@ -371,6 +547,97 @@ function mod.HandleAssistToggle(screen, button)
 	game.KeepsakeScreenUpdateActionBar(screen, button)
 end
 
+function mod.UpgradeAssist(screen, button)
+	local assistButton = screen.SelectedButton
+	if assistButton == nil or assistButton.Data == nil or not assistButton.Data.Unlocked or assistButton.Blocked then
+		return
+	end
+
+	local traitName = assistButton.Data.Gift
+	local upgradeCost = getAssistUpgradeCost(traitName)
+	if upgradeCost == nil then
+		return
+	end
+
+	if not game.HasResources(upgradeCost) then
+		game.ScreenCantAffordPresentation(screen, button, upgradeCost)
+		return
+	end
+
+	for resourceName, amount in pairs(upgradeCost) do
+		game.SpendResource(resourceName, amount, traitName .. "AssistUpgrade", {
+			Silent = true,
+			SkipQuestStatusCheck = true,
+		})
+	end
+	game.thread(game.CheckQuestStatus)
+
+	game.GameState.AssistUnlocks = game.GameState.AssistUnlocks or {}
+	game.IncrementTableValue(game.GameState.AssistUnlocks, traitName)
+	screen.ModsNikkelMHadesBiomesAssistUpgraded = true
+	if game.HeroHasTrait(traitName) then
+		game.RemoveTrait(game.CurrentRun.Hero, traitName)
+		mod.EquipAssist(game.CurrentRun.Hero, traitName, {
+			FromLoot = true,
+			SkipNewTraitHighlight = true,
+		})
+	end
+
+	updateAssistButtonTraitData(assistButton)
+	Flash({
+		Id = assistButton.ModsNikkelMHadesBiomesVisualId,
+		Speed = 4,
+		MinFraction = 0.5,
+		MaxFraction = 0,
+		Color = game.Color.Gold,
+		Duration = 0.15,
+		ExpireAfterCycle = true,
+	})
+	CreateAnimation({
+		Name = "KeepsakeLevelUpFlare",
+		DestinationId = assistButton.ModsNikkelMHadesBiomesVisualId,
+		GroupName = "Combat_Menu_Overlay_Additive",
+		Scale = 0.5,
+	})
+	PlaySound({ Name = "/SFX/Menu Sounds/MirrorCloseWithUpgrade", Id = assistButton.Id })
+
+	game.KeepsakeScreenShowInfo(screen, assistButton)
+	local traitUses = assistButton.TraitData.ExtractData.TooltipKeepsakeUses
+	if getAssistUpgradeCost(assistButton.Data.Gift) ~= nil then
+		ModifyTextBox({
+			Id = assistButton.LevelProgressId,
+			Text = traitUses == 1 and "ModsNikkelMHadesBiomes_AssistLevelProgress" or
+					"ModsNikkelMHadesBiomes_AssistLevelProgress_Upgraded",
+			LuaKey = "TempTextData",
+			LuaValue = {
+				CompanionName = assistButton.Data.Gift,
+				TraitUses = traitUses,
+			},
+		})
+	else
+		ModifyTextBox({
+			Id = assistButton.LevelProgressId,
+			Text = "ModsNikkelMHadesBiomes_AssistLevelProgressMax",
+			LuaKey = "TempTextData",
+			LuaValue = {
+				CompanionName = assistButton.Data.Gift,
+				TraitUses = traitUses,
+			},
+		})
+	end
+	SetAlpha({ Id = screen.Components.HoverFrame.Id, Fraction = 0, Duration = 0 })
+	SetScale({
+		Id = assistButton.ModsNikkelMHadesBiomesVisualId,
+		Fraction = assistButton.ModsNikkelMHadesBiomesBaseScale + 0.05,
+		Duration = 0,
+		SkipGeometryUpdate = true,
+	})
+	startAssistUpgradePulse(screen, assistButton)
+end
+
+-- #endregion
+
+-- #region Keepsake screen integration
 modutil.mod.Path.Wrap("CreateKeepsakeIcon", function(base, screen, components, args)
 	local returnValue = base(screen, components, args)
 
@@ -386,15 +653,16 @@ modutil.mod.Path.Wrap("KeepsakeScreenUpdateActionBar", function(base, screen, bu
 	base(screen, button)
 
 	local components = screen.Components
-	-- This is a normal keepsake
-	if button == nil or button.Data == nil or game.TraitData[button.Data.Gift] == nil or game.TraitData[button.Data.Gift].Slot ~= "Assist" then
+	local isAssist = button ~= nil and game.TraitData[button.Data.Gift].Slot == "Assist"
+	if not isAssist then
+		clearAssistUpgradeCostDisplay(screen)
+		cancelAssistUpgradePulse(screen)
+		components.SaveFirstButton.OnPressedFunctionName = "KeepsakeScreenSaveFirst"
 		ModifyTextBox({ Id = components.SelectButton.Id, Text = "Menu_Equip" })
 		return
 	end
 
 	-- This is a companion
-	SetAlpha({ Id = components.SaveFirstButton.Id, Fraction = 0, Duration = 0.2 })
-	components.SaveFirstButton.Visible = false
 	if game.GameState.LastAssistTrait == button.Data.Gift then
 		ModifyTextBox({ Id = components.SelectButton.Id, Text = "Menu_Unequip" })
 	else
@@ -402,21 +670,66 @@ modutil.mod.Path.Wrap("KeepsakeScreenUpdateActionBar", function(base, screen, bu
 	end
 	if button.Data.Unlocked and not button.Blocked then
 		SetAlpha({ Id = components.SelectButton.Id, Fraction = 1, Duration = 0.2 })
+	end
+
+	local upgradeCost = getAssistUpgradeCost(button.Data.Gift)
+	if button.Data.Unlocked and not button.Blocked and upgradeCost ~= nil then
+		if screen.ModsNikkelMHadesBiomesAssistUpgradeCost ~= upgradeCost then
+			clearAssistUpgradeCostDisplay(screen)
+			game.AddResourceCostDisplay(screen, upgradeCost, {
+				StartX = assistGridStartX + assistGridSpacerX / 2 + game.ScreenCenterNativeOffsetX,
+				StartY = assistGridStartY + assistGridSpacerY * 3 + 45 + game.ScreenCenterNativeOffsetY,
+				SpacerX = 160,
+				ItemsPerRow = 3,
+				ResourceIconScale = 0.75,
+				GroupName = "Combat_Menu_Overlay",
+			})
+			screen.ModsNikkelMHadesBiomesAssistUpgradeCost = upgradeCost
+		end
+		components.SaveFirstButton.OnPressedFunctionName = _PLUGIN.guid .. "." .. "UpgradeAssist"
+		components.SaveFirstButton.Visible = true
+		ModifyTextBox({
+			Id = components.SaveFirstButton.Id,
+			-- Reuse the localized Arcana Improve label while replacing its Select icon with ItemPin
+			RawText = "{IP} " ..
+					game.GetDisplayName({ Text = "MetaUpgradeCard_Upgrade" }):gsub("^%{SL%}%s*", ""),
+		})
+		SetAlpha({ Id = components.SaveFirstButton.Id, Fraction = 1, Duration = 0.2 })
 	else
-		SetAlpha({ Id = components.SelectButton.Id, Fraction = 0, Duration = 0.2 })
+		clearAssistUpgradeCostDisplay(screen)
+		cancelAssistUpgradePulse(screen)
+		components.SaveFirstButton.OnPressedFunctionName = "KeepsakeScreenSaveFirst"
+		if button.Data.Unlocked then
+			ModifyTextBox({
+				Id = components.SaveFirstButton.Id,
+				-- Restore Improve before hiding the button so vanilla's Prioritize text does not flash
+				RawText = "{IP} " .. game.GetDisplayName({ Text = "MetaUpgradeCard_Upgrade" }):gsub("^%{SL%}%s*", ""),
+			})
+			components.SaveFirstButton.Visible = false
+			SetAlpha({ Id = components.SaveFirstButton.Id, Fraction = 0, Duration = 0.2 })
+		end
 	end
 end)
 
 modutil.mod.Path.Wrap("KeepsakeScreenClose", function(base, screen, button)
-	if screen.LastAssist ~= game.GameState.LastAssistTrait then
+	cancelAssistUpgradePulse(screen)
+	local assistChanged = screen.LastAssist ~= game.GameState.LastAssistTrait
+	if assistChanged then
 		game.RemoveTrait(game.CurrentRun.Hero, screen.LastAssist)
 		mod.EquipAssist(game.CurrentRun.Hero, game.GameState.LastAssistTrait, {
 			FromLoot = true,
 		})
 	end
+	if (assistChanged or screen.ModsNikkelMHadesBiomesAssistUpgraded) and screen.LastTrait == game.GameState.LastAwardTrait then
+		game.RequestPreRunLoadoutChangeSave()
+	end
 
 	return base(screen, button)
 end)
+
+-- #endregion
+
+-- #region Run loadout integration
 
 modutil.mod.Path.Wrap("EquipLastAwardTrait", function(base, eventSource, hero)
 	local returnValue = base(eventSource, hero)
@@ -427,3 +740,5 @@ modutil.mod.Path.Wrap("EquipLastAwardTrait", function(base, eventSource, hero)
 
 	return returnValue
 end)
+
+-- #endregion

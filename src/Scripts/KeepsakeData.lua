@@ -74,6 +74,9 @@ table.insert(game.GiftData.NPC_Dusa_01, {
 	},
 })
 
+-- #region Keepsake rack
+game.ScreenData.KeepsakeRack.RankAnimations[5] = "ModsNikkelMHadesBiomesFrame_Keepsake_Rank5"
+
 table.insert(game.ScreenData.KeepsakeRack.ComponentData.Order, "ModsNikkelMHadesBiomesAssistEquippedFrame")
 game.ScreenData.KeepsakeRack.ComponentData.ModsNikkelMHadesBiomesAssistEquippedFrame = {
 	Graphic = "BlankObstacle",
@@ -90,4 +93,5 @@ game.ScreenData.KeepsakeRack.ComponentData.ModsNikkelMHadesBiomesAssistHoverFram
 	Scale = 1,
 	GroupName = "Combat_Menu_Overlay_Additive",
 }
+-- #endregion
 -- #endregion
