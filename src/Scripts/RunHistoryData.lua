@@ -18,3 +18,8 @@ table.insert(game.ScreenData.RunHistory.TransitionToBlankAnimations,
 	"ModsNikkelMHadesBiomes_RunHistoryTransitionModdedToBlank")
 table.insert(game.ScreenData.RunHistory.TransitionToBlankAnimations,
 	"ModsNikkelMHadesBiomes_RunHistoryTransitionModdedFailToBlank")
+
+-- For companions/assists
+game.ScreenData.RunHistory.MaxVisibleRunDataEntries = 7
+game.ScreenData.RunHistory.ModsNikkelMHadesBiomesAssistIconScale = 0.32
+game.ScreenData.RunHistory.ModsNikkelMHadesBiomesAssistIconOffsetY = 0
