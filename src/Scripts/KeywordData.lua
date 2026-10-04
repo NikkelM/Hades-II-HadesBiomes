@@ -21,5 +21,7 @@ local newKeywords = {
 	"ModsNikkelMHadesBiomesLowHealthBonus",
 	"ModsNikkelMHadesBiomesMetaToRunUpgrade",
 	"ModsNikkelMHadesBiomesGoddessMode",
+	"UnknownLegendaryAward",
+	"UnknownLegendaryAward_Hidden",
 }
 game.ConcatTableValuesIPairs(game.KeywordList, newKeywords)

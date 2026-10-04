@@ -7,6 +7,8 @@ local assistGridStartY = 220
 local assistGridSpacerX = 150
 local assistGridSpacerY = 185
 local assistIconOffsetY = -12
+local assistTooltipX = 1250
+local assistTooltipY = 110
 local assistUpgradePulseThreadName = "ModsNikkelMHadesBiomesAssistUpgradePulse"
 
 -- #region Assist progression
@@ -252,8 +254,6 @@ local function createAssistHitbox(screen, components, buttonKey, visualButton, x
 end
 
 local function createUnlockedAssistIcon(screen, components, createKeepsakeIcon, index, itemData, x, y)
-	local assistTooltipX = 1250
-	local assistTooltipY = 110
 	local assistRankOffsetY = -2
 	local assistBackingScale = 0.75
 	local assistButtonKeyAppend = "Assist"
@@ -364,6 +364,28 @@ local function createLockedAssistIcon(screen, components, index, traitName, x, y
 	SetAnimation({ Name = "Keepsake_Legendary_Locked", DestinationId = button.ModsNikkelMHadesBiomesVisualId })
 	SetScaleX({ Id = button.ModsNikkelMHadesBiomesVisualId, Fraction = assistLockedIconScaleX, Duration = 0 })
 	SetScaleY({ Id = button.ModsNikkelMHadesBiomesVisualId, Fraction = assistLockedIconScaleY, Duration = 0 })
+	local hasUnlockedAssist = game.ContainsAnyKey(game.GameState.GiftPresentation, mod.AssistTraitNames)
+	local lockedTooltipText
+	if traitName == nil then
+		lockedTooltipText = "UnknownLegendaryAward_Hidden"
+	else
+		lockedTooltipText = hasUnlockedAssist and "UnknownLegendaryAward" or "UnknownLegendaryAward_Hidden"
+	end
+	CreateTextBox({
+		Id = button.Id,
+		Text = "{$Keywords." .. lockedTooltipText .. "}",
+		Color = game.Color.Transparent,
+	})
+	SetInteractProperty({
+		DestinationId = button.Id,
+		Property = "TooltipX",
+		Value = assistTooltipX + game.ScreenCenterNativeOffsetX,
+	})
+	SetInteractProperty({
+		DestinationId = button.Id,
+		Property = "TooltipY",
+		Value = assistTooltipY + game.ScreenCenterNativeOffsetY,
+	})
 end
 
 local function createAssistRack(screen, components, createKeepsakeIcon)
@@ -459,11 +481,9 @@ function mod.MouseOverAssist(button)
 	if getAssistUpgradeCost(button.Data.Gift) ~= nil then
 		ModifyTextBox({
 			Id = button.LevelProgressId,
-			Text = traitUses == 1 and "ModsNikkelMHadesBiomes_AssistLevelProgress" or
-					"ModsNikkelMHadesBiomes_AssistLevelProgress_Upgraded",
+			Text = "ModsNikkelMHadesBiomes_AssistLevelProgress",
 			LuaKey = "TempTextData",
 			LuaValue = {
-				CompanionName = button.Data.Gift,
 				TraitUses = traitUses,
 			},
 		})
@@ -473,7 +493,6 @@ function mod.MouseOverAssist(button)
 			Text = "ModsNikkelMHadesBiomes_AssistLevelProgressMax",
 			LuaKey = "TempTextData",
 			LuaValue = {
-				CompanionName = button.Data.Gift,
 				TraitUses = traitUses,
 			},
 		})
@@ -615,11 +634,9 @@ function mod.UpgradeAssist(screen, button)
 	if getAssistUpgradeCost(assistButton.Data.Gift) ~= nil then
 		ModifyTextBox({
 			Id = assistButton.LevelProgressId,
-			Text = traitUses == 1 and "ModsNikkelMHadesBiomes_AssistLevelProgress" or
-					"ModsNikkelMHadesBiomes_AssistLevelProgress_Upgraded",
+			Text = "ModsNikkelMHadesBiomes_AssistLevelProgress",
 			LuaKey = "TempTextData",
 			LuaValue = {
-				CompanionName = assistButton.Data.Gift,
 				TraitUses = traitUses,
 			},
 		})
@@ -629,7 +646,6 @@ function mod.UpgradeAssist(screen, button)
 			Text = "ModsNikkelMHadesBiomes_AssistLevelProgressMax",
 			LuaKey = "TempTextData",
 			LuaValue = {
-				CompanionName = assistButton.Data.Gift,
 				TraitUses = traitUses,
 			},
 		})
