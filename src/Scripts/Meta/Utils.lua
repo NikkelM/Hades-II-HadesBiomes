@@ -642,12 +642,8 @@ function mod.ReplaceVoiceLineRequirements(voiceLineTable, cue, newRequirements, 
 	if voiceLineTable == nil then
 		return
 	end
-	if string.sub(cue,1,11) == "/VO/Melinoe" then
-		local SilenceMelinoeRequirement  = 
-		{
-        PathFalse = {"CurrentRun", "Hero", "SilenceMelinoe"},
-    	}
-		table.insert(newRequirements, SilenceMelinoeRequirement )
+	if string.sub(cue, 1, 11) == "/VO/Melinoe" then
+		table.insert(newRequirements, { PathFalse = { "CurrentRun", "Hero", "SilenceMelinoe" } } )
 	end
 	for _, group in ipairs(voiceLineTable) do
 		if type(group) == "table" then
