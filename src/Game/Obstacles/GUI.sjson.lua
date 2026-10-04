@@ -16,8 +16,6 @@ local newData = {
 }
 
 sjson.hook(hadesTwoGUIObstaclesFile, function(data)
-	mod.RunInstallStep("GUI")
-
 	local sjsonLoads = mod.TryLoadCachedSjsonFile("sjsonLoads.sjson") or {}
 	sjsonLoads["GUI"] = true
 	mod.SaveCachedSjsonFile("sjsonLoads.sjson", sjsonLoads)
