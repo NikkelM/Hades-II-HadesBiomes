@@ -9,7 +9,7 @@ local nighmareFearActive = mod.IsOtherModActive("ReadEmAndWeep-Nightmare_Fear")
 local dreamDiveTweaksActive = mod.IsOtherModActive("zerp-DreamDiveTweaks")
 
 -- #region The order of the quests in the Quest log, these will be appended to the end of the vanilla list
--- Current number of quests: 43 (40 base + one Dream Dive Tweaks + one flipped + one nightmare)
+-- Current number of quests: 44 (41 base + one Dream Dive Tweaks + one flipped + one nightmare)
 local newQuestOrderData = {
 	-- key / mission-critical
 	"ModsNikkelMHadesBiomes_QuestSisyphusLiberation",
@@ -40,6 +40,7 @@ local newQuestOrderData = {
 	"ModsNikkelMHadesBiomes_QuestCropsSmall",
 	-- boons & character traits
 	"ModsNikkelMHadesBiomes_QuestKeepsakesQuest",
+	"ModsNikkelMHadesBiomes_QuestCompanionUses",
 	"ModsNikkelMHadesBiomes_QuestSisyphusUpgrades",
 	"ModsNikkelMHadesBiomes_QuestBouldyUpgrades",
 	"ModsNikkelMHadesBiomes_QuestOrpheusUpgrades",
@@ -1485,6 +1486,25 @@ local newQuestData = {
 		},
 		CustomIncompleteString = "ModsNikkelMHadesBiomes_QuestDefeatCharonWithCharonAspect_Condition",
 		CustomCompleteString = "ModsNikkelMHadesBiomes_QuestDefeatCharonWithCharonAspect_Cleared",
+	},
+	-- Use each companion
+	ModsNikkelMHadesBiomes_QuestCompanionUses = {
+		InheritFrom = { "DefaultQuestItem", "DefaultBondQuest" },
+		RewardResourceName = "SuperGiftPoints",
+		RewardResourceAmount = 4,
+		UnlockGameStateRequirements = {
+			{
+				Path = { "GameState", "GiftPresentation" },
+				HasAny = mod.AssistTraitNames,
+			},
+		},
+		CompleteGameStateRequirements = {
+			{
+				Path = { "GameState", "TraitUses" },
+				HasAll = mod.AssistTraitNames,
+			},
+		},
+		IncompleteName = "Quest_UnknownCondition",
 	},
 	-- #endregion
 }
