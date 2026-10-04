@@ -38,8 +38,9 @@ local hadesCodexOrdering = {
 		-- NPCs
 		"NPC_Sisyphus_01", "NPC_Orpheus_01", "NPC_Eurydice_01", "NPC_Patroclus_01", "NPC_Thanatos_01",
 		-- Companions
-		"FuryAssistTrait", "ThanatosAssistTrait", "SisyphusAssistTrait", "SkellyAssistTrait", "DusaAssistTrait",
-		"AchillesPatroclusAssistTrait",
+		"FuryAssistTrait", "ThanatosAssistTrait", "SisyphusAssistTrait", "SkellyAssistTrait",
+		-- "DusaAssistTrait",
+		-- "AchillesPatroclusAssistTrait",
 		-- Enemies
 		"HeavyMelee", "LightRanged", "PunchingBagUnit", "ThiefMineLayer", "WretchAssassinMiniboss", "Swarmer", "LightSpawner",
 		"DisembodiedHand", "HeavyRanged", "HeavyRangedSplitterMiniboss", "NPC_FurySister_01", "Harpy2", "Harpy3",

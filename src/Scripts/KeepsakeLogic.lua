@@ -380,22 +380,27 @@ local function createAssistRack(screen, components, createKeepsakeIcon)
 		AlphaTargetDuration = 0.15,
 	})
 
-	for index, traitName in ipairs(mod.AssistTraitNames) do
+	for index = 1, 6 do
+		local traitName = mod.AssistTraitNames[index]
 		local x = assistGridStartX + ((index - 1) % 2) * assistGridSpacerX + game.ScreenCenterNativeOffsetX
 		local y = assistGridStartY + math.floor((index - 1) / 2) * assistGridSpacerY + game.ScreenCenterNativeOffsetY
-		local keepsakeData = game.GetKeepsakeData(traitName)
-		local unlocked = game.SessionState.AllKeepsakeUnlocked or
-				game.IsGameStateEligible(keepsakeData.GiftLevelData, keepsakeData.GiftLevelData.GameStateRequirements)
+		if traitName ~= nil then
+			local keepsakeData = game.GetKeepsakeData(traitName)
+			local unlocked = game.SessionState.AllKeepsakeUnlocked or
+					game.IsGameStateEligible(keepsakeData.GiftLevelData, keepsakeData.GiftLevelData.GameStateRequirements)
 
-		if unlocked then
-			local itemData = {
-				New = game.GameState.NewKeepsakeItem[traitName],
-				Gift = traitName,
-				Level = 1,
-				NPC = keepsakeData.NPCName,
-				Unlocked = true,
-			}
-			createUnlockedAssistIcon(screen, components, createKeepsakeIcon, index, itemData, x, y)
+			if unlocked then
+				local itemData = {
+					New = game.GameState.NewKeepsakeItem[traitName],
+					Gift = traitName,
+					Level = 1,
+					NPC = keepsakeData.NPCName,
+					Unlocked = true,
+				}
+				createUnlockedAssistIcon(screen, components, createKeepsakeIcon, index, itemData, x, y)
+			else
+				createLockedAssistIcon(screen, components, index, traitName, x, y)
+			end
 		else
 			createLockedAssistIcon(screen, components, index, traitName, x, y)
 		end
@@ -410,7 +415,11 @@ function mod.MouseOverLockedAssist(button)
 	local screen = button.Screen
 	screen.SelectedButton = nil
 	SetAlpha({ Id = screen.Components.HoverFrame.Id, Fraction = 0, Duration = 0 })
-	game.KeepsakeScreenUpdateActionBar(button.Screen, button)
+	if button.Data.Gift ~= nil then
+		game.KeepsakeScreenUpdateActionBar(screen, button)
+	else
+		game.KeepsakeScreenUpdateActionBar(screen)
+	end
 	PlaySound({ Name = "/SFX/Menu Sounds/MirrorMenuToggleKeepsakes", Id = button.Id })
 
 	local hoverFrame = screen.Components.ModsNikkelMHadesBiomesAssistHoverFrame

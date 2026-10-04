@@ -26,6 +26,14 @@ modutil.mod.Path.Wrap("DoPatches", function(base)
 			end
 			mod.DebugPrint("Permanently unlocked all cosmetics!", 3)
 		end
+
+		if config.cheats.z_UnlockAllKeepsakesAndCompanions then
+			for _, traitName in ipairs(game.ConcatTableValuesIPairs(game.ShallowCopyTable(mod.SharedKeepsakePortKeepsakeTraitNames), mod.AssistTraitNames)) do
+				local keepsakeData = game.GetKeepsakeData(traitName)
+				keepsakeData.GiftLevelData.GameStateRequirements = {}
+			end
+			mod.DebugPrint("Unlocked all keepsakes and companions!", 3)
+		end
 		--#endregion
 
 		-- IMPORTANT: Whenever the revision-gated patches below are changed, increase the PatchRevision number at the end of this function

@@ -1206,6 +1206,6 @@ mod.AssistTraitNames = {
 	"ThanatosAssistTrait",
 	"SisyphusAssistTrait",
 	"SkellyAssistTrait",
-	"DusaAssistTrait",
-	"AchillesPatroclusAssistTrait",
+	-- "DusaAssistTrait",
+	-- "AchillesPatroclusAssistTrait",
 }

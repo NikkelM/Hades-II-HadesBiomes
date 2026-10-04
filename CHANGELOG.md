@@ -14,8 +14,9 @@
 Other fixes and improvements:
 - Picking up a boon from Hermes while in a Zagreus' Journey run may now have him deliver a message from the first game's Dionysus to you (as Dionysus cannot be encountered during Zagreus' Journey runs), allowing you to experience his storyline.
 - Added all resources that can be found during Zagreus' Journey runs to the Wretched Broker to allow trading them for the equivalent resources from Hades II (they will show after completing any new run).
-- Added a new "cheat" config option to immediately unlock all (non-story) incantations.
-- Added a new "cheat" config option to immediately unlock all cosmetics (except badges).
+- Added a new irreversible "cheat" config option to immediately unlock all (non-story) incantations.
+- Added a new irreversible "cheat" config option to immediately unlock all cosmetics (except badges).
+- Added a new reversible "cheat" config option to immediately unlock all keepsakes and companions (except those not yet available).
 - Added an in-game settings menu to the imgui overlay (default key `Insert`).
 - Added low-resolution texture packages to reduce system requirements and improve performance on less powerful devices such as laptops.
 - Added a new Minor Prophecy revealed by talking to Poseidon in the Nightmare Realm.
