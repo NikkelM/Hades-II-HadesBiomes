@@ -19,7 +19,9 @@ function mod.DoAssistPresentation(assistData, args)
 		game.thread(game.DoRumble,
 			{ { LeftTriggerStart = 2, LeftTriggerStrengthFraction = 0.4, LeftTriggerFrequencyFraction = 0.15, LeftTriggerTimeout = 0.3, }, })
 	end
-	game.thread(game.PlayVoiceLines, game.HeroVoiceLines.AssistActivatedVoiceLines, true)
+	if args.PlayAssistActivatedVoiceLines then
+		game.thread(game.PlayVoiceLines, game.HeroVoiceLines.AssistActivatedVoiceLines, true)
+	end
 
 	AdjustFullscreenBloom({ Name = "LastKillBloom", Duration = 0 })
 

@@ -74,6 +74,7 @@ function mod.DoAssist()
 	local presentationState = mod.DoAssistPresentation(assistData, {
 		ApplyPlayerSlow = true,
 		PlayAssistReactionVoiceLines = true,
+		PlayAssistActivatedVoiceLines = true,
 		PlayCrowdReaction = true,
 		SecondPortraitOffsetY = 10,
 		SetHeroAnimation = true,
