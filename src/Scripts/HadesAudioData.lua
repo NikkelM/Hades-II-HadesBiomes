@@ -3716,6 +3716,93 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 			{ Cue = "/VO/Skelly_0583" },
 		},
 	},
+	SkellySummonCombatResolvedVoiceLines = {
+		{
+			BreakIfPlayed = true,
+			RandomRemaining = true,
+			PlayOnceThisRun = true,
+			PreLineWait = 1.8,
+			ThreadName = "RoomThread",
+			ObjectType = "TrainingMeleeSummon",
+			-- Well this is awkward.
+			{ Cue = "/VO/Skelly_0350" },
+			-- Hey, nice.
+			{ Cue = "/VO/Skelly_0351" },
+			-- You did it!
+			{ Cue = "/VO/Skelly_0352" },
+			-- Nice work there pal.
+			{ Cue = "/VO/Skelly_0353" },
+			-- Well my work here is done.
+			{ Cue = "/VO/Skelly_0354" },
+			-- You showed them, pal!
+			{ Cue = "/VO/Skelly_0355" },
+			-- Well that's a wrap.
+			{ Cue = "/VO/Skelly_0356" },
+			-- Done and done!
+			{ Cue = "/VO/Skelly_0357" },
+			-- Well see you!
+			{ Cue = "/VO/Skelly_0358", CooldownName = "SaidSeeYouRecently", CooldownTime = 40 },
+			-- Well better go!
+			{ Cue = "/VO/Skelly_0359" },
+			-- How am I supposed to get back?
+			{ Cue = "/VO/Skelly_0095" },
+		},
+	},
+	DusaSummonCombatResolvedVoiceLines = {
+		BreakIfPlayed = true,
+		RandomRemaining = true,
+		PlayOnceThisRun = true,
+		PreLineWait = 1.3,
+		ThreadName = "RoomThread",
+		ObjectType = "DusaSummon",
+		Cooldowns = {
+			{ Name = "DusaAnyQuipSpeech", Time = 4 },
+		},
+		-- You did it!!
+		{ Cue = "/VO/Dusa_0339" },
+		-- Yay, you did it!
+		{ Cue = "/VO/Dusa_0340" },
+		-- Woo-hoo!
+		{ Cue = "/VO/Dusa_0341" },
+		-- I knew you could do it!
+		{ Cue = "/VO/Dusa_0342" },
+		-- Great work, Prince!
+		-- { Cue = "/VO/Dusa_0343" },
+		-- Well that was exciting!
+		{ Cue = "/VO/Dusa_0344" },
+		-- Whew, you made it!
+		{ Cue = "/VO/Dusa_0345" },
+		-- All right, this place is clean!
+		{ Cue = "/VO/Dusa_0346" },
+		-- That's one less problem, right?
+		{ Cue = "/VO/Dusa_0347" },
+		-- You showed them, Prince!
+		-- { Cue = "/VO/Dusa_0348" },
+		-- That's what you get!!
+		{ Cue = "/VO/Dusa_0349" },
+		-- Don't mess with Zagreus!!
+		-- { Cue = "/VO/Dusa_0350" },
+		-- Hah, take that!
+		{ Cue = "/VO/Dusa_0351" },
+	},
+	SkellySummonExitReactionVoiceLines = {
+		BreakIfPlayed = true,
+		RandomRemaining = true,
+		ThreadName = "RoomThread",
+		RequiredTrait = "SkellyAssistTrait",
+		PreLineWait = 0.1,
+		ObjectType = "TrainingMeleeSummon",
+		-- Well see you.
+		{ Cue = "/VO/Skelly_0448", CooldownName = "SaidSeeYouRecently", CooldownTime = 40 },
+		-- I'll just hang out a while.
+		{ Cue = "/VO/Skelly_0449" },
+		-- So long pal!
+		{ Cue = "/VO/Skelly_0450" },
+		-- Bye boyo.
+		-- { Cue = "/VO/Skelly_0451" },
+		-- Glad to be of service!
+		{ Cue = "/VO/Skelly_0452" },
+	},
 	-- #endregion
 }
 

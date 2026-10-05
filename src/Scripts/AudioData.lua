@@ -189,6 +189,14 @@ local requiredGlobalVoiceLineModifications = {
 		Find = "Skelly_",
 		Replace = mod.VoiceoverFileNames.Skelly .. "_",
 	},
+	SkellySummonCombatResolvedVoiceLines = {
+		Find = "Skelly_",
+		Replace = mod.VoiceoverFileNames.Skelly .. "_",
+	},
+	SkellySummonExitReactionVoiceLines = {
+		Find = "Skelly_",
+		Replace = mod.VoiceoverFileNames.Skelly .. "_",
+	},
 }
 local function processCue(data, replacement)
 	if data.Cue ~= nil then
@@ -347,6 +355,11 @@ game.GlobalVoiceLines.ModsNikkelMHadesBiomes_EmptyStartNewHadesRunVoiceLines = g
 
 game.GlobalVoiceLines.SkellySummonTauntVoiceLines = game.GlobalVoiceLines.SkellySummonTauntVoiceLines or
 		mod.GlobalVoiceLines.SkellySummonTauntVoiceLines
+game.GlobalVoiceLines.SkellySummonExitReactionVoiceLines = game.GlobalVoiceLines.SkellySummonExitReactionVoiceLines or
+		mod.GlobalVoiceLines.SkellySummonExitReactionVoiceLines
+
+table.insert(game.GlobalVoiceLines.CombatResolvedVoiceLines, mod.GlobalVoiceLines.SkellySummonCombatResolvedVoiceLines)
+table.insert(game.GlobalVoiceLines.CombatResolvedVoiceLines, mod.GlobalVoiceLines.DusaSummonCombatResolvedVoiceLines)
 
 -- #region Hades II GlobalVoiceLines modifications
 -- Add modded boss rooms to SeleneVictoryVoiceLines OrRequirements
