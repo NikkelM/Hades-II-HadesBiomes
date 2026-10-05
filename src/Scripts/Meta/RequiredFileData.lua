@@ -60,6 +60,7 @@ mod.SubtitleCsvFileNameMappings = {
 	Patroclus = "Patroclus_",
 	Persephone = "Modsnikkelmhadesbiomespersephone_",
 	Sisyphus = "Sisyphus_",
+	Skelly = "Modsnikkelmhadesbiomesskelly_",
 	Storyteller = "Modsnikkelmhadesbiomesstoryteller_",
 	Thanatos = "Thanatos_",
 	ThanatosField = "ThanatosField_",
