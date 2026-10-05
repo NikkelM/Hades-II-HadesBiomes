@@ -14,6 +14,10 @@ local assistTraitRequirementKeys = {
 	RequiredTrait = true,
 }
 
+local function isAssistTraitName(traitName)
+	return type(traitName) == "string" and game.TraitData[traitName] ~= nil and game.TraitData[traitName].Slot == "Assist"
+end
+
 local function hasAssistRequirementFields(requirements)
 	if type(requirements) ~= "table" then
 		return false
@@ -27,12 +31,12 @@ local function hasAssistRequirementFields(requirements)
 
 	for requirementName in pairs(assistTraitRequirementKeys) do
 		local value = requirements[requirementName]
-		if game.Contains(mod.AssistTraitNames, value) then
+		if isAssistTraitName(value) then
 			return true
 		end
 		if type(value) == "table" then
 			for _, traitName in pairs(value) do
-				if game.Contains(mod.AssistTraitNames, traitName) then
+				if isAssistTraitName(traitName) then
 					return true
 				end
 			end
