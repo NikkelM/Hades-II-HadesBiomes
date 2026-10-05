@@ -9,7 +9,7 @@ game.OnControlPressed({
 		end
 
 		local target = triggerArgs.UseTarget
-		if target ~= nil then
+		if target ~= nil and game.CanSpecialInteract(target) then
 			return
 		end
 		-- Preserve Dream Dive Tweaks' Gift + Salute keybind combination
@@ -19,13 +19,10 @@ game.OnControlPressed({
 		if game.CurrentRun == nil or game.CurrentRun.CurrentRoom == nil then
 			return
 		end
-		if not game.IsCombatEncounterActive(game.CurrentRun) then
-			return
-		end
 
-		if mod.CanFireAssist() then
+		if game.IsCombatEncounterActive(game.CurrentRun) and mod.CanFireAssist() then
 			mod.DoAssist()
-		elseif game.GameState.LastAssistTrait ~= nil then
+		elseif game.GameState.LastAssistTrait ~= nil and game.CurrentHubRoom == nil then
 			mod.AssistFailedPresentation(game.CurrentRun.Hero)
 		end
 	end,
