@@ -240,6 +240,21 @@ function mod.DoAssistPresentationPostWeapon(assistData, presentationState)
 	end)
 end
 
+function mod.AssistHintPresentation()
+	local traitData = game.GetHeroTrait(game.GameState.LastAssistTrait)
+	game.thread(game.InCombatTextArgs, {
+		TargetId = game.CurrentRun.Hero.ObjectId,
+		Text = "ModsNikkelMHadesBiomes_AssistAvailableHint",
+		Duration = 1.25,
+		ShadowScale = 0.66,
+		ShadowScaleX = 0.9,
+	})
+	PlaySound({
+		Name = traitData.EquipSound or "/Leftovers/SFX/PositiveTalismanProc_1",
+		Id = game.CurrentRun.Hero.ObjectId,
+	})
+end
+
 function mod.AssistFailedPresentation(attacker)
 	if (attacker.IsDead and game.CurrentHubRoom ~= nil and not game.CurrentHubRoom.AllowAssistFailedPresentation) or not game.IsInputAllowed({}) then
 		return

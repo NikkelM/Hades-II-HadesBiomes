@@ -67,6 +67,17 @@ function mod.CanFireAssist()
 	return true
 end
 
+function game.CheckAssistHint(_, args)
+	game.thread(mod.AssistHintDelay, args)
+end
+
+function mod.AssistHintDelay(args)
+	game.wait(args.Delay, game.RoomThreadName)
+	if mod.CanFireAssist() then
+		mod.AssistHintPresentation()
+	end
+end
+
 function mod.DoAssist()
 	local traitData = game.GetHeroTrait(game.GameState.LastAssistTrait)
 	local assistData = traitData.AddAssist
