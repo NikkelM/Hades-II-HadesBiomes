@@ -204,6 +204,17 @@ modutil.mod.Path.Wrap("StartRoom", function(base, currentRun, currentRoom)
 	return base(currentRun, currentRoom)
 end)
 
+modutil.mod.Path.Wrap("StartEncounterEffects", function(base, encounter)
+	local returnValue = base(encounter)
+
+	encounter = encounter or game.CurrentRun.CurrentRoom.Encounter
+	if encounter.EncounterType == "Boss" or encounter.EncounterType == "Miniboss" then
+		mod.CheckAssistHint({ Delay = 10 })
+	end
+
+	return returnValue
+end)
+
 modutil.mod.Path.Wrap("LeaveRoom", function(base, currentRun, door)
 	-- For Styx D_Hub, we need to regenerate the Shop encounter when re-entering the room
 	if currentRun.ModsNikkelMHadesBiomesIsModdedRun and door.Room ~= nil and door.Room.ModsNikkelMHadesBiomesOnReloadStripEncounter and door.Room.TimesVisited ~= nil and door.Room.TimesVisited > 0 then

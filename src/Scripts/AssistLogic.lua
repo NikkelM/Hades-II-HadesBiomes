@@ -67,7 +67,7 @@ function mod.CanFireAssist()
 	return true
 end
 
-function game.CheckAssistHint(_, args)
+function mod.CheckAssistHint(args)
 	game.thread(mod.AssistHintDelay, args)
 end
 
