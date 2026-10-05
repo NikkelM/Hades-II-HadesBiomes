@@ -41,6 +41,14 @@ modutil.mod.Path.Wrap("LoadCurrentRoomResources", function(base, currentRoom)
 	-- Always do this, so the Codex also doesn't lag when opening it during a normal run
 	LoadPackages({ Name = "ModsNikkelMHadesBiomesPortraits" })
 
+	local assistTrait = game.GetHeroTrait(game.GameState.LastAssistTrait)
+	if assistTrait ~= nil then
+		if assistTrait.SpeakerNames then
+			game.LoadVoiceBanks(assistTrait.SpeakerNames, nil, true)
+		end
+		mod.LoadAssistSfxBanks(assistTrait.SfxBankNames)
+	end
+
 	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and mod.ValidModdedRunBiomes[currentRoom.RoomSetName] then
 		currentRoom.ModsNikkelMHadesBiomesDestroyIdsOnDeath = currentRoom.ModsNikkelMHadesBiomesDestroyIdsOnDeath or {}
 		currentRoom.ModsNikkelMHadesBiomesStopAnimationsOnDeath = currentRoom.ModsNikkelMHadesBiomesStopAnimationsOnDeath or

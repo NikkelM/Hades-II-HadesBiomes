@@ -165,12 +165,6 @@ function mod.EquipAssist(heroUnit, traitName, args)
 	if not game.CurrentRun.Hero.IsDead then
 		game.CurrentRun.TraitCache[traitName] = game.CurrentRun.TraitCache[traitName] or 1
 	end
-
-	-- Load speaker banks and sound bank for the voicelines and effects of the companion
-	if traitData.SpeakerNames then
-		game.LoadVoiceBanks(traitData.SpeakerNames, nil, true)
-	end
-	mod.LoadAssistSfxBanks(traitData.SfxBankNames)
 end
 
 function mod.UpdateAssistEquippedFrame(screen)
