@@ -340,6 +340,9 @@ local function on_ready()
 			import "Game/Obstacles/Travel.sjson.lua"
 			DebugLogScriptImportProgress("Obstacle SJSON")
 
+			-- New colours need to be added before using them in voiceline, enemy or NPC data
+			import "Scripts/Color.lua"
+
 			-- Helper functions to deduplicate code in the localization files
 			import "Game/Text/HadesTextUtils.lua"
 
@@ -356,8 +359,6 @@ local function on_ready()
 			import "Scripts/HadesAudioData.lua"
 			import "Scripts/AudioData.lua"
 
-			-- New colours need to be added before using them in EnemyData
-			import "Scripts/Color.lua"
 			-- New GameData entries need to be added before using them in HadesNPCData
 			import "Scripts/NarrativeData.lua"
 			DebugLogScriptImportProgress("EnemySets, AudioData, Color and NarrativeData")
