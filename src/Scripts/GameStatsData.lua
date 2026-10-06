@@ -19,6 +19,14 @@ table.insert(game.ScreenData.GameStats.SortKeys, "ModsNikkelMHadesBiomesFastestT
 table.insert(game.ScreenData.GameStats.SortKeys, "ModsNikkelMHadesBiomesHighestShrinePoints")
 game.ScreenData.GameStats.SortInReverse["ModsNikkelMHadesBiomesFastestTime"] = true
 
+-- Change the title of the Familiars screen to also include Companions
+for _, filter in ipairs(game.ScreenData.GameStats.TraitFilters) do
+	if filter.Name == "GameStats_Familiars" then
+		filter.Name = "ModsNikkelMHadesBiomes_GameStats_FamiliarsAndCompanions"
+		break
+	end
+end
+
 -- Reset to first column if closed on a modded column to not crash when opening this screen with the mod disabled
 modutil.mod.Path.Wrap("CloseGameStatsScreen", function(base, screen, button)
 	if game.GameState.RunHistoryGameStatsSortMode > 6 then
