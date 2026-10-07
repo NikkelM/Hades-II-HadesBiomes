@@ -44,7 +44,7 @@ game.TraitData.ModsNikkelMHadesBiomesPlayerScaleTrait = {
 	Hidden = true,
 	SetupFunction = {
 		Name = _PLUGIN.guid .. "." .. "ApplyModdedPlayerScale",
-		Args = { ScaleMultiplier = mod.ModdedPlayerScaleMultiplier },
+		Args = { ScaleMultiplier = ModdedPlayerScaleMultiplier },
 		RunOnce = false,
 	},
 }
