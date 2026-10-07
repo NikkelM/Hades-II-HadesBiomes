@@ -68,7 +68,7 @@ local configDesc = {
     z_UnlockAllCosmetics =
     "NOT REVERSIBLE! If enabled, permanently unlocks all cosmetics and Arcana card-back packs added by Zagreus' Journey. Does not grant the badges you can unlock at the Spirit Mixer. Disabling this later on does not undo the unlocks.",
     z_UnlockAllKeepsakesAndCompanions =
-    "Reversible! Immediately unlocks all keepsakes and compansions added by Zagreus' Journey (except those not yet unlockable). Disabling this setting will re-lock those not yet unlocked naturally again.",
+    "Reversible, but permanently upgrades all companions to rank 5. Immediately unlocks all keepsakes and companions added by Zagreus' Journey (except those not yet unlockable). Disabling this setting will re-lock those not yet unlocked naturally again.",
   },
   debugging = {
     hadesGameFolder =

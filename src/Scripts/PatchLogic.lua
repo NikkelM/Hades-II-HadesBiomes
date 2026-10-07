@@ -28,11 +28,15 @@ modutil.mod.Path.Wrap("DoPatches", function(base)
 		end
 
 		if config.cheats.z_UnlockAllKeepsakesAndCompanions then
+			game.GameState.AssistUnlocks = game.GameState.AssistUnlocks or {}
 			for _, traitName in ipairs(game.ConcatTableValuesIPairs(game.ShallowCopyTable(mod.SharedKeepsakePortKeepsakeTraitNames), mod.AssistTraitNames)) do
 				local keepsakeData = game.GetKeepsakeData(traitName)
 				keepsakeData.GiftLevelData.GameStateRequirements = {}
+				if game.TraitData[traitName].Slot == "Assist" then
+					game.GameState.AssistUnlocks[traitName] = 4
+				end
 			end
-			mod.DebugPrint("Unlocked all keepsakes and companions!", 3)
+			mod.DebugPrint("Unlocked all keepsakes and companions and upgraded companions to rank 5!", 3)
 		end
 		--#endregion
 
