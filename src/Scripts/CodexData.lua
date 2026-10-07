@@ -163,7 +163,7 @@ updatedCodexData.SavedEntries.NPC_Thanatos_01.Entries[2].UnlockGameStateRequirem
 	{
 		Path = { "GameState", "UseRecord", "NPC_Thanatos_Field_01" },
 		Comparison = ">=",
-		Value = 5,
+		Value = 6,
 	}
 }
 updatedCodexData.SavedEntries.NPC_Thanatos_01.Entries[3].UnlockThreshold = nil
@@ -171,19 +171,21 @@ updatedCodexData.SavedEntries.NPC_Thanatos_01.Entries[3].UnlockGameStateRequirem
 	{
 		Path = { "GameState", "UseRecord", "NPC_Thanatos_Field_01" },
 		Comparison = ">=",
-		Value = 15,
+		Value = 21,
 	}
 }
 
 for _, assistTraitName in ipairs(mod.AssistTraitNames) do
 	local assistCodexEntry = game.DeepCopyTable(hadesCodexData.Keepsakes.Entries[assistTraitName])
 	assistCodexEntry.ModsNikkelMHadesBiomesSkipShowKillCount = true
+	local unlockThreshold = 0
 	for _, entry in ipairs(assistCodexEntry.Entries) do
+		unlockThreshold = unlockThreshold + entry.UnlockThreshold
 		entry.UnlockGameStateRequirements = {
 			{
 				Path = { "GameState", "TraitUses", assistTraitName },
 				Comparison = ">=",
-				Value = entry.UnlockThreshold,
+				Value = unlockThreshold,
 			},
 		}
 		entry.UnlockThreshold = nil
@@ -206,8 +208,8 @@ hadesCodexData.OtherDenizens.Entries.Minotaur = nil
 updatedCodexData.SavedEntries.NPC_Hades_01 = hadesCodexData.ChthonicGods.Entries.NPC_Hades_01
 updatedCodexData.SavedEntries.NPC_Hades_01.Entries[1].UnlockThreshold = 1
 updatedCodexData.SavedEntries.NPC_Hades_01.Entries[2].UnlockThreshold = 3
-updatedCodexData.SavedEntries.NPC_Hades_01.Entries[3].UnlockThreshold = 7
-updatedCodexData.SavedEntries.NPC_Hades_01.Entries[4].UnlockThreshold = 10
+updatedCodexData.SavedEntries.NPC_Hades_01.Entries[3].UnlockThreshold = 5
+updatedCodexData.SavedEntries.NPC_Hades_01.Entries[4].UnlockThreshold = 6
 updatedCodexData.SavedEntries.NPC_Hades_01.Image = "ModsNikkelMHadesBiomes_" ..
 		updatedCodexData.SavedEntries.NPC_Hades_01.Image
 
@@ -227,14 +229,16 @@ for groupName, groupData in pairs(hadesCodexData) do
 					groupData.Entries[biomeName] = nil
 				else
 					biomeCollection.ModsNikkelMHadesBiomesSkipShowKillCount = true
+					local unlockThreshold = 0
 					for _, entry in ipairs(biomeCollection.Entries) do
 						if entry.UnlockThreshold then
+							unlockThreshold = unlockThreshold + entry.UnlockThreshold
 							entry.UnlockGameStateRequirements =
 							{
 								{
 									Path = { "GameState", "BiomeVisits", biomeName },
 									Comparison = ">=",
-									Value = entry.UnlockThreshold,
+									Value = unlockThreshold,
 								},
 							}
 							entry.UnlockThreshold = nil
@@ -249,6 +253,7 @@ for groupName, groupData in pairs(hadesCodexData) do
 					mod.DebugPrint("Removing enemy " .. enemyName .. " from CodexData as it's not in the ordering", 4)
 					groupData.Entries[enemyName] = nil
 				else
+					local unlockThreshold = 0
 					for _, entry in ipairs(enemyCollection.Entries) do
 						if entry.UnlockThreshold then
 							local newThreshold = entry.UnlockThreshold
@@ -260,12 +265,13 @@ for groupName, groupData in pairs(hadesCodexData) do
 									newThreshold = newThreshold * 2
 								end
 							end
+							unlockThreshold = unlockThreshold + newThreshold
 							entry.UnlockGameStateRequirements = {
 								{
 									Path = { "GameState", "EnemyKills" },
 									SumOf = hadesEnemyCodexGroups[enemyName] or { enemyName },
 									Comparison = ">=",
-									Value = newThreshold,
+									Value = unlockThreshold,
 								},
 							}
 							entry.UnlockThreshold = nil
@@ -280,14 +286,16 @@ for groupName, groupData in pairs(hadesCodexData) do
 					groupData.Entries[characterName] = nil
 				else
 					characterCollection.ModsNikkelMHadesBiomesSkipShowKillCount = true
+					local unlockThreshold = 0
 					for _, entry in ipairs(characterCollection.Entries) do
 						if entry.UnlockThreshold then
+							unlockThreshold = unlockThreshold + entry.UnlockThreshold
 							entry.UnlockGameStateRequirements =
 							{
 								{
 									Path = { "GameState", "UseRecord", characterName },
 									Comparison = ">=",
-									Value = entry.UnlockThreshold,
+									Value = unlockThreshold,
 								},
 							}
 							entry.UnlockThreshold = nil
@@ -309,14 +317,16 @@ end
 -- Add the saved entries to the ModsNikkelMHadesBiomesEnemies group
 for entryName, entry in pairs(updatedCodexData.SavedEntries) do
 	-- Update the unlock requirements
+	local unlockThreshold = 0
 	for _, entryData in ipairs(entry.Entries) do
 		if entryData.UnlockThreshold then
+			unlockThreshold = unlockThreshold + entryData.UnlockThreshold
 			entryData.UnlockGameStateRequirements = {
 				{
 					Path = { "GameState", "EnemyKills" },
 					SumOf = hadesEnemyCodexGroups[entryName] or { entryName },
 					Comparison = ">=",
-					Value = entryData.UnlockThreshold,
+					Value = unlockThreshold,
 				},
 			}
 			entryData.UnlockThreshold = nil
