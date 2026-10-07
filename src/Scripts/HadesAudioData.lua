@@ -7939,6 +7939,46 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 			{ Cue = "/VO/Melinoe_3092", Text = "{#Emph}Argh..." },
 		},
 	},
+	AssistUpgradedVoiceLines = {
+		Cooldowns = {
+			{ Name = "MelCardUpgradeSpeech", Time = 2 },
+		},
+		TriggerCooldowns = { "MelinoeAnyQuipSpeech" },
+		{
+			GameStateRequirements = {
+				{
+					PathFromArgs = true,
+					PathTrue = { "IsMaxAssistLevel" },
+				},
+			},
+			RandomRemaining = true,
+			BreakIfPlayed = true,
+			PreLineWait = 0.45,
+			{ Cue = "/VO/Melinoe_5578", Text = "Deeper connection..." },
+			{ Cue = "/VO/Melinoe_5580", Text = "Closer to me..." },
+			{ Cue = "/VO/Melinoe_5581", Text = "Wisdom of the past..." },
+		},
+		{
+			GameStateRequirements = {
+				{
+					PathFromArgs = true,
+					PathFalse = { "IsMaxAssistLevel" },
+				},
+			},
+			RandomRemaining = true,
+			BreakIfPlayed = true,
+			PreLineWait = 0.45,
+			{ Cue = "/VO/Melinoe_5576", Text = "There we are." },
+			{ Cue = "/VO/Melinoe_5577", Text = "Improved..." },
+			{ Cue = "/VO/Melinoe_0178", Text = "Now..." },
+			{ Cue = "/VO/Melinoe_0179", Text = "All right." },
+			{ Cue = "/VO/Melinoe_0185", Text = "There." },
+			{ Cue = "/VO/Melinoe_0205", Text = "Better." },
+			{ Cue = "/VO/Melinoe_0203", Text = "Yes." },
+			{ Cue = "/VO/Melinoe_0209", Text = "There." },
+			{ Cue = "/VO/Melinoe_0206", Text = "Good." },
+		},
+	},
 	-- #endregion
 	-- #endregion
 }

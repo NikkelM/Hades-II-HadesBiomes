@@ -514,6 +514,8 @@ game.HeroVoiceLines.AssistCompletedVoiceLines = game.HeroVoiceLines.AssistComple
 		mod.HeroVoiceLines.AssistCompletedVoiceLines
 game.HeroVoiceLines.AssistUnavailableVoiceLines = game.HeroVoiceLines.AssistUnavailableVoiceLines or
 		mod.HeroVoiceLines.AssistUnavailableVoiceLines
+game.HeroVoiceLines.AssistUpgradedVoiceLines = game.HeroVoiceLines.AssistUpgradedVoiceLines or
+		mod.HeroVoiceLines.AssistUpgradedVoiceLines
 -- #endregion
 
 -- #region Chaos Gate voiceline adjustments for Orpheus Chaos boon (free entry)

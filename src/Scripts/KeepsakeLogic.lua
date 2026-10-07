@@ -622,6 +622,9 @@ function mod.UpgradeAssist(screen, button)
 		Scale = 0.5,
 	})
 	PlaySound({ Name = "/SFX/Menu Sounds/MirrorCloseWithUpgrade", Id = assistButton.Id })
+	game.thread(game.PlayVoiceLines, game.HeroVoiceLines.AssistUpgradedVoiceLines, true, nil, {
+		IsMaxAssistLevel = mod.GetAssistKeepsakeLevel(traitName) >= 5,
+	})
 
 	game.KeepsakeScreenShowInfo(screen, assistButton)
 	local traitUses = assistButton.TraitData.ExtractData.TooltipKeepsakeUses
