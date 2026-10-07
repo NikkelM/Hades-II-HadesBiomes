@@ -330,6 +330,7 @@ local function on_ready()
 			import "Game/Obstacles/Asphodel.sjson.lua"
 			import "Game/Obstacles/Elysium.sjson.lua"
 			import "Game/Obstacles/Gameplay.sjson.lua"
+			import "Game/Obstacles/GUI.sjson.lua"
 			import "Game/Obstacles/Graybox.sjson.lua"
 			import "Game/Obstacles/House.sjson.lua"
 			import "Game/Obstacles/Styx.sjson.lua"
@@ -338,6 +339,9 @@ local function on_ready()
 			import "Game/Obstacles/Temple.sjson.lua"
 			import "Game/Obstacles/Travel.sjson.lua"
 			DebugLogScriptImportProgress("Obstacle SJSON")
+
+			-- New colours need to be added before using them in voiceline, enemy or NPC data
+			import "Scripts/Color.lua"
 
 			-- Helper functions to deduplicate code in the localization files
 			import "Game/Text/HadesTextUtils.lua"
@@ -355,8 +359,6 @@ local function on_ready()
 			import "Scripts/HadesAudioData.lua"
 			import "Scripts/AudioData.lua"
 
-			-- New colours need to be added before using them in EnemyData
-			import "Scripts/Color.lua"
 			-- New GameData entries need to be added before using them in HadesNPCData
 			import "Scripts/NarrativeData.lua"
 			DebugLogScriptImportProgress("EnemySets, AudioData, Color and NarrativeData")
@@ -441,6 +443,7 @@ local function on_ready()
 			import "Scripts/TraitData_Chaos.lua"
 			import "Scripts/TraitData_Store.lua"
 			import "Scripts/TraitData.lua"
+			import "Scripts/TraitDataAssist.lua"
 			import "Scripts/TraitDataNPCs.lua"
 			import "Scripts/ObstacleData.lua"
 			import "Scripts/ObjectiveData.lua"
@@ -491,6 +494,8 @@ local function on_ready()
 			import "Scripts/Combat.lua"
 			import "Scripts/CombatLogic.lua"
 			import "Scripts/CombatPresentation.lua"
+			import "Scripts/AssistPresentation.lua"
+			import "Scripts/AssistLogic.lua"
 			import "Scripts/DeathLoopLogic.lua"
 			import "Scripts/DreamRunLogic.lua"
 			import "Scripts/DreamRunPresentation.lua"
@@ -503,11 +508,14 @@ local function on_ready()
 			import "Scripts/FamiliarData.lua"
 			import "Scripts/GameStatsLogic.lua"
 			import "Scripts/GardenLogic.lua"
+			import "Scripts/GiftPresentation.lua"
 			import "Scripts/GhostAdminLogic.lua"
 			import "Scripts/HarvestPresentation.lua"
 			import "Scripts/HubPresentation.lua"
+			import "Scripts/HUDLogic.lua"
 			import "Scripts/InteractLogic.lua"
 			import "Scripts/KeepsakeData.lua"
+			import "Scripts/KeepsakeLogic.lua"
 			import "Scripts/MarketPresentation.lua"
 			import "Scripts/MetaUpgradeLogic.lua"
 			import "Scripts/NarrativeLogic.lua"

@@ -110,9 +110,14 @@ local function drawCheatSettings()
 		return
 	end
 
+	rom.ImGui.TextWrapped("Reload your save after changing any cheat setting for the change to take effect.")
+
+	drawCheckbox("Unlock all Zagreus' Journey keepsakes and companions", config.cheats, "z_UnlockAllKeepsakesAndCompanions",
+		configDescriptions.cheats.z_UnlockAllKeepsakesAndCompanions)
+
 	rom.ImGui.PushStyleColor(rom.ImGuiCol.Text, 1.0, 0.3, 0.2, 1.0)
 	rom.ImGui.TextWrapped(
-		"Reload your current save for these settings to take effect. NOT REVERSIBLE: This content stays unlocked even if you disable these settings later.")
+		"NOT REVERSIBLE: The content unlocked by the settings below stays unlocked even if you disable them later.")
 	rom.ImGui.PopStyleColor(1)
 
 	drawCheckbox("Unlock all Zagreus' Journey gameplay incantations", config.cheats,

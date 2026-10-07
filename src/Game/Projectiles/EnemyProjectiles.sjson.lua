@@ -4,7 +4,6 @@ local hadesProjectilesTable = mod.DecodeSjsonFile(hadesProjectilesFile)
 
 local hadesTwoProjectilesFile = rom.path.combine(rom.paths.Content(), "Game\\Projectiles\\PlayerProjectiles.sjson")
 
--- Hades projectiles that are almost identical to Hades II base projectiles
 local baseProjectiles = {
 	{
 		Name = "1_BaseSmallProjectile",
@@ -20,6 +19,16 @@ local baseProjectiles = {
 		InheritFrom = "1_BaseProjectile",
 		ImpactFxInterval = 0.0,
 		SpawnType = "PROJECTILE",
+	},
+	{
+		Name = "1_BaseMagicProjectile",
+		InheritFrom = "1_BaseProjectile",
+		ImpactFxInterval = 0.0,
+		InvincibleImpactSound = "null",
+		UseArmor = false,
+		UseVulnerability = false,
+		CriticalHitMultiplier = 3,
+		ClearOnAttackEffects = false,
 	},
 }
 
@@ -470,6 +479,200 @@ local hadesProjectilesModifications = {
 }
 
 local addProjectiles = {
+	-- #region Companions/Assist traits
+	{
+		Name = "NPC_FurySister_01_Assist",
+		InheritFrom = "1_BaseMagicProjectile",
+		DetonateFx = "FuryHellfire",
+		Type = "INSTANT",
+		DetonateSound = "null",
+		Fuse = 0.6,
+		UseStartLocation = true,
+		StartFx = "MegaeraAssist",
+		AffectsEnemies = true,
+		AffectsFriends = false,
+		Range = 1.0,
+		DamageRadius = 350,
+		DamageRadiusScaleY = 0.58,
+		NumPenetrations = 9999,
+		AffectsSelf = false,
+		CheckUnitImpact = false,
+		CheckObstacleImpact = false,
+		UnlimitedUnitPenetration = true,
+		Damage = 2500,
+		ImpactVelocity = 0,
+		UseArmor = false,
+		UseVulnerability = false,
+		CanCrit = false,
+		GroupName = "FX_Terrain",
+		ImmunityDuration = 1.0,
+		Thing = {
+			Graphic = "FuryHellfirePreviewDecalDark",
+			RotateGeometry = false,
+			Scale = 1.0,
+			Color = {
+				Red = 1.0,
+				Green = 1.0,
+				Blue = 1.0,
+				Opacity = 1.0,
+			},
+			Points = {
+				{
+					X = 0,
+					Y = 8,
+				},
+				{
+					X = 32,
+					Y = 0,
+				},
+				{
+					X = 0,
+					Y = -8,
+				},
+				{
+					X = -32,
+					Y = 0,
+				},
+			},
+		},
+	},
+	{
+		Name = "NPC_Achilles_01_Assist",
+		InheritFrom = "1_BaseMagicProjectile",
+		Type = "INSTANT",
+		Fuse = 0,
+		UseStartLocation = true,
+		StartFx = "AchillesAssist",
+		DetonateFx = "BouldyImpact",
+		DetonateSound = "null",
+		AffectsEnemies = true,
+		AffectsFriends = false,
+		Range = 1.0,
+		DamageRadius = 200,
+		DamageRadiusScaleY = 0.58,
+		NumPenetrations = 9999,
+		AffectsSelf = false,
+		CheckUnitImpact = false,
+		CheckObstacleImpact = false,
+		UnlimitedUnitPenetration = true,
+		Damage = 1500,
+		ImpactVelocity = 0,
+		UseArmor = false,
+		UseVulnerability = false,
+		IgnoreCoverageAngles = true,
+		CanCrit = false,
+		GroupName = "Standing",
+		ImmunityDuration = 1.0,
+		Thing = {
+			Graphic = "FuryHellfirePreviewDecalDarkAlecto",
+			RotateGeometry = false,
+			Scale = 1.0,
+			Color = {
+				Red = 1.0,
+				Green = 1.0,
+				Blue = 1.0,
+				Opacity = 1.0,
+			},
+			Points = {
+				{ X = 0, Y = 8, },
+				{ X = 32, Y = 0, },
+				{ X = 0, Y = -8, },
+				{ X = -32, Y = 0, },
+			},
+		},
+	},
+	{
+		Name = "NPC_Patroclus_01_Assist",
+		InheritFrom = "1_BaseMagicProjectile",
+		Type = "INSTANT",
+		Fuse = 0,
+		UseStartLocation = true,
+		StartFx = "PatroclusAssist",
+		DetonateFx = "BouldyImpact",
+		DetonateSound = "null",
+		AffectsEnemies = true,
+		AffectsFriends = false,
+		Range = 1.0,
+		DamageRadius = 200,
+		DamageRadiusScaleY = 0.58,
+		NumPenetrations = 9999,
+		AffectsSelf = false,
+		CheckUnitImpact = false,
+		CheckObstacleImpact = false,
+		UnlimitedUnitPenetration = true,
+		Damage = 1500,
+		ImpactVelocity = 0,
+		UseArmor = false,
+		UseVulnerability = false,
+		IgnoreCoverageAngles = true,
+		CanCrit = false,
+		GroupName = "Standing",
+		ImmunityDuration = 1.0,
+		Thing = {
+			Graphic = "FuryHellfirePreviewDecalDarkTisiphone",
+			RotateGeometry = false,
+			Scale = 1.0,
+			Color = {
+				Red = 1.0,
+				Green = 1.0,
+				Blue = 1.0,
+				Opacity = 1.0,
+			},
+			Points = {
+				{ X = 0, Y = 8, },
+				{ X = 32, Y = 0, },
+				{ X = 0, Y = -8, },
+				{ X = -32, Y = 0, },
+			},
+		},
+	},
+	{
+		Name = "NPC_Thanatos_01_Assist",
+		InheritFrom = "1_BasePlayerSmallProjectile",
+		DetonateFx = "ThanatosAoE",
+		StartFx = "ThanatosAssist",
+		Type = "INSTANT",
+		Damage = 3500,
+		DamageRadius = 750.0,
+		DamageRadiusScaleY = 0.5,
+		ImpactFx = "ThanatosDeathsHead",
+		ImpactVelocity = 0,
+		Fuse = 3,
+		AffectsFriends = false,
+		AffectsSelf = false,
+		AffectsEnemies = true,
+		CheckUnitImpact = false,
+		CheckObstacleImpact = false,
+		DetonateSound = "null",
+		CanCrit = false,
+		MaxVictimZ = 9999,
+		GroupName = "FX_Terrain",
+		IgnoreCoverageAngles = true,
+		Thing = {
+			Graphic = "RadialNovaThanatosDecalDark",
+			RotateGeometry = false,
+			Scale = 1.0,
+		},
+	},
+	{
+		Name = "NPC_Sisyphus_01_Assist",
+		InheritFrom = "RubbleFall",
+		DetonateFx = "BouldyImpact",
+		Damage = 1000,
+		DamageRadius = 350.0,
+		DamageRadiusScaleX = 1.175,
+		DamageRadiusScaleY = 0.56,
+		ImpactVelocity = 0,
+		AffectsFriends = false,
+		AffectsSelf = false,
+		AffectsEnemies = true,
+		CanCrit = false,
+		MaxVictimZ = 9999,
+		UseVulnerability = false,
+		IgnoreCoverageAngles = true,
+		ImmunityDuration = 0.2,
+	},
+	-- #endregion
 	-- #region ELYSIUM - Theseus god spear recolours
 	{
 		Name = "ModsNikkelMHadesBiomes_TheseusSpearSpinApollo",
@@ -846,8 +1049,10 @@ end)
 
 -- Assign to mod so we can check if the projectile exists in WeaponData.lua
 mod.HadesSjsonProjectilesTable = {}
-for _, projectile in ipairs(hadesProjectilesTable.Projectiles) do
-	if projectile.Name then
-		mod.HadesSjsonProjectilesTable[projectile.Name] = true
+for _, projectiles in ipairs({ hadesProjectilesTable.Projectiles, addProjectiles }) do
+	for _, projectile in ipairs(projectiles) do
+		if projectile.Name then
+			mod.HadesSjsonProjectilesTable[projectile.Name] = true
+		end
 	end
 end

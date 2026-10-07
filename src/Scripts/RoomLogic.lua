@@ -41,6 +41,14 @@ modutil.mod.Path.Wrap("LoadCurrentRoomResources", function(base, currentRoom)
 	-- Always do this, so the Codex also doesn't lag when opening it during a normal run
 	LoadPackages({ Name = "ModsNikkelMHadesBiomesPortraits" })
 
+	local assistTrait = game.GetHeroTrait(game.GameState.LastAssistTrait)
+	if assistTrait ~= nil then
+		if assistTrait.SpeakerNames then
+			game.LoadVoiceBanks(assistTrait.SpeakerNames, nil, true)
+		end
+		mod.LoadAssistSfxBanks(assistTrait.SfxBankNames)
+	end
+
 	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and mod.ValidModdedRunBiomes[currentRoom.RoomSetName] then
 		currentRoom.ModsNikkelMHadesBiomesDestroyIdsOnDeath = currentRoom.ModsNikkelMHadesBiomesDestroyIdsOnDeath or {}
 		currentRoom.ModsNikkelMHadesBiomesStopAnimationsOnDeath = currentRoom.ModsNikkelMHadesBiomesStopAnimationsOnDeath or
@@ -204,6 +212,17 @@ modutil.mod.Path.Wrap("StartRoom", function(base, currentRun, currentRoom)
 	return base(currentRun, currentRoom)
 end)
 
+modutil.mod.Path.Wrap("StartEncounterEffects", function(base, encounter)
+	local returnValue = base(encounter)
+
+	encounter = encounter or game.CurrentRun.CurrentRoom.Encounter
+	if encounter.EncounterType == "Boss" or encounter.EncounterType == "Miniboss" then
+		mod.CheckAssistHint({ Delay = 10 })
+	end
+
+	return returnValue
+end)
+
 modutil.mod.Path.Wrap("LeaveRoom", function(base, currentRun, door)
 	-- For Styx D_Hub, we need to regenerate the Shop encounter when re-entering the room
 	if currentRun.ModsNikkelMHadesBiomesIsModdedRun and door.Room ~= nil and door.Room.ModsNikkelMHadesBiomesOnReloadStripEncounter and door.Room.TimesVisited ~= nil and door.Room.TimesVisited > 0 then
@@ -353,6 +372,15 @@ modutil.mod.Path.Wrap("EndEncounterEffects", function(base, currentRun, currentR
 
 	if currentRoom.ModsNikkelMHadesBiomes_DestroyAssistUnitOnEncounterEndId ~= nil and not currentEncounter.SkipCleanupRaiseDead then
 		game.thread(mod.CleanupOrpheusRaiseDeadEncounter, currentRoom)
+	end
+
+	if currentRoom.ModsNikkelMHadesBiomesDusaAssistUnitId ~= nil then
+		local dusaAssist = game.ActiveEnemies[currentRoom.ModsNikkelMHadesBiomesDusaAssistUnitId]
+		ExpireProjectiles({ Name = "DusaFreezeShotNonHoming" })
+		if dusaAssist ~= nil then
+			game.thread(game.Kill, dusaAssist)
+		end
+		currentRoom.ModsNikkelMHadesBiomesDusaAssistUnitId = nil
 	end
 
 	-- Must be in a normal modded run (not a Dream Run) for the minor prophecy to be fulfilled

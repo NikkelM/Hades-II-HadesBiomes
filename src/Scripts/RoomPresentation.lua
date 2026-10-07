@@ -94,6 +94,18 @@ modutil.mod.Path.Wrap("StartRoomPresentation", function(base, currentRun, curren
 	return base(currentRun, currentRoom, metaPointsAwarded)
 end)
 
+modutil.mod.Path.Wrap("LeaveRoomAudio", function(base, currentRun, exitDoor)
+	local returnValue = base(currentRun, exitDoor)
+
+	if currentRun == nil or currentRun.Hero.IsDead then
+		return returnValue
+	end
+
+	game.thread(game.PlayVoiceLines, game.GlobalVoiceLines.SkellySummonExitReactionVoiceLines, true)
+
+	return returnValue
+end)
+
 modutil.mod.Path.Wrap("RoomEntrancePortal", function(base, currentRun, currentRoom, args)
 	if currentRun.ModsNikkelMHadesBiomesIsModdedRun and currentRoom.RoomSetName == "Chaos" then
 		-- To make sure we have the room reward preview icon loaded in case the next room is a story room

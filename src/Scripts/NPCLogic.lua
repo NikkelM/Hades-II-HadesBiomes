@@ -1047,6 +1047,10 @@ function mod.ShouldShowHadesStatues()
 	return true
 end
 
+function mod.LoadSkellyGiftVoiceBank()
+	game.LoadVoiceBanks({ mod.VoiceoverFileNames.Skelly })
+end
+
 function mod.SpawnHadesSkellyStatues(source, args)
 	if not mod.HiddenConfig.IsValidInstallation then
 		mod.DebugPrint(

@@ -2,7 +2,9 @@
 modutil.mod.Path.Wrap("KillPresentation", function(base, victim, killer, args)
 	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and victim.ModsNikkelMHadesBiomesIsModdedEnemy then
 		game.thread(mod.HandleTetherParentDeath, victim)
+	end
 
+	if (game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and victim.ModsNikkelMHadesBiomesIsModdedEnemy) or victim.ModsNikkelMHadesBiomesForceManualDeathAnimation then
 		if victim.DeathAnimation ~= nil and victim.ManualDeathAnimation and not victim.ModsNikkelMHadesBiomesSkipDeathAnimation and not victim.ModsNikkelMHadesBiomesDiedWhilePolymorphed then
 			-- Clear effects to remove any lingering VFX from moving with the now invisible unit
 			StopAnimation({ Names = { "DemeterRootFxFront", "DemeterRootFxBack", }, DestinationId = victim.ObjectId, PreventChain = true })

@@ -194,6 +194,53 @@ mod.HadesGUIAnimationAdditions = {
 		FilePath = "GUIModded\\Icons\\Status\\WantsToSmooch",
 	},
 	-- #endregion
+	-- #region Companions/Assists
+	{
+		Name = "ModsNikkelMHadesBiomesLegendaryAwardMenuCursorHighlight",
+		FilePath = "GUI\\Screens\\AwardMenu\\Legendary\\KeepsakeHighlight\\KeepsakeHighlight",
+		NumFrames = 40,
+		PlaySpeed = 30,
+		Loop = true,
+		Type = "Book",
+		Scale = 1.6,
+		ScaleFromOwner = "Ignore",
+		Material = "Unlit",
+		GroupName = "Combat_Menu_Overlay_Additive",
+		OffsetX = 2,
+		OffsetY = 24,
+		Saturation = -0.1,
+		Slides = {
+			{ DurationFrames = 1, Sound = "/SFX/Menu Sounds/KeepsakeHighlightShimmerSFX", Frame = 8 },
+		},
+	},
+	{
+		Name = "ModsNikkelMHadesBiomesLegendaryMenuItemEquipped",
+		FilePath = "GUI\\Screens\\AwardMenu\\Legendary\\Equipped",
+		Type = "Constant",
+		EndFrame = 1,
+		NumFrames = 1,
+		StartFrame = 1,
+		Scale = 0.848,
+		ScaleFromOwner = "Ignore",
+		Material = "Unlit",
+		GroupName = "Combat_Menu_Overlay_Additive",
+		OffsetX = -2,
+		OffsetY = 5,
+		PingPongColor = false,
+		HoldLastFrame = true,
+		Loop = false,
+		AddColor = true,
+		StartRed = 1,
+		StartGreen = 0.5,
+		StartBlue = 0.3,
+		EndRed = 0,
+		EndGreen = 0,
+		EndBlue = 0,
+		Duration = 0.15,
+		EaseIn = 0.9,
+		EaseOut = 1.0,
+	},
+	-- #endregion
 }
 
 mod.HadesGUIAnimationModifications = {

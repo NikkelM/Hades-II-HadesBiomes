@@ -46,5 +46,59 @@ modutil.mod.Path.Wrap("ShowRunHistory", function(base, screen, button)
 
 	base(screen, button)
 
+	local run = button.Run
+	local assistTraitName
+	-- As familiars are optional, need to detect if that row is in use or not
+	local hasFamiliar = false
+	if run.TraitCache ~= nil then
+		for traitName in pairs(run.TraitCache) do
+			local traitData = game.TraitData[traitName]
+			if traitData ~= nil and traitData.Icon ~= nil then
+				if traitData.Slot == "Assist" then
+					assistTraitName = traitName
+				elseif traitData.Slot == "Familiar" then
+					hasFamiliar = true
+				end
+			end
+		end
+	end
+
+	if assistTraitName ~= nil then
+		local runDataIndex = 2
+		if hasFamiliar then
+			runDataIndex = runDataIndex + 1
+		end
+		if not game.IsEmpty(run.KeepsakeCache) then
+			for _, keepsakeName in ipairs(run.KeepsakeCache) do
+				if game.TraitData[keepsakeName] ~= nil then
+					runDataIndex = runDataIndex + 1
+				end
+			end
+		end
+
+		ModifyTextBox({
+			Id = screen.RunDataTitles[runDataIndex].Id,
+			Text = "ModsNikkelMHadesBiomes_RunHistoryScreen_Assist",
+			FadeTarget = 1,
+			FadeDuration = 0.2,
+		})
+		SetAnimation({
+			DestinationId = screen.RunDataIcons[runDataIndex].Id,
+			Name = game.TraitData[assistTraitName].Icon,
+			OffsetY = screen.ModsNikkelMHadesBiomesAssistIconOffsetY,
+		})
+		SetAlpha({ Id = screen.RunDataIcons[runDataIndex].Id, Fraction = 1, Duration = 0.2 })
+		SetScale({
+			Id = screen.RunDataIcons[runDataIndex].Id,
+			Fraction = screen.ModsNikkelMHadesBiomesAssistIconScale,
+		})
+		ModifyTextBox({
+			Id = screen.RunDataValues[runDataIndex].Id,
+			Text = assistTraitName,
+			FadeTarget = 1,
+			FadeDuration = 0.2,
+		})
+	end
+
 	game.CodexData.Biomes.Entries = originalEntries
 end)
