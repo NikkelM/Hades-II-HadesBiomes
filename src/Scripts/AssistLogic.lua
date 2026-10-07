@@ -314,7 +314,7 @@ function mod.SisyphusLootSprinkle(assistData)
 	SetAnimation({ DestinationId = bouldy.ObjectId, Name = "ModsNikkelMHadesBiomesBouldyFall" })
 	SetScale({ Id = bouldy.ObjectId, Fraction = 0.2 })
 	AdjustZLocation({ Id = bouldy.ObjectId, Distance = 2000 })
-	ApplyUpwardForce({ Id = bouldy.ObjectId, Speed = -2000 })
+	ApplyUpwardForce({ Id = bouldy.ObjectId, Speed = -800 })
 	game.wait(0.02, game.RoomThreadName)
 	bouldy.OnTouchdownFunctionName = _PLUGIN.guid .. "." .. "SisyphusAssistTouchdown"
 	bouldy.OnTouchdownFunctionArgs = {
