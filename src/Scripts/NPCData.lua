@@ -314,6 +314,16 @@ local npcModifications = {
 			SisyphusAboutKeepsake01 = { RequiredTrait = mod.SharedKeepsakePortSisyphusKeepsakeTrait, },
 			SisyphusAboutKeepsake02 = { RequiredTrait = mod.SharedKeepsakePortSisyphusKeepsakeTrait, },
 		},
+		GiftGivenVoiceLines = {
+			[1] = {
+				-- Companion Shady
+				[1] = { Cue = "/VO/MelinoeField_0769", Text = "Whatever this is... it's remarkable, truly." },
+			},
+			[2] = {
+				-- Keepsake
+				[1] = { Cue = "/VO/Melinoe_1149", Text = "How thoughtful, I accept!" },
+			},
+		},
 		GiftTextLineSets = {
 			SisyphusGift01 = {
 				UnfilledIcon = "EmptyHeartWithGiftIcon",
@@ -473,6 +483,9 @@ local npcModifications = {
 				AngleTowardTargetId = mod.NilValue,
 			},
 		},
+		GiftGivenVoiceLines = {
+			[1] = { Cue = "/VO/Melinoe_1738", Text = "I can't say no to such a lovely gift." },
+		},
 		GiftTextLineSets = {
 			EurydiceGift01 = {
 				UnfilledIcon = "EmptyHeartWithGiftIcon",
@@ -605,6 +618,9 @@ local npcModifications = {
 			-- The new name from SharedKeepsakePort
 			PatroclusAboutKeepsake01 = { RequiredKeepsake = mod.SharedKeepsakePortPatroclusKeepsakeTrait, },
 			PatroclusAboutKeepsake02 = { RequiredKeepsake = mod.SharedKeepsakePortPatroclusKeepsakeTrait, },
+		},
+		GiftGivenVoiceLines = {
+			[1] = { Cue = "/VO/MelinoeField_2571", Text = "I'm most grateful." },
 		},
 		GiftTextLineSets = {
 			PatroclusGift01 = {
@@ -1340,6 +1356,16 @@ local npcModifications = {
 			},
 			-- #endregion
 		},
+		GiftGivenVoiceLines = {
+			[1] = {
+				-- Companion Mort
+				[1] = { Cue = "/VO/MelinoeField_0759", Text = "You're giving this to me? It's an honor." },
+			},
+			[2] = {
+				-- Keepsake
+				[1] = { Cue = "/VO/MelinoeField_2963", Text = "This I accept from you, my lord." },
+			},
+		},
 		GiftTextLineSets = {
 			ThanatosGift01 = {
 				UnfilledIcon = "EmptyHeartWithGiftIcon",
@@ -1719,6 +1745,9 @@ local npcModifications = {
 					},
 				},
 			},
+		},
+		GiftGivenVoiceLines = {
+			[1] = { Cue = "/VO/MelinoeField_4552", Text = "A Keepsake of some sort? {#Emph}Thank you!" },
 		},
 		GiftTextLineSets = {
 			OrpheusGift01 = {
@@ -2787,6 +2816,16 @@ local npcModifications = {
 					AngleHeroTowardTargetId = 390082,
 					PostLineFunctionArgs = { ObjectId = 390082, TeleportToId = 999111 },
 				},
+			},
+		},
+		GiftGivenVoiceLines = {
+			[1] = {
+				-- Companion Battie
+				[1] = { Cue = "/VO/MelinoeField_1944", Text = "It's beautiful, and quite adorable! Thank you!" },
+			},
+			[2] = {
+				-- Keepsake
+				[1] = { Cue = "/VO/Melinoe_2691", Text = "Oh, this really isn't necessary but, {#Emph}erm{#Prev}... thanks." },
 			},
 		},
 		GiftTextLineSets = {

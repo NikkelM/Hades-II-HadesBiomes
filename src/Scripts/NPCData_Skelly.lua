@@ -11,6 +11,16 @@ table.insert(skellyGift07, {
 	Emote = "PortraitEmoteSparkly",
 	Text = "Know what, I want you to have this. To symbolize our friendship, and in case you ever need a hand out there."
 })
+-- Instead of the regular EndVoiceLines from Melinoe, play one referring to receiving something
+skellyGift07.EndVoiceLines = nil
+-- Insert at position 1 to be eligible before the generic one used for the keepsake
+table.insert(game.EnemyData.NPC_Skelly_01.GiftGivenVoiceLines, 1, {
+	BreakIfPlayed = true,
+	PreLineWait = 1.0,
+	UsePlayerSource = true,
+	RequiredTextLines = { "SkellyGift07" },
+	{ Cue = "/VO/Melinoe_1053", Text = "You honor me, Commander." },
+})
 -- #endregion
 
 local newModdedInteractTextLines = {
