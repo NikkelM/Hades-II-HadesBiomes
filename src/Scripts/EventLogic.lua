@@ -39,7 +39,7 @@ end)
 
 -- #region Modded run player model size scaling
 function mod.ApplyModdedPlayerScale(unit, args, roomArgs)
-	local scaleMultiplier = args.ScaleMultiplier or mod.ModdedPlayerScaleMultiplier
+	local scaleMultiplier = args.ScaleMultiplier or ModdedPlayerScaleMultiplier
 	-- Don't stack mod shrinkage on top of Circe shrink, player would get too small
 	if game.HeroHasTrait("CirceShrinkTrait") then
 		scaleMultiplier = 1.0
@@ -62,7 +62,7 @@ modutil.mod.Path.Wrap("CirceEnlarge", function(base, unit, args, roomArgs)
 	unit.ModsNikkelMHadesBiomesCirceScale = args.ScaleMultiplier
 	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun then
 		local modifiedArgs = game.ShallowCopyTable(args) or {}
-		modifiedArgs.ScaleMultiplier = args.ScaleMultiplier * mod.ModdedPlayerScaleMultiplier
+		modifiedArgs.ScaleMultiplier = args.ScaleMultiplier * ModdedPlayerScaleMultiplier
 		return base(unit, modifiedArgs, roomArgs)
 	end
 
