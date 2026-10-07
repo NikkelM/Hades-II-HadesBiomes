@@ -2,6 +2,17 @@
 
 game.EnemyData.NPC_Skelly_01.InteractTextLineSets = game.EnemyData.NPC_Skelly_01.InteractTextLineSets or {}
 
+-- #region Companions/Assists
+-- Add a new additional line to SkellyGift07 when the companion is awarded
+local skellyGift07 = game.EnemyData.NPC_Skelly_01.GiftTextLineSets.SkellyGift07
+skellyGift07.PreEventFunctionName = _PLUGIN.guid .. "." .. "LoadSkellyGiftVoiceBank"
+table.insert(skellyGift07, {
+	Cue = "/VO/Modsnikkelmhadesbiomesskelly_0318",
+	Emote = "PortraitEmoteSparkly",
+	Text = "Know what, I want you to have this. To symbolize our friendship, and in case you ever need a hand out there."
+})
+-- #endregion
+
 local newModdedInteractTextLines = {
 	{
 		Name = "ModsNikkelMHadesBiomes_HadesStatueIntro01",
