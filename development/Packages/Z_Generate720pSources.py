@@ -39,6 +39,10 @@ PACKAGE_SOURCES = {
                 "GUIModded/Screens/ShopIcons/release_parchment_23.png",
                 "GUI/Screens/ShopIcons/release_parchment_23.png",
             ),
+            (
+                "GUIModded/Screens/ShopIcons/spindle_24.png",
+                "GUI/Screens/ShopIcons/spindle_24.png",
+            ),
         ),
         "custom_prefixes": (
             "GUI/Screens/AwardMenu/Legendary/Locked.png",

@@ -64,6 +64,24 @@ function mod.CanFireAssist()
 	return true
 end
 
+function mod.AddAssistCharge(hero, args)
+	game.wait(args.Delay)
+
+	for _, traitData in pairs(hero.Traits) do
+		if traitData.Slot == "Assist" then
+			local existingTrait = game.GetExistingUITrait(traitData)
+			if existingTrait ~= nil then
+				CreateAnimation({ Name = "NewTraitHighlight", DestinationId = existingTrait.AnchorId })
+			end
+			traitData.RemainingUses = (traitData.RemainingUses or 0) + (args.NumCharges or 1)
+			game.UpdateTraitNumber(traitData)
+			break
+		end
+	end
+
+	game.RemoveTrait(hero, args.TraitName, { SkipActivatedTraitUpdate = true })
+end
+
 function mod.CheckAssistHint(args)
 	game.thread(mod.AssistHintDelay, args)
 end
