@@ -17,7 +17,7 @@ Check out the [Zagreus' Journey 1.0 Release Trailer](https://www.youtube.com/wat
 - [So, someone put Hades 1 in Hades 2 and it's amazing. | Haelian](https://www.youtube.com/watch?v=SIVrJya47YQ)
 - [They put Hades 1 in Hades 2 and it's PERFECT | Boated](https://www.youtube.com/watch?v=HYf_z8IV4LE)
 
-![Zagreus' Journey](./img/Key%20Art/KeyArt.png)
+<a href="https://www.youtube.com/watch?v=rxuTLSPqIEE" target="_blank"><img src="./img/Key%20Art/KeyArt.png" alt="Zagreus' Journey"></a>
 
 <div style="display: flex; justify-content: space-between;">
   <img src="https://github.com/NikkelM/Hades-II-HadesBiomes/raw/main/img/screenshots/face_your_father.jpg" alt="Face your Father" width="49.7%">
@@ -48,7 +48,7 @@ It is highly recommended that you complete the main story of the first Hades gam
 - Discover and complete **40+** new Minor Prophecies at the Fated List.
 - Complete **24** new testaments by clearing the new bosses using each of your weapons with new fear levels.
 - Discover and perform **20+** new incantations to unlock gameplay features and progress story events in Zagreus' Journey (use the mod config if you want to immediately unlock all of them).
-- Unlock **six** of the original game's keepsakes by forging relationships with Sisyphus, Eurydice, Patroclus, Orpheus, Megaera and Thanatos through the [Shared Keepsake Port](https://thunderstore.io/c/hades-ii/p/zannc/SharedKeepsakePort/) mod integration (automatically installed with this mod).
+- Unlock **ten** of the original game's keepsakes and companions by forging relationships with Sisyphus, Eurydice, Patroclus, Orpheus, Megaera and Thanatos through the [Shared Keepsake Port](https://thunderstore.io/c/hades-ii/p/zannc/SharedKeepsakePort/) mod integration (automatically installed with this mod).
 - Challenge yourself with a set of new **Chaos Trials**, including randomized "Chaos Within" trials in the spirit of (Great) Chaos Above and Below.
 - Advance through **50** new cosmetic-only ranks at the Spirit Mixer, from the lowly "_Alpha Warden_" to the feared "_Unseen One_".
 - Earn a new set of **three statues** from Commander Schelemeus by escaping the Nightmare Realm at progressively higher fear.
@@ -174,6 +174,7 @@ Congratulations, you've made it to the bottom of the page!
 If you are enjoying this mod and want to say thank you, you can leave a donation on [Ko-Fi](https://ko-fi.com/nikkelm) or [GitHub Sponsors](https://github.com/sponsors/NikkelM).
 
 This mod does not, and never will, use generative AI for any art, voice or music.
+Generative AI has been used for some research and debugging purposes.
 
 ## Disclaimer
 

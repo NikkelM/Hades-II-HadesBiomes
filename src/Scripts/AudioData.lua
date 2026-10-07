@@ -147,43 +147,55 @@ local requiredGlobalVoiceLineModifications = {
 	-- },
 	HadesPostBossVoiceLines = {
 		Find = "Intercom_",
-		Replace = "Modsnikkelmhadesbiomesintercom_",
+		Replace = mod.VoiceoverFileNames.Intercom .. "_",
 	},
 	MegaeraGreetingVoiceLines = {
 		Find = "MegaeraHome_",
-		Replace = "Modsnikkelmhadesbiomesmegaerahome_",
+		Replace = mod.VoiceoverFileNames.MegaeraHome .. "_",
 	},
 	SurvivalEncounterStartVoiceLines = {
 		Find = "Intercom_",
-		Replace = "Modsnikkelmhadesbiomesintercom_",
+		Replace = mod.VoiceoverFileNames.Intercom .. "_",
 	},
 	SurvivalEncounterSurvivedVoiceLines = {
 		Find = "Intercom_",
-		Replace = "Modsnikkelmhadesbiomesintercom_",
+		Replace = mod.VoiceoverFileNames.Intercom .. "_",
 	},
 	PerfectClearEncounterStartVoiceLines = {
 		Find = "Intercom_",
-		Replace = "Modsnikkelmhadesbiomesintercom_",
+		Replace = mod.VoiceoverFileNames.Intercom .. "_",
 	},
 	PerfectClearEncounterFailedVoiceLines = {
 		Find = "Intercom_",
-		Replace = "Modsnikkelmhadesbiomesintercom_",
+		Replace = mod.VoiceoverFileNames.Intercom .. "_",
 	},
 	PerfectClearEncounterQuicklyFailedVoiceLines = {
 		Find = "Intercom_",
-		Replace = "Modsnikkelmhadesbiomesintercom_",
+		Replace = mod.VoiceoverFileNames.Intercom .. "_",
 	},
 	PerfectClearEncounterClearedVoiceLines = {
 		Find = "Intercom_",
-		Replace = "Modsnikkelmhadesbiomesintercom_",
+		Replace = mod.VoiceoverFileNames.Intercom .. "_",
 	},
 	PersephoneFishCaughtVoiceLines = {
 		Find = "Persephone_",
-		Replace = "Modsnikkelmhadesbiomespersephone_",
+		Replace = mod.VoiceoverFileNames.Persephone .. "_",
 	},
 	ModsNikkelMHadesBiomes_FishNotCaughtVoiceLines = {
 		Find = "Persephone_",
-		Replace = "Modsnikkelmhadesbiomespersephone_",
+		Replace = mod.VoiceoverFileNames.Persephone .. "_",
+	},
+	SkellySummonTauntVoiceLines = {
+		Find = "Skelly_",
+		Replace = mod.VoiceoverFileNames.Skelly .. "_",
+	},
+	SkellySummonCombatResolvedVoiceLines = {
+		Find = "Skelly_",
+		Replace = mod.VoiceoverFileNames.Skelly .. "_",
+	},
+	SkellySummonExitReactionVoiceLines = {
+		Find = "Skelly_",
+		Replace = mod.VoiceoverFileNames.Skelly .. "_",
 	},
 }
 local function processCue(data, replacement)
@@ -341,6 +353,14 @@ game.GlobalVoiceLines.ModsNikkelMHadesBiomes_EmptyStartNewHadesRunVoiceLines = g
 		.ModsNikkelMHadesBiomes_EmptyStartNewHadesRunVoiceLines or
 		mod.GlobalVoiceLines.ModsNikkelMHadesBiomes_EmptyStartNewHadesRunVoiceLines
 
+game.GlobalVoiceLines.SkellySummonTauntVoiceLines = game.GlobalVoiceLines.SkellySummonTauntVoiceLines or
+		mod.GlobalVoiceLines.SkellySummonTauntVoiceLines
+game.GlobalVoiceLines.SkellySummonExitReactionVoiceLines = game.GlobalVoiceLines.SkellySummonExitReactionVoiceLines or
+		mod.GlobalVoiceLines.SkellySummonExitReactionVoiceLines
+
+table.insert(game.GlobalVoiceLines.CombatResolvedVoiceLines, mod.GlobalVoiceLines.SkellySummonCombatResolvedVoiceLines)
+table.insert(game.GlobalVoiceLines.CombatResolvedVoiceLines, mod.GlobalVoiceLines.DusaSummonCombatResolvedVoiceLines)
+
 -- #region Hades II GlobalVoiceLines modifications
 -- Add modded boss rooms to SeleneVictoryVoiceLines OrRequirements
 local seleneVictoryBossRoomRequirements = game.GlobalVoiceLines.SeleneVictoryVoiceLines.GameStateRequirements
@@ -487,6 +507,15 @@ game.HeroVoiceLines.TheseusWrathReactionVoiceLines_M = game.HeroVoiceLines.These
 		mod.HeroVoiceLines.TheseusWrathReactionVoiceLines_M
 game.HeroVoiceLines.TheseusWrathReactionVoiceLines_F = game.HeroVoiceLines.TheseusWrathReactionVoiceLines_F or
 		mod.HeroVoiceLines.TheseusWrathReactionVoiceLines_F
+
+game.HeroVoiceLines.AssistActivatedVoiceLines = game.HeroVoiceLines.AssistActivatedVoiceLines or
+		mod.HeroVoiceLines.AssistActivatedVoiceLines
+game.HeroVoiceLines.AssistCompletedVoiceLines = game.HeroVoiceLines.AssistCompletedVoiceLines or
+		mod.HeroVoiceLines.AssistCompletedVoiceLines
+game.HeroVoiceLines.AssistUnavailableVoiceLines = game.HeroVoiceLines.AssistUnavailableVoiceLines or
+		mod.HeroVoiceLines.AssistUnavailableVoiceLines
+game.HeroVoiceLines.AssistUpgradedVoiceLines = game.HeroVoiceLines.AssistUpgradedVoiceLines or
+		mod.HeroVoiceLines.AssistUpgradedVoiceLines
 -- #endregion
 
 -- #region Chaos Gate voiceline adjustments for Orpheus Chaos boon (free entry)

@@ -60,6 +60,7 @@ mod.SubtitleCsvFileNameMappings = {
 	Patroclus = "Patroclus_",
 	Persephone = "Modsnikkelmhadesbiomespersephone_",
 	Sisyphus = "Sisyphus_",
+	Skelly = "Modsnikkelmhadesbiomesskelly_",
 	Storyteller = "Modsnikkelmhadesbiomesstoryteller_",
 	Thanatos = "Thanatos_",
 	ThanatosField = "ThanatosField_",
@@ -454,6 +455,20 @@ mod.BikFileNames = {
 	-- #region Achilles
 	"NPC_AchillesIdle_Bink",
 	"NPC_AchillesIdleGreeting_Bink",
+	-- #endregion
+	-- #region COMPANIONS/ASSISTS
+	-- Skelly
+	"SkellyAssistTrait_Bink",
+	"Enemy_Skeleton_OnHit_Bink",
+	"Enemy_Skeleton_Dead_Bink",
+	"Enemy_Skeleton_Idle_Bink",
+	-- Dusa
+	"NPC_DusaIdle_Bink",
+	"NPC_DusaIdleWorking_Bink",
+	-- Patroclus
+	"NPC_PatroclusKeepSake_Bink",
+	-- Achilles
+	"NPC_AchillesKeepSake_Bink",
 	-- #endregion
 }
 

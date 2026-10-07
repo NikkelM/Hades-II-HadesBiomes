@@ -766,7 +766,7 @@ local installSteps = {
 }
 
 ---Runs the install step assigned to the given hookId.
----Called at the top of each sjson.hook callback. No-op if not installing.
+---Called at the top of SJSON hook callbacks that schedule installation work
 ---@param hookId string The identifier matching an entry in the installSteps table
 function mod.RunInstallStep(hookId)
 	if not mod.InstallationPending then return end

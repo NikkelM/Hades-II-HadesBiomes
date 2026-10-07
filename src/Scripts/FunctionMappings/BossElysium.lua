@@ -83,7 +83,17 @@ function mod.TheseusMinotaurKillPresentation(unit, args)
 		end
 	end
 
-	if unit.Name == "Theseus" then
+	if unit.Name == "Theseus" or unit.Name == "Theseus2" then
+		if unit.ModsNikkelMHadesBiomesSpawnedGodUnitIds ~= nil then
+			for _, unitId in ipairs(unit.ModsNikkelMHadesBiomesSpawnedGodUnitIds) do
+				if game.ActiveEnemies[unitId] ~= nil then
+					game.CleanupEnemy(game.ActiveEnemies[unitId])
+				end
+			end
+			Destroy({ Ids = unit.ModsNikkelMHadesBiomesSpawnedGodUnitIds })
+			unit.ModsNikkelMHadesBiomesSpawnedGodUnitIds = nil
+		end
+
 		ExpireProjectiles({ Name = "TheseusSpearThrow" })
 		game.wait(0.02, game.RoomThreadName)
 		Destroy({ Ids = GetIdsByType({ Name = "TheseusSpearReturnPoint" }) })
@@ -381,6 +391,8 @@ function mod.SpawnTheseusGodUnits(enemy, aiData, currentRun)
 			Group = "Standing",
 			DestinationId = enemy.ObjectId,
 		})
+		enemy.ModsNikkelMHadesBiomesSpawnedGodUnitIds = enemy.ModsNikkelMHadesBiomesSpawnedGodUnitIds or {}
+		table.insert(enemy.ModsNikkelMHadesBiomesSpawnedGodUnitIds, spawnedUnit.ObjectId)
 		game.thread(game.SetupUnit, spawnedUnit, currentRun)
 	end
 

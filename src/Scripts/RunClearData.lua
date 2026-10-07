@@ -14,6 +14,15 @@ local newDamageSourceMappings = {
 	HadesAmmo = "Hades",
 	-- #endregion
 
+	-- #region COMPANIONS/ASSISTS
+	NPC_FurySister_01_Assist = "FuryAssistTrait",
+	NPC_Thanatos_01_Assist = "ThanatosAssistTrait",
+	NPC_Sisyphus_01_Assist = "SisyphusAssistTrait",
+	NPC_Achilles_01_Assist = "AchillesPatroclusAssistTrait",
+	NPC_Patroclus_01_Assist = "AchillesPatroclusAssistTrait",
+	DusaFreezeShotNonHoming = "DusaAssistTrait",
+	-- #endregion
+
 	-- #region TRAPS
 	SpikeTrap = "Traps",
 	HadesSpikeTrapWeapon = "Traps",

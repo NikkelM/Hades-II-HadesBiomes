@@ -164,7 +164,7 @@ modutil.mod.Path.Override("ShowTraitStats", function(screen)
 				Group = screen.ComponentData.DefaultGroup,
 				X = columnData.X,
 				Y = locationY,
-				Scale = screen.IconScaleTraits,
+				Scale = game.TraitData[traitName].Slot == "Assist" and screen.IconScaleTraits * 0.85 or screen.IconScaleTraits,
 				Alpha = 0,
 				AlphaTarget = 1,
 				AlphaTargetDuration = 0.1
@@ -227,4 +227,18 @@ modutil.mod.Path.Override("ShowTraitStats", function(screen)
 			locationY = locationY + screen.RowSpacingTraits
 		end
 	end
+end)
+
+modutil.mod.Path.Wrap("PassesTraitFilter", function(base, filterName, traitName)
+	local traitData = game.TraitData[traitName]
+	if traitData == nil or traitData.Icon == nil then
+		return false
+	end
+
+	-- Also include companions in the familiars screen
+	if filterName == "ModsNikkelMHadesBiomes_GameStats_FamiliarsAndCompanions" and (traitData.FamiliarTrait or traitData.Slot == "Assist") then
+		return true
+	end
+
+	return base(filterName, traitName)
 end)

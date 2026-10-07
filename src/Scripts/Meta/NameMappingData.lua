@@ -841,7 +841,7 @@ mod.HadesHelpTextCopyKeys = {
 	RunHistoryScreenResult_D_Boss01 = true,
 	RunHistoryScreenResult_CharonFight01 = true,
 	RunHistoryScreenResult_Challenge = true,
-	RunHistoryScreen_Assist = true,
+	RunHistoryScreen_Assist = "ModsNikkelMHadesBiomes_RunHistoryScreen_Assist",
 	RunHistoryScreen_Cleared = "ModsNikkelMHadesBiomes_RunHistoryScreen_Cleared",
 	-- #endregion
 	-- #region Victory Screen messages
@@ -1437,6 +1437,13 @@ mod.HadesHelpTextAliases = {
 	CharZagreus = "Zagreus",
 	NPC_FurySister_Story_01 = "NPC_FurySister_01",
 	NPC_Thanatos_Story_01 = "NPC_Thanatos_01",
+	-- Mapping to the normal version to not display a placeholder text after H2 changes the description for 0-use traits
+	FuryAssistTrait_Inactive = "FuryAssistTrait",
+	ThanatosAssistTrait_Inactive = "ThanatosAssistTrait",
+	SisyphusAssistTrait_Inactive = "SisyphusAssistTrait",
+	SkellyAssistTrait_Inactive = "SkellyAssistTrait",
+	DusaAssistTrait_Inactive = "DusaAssistTrait",
+	AchillesPatroclusAssistTrait_Inactive = "AchillesPatroclusAssistTrait",
 }
 
 -- Keys to be removed from the CodexText files before hooking them into Hades II

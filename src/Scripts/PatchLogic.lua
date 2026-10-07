@@ -26,6 +26,18 @@ modutil.mod.Path.Wrap("DoPatches", function(base)
 			end
 			mod.DebugPrint("Permanently unlocked all cosmetics!", 3)
 		end
+
+		if config.cheats.z_UnlockAllKeepsakesAndCompanions then
+			game.GameState.AssistUnlocks = game.GameState.AssistUnlocks or {}
+			for _, traitName in ipairs(game.ConcatTableValuesIPairs(game.ShallowCopyTable(mod.SharedKeepsakePortKeepsakeTraitNames), mod.AssistTraitNames)) do
+				local keepsakeData = game.GetKeepsakeData(traitName)
+				keepsakeData.GiftLevelData.GameStateRequirements = {}
+				if game.TraitData[traitName].Slot == "Assist" then
+					game.GameState.AssistUnlocks[traitName] = 4
+				end
+			end
+			mod.DebugPrint("Unlocked all keepsakes and companions and upgraded companions to rank 5!", 3)
+		end
 		--#endregion
 
 		-- IMPORTANT: Whenever the revision-gated patches below are changed, increase the PatchRevision number at the end of this function
@@ -294,8 +306,25 @@ modutil.mod.Path.Wrap("DoPatches", function(base)
 			game.GameState.ModsNikkelMHadesBiomesCustomCounters = game.GameState.ModsNikkelMHadesBiomesCustomCounters or {}
 		end
 
+		if game.GameState.ModsNikkelMHadesBiomesPatchRevision < 15 then
+			game.GameState.AssistUnlocks = game.GameState.AssistUnlocks or {}
+			for assistTraitName, giftTextLine in pairs({
+				FuryAssistTrait = "MegaeraGift07",
+				ThanatosAssistTrait = "ThanatosGift07_A",
+				SisyphusAssistTrait = "SisyphusGift07_A",
+				SkellyAssistTrait = "SkellyGift07",
+				DusaAssistTrait = "DusaGift07",
+				AchillesPatroclusAssistTrait = "AchillesGift07_A",
+			}) do
+				if game.GameState.TextLinesRecord[giftTextLine] and not game.GameState.GiftPresentation[assistTraitName] then
+					game.GameState.GiftPresentation[assistTraitName] = true
+					game.GameState.NewKeepsakeItem[assistTraitName] = true
+				end
+			end
+		end
+
 		-- IMPORTANT: This must be incremented every time this function is changed
-		game.GameState.ModsNikkelMHadesBiomesPatchRevision = 14
+		game.GameState.ModsNikkelMHadesBiomesPatchRevision = 15
 	end
 
 	return base()

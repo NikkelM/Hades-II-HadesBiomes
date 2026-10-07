@@ -21,6 +21,7 @@ local config = {
   cheats = {
     z_UnlockGameplayIncantations = false,
     z_UnlockAllCosmetics = false,
+    z_UnlockAllKeepsakesAndCompanions = false,
   },
   debugging = {
     hadesGameFolder = "root",
@@ -66,6 +67,8 @@ local configDesc = {
     "NOT REVERSIBLE! If enabled, permanently unlocks all non-story incantations added by Zagreus' Journey. Disabling this later on does not undo the unlocks.",
     z_UnlockAllCosmetics =
     "NOT REVERSIBLE! If enabled, permanently unlocks all cosmetics and Arcana card-back packs added by Zagreus' Journey. Does not grant the badges you can unlock at the Spirit Mixer. Disabling this later on does not undo the unlocks.",
+    z_UnlockAllKeepsakesAndCompanions =
+    "Reversible, but permanently upgrades all companions to rank 5. Immediately unlocks all keepsakes and companions added by Zagreus' Journey (except those not yet unlockable). Disabling this setting will re-lock those not yet unlocked naturally again.",
   },
   debugging = {
     hadesGameFolder =
