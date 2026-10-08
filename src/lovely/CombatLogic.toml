@@ -1,0 +1,13 @@
+[manifest]
+version = "1.0.0"
+priority = 0
+
+# Styx poison should bypass Gale's familiar block like Medea poison
+[[patches]]
+[patches.pattern]
+target = "CombatLogic.lua"
+pattern = "if not isTrapDamage and triggerArgs.EffectName ~= \"MedeaPoison\" then"
+position = "at"
+payload = "if not isTrapDamage and triggerArgs.EffectName ~= \"MedeaPoison\" and triggerArgs.EffectName ~= \"StyxPoison\" then"
+match_indent = true
+times = 1
