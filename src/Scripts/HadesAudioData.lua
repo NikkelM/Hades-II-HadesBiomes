@@ -6954,6 +6954,7 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 			{ Cue = "/VO/Melinoe_2482",      Text = "Once more, then." },
 			{ Cue = "/VO/Melinoe_0375",      Text = "Farewell, Commander.", },
 			{ Cue = "/VO/Melinoe_3058_B",    Text = "Here we go." },
+			{ Cue = "/VO/Melinoe_4303",      Text = "To Tartarus." },
 			-- From the surface route
 			{ Cue = "/VO/Melinoe_1665",      Text = "With the grace of the Moon." },
 			{ Cue = "/VO/Melinoe_2487",      Text = "New night, new path.", },
