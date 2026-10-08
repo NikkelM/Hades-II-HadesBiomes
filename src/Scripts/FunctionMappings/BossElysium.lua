@@ -471,6 +471,21 @@ function mod.ShoutSlow()
 	end
 end
 
+function mod.TheseusChariotRamCollision(enemy, collider)
+	if enemy == nil or collider == nil or collider.ObjectId ~= enemy.ObjectId or enemy.AIStageActive ~= 1 or enemy.AIDisabled or enemy.Dismounted or not enemy.FollowingPath then
+		return
+	end
+	if not game.CheckCooldown("TheseusChariotRam" .. enemy.ObjectId, 0.2) then
+		return
+	end
+
+	game.AIFireProjectile(enemy, {
+		ProjectileName = "TheseusChariotRam",
+		TargetId = enemy.ObjectId,
+		FireFromSelf = true,
+	})
+end
+
 function mod.TheseusChariotDismount(boss, currentRun, aiStage)
 	Stop({ Id = boss.ObjectId })
 	boss.AIDisabled = true
@@ -479,11 +494,9 @@ function mod.TheseusChariotDismount(boss, currentRun, aiStage)
 	end
 	SetUnitProperty({ Property = "MoveGraphic", Value = "Theseus_Walk", DestinationId = boss.ObjectId })
 	SetUnitProperty({ Property = "CanOnlyMoveForward", Value = false, DestinationId = boss.ObjectId })
-	SetUnitProperty({ Property = "CollisionWeaponRequiredVelocity", Value = "500", DestinationId = boss.ObjectId })
 	SetUnitProperty({ Property = "HaltOnSlowMovement", Value = true, DestinationId = boss.ObjectId })
-	SetUnitProperty({ Property = "InitiatedCollisionWeapon", Value = "null", DestinationId = boss.ObjectId })
-	SetUnitProperty({ Property = "RotationSpeed", Value = "1500", DestinationId = boss.ObjectId })
-	SetUnitProperty({ Property = "Speed", Value = "300", DestinationId = boss.ObjectId })
+	SetUnitProperty({ Property = "RotationSpeed", Value = 1500, DestinationId = boss.ObjectId })
+	SetUnitProperty({ Property = "Speed", Value = 300, DestinationId = boss.ObjectId })
 	SetLifeProperty({ Property = "InvulnerableCoverage", Value = math.rad(140), DestinationId = boss.ObjectId, DataValue = false })
 	SetLifeProperty({ Property = "HitSound", Value = "/SFX/Enemy Sounds/Theseus/EmoteHurt", DestinationId = boss.ObjectId })
 	SetThingProperty({ Property = "Graphic", Value = "Theseus_Idle", DestinationId = boss.ObjectId })
@@ -554,7 +567,6 @@ function mod.TheseusChariotAIMovement(enemy, weaponAIData)
 				break
 			end
 		end
-
 		pathIndex = pathIndex + 1
 	end
 	enemy.FollowingPath = false

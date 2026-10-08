@@ -303,14 +303,13 @@ local hadesProjectilesModifications = {
 			Scale = 1.0,
 		},
 	},
-	-- Not used?
 	TheseusChariotRam = {
 		InheritFrom = "1_BaseEnemyProjectile",
 		RotateWithOwner = true,
 		ImpactLineOfSight = true,
-		Fuse = 9.0,
-		NumPenetrations = "null",
-		UnlimitedUnitPenetration = false,
+		Fuse = 0.04,
+		NumPenetrations = 9999,
+		UnlimitedUnitPenetration = true,
 		DieWithOwner = true,
 	},
 	-- Theseus God Wrath attacks

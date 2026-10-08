@@ -132,7 +132,6 @@ local hadesWeaponsModifications = {
 		ProjectileAngleOffset = 90,
 		ProjectileAngleStartOffset = 0,
 	},
-	-- Not used?
 	TheseusChariotRam = {
 		Effect = mod.NilValue,
 	},

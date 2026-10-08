@@ -3002,6 +3002,14 @@ local enemyModifications = {
 		MaxHealth = 21500,
 		ModsNikkelMHadesBiomesGoddessModeMaxHealth = 17400,
 		ModsNikkelMHadesBiomesIgnoreModdedHealthModifiers = true,
+		CollisionReactions = {
+			DeepInheritance = true,
+			Append = true,
+			{
+				MinVelocity = 280,
+				FunctionName = _PLUGIN.guid .. "." .. "TheseusChariotRamCollision",
+			},
+		},
 		OnDeathFunctionName = _PLUGIN.guid .. "." .. "TheseusMinotaurKillPresentation",
 		OnDamagedFunctionName = _PLUGIN.guid .. "." .. "Theseus2Damaged",
 		AIStages = {

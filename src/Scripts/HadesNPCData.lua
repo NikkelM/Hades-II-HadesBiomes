@@ -25,7 +25,7 @@ mod.PresetEventArgs = mod.PresetEventArgs or {
 			VoiceLines = {
 				RandomRemaining = true,
 				Queue = "Interrupt",
-				CooldownTime = "30",
+				CooldownTime = 30,
 				CooldownName = "PatroclusGreetedRecently",
 				SuccessiveChanceToPlay = 0.5,
 
