@@ -236,6 +236,8 @@ game.GlobalVoiceLines.ModsNikkelMHadesBiomes_HadesInvisibilityReactionVoiceLines
 game.GlobalVoiceLines.HadesSighVoiceLines = game.GlobalVoiceLines.HadesSighVoiceLines or
 		mod.GlobalVoiceLines.HadesSighVoiceLines
 
+game.GlobalVoiceLines.EnteredFuryChamberVoiceLines = game.GlobalVoiceLines.EnteredFuryChamberVoiceLines or
+		mod.GlobalVoiceLines.EnteredFuryChamberVoiceLines
 game.GlobalVoiceLines.MultiFuryFightStartVoiceLines = game.GlobalVoiceLines.MultiFuryFightStartVoiceLines or
 		mod.GlobalVoiceLines.MultiFuryFightStartVoiceLines
 game.GlobalVoiceLines.MegaeraGreetingVoiceLines = game.GlobalVoiceLines.MegaeraGreetingVoiceLines or

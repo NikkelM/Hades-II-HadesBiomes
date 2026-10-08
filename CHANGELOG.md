@@ -15,6 +15,7 @@ Other fixes and improvements:
 - Picking up a boon from Hermes while in a Zagreus' Journey run may now have him deliver a message from the first game's Dionysus to you (as Dionysus cannot be encountered during Zagreus' Journey runs), allowing you to experience his storyline.
 - Added all resources that can be found during Zagreus' Journey runs to the Wretched Broker to allow trading them for the equivalent resources from Hades II (they will show after completing any new run).
 - Melinoë will now react to NPCs giving her keepsakes (and companions).
+- Melinoë will now react to entering the Fury's boss chambers.
 - Added a new irreversible "cheat" config option to immediately unlock all (non-story) incantations.
 - Added a new irreversible "cheat" config option to immediately unlock all cosmetics (except badges).
 - Added a new reversible "cheat" config option to immediately unlock all keepsakes and companions (except those not yet available).
