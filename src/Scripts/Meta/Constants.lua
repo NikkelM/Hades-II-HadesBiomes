@@ -594,7 +594,7 @@ mod.SkellyModdedCrossroadsConversations = {
 	"ModsNikkelMHadesBiomes_HadesStatueIntro01",
 }
 
-mod.ModdedPlayerScaleMultiplier = 0.9
+public.ModdedPlayerScaleMultiplier = public.ModdedPlayerScaleMultiplier or 0.9
 
 mod.IncreasedZoomFractionOffset = 0.13
 
