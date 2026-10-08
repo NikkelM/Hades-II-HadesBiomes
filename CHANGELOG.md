@@ -36,6 +36,7 @@ Other fixes and improvements:
 - Balancing: The cooldown of the freeze effect applied by "Lament of Orpheus" is now affected by "Seismic Servo".
 - Balancing: Owning "God of the Dead" now makes "Success Rate" from Hermes eligible.
 - Fixed: When receiving a blessing from Sisyphus outside of his encounter (through other mods), they can spawn out of bounds.
+- Fixed: Hades' portrait does not show during some of his taunt voicelines, e.g. after boss fights or Erebus encounters.
 - Fixed: An interaction prompt shows for Thanatos when he is about to leave after his romance dialogue.
 - Fixed: Player summons are destroyed when either of Theseus or Asterius is defeated in their boss fight, instead of after both have been defeated.
 - Fixed: After buying one of two identical items in the Styx Hub with "Travel Deal" active, returning from a wing may cause the replacement item to have disappeared.
