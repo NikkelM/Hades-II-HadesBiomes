@@ -23,6 +23,10 @@ local newDamageSourceMappings = {
 	DusaFreezeShotNonHoming = "DusaAssistTrait",
 	-- #endregion
 
+	-- #region CHARON
+	CharonGhostChargeSource = "Charon",
+	-- #endregion
+
 	-- #region TRAPS
 	SpikeTrap = "Traps",
 	HadesSpikeTrapWeapon = "Traps",
