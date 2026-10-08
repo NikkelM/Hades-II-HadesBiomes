@@ -542,11 +542,11 @@ function mod.UseLyre(usee, args)
 
 	game.thread(game.PlayVoiceLines, game.HeroVoiceLines.ModsNikkelMHadesBiomes_UsedLyreVoiceLines, true)
 
-	if game.GameState.TextLinesRecord.OrpheusMusicProgress03 and game.GameState.ItemInteractions.ModsNikkelMHadesBiomes_HouseLyre01 >= 140 then
+	if game.GameState.TextLinesRecord.OrpheusMusicProgress03 and game.GameState.ItemInteractions.ModsNikkelMHadesBiomes_HouseLyre01 >= mod.OrpheusLyreInteractionThresholds.SoundQuality.Good then
 		coolDown = 11.5
 		PlaySound({ Name = "/SFX/LyreGood", Id = usee.ObjectId })
 		Shake({ Id = usee.ObjectId, Distance = 0.5, Speed = 30, Duration = 5, FalloffSpeed = 30 })
-	elseif game.GameState.TextLinesRecord.OrpheusMusicProgress02 and game.GameState.ItemInteractions.ModsNikkelMHadesBiomes_HouseLyre01 >= 70 then
+	elseif game.GameState.TextLinesRecord.OrpheusMusicProgress02 and game.GameState.ItemInteractions.ModsNikkelMHadesBiomes_HouseLyre01 >= mod.OrpheusLyreInteractionThresholds.SoundQuality.Medium then
 		coolDown = 4.5
 		PlaySound({ Name = "/SFX/LyreMedium", Id = usee.ObjectId })
 	else

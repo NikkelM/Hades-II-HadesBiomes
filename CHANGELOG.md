@@ -35,6 +35,7 @@ Other fixes and improvements:
 - Balancing: The cooldown of the freeze effect applied by "Lament of Orpheus" has been increased from 10 to 14 seconds.
 - Balancing: The cooldown of the freeze effect applied by "Lament of Orpheus" is now affected by "Seismic Servo".
 - Balancing: Owning "God of the Dead" now makes "Success Rate" from Hermes eligible.
+- Balancing: Progressing mastery of the Lyre in Orpheus' chamber is now quicker.
 - Fixed: When receiving a blessing from Sisyphus outside of his encounter (through other mods), they can spawn out of bounds.
 - Fixed: Gale burns a block when Melinoë is poisoned in Styx (or Elysium), instead of allowing it to happen as is the case with poison in the Polyphemus & Medea boss fight.
 - Fixed: Hades' portrait does not show during some of his taunt voicelines, e.g. after boss fights or Erebus encounters.

@@ -1606,7 +1606,10 @@ local npcModifications = {
 			},
 			OrpheusMusicProgress01 = {
 				RequiredCosmetics = { "ModsNikkelMHadesBiomes_HouseLyre01", },
-				RequiredMinItemInteractions = { ModsNikkelMHadesBiomes_HouseLyre01 = 10, HouseLyre01 = mod.NilValue, },
+				RequiredMinItemInteractions = {
+					ModsNikkelMHadesBiomes_HouseLyre01 = mod.OrpheusLyreInteractionThresholds.TextLines.OrpheusMusicProgress01,
+					HouseLyre01 = mod.NilValue,
+				},
 				[2] = {
 					PostLineThreadedFunctionName = mod.NilValue,
 					PostLineFunctionName = _PLUGIN.guid .. "." .. "MusicPracticePresentation",
@@ -1614,15 +1617,24 @@ local npcModifications = {
 			},
 			OrpheusMusicProgress02 = {
 				RequiredCosmetics = { "ModsNikkelMHadesBiomes_HouseLyre01", },
-				RequiredMinItemInteractions = { ModsNikkelMHadesBiomes_HouseLyre01 = 40, HouseLyre01 = mod.NilValue, },
+				RequiredMinItemInteractions = {
+					ModsNikkelMHadesBiomes_HouseLyre01 = mod.OrpheusLyreInteractionThresholds.TextLines.OrpheusMusicProgress02,
+					HouseLyre01 = mod.NilValue,
+				},
 			},
 			OrpheusMusicProgress03 = {
 				RequiredCosmetics = { "ModsNikkelMHadesBiomes_HouseLyre01", },
-				RequiredMinItemInteractions = { ModsNikkelMHadesBiomes_HouseLyre01 = 80, HouseLyre01 = mod.NilValue, },
+				RequiredMinItemInteractions = {
+					ModsNikkelMHadesBiomes_HouseLyre01 = mod.OrpheusLyreInteractionThresholds.TextLines.OrpheusMusicProgress03,
+					HouseLyre01 = mod.NilValue,
+				},
 			},
 			OrpheusMusicProgress04 = {
 				RequiredCosmetics = { "ModsNikkelMHadesBiomes_HouseLyre01", },
-				RequiredMinItemInteractions = { ModsNikkelMHadesBiomes_HouseLyre01 = 150, HouseLyre01 = mod.NilValue, },
+				RequiredMinItemInteractions = {
+					ModsNikkelMHadesBiomes_HouseLyre01 = mod.OrpheusLyreInteractionThresholds.TextLines.OrpheusMusicProgress04,
+					HouseLyre01 = mod.NilValue,
+				},
 			},
 			OrpheusAboutSingersReunionQuest01 = {
 				SuperPriority = true,

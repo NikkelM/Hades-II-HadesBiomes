@@ -3994,7 +3994,7 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 			PreLineWait = 1.2,
 			SuccessiveChanceToPlay = 0.4,
 			RequiredTextLines = { "OrpheusMusicProgress03" },
-			RequiredMinItemInteractions = { ModsNikkelMHadesBiomes_HouseLyre01 = 140 },
+			RequiredMinItemInteractions = { ModsNikkelMHadesBiomes_HouseLyre01 = mod.OrpheusLyreInteractionThresholds.VoiceLines.Mastered },
 			Cooldowns = {
 				{ Name = "MelinoeLyrePlaying", Time = 50 },
 			},
@@ -4011,7 +4011,7 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 			PreLineWait = 1.2,
 			SuccessiveChanceToPlay = 0.4,
 			RequiredAnyTextLines = { "OrpheusMusicProgress02", "OrpheusMusicProgress03" },
-			RequiredMinItemInteractions = { ModsNikkelMHadesBiomes_HouseLyre01 = 80 },
+			RequiredMinItemInteractions = { ModsNikkelMHadesBiomes_HouseLyre01 = mod.OrpheusLyreInteractionThresholds.VoiceLines.Proficient },
 			Cooldowns = {
 				{ Name = "MelinoeLyrePlaying", Time = 35 },
 			},
@@ -4038,7 +4038,7 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 			SuccessiveChanceToPlay = 0.6,
 			RequiredTextLines = { "OrpheusMusicProgress02" },
 			RequiredFalseTextLines = { "OrpheusMusicProgress03" },
-			RequiredMinItemInteractions = { ModsNikkelMHadesBiomes_HouseLyre01 = 50 },
+			RequiredMinItemInteractions = { ModsNikkelMHadesBiomes_HouseLyre01 = mod.OrpheusLyreInteractionThresholds.VoiceLines.Improving },
 			Cooldowns = {
 				{ Name = "MelinoeLyrePlaying", Time = 25 },
 			},
@@ -4062,7 +4062,7 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 			SuccessiveChanceToPlay = 0.7,
 			RequiredTextLines = { "OrpheusMusicProgress01" },
 			RequiredFalseTextLines = { "OrpheusMusicProgress02", "OrpheusMusicProgress03" },
-			RequiredMinItemInteractions = { ModsNikkelMHadesBiomes_HouseLyre01 = 20 },
+			RequiredMinItemInteractions = { ModsNikkelMHadesBiomes_HouseLyre01 = mod.OrpheusLyreInteractionThresholds.VoiceLines.Struggling },
 			Cooldowns = {
 				{ Name = "MelinoeLyrePlaying", Time = 15 },
 			},

@@ -1209,3 +1209,22 @@ mod.AssistTraitNames = {
 	-- "DusaAssistTrait",
 	-- "AchillesPatroclusAssistTrait",
 }
+
+mod.OrpheusLyreInteractionThresholds = {
+	TextLines = {
+		OrpheusMusicProgress01 = 10,
+		OrpheusMusicProgress02 = 25,
+		OrpheusMusicProgress03 = 45,
+		OrpheusMusicProgress04 = 80,
+	},
+	VoiceLines = {
+		Struggling = 15,
+		Improving = 30,
+		Proficient = 45,
+		Mastered = 75,
+	},
+	SoundQuality = {
+		Medium = 40,
+		Good = 75,
+	},
+}
