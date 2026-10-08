@@ -1181,6 +1181,12 @@ local enemyModifications = {
 		ModsNikkelMHadesBiomesEffectVfxOffsetZ = 80,
 		DreamBiomeData = tartarusEnemyDreamBiomeData,
 	},
+	SwarmerElite = {
+		BlockAttributes = { "HeavyArmor", "Orbit" },
+	},
+	SwarmerSuperElite = {
+		BlockAttributes = { "HeavyArmor", "Orbit" },
+	},
 	LightSpawner = {
 		StunAnimations = { Default = "SpawnerAttackAnim", },
 		WeaponOptions = { "HadesLightSpawnerSpawnerWeapon", },
