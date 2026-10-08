@@ -140,11 +140,10 @@ mod.CombatOverMusicEvents = {
 -- #region Voicelines
 -- Replace cues with the modded name
 local requiredGlobalVoiceLineModifications = {
-	-- These voicelines are not currently used
-	-- HadesDeathTauntVoiceLines = {
-	-- 	Find = "Hades_",
-	-- 	Replace = "Modsnikkelmhadesbiomeshades_"
-	-- },
+	HadesDeathTauntVoiceLines = {
+		Find = "Hades_",
+		Replace = mod.VoiceoverFileNames.Hades .. "_",
+	},
 	HadesPostBossVoiceLines = {
 		Find = "Intercom_",
 		Replace = mod.VoiceoverFileNames.Intercom .. "_",
@@ -216,9 +215,8 @@ for voicelineGroup, replacement in pairs(requiredGlobalVoiceLineModifications) d
 end
 
 -- #region GlobalVoiceLines
--- These would overlap with Melinoe's own voicelines when dying
--- game.GlobalVoiceLines.HadesDeathTauntVoiceLines = game.GlobalVoiceLines.HadesDeathTauntVoiceLines or
--- 		mod.GlobalVoiceLines.HadesDeathTauntVoiceLines
+game.GlobalVoiceLines.HadesDeathTauntVoiceLines = game.GlobalVoiceLines.HadesDeathTauntVoiceLines or
+		mod.GlobalVoiceLines.HadesDeathTauntVoiceLines
 game.GlobalVoiceLines.HadesPostBossVoiceLines = game.GlobalVoiceLines.HadesPostBossVoiceLines or
 		mod.GlobalVoiceLines.HadesPostBossVoiceLines
 game.GlobalVoiceLines.HadesWrathAttackVoiceLines = game.GlobalVoiceLines.HadesWrathAttackVoiceLines or

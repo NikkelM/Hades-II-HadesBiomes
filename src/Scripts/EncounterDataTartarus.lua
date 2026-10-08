@@ -781,7 +781,19 @@ local encounterModifications = {
 		NextRoomResumeMusic = true,
 	},
 	BaseSurvival = {
-		LoadModdedVoiceBanks = { "Modsnikkelmhadesbiomesintercom" },
+		LoadModdedVoiceBanks = { "Modsnikkelmhadesbiomesintercom", "Modsnikkelmhadesbiomeshades" },
+		HeroDeathEvents = {
+			{
+				FunctionName = "HadesSpeakingPresentation",
+				Args = {
+					LineHistoryName = "Hades",
+					SubtitleColor = game.Color.HadesVoice,
+					BlockScreenshake = true,
+					OverlayDeathFx = true,
+					VoiceLines = { GlobalVoiceLines = "HadesDeathTauntVoiceLines" },
+				},
+			},
+		},
 		GameStateRequirements = {
 			NamedRequirementsFalse = { "StandardPackageBountyActive" },
 		},
