@@ -558,13 +558,17 @@ function mod.HandleAssistToggle(screen, button)
 	local traitName = button.Data.Gift
 	local traitData = game.TraitData[traitName]
 	mod.LoadAssistSfxBanks(traitData.SfxBankNames)
-	if game.GameState.LastAssistTrait == traitName then
+	local isEquipping = game.GameState.LastAssistTrait ~= traitName
+	if not isEquipping then
 		game.GameState.LastAssistTrait = nil
 	else
 		game.GameState.LastAssistTrait = traitName
 	end
 
 	PlaySound({ Name = traitData.EquipSound or "/Leftovers/Menu Sounds/TalismanPowderDownLEGENDARY" })
+	if isEquipping and traitName == "SkellyAssistTrait" then
+		game.thread(game.PlayVoiceLines, game.HeroVoiceLines.ModsNikkelMHadesBiomesSkellyAssistEquipReactionVoiceLines, false)
+	end
 	mod.UpdateAssistEquippedFrame(screen)
 	game.KeepsakeScreenUpdateActionBar(screen, button)
 end

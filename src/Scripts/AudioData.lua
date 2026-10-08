@@ -516,6 +516,9 @@ game.HeroVoiceLines.AssistUnavailableVoiceLines = game.HeroVoiceLines.AssistUnav
 		mod.HeroVoiceLines.AssistUnavailableVoiceLines
 game.HeroVoiceLines.AssistUpgradedVoiceLines = game.HeroVoiceLines.AssistUpgradedVoiceLines or
 		mod.HeroVoiceLines.AssistUpgradedVoiceLines
+game.HeroVoiceLines.ModsNikkelMHadesBiomesSkellyAssistEquipReactionVoiceLines = game.HeroVoiceLines
+		.ModsNikkelMHadesBiomesSkellyAssistEquipReactionVoiceLines or
+		mod.HeroVoiceLines.ModsNikkelMHadesBiomesSkellyAssistEquipReactionVoiceLines
 -- #endregion
 
 -- #region Chaos Gate voiceline adjustments for Orpheus Chaos boon (free entry)

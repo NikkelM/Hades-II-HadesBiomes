@@ -7980,6 +7980,29 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 			{ Cue = "/VO/Melinoe_0206", Text = "Good." },
 		},
 	},
+	ModsNikkelMHadesBiomesSkellyAssistEquipReactionVoiceLines = {
+		BreakIfPlayed = true,
+		RandomRemaining = true,
+		PreLineWait = 0.6,
+		ObjectType = "NPC_Skelly_01",
+		Cooldowns = {
+			{ Name = "SkellyAnyQuipSpeech", Time = 35 },
+		},
+		GameStateRequirements = {
+			{
+				PathTrue = { "SessionMapState", "SkellyNoticedMel" },
+			},
+		},
+		{ Cue = "/VO/Skelly_0016", Text = "A fine choice." },
+		{ Cue = "/VO/Skelly_0032", Text = "A wise selection." },
+		{ Cue = "/VO/Skelly_0216", Text = "{#Emph}Ahh{#Prev}, yes!" },
+		{ Cue = "/VO/Skelly_0213", Text = "Oh that's my favorite one." },
+		{ Cue = "/VO/Skelly_0205", Text = "Now you're thinking." },
+		{ Cue = "/VO/Skelly_0384", Text = "Pretty nice, {#Emph}huh?" },
+		{ Cue = "/VO/Skelly_0129", Text = "A fine selection!" },
+		{ Cue = "/VO/Skelly_0130", Text = "A fine selection." },
+		{ Cue = "/VO/Skelly_0063", Text = "Excellent!" },
+	},
 	-- #endregion
 	-- #endregion
 }
