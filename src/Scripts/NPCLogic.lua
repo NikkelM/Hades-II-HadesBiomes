@@ -196,6 +196,8 @@ function mod.GiveRandomConsumablesWithDynamicDestinationId(args)
 	local source = game.ActiveEnemies[args.ModsNikkelMHadesBiomesPreferredDestinationId or 0]
 	if source ~= nil then
 		args.DestinationId = args.ModsNikkelMHadesBiomesPreferredDestinationId
+	else
+		args.Force = 0
 	end
 
 	return game.GiveRandomConsumables(args)
