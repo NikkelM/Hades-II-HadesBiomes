@@ -44,6 +44,7 @@ Other fixes and improvements:
 - Fixed: Clones spawned by enemies with the "Cloner" perk do not die automatically when their parent dies.
 - Fixed: Gale burns a block when Melinoë is poisoned in Styx (or Elysium), instead of allowing it to happen as is the case with poison in the Polyphemus & Medea boss fight.
 - Fixed: Hades' portrait does not show during some of his taunt voicelines, e.g. after boss fights or Erebus encounters.
+- Fixed: The timer sound keeps ticking when dying during an survival encounter.
 - Fixed: An interaction prompt shows for Thanatos when he is about to leave after his romance dialogue.
 - Fixed: Player summons are destroyed when either of Theseus or Asterius is defeated in their boss fight, instead of after both have been defeated.
 - Fixed: After buying one of two identical items in the Styx Hub with "Travel Deal" active, returning from a wing may cause the replacement item to have disappeared.

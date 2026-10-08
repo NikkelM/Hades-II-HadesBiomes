@@ -199,7 +199,7 @@ end
 function mod.SurvivalObjectivePresentation(survivalEncounter)
 	local playedHurryLines = false
 
-	while survivalEncounter.RemainingTime > 0 and not survivalEncounter.TimeIsUp and not survivalEncounter.Completed do
+	while survivalEncounter.RemainingTime > 0 and not survivalEncounter.TimeIsUp and not survivalEncounter.Completed and not game.CurrentRun.Hero.IsDead do
 		if survivalEncounter.RemainingTime <= 10 then
 			if not playedHurryLines and survivalEncounter.TimeExpiringGlobalVoiceLines ~= nil then
 				game.thread(game.PlayVoiceLines, game.GlobalVoiceLines[survivalEncounter.TimeExpiringGlobalVoiceLines], true)
