@@ -18,9 +18,10 @@ modutil.mod.Path.Wrap("KillEnemy", function(base, victim, triggerArgs)
 			local delay = 0
 			local spawns = GetIds({ Name = "Spawner" .. victim.ObjectId }) or {}
 			for _, spawnId in pairs(spawns) do
-				if game.RequiredKillEnemies[spawnId] ~= nil then
+				local spawn = game.ActiveEnemies[spawnId]
+				if spawn ~= nil then
 					delay = delay + killInterval
-					game.thread(mod.DelayedKill, game.RequiredKillEnemies[spawnId],
+					game.thread(mod.DelayedKill, spawn,
 						{ BlockRespawns = true, SkipDeathWeapons = true }, delay)
 				end
 			end
