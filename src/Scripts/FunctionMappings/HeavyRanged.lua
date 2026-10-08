@@ -129,8 +129,12 @@ end
 
 -- Is called whenever HeavyRanged hits.
 function mod.ModsNikkelMHadesBiomesHeavyRangedCrystalOnWeaponHit(victim, victimId, triggerArgs)
-	-- The first hit of each burst should not do anything, as it is the lock-on "hit"
-	if triggerArgs.Detonation == 0 then
+	local projectileHitRecord = game.SessionMapState.FirstHitRecord[triggerArgs.ProjectileId] or {}
+	game.SessionMapState.FirstHitRecord[triggerArgs.ProjectileId] = projectileHitRecord
+	projectileHitRecord.ModsNikkelMHadesBiomesHeavyRangedHitCount =	(projectileHitRecord.ModsNikkelMHadesBiomesHeavyRangedHitCount or 0) + 1
+
+	-- The lock-on hit and the first actual laser hit are set to be non-damaging
+	if projectileHitRecord.ModsNikkelMHadesBiomesHeavyRangedHitCount <= 2 then
 		triggerArgs.DamageAmount = 0
 		triggerArgs.Silent = true
 	end
