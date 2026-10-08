@@ -3059,6 +3059,7 @@ local enemyModifications = {
 		OnDeathThreadedFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesOnDeathFireProjectile",
 		OnDeathFunctionArgs = {
 			ProjectileName = "HadesPoisonPuddle",
+			ModsNikkelMHadesBiomesSkipIfCharmed = true,
 		},
 		ModsNikkelMHadesBiomesEffectVfxOffsetZ = 40,
 		-- Don't allow poison attack when summoned on the player's side

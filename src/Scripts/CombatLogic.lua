@@ -9,6 +9,28 @@ modutil.mod.Path.Wrap("DoEnemyHealthBufferDeplete", function(base, enemy)
 	end
 end)
 
+modutil.mod.Path.Wrap("Kill", function(base, victim, triggerArgs)
+	if victim == nil then
+		return
+	end
+
+	if victim.IsDead then
+		return
+	end
+
+	if game.SessionMapState.HandlingDeath then
+		return
+	end
+
+	triggerArgs = triggerArgs or {}
+
+	if victim.OnDeathFunctionArgs ~= nil and victim.OnDeathFunctionArgs.ModsNikkelMHadesBiomesSkipIfCharmed and (victim.Charmed or victim.AlwaysTraitor or game.IsCharmed({ Id = victim.ObjectId })) then
+		victim.OnDeathThreadedFunctionName = nil
+	end
+
+	return base(victim, triggerArgs)
+end)
+
 modutil.mod.Path.Wrap("KillEnemy", function(base, victim, triggerArgs)
 	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and (victim.ModsNikkelMHadesBiomesIsModdedEnemy or victim.ModsNikkelMHadesBiomesOriginalHadesTwoEnemy) then
 		local killer = triggerArgs.AttackerTable or {}

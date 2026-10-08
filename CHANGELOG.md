@@ -38,6 +38,7 @@ Other fixes and improvements:
 - Balancing: Owning "God of the Dead" now makes "Success Rate" from Hermes eligible.
 - Balancing: Progressing mastery of the Lyre in Orpheus' chamber is now quicker.
 - Fixed: When receiving a blessing from Sisyphus outside of his encounter (through other mods), they can spawn out of bounds.
+- Fixed: Gigantic Vermin that die while charmed leave behind a poison puddle that can poison Melinoë, even after an encounter ends.
 - Fixed: Clones spawned by enemies with the "Cloner" perk do not die automatically when their parent dies.
 - Fixed: Gale burns a block when Melinoë is poisoned in Styx (or Elysium), instead of allowing it to happen as is the case with poison in the Polyphemus & Medea boss fight.
 - Fixed: Hades' portrait does not show during some of his taunt voicelines, e.g. after boss fights or Erebus encounters.
