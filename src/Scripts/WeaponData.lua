@@ -1765,9 +1765,6 @@ local weaponModifications = {
 		},
 	},
 	MinotaurTheseusThrow_Minotaur = {
-		GameStateRequirements = {
-			RequiredAnyTextLines = { "TheseusAboutFraternalBonds06_A", "TheseusAboutFraternalBonds06_B" },
-		},
 		AIData = {
 			PartnerForceWeaponInterrupt = "MinotaurTheseusThrow_Theseus",
 			WaitForComboPartnerMoveAnimation = "Minotaur_Crouch",
@@ -1940,9 +1937,6 @@ local weaponModifications = {
 		},
 	},
 	MinotaurTheseusThrow_Theseus = {
-		GameStateRequirements = {
-			RequiredAnyTextLines = { "TheseusAboutFraternalBonds06_A", "TheseusAboutFraternalBonds06_B" },
-		},
 		AIData = {
 			RequireComboPartnerNotifyName = "MinotaurTheseusThrow_Theseus",
 			ForceIfComboPartnerNotifyName = "MinotaurTheseusThrow_Theseus",

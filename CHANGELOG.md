@@ -47,6 +47,7 @@ Other fixes and improvements:
 - Fixed: Destroying butterflies spawned by Soul Catchers with certain attacks constantly creates "Blocked!" presentation effects.
 - Fixed: Theseus does not deal damage if he rams you with his Chariot.
 - Fixed: Asterius can get stuck charging at Theseus during the "Delta Strike" combo attack.
+- Fixed: The "Bullhorn" combo attack performed by Theseus and Asterius is only eligible once they reconcile, instead of from the start of the game.
 - Fixed: Gigantic Vermin that die while charmed leave behind a poison puddle that can poison Melinoë, even after an encounter ends.
 - Fixed: Theseus may move faster than expected in his second phase if the Vow of Rivals is active.
 - Fixed: Bosses can be stunned when blocking their attacks using the Black Coat's Omega Attack (the attacks can still be blocked, but bosses will no longer be stunned).
