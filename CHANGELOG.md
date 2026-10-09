@@ -43,6 +43,7 @@ Other fixes and improvements:
 - Balancing: Owning "God of the Dead" now makes "Success Rate" from Hermes eligible.
 - Balancing: Progressing mastery of the Lyre in Orpheus' chamber is now quicker.
 - Fixed: When receiving a blessing from Sisyphus outside of his encounter (through other mods), they can spawn out of bounds.
+- Fixed: Destroying butterflies spawned by Soul Catchers with certain attacks constantly creates "Blocked!" presentation effects.
 - Fixed: Theseus does not deal damage if he rams you with his Chariot.
 - Fixed: Asterius can get stuck charging at Theseus during the "Delta Strike" combo attack.
 - Fixed: Gigantic Vermin that die while charmed leave behind a poison puddle that can poison Melinoë, even after an encounter ends.

@@ -190,6 +190,23 @@ modutil.mod.Path.Wrap("DisableAllyUnits", function(base)
 	return base()
 end)
 
+modutil.mod.Path.Wrap("DoBlock", function(base, triggerArgs)
+	local weaponName = triggerArgs.WeaponName
+
+	if weaponName ~= nil and game.WeaponData[weaponName] ~= nil then
+		-- Prevent "Blocked!" popups when blocking FlurrySpawner butterflies on these attacks
+		if game.Contains({ "WeaponDaggerThrow", "WeaponSuitRanged", "WeaponAxeSpecial" }, weaponName) and game.Contains({ "FlurrySpawnerWeapon", "FlurrySpawnerWeaponElite" }, triggerArgs.BlockedProjectileName) then
+			local doProjectileBlockPresentation = game.WeaponData[weaponName].DoProjectileBlockPresentation
+			game.WeaponData[weaponName].DoProjectileBlockPresentation = false
+			local returnValue = base(triggerArgs)
+			game.WeaponData[weaponName].DoProjectileBlockPresentation = doProjectileBlockPresentation
+			return returnValue
+		end
+	end
+
+	return base(triggerArgs)
+end)
+
 function mod.DelayedKill(victim, triggerArgs, delay)
 	game.wait(delay, game.RoomThreadName)
 	if game.ActiveEnemies[victim.ObjectId] ~= nil then
