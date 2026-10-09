@@ -97,7 +97,7 @@ local roomReplacements = {
 				},
 				-- accumulation
 				{
-					ChanceToPlay = 0.5,
+					ChanceToPlay = 0.45,
 				},
 			},
 		},
@@ -145,7 +145,7 @@ local roomReplacements = {
 				},
 				-- accumulation
 				{
-					ChanceToPlay = 0.5,
+					ChanceToPlay = 0.45,
 					{
 						SumPrevRooms = 2,
 						Path = { "NumPickaxePoints" },
@@ -196,7 +196,7 @@ local roomReplacements = {
 				},
 				-- accumulation
 				{
-					ChanceToPlay = 0.45,
+					ChanceToPlay = 0.4,
 					{
 						SumPrevRooms = 2,
 						Path = { "NumShovelPoints" },
@@ -594,7 +594,7 @@ local roomReplacements = {
 				},
 				-- accumulation
 				{
-					ChanceToPlay = 0.6,
+					ChanceToPlay = 0.55,
 				},
 			},
 		},
@@ -1061,7 +1061,7 @@ local roomModifications = {
 				},
 				-- accumulation
 				{
-					ChanceToPlay = 0.5,
+					ChanceToPlay = 0.45,
 				},
 			},
 		},
@@ -1085,7 +1085,7 @@ local roomModifications = {
 				},
 				-- accumulation
 				{
-					ChanceToPlay = 0.5,
+					ChanceToPlay = 0.45,
 				},
 			},
 		},
@@ -1107,7 +1107,7 @@ local roomModifications = {
 				},
 				-- accumulation
 				{
-					ChanceToPlay = 0.45,
+					ChanceToPlay = 0.4,
 				},
 			},
 		},

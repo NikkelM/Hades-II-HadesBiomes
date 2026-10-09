@@ -112,7 +112,7 @@ local roomReplacements = {
 			{
 				Path = { "GameState", "LifetimeResourcesGained", "ModsNikkelMHadesBiomes_SeedElysium" },
 				Comparison = ">=",
-				Value = 3,
+				Value = 2,
 			},
 			{
 				-- At least two major rooms
@@ -151,7 +151,7 @@ local roomReplacements = {
 				},
 				-- accumulation
 				{
-					ChanceToPlay = 0.5,
+					ChanceToPlay = 0.6,
 					{
 						SumPrevRooms = 6,
 						Path = { "NumPickaxePoints" },
@@ -1116,7 +1116,7 @@ local roomModifications = {
 			{
 				Path = { "GameState", "LifetimeResourcesGained", "ModsNikkelMHadesBiomes_SeedElysium" },
 				Comparison = ">=",
-				Value = 3,
+				Value = 2,
 			},
 			OrRequirements =
 			{
@@ -1130,7 +1130,7 @@ local roomModifications = {
 				},
 				-- accumulation
 				{
-					ChanceToPlay = 0.5,
+					ChanceToPlay = 0.6,
 				},
 			},
 		},
