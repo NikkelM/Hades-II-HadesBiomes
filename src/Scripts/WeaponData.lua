@@ -1736,8 +1736,7 @@ local weaponModifications = {
 			FireRotationDampening = 0.8,
 			MoveWithinRange = true,
 			ImmuneToProjectileSlow = true,
-			-- A lower value causes consistent crashes
-			MoveSuccessDistance = 35,
+			MoveSuccessDistance = 125,
 			PostAttackStop = true,
 			PostAttackDuration = 1.2,
 			PostAttackFx = "MinotaurBullRushHornStrike",

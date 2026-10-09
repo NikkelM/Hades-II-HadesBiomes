@@ -44,6 +44,7 @@ Other fixes and improvements:
 - Balancing: Progressing mastery of the Lyre in Orpheus' chamber is now quicker.
 - Fixed: When receiving a blessing from Sisyphus outside of his encounter (through other mods), they can spawn out of bounds.
 - Fixed: Theseus does not deal damage if he rams you with his Chariot.
+- Fixed: Asterius can get stuck charging at Theseus during the "Delta Strike" combo attack.
 - Fixed: Gigantic Vermin that die while charmed leave behind a poison puddle that can poison Melinoë, even after an encounter ends.
 - Fixed: Theseus may move faster than expected in his second phase if the Vow of Rivals is active.
 - Fixed: Bosses can be stunned when blocking their attacks using the Black Coat's Omega Attack (the attacks can still be blocked, but bosses will no longer be stunned).
