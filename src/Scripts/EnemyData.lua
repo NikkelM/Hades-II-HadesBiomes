@@ -1319,6 +1319,12 @@ local enemyModifications = {
 		AIOptions = { _PLUGIN.guid .. "." .. "HarpySupportAI" },
 		-- Otherwise, doesn't get cleaned up after boss kill as of the Unseen Update
 		RequiredKill = true,
+		DreamBiomeData = {
+			[1] = { AddOutgoingDamageModifier = { PlayerMultiplier = 1.5 } },
+			[2] = { AddOutgoingDamageModifier = { PlayerMultiplier = 2.3 } },
+			[3] = { AddOutgoingDamageModifier = { PlayerMultiplier = 3.5 } },
+			[4] = { AddOutgoingDamageModifier = { PlayerMultiplier = 4.7 } },
+		},
 	},
 	Harpy = {
 		-- Base Health: 4400

@@ -869,9 +869,13 @@ local weaponModifications = {
 		},
 	},
 	SummonMegaeraWhipWhirl = {
+		IgnoreOutgoingDamageModifiers = false,
 		AIData = {
 			ImmuneToProjectileSlow = true,
 		},
+	},
+	SummonMegaeraHarpyBeam = {
+		IgnoreOutgoingDamageModifiers = false,
 	},
 	HarpyLightning = {
 		AIData = {
@@ -975,9 +979,13 @@ local weaponModifications = {
 		},
 	},
 	SummonAlectoWhipShot = {
+		IgnoreOutgoingDamageModifiers = false,
 		AIData = {
 			ImmuneToProjectileSlow = true,
 		},
+	},
+	SummonAlectoLightningChase = {
+		IgnoreOutgoingDamageModifiers = false,
 	},
 	-- #endregion
 	-- #region TARTARUS - Tisiphone
@@ -1096,9 +1104,13 @@ local weaponModifications = {
 		},
 	},
 	SummonTisiphoneBombingRun = {
+		IgnoreOutgoingDamageModifiers = false,
 		AIData = {
 			AttackSlotInterval = 0.01,
 		},
+	},
+	SummonTisiphoneFog = {
+		IgnoreOutgoingDamageModifiers = false,
 	},
 	-- #endregion
 	-- #endregion
