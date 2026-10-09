@@ -42,8 +42,9 @@ Other fixes and improvements:
 - Fixed: When receiving a blessing from Sisyphus outside of his encounter (through other mods), they can spawn out of bounds.
 - Fixed: Theseus does not deal damage if he rams you with his Chariot.
 - Fixed: Gigantic Vermin that die while charmed leave behind a poison puddle that can poison Melinoë, even after an encounter ends.
-- Fixed: Clones spawned by enemies with the "Cloner" perk do not die automatically when their parent dies.
 - Fixed: Theseus may move faster than expected in his second phase if the Vow of Rivals is active.
+- Fixed: Bosses can be stunned when blocking their attacks using the Black Coat's Omega Attack (the attacks can still be blocked, but bosses will no longer be stunned).
+- Fixed: Clones spawned by enemies with the "Cloner" perk do not die automatically when their parent dies.
 - Fixed: Gale burns a block when Melinoë is poisoned in Styx (or Elysium), instead of allowing it to happen as is the case with poison in the Polyphemus & Medea boss fight.
 - Fixed: Hades' portrait does not show during some of his taunt voicelines, e.g. after boss fights or Erebus encounters.
 - Fixed: The timer sound keeps ticking when dying during an survival encounter.

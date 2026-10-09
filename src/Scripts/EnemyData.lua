@@ -488,6 +488,8 @@ local enemyReplacements = {
 		ActivateFx = "EnemySummonRune",
 		ActivateFx2 = "nil",
 		ActivateFxPreSpawn = "nil",
+		-- Prevent bosses from being stunnable by the Coat Omega Attack block
+		EffectBlocks = { "BlockStun" },
 	},
 	-- #endregion
 
@@ -3486,6 +3488,7 @@ local enemyModifications = {
 			[3] = { TransitionUnthreadedFunctionNames = { _PLUGIN.guid .. "." .. "RandomizeCover" }, },
 		},
 		IgnoreSprintPhasingStasisStun = true,
+		EffectBlocks = { "BlockStun" },
 	},
 	CharonGhostChargeSource = {
 		ModsNikkelMHadesBiomesIsModdedEnemy = true,
