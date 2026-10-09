@@ -514,6 +514,9 @@ function mod.GetFinalBossExitDoorUseText(door)
 	-- Ending01 has already been reached, allow quickly exiting through outro, or entering Surface anyways
 	if game.GameState.TextLinesRecord["Ending01"] ~= nil then
 		door.CanBeRerolled = true
+		if door == game.SessionMapState.ActiveUseTarget and not GetConfigOptionValue({ Name = "UseMouse" }) then
+			AddControlBlock("Shout", "ActiveUseTarget")
+		end
 		return "ModsNikkelMHadesBiomes_UseFinalBossDoorWithSurface"
 	end
 

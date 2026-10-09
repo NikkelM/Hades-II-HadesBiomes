@@ -55,6 +55,7 @@ Other fixes and improvements:
 - Fixed: Player summons are destroyed when either of Theseus or Asterius is defeated in their boss fight, instead of after both have been defeated.
 - Fixed: After buying one of two identical items in the Styx Hub with "Travel Deal" active, returning from a wing may cause the replacement item to have disappeared.
 - Fixed: The in-game timer continues running after Hades lets Melinoë pass on the tenth clear.
+- Fixed: If playing with controller and a Hex is ready after Hades' boss fight completes, using the "Proceed" action to enter the Surface after the true ending of Zagreus' Journey fires the Hex at the same time as exiting the room.
 - Fixed: Blood Triad progress and indicators are cleared when enemies teleport.
 - Fixed: A small number of enemy attacks may have unintended behaviour in rare cases, caused by legacy properties not being migrated correctly due to unstable ordering.
 - Fixed: During Dream Dives, if the "Vow of Menace" is active and wants to replace certain non-replaceable enemies, those enemies incorrectly receive the scaling from the next biome, instead of their own.
