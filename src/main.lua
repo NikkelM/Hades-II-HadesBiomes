@@ -327,6 +327,7 @@ local function on_ready()
 			import "Game/Projectiles/EnemyProjectiles.sjson.lua"
 			DebugLogScriptImportProgress("Projectile SJSON")
 
+			import "Game/Obstacles/AmbienceGenerators.sjson.lua"
 			import "Game/Obstacles/Asphodel.sjson.lua"
 			import "Game/Obstacles/Elysium.sjson.lua"
 			import "Game/Obstacles/Gameplay.sjson.lua"

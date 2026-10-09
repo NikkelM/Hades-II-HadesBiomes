@@ -52,6 +52,7 @@ Other fixes and improvements:
 - Fixed: Theseus may move faster than expected in his second phase if the Vow of Rivals is active.
 - Fixed: Bosses can be stunned when blocking their attacks using the Black Coat's Omega Attack (the attacks can still be blocked, but bosses will no longer be stunned).
 - Fixed: Clones spawned by enemies with the "Cloner" perk do not die automatically when their parent dies.
+- Fixed: A background ambience track in Elysium does not play.
 - Fixed: Gale burns a block when Melinoë is poisoned in Styx (or Elysium), instead of allowing it to happen as is the case with poison in the Polyphemus & Medea boss fight.
 - Fixed: Hades' portrait does not show during some of his taunt voicelines, e.g. after boss fights or Erebus encounters.
 - Fixed: The timer sound keeps ticking when dying during an survival encounter.
