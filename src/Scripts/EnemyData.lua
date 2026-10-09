@@ -924,6 +924,7 @@ local enemyModifications = {
 		ActivateRequirements = mod.NilValue,
 		DefaultAIData = {},
 		AIOptions = { "IdleAI" },
+		LineHistoryName = "NPC_Skelly_01",
 		SubtitleColor = game.Color.SkellyVoice,
 		StunAnimations = { Default = "EnemySkeletonOnHit" },
 		OnDeathFunctionName = _PLUGIN.guid .. "." .. "SkellyAssistDeath",
