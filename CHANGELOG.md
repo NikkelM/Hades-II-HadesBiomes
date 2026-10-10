@@ -68,6 +68,7 @@ Other fixes and improvements:
 - Fixed: An interaction prompt shows for Thanatos when he is about to leave after his romance dialogue.
 - Fixed: Player summons are destroyed when either of Theseus or Asterius is defeated in their boss fight, instead of after both have been defeated.
 - Fixed: After buying one of two identical items in the Styx Hub with "Travel Deal" active, returning from a wing may cause the replacement item to have disappeared.
+- Fixed: Resource spawns can slightly overlap with each other or Chaos or Erebus Gates.
 - Fixed: The in-game timer continues running after Hades lets Melinoë pass on the tenth clear.
 - Fixed: If playing with controller and a Hex is ready after Hades' boss fight completes, using the "Proceed" action to enter the Surface after the true ending of Zagreus' Journey fires the Hex at the same time as exiting the room.
 - Fixed: Blood Triad progress and indicators are cleared when enemies teleport.

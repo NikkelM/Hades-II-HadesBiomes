@@ -298,14 +298,9 @@ modutil.mod.Path.Wrap("HandleSecretSpawns", function(base, currentRun)
 		local currentRoom = currentRun.CurrentRoom
 		local secretPointIds = GetIdsByType({ Name = "SecretPoint" }) or {}
 
-		if currentRun.CurrentRoom and currentRun.CurrentRoom.ModsNikkelMHadesBiomesSecretDoorOnId then
+		if currentRoom.ModsNikkelMHadesBiomesSecretDoorOnId then
 			-- Exclude the ID of the Chaos Gate that was spawned in this room from being used for the ShrinePointDoor
-			for i, secretPointId in ipairs(secretPointIds) do
-				if secretPointId == currentRun.CurrentRoom.ModsNikkelMHadesBiomesSecretDoorOnId then
-					table.remove(secretPointIds, i)
-					break
-				end
-			end
+			game.RemoveValueAndCollapse(secretPointIds, currentRoom.ModsNikkelMHadesBiomesSecretDoorOnId)
 		end
 
 		-- Save that a SellTraitShop was spawned (vanilla doesn't do that anymore)
@@ -328,7 +323,8 @@ modutil.mod.Path.Wrap("HandleSecretSpawns", function(base, currentRun)
 			local shrinePointRoomName = game.GetRandomValue(shrinePointRoomOptions)
 			local shrinePointRoomData = game.RoomSetData.Challenge[shrinePointRoomName]
 			if shrinePointRoomData ~= nil then
-				local secretPointId = game.RemoveRandomValue(secretPointIds)
+				local secretPointId = mod.RemoveRandomLocationIdWithBlockerIds(secretPointIds,
+					currentRoom.ModsNikkelMHadesBiomesResourcePointIds or {}, 180)
 				local shrinePointDoor = game.DeepCopyTable(game.ObstacleData.ShrinePointDoor) or {}
 				shrinePointDoor.ObjectId = SpawnObstacle({
 					Name = "ShrinePointDoor",

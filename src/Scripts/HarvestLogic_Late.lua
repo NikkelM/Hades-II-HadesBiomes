@@ -1,4 +1,12 @@
 modutil.mod.Path.Context.Wrap("SetupHarvestPoints", function(currentRoom, harvestPointArgs)
+	local harvestLocationLists = {}
+	local harvestLocationChoiceKeys = {
+		HarvestPoint = "HarvestPointChoicesIds",
+		ShovelPoint = "ShovelPointChoices",
+		PickaxePoint = "PickaxePointChoices",
+		ExorcismPoint = "ExorcismPointChoices",
+	}
+
 	-- To replace which Ids get used to place the current harvest point
 	modutil.mod.Path.Wrap("GetInactiveIdsByType", function(base, args)
 		-- Only use different logic if we are in a modded run, but not in Chaos, as that has proper harvest point placements
@@ -84,6 +92,7 @@ modutil.mod.Path.Context.Wrap("SetupHarvestPoints", function(currentRoom, harves
 					end
 				end
 
+				harvestLocationLists[args.Name] = eligibleIds
 				return eligibleIds
 			end
 		end
@@ -113,6 +122,24 @@ modutil.mod.Path.Context.Wrap("SetupHarvestPoints", function(currentRoom, harves
 			}
 
 			if game.Contains(moddedResourceAnimations, obstacle.Animation) or obstacle.Name == "ExorcismPoint" or obstacle.Name == "ShovelPoint" then
+				currentRoom.ModsNikkelMHadesBiomesResourcePointIds = currentRoom.ModsNikkelMHadesBiomesResourcePointIds or {}
+				-- Choose a new location if the picked ID is too close to a Chaos or Erebus Gate, or another resource
+				local blockerIds = GetIdsByType({ Names = { "SecretDoor", "ShrinePointDoor" } }) or {}
+				for _, resourcePointId in ipairs(currentRoom.ModsNikkelMHadesBiomesResourcePointIds or {}) do
+					table.insert(blockerIds, resourcePointId)
+				end
+				local selectedId = mod.RemoveRandomLocationIdWithBlockerIds(harvestLocationLists[obstacle.Name], blockerIds,
+					180, obstacle.ObjectId)
+				if selectedId ~= nil and selectedId ~= obstacle.ObjectId then
+					for index, choiceId in ipairs(currentRoom[harvestLocationChoiceKeys[obstacle.Name]] or {}) do
+						if choiceId == obstacle.ObjectId then
+							currentRoom[harvestLocationChoiceKeys[obstacle.Name]][index] = selectedId
+							break
+						end
+					end
+					obstacle.ObjectId = selectedId
+				end
+
 				if obstacle.ModsNikkelMHadesBiomesOccupySpawnPointId then
 					obstacle.OccupyingSpawnPointId = obstacle.ObjectId
 				end
@@ -143,6 +170,7 @@ modutil.mod.Path.Context.Wrap("SetupHarvestPoints", function(currentRoom, harves
 					DestinationId = obstacle.ObjectId,
 					Group = "Standing",
 				})
+				table.insert(currentRoom.ModsNikkelMHadesBiomesResourcePointIds, obstacle.ObjectId)
 
 				-- Scale down ExorcismPoint ghosts
 				if obstacle.ModsNikkelMHadesBiomesScaleFactors and obstacle.ModsNikkelMHadesBiomesScaleFactors[obstacle.Animation] then
