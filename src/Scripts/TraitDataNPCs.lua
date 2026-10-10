@@ -51,6 +51,12 @@ local newTraitData = {
 	ModsNikkelMHadesBiomesSisyphusHealing = {
 		InheritFrom = { "ModsNikkelMHadesBiomesBaseSisyphus" },
 		Icon = "Boon_Sisyphus_01",
+		GameStateRequirements = {
+			{
+				FunctionName = "RequiredHealthFraction",
+				FunctionArgs = { Comparison = "<=", Value = 0.9 },
+			},
+		},
 		AcquireFunctionName = _PLUGIN.guid .. "." .. "GiveRandomConsumablesWithDynamicDestinationId",
 		AcquireFunctionArgs = {
 			Delay = 0.5,

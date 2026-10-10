@@ -45,6 +45,7 @@ Other fixes and improvements:
 - Balancing: Decreased the chances for Bloodroot, Wax and Deathcap Spores to appear in Tartarus.
 - Balancing: Decreased the chance for Granite to appear in Asphodel.
 - Balancing: Increased the chance for Pumpkin Seeds to appear in the Temple of Styx.
+- Balancing: "Warm Embrace" by Sisyphus can now only be offered if you are missing at least 10% of your health.
 - Balancing: The cooldown of the freeze effect applied by "Lament of Orpheus" has been increased from 10 to 14 seconds.
 - Balancing: The cooldown of the freeze effect applied by "Lament of Orpheus" is now affected by "Seismic Servo".
 - Balancing: Reduced the amount of rerolls given by "Good Riddance" from 5 to 4.
