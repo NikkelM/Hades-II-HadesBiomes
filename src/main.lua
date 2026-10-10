@@ -308,7 +308,8 @@ local function on_ready()
 
 			import "Game/Animations/GUI_Portraits_VFX.sjson.lua"
 			import "Game/Animations/GUI_Screens_VFX.sjson.lua"
-			DebugLogScriptImportProgress("GUI Animation SJSON")
+			import "Game/GUI/AboutScreen.sjson.lua"
+			DebugLogScriptImportProgress("GUI SJSON")
 
 			import "Game/Animations/Enemy_1Base_VFX.sjson.lua"
 			import "Game/Animations/Melinoe_Spell_VFX.sjson.lua"

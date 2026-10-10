@@ -28,6 +28,7 @@ Other fixes and improvements:
 - The "A True Nightmare" Minor Prophecy can now only be revealed if the [Dream Dive Tweaks](https://thunderstore.io/c/hades-ii/p/zerp/DreamDiveTweaks/) mod is also installed (*It would be quite difficult to complete otherwise*).
 - "Charm, Battie" is now unlocked by progressing Megaera's relationship instead of by the number of times you have beaten her.
 - Added community translators to the mod's credits.
+- Added the mod's credits to the Options menu's "Credits" category.
 - Balancing: Slightly reduced health and armour of non-boss enemies.
 - Balancing: Slightly reduced health of Theseus and Asterius.
 - Balancing: Slightly reduced armour of the Dire Voidstone in the Vow of Shadows version of the Barge of Death miniboss encounter.
