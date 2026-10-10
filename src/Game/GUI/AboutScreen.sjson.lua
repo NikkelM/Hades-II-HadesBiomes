@@ -48,10 +48,6 @@ local modCredits = {
 }
 
 sjson.hook(hadesTwoAboutScreenFile, function(data)
-	local sjsonLoads = mod.TryLoadCachedSjsonFile("sjsonLoads.sjson") or {}
-	sjsonLoads["AboutScreen"] = true
-	mod.SaveCachedSjsonFile("sjsonLoads.sjson", sjsonLoads)
-
 	for _, credit in ipairs(modCredits) do
 		table.insert(data.AboutScreen.CreditNames, credit)
 	end
