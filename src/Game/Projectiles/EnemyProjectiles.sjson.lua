@@ -431,6 +431,12 @@ local hadesProjectilesModifications = {
 	},
 	-- #endregion
 
+	-- #region COMPANIONS/ASSISTS
+	DusaFreezeShotNonHoming = {
+		Damage = 85,
+	},
+	-- #endregion
+
 	-- #region CHARON
 	CharonMeleeArcLeft = {
 		Effects = {
@@ -478,7 +484,7 @@ local hadesProjectilesModifications = {
 }
 
 local addProjectiles = {
-	-- #region Companions/Assist traits
+	-- #region COMPANIONS/ASSISTS
 	{
 		Name = "NPC_FurySister_01_Assist",
 		InheritFrom = "1_BaseMagicProjectile",
@@ -498,7 +504,7 @@ local addProjectiles = {
 		CheckUnitImpact = false,
 		CheckObstacleImpact = false,
 		UnlimitedUnitPenetration = true,
-		Damage = 2500,
+		Damage = 3000,
 		ImpactVelocity = 0,
 		UseArmor = false,
 		UseVulnerability = false,
@@ -554,7 +560,7 @@ local addProjectiles = {
 		CheckUnitImpact = false,
 		CheckObstacleImpact = false,
 		UnlimitedUnitPenetration = true,
-		Damage = 1500,
+		Damage = 2000,
 		ImpactVelocity = 0,
 		UseArmor = false,
 		UseVulnerability = false,
@@ -573,9 +579,9 @@ local addProjectiles = {
 				Opacity = 1.0,
 			},
 			Points = {
-				{ X = 0, Y = 8, },
-				{ X = 32, Y = 0, },
-				{ X = 0, Y = -8, },
+				{ X = 0,   Y = 8, },
+				{ X = 32,  Y = 0, },
+				{ X = 0,   Y = -8, },
 				{ X = -32, Y = 0, },
 			},
 		},
@@ -599,7 +605,7 @@ local addProjectiles = {
 		CheckUnitImpact = false,
 		CheckObstacleImpact = false,
 		UnlimitedUnitPenetration = true,
-		Damage = 1500,
+		Damage = 2000,
 		ImpactVelocity = 0,
 		UseArmor = false,
 		UseVulnerability = false,
@@ -618,9 +624,9 @@ local addProjectiles = {
 				Opacity = 1.0,
 			},
 			Points = {
-				{ X = 0, Y = 8, },
-				{ X = 32, Y = 0, },
-				{ X = 0, Y = -8, },
+				{ X = 0,   Y = 8, },
+				{ X = 32,  Y = 0, },
+				{ X = 0,   Y = -8, },
 				{ X = -32, Y = 0, },
 			},
 		},
@@ -631,7 +637,7 @@ local addProjectiles = {
 		DetonateFx = "ThanatosAoE",
 		StartFx = "ThanatosAssist",
 		Type = "INSTANT",
-		Damage = 3500,
+		Damage = 4000,
 		DamageRadius = 750.0,
 		DamageRadiusScaleY = 0.5,
 		ImpactFx = "ThanatosDeathsHead",
@@ -657,7 +663,7 @@ local addProjectiles = {
 		Name = "NPC_Sisyphus_01_Assist",
 		InheritFrom = "RubbleFall",
 		DetonateFx = "BouldyImpact",
-		Damage = 1000,
+		Damage = 1300,
 		DamageRadius = 350.0,
 		DamageRadiusScaleX = 1.175,
 		DamageRadiusScaleY = 0.56,

@@ -113,7 +113,7 @@ function mod.DoAssist()
 			DestinationName = "EnemyTeam",
 			IgnoreInvulnerable = true,
 			IgnoreHomingIneligible = true,
-			Distance = 1200,
+			Distance = assistData.TargetRange or 1200,
 		})
 		if locationId == 0 then
 			locationId = game.CurrentRun.Hero.ObjectId
@@ -154,7 +154,7 @@ function mod.AchillesPatroclusAssist(assistData)
 		DestinationName = "EnemyTeam",
 		IgnoreInvulnerable = true,
 		IgnoreHomingIneligible = true,
-		Distance = assistData.Range,
+		Distance = assistData.TargetRange,
 	})
 	local weapons = game.ShallowCopyTable(assistData.AssistWeapons)
 	local firstWeapon = game.RemoveRandomValue(weapons)
@@ -173,7 +173,7 @@ function mod.AchillesPatroclusAssist(assistData)
 		DestinationName = "EnemyTeam",
 		IgnoreInvulnerable = true,
 		IgnoreHomingIneligible = true,
-		Distance = assistData.Range,
+		Distance = assistData.TargetRange,
 		MaximumCount = 2,
 	})
 	local secondTargetId = targetIds[1]
@@ -276,7 +276,7 @@ function mod.SisyphusLootSprinkle(assistData)
 		DestinationName = "EnemyTeam",
 		IgnoreInvulnerable = true,
 		IgnoreHomingIneligible = true,
-		Distance = 500,
+		Distance = assistData.TargetRange,
 		RequiredLocationUnblocked = true,
 	})
 	if locationId == 0 then
@@ -285,7 +285,7 @@ function mod.SisyphusLootSprinkle(assistData)
 			DestinationName = "EnemyTeam",
 			IgnoreInvulnerable = true,
 			IgnoreHomingIneligible = true,
-			Distance = 500,
+			Distance = assistData.TargetRange,
 		})
 	end
 	if locationId == 0 then

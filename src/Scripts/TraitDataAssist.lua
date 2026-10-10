@@ -82,6 +82,7 @@ local newTraitData = {
 		PreEquipWeapons = { "NPC_FurySister_01_Assist" },
 		AddAssist = {
 			WeaponName = "NPC_FurySister_01_Assist",
+			TargetRange = 2000,
 			GameStateRequirements = {
 				{
 					PathFalse = { "CurrentRun", "CurrentRoom", "BlockHadesAssistTraits" },
@@ -96,7 +97,7 @@ local newTraitData = {
 			AssistPresentationColor = { 200, 0, 255, 255 },
 			AssistPostWeaponSlowDuration = 0.1,
 		},
-		AssistDamage = 2500,
+		AssistDamage = 3000,
 		RemainingUses = { BaseValue = 1 },
 		DoesNotAutomaticallyExpire = true,
 		ExtractValues = {
@@ -186,7 +187,7 @@ local newTraitData = {
 		AddAssist = {
 			FunctionName = _PLUGIN.guid .. "." .. "AchillesPatroclusAssist",
 			AssistWeapons = { "NPC_Achilles_01_Assist", "NPC_Patroclus_01_Assist" },
-			Range = 1500,
+			TargetRange = 2000,
 			GameStateRequirements = {
 				{
 					PathFalse = { "CurrentRun", "CurrentRoom", "BlockHadesAssistTraits" },
@@ -199,7 +200,7 @@ local newTraitData = {
 			AssistPresentationColor = { 140, 255, 200, 255 },
 			AssistPostWeaponSlowDuration = 0.05,
 		},
-		AssistDamage = 1500,
+		AssistDamage = 2000,
 		RemainingUses = { BaseValue = 1 },
 		DoesNotAutomaticallyExpire = true,
 		ExtractValues = {
@@ -266,6 +267,7 @@ local newTraitData = {
 		PreEquipWeapons = { "NPC_Thanatos_01_Assist" },
 		AddAssist = {
 			WeaponName = "NPC_Thanatos_01_Assist",
+			TargetRange = 2000,
 			GameStateRequirements = {
 				{
 					PathFalse = { "CurrentRun", "CurrentRoom", "BlockHadesAssistTraits" },
@@ -284,7 +286,7 @@ local newTraitData = {
 			AssistPresentationPortraitOffsetY = 45,
 			AssistPresentationColor = { 200, 0, 255, 255 },
 		},
-		AssistDamage = 3500,
+		AssistDamage = 4000,
 		RemainingUses = { BaseValue = 1 },
 		DoesNotAutomaticallyExpire = true,
 		ExtractValues = {
@@ -392,6 +394,7 @@ local newTraitData = {
 				},
 			},
 			Range = 80,
+			TargetRange = 2000,
 			ForceMin = 200,
 			ForceMax = 350,
 			ForceToValidLocation = true,
@@ -401,7 +404,7 @@ local newTraitData = {
 			AssistPresentationColor = { 110, 255, 0, 255 },
 			AssistPresentationPortraitOffsetY = 35,
 		},
-		AssistDamage = 1000,
+		AssistDamage = 1300,
 		RemainingUses = { BaseValue = 1 },
 		DoesNotAutomaticallyExpire = true,
 		ExtractValues = {
