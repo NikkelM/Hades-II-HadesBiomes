@@ -812,7 +812,7 @@ function mod.FinalizeInstallation()
 
 	mod.HiddenConfig.IsValidInstallation = true
 	mod.HiddenConfig.InstallationFailReason = ""
-	if mod.HiddenConfig.InstalledModVersion ~= "" and mod.HiddenConfig.InstalledModVersion ~= _PLUGIN.version then
+	if mod.HiddenConfig.InstalledModVersion ~= "" then
 		mod.HiddenConfig.PendingUpdateScreenVersion = _PLUGIN.version
 		if mod.UpdateInstallScreenTextIdsByVersion[_PLUGIN.version] == nil then
 			mod.DebugPrint("No update install screen text is registered for mod version " .. _PLUGIN.version, 2)
