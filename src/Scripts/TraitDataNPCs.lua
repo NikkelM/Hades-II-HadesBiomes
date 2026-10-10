@@ -958,12 +958,13 @@ local newTraitData = {
 			TrackName = "{c105b668-488c-4359-b7ff-02ccbb3c9eb9}",
 			FunctionName = "AddRerolls",
 			FunctionArgs = {
-				Amount = 5,
+				-- Also change AddRerolls below when updated
+				Amount = 4,
 			},
 		},
 
 		-- Also change in FunctionArgs above when updated
-		AddRerolls = 5,
+		AddRerolls = 4,
 		AllowDoorReroll = true,
 		ExtractValues = {
 			{

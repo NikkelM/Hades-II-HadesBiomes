@@ -40,6 +40,7 @@ Other fixes and improvements:
 - Balancing: Increased the chance for Pumpkin Seeds to appear in the Temple of Styx.
 - Balancing: The cooldown of the freeze effect applied by "Lament of Orpheus" has been increased from 10 to 14 seconds.
 - Balancing: The cooldown of the freeze effect applied by "Lament of Orpheus" is now affected by "Seismic Servo".
+- Balancing: Reduced the amount of rerolls given by "Good Riddance" from 5 to 4.
 - Balancing: Owning "God of the Dead" now makes "Success Rate" from Hermes eligible.
 - Balancing: Progressing mastery of the Lyre in Orpheus' chamber is now quicker.
 - Fixed: When receiving a blessing from Sisyphus outside of his encounter (through other mods), they can spawn out of bounds.
