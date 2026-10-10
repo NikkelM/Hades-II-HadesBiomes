@@ -1997,7 +1997,7 @@ local enemyModifications = {
 	-- #region ASPHODEL - Minibosses
 	ShieldRangedMiniBoss = {
 		MaxHealth = 1900,
-		HealthBuffer = 4700,
+		HealthBuffer = 4000,
 		StunAnimations = { Default = "HealRangedCrystal4" },
 		DeathAnimation = "HealRangedDeathMiniBoss",
 		DeathFx = "null",

@@ -29,6 +29,7 @@ Other fixes and improvements:
 - "Charm, Battie" is now unlocked by progressing Megaera's relationship instead of by the number of times you have beaten her.
 - Balancing: Slightly reduced health and armour of non-boss enemies.
 - Balancing: Slightly reduced health of Theseus and Asterius.
+- Balancing: Slightly reduced armour of the Dire Voidstone in the Vow of Shadows version of the Barge of Death miniboss encounter.
 - Balancing: Increased the difficulty rating of all "Witch"-type enemies, causing less of them to spawn when selected for an encounter.
 - Balancing: Dire Numbskulls can no longer have the "Spinner" perk.
 - Balancing: Brimstone, Snakestone and Doomstone laser attacks have a new invulnerability frame for the first tick that would normally hit the player.
