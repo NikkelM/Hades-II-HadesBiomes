@@ -27,6 +27,8 @@ Other fixes and improvements:
 - Replaced the config option for hiding the automatic Elysium poison reminder with a new incantation.
 - The "A True Nightmare" Minor Prophecy can now only be revealed if the [Dream Dive Tweaks](https://thunderstore.io/c/hades-ii/p/zerp/DreamDiveTweaks/) mod is also installed (*It would be quite difficult to complete otherwise*).
 - "Charm, Battie" is now unlocked by progressing Megaera's relationship instead of by the number of times you have beaten her.
+- Balancing: Slightly reduced health and armour of non-boss enemies.
+- Balancing: Slightly reduced health of Theseus and Asterius.
 - Balancing: Dire Numbskulls can no longer have the "Spinner" perk.
 - Balancing: Brimstone, Snakestone and Doomstone laser attacks have a new invulnerability frame for the first tick that would normally hit the player.
 - Balancing: There can now only be a limited number of "large" enemies alive at once during an encounter, similar to what was the case in the first game.

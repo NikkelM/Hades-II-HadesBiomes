@@ -2607,8 +2607,8 @@ local enemyModifications = {
 		-- Prometheus Health: 33000
 		-- Heracles Health: 34000
 		-- Note that this is NOT multiplied by the ModdedUnitMaxHealthMultiplierBonus
-		MaxHealth = 26500,
-		ModsNikkelMHadesBiomesGoddessModeMaxHealth = 20000,
+		MaxHealth = 24500,
+		ModsNikkelMHadesBiomesGoddessModeMaxHealth = 18500,
 		CauseOfDeathVoiceLines = {
 			Queue = "Interrupt",
 			[1] = { Source = { LineHistoryName = "Minotaur" } },
@@ -2789,8 +2789,8 @@ local enemyModifications = {
 	},
 	Minotaur2 = {
 		-- Base Health: 16000
-		MaxHealth = 27000,
-		ModsNikkelMHadesBiomesGoddessModeMaxHealth = 20500,
+		MaxHealth = 25500,
+		ModsNikkelMHadesBiomesGoddessModeMaxHealth = 18000,
 		ModsNikkelMHadesBiomesIgnoreModdedHealthModifiers = true,
 		OnTouchdownFunctionArgs = {
 			ProjectileName = "MinotaurArmoredOverheadTouchdown",
@@ -2810,8 +2810,8 @@ local enemyModifications = {
 	},
 	Theseus = {
 		-- Base Health: 9000
-		MaxHealth = 20000,
-		ModsNikkelMHadesBiomesGoddessModeMaxHealth = 16000,
+		MaxHealth = 18000,
+		ModsNikkelMHadesBiomesGoddessModeMaxHealth = 14500,
 		CauseOfDeathVoiceLines = {
 			Queue = "Interrupt",
 			[1] = { Source = { LineHistoryName = "Theseus" } },
@@ -3008,8 +3008,8 @@ local enemyModifications = {
 	},
 	Theseus2 = {
 		-- Base Health: 12000
-		MaxHealth = 21500,
-		ModsNikkelMHadesBiomesGoddessModeMaxHealth = 17400,
+		MaxHealth = 20500,
+		ModsNikkelMHadesBiomesGoddessModeMaxHealth = 16500,
 		ModsNikkelMHadesBiomesIgnoreModdedHealthModifiers = true,
 		CollisionReactions = {
 			DeepInheritance = true,
