@@ -24,6 +24,11 @@ local hadesEnemiesModifications = {
 	BaseSpawner = { InheritFrom = "1_BaseEnemy", },
 	BaseThief = { InheritFrom = "1_BaseEnemy", },
 	WretchAssassin = { InheritFrom = "1_BaseEnemy", },
+	Harpy = {
+		Life = {
+			InvulnerableFx = "ModsNikkelMHadesBiomesInvincibubbleFury",
+		},
+	},
 	-- #endregion
 
 	-- #region ASPHODEL

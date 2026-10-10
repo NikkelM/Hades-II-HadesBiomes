@@ -777,8 +777,6 @@ function mod.Harpy3MapTransition(enemy)
 	end
 
 	if currentRoom.CurrentPhase == 1 then
-		--activateObstacles = GetInactiveIds({ Name = "Phase2Add" })
-		--deactivateObstacles = GetIds({ Name = "Phase2Remove" })
 	elseif currentRoom.CurrentPhase == 2 then
 		activateObstacles = game.CombineTables(GetInactiveIds({ Name = "Phase3Add" }), GetInactiveIds({ Name = "Phase2Add" })) or
 				{}
@@ -813,6 +811,14 @@ function mod.Harpy3MapTransition(enemy)
 	})
 	StopAnimation({ DestinationIds = ammoIds, Name = "AmmoReturnTimer" })
 
+	-- To ensure the InvinciBubble doesn't float above Tisiphone after the map transition, since she no longer floats but stands now
+	local replacementInvulnerableFx = nil
+	if IsInvulnerable({ Id = enemy.ObjectId }) then
+		StopAnimation({ Name = enemy.InvulnerableFx, DestinationId = enemy.ObjectId, PreventChain = true })
+		replacementInvulnerableFx = "Invincibubble"
+		CreateAnimation({ Name = replacementInvulnerableFx, DestinationId = enemy.ObjectId })
+	end
+
 	RemoveInputBlock({ Name = "Harpy3MapTransition" })
 	PlaySound({ Name = "/SFX/Menu Sounds/HadesTextDisappearFade" })
 	game.FullScreenFadeInAnimation()
@@ -824,6 +830,14 @@ function mod.Harpy3MapTransition(enemy)
 
 	AdjustColorGrading({ Name = "Off", Duration = 0.45 })
 	currentRoom.InStageTransition = false
+
+	-- To ensure we remove the replaced InvinciBubble visual after the unit is no longer vulnerable
+	if replacementInvulnerableFx ~= nil then
+		while IsInvulnerable({ Id = enemy.ObjectId }) do
+			game.wait(0.05)
+		end
+		StopAnimation({ Name = replacementInvulnerableFx, DestinationId = enemy.ObjectId })
+	end
 end
 
 function mod.Harpy3MapRestore()

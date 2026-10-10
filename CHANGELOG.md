@@ -52,6 +52,7 @@ Other fixes and improvements:
 - Balancing: Owning "God of the Dead" now makes "Success Rate" from Hermes eligible.
 - Balancing: Progressing mastery of the Lyre in Orpheus' chamber is now quicker.
 - Fixed: When receiving a blessing from Sisyphus outside of his encounter (through other mods), they can spawn out of bounds.
+- Fixed: The invulnerability bubble surrounding the Furies during their phase transitions is misaligned with their animations.
 - Fixed: Damage from Furies that assist the main boss does not scale during Dream Dives.
 - Fixed: Destroying butterflies spawned by Soul Catchers with certain attacks constantly creates "Blocked!" presentation effects.
 - Fixed: Theseus does not deal damage if he rams you with his Chariot.
