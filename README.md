@@ -136,7 +136,7 @@ If you do not have a GitHub account, you can also join the [Hades II Modding Dis
 
 ### Contribute Yourself!
 
-You can contribute to this mod by translating the text it adds into your native language!
+You can contribute to this mod by translating the text it adds into your native language and be featured in the mod's credits in-game!
 
 See the [Contribute a Translation wiki page](https://github.com/NikkelM/Hades-II-HadesBiomes/wiki/Contribute-a-Translation) for more information on what needs translating, and how to do so.
 
