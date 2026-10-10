@@ -12,6 +12,7 @@ mod.DefaultHiddenConfig = {
 	MustShowUninstallFailureScreen = false,
 	-- Tracks which mod version was last installed to detect mod updates
 	InstalledModVersion = "",
+	PendingUpdateScreenVersion = "",
 	-- For debugging purposes
 	EnableVanillaDebugKeybinds = false,
 	DeveloperMode = false,

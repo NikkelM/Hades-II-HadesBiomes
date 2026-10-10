@@ -333,14 +333,18 @@ OnAnyLoad {
 					public.IsValidInstallation = false
 				end
 
-				-- If we haven't shown the install screen yet, or the installation is invalid, or we must show the warning about incompatible mods
-				if not mod.HiddenConfig.HasShownSuccessfulInstallScreen or not mod.HiddenConfig.IsValidInstallation or mod.HiddenConfig.MustShowIncompatibleModsInstallScreen then
+				-- If we haven't shown the install screen yet, the installation is invalid, or another install message is queued
+				if not mod.HiddenConfig.HasShownSuccessfulInstallScreen or not mod.HiddenConfig.IsValidInstallation or mod.HiddenConfig.MustShowIncompatibleModsInstallScreen or mod.HiddenConfig.PendingUpdateScreenVersion ~= "" then
+					local installScreenArgs = game.DeepCopyTable(mod.HiddenConfig) or {}
 					-- Update the config with the type of screen we are showing
 					-- Do it before showing the screen to also have this saved if the user closes the game without closing the screen first
 					mod.HiddenConfig.HasShownSuccessfulInstallScreen = mod.HiddenConfig.IsValidInstallation
+					if mod.HiddenConfig.IsValidInstallation and not mod.HiddenConfig.MustShowIncompatibleModsInstallScreen and mod.HiddenConfig.PendingUpdateScreenVersion ~= "" then
+						mod.HiddenConfig.PendingUpdateScreenVersion = ""
+					end
 					mod.SaveCachedSjsonFile("hiddenConfig.sjson", mod.HiddenConfig)
 
-					mod.OpenModInstallScreen(mod.HiddenConfig)
+					mod.OpenModInstallScreen(installScreenArgs)
 					if mod.HiddenConfig.MustShowIncompatibleModsInstallScreen then
 						mod.HiddenConfig.MustShowIncompatibleModsInstallScreen = false
 						mod.SaveCachedSjsonFile("hiddenConfig.sjson", mod.HiddenConfig)
@@ -364,6 +368,17 @@ function mod.OpenModInstallScreen(args)
 		if args.MustShowIncompatibleModsInstallScreen then
 			-- Mods that are marked as incompatible with Zagreus' Journey are installed
 			screen = game.DeepCopyTable(game.ScreenData.ModsNikkelMHadesBiomesInstallFailureIncompatibleModsInstalled) or {}
+		elseif args.PendingUpdateScreenVersion ~= "" then
+			local updateScreenTextId = mod.UpdateInstallScreenTextIdsByVersion[args.PendingUpdateScreenVersion]
+			if updateScreenTextId ~= nil then
+				screen = game.DeepCopyTable(game.ScreenData.ModsNikkelMHadesBiomesUpdateSuccess) or {}
+				local updateScreenTexts = screen.ComponentData.Background.Children
+				updateScreenTexts.TitleText.Text = updateScreenTextId
+				updateScreenTexts.DescriptionText.Text = updateScreenTextId
+			else
+				mod.DebugPrint("No update install screen text is registered for mod version " .. tostring(args.PendingUpdateScreenVersion) .. ". Showing the generic installation success screen.", 2)
+				screen = game.DeepCopyTable(game.ScreenData.ModsNikkelMHadesBiomesInstallSuccess) or {}
+			end
 		else
 			screen = game.DeepCopyTable(game.ScreenData.ModsNikkelMHadesBiomesInstallSuccess) or {}
 		end

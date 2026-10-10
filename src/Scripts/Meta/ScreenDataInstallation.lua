@@ -85,6 +85,18 @@ game.ScreenData.ModsNikkelMHadesBiomesInstallSuccess = {
 	}
 }
 
+mod.UpdateInstallScreenTextIdsByVersion = {
+	["1.3.0"] = "ModsNikkelMHadesBiomes_UpdateSuccess_1_3_0",
+}
+
+game.ScreenData.ModsNikkelMHadesBiomesUpdateSuccess = game.DeepCopyTable(game.ScreenData
+	.ModsNikkelMHadesBiomesInstallSuccess)
+game.ScreenData.ModsNikkelMHadesBiomesUpdateSuccess.Name = "ModsNikkelMHadesBiomesUpdateSuccess"
+local updateDescriptionText = game.ScreenData.ModsNikkelMHadesBiomesUpdateSuccess.ComponentData.Background.Children
+		.DescriptionText
+updateDescriptionText.OffsetX = -400
+updateDescriptionText.TextArgs.Justification = "Left"
+
 game.ScreenData.ModsNikkelMHadesBiomesInstallFailure = {
 	Name = "ModsNikkelMHadesBiomesInstallFailure",
 	Components = {},

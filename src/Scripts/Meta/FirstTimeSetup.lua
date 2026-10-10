@@ -812,8 +812,14 @@ function mod.FinalizeInstallation()
 
 	mod.HiddenConfig.IsValidInstallation = true
 	mod.HiddenConfig.InstallationFailReason = ""
+	if mod.HiddenConfig.InstalledModVersion ~= "" and mod.HiddenConfig.InstalledModVersion ~= _PLUGIN.version then
+		mod.HiddenConfig.PendingUpdateScreenVersion = _PLUGIN.version
+		if mod.UpdateInstallScreenTextIdsByVersion[_PLUGIN.version] == nil then
+			mod.DebugPrint("No update install screen text is registered for mod version " .. _PLUGIN.version, 2)
+		end
+	end
 	mod.HiddenConfig.InstalledModVersion = _PLUGIN.version
-	-- If this is a reinstall, to show the successful install screen again
+	-- Show the valid installation screen selected for this install or update
 	mod.HiddenConfig.HasShownSuccessfulInstallScreen = false
 	mod.SaveCachedSjsonFile("hiddenConfig.sjson", mod.HiddenConfig)
 	---@diagnostic disable-next-line: undefined-global

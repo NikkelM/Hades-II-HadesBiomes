@@ -29,7 +29,7 @@ Other fixes and improvements:
 - "Charm, Battie" is now unlocked by progressing Megaera's relationship instead of by the number of times you have beaten her.
 - Added community translators to the mod's credits.
 - Added the mod's credits to the Options menu's "Credits" category.
-- Balancing: Slightly reduced health and armour of non-boss enemies.
+- Updating the mod will now show a new install screen with patch highlights, instead of the generic "Installation Successful" message.
 - Balancing: Slightly reduced health of Theseus and Asterius.
 - Balancing: Slightly reduced armour of the Dire Voidstone in the Vow of Shadows version of the Barge of Death miniboss encounter.
 - Balancing: Increased the difficulty rating of all "Witch"-type enemies, causing less of them to spawn when selected for an encounter.
@@ -39,7 +39,7 @@ Other fixes and improvements:
 - Balancing: The shared Tartarus story room now prioritizes Sisyphus or Orpheus if only one has an unplayed one-time conversation, and neither can appear more than twice in a row.
 - Balancing: Brimstones can no longer appear during Erebus Gate and Unseen Sigil challenges in Tartarus (which you need to clear without taking damage).
 - Balancing: The small heads summoned by Lernie can now be resurrected with "Night Bloom", "Sun Worshipper" or "God of the Dead".
-- Balancing: Revenants created by the "Vow of Return" in Asphodel will now be picked up automatically when they land on lava.
+- Balancing: Revenants created by the "Vow of Return" in Asphodel will now be destroyed automatically when they land on lava.
 - Balancing: Exalted Shades can no longer create Lone Shades when dying.
 - Balancing: Slightly reduced the base encounter difficulty of wing-end combat rooms in the Temple of Styx.
 - Balancing: Decreased the chances for Bloodroot, Wax and Deathcap Spores to appear in Tartarus.
