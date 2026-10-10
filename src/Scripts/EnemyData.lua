@@ -1126,6 +1126,14 @@ local enemyModifications = {
 	LightRanged = {
 		StunAnimations = { Default = "EnemyWretchCasterOnHit" },
 		DreamBiomeData = tartarusEnemyDreamBiomeData,
+		GeneratorData = {
+			DifficultyRating = 7,
+		},
+	},
+	LightRangedElite = {
+		GeneratorData = {
+			DifficultyRating = 18,
+		},
 	},
 	LightRangedSuperElite = {
 		DefaultAIData = {
@@ -1848,6 +1856,7 @@ local enemyModifications = {
 		ActivateFx2 = "nil",
 		ActivateFxPreSpawn = "nil",
 		GeneratorData = {
+			DifficultyRating = 25,
 			BlockEnemyTypes = { "HadesSpreadShotUnitElite" },
 		},
 	},
@@ -1861,6 +1870,7 @@ local enemyModifications = {
 		ActivateFx2 = "nil",
 		ActivateFxPreSpawn = "nil",
 		GeneratorData = {
+			DifficultyRating = 38,
 			BlockEnemyTypes = { "HadesSpreadShotUnit" },
 		},
 	},
@@ -2474,6 +2484,14 @@ local enemyModifications = {
 		StunAnimations = { Default = "EnemyWretchCasterOnHit_SplitShot" },
 		DeathAnimation = "EnemyWretchCasterDeath_SplitShot",
 		DreamBiomeData = elysiumEnemyDreamBiomeData,
+		GeneratorData = {
+			DifficultyRating = 38,
+		},
+	},
+	SplitShotUnitElite = {
+		GeneratorData = {
+			DifficultyRating = 135,
+		},
 	},
 	Chariot = {
 		StunAnimations = { Default = "ChariotOnHit" },
