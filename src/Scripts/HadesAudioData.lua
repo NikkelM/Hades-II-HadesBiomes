@@ -8005,4 +8005,144 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 	},
 	-- #endregion
 	-- #endregion
+	-- #region Overlooks
+	ModsNikkelMHadesBiomes_AsphodelFirstOverlookVoiceLines = {
+		PlayOnce = true,
+		PlayOnceContext = "ModsNikkelMHadesBiomes_AsphodelFirstOverlook",
+		PreLineWait = 2.35,
+		RecheckRequirementsPostWait = true,
+		GameStateRequirements = {
+			{
+				Path = { "CurrentRun", "CurrentRoom", "Name" },
+				IsAny = { "X_Intro" },
+			},
+			{
+				PathFalse = { "CurrentRun", "Hero", "IsDead" },
+			},
+			{
+				PathFalse = { "CurrentRun", "IsDreamRun" },
+			},
+			{
+				PathTrue = { "MapState", "InOverlook" },
+			},
+		},
+		{
+			Cue = "/VO/MelinoeField_0195",
+			Text = "Is this really Asphodel...?",
+			BreakIfPlayed = true,
+		},
+	},
+	ModsNikkelMHadesBiomes_AsphodelOverlookVoiceLines = {
+		PreLineWait = 2.35,
+		RecheckRequirementsPostWait = true,
+		PlayOnceFromTableThisRun = true,
+		BreakIfPlayed = true,
+		RandomRemaining = true,
+		SuccessiveChanceToPlayAll = 0.6,
+		GameStateRequirements = {
+			{
+				Path = { "CurrentRun", "CurrentRoom", "Name" },
+				IsAny = { "X_Intro" },
+			},
+			{
+				PathFalse = { "CurrentRun", "Hero", "IsDead" },
+			},
+			{
+				PathFalse = { "CurrentRun", "IsDreamRun" },
+			},
+			{
+				PathTrue = { "MapState", "InOverlook" },
+			},
+		},
+		{
+			Cue = "/VO/MelinoeField_3614",
+			Text = "I don't even really mind the heat.",
+		},
+		{
+			Cue = "/VO/Melinoe_1526",
+			Text = "{#Emph}Whew {#Prev}that's hot...",
+		},
+		{
+			Cue = "/VO/MelinoeField_2864",
+			Text = "Waves of flame...",
+		},
+		{
+			Cue = "/VO/MelinoeField_1075",
+			Text = "It's all so vast...",
+		},
+		{
+			Cue = "/VO/MelinoeField_4250",
+			Text = "Such a place...",
+		},
+	},
+	ModsNikkelMHadesBiomes_ElysiumFirstOverlookVoiceLines = {
+		PlayOnce = true,
+		PlayOnceContext = "ModsNikkelMHadesBiomes_ElysiumFirstOverlook",
+		PreLineWait = 2.35,
+		RecheckRequirementsPostWait = true,
+		GameStateRequirements = {
+			{
+				Path = { "CurrentRun", "CurrentRoom", "Name" },
+				IsAny = { "Y_Intro" },
+			},
+			{
+				PathFalse = { "CurrentRun", "Hero", "IsDead" },
+			},
+			{
+				PathFalse = { "CurrentRun", "IsDreamRun" },
+			},
+			{
+				PathTrue = { "MapState", "InOverlook" },
+			},
+		},
+		{
+			Cue = "/VO/MelinoeField_0360",
+			Text = "Looks almost peaceful from afar...",
+			BreakIfPlayed = true,
+		},
+	},
+	ModsNikkelMHadesBiomes_ElysiumOverlookVoiceLines = {
+		PreLineWait = 2.35,
+		RecheckRequirementsPostWait = true,
+		PlayOnceFromTableThisRun = true,
+		BreakIfPlayed = true,
+		RandomRemaining = true,
+		SuccessiveChanceToPlayAll = 0.6,
+		GameStateRequirements = {
+			{
+				Path = { "CurrentRun", "CurrentRoom", "Name" },
+				IsAny = { "Y_Intro" },
+			},
+			{
+				PathFalse = { "CurrentRun", "Hero", "IsDead" },
+			},
+			{
+				PathFalse = { "CurrentRun", "IsDreamRun" },
+			},
+			{
+				PathTrue = { "MapState", "InOverlook" },
+			},
+		},
+		{
+			Cue = "/VO/MelinoeField_3464",
+			Text = "...Beautiful...",
+		},
+		{
+			Cue = "/VO/MelinoeField_0806",
+			Text = "So serene...",
+		},
+		{
+			Cue = "/VO/MelinoeField_0799",
+			Text = "Beautiful...",
+		},
+		{
+			Cue = "/VO/MelinoeField_1846",
+			Text = "It feels so safe and peaceful here...",
+		},
+		{
+			Cue = "/VO/MelinoeField_4250",
+			Text = "Such a place...",
+		},
+	},
+	-- #endregion
 }

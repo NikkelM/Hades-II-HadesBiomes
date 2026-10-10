@@ -16,6 +16,7 @@ Other fixes and improvements:
 - Added all resources that can be found during Zagreus' Journey runs to the Wretched Broker to allow trading them for the equivalent resources from Hades II (they will show after completing any new run).
 - Melinoë will now react to NPCs giving her keepsakes (and companions).
 - Melinoë will now react to entering the Fury's boss chambers.
+- Melinoë will now react to overlooking Asphodel and Elysium in the first rooms of those regions.
 - Hades will now taunt you if you die during a Survival or Erebus encounter.
 - Added a new irreversible "cheat" config option to immediately unlock all (non-story) incantations.
 - Added a new irreversible "cheat" config option to immediately unlock all cosmetics (except badges).
