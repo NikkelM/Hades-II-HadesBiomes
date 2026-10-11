@@ -739,18 +739,20 @@ end)
 
 modutil.mod.Path.Wrap("KeepsakeScreenClose", function(base, screen, button)
 	cancelAssistUpgradePulse(screen)
-	local assistChanged = screen.LastAssist ~= game.GameState.LastAssistTrait
-	if assistChanged then
-		if screen.LastAssist ~= nil then
-			game.CurrentRun.TraitCache[screen.LastAssist] = nil
+	if game.CurrentHubRoom ~= nil then
+		local assistChanged = screen.LastAssist ~= game.GameState.LastAssistTrait
+		if assistChanged then
+			if screen.LastAssist ~= nil then
+				game.CurrentRun.TraitCache[screen.LastAssist] = nil
+			end
+			game.RemoveTrait(game.CurrentRun.Hero, screen.LastAssist)
+			mod.EquipAssist(game.CurrentRun.Hero, game.GameState.LastAssistTrait, {
+				FromLoot = true,
+			})
 		end
-		game.RemoveTrait(game.CurrentRun.Hero, screen.LastAssist)
-		mod.EquipAssist(game.CurrentRun.Hero, game.GameState.LastAssistTrait, {
-			FromLoot = true,
-		})
-	end
-	if (assistChanged or screen.ModsNikkelMHadesBiomesAssistUpgraded) and screen.LastTrait == game.GameState.LastAwardTrait then
-		game.RequestPreRunLoadoutChangeSave()
+		if (assistChanged or screen.ModsNikkelMHadesBiomesAssistUpgraded) and screen.LastTrait == game.GameState.LastAwardTrait then
+			game.RequestPreRunLoadoutChangeSave()
+		end
 	end
 
 	return base(screen, button)
