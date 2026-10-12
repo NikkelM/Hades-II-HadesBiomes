@@ -952,6 +952,7 @@ local roomModifications = {
 		DistanceTriggersPostCombatReload = true,
 		TimerBlock = "ShopEncounter",
 		StoreDataName = "Q_WorldShop",
+		ModsNikkelMHadesBiomesShopRoomWithRoomRewards = true,
 		PostCombatReloadThreadedEvents = {
 			{
 				FunctionName = "CheckConversations",
