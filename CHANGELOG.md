@@ -68,6 +68,7 @@ Other fixes and improvements:
 - Fixed: Gale burns a block when Melinoë is poisoned in Styx (or Elysium), instead of allowing it to happen as is the case with poison in the Polyphemus & Medea boss fight.
 - Fixed: Hades' portrait does not show during some of his taunt voicelines, e.g. after boss fights or Erebus encounters.
 - Fixed: Goddess Mode does not reduce enemy health in Zagreus' Journey regions during Dream Dives.
+- Fixed: After dying in a room with enemies that have "tethers" (e.g. the Hydra or Brimstones), after returning to the Crossroads, some objects may randomly disappear or be placed in unexpected locations.
 - Fixed: The timer sound keeps ticking when dying during an survival encounter.
 - Fixed: An interaction prompt shows for Thanatos when he is about to leave after his romance dialogue.
 - Fixed: Player summons are destroyed when either of Theseus or Asterius is defeated in their boss fight, instead of after both have been defeated.
