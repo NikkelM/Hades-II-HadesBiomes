@@ -128,6 +128,16 @@ modutil.mod.Path.Wrap("SetupUnit", function(base, unit, currentRun, args)
 			else
 				unit.HealthBufferMultiplier = 1 + healthBufferBonus
 			end
+
+			if currentRun.IsDreamRun and unit.DreamBiomeData ~= nil then
+				-- Apply the mod multiplier to the DreamBiomeData during Dream Dives
+				for _, dreamBiomeData in pairs(unit.DreamBiomeData) do
+					if dreamBiomeData.DataOverrides ~= nil and dreamBiomeData.DataOverrides.HealthMultiplier ~= nil then
+						dreamBiomeData.DataOverrides.HealthMultiplier = dreamBiomeData.DataOverrides.HealthMultiplier *
+								(1 + maxHealthBonus)
+					end
+				end
+			end
 			if unit.HealthMultiplier ~= nil then
 				unit.HealthMultiplier = unit.HealthMultiplier + maxHealthBonus
 			else

@@ -23,7 +23,8 @@ mod.DefaultHiddenConfig = {
 mod.ExpectedNumSjsonHooks = 27
 
 -- All enemies have more health and armour in modded runs, scales with each biome
--- Should not apply to bosses, which should opt out using ModsNikkelMHadesBiomesIgnoreModdedHealthModifiers and define their own modified health
+-- Armour is scaled by BOTH the health and armour multipliers (e.g. base armour x 1.33 x 1.12)
+-- Bosses should opt out using ModsNikkelMHadesBiomesIgnoreModdedHealthModifiers and define their own modified health
 mod.ModdedUnitMaxHealthMultiplierBonus = {
 	Default = 0.30,
 	Tartarus = 0.25,
