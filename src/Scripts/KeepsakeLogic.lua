@@ -767,6 +767,7 @@ modutil.mod.Path.Wrap("EquipLastAwardTrait", function(base, eventSource, hero)
 
 	mod.EquipAssist(game.CurrentRun.Hero or hero, game.GameState.LastAssistTrait, {
 		SkipNewTraitHighlight = true,
+		SkipAddToHUD = game.SessionMapState.HubBountyLoadPresentation or game.SessionMapState.HubDreamLoadPresentation,
 	})
 
 	return returnValue
