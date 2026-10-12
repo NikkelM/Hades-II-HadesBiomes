@@ -1387,9 +1387,9 @@ local enemyModifications = {
 			},
 		},
 		DreamBiomeData = {
-			[1] = { DataOverrides = { HealthMultiplier = 1.1 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.5 } },
-			[2] = { DataOverrides = { HealthMultiplier = 1.8 }, AddOutgoingDamageModifier = { PlayerMultiplier = 2.3 } },
-			[3] = { DataOverrides = { HealthMultiplier = 3.5, SpeedMultiplier = 1.1 }, AddOutgoingDamageModifier = { PlayerMultiplier = 3.5 } },
+			[1] = { DataOverrides = { HealthMultiplier = 0.95 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.5 } },
+			[2] = { DataOverrides = { HealthMultiplier = 1.63 }, AddOutgoingDamageModifier = { PlayerMultiplier = 2.3 } },
+			[3] = { DataOverrides = { HealthMultiplier = 3.36, SpeedMultiplier = 1.1 }, AddOutgoingDamageModifier = { PlayerMultiplier = 3.5 } },
 			[4] = { DataOverrides = { HealthMultiplier = 5.8, SpeedMultiplier = 1.25 }, AddOutgoingDamageModifier = { PlayerMultiplier = 4.7 } },
 		},
 		SubtitleColor = game.Color.MegVoice,
@@ -1493,9 +1493,9 @@ local enemyModifications = {
 			},
 		},
 		DreamBiomeData = {
-			[1] = { DataOverrides = { HealthMultiplier = 1.1 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.5 } },
-			[2] = { DataOverrides = { HealthMultiplier = 1.8 }, AddOutgoingDamageModifier = { PlayerMultiplier = 2.3 } },
-			[3] = { DataOverrides = { HealthMultiplier = 3.5, SpeedMultiplier = 1.1 }, AddOutgoingDamageModifier = { PlayerMultiplier = 3.5 } },
+			[1] = { DataOverrides = { HealthMultiplier = 0.95 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.5 } },
+			[2] = { DataOverrides = { HealthMultiplier = 1.63 }, AddOutgoingDamageModifier = { PlayerMultiplier = 2.3 } },
+			[3] = { DataOverrides = { HealthMultiplier = 3.36, SpeedMultiplier = 1.1 }, AddOutgoingDamageModifier = { PlayerMultiplier = 3.5 } },
 			[4] = { DataOverrides = { HealthMultiplier = 5.8, SpeedMultiplier = 1.25 }, AddOutgoingDamageModifier = { PlayerMultiplier = 4.7 } },
 		},
 		SubtitleColor = game.Color.AlectoVoice,
@@ -1584,9 +1584,9 @@ local enemyModifications = {
 			},
 		},
 		DreamBiomeData = {
-			[1] = { DataOverrides = { HealthMultiplier = 1.1 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.5 } },
-			[2] = { DataOverrides = { HealthMultiplier = 1.8 }, AddOutgoingDamageModifier = { PlayerMultiplier = 2.3 } },
-			[3] = { DataOverrides = { HealthMultiplier = 3.5, SpeedMultiplier = 1.1 }, AddOutgoingDamageModifier = { PlayerMultiplier = 3.5 } },
+			[1] = { DataOverrides = { HealthMultiplier = 0.95 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.5 } },
+			[2] = { DataOverrides = { HealthMultiplier = 1.63 }, AddOutgoingDamageModifier = { PlayerMultiplier = 2.3 } },
+			[3] = { DataOverrides = { HealthMultiplier = 3.36, SpeedMultiplier = 1.1 }, AddOutgoingDamageModifier = { PlayerMultiplier = 3.5 } },
 			[4] = { DataOverrides = { HealthMultiplier = 5.8, SpeedMultiplier = 1.2 }, AddOutgoingDamageModifier = { PlayerMultiplier = 4.7 } },
 		},
 		SubtitleColor = game.Color.TisiphoneVoice,
@@ -2085,9 +2085,9 @@ local enemyModifications = {
 		ModsNikkelMHadesBiomesGoddessModeMaxHealth = 12000,
 		ModsNikkelMHadesBiomesIgnoreModdedHealthModifiers = true,
 		DreamBiomeData = {
-			[1] = { DataOverrides = { HealthMultiplier = 0.6 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.1 } },
-			[2] = { DataOverrides = { HealthMultiplier = 1.0 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.5 } },
-			[3] = { DataOverrides = { HealthMultiplier = 1.8, SpeedMultiplier = 1.15 }, AddOutgoingDamageModifier = { PlayerMultiplier = 2.4 } },
+			[1] = { DataOverrides = { HealthMultiplier = 0.37 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.1 } },
+			[2] = { DataOverrides = { HealthMultiplier = 0.68 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.5 } },
+			[3] = { DataOverrides = { HealthMultiplier = 1.44, SpeedMultiplier = 1.15 }, AddOutgoingDamageModifier = { PlayerMultiplier = 2.4 } },
 			[4] = { DataOverrides = { HealthMultiplier = 2.7, SpeedMultiplier = 1.25 }, AddOutgoingDamageModifier = { PlayerMultiplier = 3.5 } },
 		},
 		AltHealthBarTextIds = {
@@ -2693,9 +2693,9 @@ local enemyModifications = {
 			},
 		},
 		DreamBiomeData = {
-			[1] = { DataOverrides = { HealthMultiplier = 0.4 }, AddOutgoingDamageModifier = { PlayerMultiplier = 0.55 } },
-			[2] = { DataOverrides = { HealthMultiplier = 0.65 }, AddOutgoingDamageModifier = { PlayerMultiplier = 0.8 } },
-			[3] = { DataOverrides = { HealthMultiplier = 1.2 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.3 } },
+			[1] = { DataOverrides = { HealthMultiplier = 0.26 }, AddOutgoingDamageModifier = { PlayerMultiplier = 0.55 } },
+			[2] = { DataOverrides = { HealthMultiplier = 0.46 }, AddOutgoingDamageModifier = { PlayerMultiplier = 0.8 } },
+			[3] = { DataOverrides = { HealthMultiplier = 1.0 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.3 } },
 			[4] = { DataOverrides = { HealthMultiplier = 1.8 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.8 } },
 		},
 		SubtitleColor = game.Color.MinotaurVoice,
@@ -2871,9 +2871,9 @@ local enemyModifications = {
 			},
 		},
 		DreamBiomeData = {
-			[1] = { DataOverrides = { HealthMultiplier = 0.4 }, AddOutgoingDamageModifier = { PlayerMultiplier = 0.55 } },
-			[2] = { DataOverrides = { HealthMultiplier = 0.65 }, AddOutgoingDamageModifier = { PlayerMultiplier = 0.8 } },
-			[3] = { DataOverrides = { HealthMultiplier = 1.2 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.3 } },
+			[1] = { DataOverrides = { HealthMultiplier = 0.26 }, AddOutgoingDamageModifier = { PlayerMultiplier = 0.55 } },
+			[2] = { DataOverrides = { HealthMultiplier = 0.46 }, AddOutgoingDamageModifier = { PlayerMultiplier = 0.8 } },
+			[3] = { DataOverrides = { HealthMultiplier = 1.0 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.3 } },
 			[4] = { DataOverrides = { HealthMultiplier = 1.8 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.8 } },
 		},
 		SubtitleColor = game.Color.TheseusVoice,
@@ -3300,10 +3300,10 @@ local enemyModifications = {
 		},
 		ModsNikkelMHadesBiomesIgnoreModdedHealthModifiers = true,
 		DreamBiomeData = {
-			[1] = { DataOverrides = { HealthMultiplier = 0.25, HealingMultiplier = 0.25 }, AddOutgoingDamageModifier = { PlayerMultiplier = 0.35 } },
-			[2] = { DataOverrides = { HealthMultiplier = 0.38, HealingMultiplier = 0.38 }, AddOutgoingDamageModifier = { PlayerMultiplier = 0.6 } },
-			[3] = { DataOverrides = { HealthMultiplier = 0.8, HealingMultiplier = 0.8 }, AddOutgoingDamageModifier = { PlayerMultiplier = 0.95 } },
-			[4] = { DataOverrides = { HealthMultiplier = 1.4 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.4 } },
+			[1] = { DataOverrides = { HealthMultiplier = 0.24, HealingMultiplier = 0.24 }, AddOutgoingDamageModifier = { PlayerMultiplier = 0.35 } },
+			[2] = { DataOverrides = { HealthMultiplier = 0.36, HealingMultiplier = 0.36 }, AddOutgoingDamageModifier = { PlayerMultiplier = 0.6 } },
+			[3] = { DataOverrides = { HealthMultiplier = 0.82, HealingMultiplier = 0.82 }, AddOutgoingDamageModifier = { PlayerMultiplier = 0.95 } },
+			[4] = { DataOverrides = { HealthMultiplier = 1.35 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.4 } },
 		},
 		SetupEvents = {
 			{
@@ -3313,8 +3313,8 @@ local enemyModifications = {
 					DreamBiomeData = {
 						[1] = { DataOverrides = { HealthMultiplier = 0.2, HealingMultiplier = 0.2 }, AddOutgoingDamageModifier = { PlayerMultiplier = 0.35 } },
 						[2] = { DataOverrides = { HealthMultiplier = 0.3, HealingMultiplier = 0.3 }, AddOutgoingDamageModifier = { PlayerMultiplier = 0.6 } },
-						[3] = { DataOverrides = { HealthMultiplier = 0.64, HealingMultiplier = 0.64 }, AddOutgoingDamageModifier = { PlayerMultiplier = 0.95 } },
-						[4] = { DataOverrides = { HealthMultiplier = 1.12 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.4 } },
+						[3] = { DataOverrides = { HealthMultiplier = 0.68, HealingMultiplier = 0.68 }, AddOutgoingDamageModifier = { PlayerMultiplier = 0.95 } },
+						[4] = { DataOverrides = { HealthMultiplier = 1.13 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.4 } },
 					},
 				},
 				GameStateRequirements = {
