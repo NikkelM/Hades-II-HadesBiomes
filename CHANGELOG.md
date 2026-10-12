@@ -30,6 +30,7 @@ Other fixes and improvements:
 - Added community translators to the mod's credits.
 - Added the mod's credits to the Options menu's "Credits" category.
 - Updating the mod will now show a new install screen with patch highlights, instead of the generic "Installation Successful" message.
+- Balancing: Rebalanced enemy health scaling for Zagreus' Journey regions during Dream Dives. The regions are now more consistently challenging compared to vanilla Hades II regions instead of more difficult, which is more aligned with the Dream Dive design philosophy.
 - Balancing: Slightly reduced health of Theseus and Asterius.
 - Balancing: Slightly reduced armour of the Dire Voidstone in the Vow of Shadows version of the Barge of Death miniboss encounter.
 - Balancing: Increased the difficulty rating of all "Witch"-type enemies, causing less of them to spawn when selected for an encounter.
@@ -54,6 +55,7 @@ Other fixes and improvements:
 - Fixed: When receiving a blessing from Sisyphus outside of his encounter (through other mods), they can spawn out of bounds.
 - Fixed: The invulnerability bubble surrounding the Furies during their phase transitions is misaligned with their animations.
 - Fixed: Damage from Furies that assist the main boss does not scale during Dream Dives.
+- Fixed: Some enemies in Asphodel are not scaled correctly during Dream Dives.
 - Fixed: Destroying butterflies spawned by Soul Catchers with certain attacks constantly creates "Blocked!" presentation effects.
 - Fixed: Theseus does not deal damage if he rams you with his Chariot.
 - Fixed: Asterius can get stuck charging at Theseus during the "Delta Strike" combo attack.
@@ -65,6 +67,7 @@ Other fixes and improvements:
 - Fixed: A background ambience track in Elysium does not play.
 - Fixed: Gale burns a block when Melinoë is poisoned in Styx (or Elysium), instead of allowing it to happen as is the case with poison in the Polyphemus & Medea boss fight.
 - Fixed: Hades' portrait does not show during some of his taunt voicelines, e.g. after boss fights or Erebus encounters.
+- Fixed: Goddess Mode does not reduce enemy health in Zagreus' Journey regions during Dream Dives.
 - Fixed: The timer sound keeps ticking when dying during an survival encounter.
 - Fixed: An interaction prompt shows for Thanatos when he is about to leave after his romance dialogue.
 - Fixed: Player summons are destroyed when either of Theseus or Asterius is defeated in their boss fight, instead of after both have been defeated.
