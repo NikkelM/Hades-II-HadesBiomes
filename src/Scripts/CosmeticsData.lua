@@ -3597,35 +3597,35 @@ local tavernaCosmetics = {
 		},
 		FlavorText = {
 			-- de =
-			-- "It is said this pot once stood in the lounge of the House of Hades, used by it's head Chef to cook meals for Lord Hades and his family and guests.",
+			-- "It is said this pot once stood in the lounge of the House of Hades, used by its head Chef to cook meals for Lord Hades and his family and guests.",
 			-- el =
-			-- "It is said this pot once stood in the lounge of the House of Hades, used by it's head Chef to cook meals for Lord Hades and his family and guests.",
+			-- "It is said this pot once stood in the lounge of the House of Hades, used by its head Chef to cook meals for Lord Hades and his family and guests.",
 			en =
-			"It is said this pot once stood in the lounge of the House of Hades, used by it's head Chef to cook meals for Lord Hades and his family and guests.",
+			"It is said this pot once stood in the lounge of the House of Hades, used by its head Chef to cook meals for Lord Hades and his family and guests.",
 			-- es =
-			-- "It is said this pot once stood in the lounge of the House of Hades, used by it's head Chef to cook meals for Lord Hades and his family and guests.",
+			-- "It is said this pot once stood in the lounge of the House of Hades, used by its head Chef to cook meals for Lord Hades and his family and guests.",
 			fr =
 			"On raconte que cette marmite trônait jadis dans le salon de la Maison d'Hadès, où le chef cuisinier préparait les repas du seigneur Hadès, de sa famille et de ses invités.",
 			-- it =
-			-- "It is said this pot once stood in the lounge of the House of Hades, used by it's head Chef to cook meals for Lord Hades and his family and guests.",
+			-- "It is said this pot once stood in the lounge of the House of Hades, used by its head Chef to cook meals for Lord Hades and his family and guests.",
 			-- ja =
-			-- "It is said this pot once stood in the lounge of the House of Hades, used by it's head Chef to cook meals for Lord Hades and his family and guests.",
+			-- "It is said this pot once stood in the lounge of the House of Hades, used by its head Chef to cook meals for Lord Hades and his family and guests.",
 			-- ko =
-			-- "It is said this pot once stood in the lounge of the House of Hades, used by it's head Chef to cook meals for Lord Hades and his family and guests.",
+			-- "It is said this pot once stood in the lounge of the House of Hades, used by its head Chef to cook meals for Lord Hades and his family and guests.",
 			-- pl =
-			-- "It is said this pot once stood in the lounge of the House of Hades, used by it's head Chef to cook meals for Lord Hades and his family and guests.",
+			-- "It is said this pot once stood in the lounge of the House of Hades, used by its head Chef to cook meals for Lord Hades and his family and guests.",
 			-- ["pt-BR"] =
-			-- "It is said this pot once stood in the lounge of the House of Hades, used by it's head Chef to cook meals for Lord Hades and his family and guests.",
+			-- "It is said this pot once stood in the lounge of the House of Hades, used by its head Chef to cook meals for Lord Hades and his family and guests.",
 			-- ru =
-			-- "It is said this pot once stood in the lounge of the House of Hades, used by it's head Chef to cook meals for Lord Hades and his family and guests.",
+			-- "It is said this pot once stood in the lounge of the House of Hades, used by its head Chef to cook meals for Lord Hades and his family and guests.",
 			-- tr =
-			-- "It is said this pot once stood in the lounge of the House of Hades, used by it's head Chef to cook meals for Lord Hades and his family and guests.",
+			-- "It is said this pot once stood in the lounge of the House of Hades, used by its head Chef to cook meals for Lord Hades and his family and guests.",
 			-- uk =
-			-- "It is said this pot once stood in the lounge of the House of Hades, used by it's head Chef to cook meals for Lord Hades and his family and guests.",
+			-- "It is said this pot once stood in the lounge of the House of Hades, used by its head Chef to cook meals for Lord Hades and his family and guests.",
 			-- ["zh-CN"] =
-			-- "It is said this pot once stood in the lounge of the House of Hades, used by it's head Chef to cook meals for Lord Hades and his family and guests.",
+			-- "It is said this pot once stood in the lounge of the House of Hades, used by its head Chef to cook meals for Lord Hades and his family and guests.",
 			-- ["zh-TW"] =
-			-- "It is said this pot once stood in the lounge of the House of Hades, used by it's head Chef to cook meals for Lord Hades and his family and guests.",
+			-- "It is said this pot once stood in the lounge of the House of Hades, used by its head Chef to cook meals for Lord Hades and his family and guests.",
 		},
 		CosmeticsGroup = "Cosmetic_TavernaCauldron01",
 		InsertAfterCosmetic = "Cosmetic_TavernaCauldron02",
@@ -5203,35 +5203,35 @@ local preRunCosmetics = {
 		},
 		FlavorText = {
 			-- de =
-			-- "Recovered from the belongings of your brother Zagreus in his bedchamber, this charm depicts the hound of hell, in it's most terrifying form.",
+			-- "Recovered from the belongings of your brother Zagreus in his bedchamber, this charm depicts the hound of hell in its most terrifying form.",
 			-- el =
-			-- "Recovered from the belongings of your brother Zagreus in his bedchamber, this charm depicts the hound of hell, in it's most terrifying form.",
+			-- "Recovered from the belongings of your brother Zagreus in his bedchamber, this charm depicts the hound of hell in its most terrifying form.",
 			en =
-			"Recovered from the belongings of your brother Zagreus in his bedchamber, this charm depicts the hound of hell, in it's most terrifying form.",
+			"Recovered from the belongings of your brother Zagreus in his bedchamber, this charm depicts the hound of hell in its most terrifying form.",
 			-- es =
-			-- "Recovered from the belongings of your brother Zagreus in his bedchamber, this charm depicts the hound of hell, in it's most terrifying form.",
+			-- "Recovered from the belongings of your brother Zagreus in his bedchamber, this charm depicts the hound of hell in its most terrifying form.",
 			fr =
 			"Récupérée parmi les affaires de votre frère Zagreus dans sa chambre, cette breloque représente le chien des Enfers sous sa forme la plus terrifiante.",
 			-- it =
-			-- "Recovered from the belongings of your brother Zagreus in his bedchamber, this charm depicts the hound of hell, in it's most terrifying form.",
+			-- "Recovered from the belongings of your brother Zagreus in his bedchamber, this charm depicts the hound of hell in its most terrifying form.",
 			-- ja =
-			-- "Recovered from the belongings of your brother Zagreus in his bedchamber, this charm depicts the hound of hell, in it's most terrifying form.",
+			-- "Recovered from the belongings of your brother Zagreus in his bedchamber, this charm depicts the hound of hell in its most terrifying form.",
 			-- ko =
-			-- "Recovered from the belongings of your brother Zagreus in his bedchamber, this charm depicts the hound of hell, in it's most terrifying form.",
+			-- "Recovered from the belongings of your brother Zagreus in his bedchamber, this charm depicts the hound of hell in its most terrifying form.",
 			-- pl =
-			-- "Recovered from the belongings of your brother Zagreus in his bedchamber, this charm depicts the hound of hell, in it's most terrifying form.",
+			-- "Recovered from the belongings of your brother Zagreus in his bedchamber, this charm depicts the hound of hell in its most terrifying form.",
 			-- ["pt-BR"] =
-			-- "Recovered from the belongings of your brother Zagreus in his bedchamber, this charm depicts the hound of hell, in it's most terrifying form.",
+			-- "Recovered from the belongings of your brother Zagreus in his bedchamber, this charm depicts the hound of hell in its most terrifying form.",
 			-- ru =
-			-- "Recovered from the belongings of your brother Zagreus in his bedchamber, this charm depicts the hound of hell, in it's most terrifying form.",
+			-- "Recovered from the belongings of your brother Zagreus in his bedchamber, this charm depicts the hound of hell in its most terrifying form.",
 			-- tr =
-			-- "Recovered from the belongings of your brother Zagreus in his bedchamber, this charm depicts the hound of hell, in it's most terrifying form.",
+			-- "Recovered from the belongings of your brother Zagreus in his bedchamber, this charm depicts the hound of hell in its most terrifying form.",
 			-- uk =
-			-- "Recovered from the belongings of your brother Zagreus in his bedchamber, this charm depicts the hound of hell, in it's most terrifying form.",
+			-- "Recovered from the belongings of your brother Zagreus in his bedchamber, this charm depicts the hound of hell in its most terrifying form.",
 			-- ["zh-CN"] =
-			-- "Recovered from the belongings of your brother Zagreus in his bedchamber, this charm depicts the hound of hell, in it's most terrifying form.",
+			-- "Recovered from the belongings of your brother Zagreus in his bedchamber, this charm depicts the hound of hell in its most terrifying form.",
 			-- ["zh-TW"] =
-			-- "Recovered from the belongings of your brother Zagreus in his bedchamber, this charm depicts the hound of hell, in it's most terrifying form.",
+			-- "Recovered from the belongings of your brother Zagreus in his bedchamber, this charm depicts the hound of hell in its most terrifying form.",
 		},
 		CosmeticsGroup = "Cosmetic_ExitCharm",
 		InsertAfterCosmetic = _PLUGIN.guid .. "." .. "Cosmetic_ExitCharm_Thanatos",

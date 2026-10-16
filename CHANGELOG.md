@@ -96,7 +96,7 @@ Other fixes and improvements:
 - Fixed: Some damage sources during Charon's boss fight show a placeholder text in the run clear screen.
 - Fixed: Codex entries after the first unlock too early.
 - Fixed: Unlocking Arcana card-back packs does not count towards the completion of "A Simple Job".
-- Fixed: Various typos in incantation texts.
+- Fixed: Various typos in incantation and cosmetics texts.
 <!--Releasenotes end-->
 
 ## v1.3.0
