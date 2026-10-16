@@ -10,6 +10,8 @@
 - **Theseus** may now call upon the aid of Apollo, Hestia, Hera and Hephaestus.
 - Balancing: Slightly reduced health and armour of non-boss enemies in all biomes.
 - Balancing: Encounters should now be more cleanly separated into 1-3 distinct waves, with fewer waves that keep spawning in new enemies one after another.
+- Fixed: Some enemies do not properly move within range for certain attacks, rotate toward the player too fast or too slow, or can try to repeatedly attack from behind obstacles (e.g. you can no longer hide from Hades behind the pillars in his chamber).
+- Fixed: Some enemy attacks can improperly lock onto and track Melinoë during their charge-up (e.g. the Hydra's lunge).
 
 Other fixes and improvements:
 - Picking up a boon from Hermes while in a Zagreus' Journey run may now have him deliver a message from the first game's Dionysus to you (as Dionysus cannot be encountered during Zagreus' Journey runs), allowing you to experience his storyline.
@@ -31,11 +33,14 @@ Other fixes and improvements:
 - Added the mod's credits to the Options menu's "Credits" category.
 - Updating the mod will now show a new install screen with patch highlights, instead of the generic "Installation Successful" message.
 - Balancing: Rebalanced enemy health scaling for Zagreus' Journey regions during Dream Dives. The regions are now more consistently challenging compared to vanilla Hades II regions instead of more difficult, which is more aligned with the Dream Dive design philosophy.
+- Balancing: Some witch and brimstone-type enemies will now try to surround Melinoë during combat, which is closer to their behavior in the first game.
 - Balancing: Slightly reduced health of Theseus and Asterius.
 - Balancing: Slightly reduced armour of the Dire Voidstone in the Vow of Shadows version of the Barge of Death miniboss encounter.
 - Balancing: Increased the difficulty rating of all "Witch"-type enemies, causing less of them to spawn when selected for an encounter.
 - Balancing: Dire Numbskulls can no longer have the "Spinner" perk.
 - Balancing: Brimstone, Snakestone and Doomstone laser attacks have a new invulnerability frame for the first tick that would normally hit the player.
+- Balancing: The fragments spawned by the Doomstone miniboss can now either target the Doomstone itself, or another fragment instead.
+- Balancing: The Doomstone's lasers no longer move towards Melinoë and are static instead.
 - Balancing: There can now only be a limited number of "large" enemies alive at once during an encounter, similar to what was the case in the first game.
 - Balancing: The shared Tartarus story room now prioritizes Sisyphus or Orpheus if only one has an unplayed one-time conversation, and neither can appear more than twice in a row.
 - Balancing: Brimstones can no longer appear during Erebus Gate and Unseen Sigil challenges in Tartarus (which you need to clear without taking damage).
@@ -43,6 +48,7 @@ Other fixes and improvements:
 - Balancing: Revenants created by the "Vow of Return" in Asphodel will now be destroyed automatically when they land on lava.
 - Balancing: Exalted Shades can no longer create Lone Shades when dying.
 - Balancing: Slightly reduced the base encounter difficulty of wing-end combat rooms in the Temple of Styx.
+- Balancing: Hades will now dash and side-dash more frequently during combat to close the distance between him and Melinoë.
 - Balancing: Decreased the chances for Bloodroot, Wax and Deathcap Spores to appear in Tartarus.
 - Balancing: Decreased the chance for Granite to appear in Asphodel.
 - Balancing: Increased the chance for Pumpkin Seeds to appear in the Temple of Styx.
@@ -57,8 +63,10 @@ Other fixes and improvements:
 - Fixed: Damage from Furies that assist the main boss does not scale during Dream Dives.
 - Fixed: Some enemies in Asphodel are not scaled correctly during Dream Dives.
 - Fixed: Destroying butterflies spawned by Soul Catchers with certain attacks constantly creates "Blocked!" presentation effects.
+- Fixed: Chariots in Elysium immediately end their charge if Melinoë stands directly behind them, instead of turning to charge at her.
 - Fixed: Theseus does not deal damage if he rams you with his Chariot.
 - Fixed: Asterius can get stuck charging at Theseus during the "Delta Strike" combo attack.
+- Fixed: Asterius can face away from Melinoë during the "Bullhorn" combo attack if she moves while he waits for Theseus to come to him.
 - Fixed: The "Bullhorn" combo attack performed by Theseus and Asterius is only eligible once they reconcile, instead of from the start of the game.
 - Fixed: Gigantic Vermin that die while charmed leave behind a poison puddle that can poison Melinoë, even after an encounter ends.
 - Fixed: Theseus may move faster than expected in his second phase if the Vow of Rivals is active.

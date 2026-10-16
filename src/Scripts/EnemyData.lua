@@ -136,10 +136,28 @@ function mod.ApplyModificationsAndInheritEnemyData(base, modifications, replacem
 		if enemyData.HitSparkScale ~= nil then
 			enemyData.HitSparkScale = nil
 		end
-		-- This key was renamed, but if it was true before, it must be false now
-		if enemyData.DefaultAIData and enemyData.DefaultAIData.SkipMovement then
-			enemyData.DefaultAIData.MoveWithinRange = false
-			enemyData.DefaultAIData.SkipMovement = nil
+		-- Renamed keys with inverted behaviour
+		if enemyData.DefaultAIData then
+			if enemyData.DefaultAIData.SkipMovement ~= nil then
+				enemyData.DefaultAIData.MoveWithinRange = not enemyData.DefaultAIData.SkipMovement
+				enemyData.DefaultAIData.SkipMovement = nil
+			end
+			if enemyData.DefaultAIData.SkipStopBeforeAttack ~= nil then
+				enemyData.DefaultAIData.PreAttackStop = not enemyData.DefaultAIData.SkipStopBeforeAttack
+				enemyData.DefaultAIData.SkipStopBeforeAttack = nil
+			end
+			if enemyData.DefaultAIData.SkipStopBeforePreAttackEnd ~= nil then
+				enemyData.DefaultAIData.PreAttackEndStop = not enemyData.DefaultAIData.SkipStopBeforePreAttackEnd
+				enemyData.DefaultAIData.SkipStopBeforePreAttackEnd = nil
+			end
+			if enemyData.DefaultAIData.SkipAngleTowardTarget ~= nil then
+				enemyData.DefaultAIData.PreAttackAngleTowardTarget = not enemyData.DefaultAIData.SkipAngleTowardTarget
+				enemyData.DefaultAIData.SkipAngleTowardTarget = nil
+			end
+			if enemyData.DefaultAIData.SkipAngleTowardTargetWait ~= nil then
+				enemyData.DefaultAIData.WaitForAngleTowardTarget = not enemyData.DefaultAIData.SkipAngleTowardTargetWait
+				enemyData.DefaultAIData.SkipAngleTowardTargetWait = nil
+			end
 		end
 
 		-- Always use the Olympus dialogue elements for the bosses
@@ -454,6 +472,22 @@ hydraHeadAIStages[2].RandomSpawnEncounter = { "HydraHeads1", "HydraHeads3", "Hyd
 hydraHeadAIStages[4].SelectRandomAIStage = mod.NilValue
 hydraHeadAIStages[4].RandomSpawnEncounter = { "HydraHeads5", "HydraHeads6" }
 
+-- Ported/converted default AI data
+local hadesDefaultAIData = {
+	DeepInheritance = true,
+	MoveWithinRange = true,
+	StopMoveWithinRange = false,
+	PreAttackStop = true,
+	PreAttackEndStop = true,
+	PostAttackStop = false,
+	PreAttackAngleTowardTarget = true,
+	WaitForAngleTowardTarget = true,
+	DontRetreatIfCharmed = false,
+	AttackDistanceBuffer = 0,
+	MoveSuccessDistance = 32,
+	SkipSelfVelocityIfImpactSlow = false,
+}
+
 -- Replaces the key with the new value instead of modifying
 -- This is done AFTER data inheritance is processed
 local enemyReplacements = {
@@ -470,21 +504,13 @@ local enemyReplacements = {
 		ActivateFadeIn = false,
 		ActivateTint = false,
 		ActivateStartAlpha = 1.0,
+		DefaultAIData = game.DeepCopyTable(hadesDefaultAIData),
 	},
 	HadesBossBaseVulnerableEnemy = {
 		ModsNikkelMHadesBiomesIsModdedEnemy = true,
 		-- Minimum 0.15 to allow OnDeathWeapons to fire from this unit (e.g. ChaosDeathWeaponCurse)
 		DestroyDelay = 0.15,
-		DefaultAIData = {
-			DeepInheritance = true,
-			MoveWithinRange = false,
-			StopMoveWithinRange = false,
-			DontRetreatIfCharmed = false,
-			PreAttackAngleTowardTarget = true,
-			PreAttackStop = false,
-			PreAttackEndStop = false,
-			PostAttackStop = false,
-		},
+		DefaultAIData = game.DeepCopyTable(hadesDefaultAIData),
 		ActivateFx = "EnemySummonRune",
 		ActivateFx2 = "nil",
 		ActivateFxPreSpawn = "nil",
@@ -1152,6 +1178,8 @@ local enemyModifications = {
 			AttackWhileBlendingIntervalMin = 2.0,
 			AttackWhileBlendingIntervalMax = 3.0,
 			PostAttackDuration = 0.3,
+			MoveWithinRange = false,
+			AttackDistance = 450,
 		},
 	},
 	ThiefMineLayerElite = {
@@ -1165,6 +1193,7 @@ local enemyModifications = {
 	},
 	HeavyRanged = {
 		StunAnimations = { Default = "HeavyRangedCrystal4" },
+		PostAggroAI = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesSurroundAI",
 		ActivateFadeIn = true,
 		ActivateTint = true,
 		ActivateStartAlpha = 0.0,
@@ -1228,11 +1257,7 @@ local enemyModifications = {
 		ImmuneToPolymorph = true,
 		IgnoreSprintPhasingStasisStun = true,
 		DefaultAIData = {
-			-- How long it waits before moving again while firing the beams
-			FireDuration = 5.75,
-			-- Sort of acts as a PreAttackDuration as well
-			MoveWithinRangeTimeoutMin = 1.5,
-			MoveWithinRangeTimeoutMax = 2.0,
+			FireDuration = 4.35,
 		},
 		OnDamagedFireProjectiles = {
 			{
@@ -1259,11 +1284,7 @@ local enemyModifications = {
 		ImmuneToPolymorph = true,
 		IgnoreSprintPhasingStasisStun = true,
 		DefaultAIData = {
-			-- How long it waits before moving again while firing the beams
-			FireDuration = 5.75,
-			-- Sort of acts as a PreAttackDuration as well
-			MoveWithinRangeTimeoutMin = 1.5,
-			MoveWithinRangeTimeoutMax = 2.0,
+			FireDuration = 4.35,
 		},
 		OnDamagedFireProjectiles = {
 			{
@@ -1860,6 +1881,7 @@ local enemyModifications = {
 	},
 	HadesSpreadShotUnit = {
 		ModsNikkelMHadesBiomesOriginalHadesTwoEnemy = true,
+		PostAggroAI = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesSurroundAI",
 		DreamBiomeData = asphodelEnemyDreamBiomeData,
 		LargeUnitCap = 6,
 		LoadPackages = { "BiomeB", },
@@ -1874,6 +1896,7 @@ local enemyModifications = {
 	},
 	HadesSpreadShotUnitElite = {
 		ModsNikkelMHadesBiomesOriginalHadesTwoEnemy = true,
+		PostAggroAI = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesSurroundAI",
 		DreamBiomeData = asphodelEnemyDreamBiomeData,
 		LargeUnitCap = 6,
 		GenusName = "SpreadShotUnit_Elite",
@@ -2496,6 +2519,7 @@ local enemyModifications = {
 	SplitShotUnit = {
 		StunAnimations = { Default = "EnemyWretchCasterOnHit_SplitShot" },
 		DeathAnimation = "EnemyWretchCasterDeath_SplitShot",
+		PostAggroAI = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesSurroundAI",
 		DreamBiomeData = elysiumEnemyDreamBiomeData,
 		GeneratorData = {
 			DifficultyRating = 38,
@@ -2511,6 +2535,9 @@ local enemyModifications = {
 		DreamBiomeData = elysiumEnemyDreamBiomeData,
 		DefaultAIData = {
 			PreAttackAngleTowardTarget = false,
+			PreMoveAngleTowardTarget = true,
+			PreMoveWaitForAngleTowardTarget = true,
+			PreMoveStop = true,
 			AttackDistanceBuffer = 0,
 			StopMoveWithinRange = false,
 			RamEffectName = mod.NilValue,
@@ -2576,6 +2603,9 @@ local enemyModifications = {
 		BlockCharm = true,
 		DefaultAIData = {
 			PreAttackAngleTowardTarget = false,
+			PreMoveAngleTowardTarget = true,
+			PreMoveWaitForAngleTowardTarget = true,
+			PreMoveStop = true,
 			AttackDistanceBuffer = 0,
 			StopMoveWithinRange = false,
 			RamEffectName = mod.NilValue,
@@ -3135,6 +3165,7 @@ local enemyModifications = {
 	HeavyRangedForked = {
 		StunAnimations = { Default = "HeavyRangedForkedCrystal4" },
 		DeathAnimation = "HeavyRangedForkedDeath",
+		PostAggroAI = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesSurroundAI",
 		DreamBiomeData = styxEnemyDreamBiomeData,
 		-- This plops a large model of the enemy on the ground which doesn't disappear
 		SpawnObstaclesOnDeath = mod.NilValue,
@@ -3157,6 +3188,8 @@ local enemyModifications = {
 			AttackWhileBlendingIntervalMax = 1.0,
 			AttackWhileMovingIntervalMin = 0.5,
 			AttackWhileMovingIntervalMax = 1.0,
+			MoveWithinRange = false,
+			AttackDistance = 450,
 		},
 		ModsNikkelMHadesBiomesEffectVfxOffsetZ = 50,
 	},
@@ -3477,6 +3510,7 @@ local enemyModifications = {
 		DefaultAIData = {
 			-- Otherwise the blast is delayed if the player moves out of range, as the static cast tries to "move" towards the player
 			MoveWithinRange = false,
+			WaitForAngleTowardTarget = false,
 		},
 	},
 	NPC_Hades_Story_02 = {

@@ -1,6 +1,33 @@
 -- Applies modifications to base weapon objects, and then adds the new weapon objects to the game
 local function applyModificationsAndInheritWeaponData(base, modifications, replacements, weaponKeyReplacements,
 																											sjsonToAIDataPropertyMappings)
+	local function convertHadesAIFlags(aiData)
+		if aiData == nil then
+			return
+		end
+
+		if aiData.SkipMovement ~= nil then
+			aiData.MoveWithinRange = not aiData.SkipMovement
+			aiData.SkipMovement = nil
+		end
+		if aiData.SkipStopBeforeAttack ~= nil then
+			aiData.PreAttackStop = not aiData.SkipStopBeforeAttack
+			aiData.SkipStopBeforeAttack = nil
+		end
+		if aiData.SkipStopBeforePreAttackEnd ~= nil then
+			aiData.PreAttackEndStop = not aiData.SkipStopBeforePreAttackEnd
+			aiData.SkipStopBeforePreAttackEnd = nil
+		end
+		if aiData.SkipAngleTowardTarget ~= nil then
+			aiData.PreAttackAngleTowardTarget = not aiData.SkipAngleTowardTarget
+			aiData.SkipAngleTowardTarget = nil
+		end
+		if aiData.SkipAngleTowardTargetWait ~= nil then
+			aiData.WaitForAngleTowardTarget = not aiData.SkipAngleTowardTargetWait
+			aiData.SkipAngleTowardTargetWait = nil
+		end
+	end
+
 	-- Remove data from Hades that we don't want to use (e.g. player weapons)
 	for _, name in ipairs(mod.EnemyWeaponRemovals) do
 		base[name] = nil
@@ -54,11 +81,9 @@ local function applyModificationsAndInheritWeaponData(base, modifications, repla
 			weaponData.ForceFirst = nil
 		end
 
-		-- This key was renamed, but if it was true before, it must be false now
-		if weaponData.AIData.SkipMovement then
-			weaponData.AIData.MoveWithinRange = false
-			weaponData.AIData.SkipMovement = nil
-		end
+		-- Renamed keys with inverted behaviour
+		convertHadesAIFlags(weaponData.AIData)
+		convertHadesAIFlags(weaponData.ShrineAIDataOverwrites)
 
 		-- If the weapon defines a projectile to use, it might be different from the weapon name, so use it instead
 		local sjsonWeaponProjectileName = (mod.HadesSjsonWeaponsTable[weaponName] and
@@ -822,9 +847,6 @@ local weaponModifications = {
 	HeavyRangedSplitterFragment = {
 		AIData = {
 			DeepInheritance = true,
-			TargetClosestOfTypes = { "HeavyRangedSplitterMiniboss", "HeavyRangedSplitterMinibossSuperElite" },
-			TargetClosest = mod.NilValue,
-			TargetFriends = mod.NilValue,
 			ExpireProjectilesOnHitStun = true,
 			ExpireProjectilesOnFreeze = true,
 			ExpireProjectilesOnPolymorph = true,
@@ -835,6 +857,7 @@ local weaponModifications = {
 	-- #region TARTARUS - Minibosses - WretchAssassin
 	WretchAssassinStab = {
 		AIData = {
+			MoveWithinRange = false,
 			-- Fixed to use the Hades II teleportation
 			PreAttackTeleport = true,
 			TeleportToTarget = true,
@@ -847,6 +870,7 @@ local weaponModifications = {
 	},
 	WretchAssassinRanged = {
 		AIData = {
+			MoveWithinRange = false,
 			-- Fixed to use the Hades II teleportation
 			PreAttackTeleport = true,
 			PostTeleportAngleTowardTarget = true,
@@ -886,6 +910,7 @@ local weaponModifications = {
 	},
 	HarpySpawns = {
 		AIData = {
+			MoveWithinRange = false,
 			FireFunctionName = mod.NilValue,
 			ThreadFunctionName = _PLUGIN.guid .. "." .. "HandleBossSpawns",
 			FireAnimation = "FuryLightningLoop",
@@ -927,7 +952,6 @@ local weaponModifications = {
 	},
 	HarpyLightningChase = {
 		AIData = {
-			PreAttackStop = true,
 			PreAttackDuration = 0.0,
 			FireMoveTowardTarget = true,
 			StopMoveWithinRange = true,
@@ -938,7 +962,6 @@ local weaponModifications = {
 	},
 	HarpyLightningChaseRage = {
 		AIData = {
-			PreAttackStop = true,
 			PreAttackDuration = 0.0,
 			FireMoveTowardTarget = true,
 			AttackSlotInterval = 0.01,
@@ -1327,6 +1350,7 @@ local weaponModifications = {
 	-- #region ASPHODEL - Hydra (Purple/Wavemaker)
 	HydraRoar = {
 		AIData = {
+			MoveWithinRange = false,
 			PreAttackDuration = 0.5,
 			PostAttackDuration = 1.2,
 			FireRotationDampening = 0.01,
@@ -1334,6 +1358,7 @@ local weaponModifications = {
 	},
 	HydraRoarVolleyLeft = {
 		AIData = {
+			MoveWithinRange = true,
 			PreAttackDuration = 0.5,
 			PostAttackDuration = 1.2,
 			FireProjectileTowardTarget = true,
@@ -1342,6 +1367,7 @@ local weaponModifications = {
 	},
 	HydraRoarVolleyRight = {
 		AIData = {
+			MoveWithinRange = true,
 			PreAttackDuration = 0.5,
 			PostAttackDuration = 1.2,
 			FireProjectileTowardTarget = true,
@@ -1350,6 +1376,7 @@ local weaponModifications = {
 	},
 	HydraRoarVolleyInsideOut = {
 		AIData = {
+			MoveWithinRange = true,
 			PreAttackDuration = 0.5,
 			PostAttackDuration = 1.2,
 			FireProjectileTowardTarget = true,
@@ -1588,8 +1615,6 @@ local weaponModifications = {
 			StopBeforeFire = true,
 			-- If not set, Minotaur stays in one spot each leap
 			TrackTargetDuringCharge = true,
-			-- Can jump from anywhere
-			MoveWithinRange = false,
 			PreFireDuration = 0.0,
 			-- Slightly adjusted so he doesn't hover at the end before the touchdown
 			FireDuration = 0.28,
@@ -1661,7 +1686,6 @@ local weaponModifications = {
 			FireSelfUpwardVelocity = 2000,
 			StopBeforeFire = true,
 			TrackTargetDuringCharge = true,
-			MoveWithinRange = false,
 			PreFireDuration = 0.0,
 			FireDuration = 0.28,
 			ImmuneToProjectileSlow = true,
@@ -1766,6 +1790,8 @@ local weaponModifications = {
 	},
 	MinotaurTheseusThrow_Minotaur = {
 		AIData = {
+			MoveWithinRange = false,
+			PreMoveTrackTarget = true,
 			PartnerForceWeaponInterrupt = "MinotaurTheseusThrow_Theseus",
 			WaitForComboPartnerMoveAnimation = "Minotaur_Crouch",
 			MaxDistanceFromComboPartner = 500,
@@ -1925,9 +1951,9 @@ local weaponModifications = {
 			DeepInheritance = true,
 		},
 	},
-	-- Combo attacks require TheseusAboutFraternalBonds06_A/B to have run, which requires PersephoneFirstMeeting at the root
 	MinotaurTheseusSlam_Theseus = {
 		AIData = {
+			MoveWithinRange = false,
 			PartnerForceWeaponInterrupt = "MinotaurTheseusSlam_Minotaur",
 			WaitDurationForComboPartnerMove = mod.NilValue,
 			PreAttackAnimation = mod.NilValue,
@@ -2068,6 +2094,7 @@ local weaponModifications = {
 	},
 	SatyrDash = {
 		AIData = {
+			MoveWithinRange = false,
 			ForceFirst = true,
 			-- Only fire naturally at the start, then only through PreAttackDash
 			MinAttacksBetweenUse = 99999,
@@ -2172,13 +2199,8 @@ local weaponModifications = {
 	HadesBidentStrikeCombo3 = {
 		AIData = {
 			ProjectileName = "HadesBidentStrike",
-			MoveWithinRange = true,
-			PreAttackStop = true,
-			PreAttackEndStop = true,
 			PostAttackStop = true,
 			TargetPlayer = true,
-			PreAttackAngleTowardTarget = true,
-			WaitForAngleTowardTarget = true,
 			FireRotationDampening = 0.001,
 			ImmuneToProjectileSlow = true,
 		},
@@ -2245,7 +2267,6 @@ local weaponModifications = {
 			TrackTargetDuringCharge = true,
 			StopBeforeFire = true,
 			PostAttackStop = true,
-			MoveWithinRange = false,
 			AttackDistance = 9999,
 			ApplyEffectsOnWeaponFire = { game.WeaponEffectData.AttackLowGrip, },
 			ImmuneToProjectileSlow = true,
@@ -2261,6 +2282,7 @@ local weaponModifications = {
 	HadesSideDash = {
 		AIData = {
 			DeepInheritance = true,
+			MoveWithinRange = false,
 			PreAttackAnimation = "HadesBattleDash_Start",
 			PostAttackAnimation = "HadesBattleDash_ReturnToIdle",
 			PreAttackDuration = 0.03,
@@ -2270,7 +2292,6 @@ local weaponModifications = {
 			TrackTargetDuringCharge = true,
 			StopBeforeFire = true,
 			PostAttackStop = true,
-			MoveWithinRange = false,
 			AttackDistance = 9999,
 			ApplyEffectsOnWeaponFire = { game.WeaponEffectData.AttackLowGrip, },
 			ImmuneToProjectileSlow = true,
@@ -2301,7 +2322,6 @@ local weaponModifications = {
 		AIData = {
 			FireProjectileTowardTarget = true,
 			AngleTowardsTargetWhileFiring = true,
-			WaitForAngleTowardTarget = false,
 			TrackTargetDuringCharge = false,
 			PreAttackStop = true,
 			ModsNikkelMHadesBiomesDestroyObstacleOnFire = "HadesBidentReturnPoint",
@@ -2312,7 +2332,6 @@ local weaponModifications = {
 			PostAttackDuration = 0.2,
 			StopBeforeFire = true,
 			PostAttackStop = true,
-			MoveWithinRange = false,
 			AttackDistance = 9999,
 			ApplyEffectsOnWeaponFire = { game.WeaponEffectData.AttackLowGrip, },
 			ImmuneToProjectileSlow = true,
@@ -2327,6 +2346,7 @@ local weaponModifications = {
 	},
 	HadesInvisibility = {
 		AIData = {
+			MoveWithinRange = false,
 			-- Different call, as for FireFunctionName, CurrentRun is also passed as an argument
 			FireFunctionName = _PLUGIN.guid .. "." .. "HadesEnemyInvisibility",
 			-- To prevent him from being invulnerable when PreDamageBoss might be called
@@ -2377,6 +2397,7 @@ local weaponModifications = {
 	},
 	HadesConsumeHeal = {
 		AIData = {
+			MoveWithinRange = false,
 			RequireExistingIdsOfType = "ModsNikkelMHadesBiomesHadesTombstone",
 			PreAttackFunctionName = _PLUGIN.guid .. "." .. "HadesConsumeHeal",
 		},

@@ -95,6 +95,7 @@ local hadesProjectilesModifications = {
 		Speed = 470,
 	},
 	HeavyRangedWeapon = {
+		TotalFuse = 2.6,
 		NumPenetrations = 99999,
 		DissipateGraphic = "null",
 		ImpactFx = "null",
@@ -102,9 +103,6 @@ local hadesProjectilesModifications = {
 		InflictedDamageSound = "/SFX/BurnDamage",
 	},
 	HeavyRangedWeaponSplitter = {
-		TotalFuse = 4.0,
-		AutoAdjustForTarget = true,
-		MaxAdjustRate = 5,
 		DissipateGraphic = "null",
 		ImpactFx = "null",
 		DeathFx = "EnemyLaserEnd",
@@ -128,6 +126,7 @@ local hadesProjectilesModifications = {
 		DieWithOwner = true,
 	},
 	EliteBeams = {
+		TotalFuse = 8.1,
 		DissipateGraphic = "null",
 		ImpactFx = "null",
 		DeathFx = "EnemyLaserEnd",
@@ -395,6 +394,7 @@ local hadesProjectilesModifications = {
 		},
 	},
 	HadesCastBeam = {
+		TotalFuse = 3.1,
 		NumPenetrations = 99999,
 		DissipateGraphic = "null",
 		ImpactFx = "null",
