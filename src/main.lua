@@ -303,8 +303,9 @@ local function on_ready()
 			DebugLogScriptImportProgress("MapGroups SJSON")
 
 			-- SJSON changes
+			import "Game/Animations/Model/Enemy_HadesTombstone_Animation.sjson.lua"
 			import "Game/Animations/Model/Hero_Melinoe_Animation_Personality.sjson.lua"
-			DebugLogScriptImportProgress("Hero Animation SJSON")
+			DebugLogScriptImportProgress("Model Animation SJSON")
 
 			import "Game/Animations/GUI_Portraits_VFX.sjson.lua"
 			import "Game/Animations/GUI_Screens_VFX.sjson.lua"

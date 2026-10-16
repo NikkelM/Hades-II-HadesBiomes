@@ -39,6 +39,12 @@ local addAnimations = {
 		InheritFrom = "QuickFlashInvincible",
 		OffsetZ = 200,
 	},
+	{
+		Name = "ModsNikkelMHadesBiomesHadesGraspingHandsFx",
+		InheritFrom = "HadesGraspingHandsFx",
+		FilePath =
+		"NikkelM-HadesBiomesFxModded\\Fx\\ModsNikkelMHadesBiomesHadesGraspingHands\\ModsNikkelMHadesBiomesHadesGraspingHands",
+	},
 }
 
 sjson.hook(hadesTwoEnemyBaseVFXFile, function(data)

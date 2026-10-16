@@ -860,6 +860,7 @@ local enemyReplacements = {
 	ModsNikkelMHadesBiomesHadesTombstone = {
 		InheritFrom = { "BaseTrap" },
 		ActivateAnimation = "ModsNikkelMHadesBiomesHadesTombstoneSpawn",
+		DeathAnimation = "ModsNikkelMHadesBiomesHadesTombstoneExplode",
 		ActivateFx = "nil",
 		ActivateFx2 = "nil",
 		ActivateFxPreSpawn = "nil",

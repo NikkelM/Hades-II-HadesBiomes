@@ -84,6 +84,10 @@ PACKAGE_SOURCES = {
             ("Resources/Boss/SuperGems/", "Fx/SuperGems/"),
         ),
         "custom_prefixes": (
+            "Fx/ModsNikkelMHadesBiomesHadesGraspingHands/",
+            "Fx/ModsNikkelMHadesBiomesHadesTombstoneExplode/",
+            "Fx/ModsNikkelMHadesBiomesHadesStunTotemSpawn/",
+            "Fx/ModsNikkelMHadesBiomesHadesStunTotemStatic/",
             "Fx/RoomRewardAvailable-Front/",
             "Fx/RoomRewardAvailable-Front_MetaReward/",
         ),
@@ -327,7 +331,7 @@ def pack_source(package_name, source_root, packages_root, repository_root):
     workspace_root.mkdir(exist_ok=True)
     generated_project = workspace_root / package_name
     if generated_project.exists():
-        shutil.rmtree(generated_project)
+        shutil.rmtree(generated_project, onexc=remove_readonly)
 
     subprocess.run(
         [

@@ -63,16 +63,19 @@ mod.HadesEnemyAnimationsModifications = {
 		OriginY = 191,
 	},
 	ModsNikkelMHadesBiomesHadesStunTotemStatic = {
-		FilePath = "Fx\\HadesStunTotemStatic\\Surface_Gravemarker_01Active",
+		FilePath =
+		"NikkelM-HadesBiomesFxModded\\Fx\\ModsNikkelMHadesBiomesHadesStunTotemStatic\\ModsNikkelMHadesBiomesHadesStunTotemStatic",
 		Scale = 0.35,
 		OriginX = 212.5,
 		OriginY = 650,
 	},
 	ModsNikkelMHadesBiomesHadesStunTotemFlame = {
 		OffsetY = -150,
+		Hue = -0.23,
 	},
 	ModsNikkelMHadesBiomesHadesStunTotemFlameSpawn = {
 		OffsetY = -150,
+		Hue = -0.23,
 	},
 	HadesStunTotemSpawnDecal = {
 		OffsetZ = 85,

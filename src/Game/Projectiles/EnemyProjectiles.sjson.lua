@@ -405,6 +405,11 @@ local hadesProjectilesModifications = {
 	HadesTombstoneSpawn = {
 		SpawnOnDetonate = "ModsNikkelMHadesBiomesHadesTombstone"
 	},
+	HadesGraspingHands = {
+		Thing = {
+			Graphic = "ModsNikkelMHadesBiomesHadesGraspingHandsFx",
+		},
+	},
 	HadesRubbleClear = {
 		-- Prevents the push effect from pushing you in front of the wave and immediately damaging you again
 		ImmunityKey = "HadesRubbleClear",
