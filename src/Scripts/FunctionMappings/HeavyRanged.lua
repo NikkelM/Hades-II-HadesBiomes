@@ -131,7 +131,8 @@ end
 function mod.ModsNikkelMHadesBiomesHeavyRangedCrystalOnWeaponHit(victim, victimId, triggerArgs)
 	local projectileHitRecord = game.SessionMapState.FirstHitRecord[triggerArgs.ProjectileId] or {}
 	game.SessionMapState.FirstHitRecord[triggerArgs.ProjectileId] = projectileHitRecord
-	projectileHitRecord.ModsNikkelMHadesBiomesHeavyRangedHitCount =	(projectileHitRecord.ModsNikkelMHadesBiomesHeavyRangedHitCount or 0) + 1
+	projectileHitRecord.ModsNikkelMHadesBiomesHeavyRangedHitCount = (projectileHitRecord.ModsNikkelMHadesBiomesHeavyRangedHitCount or 0) +
+			1
 
 	-- The lock-on hit and the first actual laser hit are set to be non-damaging
 	if projectileHitRecord.ModsNikkelMHadesBiomesHeavyRangedHitCount <= 2 then
@@ -169,10 +170,78 @@ function mod.TetherOnTouchdownShatter(touchdowner, args)
 		-- Destroy once the shatter animation finishes
 		local destroyId = touchdowner.ObjectId
 		local notifyName = "ModsNikkelMHadesBiomesTetherShatter" .. destroyId
-		NotifyOnAnimationTimeRemaining({ Id = destroyId, Animation = args.DeathAnimation, Remaining = 0.01, Notify = notifyName, Timeout = 5.0 })
+		NotifyOnAnimationTimeRemaining({
+			Id = destroyId,
+			Animation = args.DeathAnimation,
+			Remaining = 0.01,
+			Notify =
+					notifyName,
+			Timeout = 5.0
+		})
 		game.waitUntil(notifyName)
 		Destroy({ Id = destroyId })
 	else
 		Destroy({ Id = touchdowner.ObjectId })
 	end
+end
+
+function mod.ModsNikkelMHadesBiomesSurroundAI(enemy)
+	game.SurroundEnemiesAttacking = game.SurroundEnemiesAttacking or {}
+	local surroundEnemiesAttacking = {}
+
+	while game.IsAIActive(enemy) do
+		if not CanAttack({ Id = enemy.ObjectId }) then
+			enemy.AINotifyName = "CanAttack" .. enemy.ObjectId
+			NotifyOnCanAttack({ Id = enemy.ObjectId, Notify = enemy.AINotifyName, Timeout = 9.0 })
+			game.waitUntil(enemy.AINotifyName)
+		end
+
+		enemy.WeaponName = game.SelectWeapon(enemy)
+		table.insert(enemy.WeaponHistory, enemy.WeaponName)
+		local weaponAIData = game.GetWeaponAIData(enemy)
+
+		local surroundAIKey = weaponAIData.SurroundAIKey or enemy.Name
+		game.SurroundEnemiesAttacking[surroundAIKey] = game.SurroundEnemiesAttacking[surroundAIKey] or {}
+		surroundEnemiesAttacking = game.SurroundEnemiesAttacking[surroundAIKey]
+
+		local targetId = game.GetTargetId(enemy, weaponAIData)
+
+		weaponAIData.TargetId = targetId
+		if targetId ~= nil and targetId ~= 0 then
+			if weaponAIData.PreMoveTeleport then
+				game.HandleEnemyTeleportation(enemy, weaponAIData)
+			end
+
+			Move({
+				Id = enemy.ObjectId,
+				DestinationId = targetId,
+				LiveOffsetFromId = enemy.ObjectId,
+				LiveOffsetDistance = weaponAIData.SurroundDistance,
+				LiveOffsetAngle = 180,
+				SuccessDistance = 50
+			})
+
+			game.wait(game.CalcEnemyWait(enemy, weaponAIData.SurroundRefreshInterval), enemy.AIThreadName)
+
+			for attackerId in pairs(surroundEnemiesAttacking) do
+				local attacker = game.ActiveEnemies[attackerId]
+				if attacker == nil or attacker.IsDead then
+					surroundEnemiesAttacking[attackerId] = nil
+				end
+			end
+
+			if GetDistance({ Id = enemy.ObjectId, DestinationId = targetId }) <= weaponAIData.AttackDistance and (weaponAIData.MaxAttackers == nil or game.TableLength(surroundEnemiesAttacking) < weaponAIData.MaxAttackers) then
+				surroundEnemiesAttacking[enemy.ObjectId] = true
+				Stop({ Id = enemy.ObjectId })
+				game.DoAttack(enemy, weaponAIData)
+				game.FinishTargetMarker(enemy)
+				surroundEnemiesAttacking[enemy.ObjectId] = nil
+			end
+		else
+			game.wait(game.CalcEnemyWait(enemy, 1.0), enemy.AIThreadName)
+		end
+	end
+
+	-- Clear a slot if the AI loop exits during an attack
+	surroundEnemiesAttacking[enemy.ObjectId] = nil
 end
