@@ -29,6 +29,7 @@ Other fixes and improvements:
 - Replaced the config option for hiding the automatic Elysium poison reminder with a new incantation.
 - The "A True Nightmare" Minor Prophecy can now only be revealed if the [Dream Dive Tweaks](https://thunderstore.io/c/hades-ii/p/zerp/DreamDiveTweaks/) mod is also installed (*It would be quite difficult to complete otherwise*).
 - "Charm, Battie" is now unlocked by progressing Megaera's relationship instead of by the number of times you have beaten her.
+- Added the ending portrait from Zagreus' Journey as a portrait that can be showcased in Melinoë's tent after the mod's ending.
 - Added community translators to the mod's credits.
 - Added the mod's credits to the Options menu's "Credits" category.
 - Updating the mod will now show a new install screen with patch highlights, instead of the generic "Installation Successful" message.

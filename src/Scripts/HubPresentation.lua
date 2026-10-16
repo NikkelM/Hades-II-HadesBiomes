@@ -162,3 +162,43 @@ function mod.PostCosmeticsIncantationDoraCheckForNewItems(source, args)
 		end
 	end
 end
+
+-- #region Family Portrait
+function mod.SelectFamilyPortrait(eventSource)
+	-- Don't select the H1 portrait if the H2 portrait is forced, or the portrait is already draped
+	if game.CurrentRun.PlayedTrueEnding or game.CurrentRun.FamilyPortraitHidden then
+		return
+	end
+
+	-- Default chance is 50%, if last run was modded it's 75%, if last run was normal H2 run, it's 25%
+	local hadesPortraitChance = 0.5
+	if not game.CurrentRun.IsDreamRun and game.CurrentRun.ActiveBounty == nil then
+		hadesPortraitChance = game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and 0.75 or 0.25
+	end
+
+	-- Force the H1 portrait on the Ending01 run, then choose based on the chance above
+	if not (game.CurrentRun.TextLinesRecord["Ending01"] or (game.GameState.TextLinesRecord["Ending01"] and game.RandomChance(hadesPortraitChance))) then
+		return
+	end
+
+	-- Need to load here as the DeathAreaRoomTransition is called too late and the texture would be missing
+	LoadPackages({ Name = "NikkelM-HadesBiomesCrossroads" })
+
+	local animationName = "ModsNikkelMHadesBiomesTentFamilyPortrait"
+	game.OverwriteSelf(eventSource, {
+		Animation = animationName,
+		PortraitAnimation = "PortraitFamily",
+		UseText = "UseFinishedFamilyPortrait",
+		OnUsedFunctionArgs = {
+			StartScale = 1.3,
+			EndScale = 1.0,
+			PanDuration = 9.8,
+		},
+	})
+	-- For the voicelines
+	game.MapState.ModsNikkelMHadesBiomesIsHadesFamilyPortrait = true
+	SetThingProperty({ DestinationId = eventSource.ObjectId, Property = "Graphic", Value = animationName })
+	SetAnimation({ DestinationId = eventSource.ObjectId, Name = animationName })
+end
+
+-- #endregion

@@ -8145,4 +8145,253 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 		},
 	},
 	-- #endregion
+	-- #region Family Portrait
+	ModsNikkelMHadesBiomes_HadesFamilyPortraitPreEndingVoiceLines = {
+		Queue = "Interrupt",
+		RandomRemaining = true,
+		BreakIfPlayed = true,
+		PreLineWait = 1.85,
+		SuccessiveChanceToPlayAll = 0.1,
+		PlayOnceFromTableThisRun = true,
+		PlayOnceContext = "FamilyPortraitVO",
+		TriggerCooldowns = { Name = "MelinoeAnyQuipSpeech" },
+		SuppressLyrics = true,
+		GameStateRequirements = {
+			{
+				PathTrue = { "MapState", "ModsNikkelMHadesBiomesIsHadesFamilyPortrait" },
+			},
+			{
+				PathFalse = { "GameState", "ReachedTrueEnding" },
+			},
+		},
+		{
+			Cue = "/VO/Melinoe_3989",
+			Text = "You'll find them. And you'll have so much to talk about. Let the longing for them spur you on for now.",
+			GameStateRequirements = {
+				{
+					Path = { "GameState", "UseRecord", "CrossroadsFamilyPortrait02" },
+					Comparison = ">=",
+					Value = 2,
+				},
+				{
+					PathFalse = { "CurrentRun", "TextLinesRecord", "ChronosBossOutro01" },
+				},
+			},
+		},
+		{
+			Cue = "/VO/Melinoe_3988",
+			Text = "Are you growing more motivated to find your family? Or merely growing more despondent...?",
+			GameStateRequirements = {
+				{
+					Path = { "GameState", "UseRecord", "CrossroadsFamilyPortrait02" },
+					Comparison = ">=",
+					Value = 3,
+				},
+				{
+					PathFalse = { "CurrentRun", "TextLinesRecord", "ChronosBossOutro01" },
+				},
+			},
+		},
+		{
+			Cue = "/VO/Melinoe_2936",
+			Text = "They were all so happy together, weren't they? And oblivious to the Titan's threat...",
+			PlayFirst = true,
+			GameStateRequirements = {
+				{
+					PathTrue = { "GameState", "TextLinesRecord", "ChronosNightmare01" },
+				},
+				{
+					PathFalse = { "CurrentRun", "TextLinesRecord", "ChronosBossOutro01" },
+				},
+			},
+		},
+		{
+			Cue = "/VO/Melinoe_5190",
+			Text = "Chronos threatened that you'd never see your family again, the wretch. But you have, and shall.",
+			GameStateRequirements = {
+				{
+					PathTrue = { "GameState", "TextLinesRecord", "ChronosBossOutro01" },
+				},
+				{
+					PathFalse = { "GameState", "TextLinesRecord", "ZagreusPastMeeting05" },
+				},
+			},
+		},
+		{
+			Cue = "/VO/Melinoe_2938",
+			Text = "Father... he was so happy then, but now...? Don't let the Titan break his spirit...",
+			PlayFirst = true,
+			GameStateRequirements = {
+				{
+					PathTrue = { "GameState", "UseRecord", "NPC_Hades_Field_01" },
+				},
+				{
+					PathFalse = { "CurrentRun", "TextLinesRecord", "ChronosBossOutro01" },
+				},
+			},
+		},
+		{
+			Cue = "/VO/Melinoe_2940",
+			Text = "Mother... you have her hair, at least. She seems so different from Headmistress, doesn't she...",
+			PlayFirst = true,
+			GameStateRequirements = {
+				{
+					Path = { "GameState", "TextLinesRecord" },
+					HasAny = {
+						"AphroditeAboutPersephone01",
+						"HermesAboutPersephone01",
+						"SeleneAboutPersephone01",
+						"HecateAboutFamily01",
+					},
+				},
+				{
+					PathFalse = { "CurrentRun", "TextLinesRecord", "ChronosBossOutro01" },
+				},
+			},
+		},
+		{
+			Cue = "/VO/Melinoe_2943",
+			Text = "You don't remember them, besides this painting and your dreams. But still you fight for them...",
+			PlayFirst = true,
+			GameStateRequirements = {
+				{
+					PathFalse = { "CurrentRun", "UseRecord", "NPC_Hades_Field_01" },
+				},
+				{
+					PathFalse = { "CurrentRun", "TextLinesRecord", "ChronosBossOutro01" },
+				},
+			},
+		},
+		{ Cue = "/VO/Melinoe_2937", Text = "The Titan has your family in his thrall, or worse... what has he done with them?" },
+		{ Cue = "/VO/Melinoe_2933", Text = "Father... Mother... Brother... please be safe. Please..." },
+		{ Cue = "/VO/Melinoe_2941", Text = "{#Emph}All that you lost is all that you are{#Prev}, as Headmistress would say..." },
+		{
+			Cue = "/VO/Melinoe_2942",
+			Text = "This family... lost to you since you were born. They deserve their vengeance, and so do you.",
+			GameStateRequirements = {
+				{
+					PathFalse = { "GameState", "TextLinesRecord", "ZagreusPastMeeting05" },
+				},
+			},
+		},
+		{ Cue = "/VO/Melinoe_2944", Text = "{#Emph}<Sigh>" },
+		{ Cue = "/VO/Melinoe_2945", Text = "{#Emph}<Sigh>" },
+		{
+			Cue = "/VO/Melinoe_1607",
+			Text = "Vengeance for my family.",
+			GameStateRequirements = {
+				{
+					PathFalse = { "GameState", "TextLinesRecord", "ZagreusPastMeeting05" },
+				},
+			},
+		},
+		{
+			Cue = "/VO/Melinoe_0347",
+			Text = "Vengeance for my father.",
+			GameStateRequirements = {
+				{
+					Path = { "GameState", "TextLinesRecord" },
+					HasNone = { "HadesAboutUltimateProgress01", "ZagreusPastMeeting05" },
+				},
+			},
+		},
+	},
+	ModsNikkelMHadesBiomes_HadesFamilyPortraitPostEndingVoiceLines = {
+		Queue = "Interrupt",
+		RandomRemaining = true,
+		BreakIfPlayed = true,
+		PreLineWait = 1.85,
+		SuccessiveChanceToPlayAll = 0.1,
+		PlayOnceFromTableThisRun = true,
+		PlayOnceContext = "FamilyPortraitVO",
+		TriggerCooldowns = { Name = "MelinoeAnyQuipSpeech" },
+		SuppressLyrics = true,
+		GameStateRequirements = {
+			{
+				PathTrue = { "MapState", "ModsNikkelMHadesBiomesIsHadesFamilyPortrait" },
+			},
+			{
+				PathTrue = { "GameState", "ReachedTrueEnding" },
+			},
+			{
+				PathTrue = { "GameState", "TextLinesRecord", "TrueEndingFinaleResponse01" },
+			},
+		},
+		{
+			Cue = "/VO/Melinoe_5715",
+			Text = "Mother and Father... we'll see each other again soon.",
+			GameStateRequirements = {
+				{
+					PathTrue = { "CurrentRun", "RoomsEntered", "I_Story01" },
+				},
+			},
+		},
+		{
+			Cue = "/VO/Melinoe_5717",
+			Text = "Good evening, everyone... be well all right?",
+			GameStateRequirements = {
+				{
+					PathTrue = { "CurrentRun", "Cleared" },
+				},
+			},
+		},
+		{ Cue = "/VO/Melinoe_5179", Text = "Your family... you may not be living under the same roof, though you're together still." },
+		{ Cue = "/VO/Melinoe_5181", Text = "Don't know how they managed to get Cerberus to sit still long enough for this..." },
+		{ Cue = "/VO/Melinoe_5182", Text = "You won't forget them, {#Emph}ever... {#Prev}and with {#Emph}this{#Prev}, perhaps Dora won't forget them either." },
+		{ Cue = "/VO/Melinoe_5187", Text = "The old painting's safely tucked away. That memory isn't going anywhere." },
+		{
+			Cue = "/VO/Melinoe_5189",
+			Text = "You'll see them again soon. Perhaps tonight.",
+			GameStateRequirements = {
+				{
+					Path = { "CurrentRun", "RoomsEntered" },
+					HasNone = { "I_Story01", "C_Boss01" },
+				},
+			},
+		},
+		{
+			Cue = "/VO/Melinoe_5186",
+			Text = "Brother... he's so different, yet... it's like part of you was missing till you met.",
+			PlayFirst = true,
+		},
+		{
+			Cue = "/VO/Melinoe_5716",
+			Text = "We've all the time in the world...",
+			GameStateRequirements = {
+				{
+					Path = { "GameState", "SpeechRecord" },
+					HasAll = {
+						"/VO/Melinoe_5179",
+						"/VO/Melinoe_5180",
+						"/VO/Melinoe_5181",
+						"/VO/Melinoe_5182",
+						"/VO/Melinoe_5184",
+						"/VO/Melinoe_5185",
+						"/VO/Melinoe_5186",
+						"/VO/Melinoe_5187",
+					},
+				},
+			},
+		},
+		{
+			Cue = "/VO/Melinoe_5718",
+			Text = "Take care, all of you... till next we meet.",
+			GameStateRequirements = {
+				{
+					Path = { "GameState", "SpeechRecord" },
+					HasAll = {
+						"/VO/Melinoe_5179",
+						"/VO/Melinoe_5180",
+						"/VO/Melinoe_5181",
+						"/VO/Melinoe_5182",
+						"/VO/Melinoe_5184",
+						"/VO/Melinoe_5185",
+						"/VO/Melinoe_5186",
+						"/VO/Melinoe_5187",
+					},
+				},
+			},
+		},
+	},
+	-- #endregion
 }

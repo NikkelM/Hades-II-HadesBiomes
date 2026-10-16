@@ -564,3 +564,9 @@ local needInheritanceProcessing = {
 
 applyModificationsAndInheritObstacleData(game.ObstacleData, obstacleModifications, addedObstacles,
 	needInheritanceProcessing)
+
+-- Family portrait in the tent
+local familyPortraitData = game.ObstacleData.CrossroadsFamilyPortrait02
+table.insert(familyPortraitData.SetupEvents, {
+	FunctionName = _PLUGIN.guid .. "." .. "SelectFamilyPortrait",
+})

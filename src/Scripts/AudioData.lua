@@ -528,6 +528,11 @@ table.insert(game.HeroVoiceLines.OverlookVoiceLines, 4,
 	mod.HeroVoiceLines.ModsNikkelMHadesBiomes_ElysiumFirstOverlookVoiceLines)
 table.insert(game.HeroVoiceLines.OverlookVoiceLines, 5,
 	mod.HeroVoiceLines.ModsNikkelMHadesBiomes_ElysiumOverlookVoiceLines)
+
+table.insert(game.HeroVoiceLines.UsedFamilyPortraitVoiceLines, 2,
+	mod.HeroVoiceLines.ModsNikkelMHadesBiomes_HadesFamilyPortraitPreEndingVoiceLines)
+table.insert(game.HeroVoiceLines.UsedFamilyPortraitVoiceLines, 3,
+	mod.HeroVoiceLines.ModsNikkelMHadesBiomes_HadesFamilyPortraitPostEndingVoiceLines)
 -- #endregion
 
 -- #region Chaos Gate voiceline adjustments for Orpheus Chaos boon (free entry)
