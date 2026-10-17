@@ -1627,7 +1627,7 @@ local enemyModifications = {
 			[2] = { ThreadedFunctions = { _PLUGIN.guid .. "." .. "Harpy3MapTransition", }, },
 			[3] = {
 				ThreadedFunctions = { _PLUGIN.guid .. "." .. "Harpy3MapTransition", },
-				UnequipWeapons = { "HarpyLightningLine", "HarpySlowBeam360", },
+				UnequipWeapons = { "HarpyLightningLine", },
 			},
 		},
 		-- Using OnKillVoiceLines from Harpy
