@@ -64,6 +64,7 @@ Other fixes and improvements:
 - Fixed: Alecto can choose her rage-building attack during her final phase when she is already permanently enraged.
 - Fixed: Alecto plays her idle animation during a phase transition if she was moving when the transition starts.
 - Fixed: The invulnerability bubble surrounding the Furies during their phase transitions is misaligned with their animations.
+- Fixed: The "bombing run" attack Tisiphone performs when she is assisting another Fury has a lower preview duration than intended, and always uses the same orientation for its pattern. 
 - Fixed: Damage from Furies that assist the main boss does not scale during Dream Dives.
 - Fixed: Some enemies in Asphodel are not scaled correctly during Dream Dives.
 - Fixed: Destroying butterflies spawned by Soul Catchers with certain attacks constantly creates "Blocked!" presentation effects.
