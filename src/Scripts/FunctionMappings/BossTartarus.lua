@@ -405,6 +405,7 @@ end
 
 function mod.HarpyBuildRage(enemy, weaponAIData, currentRun)
 	if enemy.Enraged or IsInvulnerable({ Id = enemy.ObjectId }) then
+		enemy.HarpyBuildRageEarlyExit = true
 		return
 	end
 
@@ -884,9 +885,9 @@ function mod.SpawnSupportAI(enemy)
 	game.thread(game.SetupUnit, supportUnit, game.CurrentRun)
 end
 
--- We need to reset this before the FireFunction, as the DumbFireAttack is called before it and would get cancelled otherwise
+-- Set this before the DumbFireAttack starts so a late eligibility change cancels it immediately
 function mod.ModsNikkelMHadesBiomesHarpyBuildRageStart(enemy, aiData)
-	enemy.HarpyBuildRageEarlyExit = false
+	enemy.HarpyBuildRageEarlyExit = enemy.Enraged or IsInvulnerable({ Id = enemy.ObjectId })
 end
 
 function mod.FuryDreamRunIntro(source, args)

@@ -936,6 +936,12 @@ local weaponModifications = {
 	},
 	HarpyBuildRage = {
 		BlockInterrupt = true,
+		GameStateRequirements = {
+			{
+				PathFromSource = true,
+				PathFalse = { "Enraged" },
+			},
+		},
 		AIData = {
 			FireFunctionName = _PLUGIN.guid .. "." .. "HarpyBuildRage",
 			FireStartFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesHarpyBuildRageStart",

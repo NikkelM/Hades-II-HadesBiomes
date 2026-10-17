@@ -61,6 +61,7 @@ Other fixes and improvements:
 - Balancing: Owning "God of the Dead" now makes "Success Rate" from Hermes eligible.
 - Balancing: Progressing mastery of the Lyre in Orpheus' chamber is now quicker.
 - Fixed: When receiving a blessing from Sisyphus outside of his encounter (through other mods), they can spawn out of bounds.
+- Fixed: Alecto can choose her rage-building attack during her final phase when she is already permanently enraged.
 - Fixed: The invulnerability bubble surrounding the Furies during their phase transitions is misaligned with their animations.
 - Fixed: Damage from Furies that assist the main boss does not scale during Dream Dives.
 - Fixed: Some enemies in Asphodel are not scaled correctly during Dream Dives.
