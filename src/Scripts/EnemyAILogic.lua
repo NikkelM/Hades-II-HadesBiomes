@@ -58,6 +58,23 @@ modutil.mod.Path.Wrap("ProcessAttackSlots", function(base, enemy, aiData)
 	return base(enemy, aiData)
 end)
 
+modutil.mod.Path.Wrap("IsEnemyWeaponForced", function(base, enemy, weaponName)
+	if base(enemy, weaponName) then
+		return true
+	end
+
+	local weaponData = game.WeaponData[weaponName]
+	if weaponData == nil or weaponData.AIData == nil then
+		return false
+	end
+
+	if weaponData.AIData.MaxAttacksBetweenUse ~= nil then
+		return game.NumAttacksSinceWeapon(enemy, weaponName) >= weaponData.AIData.MaxAttacksBetweenUse
+	end
+
+	return false
+end)
+
 -- Gets called in a ThreadedEvents function in each boss's AIStage.
 -- This re-implements some of the logic from Hades' StagedAI that was removed in Hades II
 function mod.ModsNikkelMHadesBiomesBossAIStageHandler(enemy, args)

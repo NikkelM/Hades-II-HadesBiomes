@@ -77,6 +77,7 @@ Other fixes and improvements:
 - Fixed: The "Bullhorn" combo attack performed by Theseus and Asterius is only eligible once they reconcile, instead of from the start of the game.
 - Fixed: Gigantic Vermin that die while charmed leave behind a poison puddle that can poison Melinoë, even after an encounter ends.
 - Fixed: Theseus may move faster than expected in his second phase if the Vow of Rivals is active.
+- Fixed: The Tiny Vermin is not forced to summon more Gigantic Vermin after it has performed enough other attacks.
 - Fixed: Bosses can be stunned when blocking their attacks using the Black Coat's Omega Attack (the attacks can still be blocked, but bosses will no longer be stunned).
 - Fixed: Clones spawned by enemies with the "Cloner" perk do not die automatically when their parent dies.
 - Fixed: A background ambience track in Elysium does not play.
