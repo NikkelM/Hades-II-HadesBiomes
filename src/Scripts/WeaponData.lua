@@ -998,7 +998,6 @@ local weaponModifications = {
 				{ OffsetDistance = 1200, OffsetScaleY = 0.6, OffsetFromAttacker = true, UseAttackerAngle = true, UseAngleBetween = mod.NilValue },
 				{ OffsetDistance = 1500, OffsetScaleY = 0.6, OffsetFromAttacker = true, UseAttackerAngle = true, UseAngleBetween = mod.NilValue },
 			},
-			BlockAsFirstWeapon = true,
 			FireAnimation = "Fury3LightningLoop",
 			PostAttackAnimation = "Fury3LightningReturnToIdle",
 		},
@@ -1008,7 +1007,6 @@ local weaponModifications = {
 			ChainedWeaponOptions = { "HarpyLassoLunge", "HarpyLassoLungeEM" },
 			ChainedWeapon = mod.NilValue,
 			AITrackTargetDuringCharge = false,
-			ForceFirst = true,
 			ImmuneToProjectileSlow = true,
 		},
 	},
@@ -1027,7 +1025,6 @@ local weaponModifications = {
 	HarpySlowBeam360 = {
 		AIData = {
 			ProjectileAngleEvenlySpaced = true,
-			BlockAsFirstWeapon = true,
 		},
 		Sounds = {
 			-- Otherwise the sound is terribly loud and overlayed
@@ -1057,7 +1054,6 @@ local weaponModifications = {
 	},
 	HarpyWhipCombo1 = {
 		AIData = {
-			BlockAsFirstWeapon = true,
 			ImmuneToProjectileSlow = true,
 		},
 	},
