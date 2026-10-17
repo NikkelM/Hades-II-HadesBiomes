@@ -378,8 +378,6 @@ local weaponReplacements = {
 		},
 		AIData = {
 			PostAttackDuration = 1.7,
-			-- Do the beam attack both before and after the lunge
-			PostAttackDumbFireWeapons = { "HarpyLungeSurgeBeam" },
 		},
 	},
 	SummonTisiphoneBombingRun = {
@@ -1048,35 +1046,6 @@ local weaponModifications = {
 			DeepInheritance = true,
 			FireSelfVelocity = 3600,
 			ImmuneToProjectileSlow = true,
-		},
-	},
-	HarpyLungeSurgeBeam = {
-		AIData = {
-			-- Alternative attack pattern (circular beams) instead of the original, as I could not get the tracking working on it
-			AttackSlots = {
-				{ AIDataOverrides = { FireProjectileAngleRelative = 9 } },
-				{ AIDataOverrides = { FireProjectileAngleRelative = -9 } },
-				{ AIDataOverrides = { FireProjectileAngleRelative = 27 } },
-				{ AIDataOverrides = { FireProjectileAngleRelative = -27 } },
-				{ AIDataOverrides = { FireProjectileAngleRelative = 45 } },
-				{ AIDataOverrides = { FireProjectileAngleRelative = -45 } },
-				{ AIDataOverrides = { FireProjectileAngleRelative = 63 } },
-				{ AIDataOverrides = { FireProjectileAngleRelative = -63 } },
-				{ AIDataOverrides = { FireProjectileAngleRelative = 81 } },
-				{ AIDataOverrides = { FireProjectileAngleRelative = -81 } },
-				{ AIDataOverrides = { FireProjectileAngleRelative = 99 } },
-				{ AIDataOverrides = { FireProjectileAngleRelative = -99 } },
-				{ AIDataOverrides = { FireProjectileAngleRelative = 117 } },
-				{ AIDataOverrides = { FireProjectileAngleRelative = -117 } },
-				{ AIDataOverrides = { FireProjectileAngleRelative = 135 } },
-				{ AIDataOverrides = { FireProjectileAngleRelative = -135 } },
-				{ AIDataOverrides = { FireProjectileAngleRelative = 153 } },
-				{ AIDataOverrides = { FireProjectileAngleRelative = -153 } },
-				{ AIDataOverrides = { FireProjectileAngleRelative = 171 } },
-				{ AIDataOverrides = { FireProjectileAngleRelative = -171 } },
-			},
-			FireTicks = 1,
-			NumProjectiles = 1,
 		},
 	},
 	HarpySlowBeam360 = {
