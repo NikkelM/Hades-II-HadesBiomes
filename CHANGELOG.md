@@ -36,6 +36,7 @@ Other fixes and improvements:
 - Balancing: Rebalanced enemy health scaling for Zagreus' Journey regions during Dream Dives. The regions are now more consistently challenging compared to vanilla Hades II regions instead of more difficult, which is more aligned with the Dream Dive design philosophy.
 - Balancing: Some witch and brimstone-type enemies will now try to surround Melinoë during combat, which is closer to their behavior in the first game.
 - Balancing: For some witch and brimstone-type enemies, only a maximum of two enemies of the given type will attack at once.
+- Balancing: Tisiphone's triple-whip combo attack now fires slightly faster (it is now aligned to the timings in the first game).
 - Balancing: Slightly reduced health of Theseus and Asterius.
 - Balancing: Slightly reduced armour of the Dire Voidstone in the Vow of Shadows version of the Barge of Death miniboss encounter.
 - Balancing: Increased the difficulty rating of all "Witch"-type enemies, causing less of them to spawn when selected for an encounter.
