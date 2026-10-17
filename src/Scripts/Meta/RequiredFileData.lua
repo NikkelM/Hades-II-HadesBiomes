@@ -584,6 +584,11 @@ mod.SjsonFileModifications = {
 			SortMode = "Isometric",
 		},
 	},
+	["Animations\\CharacterAnim_EnemiesBosses_Furies"] = {
+		Fury2ShieldedStart = {
+			CancelOnOwnerMove = false,
+		},
+	},
 	["Animations\\CharacterAnim_EnemiesBosses_Hydra"] = {
 		EnemyHydraDeathVFX = {
 			SortMode = "Isometric",

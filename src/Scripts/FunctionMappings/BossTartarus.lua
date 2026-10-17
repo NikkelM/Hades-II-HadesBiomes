@@ -405,7 +405,6 @@ end
 
 function mod.HarpyBuildRage(enemy, weaponAIData, currentRun)
 	if enemy.Enraged or IsInvulnerable({ Id = enemy.ObjectId }) then
-		enemy.HarpyBuildRageEarlyExit = true
 		return
 	end
 
@@ -421,6 +420,12 @@ function mod.HarpyBuildRage(enemy, weaponAIData, currentRun)
 	local hitsTaken = 0
 
 	for tick = 1, weaponAIData.BuildRageTicks, 1 do
+		if game.ReachedAIStageEnd(enemy) or enemy.InTransition then
+			enemy.HarpyBuildRageEarlyExit = true
+			StopFlashing({ Id = game.ScreenAnchors.BossRageFill })
+			return
+		end
+
 		if enemy.RageHit then
 			enemy.RageHit = nil
 			hitsTaken = hitsTaken + 1
