@@ -787,6 +787,8 @@ function mod.BoatToDeathAreaTransition(eventSource, args)
 	-- Hacky: Add Ending01 to the TextLinesRecord, as we skip it, but a lot of other things check for it
 	game.GameState.TextLinesRecord["Ending01"] = true
 	game.CurrentRun.TextLinesRecord["Ending01"] = true
+	game.CurrentRun.ModsNikkelMHadesBiomesBlockHubMusicRestore = true
+	game.CurrentRun.SuppressAmbientMusic = "MusicPlayer"
 	-- Block Dora from spawning this run to prevent her interrupting the portrait scene
 	game.CurrentRun.BlockDoraSpawn = true
 
@@ -862,6 +864,9 @@ function mod.HubPostModdedCreditsStartPresentation(currentRun, args)
 	local portrait = game.MapState.ActiveObstacles[589483]
 	FadeIn({ Duration = 0.5 })
 	mod.ViewModdedPortraitPresentation(portrait, args.PortraitArgs)
+	game.CurrentRun.ModsNikkelMHadesBiomesBlockHubMusicRestore = nil
+	game.CurrentRun.SuppressAmbientMusic = nil
+	game.RestoreMusicianMusic()
 	game.thread(game.PlayVoiceLines, args.EndVoiceLines)
 
 	TeleportCursor({ OffsetX = game.ScreenCenterX, OffsetY = game.ScreenCenterY })

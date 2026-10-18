@@ -164,9 +164,20 @@ function mod.PostCosmeticsIncantationDoraCheckForNewItems(source, args)
 end
 
 -- #region Family Portrait
+modutil.mod.Path.Wrap("UpdateFamilyPortraitVisibility", function(base, eventSource, args)
+	-- Always force it to be undraped during the H1 ending sequence
+	if game.CurrentRun.TextLinesRecord["Ending01"] then
+		return
+	end
+
+	return base(eventSource, args)
+end)
+
 function mod.SelectFamilyPortrait(eventSource)
-	-- Don't select the H1 portrait if the H2 portrait is forced, or the portrait is already draped
-	if game.CurrentRun.PlayedTrueEnding or game.CurrentRun.FamilyPortraitHidden then
+	local forceHadesPortrait = game.CurrentRun.TextLinesRecord["Ending01"]
+
+	-- Keep the H2 true-ending portrait priority and preserve the drape on normal returns
+	if game.CurrentRun.PlayedTrueEnding or (game.CurrentRun.FamilyPortraitHidden and not forceHadesPortrait) then
 		return
 	end
 
@@ -177,7 +188,7 @@ function mod.SelectFamilyPortrait(eventSource)
 	end
 
 	-- Force the H1 portrait on the Ending01 run, then choose based on the chance above
-	if not (game.CurrentRun.TextLinesRecord["Ending01"] or (game.GameState.TextLinesRecord["Ending01"] and game.RandomChance(hadesPortraitChance))) then
+	if not (forceHadesPortrait or (game.GameState.TextLinesRecord["Ending01"] and game.RandomChance(hadesPortraitChance))) then
 		return
 	end
 
@@ -197,6 +208,10 @@ function mod.SelectFamilyPortrait(eventSource)
 	})
 	-- For the voicelines
 	game.MapState.ModsNikkelMHadesBiomesIsHadesFamilyPortrait = true
+	if forceHadesPortrait then
+		game.CurrentRun.FamilyPortraitHidden = nil
+		UseableOn({ Id = eventSource.ObjectId })
+	end
 	SetThingProperty({ DestinationId = eventSource.ObjectId, Property = "Graphic", Value = animationName })
 	SetAnimation({ DestinationId = eventSource.ObjectId, Name = animationName })
 end

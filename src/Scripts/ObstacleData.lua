@@ -567,6 +567,9 @@ applyModificationsAndInheritObstacleData(game.ObstacleData, obstacleModification
 
 -- Family portrait in the tent
 local familyPortraitData = game.ObstacleData.CrossroadsFamilyPortrait02
+table.insert(familyPortraitData.SetupEvents[1].GameStateRequirements, {
+	PathFalse = { "CurrentRun", "TextLinesRecord", "Ending01" },
+})
 table.insert(familyPortraitData.SetupEvents, {
 	FunctionName = _PLUGIN.guid .. "." .. "SelectFamilyPortrait",
 })
