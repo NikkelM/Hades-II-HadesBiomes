@@ -8,6 +8,7 @@ local hadesTwoEnemyBaseVFXModifications = {
 }
 
 local addAnimations = {
+	-- #region TARTARUS
 	{
 		Name = "ModsNikkelMHadesBiomesInvincibubbleFury",
 		InheritFrom = "Invincibubble",
@@ -39,12 +40,27 @@ local addAnimations = {
 		InheritFrom = "QuickFlashInvincible",
 		OffsetZ = 200,
 	},
+	-- #endregion
+	-- #region STYX
+	{
+		Name = "ModsNikkelMHadesBiomesEnemyBurrowEntranceSmall",
+		InheritFrom = "EnemyBurrowEntranceSmall",
+		Material = "Unlit",
+		Hue = 0,
+		Saturation = 0,
+		Value = 0,
+		OffsetY = 10,
+		LocationFromOwner = "Take",
+		ScaleFromOwner = "Maintain",
+		Sound = "null",
+	},
 	{
 		Name = "ModsNikkelMHadesBiomesHadesGraspingHandsFx",
 		InheritFrom = "HadesGraspingHandsFx",
 		FilePath =
 		"NikkelM-HadesBiomesFxModded\\Fx\\ModsNikkelMHadesBiomesHadesGraspingHands\\ModsNikkelMHadesBiomesHadesGraspingHands",
 	},
+	-- #endregion
 }
 
 sjson.hook(hadesTwoEnemyBaseVFXFile, function(data)

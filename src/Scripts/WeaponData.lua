@@ -2079,8 +2079,11 @@ local weaponModifications = {
 	CrawlerSpawns = {
 		AIData = {
 			ThreadFunctionName = _PLUGIN.guid .. "." .. "HandleBossSpawns",
-			-- Prevents the weird wait between the animation start and the FX
-			PreAttackDuration = 0.0,
+		},
+	},
+	CrawlerReburrow = {
+		AIData = {
+			TeleportEndFx = "ModsNikkelMHadesBiomesEnemyBurrowEntranceSmall",
 		},
 	},
 	CrawlerReburrowShockwave = {

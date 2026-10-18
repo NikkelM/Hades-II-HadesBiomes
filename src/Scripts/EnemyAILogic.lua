@@ -157,3 +157,14 @@ function mod.RetreatThenDieAI(enemy)
 	game.wait(game.CalcEnemyWait(enemy, enemy.PostRetreatDuration), game.RoomThreadName)
 	game.Kill(enemy)
 end
+
+function mod.ModsNikkelMHadesBiomesPreAttackFlash(enemy, aiData)
+	Flash({
+		Id = enemy.ObjectId,
+		Speed = aiData.PreAttackFlash,
+		MinFraction = 0,
+		MaxFraction = 0.8,
+		Color = game.Color.White,
+		Duration = aiData.PreAttackDuration or 0.5,
+	})
+end

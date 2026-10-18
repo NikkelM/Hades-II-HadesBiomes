@@ -158,6 +158,9 @@ function mod.ApplyModificationsAndInheritEnemyData(base, modifications, replacem
 				enemyData.DefaultAIData.WaitForAngleTowardTarget = not enemyData.DefaultAIData.SkipAngleTowardTargetWait
 				enemyData.DefaultAIData.SkipAngleTowardTargetWait = nil
 			end
+			if enemyData.DefaultAIData.PreAttackFlash ~= nil then
+				enemyData.DefaultAIData.PreAttackThreadedFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesPreAttackFlash"
+			end
 		end
 
 		-- Always use the Olympus dialogue elements for the bosses
@@ -756,7 +759,10 @@ local enemyReplacements = {
 	-- #endregion
 	-- #region STYX - Minibosses
 	CrawlerMiniBoss = {
-		DefaultAIData = { DeepInheritance = true, },
+		DefaultAIData = {
+			DeepInheritance = true,
+			PreAttackFlash = 1.0,
+		},
 		OnKillVoiceLines = {
 			Cooldowns = { { Name = "BossVanquishedSpeech", Time = 60 }, },
 			{ GlobalVoiceLines = "CatFamiliarBossFightLastHitVoiceLines" },
