@@ -28,6 +28,8 @@ Other fixes and improvements:
 - Added a new Minor Prophecy revealed by talking to Poseidon in the Nightmare Realm.
 - Replaced the config option for hiding the automatic Elysium poison reminder with a new incantation.
 - The "A True Nightmare" Minor Prophecy can now only be revealed if the [Dream Dive Tweaks](https://thunderstore.io/c/hades-ii/p/zerp/DreamDiveTweaks/) mod is also installed (*It would be quite difficult to complete otherwise*).
+- Added a new cosmetic displaying Gigaros in Melinoë's tent in the slot used by Wall-Scrolls.
+- Added a card back for Hermes to the "Arcana, Olympian" card-back pack.
 - "Charm, Battie" is now unlocked by progressing Megaera's relationship instead of by the number of times you have beaten her.
 - Added the ending portrait from Zagreus' Journey as a portrait that can be showcased in Melinoë's tent after the mod's ending.
 - Added community translators to the mod's credits.
