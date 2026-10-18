@@ -242,6 +242,9 @@ local function parseSubtitleCsvFile(filePath, fileName, translatePrefix)
 							id = newId
 						end
 					end
+					if fileName == "Storyteller" then
+						displayName = "{#DialogueItalicFormat}" .. displayName
+					end
 
 					table.insert(entries,
 						sjson.to_object({ Id = id, InheritFrom = "BaseSubtitle", DisplayName = displayName }, order))
