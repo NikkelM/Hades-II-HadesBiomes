@@ -188,13 +188,14 @@ mod.CreditsData = {
 		{ Text = "ModsNikkelMHadesBiomes_InGameCredits_Name_burn",              X = mod.CreditSpacing.ColumnLeft,        Format = mod.CreditsFormat.Name },
 		{ Text = "ModsNikkelMHadesBiomes_InGameCredits_Name_zannc",             X = mod.CreditSpacing.ColumnRight,       Format = mod.CreditsFormat.Name },
 
-		{ PreWait = 2.35 },
 		{ CreditLineBuffer = 80 },
 		{ Text = "ModsNikkelMHadesBiomes_InGameCredits_Info_Community_Translators", Format = mod.CreditsFormat.Name },
 		{ CreditLineBuffer = 50 },
 		{ Text = "InGameCredits_Language_French",                               Format = mod.CreditsFormat.TranslatedLanguage },
 		{ CreditLineBuffer = mod.CreditSpacing.CreditLineBufferCraftToName },
 		{ Text = "ModsNikkelMHadesBiomes_InGameCredits_Name_JeanDupin",         Format = mod.CreditsFormat.Name },
+
+		{ PreWait = 2.35 },
 		{ CreditLineBuffer = 80 },
 		{ Text = "ModsNikkelMHadesBiomes_InGameCredits_Info_Community",         Format = mod.CreditsFormat.Info },
 
