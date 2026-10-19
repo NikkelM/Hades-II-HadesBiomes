@@ -332,6 +332,7 @@ local function on_ready()
 
 			import "Game/Obstacles/AmbienceGenerators.sjson.lua"
 			import "Game/Obstacles/Asphodel.sjson.lua"
+			import "Game/Obstacles/Atmosphere.sjson.lua"
 			import "Game/Obstacles/Elysium.sjson.lua"
 			import "Game/Obstacles/Gameplay.sjson.lua"
 			import "Game/Obstacles/GUI.sjson.lua"

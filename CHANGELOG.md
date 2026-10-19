@@ -101,6 +101,7 @@ Other fixes and improvements:
 - Fixed: During Dream Dives, if the "Vow of Menace" is active and wants to replace certain non-replaceable enemies, those enemies incorrectly receive the scaling from the next biome, instead of their own.
 - Fixed: Dying to poison does not credit the enemy that poisoned you when viewing the run at the Learned Sage.
 - Fixed: Some enemies summoned by Hades are not credited correctly if they killed you when viewing the run at the Learned Sage.
+- Fixed: Some minor environment textures and animations are missing on some maps.
 - Fixed: Music can sometimes stutter and cut out during gameplay when a lot of different audio sources try to play at once.
 - Fixed: After returning to the Crossroads after the ending sequence, music from the Music Player can briefly play before the outro narration begins.
 - Fixed: The displayed resurrection chance of "God of the Dead" does not account for "Success Rate".
