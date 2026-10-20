@@ -265,7 +265,6 @@ function mod.HarpyKillPresentation(unit, args)
 	game.thread(game.DoRumble,
 		{ { ScreenPreWait = 0.04, RightFraction = 0.17, Duration = 0.65 }, { ScreenPreWait = 2.8, LeftFraction = 0.3, Duration = 0.6 } })
 
-	Flash({ Id = victimId, Speed = 0.02, MinFraction = 1.0, MaxFraction = 1.0, Color = game.Color.Red, Duration = 1.55, ExpireAfterCycle = true })
 	game.thread(game.BossDeathFlash,
 		{ DestinationId = victimId, StartDelay = 0.52, StopDelay = 0.3, OffsetY = args.DeathFlashOffsetY or 0 })
 
