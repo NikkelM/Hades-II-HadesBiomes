@@ -102,6 +102,7 @@ function mod.DoAssist()
 		PlayAssistReactionVoiceLines = true,
 		PlayAssistActivatedVoiceLines = true,
 		PlayCrowdReaction = true,
+		PreservePlayerProjectiles = true,
 		SecondPortraitOffsetY = 10,
 		SetHeroAnimation = true,
 		UsePlayerRumble = true,

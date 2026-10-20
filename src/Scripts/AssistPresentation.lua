@@ -47,7 +47,14 @@ function mod.DoAssistPresentation(assistData, args)
 
 	game.wait(0.06)
 
-	ExpireProjectiles({ ExcludeNames = game.WeaponSets.ExpireProjectileExcludeProjectileNames })
+	local expireProjectileExcludeNames = game.WeaponSets.ExpireProjectileExcludeProjectileNames
+	if args.PreservePlayerProjectiles then
+		expireProjectileExcludeNames = game.CombineTablesIPairs(
+			expireProjectileExcludeNames,
+			game.WeaponSets.TimeSlowExpireProjectileExcludeProjectileNames
+		)
+	end
+	ExpireProjectiles({ ExcludeNames = expireProjectileExcludeNames })
 	game.AddSimSpeedChange(presentationState.SimSpeedName, { Fraction = 0.005, LerpTime = 0 })
 
 	game.waitUnmodified(0.32)
