@@ -67,6 +67,7 @@ local encounterReplacements = {
 	GeneratedStyxMiniSingle = {
 		CanEncounterSkip = false,
 		BlockAthenaEncounterKeepsake = true,
+		BannedEliteAttributes = { "Beams" },
 	},
 	BaseStyxMiniboss = {
 		CanEncounterSkip = false,

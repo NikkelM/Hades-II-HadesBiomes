@@ -55,6 +55,7 @@ Other fixes and improvements:
 - Balancing: The small heads summoned by Lernie can now be resurrected with "Night Bloom", "Sun Worshipper" or "God of the Dead".
 - Balancing: Revenants created by the "Vow of Return" in Asphodel will now be destroyed automatically when they land on lava.
 - Balancing: Exalted Shades can no longer create Lone Shades when dying.
+- Balancing: Lone Elite enemies in Styx tunnel rooms can no longer be imbued with the "Linker" elite perk.
 - Balancing: Slightly reduced the base encounter difficulty of wing-end combat rooms in the Temple of Styx.
 - Balancing: Hades will now dash and side-dash more frequently during combat to close the distance between him and Melinoë.
 - Balancing: Decreased the chances for Bloodroot, Wax and Deathcap Spores to appear in Tartarus.
