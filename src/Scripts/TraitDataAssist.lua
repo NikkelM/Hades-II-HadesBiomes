@@ -399,6 +399,7 @@ local newTraitData = {
 			ForceMax = 350,
 			ForceToValidLocation = true,
 			KeepCollision = true,
+			RunProgressUpgradeEligible = true,
 			GameStateRequirements = {},
 			AssistPresentationPortrait = "Portrait_Sisyphus_Default_01",
 			AssistPresentationColor = { 110, 255, 0, 255 },
