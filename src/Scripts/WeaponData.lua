@@ -2280,6 +2280,7 @@ local weaponModifications = {
 			TrackTargetDuringFire = false,
 			PostAttackStop = true,
 			ImmuneToProjectileSlow = true,
+			InterruptAnimation = "HadesBattleIdle",
 		},
 	},
 	HadesBidentRecoveryDash = {
