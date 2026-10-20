@@ -51,6 +51,7 @@ Other fixes and improvements:
 - Balancing: There can now only be a limited number of "large" enemies alive at once during an encounter, similar to what was the case in the first game.
 - Balancing: The shared Tartarus story room now prioritizes Sisyphus or Orpheus if only one has an unplayed one-time conversation, and neither can appear more than twice in a row.
 - Balancing: Brimstones can no longer appear during Erebus Gate and Unseen Sigil challenges in Tartarus (which you need to clear without taking damage).
+- Balancing: Gorgons can no longer be imbued with the "Bigger" elite perk.
 - Balancing: The small heads summoned by Lernie can now be resurrected with "Night Bloom", "Sun Worshipper" or "God of the Dead".
 - Balancing: Revenants created by the "Vow of Return" in Asphodel will now be destroyed automatically when they land on lava.
 - Balancing: Exalted Shades can no longer create Lone Shades when dying.
@@ -206,7 +207,7 @@ Other fixes and improvements:
 - Fixed: The Splitter's large projectile does not split into small projectiles after hitting Melinoë or an obstacle, but only when expiring mid-flight.
 - Fixed: The Brightsword's dash does not have its direction randomized.
 - Fixed: If a Shade enemy in Elysium dies while polymorphed, it drops a weapon that is able to be picked up by Exalted Shades.
-- Fixed: If a Shade enemy in Elysium has both the "Massive" and "Popper" elite perks, the additional Exalted Shades produced by the "Popper" perk are enlarged until they land.
+- Fixed: If a Shade enemy in Elysium has both the "Bigger" and "Popper" elite perks, the additional Exalted Shades produced by the "Popper" perk are enlarged until they land.
 - Fixed: Shade enemies in Elysium start spawning an Exalted Shade that then immediately disappears if they are killed by Athena.
 - Fixed: The explosion from the fake Exalted Shades created by the "Popper" elite perk can be blocked by the Black Coat's Omega attack block.
 - Fixed: If a Flame Wheel or Nemean Chariot is morphed by "Twilight Curse" while attacking, the sheep will continue performing the attack.

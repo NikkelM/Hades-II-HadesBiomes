@@ -1928,6 +1928,7 @@ local enemyModifications = {
 		ModsNikkelMHadesBiomesEffectVfxOffsetZ = 90,
 	},
 	FreezeShotUnitElite = {
+		BlockAttributes = { "Massive" },
 		EliteAttributeOptions = game.CombineTables(game.EnemySets.GenericEliteAttributes, { "Hex", }),
 	},
 	DusaSummon = {
