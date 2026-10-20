@@ -85,6 +85,7 @@ Other fixes and improvements:
 - Fixed: Gigantic Vermin that die while charmed leave behind a poison puddle that can poison Melinoë, even after an encounter ends.
 - Fixed: Theseus may move faster than expected in his second phase if the Vow of Rivals is active.
 - Fixed: The Tiny Vermin is not forced to summon more Gigantic Vermin after it has performed enough other attacks.
+- Fixed: When Hades enters a phase transition, some enemy projectiles are not destroyed correctly.
 - Fixed: Bosses can be stunned when blocking their attacks using the Black Coat's Omega Attack (the attacks can still be blocked, but bosses will no longer be stunned).
 - Fixed: Some enemies using a specific animation type do not flash white right before their attacks.
 - Fixed: Clones spawned by enemies with the "Cloner" perk do not die automatically when their parent dies.
