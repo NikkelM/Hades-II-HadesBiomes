@@ -397,6 +397,16 @@ local npcModifications = {
 		IgnoreInvincibubbleOnHit = true,
 		RepulseOnMeleeInvulnerableHit = 200,
 		Portrait = "ModsNikkelMHadesBiomes_Portrait_Bouldy",
+		SpecialInteractFunctionName = "SpecialInteractSalute",
+		SpecialInteractGameStateRequirements = {
+			{
+				PathTrue = { "GameState", "TextLinesRecord", "ModsNikkelMHadesBiomes_BouldyFirstMeeting" },
+			},
+		},
+		SpecialInteractCooldown = 60,
+		InteractVoiceLines = {
+			{ GlobalVoiceLines = "ModsNikkelMHadesBiomes_SaluteVoiceLines" },
+		},
 		InteractTextLineSets = {
 			BouldyMiscMeeting01 = { RequiredTextLines = { "ModsNikkelMHadesBiomes_BouldyFirstMeeting", }, },
 			BouldyMiscMeeting02 = { RequiredTextLines = { "ModsNikkelMHadesBiomes_BouldyFirstMeeting", }, },
