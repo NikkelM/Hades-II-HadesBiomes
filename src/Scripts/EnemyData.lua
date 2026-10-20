@@ -3535,6 +3535,7 @@ local enemyModifications = {
 				PathFalse = { "CurrentRun", "IsDreamRun" }
 			},
 		},
+		SelectCustomSpawnOptions = "nil",
 		IsBoss = false,
 	},
 	-- #endregion

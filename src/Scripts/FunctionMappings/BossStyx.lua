@@ -566,7 +566,7 @@ function mod.SurfaceExitIncantationPresentation(usee, args, user)
 	})
 
 	CreateAnimation({
-		Name = "CWEntranceHadesSymbolIn",
+		Name = "ModsNikkelMHadesBiomesCWEntranceHadesSymbolIn",
 		DestinationId = usee.ObjectId,
 		OffsetZ = 0,
 		OffsetY = 0,
@@ -583,7 +583,7 @@ function mod.SurfaceExitIncantationPresentation(usee, args, user)
 	ShakeScreen({ Distance = 6, Speed = 500, Duration = 0.3, FalloffSpeed = 1000 })
 	game.thread(game.DoRumble, { { ScreenPreWait = 0.02, LeftFraction = 0.13, Duration = 0.5 }, })
 
-	StopAnimation({ Name = "CWEntranceHadesSymbolLoop", DestinationId = usee.ObjectId })
+	StopAnimation({ Name = "ModsNikkelMHadesBiomesCWEntranceHadesSymbolLoop", DestinationId = usee.ObjectId })
 	SetAlpha({ Ids = usee.RewardPreviewIconIds, Fraction = 0.0, Duration = 0 })
 	AdjustFullscreenBloom({ Name = "FullscreenFlash2", Duration = 0.0 })
 	AdjustFullscreenBloom({ Name = "Off", Duration = 1 })
@@ -613,6 +613,13 @@ function mod.SetupHadesSpawnOptions(enemy)
 	table.insert(enemy.SpawnOptions, game.GetRandomValue(spawnOptionsLarge))
 	table.insert(enemy.SpawnOptions, game.GetRandomValue(spawnOptionsSmall))
 	table.insert(enemy.SpawnOptions, game.GetRandomValue(spawnOptionsSmall))
+
+	for _, spawnName in ipairs(enemy.SpawnOptions) do
+		if game.Contains({ "BloodlessPitcherSuperElite", "BloodlessNakedSuperElite", }, spawnName) then
+			LoadPackages({ Name = "BiomeB" })
+			break
+		end
+	end
 end
 
 function mod.HadesTeleport(enemy, weaponAIData, args)

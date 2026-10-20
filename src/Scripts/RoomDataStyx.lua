@@ -1029,6 +1029,7 @@ local roomModifications = {
 
 	-- BOSSES
 	D_Boss01 = {
+		LoadVanillaAudioBanks = { "BiomeI" },
 		LoadModdedVoiceBanks = { "HadesField", "ZagreusField" },
 		-- "/Leftovers/Ambience/OceanWavesWaterAmbience"
 		Ambience = "{c8b4b4e9-ee0e-4b72-8a5f-8b12e5179707}",

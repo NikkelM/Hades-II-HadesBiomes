@@ -155,8 +155,6 @@ local encounterModifications = {
 
 	-- BOSSES
 	BossHades = {
-		-- As we might spawn enemies from BiomeB from Hades II, and we need the Hades symbol for the exit animation from BiomeI
-		LoadPackages = { "BiomeB", "BiomeI" },
 		LoadModdedVoiceBanks = { "Modsnikkelmhadesbiomesstoryteller" },
 		PostUnthreadedEvents = mod.NilValue,
 		BlockNextBiomeEnemyShrineUpgrade = true,
@@ -178,8 +176,6 @@ local encounterModifications = {
 			},
 		},
 		LoadModdedAudioBanks = { "ModsNikkelMHadesBiomesMusicSurfaceModded", },
-		-- We need the Hades symbol for the exit animation from BiomeI
-		LoadPackages = { "BiomeI" },
 		PostUnthreadedEvents = {
 			-- Replacing with a custom function that sets the "Tenth time's a charm" victory message, which would normally be called in OpenRunClearScreen
 			[2] = { FunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesHadesPeacefulVictory", Args = mod.NilValue, GameStateRequirements = mod.NilValue },

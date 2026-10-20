@@ -84,6 +84,9 @@ PACKAGE_SOURCES = {
             ("Resources/Boss/SuperGems/", "Fx/SuperGems/"),
         ),
         "custom_prefixes": (
+            "Fx/CWEntranceHadesSymbolIn/",
+            "Fx/CWEntranceHadesSymbolLoop/",
+            "Fx/CWEntranceHadesSymbolOut/",
             "Fx/ModsNikkelMHadesBiomesHadesGraspingHands/",
             "Fx/ModsNikkelMHadesBiomesHadesTombstoneExplode/",
             "Fx/ModsNikkelMHadesBiomesHadesStunTotemSpawn/",

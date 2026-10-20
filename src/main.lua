@@ -316,6 +316,7 @@ local function on_ready()
 			import "Game/Animations/Melinoe_Spell_VFX.sjson.lua"
 			import "Game/Animations/Melinoe_Zeus_VFX.sjson.lua"
 			import "Game/Animations/Obstacle_Asphodel_VFX.sjson.lua"
+			import "Game/Animations/Obstacle_Clockwork_VFX.sjson.lua"
 			import "Game/Animations/Obstacle_Crossroads_VFX.sjson.lua"
 			import "Game/Animations/Obstacle_Deprecated_VFX.sjson.lua"
 			import "Game/Animations/Obstacle_General_VFX.sjson.lua"
