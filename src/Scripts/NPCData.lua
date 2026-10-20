@@ -368,10 +368,26 @@ local npcModifications = {
 		SetupEvents = {
 			{
 				FunctionName = "SilenceForDreamRun",
-				Args = { BlockInteract = true },
 				GameStateRequirements = {
 					{
 						PathTrue = { "CurrentRun", "IsDreamRun" },
+					},
+				},
+			},
+			{
+				FunctionName = "OverwriteSelf",
+				Args = {
+					CanReceiveGift = true,
+					GiftFunctionName = "AddRandomBouldyBlessing",
+					GiftFunctionArgs = mod.PresetEventArgs.BouldyRandomBlessings,
+					OnUsedFunctionName = "nil",
+				},
+				GameStateRequirements = {
+					{
+						PathTrue = { "CurrentRun", "IsDreamRun" },
+					},
+					{
+						PathTrue = { "GameState", "TextLinesRecord", "ModsNikkelMHadesBiomes_BouldyFirstMeeting" },
 					},
 				},
 			},

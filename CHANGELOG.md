@@ -16,6 +16,7 @@
 Other fixes and improvements:
 - Picking up a boon from Hermes while in a Zagreus' Journey run may now have him deliver a message from the first game's Dionysus to you (as Dionysus cannot be encountered during Zagreus' Journey runs), allowing you to experience his storyline.
 - Added all resources that can be found during Zagreus' Journey runs to the Wretched Broker to allow trading them for the equivalent resources from Hades II (they will show after completing any new run).
+- You can now gift Bouldy during Dream Dives to keep believing in each other.
 - Melinoë will now react to NPCs giving her keepsakes (and companions).
 - Melinoë will now react to entering the Fury's boss chambers.
 - Melinoë will now react to overlooking Asphodel and Elysium in the first rooms of those regions.
