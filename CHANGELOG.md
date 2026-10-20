@@ -74,6 +74,7 @@ Other fixes and improvements:
 - Fixed: The invulnerability bubble surrounding the Furies during their phase transitions is misaligned with their animations.
 - Fixed: The "bombing run" attack Tisiphone performs when she is assisting another Fury has a lower preview duration than intended, and always uses the same orientation for its pattern. 
 - Fixed: Damage from Furies that assist the main boss does not scale during Dream Dives.
+- Fixed: Dart projectiles created by Dracons and the Bone Hydra have hitboxes that don't rotate with the projectile correctly.
 - Fixed: Some enemies in Asphodel are not scaled correctly during Dream Dives.
 - Fixed: Destroying butterflies spawned by Soul Catchers with certain attacks constantly creates "Blocked!" presentation effects.
 - Fixed: Chariots in Elysium immediately end their charge if Melinoë stands directly behind them, instead of turning to charge at her.

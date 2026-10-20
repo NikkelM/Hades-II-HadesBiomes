@@ -174,9 +174,11 @@ local hadesProjectilesModifications = {
 
 	-- #region ASPHODEL
 	RangedBurrowerWeapon = {
-		InheritFrom = "1_BaseEnemyProjectileReflectable",
 		DissipateFx = "EnemyProjectileDissipate",
 		Speed = 510,
+		CanBeReflected = true,
+		CanBeProjectileDefenseDestroyedByName = "SafeZonePulse",
+		CanBeProjectileDefenseDestroyedByLayer = "BoonDefense",
 	},
 	CrusherUnitTouchdown = {
 		DetonateGraphic = "CrusherTouchdownFx",
@@ -185,8 +187,10 @@ local hadesProjectilesModifications = {
 		Fuse = 0.1,
 	},
 	HydraDart = {
-		InheritFrom = "1_BaseEnemyProjectileReflectable",
 		DissipateFx = "EnemyProjectileDissipate",
+		CanBeReflected = true,
+		CanBeProjectileDefenseDestroyedByName = "SafeZonePulse",
+		CanBeProjectileDefenseDestroyedByLayer = "BoonDefense",
 	},
 	HydraSummon = {
 		InheritFrom = "1_BaseEnemyProjectileUndestroyable",
