@@ -90,6 +90,7 @@ Other fixes and improvements:
 - Fixed: Clones spawned by enemies with the "Cloner" perk do not die automatically when their parent dies.
 - Fixed: A background ambience track in Elysium does not play.
 - Fixed: Gale burns a block when Melinoë is poisoned in Styx (or Elysium), instead of allowing it to happen as is the case with poison in the Polyphemus & Medea boss fight.
+- Fixed: "Fire Away" does not destroy some enemy projectiles that should be destroyable.
 - Fixed: If no Hex is owned yet, entering Styx may offer one as both an item in the shop and a reward on a door, causing you to own two Hexes when picking both.
 - Fixed: Hades' portrait does not show during some of his taunt voicelines, e.g. after boss fights or Erebus encounters.
 - Fixed: Goddess Mode does not reduce enemy health in Zagreus' Journey regions during Dream Dives.

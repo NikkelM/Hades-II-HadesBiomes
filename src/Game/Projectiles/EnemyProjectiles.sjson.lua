@@ -139,6 +139,9 @@ local hadesProjectilesModifications = {
 		Speed = 700,
 		InheritFrom = "1_BaseEnemyProjectileReflectable",
 	},
+	HarpyWhipShot = {
+		CanBeProjectileDefenseDestroyedByLayer = "BoonDefense",
+	},
 	HarpySlowBeam = {
 		UnpauseAnimation = mod.NilValue,
 		Thing = {
@@ -216,6 +219,9 @@ local hadesProjectilesModifications = {
 	},
 	ShadeDeathSpawnSuperElite = {
 		SpawnOnDetonate = "null",
+	},
+	ShadeBowRanged = {
+		CanBeProjectileDefenseDestroyedByLayer = "BoonDefense",
 	},
 	EliteDeathMultiEgg = {
 		SpawnOnDetonate = "null",
@@ -353,9 +359,11 @@ local hadesProjectilesModifications = {
 		},
 	},
 	RatPoisonShake = {
-		SpawnOnDetonate = "HadesPoisonPuddleSmall"
+		SpawnOnDetonate = "HadesPoisonPuddleSmall",
+		CanBeProjectileDefenseDestroyedByLayer = "BoonDefense",
 	},
 	SatyrRangedWeapon = {
+		CanBeProjectileDefenseDestroyedByLayer = "BoonDefense",
 		Effects = {
 			[2] = {
 				Cooldown = 0.23,
