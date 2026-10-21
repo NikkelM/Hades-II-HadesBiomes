@@ -369,18 +369,6 @@ local weaponReplacements = {
 		},
 	},
 	-- #endregion
-	-- #region TARTARUS - Tisiphone
-	HarpyLassoLungeEM = {
-		InheritFrom = { "HarpyLassoLunge" },
-		GenusName = "HarpyLassoLunge",
-		GameStateRequirements = {
-			NamedRequirements = { "BossDifficultyActive" },
-		},
-		AIData = {
-			PostAttackDuration = 1.7,
-		},
-	},
-	-- #endregion
 	-- #endregion
 
 	-- #region ASPHODEL
@@ -1004,20 +992,12 @@ local weaponModifications = {
 	},
 	HarpyWhipLasso = {
 		AIData = {
-			ChainedWeaponOptions = { "HarpyLassoLunge", "HarpyLassoLungeEM" },
-			ChainedWeapon = mod.NilValue,
-			AITrackTargetDuringCharge = false,
 			ImmuneToProjectileSlow = true,
 		},
 	},
 	-- Chained from HarpyWhipLasso
 	HarpyLassoLunge = {
-		-- In the EM version, we use an alternative with an extra DumbFireAttack after the lunge
-		GameStateRequirements = {
-			NamedRequirementsFalse = { "BossDifficultyActive" },
-		},
 		AIData = {
-			DeepInheritance = true,
 			FireSelfVelocity = 3600,
 			ImmuneToProjectileSlow = true,
 		},

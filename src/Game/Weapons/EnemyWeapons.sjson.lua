@@ -99,10 +99,6 @@ local hadesWeaponAdditions = {
 		Name = "HarpyLungeAlectoRage",
 		InheritFrom = "HarpyLungeAlecto",
 	},
-	HarpyLassoLungeEM = {
-		Name = "HarpyLassoLungeEM",
-		InheritFrom = "HarpyLassoLunge",
-	},
 	-- #endregion
 }
 -- Add the added weapons
