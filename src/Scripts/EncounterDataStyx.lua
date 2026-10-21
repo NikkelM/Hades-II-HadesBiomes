@@ -93,6 +93,7 @@ local encounterReplacements = {
 	-- New encounters
 	AthenaCombatStyx = {
 		InheritFrom = { "BaseAthenaCombat", "GeneratedStyx" },
+		UnthreadedEvents = mod.EncounterSets.ModsNikkelMHadesBiomesEncounterEventsAthenaCombat,
 		CanEncounterSkip = false,
 		BaseDifficulty = 1400,
 		DepthDifficultyRamp = 0,

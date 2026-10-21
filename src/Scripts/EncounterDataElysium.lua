@@ -110,6 +110,7 @@ local encounterReplacements = {
 	},
 	AthenaCombatElysium = {
 		InheritFrom = { "BaseAthenaCombat", "GeneratedElysium" },
+		UnthreadedEvents = mod.EncounterSets.ModsNikkelMHadesBiomesEncounterEventsAthenaCombat,
 		CanEncounterSkip = false,
 		BaseDifficulty = 650,
 		DepthDifficultyRamp = 120,
