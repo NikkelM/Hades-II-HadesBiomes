@@ -255,6 +255,7 @@ function mod.HadesPhaseTransition(boss, currentRun, aiStage)
 
 	SetAnimation({ Name = "HadesBattleKnockDown", DestinationId = boss.ObjectId })
 	SetGoalAngle({ Id = boss.ObjectId, Angle = 270 })
+	mod.ClearShadeWeapons()
 	game.thread(game.LastKillPresentation, boss)
 
 	-- Do it again, just in case there was some desync
@@ -971,7 +972,6 @@ function mod.ModsNikkelMHadesBiomesOpenRunClearScreen()
 
 	game.OnScreenOpened(screen)
 	game.CreateScreenFromData(screen, screen.ComponentData)
-	game.OnScreenOpened(screen)
 	game.FrameState.RequestUpdateHealthUI = true
 
 	local components = screen.Components

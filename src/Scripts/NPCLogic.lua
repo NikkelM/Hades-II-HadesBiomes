@@ -503,7 +503,7 @@ function mod.SpawnOrpheusLyre(source, args)
 	-- Exit door
 	local spawnId = 485517
 	local houseLyre = {
-		Name = "HouseLyre01",
+		Name = "ModsNikkelMHadesBiomes_HouseLyre01",
 		InteractDistance = 130,
 		InteractOffsetX = -20,
 		InteractOffsetY = 70,
@@ -512,7 +512,7 @@ function mod.SpawnOrpheusLyre(source, args)
 	}
 
 	houseLyre.ObjectId = SpawnObstacle({
-		Name = "HouseLyre01",
+		Name = "ModsNikkelMHadesBiomes_HouseLyre01",
 		Group = "Standing",
 		DestinationId = spawnId,
 		AttachedTable = houseLyre,

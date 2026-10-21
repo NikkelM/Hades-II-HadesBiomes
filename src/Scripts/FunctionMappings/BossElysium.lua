@@ -253,10 +253,7 @@ function mod.GetUninteractedGodThisRunForTheseus()
 	local eligibleTheseusGods = {
 		AphroditeUpgrade = true,
 		AresUpgrade = true,
-		NPC_Artemis_Field_01 = true, -- ArtemisUpgrade = true, -- not in Hades II as a normal god
-		NPC_Athena_01 = true,      -- AthenaUpgrade = true, -- not in Hades II as a normal god
 		DemeterUpgrade = true,
-		NPC_Dionysus_01 = true,    -- DionysusUpgrade = true, -- not in Hades II as a normal god, and not possible to get in modded run
 		PoseidonUpgrade = true,
 		ZeusUpgrade = true,
 		ApolloUpgrade = true,   -- Only exists in Hades II
@@ -314,28 +311,17 @@ function mod.GetUninteractedGodThisRunForTheseus()
 	end
 
 	local randomGod = game.GetRandomValue(notInteractedGods)
-	-- Mapping the god names to the .pkg names used in Hades II
-	local randomGodMap = {
-		AphroditeUpgrade = "Aphrodite",
-		AresUpgrade = "Ares",
-		NPC_Artemis_Field_01 = "Artemis",
-		NPC_Athena_01 = "Athena",
-		DemeterUpgrade = "Demeter",
-		NPC_Dionysus_01 = "Dionysus",
-		PoseidonUpgrade = "Poseidon",
-		ZeusUpgrade = "Zeus",
-		ApolloUpgrade = "Apollo",
-		HeraUpgrade = "Hera",
-		HephaestusUpgrade = "Hephaestus",
-		HestiaUpgrade = "Hestia",
+	-- Map H2 NPC names to the H1 god identifiers used by Theseus weapon data
+	local npcGodMap = {
+		NPC_Artemis_Field_01 = "ArtemisUpgrade",
+		NPC_Athena_01 = "AthenaUpgrade",
+		NPC_Dionysus_01 = "DionysusUpgrade",
 	}
-	return randomGodMap[randomGod] or randomGod
+	return npcGodMap[randomGod] or randomGod
 end
 
 function mod.SelectTheseusGod(enemy, run, args)
-	enemy.TheseusGodName = mod.GetUninteractedGodThisRunForTheseus() or "Artemis"
-	-- Contains some necessary Fx that were in various GodUpgrade packages in Hades
-	LoadPackages({ Names = { enemy.TheseusGodName, "ModsNikkelMHadesBiomesTheseusGodFxOriginal" } })
+	enemy.TheseusGodName = mod.GetUninteractedGodThisRunForTheseus() or "ArtemisUpgrade"
 end
 
 function mod.TheseusGodAI(enemy, currentRun)
@@ -344,8 +330,7 @@ function mod.TheseusGodAI(enemy, currentRun)
 		return
 	end
 
-	-- In the selection function, we removed the "Upgrade" suffix from the god name to be able to load the correct packages
-	local theseusGodName = enemy.TheseusGodName .. "Upgrade"
+	local theseusGodName = enemy.TheseusGodName
 	-- Set current weapon name to fire the intro wrath attack
 	enemy.WeaponName = "Theseus" .. theseusGodName .. "Wrath"
 	enemy.GodUpgrade = theseusGodName

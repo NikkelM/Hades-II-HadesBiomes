@@ -72,7 +72,7 @@ PACKAGE_SOURCES = {
     },
     "NikkelM-HadesBiomesFxModded": {
         "source": "NikkelM-HadesBiomesFxModded_source",
-        "hades_packages": ("Fx", "RoomManager"),
+        "hades_packages": ("Fx", "RoomManager", "DeathArea"),
         "aliases": (
             (
                 "Fx/ModsNikkelMHadesBiomesHadesStunTotemSpawn/"

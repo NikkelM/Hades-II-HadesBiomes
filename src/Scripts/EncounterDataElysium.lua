@@ -174,8 +174,7 @@ local encounterModifications = {
 	-- BOSSES
 	BossTheseusAndMinotaur = {
 		PostUnthreadedEvents = mod.NilValue,
-		-- For the Grenade graphics of EM Theseus
-		LoadPackages = { "BiomeOBoss" },
+		LoadPackages = { "ModsNikkelMHadesBiomesTheseusGodFxOriginal" },
 		StartRoomUnthreadedEvents = {
 			[1] = { FunctionName = _PLUGIN.guid .. "." .. "ActivatePrePlacedByShrineLevel", },
 		},

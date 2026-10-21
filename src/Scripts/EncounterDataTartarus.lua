@@ -695,8 +695,6 @@ local encounterModifications = {
 		NextRoomResumeMusic = true,
 	},
 	Story_Orpheus_01 = {
-		-- For the Lyre
-		LoadPackages = { "BiomeIHouse" },
 		GameStateRequirements = {
 			{
 				PathTrue = { "GameState", "WorldUpgrades", "ModsNikkelMHadesBiomes_OrpheusUnlockItem" },

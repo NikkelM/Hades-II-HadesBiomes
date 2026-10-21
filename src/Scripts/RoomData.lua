@@ -93,10 +93,8 @@ local charonRoomReplacements = {}
 local charonRoomModifications = {
 	CharonFight01 = {
 		RoomSetName = "Challenge",
-		-- BiomeG for some of the SFX for Charon's attacks
 		LoadModdedPackages = { "RoomManagerModsNikkelMHadesBiomes", "NikkelM-HadesBiomesFxModded", "NikkelM-HadesBiomesGUIModded", "ModsNikkelMHadesBiomesGUIOriginal", },
 		LoadModdedAudioBanks = { "EnemiesModsNikkelMHadesBiomes", "SoundsModsNikkelMHadesBiomes", "ModsNikkelMHadesBiomesMusicModded", "ModsNikkelMHadesBiomesMusicErebusModded", "ModsNikkelMHadesBiomesAmbienceModded", },
-		LoadVanillaAudioBanks = { "BiomeG", },
 
 		SaveProfileLocationText = "ModsNikkelMHadesBiomesLocation_Hades_Challenge",
 		DreamSaveProfileLocationText = "ModsNikkelMHadesBiomesLocation_Hades_Erebus_Dream",

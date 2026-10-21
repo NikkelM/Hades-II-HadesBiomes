@@ -37,7 +37,7 @@ Other fixes and improvements:
 - Added community translators to the mod's credits.
 - Added the mod's credits to the Options menu's "Credits" category.
 - Updating the mod will now show a new install screen with patch highlights, instead of the generic "Installation Successful" message.
-- Reduced the amount of packages loaded during the Hades boss fight, which should improve performance and reduce crashes on lower spec machines.
+- Reduced the amount of packages loaded during some encounters, which should improve performance and reduce crashes on lower spec machines.
 - Balancing: Rebalanced enemy health scaling for Zagreus' Journey regions during Dream Dives. The regions are now more consistently challenging compared to vanilla Hades II regions instead of more difficult, which is more aligned with the Dream Dive design philosophy.
 - Balancing: Some witch and brimstone-type enemies will now try to surround Melinoë during combat, which is closer to their behavior in the first game.
 - Balancing: For some witch and brimstone-type enemies, only a maximum of two enemies of the given type will attack at once.
