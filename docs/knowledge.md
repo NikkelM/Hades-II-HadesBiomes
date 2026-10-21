@@ -3020,6 +3020,11 @@ Under `Breakables`, add `Contract`:
 StyxAxeSwing:
 Delete ID `549355`, it overlaps with the exit reward preview.
 
+#### D_Mini13
+
+StyxDoor01:
+For ID `545532`, change the `Points` property to `(-539, -164)`, `(-134, 279)`, `(554, 371)`, `(646, 321)`, `(-431, -217)`.
+
 #### D_MiniBoss01
 
 StyxClothesline01:
