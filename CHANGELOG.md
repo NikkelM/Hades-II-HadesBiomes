@@ -93,6 +93,7 @@ Other fixes and improvements:
 - Fixed: Bosses can be stunned when blocking their attacks using the Black Coat's Omega Attack (the attacks can still be blocked, but bosses will no longer be stunned).
 - Fixed: Elite enemies do not have yellow armour outlines.
 - Fixed: Some enemies using a specific animation type do not flash white right before their attacks.
+- Fixed: Some enemies spawn looking a different direction than what their spawn animtion implies.
 - Fixed: Clones spawned by enemies with the "Cloner" perk do not die automatically when their parent dies.
 - Fixed: A background ambience track in Elysium does not play.
 - Fixed: Gale burns a block when Melinoë is poisoned in Styx (or Elysium), instead of allowing it to happen as is the case with poison in the Polyphemus & Medea boss fight.

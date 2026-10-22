@@ -9,21 +9,43 @@ local hadesTwoEnemiesFile = rom.path.combine(rom.paths.Content(), "Game\\Units\\
 -- Use the original names from the Hades file here, as modifications are applied before renaming
 local hadesEnemiesModifications = {
 	-- #region TARTARUS
-	BaseGlutton = { InheritFrom = "1_BaseEnemy", },
+	BaseGlutton = {
+		InheritFrom = "1_BaseEnemy",
+		DefaultAngle = 0,
+	},
 	LightSpawner = {
 		InheritFrom = "1_BaseEnemy",
+		DefaultAngle = 0,
 		Thing = {
 			-- Prevent it from being pushed
 			ImmuneToForce = true,
 		},
 	},
-	BaseThug = { InheritFrom = "1_BaseEnemy", },
+	BaseThug = {
+		InheritFrom = "1_BaseEnemy",
+		DefaultAngle = 0,
+	},
 	SmallEnemy = { InheritFrom = "1_BaseEnemy", },
-	BaseCaster = { InheritFrom = "1_BaseEnemy", },
-	BaseSwarmer = { InheritFrom = "1_BaseEnemy", },
-	BaseSpawner = { InheritFrom = "1_BaseEnemy", },
-	BaseThief = { InheritFrom = "1_BaseEnemy", },
-	WretchAssassin = { InheritFrom = "1_BaseEnemy", },
+	BaseCaster = {
+		InheritFrom = "1_BaseEnemy",
+		DefaultAngle = 0,
+	},
+	BaseSwarmer = {
+		InheritFrom = "1_BaseEnemy",
+		DefaultAngle = 0,
+	},
+	BaseSpawner = {
+		InheritFrom = "1_BaseEnemy",
+		DefaultAngle = 0,
+	},
+	BaseThief = {
+		InheritFrom = "1_BaseEnemy",
+		DefaultAngle = 0,
+	},
+	WretchAssassin = {
+		InheritFrom = "1_BaseEnemy",
+		DefaultAngle = 0,
+	},
 	Harpy = {
 		Life = {
 			InvulnerableFx = "ModsNikkelMHadesBiomesInvincibubbleFury",
@@ -34,6 +56,7 @@ local hadesEnemiesModifications = {
 	-- #region ASPHODEL
 	BaseMedusaHead = {
 		InheritFrom = "1_BaseEnemy",
+		DefaultAngle = 0,
 		Thing = {
 			-- The MedusaHead ActivateGraphic doesn't show any container, so we use the HitAndRunUnit one instead
 			-- It is automatically scaled
@@ -42,13 +65,20 @@ local hadesEnemiesModifications = {
 	},
 	HydraTooth = {
 		InheritFrom = "1_BaseEnemy",
+		DefaultAngle = 0,
 		ImmuneToStun = true,
 	},
 	-- #endregion
 
 	-- #region ELYSIUM
-	BaseShade = { InheritFrom = "1_BaseEnemy", },
-	FlurrySpawner = { InheritFrom = "1_BaseEnemy", },
+	BaseShade = {
+		InheritFrom = "1_BaseEnemy",
+		DefaultAngle = 0,
+	},
+	FlurrySpawner = {
+		InheritFrom = "1_BaseEnemy",
+		DefaultAngle = 0,
+	},
 	Chariot = {
 		Thing = {
 			ExternalForceMultiplier = 0.5,
@@ -58,13 +88,17 @@ local hadesEnemiesModifications = {
 
 	-- #region STYX
 	RatThug = { InheritFrom = "1_BaseEnemy", },
-	BaseSatyr = { InheritFrom = "1_BaseEnemy", },
+	BaseSatyr = {
+		InheritFrom = "1_BaseEnemy",
+		DefaultAngle = 0,
+	},
 	HeavyRangedForkedMiniboss = {
 		-- For the player tracking
 		RotationSpeed = 20.0,
 	},
 	HadesAmmo = {
 		InheritFrom = "1_BaseEnemy",
+		DefaultAngle = 0,
 		RotationSpeed = 0,
 		Speed = 0,
 	},
