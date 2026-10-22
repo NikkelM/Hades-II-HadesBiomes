@@ -75,6 +75,7 @@ function mod.ApplyModificationsAndInheritEnemyData(base, modifications, replacem
 			Thing = {
 				ActivateFx = "ActivateFx",
 				ActivateGraphic = "ActivateAnimation",
+				HighlightTopAnimOnly = "HighlightTopAnimOnly",
 			},
 		}
 
@@ -114,10 +115,11 @@ function mod.ApplyModificationsAndInheritEnemyData(base, modifications, replacem
 					end
 
 					-- Process the found data
-					if foundData and not enemyData[newName] then
+					if foundData and enemyData[newName] == nil then
 						enemyData[newName] = dataSource[parentKey][oldName]
 						mod.DebugPrint("Moved " .. parentKey .. "." .. oldName .. " from sjson " .. sourceName ..
-							" into " .. newName .. " for " .. enemyName .. " with value " .. dataSource[parentKey][oldName], 4)
+							" into " .. newName .. " for " .. enemyName .. " with value " .. tostring(dataSource[parentKey][oldName]),
+							4)
 					elseif not foundData then
 						mod.DebugPrint("Could not find " .. parentKey .. "." .. oldName
 							.. " in sjson for " .. enemyName .. " or its parents", 4)
@@ -159,7 +161,8 @@ function mod.ApplyModificationsAndInheritEnemyData(base, modifications, replacem
 				enemyData.DefaultAIData.SkipAngleTowardTargetWait = nil
 			end
 			if enemyData.DefaultAIData.PreAttackFlash ~= nil then
-				enemyData.DefaultAIData.PreAttackThreadedFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesPreAttackFlash"
+				enemyData.DefaultAIData.PreAttackThreadedFunctionName = _PLUGIN.guid ..
+						"." .. "ModsNikkelMHadesBiomesPreAttackFlash"
 			end
 		end
 
@@ -412,6 +415,13 @@ function mod.ApplyModificationsAndInheritEnemyData(base, modifications, replacem
 		end
 
 		game.ProcessDataInheritance(enemyData, game.EnemyData)
+
+		-- Need to do this after inheritance, otherwise the Outline table doesn't get taken from the parent
+		if enemyData.HighlightTopAnimOnly ~= nil and enemyData.Outline then
+			enemyData.Outline.HighlightTopAnimOnly = enemyData.HighlightTopAnimOnly
+		end
+		enemyData.HighlightTopAnimOnly = nil
+
 		base[enemyName] = enemyData
 
 		if enemyData.RequiredKill then

@@ -90,6 +90,7 @@ Other fixes and improvements:
 - Fixed: When Hades enters a phase transition, some enemy projectiles are not destroyed correctly.
 - Fixed: If Hades is in the wind-up animation of throwing his spear when entering a phase transition, he will be stuck in the throw animation instead of resetting to his idle animation.
 - Fixed: Bosses can be stunned when blocking their attacks using the Black Coat's Omega Attack (the attacks can still be blocked, but bosses will no longer be stunned).
+- Fixed: Elite enemies do not have yellow armour outlines.
 - Fixed: Some enemies using a specific animation type do not flash white right before their attacks.
 - Fixed: Clones spawned by enemies with the "Cloner" perk do not die automatically when their parent dies.
 - Fixed: A background ambience track in Elysium does not play.
