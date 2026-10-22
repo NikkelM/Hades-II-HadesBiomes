@@ -79,6 +79,7 @@ Other fixes and improvements:
 - Fixed: Some enemies in Asphodel are not scaled correctly during Dream Dives.
 - Fixed: Destroying butterflies spawned by Soul Catchers with certain attacks constantly creates "Blocked!" presentation effects.
 - Fixed: Chariots in Elysium immediately end their charge if Melinoë stands directly behind them, instead of turning to charge at her.
+- Fixed: If a Shade enemy in Elysium is frozen when it dies, it might not die and spawn the Exalted Shade immediately.
 - Fixed: Theseus does not deal damage if he rams you with his Chariot.
 - Fixed: Asterius can get stuck charging at Theseus during the "Delta Strike" combo attack.
 - Fixed: Asterius can face away from Melinoë during the "Bullhorn" combo attack if she moves while he waits for Theseus to come to him.

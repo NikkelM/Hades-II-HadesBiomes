@@ -2566,6 +2566,7 @@ local weaponModifications = {
 			TargetOffsetDistanceMin = 250,
 			TargetOffsetDistanceMax = 400,
 			PreAttackStop = true,
+			PreAttackAngleTowardTarget = false,
 			PreAttackDuration = 0.0,
 			-- Rifts ban
 			DumbFireWeapons = {},
@@ -2576,6 +2577,7 @@ local weaponModifications = {
 		AIData = {
 			DeepInheritance = true,
 			ProjectileName = "ShadeNakedEliteTrapDeath",
+			PreAttackAngleTowardTarget = false,
 		},
 	},
 	ShadeDeathSpawn = {
@@ -2587,6 +2589,7 @@ local weaponModifications = {
 			TargetOffsetDistanceMin = 250,
 			TargetOffsetDistanceMax = 400,
 			PreAttackStop = true,
+			PreAttackAngleTowardTarget = false,
 			PreAttackDuration = 0.0,
 			-- Exclude from Massive elite attribute projectile size increase
 			ProjectileScaleMultiplier = 1,
@@ -2601,6 +2604,7 @@ local weaponModifications = {
 			TargetOffsetDistanceMin = 250,
 			TargetOffsetDistanceMax = 400,
 			PreAttackStop = true,
+			PreAttackAngleTowardTarget = false,
 			PreAttackDuration = 0.0,
 			-- Exclude from Massive elite attribute projectile size increase
 			ProjectileScaleMultiplier = 1,
@@ -2615,6 +2619,7 @@ local weaponModifications = {
 			TargetOffsetDistanceMin = 250,
 			TargetOffsetDistanceMax = 400,
 			PreAttackStop = true,
+			PreAttackAngleTowardTarget = false,
 			PreAttackDuration = 0.0,
 			-- Exclude from Massive elite attribute projectile size increase
 			ProjectileScaleMultiplier = 1,
