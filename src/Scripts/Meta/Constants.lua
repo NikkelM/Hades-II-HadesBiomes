@@ -26,17 +26,17 @@ mod.ExpectedNumSjsonHooks = 31
 -- Armour is scaled by BOTH the health and armour multipliers (e.g. base armour x 1.33 x 1.12)
 -- Bosses should opt out using ModsNikkelMHadesBiomesIgnoreModdedHealthModifiers and define their own modified health
 mod.ModdedUnitMaxHealthMultiplierBonus = {
-	Default = 0.30,
-	Tartarus = 0.25,
-	Asphodel = 0.30,
-	Elysium = 0.33,
-	Styx = 0.38
+	Default = 0.32,
+	Tartarus = 0.26,
+	Asphodel = 0.32,
+	Elysium = 0.34,
+	Styx = 0.39
 }
 mod.ModdedUnitHealthBufferMultiplierBonus = {
-	Default = 0.09,
-	Tartarus = 0.05,
-	Asphodel = 0.09,
-	Elysium = 0.12,
+	Default = 0.1,
+	Tartarus = 0.06,
+	Asphodel = 0.1,
+	Elysium = 0.13,
 	Styx = 0.16
 }
 
