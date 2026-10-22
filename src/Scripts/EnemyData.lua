@@ -1211,9 +1211,10 @@ local enemyModifications = {
 	HeavyRanged = {
 		StunAnimations = { Default = "HeavyRangedCrystal4" },
 		PostAggroAI = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesSurroundAI",
-		ActivateFadeIn = true,
-		ActivateTint = true,
-		ActivateStartAlpha = 0.0,
+		ActivatePresentationFunctionName = _PLUGIN.guid .. "." .. "HeavyRangedActivatePresentation",
+		ModsNikkelMHadesBiomesActivationFadeAnimation = "HeavyRangedCrystal4",
+		ModsNikkelMHadesBiomesActivationShineAnimation = "HeavyRangedCrystal4Shine",
+		ActivateDuration = 1.9,
 		SpawnEvents = { { FunctionName = _PLUGIN.guid .. "." .. "CreateTethers", Threaded = true, }, },
 		Tethers = {
 			[1] = { ParentDeathAnimation = "HeavyRangedCrystal1Shatter" },
@@ -2024,6 +2025,10 @@ local enemyModifications = {
 	ShieldRanged = {
 		MaxHealth = 480,
 		StunAnimations = { Default = "HealRangedCrystal4" },
+		ActivatePresentationFunctionName = _PLUGIN.guid .. "." .. "HeavyRangedActivatePresentation",
+		ModsNikkelMHadesBiomesActivationFadeAnimation = "HealRangedCrystal4",
+		ModsNikkelMHadesBiomesActivationShineAnimation = "HealRangedCrystal4",
+		ActivateDuration = 1.9,
 		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
 		DreamBiomeData = asphodelEnemyDreamBiomeData,
 		BlockRaiseDead = true,
@@ -2053,6 +2058,8 @@ local enemyModifications = {
 		MaxHealth = 1900,
 		HealthBuffer = 4000,
 		StunAnimations = { Default = "HealRangedCrystal4" },
+		ModsNikkelMHadesBiomesActivationFadeOffsetZ = 75,
+		ModsNikkelMHadesBiomesActivationFadeScale = 1.4,
 		DeathAnimation = "HealRangedDeathMiniBoss",
 		DeathFx = "null",
 		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,

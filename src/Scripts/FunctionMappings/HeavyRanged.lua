@@ -1,3 +1,58 @@
+function mod.HeavyRangedActivatePresentation(enemy, args)
+	game.thread(function()
+		local speedMultiplier = enemy.SpeedMultiplier or 1
+		game.wait((80 / 60) / speedMultiplier)
+
+		if enemy.IsDead then
+			return
+		end
+
+		if enemy.ModsNikkelMHadesBiomesActivationShineAnimation ~= nil then
+			StopAnimation({
+				Name = enemy.ModsNikkelMHadesBiomesActivationShineAnimation,
+				DestinationId = enemy.ObjectId,
+				IncludeCreatedAnimations = true,
+				PreventChain = true,
+			})
+		end
+		local fadeId = SpawnObstacle({
+			Name = "BlankObstacle",
+			DestinationId = enemy.ObjectId,
+			Group = "Standing",
+			OffsetZ = enemy.ModsNikkelMHadesBiomesActivationFadeOffsetZ or 50,
+		})
+		SetThingProperty({
+			Property = "ElapsedTimeMultiplier",
+			Value = speedMultiplier,
+			ValueChangeType = "Multiply",
+			DataValue = false,
+			DestinationId = fadeId,
+		})
+		SetAngle({ Id = fadeId, Angle = GetAngle({ Id = enemy.ObjectId }) })
+		if enemy.ModsNikkelMHadesBiomesActivationFadeScale ~= nil then
+			SetScale({ Id = fadeId, Fraction = enemy.ModsNikkelMHadesBiomesActivationFadeScale })
+		end
+		SetAnimation({
+			Name = enemy.ModsNikkelMHadesBiomesActivationFadeAnimation or "HeavyRangedCrystal4",
+			DestinationId = fadeId,
+		})
+		StopAnimation({
+			Name = "HeavyRangedCrystal4Shine",
+			DestinationId = fadeId,
+			IncludeCreatedAnimations = true,
+			PreventChain = true,
+		})
+		SetColor({ Id = fadeId, Color = { 0, 0, 0, 1 } })
+		SetAlpha({ Id = fadeId, Fraction = 0 })
+		SetAlpha({ Id = fadeId, Fraction = 1, Duration = (24 / 60) / speedMultiplier })
+
+		game.wait((34 / 60) / speedMultiplier)
+		Destroy({ Id = fadeId })
+	end)
+
+	game.UnitActivatePresentation(enemy, args)
+end
+
 -- Creates "Tethers", which are floating parts of the enemy (e.g. the small crystals for HeavyRanged or the neck for the Hydra heads)
 function mod.CreateTethers(newEnemy, args)
 	if newEnemy == nil or newEnemy.Tethers == nil or newEnemy.TetherIds ~= nil or game.IsEmpty(newEnemy.Tethers) then
