@@ -70,6 +70,7 @@ Other fixes and improvements:
 - Balancing: Progressing mastery of the Lyre in Orpheus' chamber is now quicker.
 - Fixed: When receiving a blessing from Sisyphus outside of his encounter (through other mods), they can spawn out of bounds.
 - Fixed: While spawning, Brimstones and Voidstones pop in instead of fading like other enemies.
+- Fixed: The small crystals attached to Brimstones and Voidstones don't react to the enemy taking damage.
 - Fixed: Alecto can choose her rage-building attack during her final phase when she is already permanently enraged.
 - Fixed: Alecto plays her idle animation during a phase transition if she was moving when the transition starts.
 - Fixed: Tisiphone will always user her lunge attack as the first attack instead of a random eligible one.

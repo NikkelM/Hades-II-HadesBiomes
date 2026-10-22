@@ -1,3 +1,25 @@
+-- For tether kick-back
+OnHit {
+	function(triggerArgs)
+		local victim = triggerArgs.Victim
+		if victim == nil or victim.TetherIds == nil or victim.IsDead then
+			return
+		end
+
+		for k, tetherId in ipairs(victim.TetherIds) do
+			local configIndex = victim.TetherConfigIndices and victim.TetherConfigIndices[k] or k
+			local tetherConfig = victim.Tethers[configIndex]
+			if tetherConfig ~= nil and tetherConfig.OwnerHitVelocity ~= nil then
+				ApplyForce({
+					Id = tetherId,
+					Speed = tetherConfig.OwnerHitVelocity,
+					Angle = game.RandomFloat(0, 360),
+				})
+			end
+		end
+	end
+}
+
 -- When the enemy's armor is broken, remove the outline from any tethers as well, if applicable
 modutil.mod.Path.Wrap("DoEnemyHealthBufferDeplete", function(base, enemy)
 	base(enemy)
