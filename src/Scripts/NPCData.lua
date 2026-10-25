@@ -1897,7 +1897,9 @@ local npcModifications = {
 		SetupEvents = {
 			{
 				FunctionName = "SilenceForDreamRun",
-				Args = { ForceTextLines = "ModsNikkelMHadesBiomes_OrpheusStoryDreamRun" },
+				Args = {
+					ForceTextLines = "ModsNikkelMHadesBiomes_EurydiceDreamRun",
+				},
 				GameStateRequirements = {
 					{
 						PathTrue = { "CurrentRun", "IsDreamRun" },
@@ -1953,15 +1955,31 @@ local npcModifications = {
 			},
 		},
 		InteractTextLineSets = {
-			ModsNikkelMHadesBiomes_OrpheusStoryDreamRun = {
+			ModsNikkelMHadesBiomes_EurydiceDreamRun = {
 				UseableOffSource = true,
+				Partner = "NPC_Eurydice_01",
 				GameStateRequirements = {
 					{
 						PathTrue = { "CurrentRun", "IsDreamRun" },
 					},
 				},
-				OnQueuedFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesEurydiceMusic",
-				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Duet,
+				OnQueuedEvents = {
+					{
+						FunctionName = "GenericPresentation",
+						Threaded = true,
+						Args = {
+							PreWait = 0.02,
+							Id = 514436,
+							UseableOff = true,
+							OverwriteSourceKeys = {
+								BlockChatting = true,
+								TextLinesPauseSingingFx = false,
+							},
+							EndFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesEurydiceMusic",
+							EndFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Duet,
+						},
+					},
+				},
 				PrePortraitExitFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesBenefitChoice",
 				PrePortraitExitFunctionArgs = mod.PresetEventArgs.EurydiceBenefitChoices,
 				{
