@@ -7,7 +7,9 @@ function mod.ConfirmHadesInstallation()
 	local candidateFolders = {}
 	-- "root" means we look for the Hades folder in the same parent directory as Hades II
 	if mod.hadesGameFolder == "root" or mod.hadesGameFolder == "" then
-		local sharedFolder = rom.path.get_parent(rom.path.get_parent(rom.paths.Content()))
+		-- TODO: Remove fallback once MS Store H2M is released
+		local gameInstall = rom.paths.GameInstall and rom.paths.GameInstall() or rom.paths.Content()
+		local sharedFolder = rom.path.get_parent(rom.path.get_parent(gameInstall))
 		for _ = 1, 3 do
 			if sharedFolder == "" then
 				break
