@@ -1060,21 +1060,21 @@ local weaponModifications = {
 				{ OffsetDistance = 813.941030,  OffsetAngle = -42.510447,  AnchorAngleOffset = 0, OffsetScaleY = 0.48 },
 				{ OffsetDistance = 1054.751155, OffsetAngle = -31.429566,  AnchorAngleOffset = 0, OffsetScaleY = 0.48, PauseDuration = 0.3 },
 
-				{ OffsetDistance = 900, OffsetAngle = 0,   AnchorAngleOffset = 0, OffsetScaleY = 0.48 },
-				{ OffsetDistance = 600, OffsetAngle = 0,   AnchorAngleOffset = 0, OffsetScaleY = 0.48 },
-				{ OffsetDistance = 300, OffsetAngle = 0,   AnchorAngleOffset = 0, OffsetScaleY = 0.48 },
-				{ OffsetDistance = 0,   OffsetAngle = 0,   AnchorAngleOffset = 0, OffsetScaleY = 0.48 },
-				{ OffsetDistance = 300, OffsetAngle = 180, AnchorAngleOffset = 0, OffsetScaleY = 0.48 },
-				{ OffsetDistance = 600, OffsetAngle = 180, AnchorAngleOffset = 0, OffsetScaleY = 0.48 },
-				{ OffsetDistance = 900, OffsetAngle = 180, AnchorAngleOffset = 0, OffsetScaleY = 0.48, PauseDuration = 0.3 },
+				{ OffsetDistance = 900,         OffsetAngle = 0,           AnchorAngleOffset = 0, OffsetScaleY = 0.48 },
+				{ OffsetDistance = 600,         OffsetAngle = 0,           AnchorAngleOffset = 0, OffsetScaleY = 0.48 },
+				{ OffsetDistance = 300,         OffsetAngle = 0,           AnchorAngleOffset = 0, OffsetScaleY = 0.48 },
+				{ OffsetDistance = 0,           OffsetAngle = 0,           AnchorAngleOffset = 0, OffsetScaleY = 0.48 },
+				{ OffsetDistance = 300,         OffsetAngle = 180,         AnchorAngleOffset = 0, OffsetScaleY = 0.48 },
+				{ OffsetDistance = 600,         OffsetAngle = 180,         AnchorAngleOffset = 0, OffsetScaleY = 0.48 },
+				{ OffsetDistance = 900,         OffsetAngle = 180,         AnchorAngleOffset = 0, OffsetScaleY = 0.48, PauseDuration = 0.3 },
 
-				{ OffsetDistance = 1054.751155, OffsetAngle = 148.570434, AnchorAngleOffset = 0, OffsetScaleY = 0.48 },
-				{ OffsetDistance = 813.941030,  OffsetAngle = 137.489553, AnchorAngleOffset = 0, OffsetScaleY = 0.48 },
-				{ OffsetDistance = 626.498204,  OffsetAngle = 118.610460, AnchorAngleOffset = 0, OffsetScaleY = 0.48 },
-				{ OffsetDistance = 550,         OffsetAngle = 90,         AnchorAngleOffset = 0, OffsetScaleY = 0.48 },
-				{ OffsetDistance = 626.498204,  OffsetAngle = 61.389540,  AnchorAngleOffset = 0, OffsetScaleY = 0.48 },
-				{ OffsetDistance = 813.941030,  OffsetAngle = 42.510447,  AnchorAngleOffset = 0, OffsetScaleY = 0.48 },
-				{ OffsetDistance = 1054.751155, OffsetAngle = 31.429566,  AnchorAngleOffset = 0, OffsetScaleY = 0.48 },
+				{ OffsetDistance = 1054.751155, OffsetAngle = 148.570434,  AnchorAngleOffset = 0, OffsetScaleY = 0.48 },
+				{ OffsetDistance = 813.941030,  OffsetAngle = 137.489553,  AnchorAngleOffset = 0, OffsetScaleY = 0.48 },
+				{ OffsetDistance = 626.498204,  OffsetAngle = 118.610460,  AnchorAngleOffset = 0, OffsetScaleY = 0.48 },
+				{ OffsetDistance = 550,         OffsetAngle = 90,          AnchorAngleOffset = 0, OffsetScaleY = 0.48 },
+				{ OffsetDistance = 626.498204,  OffsetAngle = 61.389540,   AnchorAngleOffset = 0, OffsetScaleY = 0.48 },
+				{ OffsetDistance = 813.941030,  OffsetAngle = 42.510447,   AnchorAngleOffset = 0, OffsetScaleY = 0.48 },
+				{ OffsetDistance = 1054.751155, OffsetAngle = 31.429566,   AnchorAngleOffset = 0, OffsetScaleY = 0.48 },
 			},
 		},
 	},
@@ -2625,6 +2625,22 @@ local weaponModifications = {
 			-- Exclude from Massive elite attribute projectile size increase
 			ProjectileScaleMultiplier = 1,
 		},
+	},
+	-- #endregion
+
+	-- #region Companions/Assists
+	-- To ensure only one sim slow is started for each use of the assist
+	NPC_FurySister_01_Assist = {
+		HitSimSlowCooldown = 1.0,
+	},
+	NPC_Sisyphus_01_Assist = {
+		HitSimSlowCooldown = 1.0,
+	},
+	NPC_Achilles_01_Assist = {
+		HitSimSlowCooldown = 1.0,
+	},
+	NPC_Patroclus_01_Assist = {
+		HitSimSlowCooldown = 1.0,
 	},
 	-- #endregion
 }
