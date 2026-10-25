@@ -2258,6 +2258,7 @@ local weaponModifications = {
 	HadesBidentThrow = {
 		AIData = {
 			TrackTargetDuringFire = false,
+			StopBeforeFire = true,
 			PostAttackStop = true,
 			ImmuneToProjectileSlow = true,
 			InterruptAnimation = "HadesBattleIdle",

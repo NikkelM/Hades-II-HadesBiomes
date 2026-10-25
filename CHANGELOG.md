@@ -92,6 +92,7 @@ Other fixes and improvements:
 - Fixed: The Tiny Vermin is not forced to summon more Gigantic Vermin after it has performed enough other attacks.
 - Fixed: Melinoë can clip through the exit door in a specific Styx wing room.
 - Fixed: When Hades enters a phase transition, some enemy projectiles are not destroyed correctly.
+- Fixed: Hades keeps rotating towards Melinoë inbetween throwing his spear and the dash towards it.
 - Fixed: If Hades is in the wind-up animation of throwing his spear when entering a phase transition, he will be stuck in the throw animation instead of resetting to his idle animation.
 - Fixed: Bosses can be stunned when blocking their attacks using the Black Coat's Omega Attack (the attacks can still be blocked, but bosses will no longer be stunned).
 - Fixed: Elite enemies do not have yellow armour outlines.
