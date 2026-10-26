@@ -20,7 +20,7 @@ game.OnControlPressed({
 			return
 		end
 
-		if game.IsCombatEncounterActive(game.CurrentRun) and mod.CanFireAssist() then
+		if mod.CanFireAssist() then
 			mod.DoAssist()
 		elseif game.GameState.LastAssistTrait ~= nil and game.CurrentHubRoom == nil then
 			mod.AssistFailedPresentation(game.CurrentRun.Hero)
@@ -35,6 +35,9 @@ function mod.CanFireAssist()
 		return false
 	end
 	if game.CurrentRun.Hero.IsDead then
+		return false
+	end
+	if not game.IsCombatEncounterActive(game.CurrentRun) then
 		return false
 	end
 	if game.CurrentRun.CurrentRoom.UsedAssist then
