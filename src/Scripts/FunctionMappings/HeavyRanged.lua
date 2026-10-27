@@ -1,4 +1,8 @@
 function mod.HeavyRangedActivatePresentation(enemy, args)
+	if not enemy.UseActivatePresentation or args.SkipPresentation then
+		return
+	end
+
 	game.thread(function()
 		local speedMultiplier = enemy.SpeedMultiplier or 1
 		game.wait((80 / 60) / speedMultiplier)
