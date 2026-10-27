@@ -185,170 +185,21 @@ for i, obstacleId in ipairs( obstacleIds ) do
 end
 ```
 
-#### RoomOpening
+#### RoomChallenge01
 
-In the `RoomOpening.thing_bin` file (decompiled), there are two `TartarusCubeBrick03` objects, with the comments `FirstDoor` (ID `210004`) and `SecondDoor` (ID `210099`).
-The parent of `FirstDoor` is ID `410061` (has `210004` as an `AttachedId`).
-These are the first and second tiles after the door (where the player starts) in the room.
-These two tiles have some bugged z-buffer location, which requires some manual changes from the Hades file to work nicely with Hades II.
+For ID `481074`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
 
-The changes that need to be made are as follows:
+#### RoomChallenge02
 
-To ID `210004`:
+For ID `481074`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
 
-- Added `"Comments": "FirstDoor"`
-- Assigned `Terrain_04` to the `GroupNames` array.
+#### RoomChallenge03
 
-To ID `210099`:
+For ID `481074`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
 
-- Added `"Comments": "SecondDoor"`
-- Assigned `Terrain_05` to the `GroupNames` array.
+#### RoomChallenge04
 
-Also:
-- Change the `GroupNames` for `508013` to `Terrain_04` (Rightmost TartarusGhostHandsMulti in the pit).
-- Change the `GroupNames` for `410695` to `Terrain_01` (TartarusGhostHandsMulti under the light to the right of the fishing pier).
-- Delete ID `210333` (TartarusRockRipple left of bridge).
-
-Under the `HouseDoor02` entry, add the following entry to allow Thanatos to spawn in this room.
-Take special note of the ID entry:
-
-```text
-{
-	"Active": false,
-	"AllowMovementReaction": false,
-	"Ambient": -1.0,
-	"Angle": 320.0,
-	"AttachToID": 0,
-	"AttachedIDs": [],
-	"CausesOcculsion": false,
-	"Clutter": false,
-	"Collision": true,
-	"Color": {
-			"A": 255,
-			"B": 255,
-			"G": 255,
-			"R": 255
-	},
-	"Comments": null,
-	"CreatesShadows": true,
-	"DataType": "Unit",
-	"DrawVfxOnTop": true,
-	"FlipHorizontal": false,
-	"FlipVertical": false,
-	"GroupNames": [
-		"Standing"
-	],
-	"HelpTextID": null,
-	"Hue": 0.0,
-	"Id": 423052,
-	"IgnoreGridManager": false,
-	"Invert": false,
-	"Location": {
-		"X": 3060.0,
-		"Y": 4960.0
-	},
-	"Name": "NPC_Thanatos_01",
-	"OffsetZ": 0.0,
-	"ParallaxAmount": 1.0,
-	"Points": [],
-	"Saturation": 0.0,
-	"Scale": 0.9400925040245056,
-	"SkewAngle": 0.0,
-	"SkewScale": 1.0,
-	"SortIndex": 0,
-	"StopsLight": true,
-	"Tallness": 0.0,
-	"UseBoundsForSortArea": true,
-	"Value": 0.0
-},
-```
-
-Additionally, the new `Terrain_04` and `Terrain_05` groups must be added to the `RoomOpening.map_text` file, in the correct positions:
-
-```text
-...
-{
-	"Id": 310001,
-	"Name": "Terrain_Decor_01"
-},
-{
-	"Id": 310009,
-	"Name": "Terrain_05"
-},
-{
-	"Id": 310008,
-	"Name": "Terrain_04"
-},
-{
-	"Id": 310007,
-	"Name": "Terrain_03"
-},
-...
-```
-
-The above makes sure that `Terrain_04` is rendered above `Terrain_03` and below `Terrain_Decor_01`, and the same for `Terrain_05`.
-
-```text
-...
-{
-	"BlendMode": 0,
-	"ChildGroups": [],
-	"Id": {
-		"Id": 310007,
-		"Name": "Terrain_03"
-	},
-	"NumSelectedAsDraw": 0,
-	"NumSelectedAsLogic": 0,
-	"NumThings": 0,
-	"NumThingsFrozen": 0,
-	"NumThingsSelectable": 0,
-	"NumThingsVisible": 0,
-	"ParentGroup": {
-		"Id": 410019,
-		"Name": "MapArt"
-	},
-	"Visible": true
-},
-{
-	"BlendMode": 0,
-	"ChildGroups": [],
-	"Id": {
-		"Id": 310008,
-		"Name": "Terrain_04"
-	},
-	"NumSelectedAsDraw": 0,
-	"NumSelectedAsLogic": 0,
-	"NumThings": 0,
-	"NumThingsFrozen": 0,
-	"NumThingsSelectable": 0,
-	"NumThingsVisible": 0,
-	"ParentGroup": {
-		"Id": 410019,
-		"Name": "MapArt"
-	},
-	"Visible": true
-},
-{
-	"BlendMode": 0,
-	"ChildGroups": [],
-	"Id": {
-		"Id": 310009,
-		"Name": "Terrain_05"
-	},
-	"NumSelectedAsDraw": 0,
-	"NumSelectedAsLogic": 0,
-	"NumThings": 0,
-	"NumThingsFrozen": 0,
-	"NumThingsSelectable": 0,
-	"NumThingsVisible": 0,
-	"ParentGroup": {
-		"Id": 410019,
-		"Name": "MapArt"
-	},
-	"Visible": true
-},
-...
-```
+For ID `481074`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
 
 #### Return01
 
@@ -650,11 +501,21 @@ Delete ID `563975`.
 
 #### Return05
 
+For ID `555029`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
+For ID `556757`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
+For ID `562416`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
+For ID `565247`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
+For ID `565248`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
+For ID `565249`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
+
 In this map, we need to change the name for the Persephone NPC, as it is used in both Hades and Hades II.
 
 For ID `553264`, change the `Name` property from `NPC_Persephone_01` to `ModsNikkelMHadesBiomes_NPC_Persephone_01`.
 
 #### Return06
+
+For ID `410291`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
+For ID `410962`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
 
 In this map, we need to change the name for the Persephone NPC, as it is used in both Hades and Hades II.
 
@@ -769,7 +630,185 @@ The above makes sure that `Terrain_04` is rendered above `Terrain_03` and below 
 ...
 ```
 
+### Tartarus
+
+#### RoomOpening
+
+In the `RoomOpening.thing_bin` file (decompiled), there are two `TartarusCubeBrick03` objects, with the comments `FirstDoor` (ID `210004`) and `SecondDoor` (ID `210099`).
+The parent of `FirstDoor` is ID `410061` (has `210004` as an `AttachedId`).
+These are the first and second tiles after the door (where the player starts) in the room.
+These two tiles have some bugged z-buffer location, which requires some manual changes from the Hades file to work nicely with Hades II.
+
+The changes that need to be made are as follows:
+
+To ID `210004`:
+
+- Added `"Comments": "FirstDoor"`
+- Assigned `Terrain_04` to the `GroupNames` array.
+
+To ID `210099`:
+
+- Added `"Comments": "SecondDoor"`
+- Assigned `Terrain_05` to the `GroupNames` array.
+
+For ID `410291`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
+For ID `410962`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
+
+Also:
+- Change the `GroupNames` for `508013` to `Terrain_04` (Rightmost TartarusGhostHandsMulti in the pit).
+- Change the `GroupNames` for `410695` to `Terrain_01` (TartarusGhostHandsMulti under the light to the right of the fishing pier).
+- Delete ID `210333` (TartarusRockRipple left of bridge).
+
+Under the `HouseDoor02` entry, add the following entry to allow Thanatos to spawn in this room.
+Take special note of the ID entry:
+
+```text
+{
+	"Active": false,
+	"AllowMovementReaction": false,
+	"Ambient": -1.0,
+	"Angle": 320.0,
+	"AttachToID": 0,
+	"AttachedIDs": [],
+	"CausesOcculsion": false,
+	"Clutter": false,
+	"Collision": true,
+	"Color": {
+			"A": 255,
+			"B": 255,
+			"G": 255,
+			"R": 255
+	},
+	"Comments": null,
+	"CreatesShadows": true,
+	"DataType": "Unit",
+	"DrawVfxOnTop": true,
+	"FlipHorizontal": false,
+	"FlipVertical": false,
+	"GroupNames": [
+		"Standing"
+	],
+	"HelpTextID": null,
+	"Hue": 0.0,
+	"Id": 423052,
+	"IgnoreGridManager": false,
+	"Invert": false,
+	"Location": {
+		"X": 3060.0,
+		"Y": 4960.0
+	},
+	"Name": "NPC_Thanatos_01",
+	"OffsetZ": 0.0,
+	"ParallaxAmount": 1.0,
+	"Points": [],
+	"Saturation": 0.0,
+	"Scale": 0.9400925040245056,
+	"SkewAngle": 0.0,
+	"SkewScale": 1.0,
+	"SortIndex": 0,
+	"StopsLight": true,
+	"Tallness": 0.0,
+	"UseBoundsForSortArea": true,
+	"Value": 0.0
+},
+```
+
+Additionally, the new `Terrain_04` and `Terrain_05` groups must be added to the `RoomOpening.map_text` file, in the correct positions:
+
+```text
+...
+{
+	"Id": 310001,
+	"Name": "Terrain_Decor_01"
+},
+{
+	"Id": 310009,
+	"Name": "Terrain_05"
+},
+{
+	"Id": 310008,
+	"Name": "Terrain_04"
+},
+{
+	"Id": 310007,
+	"Name": "Terrain_03"
+},
+...
+```
+
+The above makes sure that `Terrain_04` is rendered above `Terrain_03` and below `Terrain_Decor_01`, and the same for `Terrain_05`.
+
+```text
+...
+{
+	"BlendMode": 0,
+	"ChildGroups": [],
+	"Id": {
+		"Id": 310007,
+		"Name": "Terrain_03"
+	},
+	"NumSelectedAsDraw": 0,
+	"NumSelectedAsLogic": 0,
+	"NumThings": 0,
+	"NumThingsFrozen": 0,
+	"NumThingsSelectable": 0,
+	"NumThingsVisible": 0,
+	"ParentGroup": {
+		"Id": 410019,
+		"Name": "MapArt"
+	},
+	"Visible": true
+},
+{
+	"BlendMode": 0,
+	"ChildGroups": [],
+	"Id": {
+		"Id": 310008,
+		"Name": "Terrain_04"
+	},
+	"NumSelectedAsDraw": 0,
+	"NumSelectedAsLogic": 0,
+	"NumThings": 0,
+	"NumThingsFrozen": 0,
+	"NumThingsSelectable": 0,
+	"NumThingsVisible": 0,
+	"ParentGroup": {
+		"Id": 410019,
+		"Name": "MapArt"
+	},
+	"Visible": true
+},
+{
+	"BlendMode": 0,
+	"ChildGroups": [],
+	"Id": {
+		"Id": 310009,
+		"Name": "Terrain_05"
+	},
+	"NumSelectedAsDraw": 0,
+	"NumSelectedAsLogic": 0,
+	"NumThings": 0,
+	"NumThingsFrozen": 0,
+	"NumThingsSelectable": 0,
+	"NumThingsVisible": 0,
+	"ParentGroup": {
+		"Id": 410019,
+		"Name": "MapArt"
+	},
+	"Visible": true
+},
+...
+```
+
+#### RoomSimple01
+
+For ID `487791`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
+For ID `487792`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
+
 #### A_Story01
+
+For ID `486683`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
+For ID `486684`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
 
 In this map, we need to change the name for the Bouldy NPC, as it is used in both Hades and Hades II.
 
@@ -852,6 +891,9 @@ Additionally, the new `Foreground_03` group must be added to the `A_Story01.map_
 
 #### A_Combat01
 
+For ID `486696`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
+For ID `486697`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
+
 TartarusStatueMan01:
 For ID `460116`, change the `Scale` property to `0.125`.
 
@@ -871,6 +913,25 @@ LightEllipse02Anim:
 For ID `480461`, change the `Location.Y` property to `3486.90234375` (+50).
 For ID `480462`, change the `Location.Y` property to `3485.314697265625` (+50).
 For ID `480463`, change the `Location.Y` property to `3483.915283203125` (+50).
+
+#### A_Combat03
+
+For ID `562363`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
+For ID `562364`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
+For ID `562365`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
+
+#### A_Combat04
+
+For ID `485902`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
+
+#### A_Combat05
+
+For ID `481074`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
+
+#### A_Combat06
+
+For ID `482745`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
+For ID `482747`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
 
 #### A_Combat07
 
@@ -899,7 +960,45 @@ ID `430407`
 ID `507735`
 ID `507740`
 
+#### A_Combat08A
+
+For ID `486875`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
+For ID `486876`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
+
+#### A_Combat08B
+
+For ID `506830`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
+
+#### A_Combat09
+
+For ID `483376`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
+
+#### A_Combat10
+
+For ID `480865`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
+
+#### A_Combat11
+
+For ID `486675`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
+
+#### A_Combat12
+
+For ID `486675`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
+
+#### A_Combat13
+
+For ID `509994`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
+For ID `509995`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
+
+#### A_Combat14
+
+For ID `512657`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
+For ID `512658`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
+
 #### A_Combat15
+
+For ID `488189`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
+For ID `488190`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
 
 TartarusBrazier02b:
 For ID `430779`, change the `GroupNames` property to `FX_Terrain`.
@@ -907,7 +1006,38 @@ For ID `430779`, change the `GroupNames` property to `FX_Terrain`.
 TartarusFlame:
 For ID `430780`, change the `GroupNames` property to `Lighting`.
 
+#### A_Combat16
+
+For ID `510144`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
+For ID `510145`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
+
+#### A_Combat17
+
+For ID `490212`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
+For ID `490213`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
+
+#### A_Combat18
+
+For ID `485354`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
+
+#### A_Combat20
+
+For ID `507255`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
+For ID `507256`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
+
+#### A_Combat21
+
+For ID `488046`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
+For ID `488047`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
+
+#### A_Combat24
+
+For ID `507472`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
+
 #### A_MiniBoss02
+
+For ID `491313`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
+For ID `491314`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
 
 TartarusCapital01:
 For ID `524104`, change the `GroupNames` property to `Terrain_Base`.
@@ -919,7 +1049,25 @@ For ID `519371`, change the `GroupNames` property to `Lighting_01`.
 For ID `519236`, change the `GroupNames` property to `Lighting_01`.
 For ID `491056`, change the `GroupNames` property to `Lighting_01`.
 
-### A_PreBoss01
+#### A_MiniBoss04
+
+For ID `515336`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
+For ID `515337`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
+
+#### A_Reprieve01
+
+For ID `482645`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
+
+#### A_Shop01
+
+For ID `486696`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
+For ID `486697`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
+For ID `486698`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
+
+#### A_PreBoss01
+
+For ID `507631`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
+For ID `507632`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
 
 Adding the ZagContractReward obstacles and required map groups:
 
@@ -1232,6 +1380,16 @@ Under `Breakables`, add `Contract`:
 },
 ```
 
+#### A_Boss02
+
+For ID `517882`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
+For ID `517883`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
+
+#### A_Boss03
+
+For ID `520478`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
+For ID `520479`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
+
 #### A_PostBoss01
 
 TravelChain01Anim:
@@ -1243,6 +1401,8 @@ Delete ID `556625`.
 
 GiftRack:
 For ID `486504`, change the `Location.Y` property to `4107.464111328125` (+25).
+
+### Asphodel
 
 #### X_Intro
 
@@ -1301,17 +1461,71 @@ Add this below `HeroEnd` with ID `50059`:
 },
 ```
 
+#### X_Combat01
+
+For ID `507977`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
+For ID `507978`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
+
+#### X_Combat02
+
+For ID `508129`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
+For ID `508130`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
+For ID `509864`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
+For ID `509865`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
+
+#### X_Combat03
+
+For ID `510866`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
+For ID `510867`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
+For ID `510868`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
+
 #### X_Combat04
+
+For ID `511895`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
+For ID `511896`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
 
 SmokeRisingHardBright:
 For ID `547679`, change the `GroupNames` property to `Lighting_01`.
 
+#### X_Combat05
+
+For ID `513241`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
+For ID `513242`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
+For ID `543915`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
+
+#### X_Combat06
+
+For ID `512512`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
+For ID `512513`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
+For ID `512514`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
+
+#### X_Combat07
+
+For ID `512024`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
+For ID `512025`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
+
 #### X_Combat08
+
+For ID `513767`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
+For ID `513768`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
 
 AsphodelLavaSmoke:
 For ID `501154`, change the `GroupNames` property to `Terrain_Overlay_01`.
 
+#### X_Combat09
+
+For ID `556185`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
+For ID `558264`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
+
+#### X_Combat10
+
+For ID `560238`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
+For ID `560239`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
+
 #### X_Combat21
+
+For ID `517087`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
+For ID `517089`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
 
 SmokeRisingHardBright:
 Delete ID `547914`.
@@ -1322,7 +1536,25 @@ For ID `544998`, change the `GroupNames` property to `Foreground_01`.
 AtmosphereShadowRound01:
 For ID `545015`, change the `GroupNames` property to `Terrain_Decor_03`.
 
+#### X_Combat22
+
+For ID `518694`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
+For ID `518695`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
+
+#### X_MiniBoss01
+
+For ID `517289`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
+For ID `517404`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
+
+#### X_MiniBoss02
+
+For ID `552189`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
+For ID `552190`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
+
 #### X_Wrapping01
+
+For ID `512126`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
+For ID `512127`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
 
 AsphodelGhost01:
 For ID `514330`, change the `GroupNames` property to `FX_Terrain`.
@@ -1381,7 +1613,6 @@ For ID `514635`, change the `GroupNames` property to `FX_Terrain`.
 For ID `545712`, change the `GroupNames` property to `FX_Terrain`.
 For ID `545714`, change the `GroupNames` property to `FX_Terrain`.
 
-
 #### X_Story01
 
 AsphodelArch01b:
@@ -1392,7 +1623,14 @@ Delete ID `520924`.
 TartarusBrazier02b:
 For ID `514903`, change the `GroupNames` property to `Standing`.
 
+#### X_Shop01
+
+For ID `546057`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
+
 #### X_PreBoss01
+
+For ID `511791`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
+For ID `511792`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
 
 546475
 	Catacomb (where?)
@@ -1995,6 +2233,9 @@ Under `Breakables`, add `Contract`:
 
 #### X_Boss01
 
+For ID `509686`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
+For ID `509687`, change the `Name` property from `TartarusBatCluster` to `ModsNikkelMHadesBiomesTartarusBatCluster`.
+
 For all obstacles of the following types, change `Collision` to `false`, to prevent the Hydra from getting stuck:
 - `AsphodelTombstone01b`
 - `AsphodelTombstone03`
@@ -2028,6 +2269,8 @@ For ID `558394`, change the `GroupNames` property to `Foreground_01`.
 
 GiftRack:
 For ID `486504`, change the `Location.Y` property to `4106.40869140625` (+25).
+
+### Elysium
 
 #### Y_Combat01
 
@@ -2401,6 +2644,8 @@ For ID `559781`, change the `GroupNames` property to `Foreground_01`.
 
 GiftRack:
 For ID `486504`, change the `Location.Y` property to `3996.93408203125` (+25).
+
+### Styx
 
 #### D_Intro
 
@@ -3044,6 +3289,8 @@ For ID `555868`, change the `GroupNames` property to `Lighting_01`.
 In this map, we need to change the name for the CrawlerMiniboss, as it is used in both Hades and Hades II.
 
 For ID `552394`, change the `Name` property from `CrawlerMiniBoss` to `HadesCrawlerMiniBoss`.
+
+### Surface
 
 #### E_Story01
 
