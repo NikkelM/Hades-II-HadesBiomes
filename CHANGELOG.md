@@ -29,6 +29,7 @@ Other fixes and improvements:
 - Added low-resolution texture packages to reduce system requirements and improve performance on less powerful devices such as laptops.
 - Added a new Minor Prophecy revealed by talking to Poseidon in the Nightmare Realm.
 - Replaced the config option for hiding the automatic Elysium poison reminder with a new incantation.
+- Sped up the exit animation when returning to the Styx Hub from a wing room.
 - The "A True Nightmare" Minor Prophecy can now only be revealed if the [Dream Dive Tweaks](https://thunderstore.io/c/hades-ii/p/zerp/DreamDiveTweaks/) mod is also installed (*It would be quite difficult to complete otherwise*).
 - Added a new cosmetic displaying Gigaros in Melinoë's tent in the slot used by Wall-Scrolls.
 - Added a card back for Hermes to the "Arcana, Olympian" card-back pack.

@@ -284,6 +284,48 @@ function game.ExitNPCPresentation(source, args)
 	end
 end
 
+-- Adapted from game.AnomalyExitPresentation but with faster animations/timings due to how often its being called
+function mod.ModsNikkelMHadesBiomesStyxWingEndExitPresentation(currentRun, exitDoor)
+	AddInputBlock({ Name = "AnomalyExitPresentation" })
+	game.EndAutoSprint({ Halt = true, EndWeapon = true })
+	EndRamWeapons({ Id = game.CurrentRun.Hero.ObjectId })
+	Stop({ Id = game.CurrentRun.Hero.ObjectId }) -- Custom
+	game.ToggleCombatControl({ "AdvancedTooltip" }, false, "LeaveRoom")
+
+	game.LeaveRoomAudio(currentRun, exitDoor)
+
+	game.TraitTrayScreenClose(game.ActiveScreens.TraitTrayScreen)
+	game.CloseBoonInfoScreen(game.ActiveScreens.BoonInfo)
+	game.CloseCodexScreen(game.ActiveScreens.Codex)
+	game.CloseInventoryScreen(game.ActiveScreens.InventoryScreen)
+	game.HideCombatUI("AnomalyExitPresentation")
+
+	game.wait(0.08)
+
+	SetAnimation({ Name = "MelinoeDeathEscape", DestinationId = game.CurrentRun.Hero.ObjectId, SpeedMultiplier = 2.34 })
+
+	game.wait(0.52)
+	PlaySound({ Name = "/SFX/Player Sounds/IrisDeathMagic" })
+	game.wait(0.52)
+	-- ChainTo resets MelinoeDeathEscape2 to its own speed, and re-setting the playing animation retimes it in place
+	SetAnimation({ Name = "MelinoeDeathEscape2", DestinationId = game.CurrentRun.Hero.ObjectId, SpeedMultiplier = 0.96 })
+	CreateAnimation({ Name = "DeathSequenceFxFront", DestinationId = game.CurrentRun.Hero.ObjectId, PlaySpeed = 1.3 })
+	CreateAnimation({ Name = "DeathSequenceFxBack", DestinationId = game.CurrentRun.Hero.ObjectId, PlaySpeed = 1.3 })
+
+	game.waitUnmodified(0.81)
+	game.thread(game.DoRumble, { { ScreenPreWait = 0.02, Fraction = 0.15, Duration = 0.54 }, })
+	game.waitUnmodified(0.19)
+	SetAlpha({ Id = game.CurrentRun.Hero.ObjectId, Fraction = 0.0, Duration = 0.19 })
+
+	game.FullScreenFadeOutAnimation()
+
+	game.waitUnmodified(0.36)
+	PlaySound({ Name = "/Leftovers/World Sounds/MapZoomSlow", Id = game.CurrentRun.Hero.ObjectId })
+
+	RemoveInputBlock({ Name = "AnomalyExitPresentation" })
+	game.ToggleCombatControl({ "AdvancedTooltip" }, true, "LeaveRoom")
+end
+
 function mod.ModsNikkelMHadesBiomesReturnToStyxHubPresentation(currentRun, currentRoom, args)
 	AddInputBlock({ Name = "ModsNikkelMHadesBiomesReturnToStyxHubPresentation" })
 

@@ -312,7 +312,7 @@ local addedObstacles = {
 			{ Cue = "/VO/ZagreusField_2290", RequiredPlayed = { "/VO/ZagreusField_2282" } },
 		},
 		-- Custom
-		ExitFunctionName = "AnomalyExitPresentation",
+		ExitFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesStyxWingEndExitPresentation",
 		ReturnToPreviousRoomName = "D_Hub",
 	},
 	-- Styx: Exit from Underworld / Exit to D_Boss01
