@@ -922,7 +922,8 @@ local roomModifications = {
 					VoiceLines = {
 						[1] = { Cue = "/VO/Modsnikkelmhadesbiomesmegaerahome_0061" },
 						[2] = { Cue = "/VO/Modsnikkelmhadesbiomesmegaerahome_0053", RequiredPlayed = { "/VO/Modsnikkelmhadesbiomesmegaerahome_0061" }, },
-						[4] = { Cue = "/VO/Modsnikkelmhadesbiomesmegaerahome_0057", },
+						[4] = { Cue = "/VO/Modsnikkelmhadesbiomesmegaerahome_0074", },
+						[5] = { Cue = "/VO/Modsnikkelmhadesbiomesmegaerahome_0057", },
 					},
 					DelayedStart = true,
 					DreamRunIntroFunctionName = _PLUGIN.guid .. "." .. "FuryDreamRunIntro",
