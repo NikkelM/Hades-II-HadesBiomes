@@ -789,6 +789,8 @@ mod.MapTextFileNames = {
 	C_PreBoss01 = true,
 	-- Need to add a Gears_02 group to better sort some chains and Gears
 	D_Intro = true,
+	-- New in-between groups for a gear assembly and two wall pieces
+	D_Combat02 = true,
 	-- New Standing group for the shop item stele
 	D_Hub = true,
 	-- New foreground groups for the flickering ghosts and other textures

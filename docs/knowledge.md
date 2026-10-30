@@ -2775,6 +2775,95 @@ New map_text groups:
 },
 ```
 
+#### D_Combat02
+
+StyxGears01:
+For ID `552113`, change `GroupNames` from `TerrainAbove` to `Gears_01`.
+For ID `552113`, change `AttachToID` from `0` to `552570`.
+
+StyxTerrainBrick01d:
+For ID `552570`, change `GroupNames` from `Terrain_Base` to `Gears_01`.
+For ID `552570`, change `AttachedIDs` from `[]` to `[552113]`.
+
+StyxWallDecor01a:
+For ID `551265`, change `GroupNames` from `Standing` to `Standing_Lower`.
+
+StyxWallDecor01:
+For ID `546454`, change `GroupNames` from `Standing` to `Standing_Lower`.
+
+The new `map_text` groups are `Standing_Lower` and `Gears_01`:
+
+```json
+{
+	"BlendMode": 0,
+	"ChildGroups": [],
+	"Id": {
+		"Id": 410751,
+		"Name": "Standing_Lower"
+	},
+	"NumSelectedAsDraw": 0,
+	"NumSelectedAsLogic": 0,
+	"NumThings": 0,
+	"NumThingsFrozen": 0,
+	"NumThingsSelectable": 0,
+	"NumThingsVisible": 0,
+	"ParentGroup": {
+		"Id": 410519,
+		"Name": "MapArt"
+	},
+	"Visible": true
+},
+{
+	"BlendMode": 0,
+	"ChildGroups": [],
+	"Id": {
+		"Id": 410752,
+		"Name": "Gears_01"
+	},
+	"NumSelectedAsDraw": 0,
+	"NumSelectedAsLogic": 0,
+	"NumThings": 0,
+	"NumThingsFrozen": 0,
+	"NumThingsSelectable": 0,
+	"NumThingsVisible": 0,
+	"ParentGroup": {
+		"Id": 410519,
+		"Name": "MapArt"
+	},
+	"Visible": true
+},
+```
+
+In `MapArt.ChildGroups`, place `Standing_Lower` immediately after `Standing`:
+
+```json
+{
+	"Id": 410516,
+	"Name": "Standing"
+},
+{
+	"Id": 410751,
+	"Name": "Standing_Lower"
+},
+```
+
+In `MapArt.ChildGroups`, place `Gears_01` between `TerrainAbove` and `Terrain_Base`:
+
+```json
+{
+	"Id": 410555,
+	"Name": "TerrainAbove"
+},
+{
+	"Id": 410752,
+	"Name": "Gears_01"
+},
+{
+	"Id": 410646,
+	"Name": "Terrain_Base"
+},
+```
+
 #### D_Hub
 
 In this map, we need to change the name for the Cerberus NPC, as it is used in both Hades and Hades II, as well as add Megaera
