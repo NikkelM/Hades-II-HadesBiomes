@@ -22,6 +22,7 @@ Other fixes and improvements:
 - Melinoë will now react to entering the Fury's boss chambers.
 - Melinoë will now react to overlooking Asphodel and Elysium in the first rooms of those regions.
 - Hades will now taunt you if you die during a Survival or Erebus encounter.
+- Added a new wing-end combat room to Styx.
 - Added a new irreversible "cheat" config option to immediately unlock all (non-story) incantations.
 - Added a new irreversible "cheat" config option to immediately unlock all cosmetics (except badges).
 - Added a new reversible "cheat" config option to immediately unlock all keepsakes and companions (except those not yet available).

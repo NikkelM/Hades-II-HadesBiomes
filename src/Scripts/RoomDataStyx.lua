@@ -984,6 +984,11 @@ local roomModifications = {
 		ZagContractRewardDestinationId = 776332,
 	},
 
+	-- COMBAT
+	D_Combat01 = {
+		DebugOnly = false,
+	},
+
 	-- MINIBOSSES
 	BaseStyxMiniBoss = {
 		RewardPreviewIcon = "RoomRewardSubIcon_Miniboss",

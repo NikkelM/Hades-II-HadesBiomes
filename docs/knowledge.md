@@ -2775,6 +2775,11 @@ New map_text groups:
 },
 ```
 
+#### D_Combat01
+
+EnemyPointMelee:
+Delete ID `511028`, it overlaps with PoisonCureFountainStyx ID `543184`.
+
 #### D_Combat02
 
 StyxGears01:
