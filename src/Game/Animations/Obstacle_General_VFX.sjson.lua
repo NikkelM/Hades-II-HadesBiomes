@@ -11,6 +11,18 @@ local hadesTwoObstacleModifications = {
 
 -- Make sure to add a Name key!
 local addAnimations = {
+	ModsNikkelMHadesBiomesBatCluster = {
+		Name = "ModsNikkelMHadesBiomesBatCluster",
+		InheritFrom = "BatCluster",
+		ChainTo = "ModsNikkelMHadesBiomesBatClusterWait",
+		Alpha = 0.0,
+	},
+	ModsNikkelMHadesBiomesBatClusterWait = {
+		Name = "ModsNikkelMHadesBiomesBatClusterWait",
+		InheritFrom = "BatClusterWait",
+		ChainTo = "ModsNikkelMHadesBiomesBatCluster",
+		Alpha = 0.0,
+	},
 	ModsNikkelMHadesBiomes_SecretDoor_Revealed = {
 		Name = "ModsNikkelMHadesBiomes_SecretDoor_Revealed",
 		InheritFrom = "SecretDoor_Revealed",

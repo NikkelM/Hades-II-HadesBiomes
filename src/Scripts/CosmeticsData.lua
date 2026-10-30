@@ -21,8 +21,8 @@
 	"ModsNikkelMHadesBiomes_BossResourceStyx",
 ]] --
 
--- In total, as of 2026-05-21: 56 cosmetics
--- Last added: Pillarets, Coned
+-- In total, as of 2026-10-18: 57 cosmetics
+-- Last added: Wall-Scroll, Gigaros
 
 -- #region CosmeticsShop_Tent
 local tentCosmetics = {
@@ -260,6 +260,103 @@ local tentCosmetics = {
 			CosmeticsPoints = 500,
 			ModsNikkelMHadesBiomes_CropElysium = 3,
 			ModsNikkelMHadesBiomes_BossResourceAsphodel = 2,
+		},
+	},
+	{
+		Id = _PLUGIN.guid .. "." .. "Cosmetic_FanPoster_Gigaros",
+		Name = {
+			-- de = "Wall-Scroll, Gigaros Display Case",
+			-- el = "Wall-Scroll, Gigaros Display Case",
+			en = "Wall-Scroll, Gigaros Display Case",
+			-- es = "Wall-Scroll, Gigaros Display Case",
+			-- fr = "Wall-Scroll, Gigaros Display Case",
+			-- it = "Wall-Scroll, Gigaros Display Case",
+			-- ja = "Wall-Scroll, Gigaros Display Case",
+			-- ko = "Wall-Scroll, Gigaros Display Case",
+			-- pl = "Wall-Scroll, Gigaros Display Case",
+			-- ["pt-BR"] = "Wall-Scroll, Gigaros Display Case",
+			-- ru = "Wall-Scroll, Gigaros Display Case",
+			-- tr = "Wall-Scroll, Gigaros Display Case",
+			-- uk = "Wall-Scroll, Gigaros Display Case",
+			-- ["zh-CN"] = "Wall-Scroll, Gigaros Display Case",
+			-- ["zh-TW"] = "Wall-Scroll, Gigaros Display Case",
+		},
+		Description = {
+			-- de = "{$Keywords.CosmeticAltAdd}: Gigaros, the powerful spear wielded by Lord Hades and later his son Zagreus.",
+			-- el = "{$Keywords.CosmeticAltAdd}: Gigaros, the powerful spear wielded by Lord Hades and later his son Zagreus.",
+			en = "{$Keywords.CosmeticAltAdd}: Gigaros, the powerful spear wielded by Lord Hades and later his son Zagreus.",
+			-- es = "{$Keywords.CosmeticAltAdd}: Gigaros, the powerful spear wielded by Lord Hades and later his son Zagreus.",
+			-- fr = "{$Keywords.CosmeticAltAdd}: Gigaros, the powerful spear wielded by Lord Hades and later his son Zagreus.",
+			-- it = "{$Keywords.CosmeticAltAdd}: Gigaros, the powerful spear wielded by Lord Hades and later his son Zagreus.",
+			-- ja = "{$Keywords.CosmeticAltAdd}: Gigaros, the powerful spear wielded by Lord Hades and later his son Zagreus.",
+			-- ko = "{$Keywords.CosmeticAltAdd}: Gigaros, the powerful spear wielded by Lord Hades and later his son Zagreus.",
+			-- pl = "{$Keywords.CosmeticAltAdd}: Gigaros, the powerful spear wielded by Lord Hades and later his son Zagreus.",
+			-- ["pt-BR"] =
+			-- "{$Keywords.CosmeticAltAdd}: Gigaros, the powerful spear wielded by Lord Hades and later his son Zagreus.",
+			-- ru = "{$Keywords.CosmeticAltAdd}: Gigaros, the powerful spear wielded by Lord Hades and later his son Zagreus.",
+			-- tr = "{$Keywords.CosmeticAltAdd}: Gigaros, the powerful spear wielded by Lord Hades and later his son Zagreus.",
+			-- uk = "{$Keywords.CosmeticAltAdd}: Gigaros, the powerful spear wielded by Lord Hades and later his son Zagreus.",
+			-- ["zh-CN"] =
+			-- "{$Keywords.CosmeticAltAdd}: Gigaros, the powerful spear wielded by Lord Hades and later his son Zagreus.",
+			-- ["zh-TW"] =
+			-- "{$Keywords.CosmeticAltAdd}: Gigaros, the powerful spear wielded by Lord Hades and later his son Zagreus.",
+		},
+		FlavorText = {
+			-- de =
+			-- "This specific version of the spear was recovered by the Princess of the Dead from another, darker timeline, where her brother Zagreus passed it to her.",
+			-- el =
+			-- "This specific version of the spear was recovered by the Princess of the Dead from another, darker timeline, where her brother Zagreus passed it to her.",
+			en =
+			"This specific version of the spear was recovered by the Princess of the Dead from another, darker timeline, where her brother Zagreus passed it to her.",
+			-- es =
+			-- "This specific version of the spear was recovered by the Princess of the Dead from another, darker timeline, where her brother Zagreus passed it to her.",
+			-- fr =
+			-- "This specific version of the spear was recovered by the Princess of the Dead from another, darker timeline, where her brother Zagreus passed it to her.",
+			-- it =
+			-- "This specific version of the spear was recovered by the Princess of the Dead from another, darker timeline, where her brother Zagreus passed it to her.",
+			-- ja =
+			-- "This specific version of the spear was recovered by the Princess of the Dead from another, darker timeline, where her brother Zagreus passed it to her.",
+			-- ko =
+			-- "This specific version of the spear was recovered by the Princess of the Dead from another, darker timeline, where her brother Zagreus passed it to her.",
+			-- pl =
+			-- "This specific version of the spear was recovered by the Princess of the Dead from another, darker timeline, where her brother Zagreus passed it to her.",
+			-- ["pt-BR"] =
+			-- "This specific version of the spear was recovered by the Princess of the Dead from another, darker timeline, where her brother Zagreus passed it to her.",
+			-- ru =
+			-- "This specific version of the spear was recovered by the Princess of the Dead from another, darker timeline, where her brother Zagreus passed it to her.",
+			-- tr =
+			-- "This specific version of the spear was recovered by the Princess of the Dead from another, darker timeline, where her brother Zagreus passed it to her.",
+			-- uk =
+			-- "This specific version of the spear was recovered by the Princess of the Dead from another, darker timeline, where her brother Zagreus passed it to her.",
+			-- ["zh-CN"] =
+			-- "This specific version of the spear was recovered by the Princess of the Dead from another, darker timeline, where her brother Zagreus passed it to her.",
+			-- ["zh-TW"] =
+			-- "This specific version of the spear was recovered by the Princess of the Dead from another, darker timeline, where her brother Zagreus passed it to her.",
+		},
+		CosmeticsGroup = "Cosmetic_FanPoster01",
+		InsertAfterCosmetic = _PLUGIN.guid .. "." .. "Cosmetic_FanPoster_Aphrodite",
+		ShopCategory = "CosmeticsShop_Tent",
+		ActivateIds = { 738471 },
+		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Icons\\Tent\\FanPoster_Gigaros_Icon",
+		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Tent\\FanPoster_Gigaros",
+		AnimationScale = 2.1,
+		GameStateRequirements = {
+			{
+				Path = { "GameState", "LifetimeResourcesGained", "HadesSpearPoints" },
+				Comparison = ">=",
+				Value = 1,
+			},
+			{
+				PathTrue = { "GameState", "TextLinesRecord", "Ending01" },
+			},
+			NamedRequirements = { "T5Cosmetic" },
+		},
+		AlwaysRevealImmediately = true,
+		Cost = {
+			CosmeticsPoints = 1000,
+			ModsNikkelMHadesBiomes_BossResourceStyx = 3,
+			ModsNikkelMHadesBiomes_OreStyx = 4,
+			ModsNikkelMHadesBiomes_BossResourceTartarus = 3,
 		},
 	},
 	-- #endregion
@@ -3597,35 +3694,35 @@ local tavernaCosmetics = {
 		},
 		FlavorText = {
 			-- de =
-			-- "It is said this pot once stood in the lounge of the House of Hades, used by it's head Chef to cook meals for Lord Hades and his family and guests.",
+			-- "It is said this pot once stood in the lounge of the House of Hades, used by its head Chef to cook meals for Lord Hades and his family and guests.",
 			-- el =
-			-- "It is said this pot once stood in the lounge of the House of Hades, used by it's head Chef to cook meals for Lord Hades and his family and guests.",
+			-- "It is said this pot once stood in the lounge of the House of Hades, used by its head Chef to cook meals for Lord Hades and his family and guests.",
 			en =
-			"It is said this pot once stood in the lounge of the House of Hades, used by it's head Chef to cook meals for Lord Hades and his family and guests.",
+			"It is said this pot once stood in the lounge of the House of Hades, used by its head Chef to cook meals for Lord Hades and his family and guests.",
 			-- es =
-			-- "It is said this pot once stood in the lounge of the House of Hades, used by it's head Chef to cook meals for Lord Hades and his family and guests.",
+			-- "It is said this pot once stood in the lounge of the House of Hades, used by its head Chef to cook meals for Lord Hades and his family and guests.",
 			fr =
 			"On raconte que cette marmite trônait jadis dans le salon de la Maison d'Hadès, où le chef cuisinier préparait les repas du seigneur Hadès, de sa famille et de ses invités.",
 			-- it =
-			-- "It is said this pot once stood in the lounge of the House of Hades, used by it's head Chef to cook meals for Lord Hades and his family and guests.",
+			-- "It is said this pot once stood in the lounge of the House of Hades, used by its head Chef to cook meals for Lord Hades and his family and guests.",
 			-- ja =
-			-- "It is said this pot once stood in the lounge of the House of Hades, used by it's head Chef to cook meals for Lord Hades and his family and guests.",
+			-- "It is said this pot once stood in the lounge of the House of Hades, used by its head Chef to cook meals for Lord Hades and his family and guests.",
 			-- ko =
-			-- "It is said this pot once stood in the lounge of the House of Hades, used by it's head Chef to cook meals for Lord Hades and his family and guests.",
+			-- "It is said this pot once stood in the lounge of the House of Hades, used by its head Chef to cook meals for Lord Hades and his family and guests.",
 			-- pl =
-			-- "It is said this pot once stood in the lounge of the House of Hades, used by it's head Chef to cook meals for Lord Hades and his family and guests.",
+			-- "It is said this pot once stood in the lounge of the House of Hades, used by its head Chef to cook meals for Lord Hades and his family and guests.",
 			-- ["pt-BR"] =
-			-- "It is said this pot once stood in the lounge of the House of Hades, used by it's head Chef to cook meals for Lord Hades and his family and guests.",
+			-- "It is said this pot once stood in the lounge of the House of Hades, used by its head Chef to cook meals for Lord Hades and his family and guests.",
 			-- ru =
-			-- "It is said this pot once stood in the lounge of the House of Hades, used by it's head Chef to cook meals for Lord Hades and his family and guests.",
+			-- "It is said this pot once stood in the lounge of the House of Hades, used by its head Chef to cook meals for Lord Hades and his family and guests.",
 			-- tr =
-			-- "It is said this pot once stood in the lounge of the House of Hades, used by it's head Chef to cook meals for Lord Hades and his family and guests.",
+			-- "It is said this pot once stood in the lounge of the House of Hades, used by its head Chef to cook meals for Lord Hades and his family and guests.",
 			-- uk =
-			-- "It is said this pot once stood in the lounge of the House of Hades, used by it's head Chef to cook meals for Lord Hades and his family and guests.",
+			-- "It is said this pot once stood in the lounge of the House of Hades, used by its head Chef to cook meals for Lord Hades and his family and guests.",
 			-- ["zh-CN"] =
-			-- "It is said this pot once stood in the lounge of the House of Hades, used by it's head Chef to cook meals for Lord Hades and his family and guests.",
+			-- "It is said this pot once stood in the lounge of the House of Hades, used by its head Chef to cook meals for Lord Hades and his family and guests.",
 			-- ["zh-TW"] =
-			-- "It is said this pot once stood in the lounge of the House of Hades, used by it's head Chef to cook meals for Lord Hades and his family and guests.",
+			-- "It is said this pot once stood in the lounge of the House of Hades, used by its head Chef to cook meals for Lord Hades and his family and guests.",
 		},
 		CosmeticsGroup = "Cosmetic_TavernaCauldron01",
 		InsertAfterCosmetic = "Cosmetic_TavernaCauldron02",
@@ -5203,35 +5300,35 @@ local preRunCosmetics = {
 		},
 		FlavorText = {
 			-- de =
-			-- "Recovered from the belongings of your brother Zagreus in his bedchamber, this charm depicts the hound of hell, in it's most terrifying form.",
+			-- "Recovered from the belongings of your brother Zagreus in his bedchamber, this charm depicts the hound of hell in its most terrifying form.",
 			-- el =
-			-- "Recovered from the belongings of your brother Zagreus in his bedchamber, this charm depicts the hound of hell, in it's most terrifying form.",
+			-- "Recovered from the belongings of your brother Zagreus in his bedchamber, this charm depicts the hound of hell in its most terrifying form.",
 			en =
-			"Recovered from the belongings of your brother Zagreus in his bedchamber, this charm depicts the hound of hell, in it's most terrifying form.",
+			"Recovered from the belongings of your brother Zagreus in his bedchamber, this charm depicts the hound of hell in its most terrifying form.",
 			-- es =
-			-- "Recovered from the belongings of your brother Zagreus in his bedchamber, this charm depicts the hound of hell, in it's most terrifying form.",
+			-- "Recovered from the belongings of your brother Zagreus in his bedchamber, this charm depicts the hound of hell in its most terrifying form.",
 			fr =
 			"Récupérée parmi les affaires de votre frère Zagreus dans sa chambre, cette breloque représente le chien des Enfers sous sa forme la plus terrifiante.",
 			-- it =
-			-- "Recovered from the belongings of your brother Zagreus in his bedchamber, this charm depicts the hound of hell, in it's most terrifying form.",
+			-- "Recovered from the belongings of your brother Zagreus in his bedchamber, this charm depicts the hound of hell in its most terrifying form.",
 			-- ja =
-			-- "Recovered from the belongings of your brother Zagreus in his bedchamber, this charm depicts the hound of hell, in it's most terrifying form.",
+			-- "Recovered from the belongings of your brother Zagreus in his bedchamber, this charm depicts the hound of hell in its most terrifying form.",
 			-- ko =
-			-- "Recovered from the belongings of your brother Zagreus in his bedchamber, this charm depicts the hound of hell, in it's most terrifying form.",
+			-- "Recovered from the belongings of your brother Zagreus in his bedchamber, this charm depicts the hound of hell in its most terrifying form.",
 			-- pl =
-			-- "Recovered from the belongings of your brother Zagreus in his bedchamber, this charm depicts the hound of hell, in it's most terrifying form.",
+			-- "Recovered from the belongings of your brother Zagreus in his bedchamber, this charm depicts the hound of hell in its most terrifying form.",
 			-- ["pt-BR"] =
-			-- "Recovered from the belongings of your brother Zagreus in his bedchamber, this charm depicts the hound of hell, in it's most terrifying form.",
+			-- "Recovered from the belongings of your brother Zagreus in his bedchamber, this charm depicts the hound of hell in its most terrifying form.",
 			-- ru =
-			-- "Recovered from the belongings of your brother Zagreus in his bedchamber, this charm depicts the hound of hell, in it's most terrifying form.",
+			-- "Recovered from the belongings of your brother Zagreus in his bedchamber, this charm depicts the hound of hell in its most terrifying form.",
 			-- tr =
-			-- "Recovered from the belongings of your brother Zagreus in his bedchamber, this charm depicts the hound of hell, in it's most terrifying form.",
+			-- "Recovered from the belongings of your brother Zagreus in his bedchamber, this charm depicts the hound of hell in its most terrifying form.",
 			-- uk =
-			-- "Recovered from the belongings of your brother Zagreus in his bedchamber, this charm depicts the hound of hell, in it's most terrifying form.",
+			-- "Recovered from the belongings of your brother Zagreus in his bedchamber, this charm depicts the hound of hell in its most terrifying form.",
 			-- ["zh-CN"] =
-			-- "Recovered from the belongings of your brother Zagreus in his bedchamber, this charm depicts the hound of hell, in it's most terrifying form.",
+			-- "Recovered from the belongings of your brother Zagreus in his bedchamber, this charm depicts the hound of hell in its most terrifying form.",
 			-- ["zh-TW"] =
-			-- "Recovered from the belongings of your brother Zagreus in his bedchamber, this charm depicts the hound of hell, in it's most terrifying form.",
+			-- "Recovered from the belongings of your brother Zagreus in his bedchamber, this charm depicts the hound of hell in its most terrifying form.",
 		},
 		CosmeticsGroup = "Cosmetic_ExitCharm",
 		InsertAfterCosmetic = _PLUGIN.guid .. "." .. "Cosmetic_ExitCharm_Thanatos",
@@ -6279,35 +6376,35 @@ CosmeticsAPI.RegisterCardBackPack({
 	},
 	Description = {
 		-- de =
-		-- "{$Keywords.CosmeticDeck}: Set of {#UpgradeFormatDark}12 {#Prev}alternate themes, featuring the various Olympian Gods and Goddesses aiding you on your journey.",
+		-- "{$Keywords.CosmeticDeck}: Set of {#UpgradeFormatDark}13 {#Prev}alternate themes, featuring the various Olympian Gods and Goddesses aiding you on your journey.",
 		-- el =
-		-- "{$Keywords.CosmeticDeck}: Set of {#UpgradeFormatDark}12 {#Prev}alternate themes, featuring the various Olympian Gods and Goddesses aiding you on your journey.",
+		-- "{$Keywords.CosmeticDeck}: Set of {#UpgradeFormatDark}13 {#Prev}alternate themes, featuring the various Olympian Gods and Goddesses aiding you on your journey.",
 		en =
-		"{$Keywords.CosmeticDeck}: Set of {#UpgradeFormatDark}12 {#Prev}alternate themes, featuring the various Olympian Gods and Goddesses aiding you on your journey.",
+		"{$Keywords.CosmeticDeck}: Set of {#UpgradeFormatDark}13 {#Prev}alternate themes, featuring the various Olympian Gods and Goddesses aiding you on your journey.",
 		-- es =
-		-- "{$Keywords.CosmeticDeck}: Set of {#UpgradeFormatDark}12 {#Prev}alternate themes, featuring the various Olympian Gods and Goddesses aiding you on your journey.",
+		-- "{$Keywords.CosmeticDeck}: Set of {#UpgradeFormatDark}13 {#Prev}alternate themes, featuring the various Olympian Gods and Goddesses aiding you on your journey.",
 		fr =
-		"{$Keywords.CosmeticDeck} : Un ensemble de {#UpgradeFormatDark}12 {#Prev}thèmes alternatifs, à l'effigie des différents dieux et déesses de l'Olympe qui vous aident dans votre périple.",
+		"{$Keywords.CosmeticDeck} : Un ensemble de {#UpgradeFormatDark}13 {#Prev}thèmes alternatifs, à l'effigie des différents dieux et déesses de l'Olympe qui vous aident dans votre périple.",
 		-- it =
-		-- "{$Keywords.CosmeticDeck}: Set of {#UpgradeFormatDark}12 {#Prev}alternate themes, featuring the various Olympian Gods and Goddesses aiding you on your journey.",
+		-- "{$Keywords.CosmeticDeck}: Set of {#UpgradeFormatDark}13 {#Prev}alternate themes, featuring the various Olympian Gods and Goddesses aiding you on your journey.",
 		-- ja =
-		-- "{$Keywords.CosmeticDeck}: Set of {#UpgradeFormatDark}12 {#Prev}alternate themes, featuring the various Olympian Gods and Goddesses aiding you on your journey.",
+		-- "{$Keywords.CosmeticDeck}: Set of {#UpgradeFormatDark}13 {#Prev}alternate themes, featuring the various Olympian Gods and Goddesses aiding you on your journey.",
 		-- ko =
-		-- "{$Keywords.CosmeticDeck}: Set of {#UpgradeFormatDark}12 {#Prev}alternate themes, featuring the various Olympian Gods and Goddesses aiding you on your journey.",
+		-- "{$Keywords.CosmeticDeck}: Set of {#UpgradeFormatDark}13 {#Prev}alternate themes, featuring the various Olympian Gods and Goddesses aiding you on your journey.",
 		-- pl =
-		-- "{$Keywords.CosmeticDeck}: Set of {#UpgradeFormatDark}12 {#Prev}alternate themes, featuring the various Olympian Gods and Goddesses aiding you on your journey.",
+		-- "{$Keywords.CosmeticDeck}: Set of {#UpgradeFormatDark}13 {#Prev}alternate themes, featuring the various Olympian Gods and Goddesses aiding you on your journey.",
 		-- ["pt-BR"] =
-		-- "{$Keywords.CosmeticDeck}: Set of {#UpgradeFormatDark}12 {#Prev}alternate themes, featuring the various Olympian Gods and Goddesses aiding you on your journey.",
+		-- "{$Keywords.CosmeticDeck}: Set of {#UpgradeFormatDark}13 {#Prev}alternate themes, featuring the various Olympian Gods and Goddesses aiding you on your journey.",
 		-- ru =
-		-- "{$Keywords.CosmeticDeck}: Set of {#UpgradeFormatDark}12 {#Prev}alternate themes, featuring the various Olympian Gods and Goddesses aiding you on your journey.",
+		-- "{$Keywords.CosmeticDeck}: Set of {#UpgradeFormatDark}13 {#Prev}alternate themes, featuring the various Olympian Gods and Goddesses aiding you on your journey.",
 		-- tr =
-		-- "{$Keywords.CosmeticDeck}: Set of {#UpgradeFormatDark}12 {#Prev}alternate themes, featuring the various Olympian Gods and Goddesses aiding you on your journey.",
+		-- "{$Keywords.CosmeticDeck}: Set of {#UpgradeFormatDark}13 {#Prev}alternate themes, featuring the various Olympian Gods and Goddesses aiding you on your journey.",
 		-- uk =
-		-- "{$Keywords.CosmeticDeck}: Set of {#UpgradeFormatDark}12 {#Prev}alternate themes, featuring the various Olympian Gods and Goddesses aiding you on your journey.",
+		-- "{$Keywords.CosmeticDeck}: Set of {#UpgradeFormatDark}13 {#Prev}alternate themes, featuring the various Olympian Gods and Goddesses aiding you on your journey.",
 		-- ["zh-CN"] =
-		-- "{$Keywords.CosmeticDeck}: Set of {#UpgradeFormatDark}12 {#Prev}alternate themes, featuring the various Olympian Gods and Goddesses aiding you on your journey.",
+		-- "{$Keywords.CosmeticDeck}: Set of {#UpgradeFormatDark}13 {#Prev}alternate themes, featuring the various Olympian Gods and Goddesses aiding you on your journey.",
 		-- ["zh-TW"] =
-		-- "{$Keywords.CosmeticDeck}: Set of {#UpgradeFormatDark}12 {#Prev}alternate themes, featuring the various Olympian Gods and Goddesses aiding you on your journey.",
+		-- "{$Keywords.CosmeticDeck}: Set of {#UpgradeFormatDark}13 {#Prev}alternate themes, featuring the various Olympian Gods and Goddesses aiding you on your journey.",
 	},
 	FlavorText = {
 		-- de =
@@ -6461,6 +6558,13 @@ CosmeticsAPI.RegisterCardBack({
 	DeckArtMouseoverPath =
 	"NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Arcana\\Arcana_Gods\\DeckMouseover_Poseidon",
 	CardBackPath = "NikkelM-HadesBiomesCosmeticsCardbacks\\GUI\\Screens\\Cardback\\CardBackGodsPoseidon",
+})
+CosmeticsAPI.RegisterCardBack({
+	Id = _PLUGIN.guid .. "." .. "Cosmetic_Arcana_Gods_Hermes",
+	PackId = _PLUGIN.guid .. "." .. "Cosmetic_Arcana_Gods",
+	DeckArtPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Arcana\\Arcana_Gods\\Deck_Hermes",
+	DeckArtMouseoverPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Arcana\\Arcana_Gods\\DeckMouseover_Hermes",
+	CardBackPath = "NikkelM-HadesBiomesCosmeticsCardbacks\\GUI\\Screens\\Cardback\\CardBackGodsHermes",
 })
 -- #endregion
 -- #endregion

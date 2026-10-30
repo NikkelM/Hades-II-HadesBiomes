@@ -13,6 +13,7 @@ mod.AudioFileMappings = {
 mod.VoiceoverFileNames = {
 	Alecto = "Alecto",
 	Eurydice = "Eurydice",
+	Hades = "Modsnikkelmhadesbiomeshades",
 	HadesField = "HadesField",
 	MegaeraField = "MegaeraField",
 	Minotaur = "Minotaur",
@@ -48,7 +49,7 @@ mod.SubtitleCsvFileNameMappings = {
 	Alecto = "Alecto_",
 	-- Dusa = "Dusa_",
 	Eurydice = "Eurydice_",
-	-- Hades = "Modsnikkelmhadesbiomeshades_",
+	Hades = "Modsnikkelmhadesbiomeshades_",
 	HadesField = "HadesField_",
 	-- Hypnos = "Modsnikkelmhadesbiomeshypnos_",
 	Intercom = "Modsnikkelmhadesbiomesintercom_",
@@ -587,6 +588,11 @@ mod.SjsonFileModifications = {
 			SortMode = "Isometric",
 		},
 	},
+	["Animations\\CharacterAnim_EnemiesBosses_Furies"] = {
+		Fury2ShieldedStart = {
+			CancelOnOwnerMove = false,
+		},
+	},
 	["Animations\\CharacterAnim_EnemiesBosses_Hydra"] = {
 		EnemyHydraDeathVFX = {
 			SortMode = "Isometric",
@@ -787,6 +793,8 @@ mod.MapTextFileNames = {
 	C_PreBoss01 = true,
 	-- Need to add a Gears_02 group to better sort some chains and Gears
 	D_Intro = true,
+	-- New in-between groups for a gear assembly and two wall pieces
+	D_Combat02 = true,
 	-- New Standing group for the shop item stele
 	D_Hub = true,
 	-- New foreground groups for the flickering ghosts and other textures

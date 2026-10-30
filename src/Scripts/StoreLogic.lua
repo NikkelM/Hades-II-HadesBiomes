@@ -8,6 +8,13 @@ modutil.mod.Path.Wrap("FillInShopOptions", function(base, args)
 		-- In Hades II RunShopGeneration(), the room name is set to the previous room's name by accident
 		args.RoomName = room.Name
 
+		-- Prevent two Hexes from spawning
+		local offeredRewards = game.MapState.OfferedRewards or {}
+		if room.ModsNikkelMHadesBiomesShopRoomWithRoomRewards and offeredRewards.SpellDrop then
+			args.ExclusionNames = game.ShallowCopyTable(args.ExclusionNames or {})
+			table.insert(args.ExclusionNames, "SpellDrop")
+		end
+
 		if room.PersistentStore then
 			local store = mod.GetPreviousStore(args)
 			if store ~= nil then

@@ -7,6 +7,9 @@ public.config = {}
 ---@type boolean Whether the mod has been installed successfully and is active.
 public.IsValidInstallation = false
 
+---@type number Player model scale applied during Zagreus' Journey runs.
+public.ModdedPlayerScaleMultiplier = 0.9
+
 ---@type table<string, boolean> TextLineSet names shared by Hades and Hades II.
 public.DuplicateTextLineSetNames = {}
 

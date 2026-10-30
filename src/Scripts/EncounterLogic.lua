@@ -84,7 +84,6 @@ modutil.mod.Path.Wrap("BossStageTransition", function(base, boss, currentRun, ai
 		Stop({ Id = boss.ObjectId })
 		EndRamWeapons({ Id = boss.ObjectId })
 		CancelWeaponFireRequests({ Id = boss.ObjectId })
-		SetUnitProperty({ Property = "InitiatedCollisionWeapon", Value = "null", DestinationId = boss.ObjectId })
 	end
 
 	return base(boss, currentRun, aiStage)

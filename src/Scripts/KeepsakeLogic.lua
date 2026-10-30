@@ -558,13 +558,17 @@ function mod.HandleAssistToggle(screen, button)
 	local traitName = button.Data.Gift
 	local traitData = game.TraitData[traitName]
 	mod.LoadAssistSfxBanks(traitData.SfxBankNames)
-	if game.GameState.LastAssistTrait == traitName then
+	local isEquipping = game.GameState.LastAssistTrait ~= traitName
+	if not isEquipping then
 		game.GameState.LastAssistTrait = nil
 	else
 		game.GameState.LastAssistTrait = traitName
 	end
 
 	PlaySound({ Name = traitData.EquipSound or "/Leftovers/Menu Sounds/TalismanPowderDownLEGENDARY" })
+	if isEquipping and traitName == "SkellyAssistTrait" then
+		game.thread(game.PlayVoiceLines, game.HeroVoiceLines.ModsNikkelMHadesBiomesSkellyAssistEquipReactionVoiceLines, false)
+	end
 	mod.UpdateAssistEquippedFrame(screen)
 	game.KeepsakeScreenUpdateActionBar(screen, button)
 end
@@ -735,18 +739,20 @@ end)
 
 modutil.mod.Path.Wrap("KeepsakeScreenClose", function(base, screen, button)
 	cancelAssistUpgradePulse(screen)
-	local assistChanged = screen.LastAssist ~= game.GameState.LastAssistTrait
-	if assistChanged then
-		if screen.LastAssist ~= nil then
-			game.CurrentRun.TraitCache[screen.LastAssist] = nil
+	if game.CurrentHubRoom ~= nil then
+		local assistChanged = screen.LastAssist ~= game.GameState.LastAssistTrait
+		if assistChanged then
+			if screen.LastAssist ~= nil then
+				game.CurrentRun.TraitCache[screen.LastAssist] = nil
+			end
+			game.RemoveTrait(game.CurrentRun.Hero, screen.LastAssist)
+			mod.EquipAssist(game.CurrentRun.Hero, game.GameState.LastAssistTrait, {
+				FromLoot = true,
+			})
 		end
-		game.RemoveTrait(game.CurrentRun.Hero, screen.LastAssist)
-		mod.EquipAssist(game.CurrentRun.Hero, game.GameState.LastAssistTrait, {
-			FromLoot = true,
-		})
-	end
-	if (assistChanged or screen.ModsNikkelMHadesBiomesAssistUpgraded) and screen.LastTrait == game.GameState.LastAwardTrait then
-		game.RequestPreRunLoadoutChangeSave()
+		if (assistChanged or screen.ModsNikkelMHadesBiomesAssistUpgraded) and screen.LastTrait == game.GameState.LastAwardTrait then
+			game.RequestPreRunLoadoutChangeSave()
+		end
 	end
 
 	return base(screen, button)
@@ -761,6 +767,7 @@ modutil.mod.Path.Wrap("EquipLastAwardTrait", function(base, eventSource, hero)
 
 	mod.EquipAssist(game.CurrentRun.Hero or hero, game.GameState.LastAssistTrait, {
 		SkipNewTraitHighlight = true,
+		SkipAddToHUD = game.SessionMapState.HubBountyLoadPresentation or game.SessionMapState.HubDreamLoadPresentation,
 	})
 
 	return returnValue

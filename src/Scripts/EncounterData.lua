@@ -28,7 +28,19 @@ local encounterReplacements = {
 local encounterModifications = {
 	-- #region ShrineChallenge
 	BasePerfectClear = {
-		LoadModdedVoiceBanks = { "Modsnikkelmhadesbiomesintercom" },
+		LoadModdedVoiceBanks = { "Modsnikkelmhadesbiomesintercom", "Modsnikkelmhadesbiomeshades" },
+		HeroDeathEvents = {
+			{
+				FunctionName = "HadesSpeakingPresentation",
+				Args = {
+					LineHistoryName = "Hades",
+					SubtitleColor = game.Color.HadesVoice,
+					BlockScreenshake = true,
+					OverlayDeathFx = true,
+					VoiceLines = { GlobalVoiceLines = "HadesDeathTauntVoiceLines" },
+				},
+			},
+		},
 		CanEncounterSkip = false,
 		BlockAthenaEncounterKeepsake = true,
 		BlockNextBiomeEnemyShrineUpgrade = true,

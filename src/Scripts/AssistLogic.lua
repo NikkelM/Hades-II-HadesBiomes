@@ -20,7 +20,7 @@ game.OnControlPressed({
 			return
 		end
 
-		if game.IsCombatEncounterActive(game.CurrentRun) and mod.CanFireAssist() then
+		if mod.CanFireAssist() then
 			mod.DoAssist()
 		elseif game.GameState.LastAssistTrait ~= nil and game.CurrentHubRoom == nil then
 			mod.AssistFailedPresentation(game.CurrentRun.Hero)
@@ -35,6 +35,9 @@ function mod.CanFireAssist()
 		return false
 	end
 	if game.CurrentRun.Hero.IsDead then
+		return false
+	end
+	if not game.IsCombatEncounterActive(game.CurrentRun) then
 		return false
 	end
 	if game.CurrentRun.CurrentRoom.UsedAssist then
@@ -102,6 +105,7 @@ function mod.DoAssist()
 		PlayAssistReactionVoiceLines = true,
 		PlayAssistActivatedVoiceLines = true,
 		PlayCrowdReaction = true,
+		PreservePlayerProjectiles = true,
 		SecondPortraitOffsetY = 10,
 		SetHeroAnimation = true,
 		UsePlayerRumble = true,
@@ -113,7 +117,7 @@ function mod.DoAssist()
 			DestinationName = "EnemyTeam",
 			IgnoreInvulnerable = true,
 			IgnoreHomingIneligible = true,
-			Distance = 1200,
+			Distance = assistData.TargetRange or 1200,
 		})
 		if locationId == 0 then
 			locationId = game.CurrentRun.Hero.ObjectId
@@ -154,7 +158,7 @@ function mod.AchillesPatroclusAssist(assistData)
 		DestinationName = "EnemyTeam",
 		IgnoreInvulnerable = true,
 		IgnoreHomingIneligible = true,
-		Distance = assistData.Range,
+		Distance = assistData.TargetRange,
 	})
 	local weapons = game.ShallowCopyTable(assistData.AssistWeapons)
 	local firstWeapon = game.RemoveRandomValue(weapons)
@@ -173,7 +177,7 @@ function mod.AchillesPatroclusAssist(assistData)
 		DestinationName = "EnemyTeam",
 		IgnoreInvulnerable = true,
 		IgnoreHomingIneligible = true,
-		Distance = assistData.Range,
+		Distance = assistData.TargetRange,
 		MaximumCount = 2,
 	})
 	local secondTargetId = targetIds[1]
@@ -276,7 +280,7 @@ function mod.SisyphusLootSprinkle(assistData)
 		DestinationName = "EnemyTeam",
 		IgnoreInvulnerable = true,
 		IgnoreHomingIneligible = true,
-		Distance = 500,
+		Distance = assistData.TargetRange,
 		RequiredLocationUnblocked = true,
 	})
 	if locationId == 0 then
@@ -285,7 +289,7 @@ function mod.SisyphusLootSprinkle(assistData)
 			DestinationName = "EnemyTeam",
 			IgnoreInvulnerable = true,
 			IgnoreHomingIneligible = true,
-			Distance = 500,
+			Distance = assistData.TargetRange,
 		})
 	end
 	if locationId == 0 then

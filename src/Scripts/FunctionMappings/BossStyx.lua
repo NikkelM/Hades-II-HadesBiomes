@@ -249,17 +249,18 @@ function mod.HadesPhaseTransition(boss, currentRun, aiStage)
 	mod.ClearStoredAmmoHero()
 	mod.DestroyHadesFightObstacles()
 	game.DestroyRequiredKills({ BlockLoot = true, SkipIds = { boss.ObjectId }, BlockDeathWeapons = true })
-	ExpireProjectiles({ Names = { "HadesCast", "HadesAmmoDrop", "HadesAmmoWeapon", "GraspingHands", "HadesTombstoneSpawn", "HadesCastBeam", "HadesCastBeamNoTracking", "HadesBidentThrow" }, ExcludeNames = { "HadesCerberusAssist" } })
+	ExpireProjectiles({ ExcludeNames = game.WeaponSets.ExpireProjectileExcludeProjectileNames, BlockSpawns = true })
 	mod.CleanupHadesBeams(boss)
 	Destroy({ Ids = GetIdsByType({ Name = "HadesBidentReturnPoint" }) })
 
 	SetAnimation({ Name = "HadesBattleKnockDown", DestinationId = boss.ObjectId })
 	SetGoalAngle({ Id = boss.ObjectId, Angle = 270 })
+	mod.ClearShadeWeapons()
 	game.thread(game.LastKillPresentation, boss)
 
 	-- Do it again, just in case there was some desync
 	mod.DestroyHadesFightObstacles()
-	ExpireProjectiles({ Names = { "HadesCast", "HadesAmmoDrop", "HadesAmmoWeapon", "GraspingHands", "HadesTombstoneSpawn", "HadesCastBeam", "HadesCastBeamNoTracking", "HadesBidentThrow" } })
+	ExpireProjectiles({ ExcludeNames = game.WeaponSets.ExpireProjectileExcludeProjectileNames, BlockSpawns = true })
 	game.thread(game.PlayVoiceLines, boss.PhaseEndedVoiceLines, nil, boss)
 
 	game.SetMusicSection(1)
@@ -378,7 +379,7 @@ function mod.HadesKillPresentation(unit, args)
 	mod.ClearStoredAmmoHero()
 	mod.DestroyHadesFightObstacles()
 	game.DestroyRequiredKills({ BlockLoot = true, SkipIds = { unit.ObjectId }, BlockDeathWeapons = true })
-	ExpireProjectiles({ Names = { "HadesCast", "HadesAmmoDrop", "HadesAmmoWeapon", "GraspingHands", "HadesTombstoneSpawn", "HadesCastBeam", "HadesCastBeamNoTracking", "HadesBidentThrow", "HadesReverseDarkness" } })
+	ExpireProjectiles({ ExcludeNames = game.WeaponSets.ExpireProjectileExcludeProjectileNames, BlockSpawns = true })
 	mod.CleanupHadesBeams(unit)
 	Destroy({ Ids = GetIdsByType({ Name = "HadesBidentReturnPoint" }) })
 	StopAnimation({ DestinationId = game.CurrentRun.Hero.ObjectId, Name = "HadesReverseDarknessVignette" })
@@ -401,7 +402,7 @@ function mod.HadesKillPresentation(unit, args)
 
 	-- Do it again, just in case there was some desync
 	mod.DestroyHadesFightObstacles()
-	ExpireProjectiles({ Names = { "HadesCast", "HadesAmmoDrop", "HadesAmmoWeapon", "GraspingHands", "HadesTombstoneSpawn", "HadesCastBeam", "HadesCastBeamNoTracking", "HadesBidentThrow" } })
+	ExpireProjectiles({ ExcludeNames = game.WeaponSets.ExpireProjectileExcludeProjectileNames, BlockSpawns = true })
 	game.thread(game.LastKillPresentation, unit)
 	game.SetPlayerInvulnerable("HadesKillPresentation")
 	AddInputBlock({ Name = "HadesKillPresentation" })
@@ -514,6 +515,9 @@ function mod.GetFinalBossExitDoorUseText(door)
 	-- Ending01 has already been reached, allow quickly exiting through outro, or entering Surface anyways
 	if game.GameState.TextLinesRecord["Ending01"] ~= nil then
 		door.CanBeRerolled = true
+		if door == game.SessionMapState.ActiveUseTarget and not GetConfigOptionValue({ Name = "UseMouse" }) then
+			AddControlBlock("Shout", "ActiveUseTarget")
+		end
 		return "ModsNikkelMHadesBiomes_UseFinalBossDoorWithSurface"
 	end
 
@@ -563,7 +567,7 @@ function mod.SurfaceExitIncantationPresentation(usee, args, user)
 	})
 
 	CreateAnimation({
-		Name = "CWEntranceHadesSymbolIn",
+		Name = "ModsNikkelMHadesBiomesCWEntranceHadesSymbolIn",
 		DestinationId = usee.ObjectId,
 		OffsetZ = 0,
 		OffsetY = 0,
@@ -580,7 +584,7 @@ function mod.SurfaceExitIncantationPresentation(usee, args, user)
 	ShakeScreen({ Distance = 6, Speed = 500, Duration = 0.3, FalloffSpeed = 1000 })
 	game.thread(game.DoRumble, { { ScreenPreWait = 0.02, LeftFraction = 0.13, Duration = 0.5 }, })
 
-	StopAnimation({ Name = "CWEntranceHadesSymbolLoop", DestinationId = usee.ObjectId })
+	StopAnimation({ Name = "ModsNikkelMHadesBiomesCWEntranceHadesSymbolLoop", DestinationId = usee.ObjectId })
 	SetAlpha({ Ids = usee.RewardPreviewIconIds, Fraction = 0.0, Duration = 0 })
 	AdjustFullscreenBloom({ Name = "FullscreenFlash2", Duration = 0.0 })
 	AdjustFullscreenBloom({ Name = "Off", Duration = 1 })
@@ -610,6 +614,13 @@ function mod.SetupHadesSpawnOptions(enemy)
 	table.insert(enemy.SpawnOptions, game.GetRandomValue(spawnOptionsLarge))
 	table.insert(enemy.SpawnOptions, game.GetRandomValue(spawnOptionsSmall))
 	table.insert(enemy.SpawnOptions, game.GetRandomValue(spawnOptionsSmall))
+
+	for _, spawnName in ipairs(enemy.SpawnOptions) do
+		if game.Contains({ "BloodlessPitcherSuperElite", "BloodlessNakedSuperElite", }, spawnName) then
+			LoadPackages({ Name = "BiomeB" })
+			break
+		end
+	end
 end
 
 function mod.HadesTeleport(enemy, weaponAIData, args)
@@ -961,7 +972,6 @@ function mod.ModsNikkelMHadesBiomesOpenRunClearScreen()
 
 	game.OnScreenOpened(screen)
 	game.CreateScreenFromData(screen, screen.ComponentData)
-	game.OnScreenOpened(screen)
 	game.FrameState.RequestUpdateHealthUI = true
 
 	local components = screen.Components

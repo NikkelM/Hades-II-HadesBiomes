@@ -303,17 +303,21 @@ local function on_ready()
 			DebugLogScriptImportProgress("MapGroups SJSON")
 
 			-- SJSON changes
+			import "Game/Animations/Model/Enemy_HadesTombstone_Animation.sjson.lua"
 			import "Game/Animations/Model/Hero_Melinoe_Animation_Personality.sjson.lua"
-			DebugLogScriptImportProgress("Hero Animation SJSON")
+			DebugLogScriptImportProgress("Model Animation SJSON")
 
 			import "Game/Animations/GUI_Portraits_VFX.sjson.lua"
 			import "Game/Animations/GUI_Screens_VFX.sjson.lua"
-			DebugLogScriptImportProgress("GUI Animation SJSON")
+			import "Game/GUI/AboutScreen.sjson.lua"
+			DebugLogScriptImportProgress("GUI SJSON")
 
 			import "Game/Animations/Enemy_1Base_VFX.sjson.lua"
 			import "Game/Animations/Melinoe_Spell_VFX.sjson.lua"
 			import "Game/Animations/Melinoe_Zeus_VFX.sjson.lua"
 			import "Game/Animations/Obstacle_Asphodel_VFX.sjson.lua"
+			import "Game/Animations/Obstacle_Clockwork_VFX.sjson.lua"
+			import "Game/Animations/Obstacle_Crossroads_VFX.sjson.lua"
 			import "Game/Animations/Obstacle_Deprecated_VFX.sjson.lua"
 			import "Game/Animations/Obstacle_General_VFX.sjson.lua"
 			DebugLogScriptImportProgress("Obstacle Animation SJSON")
@@ -327,8 +331,11 @@ local function on_ready()
 			import "Game/Projectiles/EnemyProjectiles.sjson.lua"
 			DebugLogScriptImportProgress("Projectile SJSON")
 
+			import "Game/Obstacles/AmbienceGenerators.sjson.lua"
 			import "Game/Obstacles/Asphodel.sjson.lua"
+			import "Game/Obstacles/Atmosphere.sjson.lua"
 			import "Game/Obstacles/Elysium.sjson.lua"
+			import "Game/Obstacles/FX.sjson.lua"
 			import "Game/Obstacles/Gameplay.sjson.lua"
 			import "Game/Obstacles/GUI.sjson.lua"
 			import "Game/Obstacles/Graybox.sjson.lua"
@@ -503,6 +510,7 @@ local function on_ready()
 			import "Scripts/EffectPresentation.lua"
 			import "Scripts/EnemyAILogic.lua"
 			import "Scripts/EncounterLogic.lua"
+			import "Scripts/EncounterPresentation.lua"
 			import "Scripts/EventLogic.lua"
 			import "Scripts/EventPresentation.lua"
 			import "Scripts/FamiliarData.lua"

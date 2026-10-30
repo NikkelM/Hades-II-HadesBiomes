@@ -39,7 +39,7 @@ function mod.RemoteAttackModsNikkelMHadesBiomes(enemy)
 		end
 
 		-- For rooms where more than one trap is triggered by a plate
-		if not aiData.SkipAngleTowardTarget then
+		if aiData.PreAttackAngleTowardTarget then
 			if trapChainData ~= nil and trapChainData.Chains ~= nil then
 				for k, linkTable in ipairs(trapChainData.Chains) do
 					for k, trapId in ipairs(linkTable) do
@@ -94,7 +94,7 @@ function mod.RemoteAttackModsNikkelMHadesBiomes(enemy)
 			end
 			linkedWeaponAIData.WeaponName = linkedEnemy.WeaponName
 
-			if not linkedWeaponAIData.SkipAngleTowardTargetWait then
+			if linkedWeaponAIData.WaitForAngleTowardTarget then
 				linkedEnemy.AINotifyName = "WaitForRotation" .. linkedEnemy.ObjectId
 				NotifyOnRotationComplete({ Id = linkedEnemy.ObjectId, Cosmetic = true, Notify = linkedEnemy.AINotifyName, Timeout = 9.0 })
 				game.waitUntil(linkedEnemy.AINotifyName)

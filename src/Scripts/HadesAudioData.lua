@@ -1,58 +1,58 @@
 -- Contains some of the GlobalVoiceLines from Hades AudioData.lua
 mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 	-- #region Hades
-	-- HadesDeathTauntVoiceLines = {
-	-- 	RandomRemaining = true,
-	-- 	BreakIfPlayed = true,
-	-- 	PreLineWait = 1.95,
-	-- 	NoTarget = true,
-	-- 	-- What did I tell you?
-	-- 	{ Cue = "/VO/Hades_0259" },
-	-- 	-- What did I tell you.
-	-- 	{ Cue = "/VO/Hades_0260" },
-	-- 	-- What did you expect?
-	-- 	{ Cue = "/VO/Hades_0261" },
-	-- 	-- What did you expect.
-	-- 	{ Cue = "/VO/Hades_0262" },
-	-- 	-- Surely you could have avoided that.
-	-- 	{ Cue = "/VO/Hades_0263" },
-	-- 	-- That was inevitable.
-	-- 	{ Cue = "/VO/Hades_0264" },
-	-- 	-- I'll see you back at home.
-	-- 	{ Cue = "/VO/Hades_0265" },
-	-- 	-- You are a weakling, boy.
-	-- 	-- { Cue = "/VO/Hades_0266" },
-	-- 	-- Was that truly your best?
-	-- 	{ Cue = "/VO/Hades_0267" },
-	-- 	-- Die, like a mere mortal.
-	-- 	{ Cue = "/VO/Hades_0268" },
-	-- 	-- Oh, that was it?
-	-- 	{ Cue = "/VO/Hades_0269" },
-	-- 	-- <Laughter>
-	-- 	{ Cue = "/VO/Hades_0270" },
-	-- 	-- <Laughter>
-	-- 	{ Cue = "/VO/Hades_0271" },
-	-- 	-- <Laughter>
-	-- 	{ Cue = "/VO/Hades_0272" },
-	-- 	-- A very tragic end.
-	-- 	{ Cue = "/VO/Hades_0329" },
-	-- 	-- Your time is up, boy.
-	-- 	-- { Cue = "/VO/Hades_0330" },
-	-- 	-- So much for that attempt.
-	-- 	{ Cue = "/VO/Hades_0331" },
-	-- 	-- Whatever happened there?
-	-- 	{ Cue = "/VO/Hades_0332" },
-	-- 	-- You don't have what it takes. Nobody does.
-	-- 	{ Cue = "/VO/Hades_0333" },
-	-- 	-- A tragic end fit for a poet's verse.
-	-- 	{ Cue = "/VO/Hades_0334" },
-	-- 	-- How many deaths is that?
-	-- 	{ Cue = "/VO/Hades_0335" },
-	-- 	-- You never seem to learn.
-	-- 	{ Cue = "/VO/Hades_0336" },
-	-- 	-- What did I tell you?
-	-- 	{ Cue = "/VO/Hades_0337" },
-	-- },
+	HadesDeathTauntVoiceLines = {
+		RandomRemaining = true,
+		BreakIfPlayed = true,
+		PreLineWait = 1.95,
+		NoTarget = true,
+		-- What did I tell you?
+		{ Cue = "/VO/Hades_0259" },
+		-- What did I tell you.
+		{ Cue = "/VO/Hades_0260" },
+		-- What did you expect?
+		{ Cue = "/VO/Hades_0261" },
+		-- What did you expect.
+		{ Cue = "/VO/Hades_0262" },
+		-- Surely you could have avoided that.
+		{ Cue = "/VO/Hades_0263" },
+		-- That was inevitable.
+		{ Cue = "/VO/Hades_0264" },
+		-- I'll see you back at home.
+		-- { Cue = "/VO/Hades_0265" },
+		-- You are a weakling, boy.
+		-- { Cue = "/VO/Hades_0266" },
+		-- Was that truly your best?
+		{ Cue = "/VO/Hades_0267" },
+		-- Die, like a mere mortal.
+		{ Cue = "/VO/Hades_0268" },
+		-- Oh, that was it?
+		{ Cue = "/VO/Hades_0269" },
+		-- <Laughter>
+		{ Cue = "/VO/Hades_0270" },
+		-- <Laughter>
+		{ Cue = "/VO/Hades_0271" },
+		-- <Laughter>
+		{ Cue = "/VO/Hades_0272" },
+		-- A very tragic end.
+		{ Cue = "/VO/Hades_0329" },
+		-- Your time is up, boy.
+		-- { Cue = "/VO/Hades_0330" },
+		-- So much for that attempt.
+		{ Cue = "/VO/Hades_0331" },
+		-- Whatever happened there?
+		{ Cue = "/VO/Hades_0332" },
+		-- You don't have what it takes. Nobody does.
+		{ Cue = "/VO/Hades_0333" },
+		-- A tragic end fit for a poet's verse.
+		{ Cue = "/VO/Hades_0334" },
+		-- How many deaths is that?
+		{ Cue = "/VO/Hades_0335" },
+		-- You never seem to learn.
+		{ Cue = "/VO/Hades_0336" },
+		-- What did I tell you?
+		{ Cue = "/VO/Hades_0337" },
+	},
 	HadesPostBossVoiceLines = {
 		Queue = "Interrupt",
 		{
@@ -3994,7 +3994,7 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 			PreLineWait = 1.2,
 			SuccessiveChanceToPlay = 0.4,
 			RequiredTextLines = { "OrpheusMusicProgress03" },
-			RequiredMinItemInteractions = { ModsNikkelMHadesBiomes_HouseLyre01 = 140 },
+			RequiredMinItemInteractions = { ModsNikkelMHadesBiomes_HouseLyre01 = mod.OrpheusLyreInteractionThresholds.VoiceLines.Mastered },
 			Cooldowns = {
 				{ Name = "MelinoeLyrePlaying", Time = 50 },
 			},
@@ -4011,7 +4011,7 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 			PreLineWait = 1.2,
 			SuccessiveChanceToPlay = 0.4,
 			RequiredAnyTextLines = { "OrpheusMusicProgress02", "OrpheusMusicProgress03" },
-			RequiredMinItemInteractions = { ModsNikkelMHadesBiomes_HouseLyre01 = 80 },
+			RequiredMinItemInteractions = { ModsNikkelMHadesBiomes_HouseLyre01 = mod.OrpheusLyreInteractionThresholds.VoiceLines.Proficient },
 			Cooldowns = {
 				{ Name = "MelinoeLyrePlaying", Time = 35 },
 			},
@@ -4038,7 +4038,7 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 			SuccessiveChanceToPlay = 0.6,
 			RequiredTextLines = { "OrpheusMusicProgress02" },
 			RequiredFalseTextLines = { "OrpheusMusicProgress03" },
-			RequiredMinItemInteractions = { ModsNikkelMHadesBiomes_HouseLyre01 = 50 },
+			RequiredMinItemInteractions = { ModsNikkelMHadesBiomes_HouseLyre01 = mod.OrpheusLyreInteractionThresholds.VoiceLines.Improving },
 			Cooldowns = {
 				{ Name = "MelinoeLyrePlaying", Time = 25 },
 			},
@@ -4062,7 +4062,7 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 			SuccessiveChanceToPlay = 0.7,
 			RequiredTextLines = { "OrpheusMusicProgress01" },
 			RequiredFalseTextLines = { "OrpheusMusicProgress02", "OrpheusMusicProgress03" },
-			RequiredMinItemInteractions = { ModsNikkelMHadesBiomes_HouseLyre01 = 20 },
+			RequiredMinItemInteractions = { ModsNikkelMHadesBiomes_HouseLyre01 = mod.OrpheusLyreInteractionThresholds.VoiceLines.Struggling },
 			Cooldowns = {
 				{ Name = "MelinoeLyrePlaying", Time = 15 },
 			},
@@ -6954,6 +6954,7 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 			{ Cue = "/VO/Melinoe_2482",      Text = "Once more, then." },
 			{ Cue = "/VO/Melinoe_0375",      Text = "Farewell, Commander.", },
 			{ Cue = "/VO/Melinoe_3058_B",    Text = "Here we go." },
+			{ Cue = "/VO/Melinoe_4303",      Text = "To Tartarus." },
 			-- From the surface route
 			{ Cue = "/VO/Melinoe_1665",      Text = "With the grace of the Moon." },
 			{ Cue = "/VO/Melinoe_2487",      Text = "New night, new path.", },
@@ -7199,7 +7200,7 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 					RandomRemaining = true,
 					BreakIfPlayed = true,
 					SuccessiveChanceToPlayAll = 0.5,
-					Source = { SubtitleColor = game.Color.MegVoice },
+					Source = { LineHistoryName = "NPC_FurySister_01", SubtitleColor = game.Color.MegVoice },
 					ExplicitRequirements = true,
 					GameStateRequirements = {
 						RequiredRooms = { "B_Boss01", "B_Boss02" },
@@ -7216,7 +7217,7 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 					RandomRemaining = true,
 					BreakIfPlayed = true,
 					SuccessiveChanceToPlayAll = 0.5,
-					Source = { SubtitleColor = game.Color.MegVoice },
+					Source = { LineHistoryName = "NPC_FurySister_01", SubtitleColor = game.Color.MegVoice },
 					ExplicitRequirements = true,
 					GameStateRequirements = {
 						RequiredRooms = { "C_MiniBoss01", },
@@ -7233,7 +7234,7 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 					RandomRemaining = true,
 					BreakIfPlayed = true,
 					SuccessiveChanceToPlayAll = 0.5,
-					Source = { SubtitleColor = game.Color.MegVoice },
+					Source = { LineHistoryName = "NPC_FurySister_01", SubtitleColor = game.Color.MegVoice },
 					ExplicitRequirements = true,
 					GameStateRequirements = {
 						RequiredRooms = { "C_Boss01", },
@@ -7251,7 +7252,7 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 					RandomRemaining = true,
 					BreakIfPlayed = true,
 					SuccessiveChanceToPlayAll = 0.5,
-					Source = { SubtitleColor = game.Color.MegVoice },
+					Source = { LineHistoryName = "NPC_FurySister_01", SubtitleColor = game.Color.MegVoice },
 					ExplicitRequirements = true,
 					GameStateRequirements = {
 						RequiredTrait = "FuryAssistTrait",
@@ -7268,7 +7269,7 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 					RandomRemaining = true,
 					BreakIfPlayed = true,
 					SuccessiveChanceToPlayAll = 0.5,
-					Source = { SubtitleColor = game.Color.MegVoice },
+					Source = { LineHistoryName = "NPC_FurySister_01", SubtitleColor = game.Color.MegVoice },
 					ExplicitRequirements = true,
 					GameStateRequirements = {
 						RequiredTrait = "FuryAssistTrait",
@@ -7288,7 +7289,7 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 					RequiredRooms = { "CharonFight01", },
 					RequiredTrait = "FuryAssistTrait",
 					SuccessiveChanceToPlayAll = 0.5,
-					Source = { SubtitleColor = game.Color.MegVoice },
+					Source = { LineHistoryName = "NPC_FurySister_01", SubtitleColor = game.Color.MegVoice },
 					{ Cue = "/VO/MegaeraField_0736", Text = "Charon!",                RequiredPlayed = { "/VO/MegaeraField_0738" }, },
 					{ Cue = "/VO/MegaeraField_0737", Text = "Hail, Charon!",          RequiredPlayed = { "/VO/MegaeraField_0738" }, },
 					{ Cue = "/VO/MegaeraField_0738", Text = "Making me fight Charon?" },
@@ -7298,7 +7299,7 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 					RandomRemaining = true,
 					BreakIfPlayed = true,
 					SuccessiveChanceToPlayAll = 0.5,
-					Source = { SubtitleColor = game.Color.MegVoice },
+					Source = { LineHistoryName = "NPC_FurySister_01", SubtitleColor = game.Color.MegVoice },
 					ExplicitRequirements = true,
 					GameStateRequirements = {
 						RequiredTrait = "FuryAssistTrait",
@@ -7316,7 +7317,7 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 				{
 					RandomRemaining = true,
 					BreakIfPlayed = true,
-					Source = { SubtitleColor = game.Color.MegVoice },
+					Source = { LineHistoryName = "NPC_FurySister_01", SubtitleColor = game.Color.MegVoice },
 					ExplicitRequirements = true,
 					GameStateRequirements = {
 						RequiredTrait = "FuryAssistTrait",
@@ -7352,7 +7353,7 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 					RequiredRooms = { "A_Boss01", "A_Boss02", "A_Boss03" },
 					RequiredTrait = "ThanatosAssistTrait",
 					SuccessiveChanceToPlayAll = 0.5,
-					Source = { SubtitleColor = game.Color.ThanatosVoice },
+					Source = { LineHistoryName = "NPC_Thanatos_01", SubtitleColor = game.Color.ThanatosVoice },
 					{ Cue = "/VO/ThanatosField_0026", Text = "Megaera!",                 RequiredRoom = "A_Boss01" },
 					{ Cue = "/VO/ThanatosField_0027", Text = "Hate to have to do this." },
 					{ Cue = "/VO/ThanatosField_0028", Text = "Pardon me!" },
@@ -7364,7 +7365,7 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 					RandomRemaining = true,
 					BreakIfPlayed = true,
 					SuccessiveChanceToPlayAll = 0.5,
-					Source = { SubtitleColor = game.Color.ThanatosVoice },
+					Source = { LineHistoryName = "NPC_Thanatos_01", SubtitleColor = game.Color.ThanatosVoice },
 					ExplicitRequirements = true,
 					GameStateRequirements = {
 						RequiredRooms = { "B_Boss01", "B_Boss02" },
@@ -7381,7 +7382,7 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 					RandomRemaining = true,
 					BreakIfPlayed = true,
 					SuccessiveChanceToPlayAll = 0.5,
-					Source = { SubtitleColor = game.Color.ThanatosVoice },
+					Source = { LineHistoryName = "NPC_Thanatos_01", SubtitleColor = game.Color.ThanatosVoice },
 					ExplicitRequirements = true,
 					GameStateRequirements = {
 						RequiredRooms = { "C_MiniBoss01", },
@@ -7398,7 +7399,7 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 					RandomRemaining = true,
 					BreakIfPlayed = true,
 					SuccessiveChanceToPlayAll = 0.5,
-					Source = { SubtitleColor = game.Color.ThanatosVoice },
+					Source = { LineHistoryName = "NPC_Thanatos_01", SubtitleColor = game.Color.ThanatosVoice },
 					ExplicitRequirements = true,
 					GameStateRequirements = {
 						RequiredRooms = { "C_Boss01", },
@@ -7416,7 +7417,7 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 					RandomRemaining = true,
 					BreakIfPlayed = true,
 					SuccessiveChanceToPlayAll = 0.5,
-					Source = { SubtitleColor = game.Color.ThanatosVoice },
+					Source = { LineHistoryName = "NPC_Thanatos_01", SubtitleColor = game.Color.ThanatosVoice },
 					ExplicitRequirements = true,
 					GameStateRequirements = {
 						RequiredTrait = "ThanatosAssistTrait",
@@ -7433,7 +7434,7 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 					RandomRemaining = true,
 					BreakIfPlayed = true,
 					SuccessiveChanceToPlayAll = 0.5,
-					Source = { SubtitleColor = game.Color.ThanatosVoice },
+					Source = { LineHistoryName = "NPC_Thanatos_01", SubtitleColor = game.Color.ThanatosVoice },
 					ExplicitRequirements = true,
 					GameStateRequirements = {
 						RequiredTrait = "ThanatosAssistTrait",
@@ -7450,7 +7451,7 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 					RandomRemaining = true,
 					BreakIfPlayed = true,
 					SuccessiveChanceToPlayAll = 0.5,
-					Source = { SubtitleColor = game.Color.ThanatosVoice },
+					Source = { LineHistoryName = "NPC_Thanatos_01", SubtitleColor = game.Color.ThanatosVoice },
 					ExplicitRequirements = true,
 					GameStateRequirements = {
 						RequiredTrait = "ThanatosAssistTrait",
@@ -7468,7 +7469,7 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 				{
 					RandomRemaining = true,
 					BreakIfPlayed = true,
-					Source = { SubtitleColor = game.Color.ThanatosVoice },
+					Source = { LineHistoryName = "NPC_Thanatos_01", SubtitleColor = game.Color.ThanatosVoice },
 					ExplicitRequirements = true,
 					GameStateRequirements = {
 						RequiredTrait = "ThanatosAssistTrait",
@@ -7501,7 +7502,7 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 					RandomRemaining = true,
 					BreakIfPlayed = true,
 					SuccessiveChanceToPlayAll = 0.5,
-					Source = { SubtitleColor = game.Color.SisyphusVoice },
+					Source = { LineHistoryName = "NPC_Sisyphus_01", SubtitleColor = game.Color.SisyphusVoice },
 					ExplicitRequirements = true,
 					GameStateRequirements = {
 						RequiredRooms = { "A_Boss01", "A_Boss02", "A_Boss03" },
@@ -7518,7 +7519,7 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 					RandomRemaining = true,
 					BreakIfPlayed = true,
 					SuccessiveChanceToPlayAll = 0.5,
-					Source = { SubtitleColor = game.Color.SisyphusVoice },
+					Source = { LineHistoryName = "NPC_Sisyphus_01", SubtitleColor = game.Color.SisyphusVoice },
 					ExplicitRequirements = true,
 					GameStateRequirements = {
 						RequiredTrait = "SisyphusAssistTrait",
@@ -7536,7 +7537,7 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 					RandomRemaining = true,
 					BreakIfPlayed = true,
 					SuccessiveChanceToPlayAll = 0.5,
-					Source = { SubtitleColor = game.Color.SisyphusVoice },
+					Source = { LineHistoryName = "NPC_Sisyphus_01", SubtitleColor = game.Color.SisyphusVoice },
 					ExplicitRequirements = true,
 					GameStateRequirements = {
 						RequiredTrait = "SisyphusAssistTrait",
@@ -7553,7 +7554,7 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 					RandomRemaining = true,
 					BreakIfPlayed = true,
 					SuccessiveChanceToPlayAll = 0.5,
-					Source = { SubtitleColor = game.Color.SisyphusVoice },
+					Source = { LineHistoryName = "NPC_Sisyphus_01", SubtitleColor = game.Color.SisyphusVoice },
 					ExplicitRequirements = true,
 					GameStateRequirements = {
 						RequiredTrait = "SisyphusAssistTrait",
@@ -7570,7 +7571,7 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 					RandomRemaining = true,
 					BreakIfPlayed = true,
 					SuccessiveChanceToPlayAll = 0.5,
-					Source = { SubtitleColor = game.Color.SisyphusVoice },
+					Source = { LineHistoryName = "NPC_Sisyphus_01", SubtitleColor = game.Color.SisyphusVoice },
 					ExplicitRequirements = true,
 					GameStateRequirements = {
 						RequiredTrait = "SisyphusAssistTrait",
@@ -7588,7 +7589,7 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 				{
 					RandomRemaining = true,
 					BreakIfPlayed = true,
-					Source = { SubtitleColor = game.Color.SisyphusVoice },
+					Source = { LineHistoryName = "NPC_Sisyphus_01", SubtitleColor = game.Color.SisyphusVoice },
 					ExplicitRequirements = true,
 					GameStateRequirements = {
 						RequiredTrait = "SisyphusAssistTrait",
@@ -7625,7 +7626,7 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 					RequiredTrait = "SkellyAssistTrait",
 					RequiresUsedAssistLastRoom = true,
 					SuccessiveChanceToPlayAll = 0.5,
-					Source = { SubtitleColor = game.Color.SkellyVoice },
+					Source = { LineHistoryName = "NPC_Skelly_01", SubtitleColor = game.Color.SkellyVoice },
 					{ Cue = "/VO/Modsnikkelmhadesbiomesskelly_0382", Text = "I'm back, what did I miss?" },
 					{ Cue = "/VO/Modsnikkelmhadesbiomesskelly_0383", Text = "Need something else from me?" },
 					{ Cue = "/VO/Modsnikkelmhadesbiomesskelly_0384", Text = "Oh I will be right back!" },
@@ -7636,7 +7637,7 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 					RandomRemaining = true,
 					BreakIfPlayed = true,
 					RequiredTrait = "SkellyAssistTrait",
-					Source = { SubtitleColor = game.Color.SkellyVoice },
+					Source = { LineHistoryName = "NPC_Skelly_01", SubtitleColor = game.Color.SkellyVoice },
 					{ Cue = "/VO/Modsnikkelmhadesbiomesskelly_0143", Text = "Here you go!" },
 					{ Cue = "/VO/Modsnikkelmhadesbiomesskelly_0154", Text = "Oh hey guys." },
 					{ Cue = "/VO/Modsnikkelmhadesbiomesskelly_0149", Text = "Hey who's your friend?" },
@@ -7666,7 +7667,7 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 					RequiredTrait = "DusaAssistTrait",
 					RequiresUsedAssistLastRoom = true,
 					SuccessiveChanceToPlayAll = 0.5,
-					Source = { SubtitleColor = game.Color.DusaVoice },
+					Source = { LineHistoryName = "NPC_Dusa_01", SubtitleColor = game.Color.DusaVoice },
 					-- { Cue = "/VO/Dusa_0254", Text = "Don't worry, Prince, I'm back!" },
 					{ Cue = "/VO/Dusa_0255", Text = "It's good to be back!!" },
 					{ Cue = "/VO/Dusa_0256", Text = "Need help with something else?" },
@@ -7680,7 +7681,7 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 					RandomRemaining = true,
 					BreakIfPlayed = true,
 					RequiredTrait = "DusaAssistTrait",
-					Source = { SubtitleColor = game.Color.DusaVoice },
+					Source = { LineHistoryName = "NPC_Dusa_01", SubtitleColor = game.Color.DusaVoice },
 					{ Cue = "/VO/Dusa_0191", Text = "I got here right away!" },
 					{ Cue = "/VO/Dusa_0192", Text = "Something need cleaning up?" },
 					-- { Cue = "/VO/Dusa_0193", Text = "You called, Prince Zagreus?" },
@@ -7702,7 +7703,7 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 					RequiredTrait = "AchillesPatroclusAssistTrait",
 					RequiresUsedAssistLastRoom = true,
 					SuccessiveChanceToPlayAll = 0.5,
-					Source = { SubtitleColor = game.Color.AchillesVoice },
+					Source = { LineHistoryName = "NPC_Achilles_01", SubtitleColor = game.Color.AchillesVoice },
 					{ Cue = "/VO/Achilles_0303", Text = "We've returned!" },
 					-- { Cue = "/VO/Achilles_0304", Text = "We heed you, lad." },
 					{ Cue = "/VO/Achilles_0305", Text = "Once more, then!" },
@@ -7713,7 +7714,7 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 					RequiredRooms = { "C_MiniBoss01" },
 					RequiredTrait = "AchillesPatroclusAssistTrait",
 					SuccessiveChanceToPlayAll = 0.5,
-					Source = { SubtitleColor = game.Color.AchillesVoice },
+					Source = { LineHistoryName = "NPC_Achilles_01", SubtitleColor = game.Color.AchillesVoice },
 					{ Cue = "/VO/Achilles_0293", Text = "Asterius!" },
 					{ Cue = "/VO/Achilles_0294", Text = "The Bull of Minos!" },
 				},
@@ -7724,7 +7725,7 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 					RequiredAnyUnitAlive = { "Theseus", "Theseus2" },
 					RequiredTrait = "AchillesPatroclusAssistTrait",
 					SuccessiveChanceToPlayAll = 0.5,
-					Source = { SubtitleColor = game.Color.AchillesVoice },
+					Source = { LineHistoryName = "NPC_Achilles_01", SubtitleColor = game.Color.AchillesVoice },
 					{ Cue = "/VO/Achilles_0295", Text = "Why, it's the champion!" },
 					-- { Cue = "/VO/Achilles_0296", Text = "Theseus causing trouble, lad?" },
 					{ Cue = "/VO/Achilles_0297", Text = "Time we unseated the champion." },
@@ -7735,7 +7736,7 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 					RequiredRooms = { "D_Boss01" },
 					RequiredTrait = "AchillesPatroclusAssistTrait",
 					SuccessiveChanceToPlayAll = 0.5,
-					Source = { SubtitleColor = game.Color.AchillesVoice },
+					Source = { LineHistoryName = "NPC_Achilles_01", SubtitleColor = game.Color.AchillesVoice },
 					-- { Cue = "/VO/Achilles_0374", Text = "You sure about this, lad?!" },
 					{ Cue = "/VO/Achilles_0375", Text = "Apologies, Master..." },
 					{ Cue = "/VO/Achilles_0376", Text = "Hope your father doesn't mind...!" },
@@ -7745,7 +7746,7 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 					{
 						RandomRemaining = true,
 						RequiredTrait = "AchillesPatroclusAssistTrait",
-						Source = { SubtitleColor = game.Color.AchillesVoice },
+						Source = { LineHistoryName = "NPC_Achilles_01", SubtitleColor = game.Color.AchillesVoice },
 						{ Cue = "/VO/Achilles_0272", Text = "Here!" },
 						{ Cue = "/VO/Achilles_0273", Text = "On our way!" },
 						{ Cue = "/VO/Achilles_0274", Text = "Ready!" },
@@ -7774,7 +7775,7 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 						RequiredRooms = { "A_Boss01", "A_Boss02", "A_Boss03", "D_Boss01", "CharonFight01" },
 						RequiredTrait = "AchillesPatroclusAssistTrait",
 						SuccessiveChanceToPlayAll = 0.1,
-						Source = { SubtitleColor = game.Color.PatroclusVoice },
+						Source = { LineHistoryName = "NPC_Patroclus_01", SubtitleColor = game.Color.PatroclusVoice },
 						{ Cue = "/VO/Patroclus_0373", Text = "Let's fight a god, I guess!",    RequiredRoom = "D_Boss01" },
 						{ Cue = "/VO/Patroclus_0374", Text = "Quite an adversary there!" },
 						{ Cue = "/VO/Patroclus_0375", Text = "Don't think this is our fight.", RequiredRoom = "D_Boss01" },
@@ -7786,7 +7787,7 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 						RequiredRooms = { "C_MiniBoss01" },
 						RequiredTrait = "AchillesPatroclusAssistTrait",
 						SuccessiveChanceToPlayAll = 0.5,
-						Source = { SubtitleColor = game.Color.PatroclusVoice },
+						Source = { LineHistoryName = "NPC_Patroclus_01", SubtitleColor = game.Color.PatroclusVoice },
 						{ Cue = "/VO/Patroclus_0368", Text = "The bull himself!" },
 						{ Cue = "/VO/Patroclus_0369", Text = "Ah, the Bull of Minos!" },
 					},
@@ -7797,7 +7798,7 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 						RequiredAnyUnitAlive = { "Theseus", "Theseus2" },
 						RequiredTrait = "AchillesPatroclusAssistTrait",
 						SuccessiveChanceToPlayAll = 0.5,
-						Source = { SubtitleColor = game.Color.PatroclusVoice },
+						Source = { LineHistoryName = "NPC_Patroclus_01", SubtitleColor = game.Color.PatroclusVoice },
 						{ Cue = "/VO/Patroclus_0370", Text = "Why, it's the champion!" },
 						{ Cue = "/VO/Patroclus_0371", Text = "Hail, Theseus!" },
 						{ Cue = "/VO/Patroclus_0372", Text = "Ah, the champion...!" },
@@ -7808,7 +7809,7 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 						RequiredTrait = "AchillesPatroclusAssistTrait",
 						RequiresUsedAssistLastRoom = true,
 						SuccessiveChanceToPlayAll = 0.5,
-						Source = { SubtitleColor = game.Color.PatroclusVoice },
+						Source = { LineHistoryName = "NPC_Patroclus_01", SubtitleColor = game.Color.PatroclusVoice },
 						{ Cue = "/VO/Patroclus_0382", Text = "We're back!" },
 						{ Cue = "/VO/Patroclus_0383", Text = "Once more, then!" },
 						{ Cue = "/VO/Patroclus_0384", Text = "One more time!" },
@@ -7817,7 +7818,7 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 						RandomRemaining = true,
 						BreakIfPlayed = true,
 						RequiredTrait = "AchillesPatroclusAssistTrait",
-						Source = { SubtitleColor = game.Color.PatroclusVoice },
+						Source = { LineHistoryName = "NPC_Patroclus_01", SubtitleColor = game.Color.PatroclusVoice },
 						{ Cue = "/VO/Patroclus_0347", Text = "Here!" },
 						{ Cue = "/VO/Patroclus_0348", Text = "On our way!" },
 						{ Cue = "/VO/Patroclus_0349", Text = "Ready!" },
@@ -7849,7 +7850,7 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 			PreLineWait = 0.25,
 			SuccessiveChanceToPlay = 0.75,
 			RequiredTrait = "FuryAssistTrait",
-			Source = { SubtitleColor = game.Color.MegVoice },
+			Source = { LineHistoryName = "NPC_FurySister_01", SubtitleColor = game.Color.MegVoice },
 			{ Cue = "/VO/MegaeraField_0507", Text = "Don't die." },
 			{ Cue = "/VO/MegaeraField_0508", Text = "Keep going." },
 			{ Cue = "/VO/MegaeraField_0509", Text = "See you." },
@@ -7864,7 +7865,7 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 			PreLineWait = 1.5,
 			SuccessiveChanceToPlay = 0.75,
 			RequiredTrait = "ThanatosAssistTrait",
-			Source = { SubtitleColor = game.Color.ThanatosVoice },
+			Source = { LineHistoryName = "NPC_Thanatos_01", SubtitleColor = game.Color.ThanatosVoice },
 			{ Cue = "/VO/ThanatosField_0064", Text = "Don't die." },
 			{ Cue = "/VO/ThanatosField_0065", Text = "Keep going." },
 			{ Cue = "/VO/ThanatosField_0066", Text = "See you." },
@@ -7880,7 +7881,7 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 				PreLineWait = 0.5,
 				SuccessiveChanceToPlay = 0.5,
 				RequiredTrait = "AchillesPatroclusAssistTrait",
-				Source = { SubtitleColor = game.Color.AchillesVoice },
+				Source = { LineHistoryName = "NPC_Achilles_01", SubtitleColor = game.Color.AchillesVoice },
 				{ Cue = "/VO/Achilles_0298", Text = "We're off." },
 				{ Cue = "/VO/Achilles_0299", Text = "Keep fighting!" },
 				-- { Cue = "/VO/Achilles_0300", Text = "Fight on, lad!" },
@@ -7892,7 +7893,7 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 				PreLineWait = 0.5,
 				SuccessiveChanceToPlay = 0.75,
 				RequiredTrait = "AchillesPatroclusAssistTrait",
-				Source = { SubtitleColor = game.Color.PatroclusVoice },
+				Source = { LineHistoryName = "NPC_Patroclus_01", SubtitleColor = game.Color.PatroclusVoice },
 				RequiredFalsePlayedThisRoom = { "/VO/Achilles_0298", "/VO/Achilles_0299", "/VO/Achilles_0300", "/VO/Achilles_0301", "/VO/Achilles_0302" },
 				{ Cue = "/VO/Patroclus_0377", Text = "Farewell!" },
 				{ Cue = "/VO/Patroclus_0378", Text = "Fight on!" },
@@ -7979,6 +7980,418 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 			{ Cue = "/VO/Melinoe_0206", Text = "Good." },
 		},
 	},
+	ModsNikkelMHadesBiomesSkellyAssistEquipReactionVoiceLines = {
+		BreakIfPlayed = true,
+		RandomRemaining = true,
+		PreLineWait = 0.6,
+		ObjectType = "NPC_Skelly_01",
+		Cooldowns = {
+			{ Name = "SkellyAnyQuipSpeech", Time = 35 },
+		},
+		GameStateRequirements = {
+			{
+				PathTrue = { "SessionMapState", "SkellyNoticedMel" },
+			},
+		},
+		{ Cue = "/VO/Skelly_0016", Text = "A fine choice." },
+		{ Cue = "/VO/Skelly_0032", Text = "A wise selection." },
+		{ Cue = "/VO/Skelly_0216", Text = "{#Emph}Ahh{#Prev}, yes!" },
+		{ Cue = "/VO/Skelly_0213", Text = "Oh that's my favorite one." },
+		{ Cue = "/VO/Skelly_0205", Text = "Now you're thinking." },
+		{ Cue = "/VO/Skelly_0384", Text = "Pretty nice, {#Emph}huh?" },
+		{ Cue = "/VO/Skelly_0129", Text = "A fine selection!" },
+		{ Cue = "/VO/Skelly_0130", Text = "A fine selection." },
+		{ Cue = "/VO/Skelly_0063", Text = "Excellent!" },
+	},
 	-- #endregion
+	-- #endregion
+	-- #region Overlooks
+	ModsNikkelMHadesBiomes_AsphodelFirstOverlookVoiceLines = {
+		PlayOnce = true,
+		PlayOnceContext = "ModsNikkelMHadesBiomes_AsphodelFirstOverlook",
+		PreLineWait = 2.35,
+		RecheckRequirementsPostWait = true,
+		GameStateRequirements = {
+			{
+				Path = { "CurrentRun", "CurrentRoom", "Name" },
+				IsAny = { "X_Intro" },
+			},
+			{
+				PathFalse = { "CurrentRun", "Hero", "IsDead" },
+			},
+			{
+				PathFalse = { "CurrentRun", "IsDreamRun" },
+			},
+			{
+				PathTrue = { "MapState", "InOverlook" },
+			},
+		},
+		{
+			Cue = "/VO/MelinoeField_0195",
+			Text = "Is this really Asphodel...?",
+			BreakIfPlayed = true,
+		},
+	},
+	ModsNikkelMHadesBiomes_AsphodelOverlookVoiceLines = {
+		PreLineWait = 2.35,
+		RecheckRequirementsPostWait = true,
+		PlayOnceFromTableThisRun = true,
+		BreakIfPlayed = true,
+		RandomRemaining = true,
+		SuccessiveChanceToPlayAll = 0.6,
+		GameStateRequirements = {
+			{
+				Path = { "CurrentRun", "CurrentRoom", "Name" },
+				IsAny = { "X_Intro" },
+			},
+			{
+				PathFalse = { "CurrentRun", "Hero", "IsDead" },
+			},
+			{
+				PathFalse = { "CurrentRun", "IsDreamRun" },
+			},
+			{
+				PathTrue = { "MapState", "InOverlook" },
+			},
+		},
+		{
+			Cue = "/VO/MelinoeField_3614",
+			Text = "I don't even really mind the heat.",
+		},
+		{
+			Cue = "/VO/Melinoe_1526",
+			Text = "{#Emph}Whew {#Prev}that's hot...",
+		},
+		{
+			Cue = "/VO/MelinoeField_2864",
+			Text = "Waves of flame...",
+		},
+		{
+			Cue = "/VO/MelinoeField_1075",
+			Text = "It's all so vast...",
+		},
+		{
+			Cue = "/VO/MelinoeField_4250",
+			Text = "Such a place...",
+		},
+	},
+	ModsNikkelMHadesBiomes_ElysiumFirstOverlookVoiceLines = {
+		PlayOnce = true,
+		PlayOnceContext = "ModsNikkelMHadesBiomes_ElysiumFirstOverlook",
+		PreLineWait = 2.35,
+		RecheckRequirementsPostWait = true,
+		GameStateRequirements = {
+			{
+				Path = { "CurrentRun", "CurrentRoom", "Name" },
+				IsAny = { "Y_Intro" },
+			},
+			{
+				PathFalse = { "CurrentRun", "Hero", "IsDead" },
+			},
+			{
+				PathFalse = { "CurrentRun", "IsDreamRun" },
+			},
+			{
+				PathTrue = { "MapState", "InOverlook" },
+			},
+		},
+		{
+			Cue = "/VO/MelinoeField_0360",
+			Text = "Looks almost peaceful from afar...",
+			BreakIfPlayed = true,
+		},
+	},
+	ModsNikkelMHadesBiomes_ElysiumOverlookVoiceLines = {
+		PreLineWait = 2.35,
+		RecheckRequirementsPostWait = true,
+		PlayOnceFromTableThisRun = true,
+		BreakIfPlayed = true,
+		RandomRemaining = true,
+		SuccessiveChanceToPlayAll = 0.6,
+		GameStateRequirements = {
+			{
+				Path = { "CurrentRun", "CurrentRoom", "Name" },
+				IsAny = { "Y_Intro" },
+			},
+			{
+				PathFalse = { "CurrentRun", "Hero", "IsDead" },
+			},
+			{
+				PathFalse = { "CurrentRun", "IsDreamRun" },
+			},
+			{
+				PathTrue = { "MapState", "InOverlook" },
+			},
+		},
+		{
+			Cue = "/VO/MelinoeField_3464",
+			Text = "...Beautiful...",
+		},
+		{
+			Cue = "/VO/MelinoeField_0806",
+			Text = "So serene...",
+		},
+		{
+			Cue = "/VO/MelinoeField_0799",
+			Text = "Beautiful...",
+		},
+		{
+			Cue = "/VO/MelinoeField_1846",
+			Text = "It feels so safe and peaceful here...",
+		},
+		{
+			Cue = "/VO/MelinoeField_4250",
+			Text = "Such a place...",
+		},
+	},
+	-- #endregion
+	-- #region Family Portrait
+	ModsNikkelMHadesBiomes_HadesFamilyPortraitPreEndingVoiceLines = {
+		Queue = "Interrupt",
+		RandomRemaining = true,
+		BreakIfPlayed = true,
+		PreLineWait = 1.85,
+		SuccessiveChanceToPlayAll = 0.1,
+		PlayOnceFromTableThisRun = true,
+		PlayOnceContext = "FamilyPortraitVO",
+		TriggerCooldowns = { Name = "MelinoeAnyQuipSpeech" },
+		SuppressLyrics = true,
+		GameStateRequirements = {
+			{
+				PathTrue = { "MapState", "ModsNikkelMHadesBiomesIsHadesFamilyPortrait" },
+			},
+			{
+				PathFalse = { "GameState", "ReachedTrueEnding" },
+			},
+		},
+		{
+			Cue = "/VO/Melinoe_3989",
+			Text = "You'll find them. And you'll have so much to talk about. Let the longing for them spur you on for now.",
+			GameStateRequirements = {
+				{
+					Path = { "GameState", "UseRecord", "CrossroadsFamilyPortrait02" },
+					Comparison = ">=",
+					Value = 2,
+				},
+				{
+					PathFalse = { "CurrentRun", "TextLinesRecord", "ChronosBossOutro01" },
+				},
+			},
+		},
+		{
+			Cue = "/VO/Melinoe_3988",
+			Text = "Are you growing more motivated to find your family? Or merely growing more despondent...?",
+			GameStateRequirements = {
+				{
+					Path = { "GameState", "UseRecord", "CrossroadsFamilyPortrait02" },
+					Comparison = ">=",
+					Value = 3,
+				},
+				{
+					PathFalse = { "CurrentRun", "TextLinesRecord", "ChronosBossOutro01" },
+				},
+			},
+		},
+		{
+			Cue = "/VO/Melinoe_2936",
+			Text = "They were all so happy together, weren't they? And oblivious to the Titan's threat...",
+			PlayFirst = true,
+			GameStateRequirements = {
+				{
+					PathTrue = { "GameState", "TextLinesRecord", "ChronosNightmare01" },
+				},
+				{
+					PathFalse = { "CurrentRun", "TextLinesRecord", "ChronosBossOutro01" },
+				},
+			},
+		},
+		{
+			Cue = "/VO/Melinoe_5190",
+			Text = "Chronos threatened that you'd never see your family again, the wretch. But you have, and shall.",
+			GameStateRequirements = {
+				{
+					PathTrue = { "GameState", "TextLinesRecord", "ChronosBossOutro01" },
+				},
+				{
+					PathFalse = { "GameState", "TextLinesRecord", "ZagreusPastMeeting05" },
+				},
+			},
+		},
+		{
+			Cue = "/VO/Melinoe_2938",
+			Text = "Father... he was so happy then, but now...? Don't let the Titan break his spirit...",
+			PlayFirst = true,
+			GameStateRequirements = {
+				{
+					PathTrue = { "GameState", "UseRecord", "NPC_Hades_Field_01" },
+				},
+				{
+					PathFalse = { "CurrentRun", "TextLinesRecord", "ChronosBossOutro01" },
+				},
+			},
+		},
+		{
+			Cue = "/VO/Melinoe_2940",
+			Text = "Mother... you have her hair, at least. She seems so different from Headmistress, doesn't she...",
+			PlayFirst = true,
+			GameStateRequirements = {
+				{
+					Path = { "GameState", "TextLinesRecord" },
+					HasAny = {
+						"AphroditeAboutPersephone01",
+						"HermesAboutPersephone01",
+						"SeleneAboutPersephone01",
+						"HecateAboutFamily01",
+					},
+				},
+				{
+					PathFalse = { "CurrentRun", "TextLinesRecord", "ChronosBossOutro01" },
+				},
+			},
+		},
+		{
+			Cue = "/VO/Melinoe_2943",
+			Text = "You don't remember them, besides this painting and your dreams. But still you fight for them...",
+			PlayFirst = true,
+			GameStateRequirements = {
+				{
+					PathFalse = { "CurrentRun", "UseRecord", "NPC_Hades_Field_01" },
+				},
+				{
+					PathFalse = { "CurrentRun", "TextLinesRecord", "ChronosBossOutro01" },
+				},
+			},
+		},
+		{ Cue = "/VO/Melinoe_2937", Text = "The Titan has your family in his thrall, or worse... what has he done with them?" },
+		{ Cue = "/VO/Melinoe_2933", Text = "Father... Mother... Brother... please be safe. Please..." },
+		{ Cue = "/VO/Melinoe_2941", Text = "{#Emph}All that you lost is all that you are{#Prev}, as Headmistress would say..." },
+		{
+			Cue = "/VO/Melinoe_2942",
+			Text = "This family... lost to you since you were born. They deserve their vengeance, and so do you.",
+			GameStateRequirements = {
+				{
+					PathFalse = { "GameState", "TextLinesRecord", "ZagreusPastMeeting05" },
+				},
+			},
+		},
+		{ Cue = "/VO/Melinoe_2944", Text = "{#Emph}<Sigh>" },
+		{ Cue = "/VO/Melinoe_2945", Text = "{#Emph}<Sigh>" },
+		{
+			Cue = "/VO/Melinoe_1607",
+			Text = "Vengeance for my family.",
+			GameStateRequirements = {
+				{
+					PathFalse = { "GameState", "TextLinesRecord", "ZagreusPastMeeting05" },
+				},
+			},
+		},
+		{
+			Cue = "/VO/Melinoe_0347",
+			Text = "Vengeance for my father.",
+			GameStateRequirements = {
+				{
+					Path = { "GameState", "TextLinesRecord" },
+					HasNone = { "HadesAboutUltimateProgress01", "ZagreusPastMeeting05" },
+				},
+			},
+		},
+	},
+	ModsNikkelMHadesBiomes_HadesFamilyPortraitPostEndingVoiceLines = {
+		Queue = "Interrupt",
+		RandomRemaining = true,
+		BreakIfPlayed = true,
+		PreLineWait = 1.85,
+		SuccessiveChanceToPlayAll = 0.1,
+		PlayOnceFromTableThisRun = true,
+		PlayOnceContext = "FamilyPortraitVO",
+		TriggerCooldowns = { Name = "MelinoeAnyQuipSpeech" },
+		SuppressLyrics = true,
+		GameStateRequirements = {
+			{
+				PathTrue = { "MapState", "ModsNikkelMHadesBiomesIsHadesFamilyPortrait" },
+			},
+			{
+				PathTrue = { "GameState", "ReachedTrueEnding" },
+			},
+			{
+				PathTrue = { "GameState", "TextLinesRecord", "TrueEndingFinaleResponse01" },
+			},
+		},
+		{
+			Cue = "/VO/Melinoe_5715",
+			Text = "Mother and Father... we'll see each other again soon.",
+			GameStateRequirements = {
+				{
+					PathTrue = { "CurrentRun", "RoomsEntered", "I_Story01" },
+				},
+			},
+		},
+		{
+			Cue = "/VO/Melinoe_5717",
+			Text = "Good evening, everyone... be well all right?",
+			GameStateRequirements = {
+				{
+					PathTrue = { "CurrentRun", "Cleared" },
+				},
+			},
+		},
+		{ Cue = "/VO/Melinoe_5179", Text = "Your family... you may not be living under the same roof, though you're together still." },
+		{ Cue = "/VO/Melinoe_5181", Text = "Don't know how they managed to get Cerberus to sit still long enough for this..." },
+		{ Cue = "/VO/Melinoe_5182", Text = "You won't forget them, {#Emph}ever... {#Prev}and with {#Emph}this{#Prev}, perhaps Dora won't forget them either." },
+		{ Cue = "/VO/Melinoe_5187", Text = "The old painting's safely tucked away. That memory isn't going anywhere." },
+		{
+			Cue = "/VO/Melinoe_5189",
+			Text = "You'll see them again soon. Perhaps tonight.",
+			GameStateRequirements = {
+				{
+					Path = { "CurrentRun", "RoomsEntered" },
+					HasNone = { "I_Story01", "C_Boss01" },
+				},
+			},
+		},
+		{
+			Cue = "/VO/Melinoe_5186",
+			Text = "Brother... he's so different, yet... it's like part of you was missing till you met.",
+			PlayFirst = true,
+		},
+		{
+			Cue = "/VO/Melinoe_5716",
+			Text = "We've all the time in the world...",
+			GameStateRequirements = {
+				{
+					Path = { "GameState", "SpeechRecord" },
+					HasAll = {
+						"/VO/Melinoe_5179",
+						"/VO/Melinoe_5180",
+						"/VO/Melinoe_5181",
+						"/VO/Melinoe_5182",
+						"/VO/Melinoe_5184",
+						"/VO/Melinoe_5185",
+						"/VO/Melinoe_5186",
+						"/VO/Melinoe_5187",
+					},
+				},
+			},
+		},
+		{
+			Cue = "/VO/Melinoe_5718",
+			Text = "Take care, all of you... till next we meet.",
+			GameStateRequirements = {
+				{
+					Path = { "GameState", "SpeechRecord" },
+					HasAll = {
+						"/VO/Melinoe_5179",
+						"/VO/Melinoe_5180",
+						"/VO/Melinoe_5181",
+						"/VO/Melinoe_5182",
+						"/VO/Melinoe_5184",
+						"/VO/Melinoe_5185",
+						"/VO/Melinoe_5186",
+						"/VO/Melinoe_5187",
+					},
+				},
+			},
+		},
+	},
 	-- #endregion
 }

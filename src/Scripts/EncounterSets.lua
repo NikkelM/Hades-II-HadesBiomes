@@ -118,4 +118,11 @@ mod.EncounterSets.ModsNikkelMHadesBiomesEncounterEventsPerfectClear = {
 	{ FunctionName = _PLUGIN.guid .. "." .. "PerfectClearEncounterEndPresentation" },
 	{ FunctionName = "SpawnPerfectClearRoomReward" },
 }
+mod.EncounterSets.ModsNikkelMHadesBiomesEncounterEventsAthenaCombat = {
+	{ FunctionName = "StartEncounterEffects" },
+	{ FunctionName = "HandleEnemySpawns" },
+	{ FunctionName = "CheckForAllEnemiesDead" },
+	{ FunctionName = "PostCombatAudio" },
+	{ FunctionName = "SpawnRoomReward" },
+}
 -- #endregion

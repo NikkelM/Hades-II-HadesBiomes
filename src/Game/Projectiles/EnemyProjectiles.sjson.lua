@@ -95,6 +95,7 @@ local hadesProjectilesModifications = {
 		Speed = 470,
 	},
 	HeavyRangedWeapon = {
+		TotalFuse = 2.6,
 		NumPenetrations = 99999,
 		DissipateGraphic = "null",
 		ImpactFx = "null",
@@ -102,9 +103,6 @@ local hadesProjectilesModifications = {
 		InflictedDamageSound = "/SFX/BurnDamage",
 	},
 	HeavyRangedWeaponSplitter = {
-		TotalFuse = 4.0,
-		AutoAdjustForTarget = true,
-		MaxAdjustRate = 5,
 		DissipateGraphic = "null",
 		ImpactFx = "null",
 		DeathFx = "EnemyLaserEnd",
@@ -128,6 +126,7 @@ local hadesProjectilesModifications = {
 		DieWithOwner = true,
 	},
 	EliteBeams = {
+		TotalFuse = 8.1,
 		DissipateGraphic = "null",
 		ImpactFx = "null",
 		DeathFx = "EnemyLaserEnd",
@@ -139,6 +138,9 @@ local hadesProjectilesModifications = {
 	HarpyBeam = {
 		Speed = 700,
 		InheritFrom = "1_BaseEnemyProjectileReflectable",
+	},
+	HarpyWhipShot = {
+		CanBeProjectileDefenseDestroyedByLayer = "BoonDefense",
 	},
 	HarpySlowBeam = {
 		UnpauseAnimation = mod.NilValue,
@@ -175,9 +177,11 @@ local hadesProjectilesModifications = {
 
 	-- #region ASPHODEL
 	RangedBurrowerWeapon = {
-		InheritFrom = "1_BaseEnemyProjectileReflectable",
 		DissipateFx = "EnemyProjectileDissipate",
 		Speed = 510,
+		CanBeReflected = true,
+		CanBeProjectileDefenseDestroyedByName = "SafeZonePulse",
+		CanBeProjectileDefenseDestroyedByLayer = "BoonDefense",
 	},
 	CrusherUnitTouchdown = {
 		DetonateGraphic = "CrusherTouchdownFx",
@@ -186,8 +190,10 @@ local hadesProjectilesModifications = {
 		Fuse = 0.1,
 	},
 	HydraDart = {
-		InheritFrom = "1_BaseEnemyProjectileReflectable",
 		DissipateFx = "EnemyProjectileDissipate",
+		CanBeReflected = true,
+		CanBeProjectileDefenseDestroyedByName = "SafeZonePulse",
+		CanBeProjectileDefenseDestroyedByLayer = "BoonDefense",
 	},
 	HydraSummon = {
 		InheritFrom = "1_BaseEnemyProjectileUndestroyable",
@@ -213,6 +219,9 @@ local hadesProjectilesModifications = {
 	},
 	ShadeDeathSpawnSuperElite = {
 		SpawnOnDetonate = "null",
+	},
+	ShadeBowRanged = {
+		CanBeProjectileDefenseDestroyedByLayer = "BoonDefense",
 	},
 	EliteDeathMultiEgg = {
 		SpawnOnDetonate = "null",
@@ -303,14 +312,13 @@ local hadesProjectilesModifications = {
 			Scale = 1.0,
 		},
 	},
-	-- Not used?
 	TheseusChariotRam = {
 		InheritFrom = "1_BaseEnemyProjectile",
 		RotateWithOwner = true,
 		ImpactLineOfSight = true,
-		Fuse = 9.0,
-		NumPenetrations = "null",
-		UnlimitedUnitPenetration = false,
+		Fuse = 0.04,
+		NumPenetrations = 9999,
+		UnlimitedUnitPenetration = true,
 		DieWithOwner = true,
 	},
 	-- Theseus God Wrath attacks
@@ -351,9 +359,11 @@ local hadesProjectilesModifications = {
 		},
 	},
 	RatPoisonShake = {
-		SpawnOnDetonate = "HadesPoisonPuddleSmall"
+		SpawnOnDetonate = "HadesPoisonPuddleSmall",
+		CanBeProjectileDefenseDestroyedByLayer = "BoonDefense",
 	},
 	SatyrRangedWeapon = {
+		CanBeProjectileDefenseDestroyedByLayer = "BoonDefense",
 		Effects = {
 			[2] = {
 				Cooldown = 0.23,
@@ -396,6 +406,7 @@ local hadesProjectilesModifications = {
 		},
 	},
 	HadesCastBeam = {
+		TotalFuse = 3.1,
 		NumPenetrations = 99999,
 		DissipateGraphic = "null",
 		ImpactFx = "null",
@@ -405,6 +416,11 @@ local hadesProjectilesModifications = {
 	},
 	HadesTombstoneSpawn = {
 		SpawnOnDetonate = "ModsNikkelMHadesBiomesHadesTombstone"
+	},
+	HadesGraspingHands = {
+		Thing = {
+			Graphic = "ModsNikkelMHadesBiomesHadesGraspingHandsFx",
+		},
 	},
 	HadesRubbleClear = {
 		-- Prevents the push effect from pushing you in front of the wave and immediately damaging you again
@@ -429,6 +445,12 @@ local hadesProjectilesModifications = {
 	ThanatosDeathCurseAoE = {
 		InheritFrom = "1_BaseEnemyProjectileUndestroyable",
 		Fuse = 2.2,
+	},
+	-- #endregion
+
+	-- #region COMPANIONS/ASSISTS
+	DusaFreezeShotNonHoming = {
+		Damage = 85,
 	},
 	-- #endregion
 
@@ -479,7 +501,7 @@ local hadesProjectilesModifications = {
 }
 
 local addProjectiles = {
-	-- #region Companions/Assist traits
+	-- #region COMPANIONS/ASSISTS
 	{
 		Name = "NPC_FurySister_01_Assist",
 		InheritFrom = "1_BaseMagicProjectile",
@@ -499,7 +521,7 @@ local addProjectiles = {
 		CheckUnitImpact = false,
 		CheckObstacleImpact = false,
 		UnlimitedUnitPenetration = true,
-		Damage = 2500,
+		Damage = 3000,
 		ImpactVelocity = 0,
 		UseArmor = false,
 		UseVulnerability = false,
@@ -555,7 +577,7 @@ local addProjectiles = {
 		CheckUnitImpact = false,
 		CheckObstacleImpact = false,
 		UnlimitedUnitPenetration = true,
-		Damage = 1500,
+		Damage = 2000,
 		ImpactVelocity = 0,
 		UseArmor = false,
 		UseVulnerability = false,
@@ -574,9 +596,9 @@ local addProjectiles = {
 				Opacity = 1.0,
 			},
 			Points = {
-				{ X = 0, Y = 8, },
-				{ X = 32, Y = 0, },
-				{ X = 0, Y = -8, },
+				{ X = 0,   Y = 8, },
+				{ X = 32,  Y = 0, },
+				{ X = 0,   Y = -8, },
 				{ X = -32, Y = 0, },
 			},
 		},
@@ -600,7 +622,7 @@ local addProjectiles = {
 		CheckUnitImpact = false,
 		CheckObstacleImpact = false,
 		UnlimitedUnitPenetration = true,
-		Damage = 1500,
+		Damage = 2000,
 		ImpactVelocity = 0,
 		UseArmor = false,
 		UseVulnerability = false,
@@ -619,9 +641,9 @@ local addProjectiles = {
 				Opacity = 1.0,
 			},
 			Points = {
-				{ X = 0, Y = 8, },
-				{ X = 32, Y = 0, },
-				{ X = 0, Y = -8, },
+				{ X = 0,   Y = 8, },
+				{ X = 32,  Y = 0, },
+				{ X = 0,   Y = -8, },
 				{ X = -32, Y = 0, },
 			},
 		},
@@ -632,7 +654,7 @@ local addProjectiles = {
 		DetonateFx = "ThanatosAoE",
 		StartFx = "ThanatosAssist",
 		Type = "INSTANT",
-		Damage = 3500,
+		Damage = 4000,
 		DamageRadius = 750.0,
 		DamageRadiusScaleY = 0.5,
 		ImpactFx = "ThanatosDeathsHead",
@@ -658,7 +680,7 @@ local addProjectiles = {
 		Name = "NPC_Sisyphus_01_Assist",
 		InheritFrom = "RubbleFall",
 		DetonateFx = "BouldyImpact",
-		Damage = 1000,
+		Damage = 1300,
 		DamageRadius = 350.0,
 		DamageRadiusScaleX = 1.175,
 		DamageRadiusScaleY = 0.56,

@@ -1,3 +1,62 @@
+function mod.HeavyRangedActivatePresentation(enemy, args)
+	if not enemy.UseActivatePresentation or args.SkipPresentation then
+		return
+	end
+
+	game.thread(function()
+		local speedMultiplier = enemy.SpeedMultiplier or 1
+		game.wait((80 / 60) / speedMultiplier)
+
+		if enemy.IsDead then
+			return
+		end
+
+		if enemy.ModsNikkelMHadesBiomesActivationShineAnimation ~= nil then
+			StopAnimation({
+				Name = enemy.ModsNikkelMHadesBiomesActivationShineAnimation,
+				DestinationId = enemy.ObjectId,
+				IncludeCreatedAnimations = true,
+				PreventChain = true,
+			})
+		end
+		local fadeId = SpawnObstacle({
+			Name = "BlankObstacle",
+			DestinationId = enemy.ObjectId,
+			Group = "Standing",
+			OffsetZ = enemy.ModsNikkelMHadesBiomesActivationFadeOffsetZ or 50,
+		})
+		SetThingProperty({
+			Property = "ElapsedTimeMultiplier",
+			Value = speedMultiplier,
+			ValueChangeType = "Multiply",
+			DataValue = false,
+			DestinationId = fadeId,
+		})
+		SetAngle({ Id = fadeId, Angle = GetAngle({ Id = enemy.ObjectId }) })
+		if enemy.ModsNikkelMHadesBiomesActivationFadeScale ~= nil then
+			SetScale({ Id = fadeId, Fraction = enemy.ModsNikkelMHadesBiomesActivationFadeScale })
+		end
+		SetAnimation({
+			Name = enemy.ModsNikkelMHadesBiomesActivationFadeAnimation or "HeavyRangedCrystal4",
+			DestinationId = fadeId,
+		})
+		StopAnimation({
+			Name = "HeavyRangedCrystal4Shine",
+			DestinationId = fadeId,
+			IncludeCreatedAnimations = true,
+			PreventChain = true,
+		})
+		SetColor({ Id = fadeId, Color = { 0, 0, 0, 1 } })
+		SetAlpha({ Id = fadeId, Fraction = 0 })
+		SetAlpha({ Id = fadeId, Fraction = 1, Duration = (24 / 60) / speedMultiplier })
+
+		game.wait((34 / 60) / speedMultiplier)
+		Destroy({ Id = fadeId })
+	end)
+
+	game.UnitActivatePresentation(enemy, args)
+end
+
 -- Creates "Tethers", which are floating parts of the enemy (e.g. the small crystals for HeavyRanged or the neck for the Hydra heads)
 function mod.CreateTethers(newEnemy, args)
 	if newEnemy == nil or newEnemy.Tethers == nil or newEnemy.TetherIds ~= nil or game.IsEmpty(newEnemy.Tethers) then
@@ -129,8 +188,13 @@ end
 
 -- Is called whenever HeavyRanged hits.
 function mod.ModsNikkelMHadesBiomesHeavyRangedCrystalOnWeaponHit(victim, victimId, triggerArgs)
-	-- The first hit of each burst should not do anything, as it is the lock-on "hit"
-	if triggerArgs.Detonation == 0 then
+	local projectileHitRecord = game.SessionMapState.FirstHitRecord[triggerArgs.ProjectileId] or {}
+	game.SessionMapState.FirstHitRecord[triggerArgs.ProjectileId] = projectileHitRecord
+	projectileHitRecord.ModsNikkelMHadesBiomesHeavyRangedHitCount = (projectileHitRecord.ModsNikkelMHadesBiomesHeavyRangedHitCount or 0) +
+			1
+
+	-- The lock-on hit and the first actual laser hit are set to be non-damaging
+	if projectileHitRecord.ModsNikkelMHadesBiomesHeavyRangedHitCount <= 2 then
 		triggerArgs.DamageAmount = 0
 		triggerArgs.Silent = true
 	end
@@ -165,10 +229,78 @@ function mod.TetherOnTouchdownShatter(touchdowner, args)
 		-- Destroy once the shatter animation finishes
 		local destroyId = touchdowner.ObjectId
 		local notifyName = "ModsNikkelMHadesBiomesTetherShatter" .. destroyId
-		NotifyOnAnimationTimeRemaining({ Id = destroyId, Animation = args.DeathAnimation, Remaining = 0.01, Notify = notifyName, Timeout = 5.0 })
+		NotifyOnAnimationTimeRemaining({
+			Id = destroyId,
+			Animation = args.DeathAnimation,
+			Remaining = 0.01,
+			Notify =
+					notifyName,
+			Timeout = 5.0
+		})
 		game.waitUntil(notifyName)
 		Destroy({ Id = destroyId })
 	else
 		Destroy({ Id = touchdowner.ObjectId })
 	end
+end
+
+function mod.ModsNikkelMHadesBiomesSurroundAI(enemy)
+	game.SurroundEnemiesAttacking = game.SurroundEnemiesAttacking or {}
+	local surroundEnemiesAttacking = {}
+
+	while game.IsAIActive(enemy) do
+		if not CanAttack({ Id = enemy.ObjectId }) then
+			enemy.AINotifyName = "CanAttack" .. enemy.ObjectId
+			NotifyOnCanAttack({ Id = enemy.ObjectId, Notify = enemy.AINotifyName, Timeout = 9.0 })
+			game.waitUntil(enemy.AINotifyName)
+		end
+
+		enemy.WeaponName = game.SelectWeapon(enemy)
+		table.insert(enemy.WeaponHistory, enemy.WeaponName)
+		local weaponAIData = game.GetWeaponAIData(enemy)
+
+		local surroundAIKey = weaponAIData.SurroundAIKey or enemy.Name
+		game.SurroundEnemiesAttacking[surroundAIKey] = game.SurroundEnemiesAttacking[surroundAIKey] or {}
+		surroundEnemiesAttacking = game.SurroundEnemiesAttacking[surroundAIKey]
+
+		local targetId = game.GetTargetId(enemy, weaponAIData)
+
+		weaponAIData.TargetId = targetId
+		if targetId ~= nil and targetId ~= 0 then
+			if weaponAIData.PreMoveTeleport then
+				game.HandleEnemyTeleportation(enemy, weaponAIData)
+			end
+
+			Move({
+				Id = enemy.ObjectId,
+				DestinationId = targetId,
+				LiveOffsetFromId = enemy.ObjectId,
+				LiveOffsetDistance = weaponAIData.SurroundDistance,
+				LiveOffsetAngle = 180,
+				SuccessDistance = 50
+			})
+
+			game.wait(game.CalcEnemyWait(enemy, weaponAIData.SurroundRefreshInterval), enemy.AIThreadName)
+
+			for attackerId in pairs(surroundEnemiesAttacking) do
+				local attacker = game.ActiveEnemies[attackerId]
+				if attacker == nil or attacker.IsDead then
+					surroundEnemiesAttacking[attackerId] = nil
+				end
+			end
+
+			if GetDistance({ Id = enemy.ObjectId, DestinationId = targetId }) <= weaponAIData.AttackDistance and (weaponAIData.MaxAttackers == nil or game.TableLength(surroundEnemiesAttacking) < weaponAIData.MaxAttackers) then
+				surroundEnemiesAttacking[enemy.ObjectId] = true
+				Stop({ Id = enemy.ObjectId })
+				game.DoAttack(enemy, weaponAIData)
+				game.FinishTargetMarker(enemy)
+				surroundEnemiesAttacking[enemy.ObjectId] = nil
+			end
+		else
+			game.wait(game.CalcEnemyWait(enemy, 1.0), enemy.AIThreadName)
+		end
+	end
+
+	-- Clear a slot if the AI loop exits during an attack
+	surroundEnemiesAttacking[enemy.ObjectId] = nil
 end

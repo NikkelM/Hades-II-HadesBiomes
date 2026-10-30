@@ -312,7 +312,7 @@ local addedObstacles = {
 			{ Cue = "/VO/ZagreusField_2290", RequiredPlayed = { "/VO/ZagreusField_2282" } },
 		},
 		-- Custom
-		ExitFunctionName = "AnomalyExitPresentation",
+		ExitFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesStyxWingEndExitPresentation",
 		ReturnToPreviousRoomName = "D_Hub",
 	},
 	-- Styx: Exit from Underworld / Exit to D_Boss01
@@ -564,3 +564,12 @@ local needInheritanceProcessing = {
 
 applyModificationsAndInheritObstacleData(game.ObstacleData, obstacleModifications, addedObstacles,
 	needInheritanceProcessing)
+
+-- Family portrait in the tent
+local familyPortraitData = game.ObstacleData.CrossroadsFamilyPortrait02
+table.insert(familyPortraitData.SetupEvents[1].GameStateRequirements, {
+	PathFalse = { "CurrentRun", "TextLinesRecord", "Ending01" },
+})
+table.insert(familyPortraitData.SetupEvents, {
+	FunctionName = _PLUGIN.guid .. "." .. "SelectFamilyPortrait",
+})

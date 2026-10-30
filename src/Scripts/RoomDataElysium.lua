@@ -756,6 +756,8 @@ local roomModifications = {
 	-- OTHER
 	Y_Story01 = {
 		LoadModdedVoiceBanks = { "Patroclus", "ZagreusField" },
+		-- "/Ambience/ElysiumAmbientLoop"
+		Ambience = "{0ad1ff34-6b23-42a9-a46c-8da523a8fc6b}",
 		RewardPreviewOverride = "ModsNikkelMHadesBiomes_StoryPreview",
 		ModsNikkelMHadesBiomes_DisableRewardPreviewOverrideOnChaosCurse = true,
 		GameStateRequirements = {

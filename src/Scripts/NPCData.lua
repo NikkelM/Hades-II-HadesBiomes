@@ -180,12 +180,19 @@ local function applyNPCGlobalModifications(base, npcModifications)
 	end
 end
 
--- Replace status animations showing a character has dialogue available with the H1 variants
+-- Use modded status icons for mod conversations (mod NPCs and modded conversations on vanilla NPCs)
 local function applyModdedStatusAnimations(npcData)
 	for key, value in pairs(npcData) do
 		if key == "StatusAnimation" and type(value) == "string" then
 			npcData[key] = mod.ModdedStatusAnimations[value] or value
 		elseif type(value) == "table" then
+			if key == "InteractTextLineSets" then
+				for _, textLines in pairs(value) do
+					if textLines.PlayOnce and textLines.StatusAnimation == nil then
+						textLines.StatusAnimation = mod.ModdedStatusAnimations.StatusIconWantsToTalk
+					end
+				end
+			end
 			applyModdedStatusAnimations(value)
 		end
 	end
@@ -368,10 +375,26 @@ local npcModifications = {
 		SetupEvents = {
 			{
 				FunctionName = "SilenceForDreamRun",
-				Args = { BlockInteract = true },
 				GameStateRequirements = {
 					{
 						PathTrue = { "CurrentRun", "IsDreamRun" },
+					},
+				},
+			},
+			{
+				FunctionName = "OverwriteSelf",
+				Args = {
+					CanReceiveGift = true,
+					GiftFunctionName = "AddRandomBouldyBlessing",
+					GiftFunctionArgs = mod.PresetEventArgs.BouldyRandomBlessings,
+					OnUsedFunctionName = "nil",
+				},
+				GameStateRequirements = {
+					{
+						PathTrue = { "CurrentRun", "IsDreamRun" },
+					},
+					{
+						PathTrue = { "GameState", "TextLinesRecord", "ModsNikkelMHadesBiomes_BouldyFirstMeeting" },
 					},
 				},
 			},
@@ -381,6 +404,16 @@ local npcModifications = {
 		IgnoreInvincibubbleOnHit = true,
 		RepulseOnMeleeInvulnerableHit = 200,
 		Portrait = "ModsNikkelMHadesBiomes_Portrait_Bouldy",
+		SpecialInteractFunctionName = "SpecialInteractSalute",
+		SpecialInteractGameStateRequirements = {
+			{
+				PathTrue = { "GameState", "TextLinesRecord", "ModsNikkelMHadesBiomes_BouldyFirstMeeting" },
+			},
+		},
+		SpecialInteractCooldown = 60,
+		InteractVoiceLines = {
+			{ GlobalVoiceLines = "ModsNikkelMHadesBiomes_SaluteVoiceLines" },
+		},
 		InteractTextLineSets = {
 			BouldyMiscMeeting01 = { RequiredTextLines = { "ModsNikkelMHadesBiomes_BouldyFirstMeeting", }, },
 			BouldyMiscMeeting02 = { RequiredTextLines = { "ModsNikkelMHadesBiomes_BouldyFirstMeeting", }, },
@@ -1606,7 +1639,10 @@ local npcModifications = {
 			},
 			OrpheusMusicProgress01 = {
 				RequiredCosmetics = { "ModsNikkelMHadesBiomes_HouseLyre01", },
-				RequiredMinItemInteractions = { ModsNikkelMHadesBiomes_HouseLyre01 = 10, HouseLyre01 = mod.NilValue, },
+				RequiredMinItemInteractions = {
+					ModsNikkelMHadesBiomes_HouseLyre01 = mod.OrpheusLyreInteractionThresholds.TextLines.OrpheusMusicProgress01,
+					HouseLyre01 = mod.NilValue,
+				},
 				[2] = {
 					PostLineThreadedFunctionName = mod.NilValue,
 					PostLineFunctionName = _PLUGIN.guid .. "." .. "MusicPracticePresentation",
@@ -1614,15 +1650,24 @@ local npcModifications = {
 			},
 			OrpheusMusicProgress02 = {
 				RequiredCosmetics = { "ModsNikkelMHadesBiomes_HouseLyre01", },
-				RequiredMinItemInteractions = { ModsNikkelMHadesBiomes_HouseLyre01 = 40, HouseLyre01 = mod.NilValue, },
+				RequiredMinItemInteractions = {
+					ModsNikkelMHadesBiomes_HouseLyre01 = mod.OrpheusLyreInteractionThresholds.TextLines.OrpheusMusicProgress02,
+					HouseLyre01 = mod.NilValue,
+				},
 			},
 			OrpheusMusicProgress03 = {
 				RequiredCosmetics = { "ModsNikkelMHadesBiomes_HouseLyre01", },
-				RequiredMinItemInteractions = { ModsNikkelMHadesBiomes_HouseLyre01 = 80, HouseLyre01 = mod.NilValue, },
+				RequiredMinItemInteractions = {
+					ModsNikkelMHadesBiomes_HouseLyre01 = mod.OrpheusLyreInteractionThresholds.TextLines.OrpheusMusicProgress03,
+					HouseLyre01 = mod.NilValue,
+				},
 			},
 			OrpheusMusicProgress04 = {
 				RequiredCosmetics = { "ModsNikkelMHadesBiomes_HouseLyre01", },
-				RequiredMinItemInteractions = { ModsNikkelMHadesBiomes_HouseLyre01 = 150, HouseLyre01 = mod.NilValue, },
+				RequiredMinItemInteractions = {
+					ModsNikkelMHadesBiomes_HouseLyre01 = mod.OrpheusLyreInteractionThresholds.TextLines.OrpheusMusicProgress04,
+					HouseLyre01 = mod.NilValue,
+				},
 			},
 			OrpheusAboutSingersReunionQuest01 = {
 				SuperPriority = true,
@@ -1859,7 +1904,9 @@ local npcModifications = {
 		SetupEvents = {
 			{
 				FunctionName = "SilenceForDreamRun",
-				Args = { ForceTextLines = "ModsNikkelMHadesBiomes_OrpheusStoryDreamRun" },
+				Args = {
+					ForceTextLines = "ModsNikkelMHadesBiomes_EurydiceDreamRun",
+				},
 				GameStateRequirements = {
 					{
 						PathTrue = { "CurrentRun", "IsDreamRun" },
@@ -1915,15 +1962,31 @@ local npcModifications = {
 			},
 		},
 		InteractTextLineSets = {
-			ModsNikkelMHadesBiomes_OrpheusStoryDreamRun = {
+			ModsNikkelMHadesBiomes_EurydiceDreamRun = {
 				UseableOffSource = true,
+				Partner = "NPC_Eurydice_01",
 				GameStateRequirements = {
 					{
 						PathTrue = { "CurrentRun", "IsDreamRun" },
 					},
 				},
-				OnQueuedFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesEurydiceMusic",
-				OnQueuedFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Duet,
+				OnQueuedEvents = {
+					{
+						FunctionName = "GenericPresentation",
+						Threaded = true,
+						Args = {
+							PreWait = 0.02,
+							Id = 514436,
+							UseableOff = true,
+							OverwriteSourceKeys = {
+								BlockChatting = true,
+								TextLinesPauseSingingFx = false,
+							},
+							EndFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesEurydiceMusic",
+							EndFunctionArgs = mod.PresetEventArgs.SingingEurydiceSong01_Duet,
+						},
+					},
+				},
 				PrePortraitExitFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesBenefitChoice",
 				PrePortraitExitFunctionArgs = mod.PresetEventArgs.EurydiceBenefitChoices,
 				{

@@ -786,6 +786,39 @@ function mod.IsVersionOlderThan(version, comparedTo)
 	return versionKey(version) < versionKey(comparedTo)
 end
 
+---Returns a random candidate ID that is at least minimumDistance from every blocker ID.
+---Removes retried candidates from candidateIds and returns the last selected ID if no valid candidates remain.
+---@param candidateIds number[]|nil The candidate object IDs to choose from.
+---@param blockerIds number[]|nil The object IDs the selected location must avoid.
+---@param minimumDistance number|nil The minimum permitted distance from every blocker. Defaults to 180.
+---@param selectedId number|nil An already selected candidate to prefer before choosing another.
+---@return number|nil selectedId The selected candidate ID, or nil if no candidate was available.
+function mod.RemoveRandomLocationIdWithBlockerIds(candidateIds, blockerIds, minimumDistance, selectedId)
+	candidateIds = candidateIds or {}
+	minimumDistance = minimumDistance or 180
+	selectedId = selectedId or game.RemoveRandomValue(candidateIds)
+	if selectedId == nil or blockerIds == nil or game.IsEmpty(blockerIds) then
+		return selectedId
+	end
+
+	while true do
+		local isTooClose = false
+		for _, blockerId in ipairs(blockerIds) do
+			local distance = GetDistance({ Id = selectedId, DestinationId = blockerId })
+			if distance ~= nil and distance < minimumDistance then
+				isTooClose = true
+				break
+			end
+		end
+
+		if not isTooClose or game.IsEmpty(candidateIds) then
+			return selectedId
+		end
+
+		selectedId = game.RemoveRandomValue(candidateIds)
+	end
+end
+
 modutil.mod.Path.Wrap("DebugPrint", function(base, args)
 	if config.debugging.enableVanillaDebugPrint then
 		mod.DebugPrint(args.Text, 4)

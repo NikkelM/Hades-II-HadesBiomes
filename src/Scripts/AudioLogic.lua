@@ -71,6 +71,15 @@ modutil.mod.Path.Wrap("ResumeMusic", function(base, args)
 	end
 end)
 
+modutil.mod.Path.Wrap("RestoreMusicianMusic", function(base, source, args)
+	-- During the portrait ending sequence
+	if game.CurrentRun.ModsNikkelMHadesBiomesBlockHubMusicRestore then
+		return
+	end
+
+	base(source, args)
+end)
+
 -- Called in some boss intros - just in case there is no Music playing (either paused or MusicId == nil), we resume it/create it
 function mod.SafetyResumeBossMusic()
 	if game.AudioState == nil then

@@ -7,6 +7,62 @@ local hadesTwoEnemyBaseVFXModifications = {
 	},
 }
 
+local addAnimations = {
+	-- #region TARTARUS
+	{
+		Name = "ModsNikkelMHadesBiomesInvincibubbleFury",
+		InheritFrom = "Invincibubble",
+		ChainTo = "ModsNikkelMHadesBiomesInvincibubbleOutFury",
+		ChildAnimation = "ModsNikkelMHadesBiomesInvincibubbleLoopFury",
+		CreateAnimation = "ModsNikkelMHadesBiomesQuickFlashInvincibleFury",
+		OffsetZ = 200,
+		CreateAnimations = {
+			{ Name = "ModsNikkelMHadesBiomesInvincibubbleDarkFury" },
+		},
+	},
+	{
+		Name = "ModsNikkelMHadesBiomesInvincibubbleDarkFury",
+		InheritFrom = "InvincibubbleDark",
+		OffsetZ = 200,
+	},
+	{
+		Name = "ModsNikkelMHadesBiomesInvincibubbleLoopFury",
+		InheritFrom = "InvincibubbleLoop",
+		OffsetZ = 200,
+	},
+	{
+		Name = "ModsNikkelMHadesBiomesInvincibubbleOutFury",
+		InheritFrom = "InvincibubbleOut",
+		OffsetZ = 200,
+	},
+	{
+		Name = "ModsNikkelMHadesBiomesQuickFlashInvincibleFury",
+		InheritFrom = "QuickFlashInvincible",
+		OffsetZ = 200,
+	},
+	-- #endregion
+	-- #region STYX
+	{
+		Name = "ModsNikkelMHadesBiomesEnemyBurrowEntranceSmall",
+		InheritFrom = "EnemyBurrowEntranceSmall",
+		Material = "Unlit",
+		Hue = 0,
+		Saturation = 0,
+		Value = 0,
+		OffsetY = 10,
+		LocationFromOwner = "Take",
+		ScaleFromOwner = "Maintain",
+		Sound = "null",
+	},
+	{
+		Name = "ModsNikkelMHadesBiomesHadesGraspingHandsFx",
+		InheritFrom = "HadesGraspingHandsFx",
+		FilePath =
+		"NikkelM-HadesBiomesFxModded\\Fx\\ModsNikkelMHadesBiomesHadesGraspingHands\\ModsNikkelMHadesBiomesHadesGraspingHands",
+	},
+	-- #endregion
+}
+
 sjson.hook(hadesTwoEnemyBaseVFXFile, function(data)
 	mod.RunInstallStep("Enemy_1Base_VFX")
 
@@ -14,5 +70,6 @@ sjson.hook(hadesTwoEnemyBaseVFXFile, function(data)
 	sjsonLoads["Enemy_1Base_VFX"] = true
 	mod.SaveCachedSjsonFile("sjsonLoads.sjson", sjsonLoads)
 
+	mod.AddTableKeysSkipDupes(data.Animations, addAnimations, "Name")
 	mod.ApplyNestedSjsonModifications(data.Animations, hadesTwoEnemyBaseVFXModifications)
 end)

@@ -112,7 +112,7 @@ local roomReplacements = {
 			{
 				Path = { "GameState", "LifetimeResourcesGained", "ModsNikkelMHadesBiomes_SeedElysium" },
 				Comparison = ">=",
-				Value = 3,
+				Value = 2,
 			},
 			{
 				-- At least two major rooms
@@ -151,7 +151,7 @@ local roomReplacements = {
 				},
 				-- accumulation
 				{
-					ChanceToPlay = 0.5,
+					ChanceToPlay = 0.6,
 					{
 						SumPrevRooms = 6,
 						Path = { "NumPickaxePoints" },
@@ -952,6 +952,7 @@ local roomModifications = {
 		DistanceTriggersPostCombatReload = true,
 		TimerBlock = "ShopEncounter",
 		StoreDataName = "Q_WorldShop",
+		ModsNikkelMHadesBiomesShopRoomWithRoomRewards = true,
 		PostCombatReloadThreadedEvents = {
 			{
 				FunctionName = "CheckConversations",
@@ -981,6 +982,11 @@ local roomModifications = {
 		SkipUnusedWeaponBonusReward = true,
 
 		ZagContractRewardDestinationId = 776332,
+	},
+
+	-- COMBAT
+	D_Combat01 = {
+		DebugOnly = false,
 	},
 
 	-- MINIBOSSES
@@ -1028,6 +1034,7 @@ local roomModifications = {
 
 	-- BOSSES
 	D_Boss01 = {
+		LoadVanillaAudioBanks = { "BiomeI" },
 		LoadModdedVoiceBanks = { "HadesField", "ZagreusField" },
 		-- "/Leftovers/Ambience/OceanWavesWaterAmbience"
 		Ambience = "{c8b4b4e9-ee0e-4b72-8a5f-8b12e5179707}",
@@ -1116,7 +1123,7 @@ local roomModifications = {
 			{
 				Path = { "GameState", "LifetimeResourcesGained", "ModsNikkelMHadesBiomes_SeedElysium" },
 				Comparison = ">=",
-				Value = 3,
+				Value = 2,
 			},
 			OrRequirements =
 			{
@@ -1130,7 +1137,7 @@ local roomModifications = {
 				},
 				-- accumulation
 				{
-					ChanceToPlay = 0.5,
+					ChanceToPlay = 0.6,
 				},
 			},
 		},

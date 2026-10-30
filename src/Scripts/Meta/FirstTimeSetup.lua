@@ -242,6 +242,9 @@ local function parseSubtitleCsvFile(filePath, fileName, translatePrefix)
 							id = newId
 						end
 					end
+					if fileName == "Storyteller" then
+						displayName = "{#DialogueItalicFormat}" .. displayName
+					end
 
 					table.insert(entries,
 						sjson.to_object({ Id = id, InheritFrom = "BaseSubtitle", DisplayName = displayName }, order))
@@ -812,8 +815,14 @@ function mod.FinalizeInstallation()
 
 	mod.HiddenConfig.IsValidInstallation = true
 	mod.HiddenConfig.InstallationFailReason = ""
+	if mod.HiddenConfig.InstalledModVersion ~= "" then
+		mod.HiddenConfig.PendingUpdateScreenVersion = _PLUGIN.version
+		if mod.UpdateInstallScreenTextIdsByVersion[_PLUGIN.version] == nil then
+			mod.DebugPrint("No update install screen text is registered for mod version " .. _PLUGIN.version, 2)
+		end
+	end
 	mod.HiddenConfig.InstalledModVersion = _PLUGIN.version
-	-- If this is a reinstall, to show the successful install screen again
+	-- Show the valid installation screen selected for this install or update
 	mod.HiddenConfig.HasShownSuccessfulInstallScreen = false
 	mod.SaveCachedSjsonFile("hiddenConfig.sjson", mod.HiddenConfig)
 	---@diagnostic disable-next-line: undefined-global

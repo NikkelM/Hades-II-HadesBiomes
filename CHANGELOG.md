@@ -10,11 +10,19 @@
 - **Theseus** may now call upon the aid of Apollo, Hestia, Hera and Hephaestus.
 - Balancing: Slightly reduced health and armour of non-boss enemies in all biomes.
 - Balancing: Encounters should now be more cleanly separated into 1-3 distinct waves, with fewer waves that keep spawning in new enemies one after another.
+- Fixed: Some enemies do not properly move within range for certain attacks, rotate toward the player too fast or too slow, or can try to repeatedly attack from behind obstacles (e.g. you can no longer hide from Hades behind the pillars in his chamber).
+- Fixed: Some enemy attacks can improperly lock onto and track Melinoë during their charge-up (e.g. the Hydra's lunge).
 
 Other fixes and improvements:
 - Picking up a boon from Hermes while in a Zagreus' Journey run may now have him deliver a message from the first game's Dionysus to you (as Dionysus cannot be encountered during Zagreus' Journey runs), allowing you to experience his storyline.
 - Added all resources that can be found during Zagreus' Journey runs to the Wretched Broker to allow trading them for the equivalent resources from Hades II (they will show after completing any new run).
+- You can now gift Bouldy during Dream Dives to keep believing in each other.
+- You can now salute Bouldy to honour his gracefulness and presence.
 - Melinoë will now react to NPCs giving her keepsakes (and companions).
+- Melinoë will now react to entering the Fury's boss chambers.
+- Melinoë will now react to overlooking Asphodel and Elysium in the first rooms of those regions.
+- Hades will now taunt you if you die during a Survival or Erebus encounter.
+- Added a new wing-end combat room to Styx.
 - Added a new irreversible "cheat" config option to immediately unlock all (non-story) incantations.
 - Added a new irreversible "cheat" config option to immediately unlock all cosmetics (except badges).
 - Added a new reversible "cheat" config option to immediately unlock all keepsakes and companions (except those not yet available).
@@ -22,32 +30,107 @@ Other fixes and improvements:
 - Added low-resolution texture packages to reduce system requirements and improve performance on less powerful devices such as laptops.
 - Added a new Minor Prophecy revealed by talking to Poseidon in the Nightmare Realm.
 - Replaced the config option for hiding the automatic Elysium poison reminder with a new incantation.
+- Sped up the exit animation when returning to the Styx Hub from a wing room.
 - The "A True Nightmare" Minor Prophecy can now only be revealed if the [Dream Dive Tweaks](https://thunderstore.io/c/hades-ii/p/zerp/DreamDiveTweaks/) mod is also installed (*It would be quite difficult to complete otherwise*).
+- Added a new cosmetic displaying Gigaros in Melinoë's tent in the slot used by Wall-Scrolls.
+- Added a card back for Hermes to the "Arcana, Olympian" card-back pack.
 - "Charm, Battie" is now unlocked by progressing Megaera's relationship instead of by the number of times you have beaten her.
+- Added the ending portrait from Zagreus' Journey as a portrait that can be showcased in Melinoë's tent after the mod's ending.
+- Added community translators to the mod's credits.
+- Added the mod's credits to the Options menu's "Credits" category.
+- Updating the mod will now show a new install screen with patch highlights, instead of the generic "Installation Successful" message.
+- Reduced the amount of packages loaded during some encounters, which should improve performance and reduce crashes on lower spec machines.
+- Balancing: Rebalanced enemy health scaling for Zagreus' Journey regions during Dream Dives. The regions are now more consistently challenging compared to vanilla Hades II regions instead of more difficult, which is more aligned with the Dream Dive design philosophy.
+- Balancing: Some witch and brimstone-type enemies will now try to surround Melinoë during combat, which is closer to their behavior in the first game.
+- Balancing: For some witch and brimstone-type enemies, only a maximum of two enemies of the given type will attack at once.
+- Balancing: Tisiphone's triple-whip combo attack now fires slightly faster (it is now aligned to the timings in the first game).
+- Balancing: Slightly reduced health of Theseus and Asterius.
+- Balancing: Slightly reduced armour of the Dire Voidstone in the Vow of Shadows version of the Barge of Death miniboss encounter.
+- Balancing: Increased the difficulty rating of all "Witch"-type enemies, causing less of them to spawn when selected for an encounter.
+- Balancing: Dire Numbskulls can no longer have the "Spinner" perk.
+- Balancing: Brimstone, Snakestone and Doomstone laser attacks have a new invulnerability frame for the first tick that would normally hit the player.
+- Balancing: The fragments spawned by the Doomstone miniboss can now either target the Doomstone itself, or another fragment instead.
+- Balancing: The Doomstone's lasers no longer move towards Melinoë and are static instead.
 - Balancing: There can now only be a limited number of "large" enemies alive at once during an encounter, similar to what was the case in the first game.
 - Balancing: The shared Tartarus story room now prioritizes Sisyphus or Orpheus if only one has an unplayed one-time conversation, and neither can appear more than twice in a row.
 - Balancing: Brimstones can no longer appear during Erebus Gate and Unseen Sigil challenges in Tartarus (which you need to clear without taking damage).
-- Balancing: The small heads summoned by Lernie can now be resurrected with "Night Bloom", "Sun Worshipper" or "God of the Dead".
-- Balancing: Revenants created by the "Vow of Return" in Asphodel will now be picked up automatically when they land on lava.
+- Balancing: Gorgons can no longer be imbued with the "Bigger" elite perk.
+- Balancing: The small heads summoned by the Lernaean Bone Hydra can now be resurrected with "Night Bloom", "Sun Worshipper" or "God of the Dead".
+- Balancing: Revenants created by the "Vow of Return" in Asphodel will now be destroyed automatically when they land on lava.
 - Balancing: Exalted Shades can no longer create Lone Shades when dying.
+- Balancing: Lone Elite enemies in Styx tunnel rooms can no longer be imbued with the "Linker" elite perk.
 - Balancing: Slightly reduced the base encounter difficulty of wing-end combat rooms in the Temple of Styx.
+- Balancing: Hades will now dash and side-dash more frequently during combat to close the distance between him and Melinoë.
+- Balancing: Decreased the chances for Bloodroot, Wax and Deathcap Spores to appear in Tartarus.
+- Balancing: Decreased the chance for Granite to appear in Asphodel.
+- Balancing: Increased the chance for Pumpkin Seeds to appear in the Temple of Styx.
+- Balancing: "Warm Embrace" by Sisyphus can now only be offered if you are missing at least 10% of your health.
 - Balancing: The cooldown of the freeze effect applied by "Lament of Orpheus" has been increased from 10 to 14 seconds.
 - Balancing: The cooldown of the freeze effect applied by "Lament of Orpheus" is now affected by "Seismic Servo".
+- Balancing: Reduced the amount of rerolls given by "Good Riddance" from 5 to 4.
 - Balancing: Owning "God of the Dead" now makes "Success Rate" from Hermes eligible.
+- Balancing: Progressing mastery of the Lyre in Orpheus' chamber is now quicker.
+- Fixed: When receiving a blessing from Sisyphus outside of his encounter (through other mods), they can spawn out of bounds.
+- Fixed: While spawning, Brimstones and Voidstones pop in instead of fading like other enemies.
+- Fixed: The small crystals attached to Brimstones and Voidstones don't react to the enemy taking damage.
+- Fixed: Alecto can choose her rage-building attack during her final phase when she is already permanently enraged.
+- Fixed: Alecto plays her idle animation during a phase transition if she was moving when the transition starts.
+- Fixed: Tisiphone will always user her lunge attack as the first attack instead of a random eligible one.
+- Fixed: The invulnerability bubble surrounding the Furies during their phase transitions is misaligned with their animations.
+- Fixed: The "bombing run" attack Tisiphone performs when she is assisting another Fury has a lower preview duration than intended, and always uses the same orientation for its pattern. 
+- Fixed: Damage from Furies that assist the main boss does not scale during Dream Dives.
+- Fixed: Meeting Eurydice and Orpheus in Asphodel in a Dream Dive lets you choose two boons instead of only one.
+- Fixed: Dart projectiles created by Dracons and the Bone Hydra have hitboxes that don't rotate with the projectile correctly.
+- Fixed: Some enemies in Asphodel are not scaled correctly during Dream Dives.
+- Fixed: Destroying butterflies spawned by Soul Catchers with certain attacks constantly creates "Blocked!" presentation effects.
+- Fixed: Chariots in Elysium immediately end their charge if Melinoë stands directly behind them, instead of turning to charge at her.
+- Fixed: If a Shade enemy in Elysium is frozen when it dies, it might not die and spawn the Exalted Shade immediately.
+- Fixed: Theseus does not deal damage if he rams you with his Chariot.
+- Fixed: Asterius can get stuck charging at Theseus during the "Delta Strike" combo attack.
+- Fixed: Asterius can face away from Melinoë during the "Bullhorn" combo attack if she moves while he waits for Theseus to come to him.
+- Fixed: The "Bullhorn" combo attack performed by Theseus and Asterius is only eligible once they reconcile, instead of from the start of the game.
+- Fixed: Gigantic Vermin that die while charmed leave behind a poison puddle that can poison Melinoë, even after an encounter ends.
+- Fixed: Theseus may move faster than expected in his second phase if the Vow of Rivals is active.
+- Fixed: The Tiny Vermin is not forced to summon more Gigantic Vermin after it has performed enough other attacks.
+- Fixed: Melinoë can clip through the exit door in a specific Styx wing room.
+- Fixed: When Hades enters a phase transition, some enemy projectiles are not destroyed correctly.
+- Fixed: Hades keeps rotating towards Melinoë inbetween throwing his spear and the dash towards it.
+- Fixed: If Hades is in the wind-up animation of throwing his spear when entering a phase transition, he will be stuck in the throw animation instead of resetting to his idle animation.
+- Fixed: Bosses can be stunned when blocking their attacks using the Black Coat's Omega Attack (the attacks can still be blocked, but bosses will no longer be stunned).
+- Fixed: Elite enemies do not have yellow armour outlines.
+- Fixed: Some enemies using a specific animation type do not flash white right before their attacks.
+- Fixed: Some enemies spawn looking a different direction than what their spawn animtion implies.
+- Fixed: Clones spawned by enemies with the "Cloner" perk do not die automatically when their parent dies.
+- Fixed: A background ambience track in Elysium does not play.
+- Fixed: Gale burns a block when Melinoë is poisoned in Styx (or Elysium), instead of allowing it to happen as is the case with poison in the Polyphemus & Medea boss fight.
+- Fixed: "Fire Away" does not destroy some enemy projectiles that should be destroyable.
+- Fixed: If no Hex is owned yet, entering Styx may offer one as both an item in the shop and a reward on a door, causing you to own two Hexes when picking both.
+- Fixed: Hades' portrait does not show during some of his taunt voicelines, e.g. after boss fights or Erebus encounters.
+- Fixed: Goddess Mode does not reduce enemy health in Zagreus' Journey regions during Dream Dives.
+- Fixed: After dying in a room with enemies that have "tethers" (e.g. the Hydra or Brimstones), after returning to the Crossroads, some objects may randomly disappear or be placed in unexpected locations.
+- Fixed: The timer sound keeps ticking when dying during an survival encounter.
 - Fixed: An interaction prompt shows for Thanatos when he is about to leave after his romance dialogue.
 - Fixed: Player summons are destroyed when either of Theseus or Asterius is defeated in their boss fight, instead of after both have been defeated.
 - Fixed: After buying one of two identical items in the Styx Hub with "Travel Deal" active, returning from a wing may cause the replacement item to have disappeared.
+- Fixed: Resource spawns can slightly overlap with each other or Chaos or Erebus Gates.
 - Fixed: The in-game timer continues running after Hades lets Melinoë pass on the tenth clear.
+- Fixed: If playing with controller and a Hex is ready after Hades' boss fight completes, using the "Proceed" action to enter the Surface after the true ending of Zagreus' Journey fires the Hex at the same time as exiting the room.
 - Fixed: Blood Triad progress and indicators are cleared when enemies teleport.
+- Fixed: Flying bats are missing on many maps in Tartarus and Asphodel.
 - Fixed: A small number of enemy attacks may have unintended behaviour in rare cases, caused by legacy properties not being migrated correctly due to unstable ordering.
 - Fixed: During Dream Dives, if the "Vow of Menace" is active and wants to replace certain non-replaceable enemies, those enemies incorrectly receive the scaling from the next biome, instead of their own.
 - Fixed: Dying to poison does not credit the enemy that poisoned you when viewing the run at the Learned Sage.
 - Fixed: Some enemies summoned by Hades are not credited correctly if they killed you when viewing the run at the Learned Sage.
+- Fixed: Some minor environment textures and animations are missing or flickering on some maps.
 - Fixed: Music can sometimes stutter and cut out during gameplay when a lot of different audio sources try to play at once.
+- Fixed: After returning to the Crossroads after the ending sequence, music from the Music Player can briefly play before the outro narration begins.
 - Fixed: The displayed resurrection chance of "God of the Dead" does not account for "Success Rate".
 - Fixed: Clearing the tenth run of the story with the Vow of Rivals on Rank 4 counts for completion of "Extreme Measures".
+- Fixed: Some damage sources during Charon's boss fight show a placeholder text in the run clear screen.
+- Fixed: Codex entries after the first unlock too early.
 - Fixed: Unlocking Arcana card-back packs does not count towards the completion of "A Simple Job".
-- Fixed: Various typos in incantation texts.
+- Fixed: The Narrator's subtitles added through the mod are not italicized.
+- Fixed: Various typos and clarifications in incantation, prophecy and cosmetics texts.
 <!--Releasenotes end-->
 
 ## v1.3.0
@@ -141,7 +224,7 @@ Other fixes and improvements:
 - Fixed: The Splitter's large projectile does not split into small projectiles after hitting Melinoë or an obstacle, but only when expiring mid-flight.
 - Fixed: The Brightsword's dash does not have its direction randomized.
 - Fixed: If a Shade enemy in Elysium dies while polymorphed, it drops a weapon that is able to be picked up by Exalted Shades.
-- Fixed: If a Shade enemy in Elysium has both the "Massive" and "Popper" elite perks, the additional Exalted Shades produced by the "Popper" perk are enlarged until they land.
+- Fixed: If a Shade enemy in Elysium has both the "Bigger" and "Popper" elite perks, the additional Exalted Shades produced by the "Popper" perk are enlarged until they land.
 - Fixed: Shade enemies in Elysium start spawning an Exalted Shade that then immediately disappears if they are killed by Athena.
 - Fixed: The explosion from the fake Exalted Shades created by the "Popper" elite perk can be blocked by the Black Coat's Omega attack block.
 - Fixed: If a Flame Wheel or Nemean Chariot is morphed by "Twilight Curse" while attacking, the sheep will continue performing the attack.

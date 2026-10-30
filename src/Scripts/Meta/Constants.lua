@@ -12,6 +12,7 @@ mod.DefaultHiddenConfig = {
 	MustShowUninstallFailureScreen = false,
 	-- Tracks which mod version was last installed to detect mod updates
 	InstalledModVersion = "",
+	PendingUpdateScreenVersion = "",
 	-- For debugging purposes
 	EnableVanillaDebugKeybinds = false,
 	DeveloperMode = false,
@@ -19,23 +20,24 @@ mod.DefaultHiddenConfig = {
 
 -- This is the number of sjson.hook calls we normally make
 -- If the count in the cache/sjsonLoads.sjson file is different when OnAnyLoad is called, we know something went wrong and need to ask the user to restart the game
-mod.ExpectedNumSjsonHooks = 26
+mod.ExpectedNumSjsonHooks = 31
 
 -- All enemies have more health and armour in modded runs, scales with each biome
--- Should not apply to bosses, which should opt out using ModsNikkelMHadesBiomesIgnoreModdedHealthModifiers and define their own modified health
+-- Armour is scaled by BOTH the health and armour multipliers (e.g. base armour x 1.33 x 1.12)
+-- Bosses should opt out using ModsNikkelMHadesBiomesIgnoreModdedHealthModifiers and define their own modified health
 mod.ModdedUnitMaxHealthMultiplierBonus = {
-	Default = 0.35,
-	Tartarus = 0.30,
-	Asphodel = 0.35,
-	Elysium = 0.38,
-	Styx = 0.42
+	Default = 0.32,
+	Tartarus = 0.26,
+	Asphodel = 0.32,
+	Elysium = 0.34,
+	Styx = 0.39
 }
 mod.ModdedUnitHealthBufferMultiplierBonus = {
-	Default = 0.11,
+	Default = 0.1,
 	Tartarus = 0.06,
-	Asphodel = 0.11,
-	Elysium = 0.16,
-	Styx = 0.2
+	Asphodel = 0.1,
+	Elysium = 0.13,
+	Styx = 0.16
 }
 
 mod.ValidModdedRunBiomes = {
@@ -594,7 +596,7 @@ mod.SkellyModdedCrossroadsConversations = {
 	"ModsNikkelMHadesBiomes_HadesStatueIntro01",
 }
 
-mod.ModdedPlayerScaleMultiplier = 0.9
+public.ModdedPlayerScaleMultiplier = public.ModdedPlayerScaleMultiplier or 0.9
 
 mod.IncreasedZoomFractionOffset = 0.13
 
@@ -1208,4 +1210,23 @@ mod.AssistTraitNames = {
 	"SkellyAssistTrait",
 	-- "DusaAssistTrait",
 	-- "AchillesPatroclusAssistTrait",
+}
+
+mod.OrpheusLyreInteractionThresholds = {
+	TextLines = {
+		OrpheusMusicProgress01 = 10,
+		OrpheusMusicProgress02 = 25,
+		OrpheusMusicProgress03 = 45,
+		OrpheusMusicProgress04 = 80,
+	},
+	VoiceLines = {
+		Struggling = 15,
+		Improving = 30,
+		Proficient = 45,
+		Mastered = 75,
+	},
+	SoundQuality = {
+		Medium = 40,
+		Good = 75,
+	},
 }

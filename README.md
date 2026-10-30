@@ -57,7 +57,10 @@ It is highly recommended that you complete the main story of the first Hades gam
 
 ### Integrations with other Mods
 
-Some other mods integrate with _Zagreus' Journey_ to provide additional features, alternative functionality, or use the resources introduced by this mod:
+All mods available on Thunderstore for Hades II are compatible with _Zagreus' Journey_!
+If there are any exceptions, these will be documented [on this wiki page](https://github.com/NikkelM/Hades-II-HadesBiomes/wiki/Incompatible-Mods).
+
+Some other mods additionally integrate with _Zagreus' Journey_ to provide additional features, alternative functionality, or use the resources introduced by this mod:
 
 - [Dream Dive Tweaks](https://thunderstore.io/c/hades-ii/p/zerp/DreamDiveTweaks/) allows you to run longer Dream Dives, including all 12 available regions in a single run if _Zagreus' Journey_ is installed as well. The mod also adds some Quality of Life improvements and bug fixes for Dream Dives.
 - [Flip the Arcana](https://thunderstore.io/c/hades-ii/p/ReadEmAndWeep/Flip_the_Arcana_Mod/) adds flipped versions of the Arcana cards with wildly different effects, and will require resources from _Zagreus' Journey_ to unlock them if both mods are installed.
@@ -133,7 +136,7 @@ If you do not have a GitHub account, you can also join the [Hades II Modding Dis
 
 ### Contribute Yourself!
 
-You can contribute to this mod by translating the text it adds into your native language!
+You can contribute to this mod by translating the text it adds into your native language and be featured in the mod's credits in-game!
 
 See the [Contribute a Translation wiki page](https://github.com/NikkelM/Hades-II-HadesBiomes/wiki/Contribute-a-Translation) for more information on what needs translating, and how to do so.
 

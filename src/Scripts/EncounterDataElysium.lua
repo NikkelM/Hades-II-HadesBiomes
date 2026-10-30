@@ -110,6 +110,7 @@ local encounterReplacements = {
 	},
 	AthenaCombatElysium = {
 		InheritFrom = { "BaseAthenaCombat", "GeneratedElysium" },
+		UnthreadedEvents = mod.EncounterSets.ModsNikkelMHadesBiomesEncounterEventsAthenaCombat,
 		CanEncounterSkip = false,
 		BaseDifficulty = 650,
 		DepthDifficultyRamp = 120,
@@ -174,8 +175,7 @@ local encounterModifications = {
 	-- BOSSES
 	BossTheseusAndMinotaur = {
 		PostUnthreadedEvents = mod.NilValue,
-		-- For the Grenade graphics of EM Theseus
-		LoadPackages = { "BiomeOBoss" },
+		LoadPackages = { "ModsNikkelMHadesBiomesTheseusGodFxOriginal" },
 		StartRoomUnthreadedEvents = {
 			[1] = { FunctionName = _PLUGIN.guid .. "." .. "ActivatePrePlacedByShrineLevel", },
 		},

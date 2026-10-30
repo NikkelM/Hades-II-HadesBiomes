@@ -75,6 +75,7 @@ function mod.ApplyModificationsAndInheritEnemyData(base, modifications, replacem
 			Thing = {
 				ActivateFx = "ActivateFx",
 				ActivateGraphic = "ActivateAnimation",
+				HighlightTopAnimOnly = "HighlightTopAnimOnly",
 			},
 		}
 
@@ -114,10 +115,11 @@ function mod.ApplyModificationsAndInheritEnemyData(base, modifications, replacem
 					end
 
 					-- Process the found data
-					if foundData and not enemyData[newName] then
+					if foundData and enemyData[newName] == nil then
 						enemyData[newName] = dataSource[parentKey][oldName]
 						mod.DebugPrint("Moved " .. parentKey .. "." .. oldName .. " from sjson " .. sourceName ..
-							" into " .. newName .. " for " .. enemyName .. " with value " .. dataSource[parentKey][oldName], 4)
+							" into " .. newName .. " for " .. enemyName .. " with value " .. tostring(dataSource[parentKey][oldName]),
+							4)
 					elseif not foundData then
 						mod.DebugPrint("Could not find " .. parentKey .. "." .. oldName
 							.. " in sjson for " .. enemyName .. " or its parents", 4)
@@ -136,10 +138,32 @@ function mod.ApplyModificationsAndInheritEnemyData(base, modifications, replacem
 		if enemyData.HitSparkScale ~= nil then
 			enemyData.HitSparkScale = nil
 		end
-		-- This key was renamed, but if it was true before, it must be false now
-		if enemyData.DefaultAIData and enemyData.DefaultAIData.SkipMovement then
-			enemyData.DefaultAIData.MoveWithinRange = false
-			enemyData.DefaultAIData.SkipMovement = nil
+		-- Renamed keys with inverted behaviour
+		if enemyData.DefaultAIData then
+			if enemyData.DefaultAIData.SkipMovement ~= nil then
+				enemyData.DefaultAIData.MoveWithinRange = not enemyData.DefaultAIData.SkipMovement
+				enemyData.DefaultAIData.SkipMovement = nil
+			end
+			if enemyData.DefaultAIData.SkipStopBeforeAttack ~= nil then
+				enemyData.DefaultAIData.PreAttackStop = not enemyData.DefaultAIData.SkipStopBeforeAttack
+				enemyData.DefaultAIData.SkipStopBeforeAttack = nil
+			end
+			if enemyData.DefaultAIData.SkipStopBeforePreAttackEnd ~= nil then
+				enemyData.DefaultAIData.PreAttackEndStop = not enemyData.DefaultAIData.SkipStopBeforePreAttackEnd
+				enemyData.DefaultAIData.SkipStopBeforePreAttackEnd = nil
+			end
+			if enemyData.DefaultAIData.SkipAngleTowardTarget ~= nil then
+				enemyData.DefaultAIData.PreAttackAngleTowardTarget = not enemyData.DefaultAIData.SkipAngleTowardTarget
+				enemyData.DefaultAIData.SkipAngleTowardTarget = nil
+			end
+			if enemyData.DefaultAIData.SkipAngleTowardTargetWait ~= nil then
+				enemyData.DefaultAIData.WaitForAngleTowardTarget = not enemyData.DefaultAIData.SkipAngleTowardTargetWait
+				enemyData.DefaultAIData.SkipAngleTowardTargetWait = nil
+			end
+			if enemyData.DefaultAIData.PreAttackFlash ~= nil then
+				enemyData.DefaultAIData.PreAttackThreadedFunctionName = _PLUGIN.guid ..
+						"." .. "ModsNikkelMHadesBiomesPreAttackFlash"
+			end
 		end
 
 		-- Always use the Olympus dialogue elements for the bosses
@@ -391,6 +415,13 @@ function mod.ApplyModificationsAndInheritEnemyData(base, modifications, replacem
 		end
 
 		game.ProcessDataInheritance(enemyData, game.EnemyData)
+
+		-- Need to do this after inheritance, otherwise the Outline table doesn't get taken from the parent
+		if enemyData.HighlightTopAnimOnly ~= nil and enemyData.Outline then
+			enemyData.Outline.HighlightTopAnimOnly = enemyData.HighlightTopAnimOnly
+		end
+		enemyData.HighlightTopAnimOnly = nil
+
 		base[enemyName] = enemyData
 
 		if enemyData.RequiredKill then
@@ -454,6 +485,22 @@ hydraHeadAIStages[2].RandomSpawnEncounter = { "HydraHeads1", "HydraHeads3", "Hyd
 hydraHeadAIStages[4].SelectRandomAIStage = mod.NilValue
 hydraHeadAIStages[4].RandomSpawnEncounter = { "HydraHeads5", "HydraHeads6" }
 
+-- Ported/converted default AI data
+local hadesDefaultAIData = {
+	DeepInheritance = true,
+	MoveWithinRange = true,
+	StopMoveWithinRange = false,
+	PreAttackStop = true,
+	PreAttackEndStop = true,
+	PostAttackStop = false,
+	PreAttackAngleTowardTarget = true,
+	WaitForAngleTowardTarget = true,
+	DontRetreatIfCharmed = false,
+	AttackDistanceBuffer = 0,
+	MoveSuccessDistance = 32,
+	SkipSelfVelocityIfImpactSlow = false,
+}
+
 -- Replaces the key with the new value instead of modifying
 -- This is done AFTER data inheritance is processed
 local enemyReplacements = {
@@ -470,24 +517,18 @@ local enemyReplacements = {
 		ActivateFadeIn = false,
 		ActivateTint = false,
 		ActivateStartAlpha = 1.0,
+		DefaultAIData = game.DeepCopyTable(hadesDefaultAIData),
 	},
 	HadesBossBaseVulnerableEnemy = {
 		ModsNikkelMHadesBiomesIsModdedEnemy = true,
 		-- Minimum 0.15 to allow OnDeathWeapons to fire from this unit (e.g. ChaosDeathWeaponCurse)
 		DestroyDelay = 0.15,
-		DefaultAIData = {
-			DeepInheritance = true,
-			MoveWithinRange = false,
-			StopMoveWithinRange = false,
-			DontRetreatIfCharmed = false,
-			PreAttackAngleTowardTarget = true,
-			PreAttackStop = false,
-			PreAttackEndStop = false,
-			PostAttackStop = false,
-		},
+		DefaultAIData = game.DeepCopyTable(hadesDefaultAIData),
 		ActivateFx = "EnemySummonRune",
 		ActivateFx2 = "nil",
 		ActivateFxPreSpawn = "nil",
+		-- Prevent bosses from being stunnable by the Coat Omega Attack block
+		EffectBlocks = { "BlockStun" },
 	},
 	-- #endregion
 
@@ -728,7 +769,10 @@ local enemyReplacements = {
 	-- #endregion
 	-- #region STYX - Minibosses
 	CrawlerMiniBoss = {
-		DefaultAIData = { DeepInheritance = true, },
+		DefaultAIData = {
+			DeepInheritance = true,
+			PreAttackFlash = 1.0,
+		},
 		OnKillVoiceLines = {
 			Cooldowns = { { Name = "BossVanquishedSpeech", Time = 60 }, },
 			{ GlobalVoiceLines = "CatFamiliarBossFightLastHitVoiceLines" },
@@ -832,6 +876,7 @@ local enemyReplacements = {
 	ModsNikkelMHadesBiomesHadesTombstone = {
 		InheritFrom = { "BaseTrap" },
 		ActivateAnimation = "ModsNikkelMHadesBiomesHadesTombstoneSpawn",
+		DeathAnimation = "ModsNikkelMHadesBiomesHadesTombstoneExplode",
 		ActivateFx = "nil",
 		ActivateFx2 = "nil",
 		ActivateFxPreSpawn = "nil",
@@ -847,66 +892,65 @@ local enemyReplacements = {
 
 -- #region Dream Run base enemy scaling
 -- DreamBiomeData for base (non-boss) H1 enemies, mirroring vanilla's per-biome base template pattern.
--- Modded enemies scale slightly above their vanilla equivalents.
 -- Defined before enemyModifications so they can be referenced inside it and applied before inheritance processing.
 local tartarusEnemyDreamBiomeData = {
-	[1] = { DataOverrides = { HealthMultiplier = 1.15, MoneyMultiplier = 1.0 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.7 } },
-	[2] = { DataOverrides = { HealthMultiplier = 2.0, MoneyMultiplier = 1.15 }, AddOutgoingDamageModifier = { PlayerMultiplier = 2.5 } },
-	[3] = { DataOverrides = { HealthMultiplier = 4.2, SpeedMultiplier = 1.25, MoneyMultiplier = 1.8 }, AddOutgoingDamageModifier = { PlayerMultiplier = 3.5 } },
-	[4] = { DataOverrides = { HealthMultiplier = 7.5, SpeedMultiplier = 1.45, MoneyMultiplier = 2.5 }, AddOutgoingDamageModifier = { PlayerMultiplier = 3.5 } },
-	[5] = { AddOutgoingDamageModifier = { PlayerMultiplier = 4.62 }, DataOverrides = { HealthMultiplier = 9.75, MoneyMultiplier = 3.0, SpeedMultiplier = 1.45 } },
-	[6] = { AddOutgoingDamageModifier = { PlayerMultiplier = 6.1 }, DataOverrides = { HealthMultiplier = 12.68, MoneyMultiplier = 3.6, SpeedMultiplier = 1.45 } },
-	[7] = { AddOutgoingDamageModifier = { PlayerMultiplier = 8.05 }, DataOverrides = { HealthMultiplier = 16.48, MoneyMultiplier = 4.32, SpeedMultiplier = 1.45 } },
-	[8] = { AddOutgoingDamageModifier = { PlayerMultiplier = 10.63 }, DataOverrides = { HealthMultiplier = 21.42, MoneyMultiplier = 5.18, SpeedMultiplier = 1.45 } },
-	[9] = { AddOutgoingDamageModifier = { PlayerMultiplier = 15.35 }, DataOverrides = { HealthMultiplier = 26.73, MoneyMultiplier = 6.21, SpeedMultiplier = 1.45 } },
-	[10] = { AddOutgoingDamageModifier = { PlayerMultiplier = 20.63 }, DataOverrides = { HealthMultiplier = 33.35, MoneyMultiplier = 7.45, SpeedMultiplier = 1.45 } },
-	[11] = { AddOutgoingDamageModifier = { PlayerMultiplier = 27.72 }, DataOverrides = { HealthMultiplier = 41.62, MoneyMultiplier = 8.93, SpeedMultiplier = 1.45 } },
-	[12] = { AddOutgoingDamageModifier = { PlayerMultiplier = 37.26 }, DataOverrides = { HealthMultiplier = 51.93, MoneyMultiplier = 10.7, SpeedMultiplier = 1.45 } },
+	[1] = { DataOverrides = { HealthMultiplier = 0.92, MoneyMultiplier = 1.0 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.62 } },
+	[2] = { DataOverrides = { HealthMultiplier = 1.6, MoneyMultiplier = 1.15 }, AddOutgoingDamageModifier = { PlayerMultiplier = 2.38 } },
+	[3] = { DataOverrides = { HealthMultiplier = 3.36, SpeedMultiplier = 1.25, MoneyMultiplier = 1.8 }, AddOutgoingDamageModifier = { PlayerMultiplier = 3.33 } },
+	[4] = { DataOverrides = { HealthMultiplier = 6.0, SpeedMultiplier = 1.45, MoneyMultiplier = 2.5 }, AddOutgoingDamageModifier = { PlayerMultiplier = 3.33 } },
+	[5] = { AddOutgoingDamageModifier = { PlayerMultiplier = 4.39 }, DataOverrides = { HealthMultiplier = 7.8, MoneyMultiplier = 3.0, SpeedMultiplier = 1.45 } },
+	[6] = { AddOutgoingDamageModifier = { PlayerMultiplier = 5.8 }, DataOverrides = { HealthMultiplier = 10.14, MoneyMultiplier = 3.6, SpeedMultiplier = 1.45 } },
+	[7] = { AddOutgoingDamageModifier = { PlayerMultiplier = 7.65 }, DataOverrides = { HealthMultiplier = 13.18, MoneyMultiplier = 4.32, SpeedMultiplier = 1.45 } },
+	[8] = { AddOutgoingDamageModifier = { PlayerMultiplier = 10.1 }, DataOverrides = { HealthMultiplier = 17.14, MoneyMultiplier = 5.18, SpeedMultiplier = 1.45 } },
+	[9] = { AddOutgoingDamageModifier = { PlayerMultiplier = 14.58 }, DataOverrides = { HealthMultiplier = 21.38, MoneyMultiplier = 6.21, SpeedMultiplier = 1.45 } },
+	[10] = { AddOutgoingDamageModifier = { PlayerMultiplier = 19.6 }, DataOverrides = { HealthMultiplier = 26.68, MoneyMultiplier = 7.45, SpeedMultiplier = 1.45 } },
+	[11] = { AddOutgoingDamageModifier = { PlayerMultiplier = 26.33 }, DataOverrides = { HealthMultiplier = 33.3, MoneyMultiplier = 8.93, SpeedMultiplier = 1.45 } },
+	[12] = { AddOutgoingDamageModifier = { PlayerMultiplier = 35.4 }, DataOverrides = { HealthMultiplier = 41.54, MoneyMultiplier = 10.7, SpeedMultiplier = 1.45 } },
 }
 
 local asphodelEnemyDreamBiomeData = {
-	[1] = { DataOverrides = { HealthMultiplier = 0.65, MoneyMultiplier = 0.85 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.1 } },
-	[2] = { DataOverrides = { HealthMultiplier = 1.1, MoneyMultiplier = 1.0 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.7 } },
-	[3] = { DataOverrides = { HealthMultiplier = 2.4, SpeedMultiplier = 1.15, MoneyMultiplier = 1.6 }, AddOutgoingDamageModifier = { PlayerMultiplier = 2.35 } },
-	[4] = { DataOverrides = { HealthMultiplier = 4.2, SpeedMultiplier = 1.25, MoneyMultiplier = 2.15 }, AddOutgoingDamageModifier = { PlayerMultiplier = 2.35 } },
-	[5] = { AddOutgoingDamageModifier = { PlayerMultiplier = 3.1 }, DataOverrides = { HealthMultiplier = 5.46, MoneyMultiplier = 2.58, SpeedMultiplier = 1.25 } },
-	[6] = { AddOutgoingDamageModifier = { PlayerMultiplier = 4.09 }, DataOverrides = { HealthMultiplier = 7.1, MoneyMultiplier = 3.1, SpeedMultiplier = 1.25 } },
-	[7] = { AddOutgoingDamageModifier = { PlayerMultiplier = 5.4 }, DataOverrides = { HealthMultiplier = 9.23, MoneyMultiplier = 3.72, SpeedMultiplier = 1.25 } },
-	[8] = { AddOutgoingDamageModifier = { PlayerMultiplier = 7.13 }, DataOverrides = { HealthMultiplier = 12, MoneyMultiplier = 4.46, SpeedMultiplier = 1.25 } },
-	[9] = { AddOutgoingDamageModifier = { PlayerMultiplier = 10.29 }, DataOverrides = { HealthMultiplier = 14.98, MoneyMultiplier = 5.35, SpeedMultiplier = 1.25 } },
-	[10] = { AddOutgoingDamageModifier = { PlayerMultiplier = 13.84 }, DataOverrides = { HealthMultiplier = 18.69, MoneyMultiplier = 6.41, SpeedMultiplier = 1.25 } },
-	[11] = { AddOutgoingDamageModifier = { PlayerMultiplier = 18.59 }, DataOverrides = { HealthMultiplier = 23.33, MoneyMultiplier = 7.69, SpeedMultiplier = 1.25 } },
-	[12] = { AddOutgoingDamageModifier = { PlayerMultiplier = 24.98 }, DataOverrides = { HealthMultiplier = 29.12, MoneyMultiplier = 9.23, SpeedMultiplier = 1.25 } },
+	[1] = { DataOverrides = { HealthMultiplier = 0.53, MoneyMultiplier = 0.85 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.05 } },
+	[2] = { DataOverrides = { HealthMultiplier = 0.93, MoneyMultiplier = 1.0 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.62 } },
+	[3] = { DataOverrides = { HealthMultiplier = 2.03, SpeedMultiplier = 1.15, MoneyMultiplier = 1.6 }, AddOutgoingDamageModifier = { PlayerMultiplier = 2.23 } },
+	[4] = { DataOverrides = { HealthMultiplier = 3.66, SpeedMultiplier = 1.25, MoneyMultiplier = 2.15 }, AddOutgoingDamageModifier = { PlayerMultiplier = 2.23 } },
+	[5] = { AddOutgoingDamageModifier = { PlayerMultiplier = 2.95 }, DataOverrides = { HealthMultiplier = 4.76, MoneyMultiplier = 2.58, SpeedMultiplier = 1.25 } },
+	[6] = { AddOutgoingDamageModifier = { PlayerMultiplier = 3.89 }, DataOverrides = { HealthMultiplier = 6.19, MoneyMultiplier = 3.1, SpeedMultiplier = 1.25 } },
+	[7] = { AddOutgoingDamageModifier = { PlayerMultiplier = 5.13 }, DataOverrides = { HealthMultiplier = 8.04, MoneyMultiplier = 3.72, SpeedMultiplier = 1.25 } },
+	[8] = { AddOutgoingDamageModifier = { PlayerMultiplier = 6.77 }, DataOverrides = { HealthMultiplier = 10.45, MoneyMultiplier = 4.46, SpeedMultiplier = 1.25 } },
+	[9] = { AddOutgoingDamageModifier = { PlayerMultiplier = 9.78 }, DataOverrides = { HealthMultiplier = 13.05, MoneyMultiplier = 5.35, SpeedMultiplier = 1.25 } },
+	[10] = { AddOutgoingDamageModifier = { PlayerMultiplier = 13.15 }, DataOverrides = { HealthMultiplier = 16.28, MoneyMultiplier = 6.41, SpeedMultiplier = 1.25 } },
+	[11] = { AddOutgoingDamageModifier = { PlayerMultiplier = 17.66 }, DataOverrides = { HealthMultiplier = 20.31, MoneyMultiplier = 7.69, SpeedMultiplier = 1.25 } },
+	[12] = { AddOutgoingDamageModifier = { PlayerMultiplier = 23.73 }, DataOverrides = { HealthMultiplier = 25.34, MoneyMultiplier = 9.23, SpeedMultiplier = 1.25 } },
 }
 
 local elysiumEnemyDreamBiomeData = {
-	[1] = { DataOverrides = { HealthMultiplier = 0.35, MoneyMultiplier = 0.55 }, AddOutgoingDamageModifier = { PlayerMultiplier = 0.85 } },
-	[2] = { DataOverrides = { HealthMultiplier = 0.65, MoneyMultiplier = 0.65 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.35 } },
-	[3] = { DataOverrides = { HealthMultiplier = 1.3, MoneyMultiplier = 1.0 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.75 } },
-	[4] = { DataOverrides = { HealthMultiplier = 2.4, MoneyMultiplier = 1.35 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.75 } },
-	[5] = { AddOutgoingDamageModifier = { PlayerMultiplier = 2.31 }, DataOverrides = { HealthMultiplier = 3.12, MoneyMultiplier = 1.62 } },
-	[6] = { AddOutgoingDamageModifier = { PlayerMultiplier = 3.05 }, DataOverrides = { HealthMultiplier = 4.06, MoneyMultiplier = 1.94 } },
-	[7] = { AddOutgoingDamageModifier = { PlayerMultiplier = 4.02 }, DataOverrides = { HealthMultiplier = 5.28, MoneyMultiplier = 2.33 } },
-	[8] = { AddOutgoingDamageModifier = { PlayerMultiplier = 5.3 }, DataOverrides = { HealthMultiplier = 6.86, MoneyMultiplier = 2.8 } },
-	[9] = { AddOutgoingDamageModifier = { PlayerMultiplier = 7.65 }, DataOverrides = { HealthMultiplier = 8.55, MoneyMultiplier = 3.36 } },
-	[10] = { AddOutgoingDamageModifier = { PlayerMultiplier = 10.26 }, DataOverrides = { HealthMultiplier = 10.67, MoneyMultiplier = 4.04 } },
-	[11] = { AddOutgoingDamageModifier = { PlayerMultiplier = 13.77 }, DataOverrides = { HealthMultiplier = 13.32, MoneyMultiplier = 4.85 } },
-	[12] = { AddOutgoingDamageModifier = { PlayerMultiplier = 18.47 }, DataOverrides = { HealthMultiplier = 16.61, MoneyMultiplier = 5.82 } },
+	[1] = { DataOverrides = { HealthMultiplier = 0.24, MoneyMultiplier = 0.55 }, AddOutgoingDamageModifier = { PlayerMultiplier = 0.77 } },
+	[2] = { DataOverrides = { HealthMultiplier = 0.44, MoneyMultiplier = 0.65 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.22 } },
+	[3] = { DataOverrides = { HealthMultiplier = 0.88, MoneyMultiplier = 1.0 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.58 } },
+	[4] = { DataOverrides = { HealthMultiplier = 1.62, MoneyMultiplier = 1.35 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.58 } },
+	[5] = { AddOutgoingDamageModifier = { PlayerMultiplier = 2.08 }, DataOverrides = { HealthMultiplier = 2.11, MoneyMultiplier = 1.62 } },
+	[6] = { AddOutgoingDamageModifier = { PlayerMultiplier = 2.75 }, DataOverrides = { HealthMultiplier = 2.75, MoneyMultiplier = 1.94 } },
+	[7] = { AddOutgoingDamageModifier = { PlayerMultiplier = 3.62 }, DataOverrides = { HealthMultiplier = 3.57, MoneyMultiplier = 2.33 } },
+	[8] = { AddOutgoingDamageModifier = { PlayerMultiplier = 4.77 }, DataOverrides = { HealthMultiplier = 4.64, MoneyMultiplier = 2.8 } },
+	[9] = { AddOutgoingDamageModifier = { PlayerMultiplier = 6.89 }, DataOverrides = { HealthMultiplier = 5.79, MoneyMultiplier = 3.36 } },
+	[10] = { AddOutgoingDamageModifier = { PlayerMultiplier = 9.23 }, DataOverrides = { HealthMultiplier = 7.22, MoneyMultiplier = 4.04 } },
+	[11] = { AddOutgoingDamageModifier = { PlayerMultiplier = 12.39 }, DataOverrides = { HealthMultiplier = 9.01, MoneyMultiplier = 4.85 } },
+	[12] = { AddOutgoingDamageModifier = { PlayerMultiplier = 16.62 }, DataOverrides = { HealthMultiplier = 11.24, MoneyMultiplier = 5.82 } },
 }
 
 local styxEnemyDreamBiomeData = {
-	[1] = { DataOverrides = { HealthMultiplier = 0.2, MoneyMultiplier = 0.7 }, AddOutgoingDamageModifier = { PlayerMultiplier = 0.75 } },
-	[2] = { DataOverrides = { HealthMultiplier = 0.35, MoneyMultiplier = 0.7 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.2 } },
-	[3] = { DataOverrides = { HealthMultiplier = 0.8, MoneyMultiplier = 0.7 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.55 } },
-	[4] = { DataOverrides = { HealthMultiplier = 1.35, MoneyMultiplier = 0.7 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.55 } },
-	[5] = { AddOutgoingDamageModifier = { PlayerMultiplier = 1.7 }, DataOverrides = { HealthMultiplier = 1.76, MoneyMultiplier = 1 } },
-	[6] = { AddOutgoingDamageModifier = { PlayerMultiplier = 2.05 }, DataOverrides = { HealthMultiplier = 2.29, MoneyMultiplier = 1 } },
-	[7] = { AddOutgoingDamageModifier = { PlayerMultiplier = 2.7 }, DataOverrides = { HealthMultiplier = 2.98, MoneyMultiplier = 1.2 } },
-	[8] = { AddOutgoingDamageModifier = { PlayerMultiplier = 3.57 }, DataOverrides = { HealthMultiplier = 3.87, MoneyMultiplier = 1.2 } },
-	[9] = { AddOutgoingDamageModifier = { PlayerMultiplier = 4.71 }, DataOverrides = { HealthMultiplier = 4.83, MoneyMultiplier = 1.2 } },
-	[10] = { AddOutgoingDamageModifier = { PlayerMultiplier = 6.82 }, DataOverrides = { HealthMultiplier = 6.02, MoneyMultiplier = 1.5 } },
-	[11] = { AddOutgoingDamageModifier = { PlayerMultiplier = 9.18 }, DataOverrides = { HealthMultiplier = 7.5, MoneyMultiplier = 1.5 } },
-	[12] = { AddOutgoingDamageModifier = { PlayerMultiplier = 12.36 }, DataOverrides = { HealthMultiplier = 9.35, MoneyMultiplier = 1.5 } },
+	[1] = { DataOverrides = { HealthMultiplier = 0.14, MoneyMultiplier = 0.7 }, AddOutgoingDamageModifier = { PlayerMultiplier = 0.71 } },
+	[2] = { DataOverrides = { HealthMultiplier = 0.25, MoneyMultiplier = 0.7 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.14 } },
+	[3] = { DataOverrides = { HealthMultiplier = 0.58, MoneyMultiplier = 0.7 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.47 } },
+	[4] = { DataOverrides = { HealthMultiplier = 0.98, MoneyMultiplier = 0.7 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.47 } },
+	[5] = { AddOutgoingDamageModifier = { PlayerMultiplier = 1.62 }, DataOverrides = { HealthMultiplier = 1.28, MoneyMultiplier = 1 } },
+	[6] = { AddOutgoingDamageModifier = { PlayerMultiplier = 1.95 }, DataOverrides = { HealthMultiplier = 1.66, MoneyMultiplier = 1 } },
+	[7] = { AddOutgoingDamageModifier = { PlayerMultiplier = 2.57 }, DataOverrides = { HealthMultiplier = 2.16, MoneyMultiplier = 1.2 } },
+	[8] = { AddOutgoingDamageModifier = { PlayerMultiplier = 3.39 }, DataOverrides = { HealthMultiplier = 2.8, MoneyMultiplier = 1.2 } },
+	[9] = { AddOutgoingDamageModifier = { PlayerMultiplier = 4.47 }, DataOverrides = { HealthMultiplier = 3.5, MoneyMultiplier = 1.2 } },
+	[10] = { AddOutgoingDamageModifier = { PlayerMultiplier = 6.48 }, DataOverrides = { HealthMultiplier = 4.36, MoneyMultiplier = 1.5 } },
+	[11] = { AddOutgoingDamageModifier = { PlayerMultiplier = 8.72 }, DataOverrides = { HealthMultiplier = 5.43, MoneyMultiplier = 1.5 } },
+	[12] = { AddOutgoingDamageModifier = { PlayerMultiplier = 11.74 }, DataOverrides = { HealthMultiplier = 6.78, MoneyMultiplier = 1.5 } },
 }
 -- #endregion
 
@@ -922,6 +966,7 @@ local enemyModifications = {
 		ActivateRequirements = mod.NilValue,
 		DefaultAIData = {},
 		AIOptions = { "IdleAI" },
+		LineHistoryName = "NPC_Skelly_01",
 		SubtitleColor = game.Color.SkellyVoice,
 		StunAnimations = { Default = "EnemySkeletonOnHit" },
 		OnDeathFunctionName = _PLUGIN.guid .. "." .. "SkellyAssistDeath",
@@ -1123,6 +1168,14 @@ local enemyModifications = {
 	LightRanged = {
 		StunAnimations = { Default = "EnemyWretchCasterOnHit" },
 		DreamBiomeData = tartarusEnemyDreamBiomeData,
+		GeneratorData = {
+			DifficultyRating = 7,
+		},
+	},
+	LightRangedElite = {
+		GeneratorData = {
+			DifficultyRating = 18,
+		},
 	},
 	LightRangedSuperElite = {
 		DefaultAIData = {
@@ -1142,6 +1195,8 @@ local enemyModifications = {
 			AttackWhileBlendingIntervalMin = 2.0,
 			AttackWhileBlendingIntervalMax = 3.0,
 			PostAttackDuration = 0.3,
+			MoveWithinRange = false,
+			AttackDistance = 450,
 		},
 	},
 	ThiefMineLayerElite = {
@@ -1155,9 +1210,11 @@ local enemyModifications = {
 	},
 	HeavyRanged = {
 		StunAnimations = { Default = "HeavyRangedCrystal4" },
-		ActivateFadeIn = true,
-		ActivateTint = true,
-		ActivateStartAlpha = 0.0,
+		PostAggroAI = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesSurroundAI",
+		ActivatePresentationFunctionName = _PLUGIN.guid .. "." .. "HeavyRangedActivatePresentation",
+		ModsNikkelMHadesBiomesActivationFadeAnimation = "HeavyRangedCrystal4",
+		ModsNikkelMHadesBiomesActivationShineAnimation = "HeavyRangedCrystal4Shine",
+		ActivateDuration = 1.9,
 		SpawnEvents = { { FunctionName = _PLUGIN.guid .. "." .. "CreateTethers", Threaded = true, }, },
 		Tethers = {
 			[1] = { ParentDeathAnimation = "HeavyRangedCrystal1Shatter" },
@@ -1180,6 +1237,12 @@ local enemyModifications = {
 		WeaponOptions = { "HadesSwarmerMelee" },
 		ModsNikkelMHadesBiomesEffectVfxOffsetZ = 80,
 		DreamBiomeData = tartarusEnemyDreamBiomeData,
+	},
+	SwarmerElite = {
+		BlockAttributes = { "HeavyArmor", "Orbit" },
+	},
+	SwarmerSuperElite = {
+		BlockAttributes = { "HeavyArmor", "Orbit" },
 	},
 	LightSpawner = {
 		StunAnimations = { Default = "SpawnerAttackAnim", },
@@ -1212,11 +1275,7 @@ local enemyModifications = {
 		ImmuneToPolymorph = true,
 		IgnoreSprintPhasingStasisStun = true,
 		DefaultAIData = {
-			-- How long it waits before moving again while firing the beams
-			FireDuration = 5.75,
-			-- Sort of acts as a PreAttackDuration as well
-			MoveWithinRangeTimeoutMin = 1.5,
-			MoveWithinRangeTimeoutMax = 2.0,
+			FireDuration = 4.35,
 		},
 		OnDamagedFireProjectiles = {
 			{
@@ -1243,11 +1302,7 @@ local enemyModifications = {
 		ImmuneToPolymorph = true,
 		IgnoreSprintPhasingStasisStun = true,
 		DefaultAIData = {
-			-- How long it waits before moving again while firing the beams
-			FireDuration = 5.75,
-			-- Sort of acts as a PreAttackDuration as well
-			MoveWithinRangeTimeoutMin = 1.5,
-			MoveWithinRangeTimeoutMax = 2.0,
+			FireDuration = 4.35,
 		},
 		OnDamagedFireProjectiles = {
 			{
@@ -1310,6 +1365,12 @@ local enemyModifications = {
 		AIOptions = { _PLUGIN.guid .. "." .. "HarpySupportAI" },
 		-- Otherwise, doesn't get cleaned up after boss kill as of the Unseen Update
 		RequiredKill = true,
+		DreamBiomeData = {
+			[1] = { AddOutgoingDamageModifier = { PlayerMultiplier = 1.5 } },
+			[2] = { AddOutgoingDamageModifier = { PlayerMultiplier = 2.3 } },
+			[3] = { AddOutgoingDamageModifier = { PlayerMultiplier = 3.5 } },
+			[4] = { AddOutgoingDamageModifier = { PlayerMultiplier = 4.7 } },
+		},
 	},
 	Harpy = {
 		-- Base Health: 4400
@@ -1365,9 +1426,9 @@ local enemyModifications = {
 			},
 		},
 		DreamBiomeData = {
-			[1] = { DataOverrides = { HealthMultiplier = 1.1 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.5 } },
-			[2] = { DataOverrides = { HealthMultiplier = 1.8 }, AddOutgoingDamageModifier = { PlayerMultiplier = 2.3 } },
-			[3] = { DataOverrides = { HealthMultiplier = 3.5, SpeedMultiplier = 1.1 }, AddOutgoingDamageModifier = { PlayerMultiplier = 3.5 } },
+			[1] = { DataOverrides = { HealthMultiplier = 0.95 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.5 } },
+			[2] = { DataOverrides = { HealthMultiplier = 1.63 }, AddOutgoingDamageModifier = { PlayerMultiplier = 2.3 } },
+			[3] = { DataOverrides = { HealthMultiplier = 3.36, SpeedMultiplier = 1.1 }, AddOutgoingDamageModifier = { PlayerMultiplier = 3.5 } },
 			[4] = { DataOverrides = { HealthMultiplier = 5.8, SpeedMultiplier = 1.25 }, AddOutgoingDamageModifier = { PlayerMultiplier = 4.7 } },
 		},
 		SubtitleColor = game.Color.MegVoice,
@@ -1471,9 +1532,9 @@ local enemyModifications = {
 			},
 		},
 		DreamBiomeData = {
-			[1] = { DataOverrides = { HealthMultiplier = 1.1 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.5 } },
-			[2] = { DataOverrides = { HealthMultiplier = 1.8 }, AddOutgoingDamageModifier = { PlayerMultiplier = 2.3 } },
-			[3] = { DataOverrides = { HealthMultiplier = 3.5, SpeedMultiplier = 1.1 }, AddOutgoingDamageModifier = { PlayerMultiplier = 3.5 } },
+			[1] = { DataOverrides = { HealthMultiplier = 0.95 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.5 } },
+			[2] = { DataOverrides = { HealthMultiplier = 1.63 }, AddOutgoingDamageModifier = { PlayerMultiplier = 2.3 } },
+			[3] = { DataOverrides = { HealthMultiplier = 3.36, SpeedMultiplier = 1.1 }, AddOutgoingDamageModifier = { PlayerMultiplier = 3.5 } },
 			[4] = { DataOverrides = { HealthMultiplier = 5.8, SpeedMultiplier = 1.25 }, AddOutgoingDamageModifier = { PlayerMultiplier = 4.7 } },
 		},
 		SubtitleColor = game.Color.AlectoVoice,
@@ -1562,9 +1623,9 @@ local enemyModifications = {
 			},
 		},
 		DreamBiomeData = {
-			[1] = { DataOverrides = { HealthMultiplier = 1.1 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.5 } },
-			[2] = { DataOverrides = { HealthMultiplier = 1.8 }, AddOutgoingDamageModifier = { PlayerMultiplier = 2.3 } },
-			[3] = { DataOverrides = { HealthMultiplier = 3.5, SpeedMultiplier = 1.1 }, AddOutgoingDamageModifier = { PlayerMultiplier = 3.5 } },
+			[1] = { DataOverrides = { HealthMultiplier = 0.95 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.5 } },
+			[2] = { DataOverrides = { HealthMultiplier = 1.63 }, AddOutgoingDamageModifier = { PlayerMultiplier = 2.3 } },
+			[3] = { DataOverrides = { HealthMultiplier = 3.36, SpeedMultiplier = 1.1 }, AddOutgoingDamageModifier = { PlayerMultiplier = 3.5 } },
 			[4] = { DataOverrides = { HealthMultiplier = 5.8, SpeedMultiplier = 1.2 }, AddOutgoingDamageModifier = { PlayerMultiplier = 4.7 } },
 		},
 		SubtitleColor = game.Color.TisiphoneVoice,
@@ -1583,7 +1644,7 @@ local enemyModifications = {
 			[2] = { ThreadedFunctions = { _PLUGIN.guid .. "." .. "Harpy3MapTransition", }, },
 			[3] = {
 				ThreadedFunctions = { _PLUGIN.guid .. "." .. "Harpy3MapTransition", },
-				UnequipWeapons = { "HarpyLightningLine", "HarpySlowBeam360", },
+				UnequipWeapons = { "HarpyLightningLine", },
 			},
 		},
 		-- Using OnKillVoiceLines from Harpy
@@ -1656,6 +1717,7 @@ local enemyModifications = {
 		-- Flag that indicates the enemy is originally from Hades II, and we are just overwriting some properties
 		-- Used e.g. for the Zeus Blitz effect location
 		ModsNikkelMHadesBiomesOriginalHadesTwoEnemy = true,
+		DreamBiomeData = asphodelEnemyDreamBiomeData,
 		LargeUnitCap = 5,
 		LoadPackages = { "BiomeB", },
 		ActivateFx = "EnemySummonRuneMedium",
@@ -1667,6 +1729,7 @@ local enemyModifications = {
 	},
 	HadesBloodlessNakedElite = {
 		ModsNikkelMHadesBiomesOriginalHadesTwoEnemy = true,
+		DreamBiomeData = asphodelEnemyDreamBiomeData,
 		BlockNextBiomeEnemyShrineUpgrade = true,
 		LargeUnitCap = 5,
 		GenusName = "BloodlessNaked_Elite",
@@ -1688,6 +1751,7 @@ local enemyModifications = {
 	},
 	BloodlessNakedBerserker = {
 		ModsNikkelMHadesBiomesOriginalHadesTwoEnemy = true,
+		DreamBiomeData = asphodelEnemyDreamBiomeData,
 		LargeUnitCap = 5,
 		GenusName = "BloodlessBerserker",
 		LoadPackages = { "BiomeB", },
@@ -1701,6 +1765,7 @@ local enemyModifications = {
 	},
 	BloodlessNakedBerserkerElite = {
 		ModsNikkelMHadesBiomesOriginalHadesTwoEnemy = true,
+		DreamBiomeData = asphodelEnemyDreamBiomeData,
 		BlockNextBiomeEnemyShrineUpgrade = true,
 		LargeUnitCap = 5,
 		GenusName = "BloodlessBerserker_Elite",
@@ -1716,6 +1781,7 @@ local enemyModifications = {
 	},
 	HadesBloodlessWaveFist = {
 		ModsNikkelMHadesBiomesOriginalHadesTwoEnemy = true,
+		DreamBiomeData = asphodelEnemyDreamBiomeData,
 		LargeUnitCap = 5,
 		LoadPackages = { "BiomeB", },
 		RequiredIntroEncounter = "WaveFistIntro",
@@ -1728,6 +1794,7 @@ local enemyModifications = {
 	},
 	HadesBloodlessWaveFistElite = {
 		ModsNikkelMHadesBiomesOriginalHadesTwoEnemy = true,
+		DreamBiomeData = asphodelEnemyDreamBiomeData,
 		BlockNextBiomeEnemyShrineUpgrade = true,
 		LargeUnitCap = 5,
 		GenusName = "BloodlessWaveFist_Elite",
@@ -1742,6 +1809,7 @@ local enemyModifications = {
 	},
 	HadesBloodlessGrenadier = {
 		ModsNikkelMHadesBiomesOriginalHadesTwoEnemy = true,
+		DreamBiomeData = asphodelEnemyDreamBiomeData,
 		LargeUnitCap = 5,
 		LoadPackages = { "BiomeB", },
 		ActivateFx = "EnemySummonRune",
@@ -1753,6 +1821,7 @@ local enemyModifications = {
 	},
 	HadesBloodlessGrenadierElite = {
 		ModsNikkelMHadesBiomesOriginalHadesTwoEnemy = true,
+		DreamBiomeData = asphodelEnemyDreamBiomeData,
 		BlockNextBiomeEnemyShrineUpgrade = true,
 		LargeUnitCap = 5,
 		GenusName = "BloodlessGrenadier_Elite",
@@ -1767,6 +1836,7 @@ local enemyModifications = {
 	},
 	HadesBloodlessSelfDestruct = {
 		ModsNikkelMHadesBiomesOriginalHadesTwoEnemy = true,
+		DreamBiomeData = asphodelEnemyDreamBiomeData,
 		LargeUnitCap = 5,
 		LoadPackages = { "BiomeB", },
 		RequiredIntroEncounter = "SelfDestructIntro",
@@ -1779,6 +1849,7 @@ local enemyModifications = {
 	},
 	HadesBloodlessSelfDestructElite = {
 		ModsNikkelMHadesBiomesOriginalHadesTwoEnemy = true,
+		DreamBiomeData = asphodelEnemyDreamBiomeData,
 		BlockNextBiomeEnemyShrineUpgrade = true,
 		LargeUnitCap = 5,
 		GenusName = "BloodlessSelfDestruct_Elite",
@@ -1793,6 +1864,7 @@ local enemyModifications = {
 	},
 	HadesBloodlessPitcher = {
 		ModsNikkelMHadesBiomesOriginalHadesTwoEnemy = true,
+		DreamBiomeData = asphodelEnemyDreamBiomeData,
 		LargeUnitCap = 5,
 		LoadPackages = { "BiomeB", },
 		RequiredIntroEncounter = "PitcherIntro",
@@ -1805,6 +1877,7 @@ local enemyModifications = {
 	},
 	HadesBloodlessPitcherElite = {
 		ModsNikkelMHadesBiomesOriginalHadesTwoEnemy = true,
+		DreamBiomeData = asphodelEnemyDreamBiomeData,
 		BlockNextBiomeEnemyShrineUpgrade = true,
 		LargeUnitCap = 5,
 		GenusName = "BloodlessPitcher_Elite",
@@ -1826,6 +1899,8 @@ local enemyModifications = {
 	},
 	HadesSpreadShotUnit = {
 		ModsNikkelMHadesBiomesOriginalHadesTwoEnemy = true,
+		PostAggroAI = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesSurroundAI",
+		DreamBiomeData = asphodelEnemyDreamBiomeData,
 		LargeUnitCap = 6,
 		LoadPackages = { "BiomeB", },
 		WeaponOptions = { "HadesSpreadShotBolt" },
@@ -1833,11 +1908,14 @@ local enemyModifications = {
 		ActivateFx2 = "nil",
 		ActivateFxPreSpawn = "nil",
 		GeneratorData = {
+			DifficultyRating = 25,
 			BlockEnemyTypes = { "HadesSpreadShotUnitElite" },
 		},
 	},
 	HadesSpreadShotUnitElite = {
 		ModsNikkelMHadesBiomesOriginalHadesTwoEnemy = true,
+		PostAggroAI = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesSurroundAI",
+		DreamBiomeData = asphodelEnemyDreamBiomeData,
 		LargeUnitCap = 6,
 		GenusName = "SpreadShotUnit_Elite",
 		LoadPackages = { "BiomeB", },
@@ -1846,6 +1924,7 @@ local enemyModifications = {
 		ActivateFx2 = "nil",
 		ActivateFxPreSpawn = "nil",
 		GeneratorData = {
+			DifficultyRating = 38,
 			BlockEnemyTypes = { "HadesSpreadShotUnit" },
 		},
 	},
@@ -1860,6 +1939,7 @@ local enemyModifications = {
 		ModsNikkelMHadesBiomesEffectVfxOffsetZ = 90,
 	},
 	FreezeShotUnitElite = {
+		BlockAttributes = { "Massive" },
 		EliteAttributeOptions = game.CombineTables(game.EnemySets.GenericEliteAttributes, { "Hex", }),
 	},
 	DusaSummon = {
@@ -1945,6 +2025,10 @@ local enemyModifications = {
 	ShieldRanged = {
 		MaxHealth = 480,
 		StunAnimations = { Default = "HealRangedCrystal4" },
+		ActivatePresentationFunctionName = _PLUGIN.guid .. "." .. "HeavyRangedActivatePresentation",
+		ModsNikkelMHadesBiomesActivationFadeAnimation = "HealRangedCrystal4",
+		ModsNikkelMHadesBiomesActivationShineAnimation = "HealRangedCrystal4",
+		ActivateDuration = 1.9,
 		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
 		DreamBiomeData = asphodelEnemyDreamBiomeData,
 		BlockRaiseDead = true,
@@ -1972,8 +2056,10 @@ local enemyModifications = {
 	-- #region ASPHODEL - Minibosses
 	ShieldRangedMiniBoss = {
 		MaxHealth = 1900,
-		HealthBuffer = 4700,
+		HealthBuffer = 4000,
 		StunAnimations = { Default = "HealRangedCrystal4" },
+		ModsNikkelMHadesBiomesActivationFadeOffsetZ = 75,
+		ModsNikkelMHadesBiomesActivationFadeScale = 1.4,
 		DeathAnimation = "HealRangedDeathMiniBoss",
 		DeathFx = "null",
 		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
@@ -2047,9 +2133,9 @@ local enemyModifications = {
 		ModsNikkelMHadesBiomesGoddessModeMaxHealth = 12000,
 		ModsNikkelMHadesBiomesIgnoreModdedHealthModifiers = true,
 		DreamBiomeData = {
-			[1] = { DataOverrides = { HealthMultiplier = 0.6 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.1 } },
-			[2] = { DataOverrides = { HealthMultiplier = 1.0 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.5 } },
-			[3] = { DataOverrides = { HealthMultiplier = 1.8, SpeedMultiplier = 1.15 }, AddOutgoingDamageModifier = { PlayerMultiplier = 2.4 } },
+			[1] = { DataOverrides = { HealthMultiplier = 0.37 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.1 } },
+			[2] = { DataOverrides = { HealthMultiplier = 0.68 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.5 } },
+			[3] = { DataOverrides = { HealthMultiplier = 1.44, SpeedMultiplier = 1.15 }, AddOutgoingDamageModifier = { PlayerMultiplier = 2.4 } },
 			[4] = { DataOverrides = { HealthMultiplier = 2.7, SpeedMultiplier = 1.25 }, AddOutgoingDamageModifier = { PlayerMultiplier = 3.5 } },
 		},
 		AltHealthBarTextIds = {
@@ -2458,13 +2544,25 @@ local enemyModifications = {
 	SplitShotUnit = {
 		StunAnimations = { Default = "EnemyWretchCasterOnHit_SplitShot" },
 		DeathAnimation = "EnemyWretchCasterDeath_SplitShot",
+		PostAggroAI = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesSurroundAI",
 		DreamBiomeData = elysiumEnemyDreamBiomeData,
+		GeneratorData = {
+			DifficultyRating = 38,
+		},
+	},
+	SplitShotUnitElite = {
+		GeneratorData = {
+			DifficultyRating = 135,
+		},
 	},
 	Chariot = {
 		StunAnimations = { Default = "ChariotOnHit" },
 		DreamBiomeData = elysiumEnemyDreamBiomeData,
 		DefaultAIData = {
 			PreAttackAngleTowardTarget = false,
+			PreMoveAngleTowardTarget = true,
+			PreMoveWaitForAngleTowardTarget = true,
+			PreMoveStop = true,
 			AttackDistanceBuffer = 0,
 			StopMoveWithinRange = false,
 			RamEffectName = mod.NilValue,
@@ -2530,6 +2628,9 @@ local enemyModifications = {
 		BlockCharm = true,
 		DefaultAIData = {
 			PreAttackAngleTowardTarget = false,
+			PreMoveAngleTowardTarget = true,
+			PreMoveWaitForAngleTowardTarget = true,
+			PreMoveStop = true,
 			AttackDistanceBuffer = 0,
 			StopMoveWithinRange = false,
 			RamEffectName = mod.NilValue,
@@ -2592,8 +2693,8 @@ local enemyModifications = {
 		-- Prometheus Health: 33000
 		-- Heracles Health: 34000
 		-- Note that this is NOT multiplied by the ModdedUnitMaxHealthMultiplierBonus
-		MaxHealth = 26500,
-		ModsNikkelMHadesBiomesGoddessModeMaxHealth = 20000,
+		MaxHealth = 24500,
+		ModsNikkelMHadesBiomesGoddessModeMaxHealth = 18500,
 		CauseOfDeathVoiceLines = {
 			Queue = "Interrupt",
 			[1] = { Source = { LineHistoryName = "Minotaur" } },
@@ -2647,9 +2748,9 @@ local enemyModifications = {
 			},
 		},
 		DreamBiomeData = {
-			[1] = { DataOverrides = { HealthMultiplier = 0.4 }, AddOutgoingDamageModifier = { PlayerMultiplier = 0.55 } },
-			[2] = { DataOverrides = { HealthMultiplier = 0.65 }, AddOutgoingDamageModifier = { PlayerMultiplier = 0.8 } },
-			[3] = { DataOverrides = { HealthMultiplier = 1.2 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.3 } },
+			[1] = { DataOverrides = { HealthMultiplier = 0.26 }, AddOutgoingDamageModifier = { PlayerMultiplier = 0.55 } },
+			[2] = { DataOverrides = { HealthMultiplier = 0.46 }, AddOutgoingDamageModifier = { PlayerMultiplier = 0.8 } },
+			[3] = { DataOverrides = { HealthMultiplier = 1.0 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.3 } },
 			[4] = { DataOverrides = { HealthMultiplier = 1.8 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.8 } },
 		},
 		SubtitleColor = game.Color.MinotaurVoice,
@@ -2774,8 +2875,8 @@ local enemyModifications = {
 	},
 	Minotaur2 = {
 		-- Base Health: 16000
-		MaxHealth = 27000,
-		ModsNikkelMHadesBiomesGoddessModeMaxHealth = 20500,
+		MaxHealth = 25500,
+		ModsNikkelMHadesBiomesGoddessModeMaxHealth = 18000,
 		ModsNikkelMHadesBiomesIgnoreModdedHealthModifiers = true,
 		OnTouchdownFunctionArgs = {
 			ProjectileName = "MinotaurArmoredOverheadTouchdown",
@@ -2795,8 +2896,8 @@ local enemyModifications = {
 	},
 	Theseus = {
 		-- Base Health: 9000
-		MaxHealth = 20000,
-		ModsNikkelMHadesBiomesGoddessModeMaxHealth = 16000,
+		MaxHealth = 18000,
+		ModsNikkelMHadesBiomesGoddessModeMaxHealth = 14500,
 		CauseOfDeathVoiceLines = {
 			Queue = "Interrupt",
 			[1] = { Source = { LineHistoryName = "Theseus" } },
@@ -2825,9 +2926,9 @@ local enemyModifications = {
 			},
 		},
 		DreamBiomeData = {
-			[1] = { DataOverrides = { HealthMultiplier = 0.4 }, AddOutgoingDamageModifier = { PlayerMultiplier = 0.55 } },
-			[2] = { DataOverrides = { HealthMultiplier = 0.65 }, AddOutgoingDamageModifier = { PlayerMultiplier = 0.8 } },
-			[3] = { DataOverrides = { HealthMultiplier = 1.2 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.3 } },
+			[1] = { DataOverrides = { HealthMultiplier = 0.26 }, AddOutgoingDamageModifier = { PlayerMultiplier = 0.55 } },
+			[2] = { DataOverrides = { HealthMultiplier = 0.46 }, AddOutgoingDamageModifier = { PlayerMultiplier = 0.8 } },
+			[3] = { DataOverrides = { HealthMultiplier = 1.0 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.3 } },
 			[4] = { DataOverrides = { HealthMultiplier = 1.8 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.8 } },
 		},
 		SubtitleColor = game.Color.TheseusVoice,
@@ -2993,9 +3094,17 @@ local enemyModifications = {
 	},
 	Theseus2 = {
 		-- Base Health: 12000
-		MaxHealth = 21500,
-		ModsNikkelMHadesBiomesGoddessModeMaxHealth = 17400,
+		MaxHealth = 20500,
+		ModsNikkelMHadesBiomesGoddessModeMaxHealth = 16500,
 		ModsNikkelMHadesBiomesIgnoreModdedHealthModifiers = true,
+		CollisionReactions = {
+			DeepInheritance = true,
+			Append = true,
+			{
+				MinVelocity = 280,
+				FunctionName = _PLUGIN.guid .. "." .. "TheseusChariotRamCollision",
+			},
+		},
 		OnDeathFunctionName = _PLUGIN.guid .. "." .. "TheseusMinotaurKillPresentation",
 		OnDamagedFunctionName = _PLUGIN.guid .. "." .. "Theseus2Damaged",
 		AIStages = {
@@ -3053,6 +3162,7 @@ local enemyModifications = {
 		OnDeathThreadedFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesOnDeathFireProjectile",
 		OnDeathFunctionArgs = {
 			ProjectileName = "HadesPoisonPuddle",
+			ModsNikkelMHadesBiomesSkipIfCharmed = true,
 		},
 		ModsNikkelMHadesBiomesEffectVfxOffsetZ = 40,
 		-- Don't allow poison attack when summoned on the player's side
@@ -3080,6 +3190,7 @@ local enemyModifications = {
 	HeavyRangedForked = {
 		StunAnimations = { Default = "HeavyRangedForkedCrystal4" },
 		DeathAnimation = "HeavyRangedForkedDeath",
+		PostAggroAI = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesSurroundAI",
 		DreamBiomeData = styxEnemyDreamBiomeData,
 		-- This plops a large model of the enemy on the ground which doesn't disappear
 		SpawnObstaclesOnDeath = mod.NilValue,
@@ -3102,6 +3213,8 @@ local enemyModifications = {
 			AttackWhileBlendingIntervalMax = 1.0,
 			AttackWhileMovingIntervalMin = 0.5,
 			AttackWhileMovingIntervalMax = 1.0,
+			MoveWithinRange = false,
+			AttackDistance = 450,
 		},
 		ModsNikkelMHadesBiomesEffectVfxOffsetZ = 50,
 	},
@@ -3125,7 +3238,6 @@ local enemyModifications = {
 		BlockRespawnShrineUpgrade = true,
 		BlockCharm = true,
 		IgnoreSprintPhasingStasisStun = true,
-		WeaponOptions = { "SatyrMinigun", "SatyrDash" },
 		ModsNikkelMHadesBiomesEffectVfxOffsetZ = 140,
 	},
 	RatThugMiniboss = {
@@ -3245,10 +3357,10 @@ local enemyModifications = {
 		},
 		ModsNikkelMHadesBiomesIgnoreModdedHealthModifiers = true,
 		DreamBiomeData = {
-			[1] = { DataOverrides = { HealthMultiplier = 0.25, HealingMultiplier = 0.25 }, AddOutgoingDamageModifier = { PlayerMultiplier = 0.35 } },
-			[2] = { DataOverrides = { HealthMultiplier = 0.38, HealingMultiplier = 0.38 }, AddOutgoingDamageModifier = { PlayerMultiplier = 0.6 } },
-			[3] = { DataOverrides = { HealthMultiplier = 0.8, HealingMultiplier = 0.8 }, AddOutgoingDamageModifier = { PlayerMultiplier = 0.95 } },
-			[4] = { DataOverrides = { HealthMultiplier = 1.4 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.4 } },
+			[1] = { DataOverrides = { HealthMultiplier = 0.24, HealingMultiplier = 0.24 }, AddOutgoingDamageModifier = { PlayerMultiplier = 0.35 } },
+			[2] = { DataOverrides = { HealthMultiplier = 0.36, HealingMultiplier = 0.36 }, AddOutgoingDamageModifier = { PlayerMultiplier = 0.6 } },
+			[3] = { DataOverrides = { HealthMultiplier = 0.82, HealingMultiplier = 0.82 }, AddOutgoingDamageModifier = { PlayerMultiplier = 0.95 } },
+			[4] = { DataOverrides = { HealthMultiplier = 1.35 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.4 } },
 		},
 		SetupEvents = {
 			{
@@ -3258,8 +3370,8 @@ local enemyModifications = {
 					DreamBiomeData = {
 						[1] = { DataOverrides = { HealthMultiplier = 0.2, HealingMultiplier = 0.2 }, AddOutgoingDamageModifier = { PlayerMultiplier = 0.35 } },
 						[2] = { DataOverrides = { HealthMultiplier = 0.3, HealingMultiplier = 0.3 }, AddOutgoingDamageModifier = { PlayerMultiplier = 0.6 } },
-						[3] = { DataOverrides = { HealthMultiplier = 0.64, HealingMultiplier = 0.64 }, AddOutgoingDamageModifier = { PlayerMultiplier = 0.95 } },
-						[4] = { DataOverrides = { HealthMultiplier = 1.12 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.4 } },
+						[3] = { DataOverrides = { HealthMultiplier = 0.68, HealingMultiplier = 0.68 }, AddOutgoingDamageModifier = { PlayerMultiplier = 0.95 } },
+						[4] = { DataOverrides = { HealthMultiplier = 1.13 }, AddOutgoingDamageModifier = { PlayerMultiplier = 1.4 } },
 					},
 				},
 				GameStateRequirements = {
@@ -3422,6 +3534,7 @@ local enemyModifications = {
 		DefaultAIData = {
 			-- Otherwise the blast is delayed if the player moves out of range, as the static cast tries to "move" towards the player
 			MoveWithinRange = false,
+			WaitForAngleTowardTarget = false,
 		},
 	},
 	NPC_Hades_Story_02 = {
@@ -3439,6 +3552,7 @@ local enemyModifications = {
 				PathFalse = { "CurrentRun", "IsDreamRun" }
 			},
 		},
+		SelectCustomSpawnOptions = "nil",
 		IsBoss = false,
 	},
 	-- #endregion
@@ -3471,6 +3585,7 @@ local enemyModifications = {
 			[3] = { TransitionUnthreadedFunctionNames = { _PLUGIN.guid .. "." .. "RandomizeCover" }, },
 		},
 		IgnoreSprintPhasingStasisStun = true,
+		EffectBlocks = { "BlockStun" },
 	},
 	CharonGhostChargeSource = {
 		ModsNikkelMHadesBiomesIsModdedEnemy = true,

@@ -1,3 +1,25 @@
+-- For tether kick-back
+OnHit {
+	function(triggerArgs)
+		local victim = triggerArgs.Victim
+		if victim == nil or victim.TetherIds == nil or victim.IsDead then
+			return
+		end
+
+		for k, tetherId in ipairs(victim.TetherIds) do
+			local configIndex = victim.TetherConfigIndices and victim.TetherConfigIndices[k] or k
+			local tetherConfig = victim.Tethers[configIndex]
+			if tetherConfig ~= nil and tetherConfig.OwnerHitVelocity ~= nil then
+				ApplyForce({
+					Id = tetherId,
+					Speed = tetherConfig.OwnerHitVelocity,
+					Angle = game.RandomFloat(0, 360),
+				})
+			end
+		end
+	end
+}
+
 -- When the enemy's armor is broken, remove the outline from any tethers as well, if applicable
 modutil.mod.Path.Wrap("DoEnemyHealthBufferDeplete", function(base, enemy)
 	base(enemy)
@@ -9,6 +31,28 @@ modutil.mod.Path.Wrap("DoEnemyHealthBufferDeplete", function(base, enemy)
 	end
 end)
 
+modutil.mod.Path.Wrap("Kill", function(base, victim, triggerArgs)
+	if victim == nil then
+		return
+	end
+
+	if victim.IsDead then
+		return
+	end
+
+	if game.SessionMapState.HandlingDeath then
+		return
+	end
+
+	triggerArgs = triggerArgs or {}
+
+	if victim.OnDeathFunctionArgs ~= nil and victim.OnDeathFunctionArgs.ModsNikkelMHadesBiomesSkipIfCharmed and (victim.Charmed or victim.AlwaysTraitor or game.IsCharmed({ Id = victim.ObjectId })) then
+		victim.OnDeathThreadedFunctionName = nil
+	end
+
+	return base(victim, triggerArgs)
+end)
+
 modutil.mod.Path.Wrap("KillEnemy", function(base, victim, triggerArgs)
 	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and (victim.ModsNikkelMHadesBiomesIsModdedEnemy or victim.ModsNikkelMHadesBiomesOriginalHadesTwoEnemy) then
 		local killer = triggerArgs.AttackerTable or {}
@@ -18,9 +62,10 @@ modutil.mod.Path.Wrap("KillEnemy", function(base, victim, triggerArgs)
 			local delay = 0
 			local spawns = GetIds({ Name = "Spawner" .. victim.ObjectId }) or {}
 			for _, spawnId in pairs(spawns) do
-				if game.RequiredKillEnemies[spawnId] ~= nil then
+				local spawn = game.ActiveEnemies[spawnId]
+				if spawn ~= nil then
 					delay = delay + killInterval
-					game.thread(mod.DelayedKill, game.RequiredKillEnemies[spawnId],
+					game.thread(mod.DelayedKill, spawn,
 						{ BlockRespawns = true, SkipDeathWeapons = true }, delay)
 				end
 			end
@@ -165,6 +210,23 @@ modutil.mod.Path.Wrap("DisableAllyUnits", function(base)
 	end
 
 	return base()
+end)
+
+modutil.mod.Path.Wrap("DoBlock", function(base, triggerArgs)
+	local weaponName = triggerArgs.WeaponName
+
+	if weaponName ~= nil and game.WeaponData[weaponName] ~= nil then
+		-- Prevent "Blocked!" popups when blocking FlurrySpawner butterflies on these attacks
+		if game.Contains({ "WeaponDaggerThrow", "WeaponSuitRanged", "WeaponAxeSpecial" }, weaponName) and game.Contains({ "FlurrySpawnerWeapon", "FlurrySpawnerWeaponElite" }, triggerArgs.BlockedProjectileName) then
+			local doProjectileBlockPresentation = game.WeaponData[weaponName].DoProjectileBlockPresentation
+			game.WeaponData[weaponName].DoProjectileBlockPresentation = false
+			local returnValue = base(triggerArgs)
+			game.WeaponData[weaponName].DoProjectileBlockPresentation = doProjectileBlockPresentation
+			return returnValue
+		end
+	end
+
+	return base(triggerArgs)
 end)
 
 function mod.DelayedKill(victim, triggerArgs, delay)

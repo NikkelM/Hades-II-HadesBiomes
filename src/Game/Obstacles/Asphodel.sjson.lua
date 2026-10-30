@@ -8,7 +8,53 @@ local hadesTwoAsphodelObstacleFile = rom.path.combine(rom.paths.Content(), "Game
 
 -- These need to be added before the others, as they are inherited from
 local hadesObstacleAdditionsParents = {}
-local hadesObstacleAdditions = {}
+local hadesObstacleAdditions = {
+	{
+		Name = "AsphodelLavaFallD",
+		InheritFrom = "1_BaseDecalObstacle",
+		DisplayInEditor = true,
+		Thing = {
+			EditorOutlineDrawBounds = false,
+			Graphic = "LavaFallD",
+		},
+	},
+	{
+		Name = "AsphodelLavaFallG",
+		InheritFrom = "1_BaseDecalObstacle",
+		DisplayInEditor = true,
+		Thing = {
+			EditorOutlineDrawBounds = false,
+			Graphic = "LavaFallG",
+		},
+	},
+	{
+		Name = "AsphodelLavaMoundA",
+		InheritFrom = "1_BaseDecalObstacle",
+		DisplayInEditor = true,
+		Thing = {
+			EditorOutlineDrawBounds = false,
+			Graphic = "LavaMoundA",
+		},
+	},
+	{
+		Name = "AsphodelLavaMoundD",
+		InheritFrom = "1_BaseDecalObstacle",
+		DisplayInEditor = true,
+		Thing = {
+			EditorOutlineDrawBounds = false,
+			Graphic = "LavaMoundD",
+		},
+	},
+	{
+		Name = "AsphodelLavaWave",
+		InheritFrom = "1_BaseDecalObstacle",
+		DisplayInEditor = true,
+		Thing = {
+			EditorOutlineDrawBounds = false,
+			Graphic = "LavaWaveA",
+		},
+	},
+}
 
 -- Add the added obstacles
 mod.AddTableKeysSkipDupes(hadesAsphodelObstacleTable.Obstacles, hadesObstacleAdditionsParents, "Name")

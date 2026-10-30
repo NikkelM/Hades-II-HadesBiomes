@@ -1,6 +1,33 @@
 -- Applies modifications to base weapon objects, and then adds the new weapon objects to the game
 local function applyModificationsAndInheritWeaponData(base, modifications, replacements, weaponKeyReplacements,
 																											sjsonToAIDataPropertyMappings)
+	local function convertHadesAIFlags(aiData)
+		if aiData == nil then
+			return
+		end
+
+		if aiData.SkipMovement ~= nil then
+			aiData.MoveWithinRange = not aiData.SkipMovement
+			aiData.SkipMovement = nil
+		end
+		if aiData.SkipStopBeforeAttack ~= nil then
+			aiData.PreAttackStop = not aiData.SkipStopBeforeAttack
+			aiData.SkipStopBeforeAttack = nil
+		end
+		if aiData.SkipStopBeforePreAttackEnd ~= nil then
+			aiData.PreAttackEndStop = not aiData.SkipStopBeforePreAttackEnd
+			aiData.SkipStopBeforePreAttackEnd = nil
+		end
+		if aiData.SkipAngleTowardTarget ~= nil then
+			aiData.PreAttackAngleTowardTarget = not aiData.SkipAngleTowardTarget
+			aiData.SkipAngleTowardTarget = nil
+		end
+		if aiData.SkipAngleTowardTargetWait ~= nil then
+			aiData.WaitForAngleTowardTarget = not aiData.SkipAngleTowardTargetWait
+			aiData.SkipAngleTowardTargetWait = nil
+		end
+	end
+
 	-- Remove data from Hades that we don't want to use (e.g. player weapons)
 	for _, name in ipairs(mod.EnemyWeaponRemovals) do
 		base[name] = nil
@@ -54,11 +81,9 @@ local function applyModificationsAndInheritWeaponData(base, modifications, repla
 			weaponData.ForceFirst = nil
 		end
 
-		-- This key was renamed, but if it was true before, it must be false now
-		if weaponData.AIData.SkipMovement then
-			weaponData.AIData.MoveWithinRange = false
-			weaponData.AIData.SkipMovement = nil
-		end
+		-- Renamed keys with inverted behaviour
+		convertHadesAIFlags(weaponData.AIData)
+		convertHadesAIFlags(weaponData.ShrineAIDataOverwrites)
 
 		-- If the weapon defines a projectile to use, it might be different from the weapon name, so use it instead
 		local sjsonWeaponProjectileName = (mod.HadesSjsonWeaponsTable[weaponName] and
@@ -341,50 +366,6 @@ local weaponReplacements = {
 		GenusName = "HarpyLungeAlecto",
 		AIData = {
 			FireDuration = 0.5,
-		},
-	},
-	-- #endregion
-	-- #region TARTARUS - Tisiphone
-	HarpyLassoLungeEM = {
-		InheritFrom = { "HarpyLassoLunge" },
-		GenusName = "HarpyLassoLunge",
-		GameStateRequirements = {
-			NamedRequirements = { "BossDifficultyActive" },
-		},
-		AIData = {
-			PostAttackDuration = 1.7,
-			-- Do the beam attack both before and after the lunge
-			PostAttackDumbFireWeapons = { "HarpyLungeSurgeBeam" },
-		},
-	},
-	SummonTisiphoneBombingRun = {
-		AIData = {
-			AttackSlots = {
-				-- Left row
-				{ OffsetX = -400, OffsetY = -900, OffsetScaleY = 0.48 },
-				{ OffsetX = -400, OffsetY = -600, OffsetScaleY = 0.48 },
-				{ OffsetX = -400, OffsetY = -300, OffsetScaleY = 0.48 },
-				{ OffsetX = -400, OffsetY = 0,    OffsetScaleY = 0.48 },
-				{ OffsetX = -400, OffsetY = 300,  OffsetScaleY = 0.48 },
-				{ OffsetX = -400, OffsetY = 600,  OffsetScaleY = 0.48 },
-				{ OffsetX = -400, OffsetY = 900,  OffsetScaleY = 0.48, PauseDuration = 0.2 },
-				-- Center row
-				{ OffsetX = 0,    OffsetY = -900, OffsetScaleY = 0.48 },
-				{ OffsetX = 0,    OffsetY = -600, OffsetScaleY = 0.48 },
-				{ OffsetX = 0,    OffsetY = -300, OffsetScaleY = 0.48 },
-				{ OffsetX = 0,    OffsetY = 0,    OffsetScaleY = 0.48 },
-				{ OffsetX = 0,    OffsetY = 300,  OffsetScaleY = 0.48 },
-				{ OffsetX = 0,    OffsetY = 600,  OffsetScaleY = 0.48 },
-				{ OffsetX = 0,    OffsetY = 900,  OffsetScaleY = 0.48, PauseDuration = 0.2 },
-				-- Right row
-				{ OffsetX = 400,  OffsetY = -900, OffsetScaleY = 0.48 },
-				{ OffsetX = 400,  OffsetY = -600, OffsetScaleY = 0.48 },
-				{ OffsetX = 400,  OffsetY = -300, OffsetScaleY = 0.48 },
-				{ OffsetX = 400,  OffsetY = 0,    OffsetScaleY = 0.48 },
-				{ OffsetX = 400,  OffsetY = 300,  OffsetScaleY = 0.48 },
-				{ OffsetX = 400,  OffsetY = 600,  OffsetScaleY = 0.48 },
-				{ OffsetX = 400,  OffsetY = 900,  OffsetScaleY = 0.48 },
-			},
 		},
 	},
 	-- #endregion
@@ -822,9 +803,6 @@ local weaponModifications = {
 	HeavyRangedSplitterFragment = {
 		AIData = {
 			DeepInheritance = true,
-			TargetClosestOfTypes = { "HeavyRangedSplitterMiniboss", "HeavyRangedSplitterMinibossSuperElite" },
-			TargetClosest = mod.NilValue,
-			TargetFriends = mod.NilValue,
 			ExpireProjectilesOnHitStun = true,
 			ExpireProjectilesOnFreeze = true,
 			ExpireProjectilesOnPolymorph = true,
@@ -835,6 +813,7 @@ local weaponModifications = {
 	-- #region TARTARUS - Minibosses - WretchAssassin
 	WretchAssassinStab = {
 		AIData = {
+			MoveWithinRange = false,
 			-- Fixed to use the Hades II teleportation
 			PreAttackTeleport = true,
 			TeleportToTarget = true,
@@ -847,6 +826,7 @@ local weaponModifications = {
 	},
 	WretchAssassinRanged = {
 		AIData = {
+			MoveWithinRange = false,
 			-- Fixed to use the Hades II teleportation
 			PreAttackTeleport = true,
 			PostTeleportAngleTowardTarget = true,
@@ -869,9 +849,13 @@ local weaponModifications = {
 		},
 	},
 	SummonMegaeraWhipWhirl = {
+		IgnoreOutgoingDamageModifiers = false,
 		AIData = {
 			ImmuneToProjectileSlow = true,
 		},
+	},
+	SummonMegaeraHarpyBeam = {
+		IgnoreOutgoingDamageModifiers = false,
 	},
 	HarpyLightning = {
 		AIData = {
@@ -882,6 +866,7 @@ local weaponModifications = {
 	},
 	HarpySpawns = {
 		AIData = {
+			MoveWithinRange = false,
 			FireFunctionName = mod.NilValue,
 			ThreadFunctionName = _PLUGIN.guid .. "." .. "HandleBossSpawns",
 			FireAnimation = "FuryLightningLoop",
@@ -909,6 +894,12 @@ local weaponModifications = {
 	},
 	HarpyBuildRage = {
 		BlockInterrupt = true,
+		GameStateRequirements = {
+			{
+				PathFromSource = true,
+				PathFalse = { "Enraged" },
+			},
+		},
 		AIData = {
 			FireFunctionName = _PLUGIN.guid .. "." .. "HarpyBuildRage",
 			FireStartFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesHarpyBuildRageStart",
@@ -923,7 +914,6 @@ local weaponModifications = {
 	},
 	HarpyLightningChase = {
 		AIData = {
-			PreAttackStop = true,
 			PreAttackDuration = 0.0,
 			FireMoveTowardTarget = true,
 			StopMoveWithinRange = true,
@@ -934,7 +924,6 @@ local weaponModifications = {
 	},
 	HarpyLightningChaseRage = {
 		AIData = {
-			PreAttackStop = true,
 			PreAttackDuration = 0.0,
 			FireMoveTowardTarget = true,
 			AttackSlotInterval = 0.01,
@@ -975,9 +964,13 @@ local weaponModifications = {
 		},
 	},
 	SummonAlectoWhipShot = {
+		IgnoreOutgoingDamageModifiers = false,
 		AIData = {
 			ImmuneToProjectileSlow = true,
 		},
+	},
+	SummonAlectoLightningChase = {
+		IgnoreOutgoingDamageModifiers = false,
 	},
 	-- #endregion
 	-- #region TARTARUS - Tisiphone
@@ -993,65 +986,25 @@ local weaponModifications = {
 				{ OffsetDistance = 1200, OffsetScaleY = 0.6, OffsetFromAttacker = true, UseAttackerAngle = true, UseAngleBetween = mod.NilValue },
 				{ OffsetDistance = 1500, OffsetScaleY = 0.6, OffsetFromAttacker = true, UseAttackerAngle = true, UseAngleBetween = mod.NilValue },
 			},
-			BlockAsFirstWeapon = true,
 			FireAnimation = "Fury3LightningLoop",
 			PostAttackAnimation = "Fury3LightningReturnToIdle",
 		},
 	},
 	HarpyWhipLasso = {
 		AIData = {
-			ChainedWeaponOptions = { "HarpyLassoLunge", "HarpyLassoLungeEM" },
-			ChainedWeapon = mod.NilValue,
-			AITrackTargetDuringCharge = false,
-			ForceFirst = true,
 			ImmuneToProjectileSlow = true,
 		},
 	},
 	-- Chained from HarpyWhipLasso
 	HarpyLassoLunge = {
-		-- In the EM version, we use an alternative with an extra DumbFireAttack after the lunge
-		GameStateRequirements = {
-			NamedRequirementsFalse = { "BossDifficultyActive" },
-		},
 		AIData = {
-			DeepInheritance = true,
 			FireSelfVelocity = 3600,
 			ImmuneToProjectileSlow = true,
-		},
-	},
-	HarpyLungeSurgeBeam = {
-		AIData = {
-			-- Alternative attack pattern (circular beams) instead of the original, as I could not get the tracking working on it
-			AttackSlots = {
-				{ AIDataOverrides = { FireProjectileAngleRelative = 9 } },
-				{ AIDataOverrides = { FireProjectileAngleRelative = -9 } },
-				{ AIDataOverrides = { FireProjectileAngleRelative = 27 } },
-				{ AIDataOverrides = { FireProjectileAngleRelative = -27 } },
-				{ AIDataOverrides = { FireProjectileAngleRelative = 45 } },
-				{ AIDataOverrides = { FireProjectileAngleRelative = -45 } },
-				{ AIDataOverrides = { FireProjectileAngleRelative = 63 } },
-				{ AIDataOverrides = { FireProjectileAngleRelative = -63 } },
-				{ AIDataOverrides = { FireProjectileAngleRelative = 81 } },
-				{ AIDataOverrides = { FireProjectileAngleRelative = -81 } },
-				{ AIDataOverrides = { FireProjectileAngleRelative = 99 } },
-				{ AIDataOverrides = { FireProjectileAngleRelative = -99 } },
-				{ AIDataOverrides = { FireProjectileAngleRelative = 117 } },
-				{ AIDataOverrides = { FireProjectileAngleRelative = -117 } },
-				{ AIDataOverrides = { FireProjectileAngleRelative = 135 } },
-				{ AIDataOverrides = { FireProjectileAngleRelative = -135 } },
-				{ AIDataOverrides = { FireProjectileAngleRelative = 153 } },
-				{ AIDataOverrides = { FireProjectileAngleRelative = -153 } },
-				{ AIDataOverrides = { FireProjectileAngleRelative = 171 } },
-				{ AIDataOverrides = { FireProjectileAngleRelative = -171 } },
-			},
-			FireTicks = 1,
-			NumProjectiles = 1,
 		},
 	},
 	HarpySlowBeam360 = {
 		AIData = {
 			ProjectileAngleEvenlySpaced = true,
-			BlockAsFirstWeapon = true,
 		},
 		Sounds = {
 			-- Otherwise the sound is terribly loud and overlayed
@@ -1081,7 +1034,6 @@ local weaponModifications = {
 	},
 	HarpyWhipCombo1 = {
 		AIData = {
-			BlockAsFirstWeapon = true,
 			ImmuneToProjectileSlow = true,
 		},
 	},
@@ -1096,9 +1048,38 @@ local weaponModifications = {
 		},
 	},
 	SummonTisiphoneBombingRun = {
+		IgnoreOutgoingDamageModifiers = false,
 		AIData = {
-			AttackSlotInterval = 0.01,
+			-- Convert H1's longitudinal and perpendicular offsets with OffsetDistance = sqrt(distance^2 + lane^2) and OffsetAngle = atan2(lane, distance)
+			AttackSlots = {
+				{ OffsetDistance = 1054.751155, OffsetAngle = -148.570434, AnchorAngleOffset = 0, OffsetScaleY = 0.48 },
+				{ OffsetDistance = 813.941030,  OffsetAngle = -137.489553, AnchorAngleOffset = 0, OffsetScaleY = 0.48 },
+				{ OffsetDistance = 626.498204,  OffsetAngle = -118.610460, AnchorAngleOffset = 0, OffsetScaleY = 0.48 },
+				{ OffsetDistance = 550,         OffsetAngle = -90,         AnchorAngleOffset = 0, OffsetScaleY = 0.48 },
+				{ OffsetDistance = 626.498204,  OffsetAngle = -61.389540,  AnchorAngleOffset = 0, OffsetScaleY = 0.48 },
+				{ OffsetDistance = 813.941030,  OffsetAngle = -42.510447,  AnchorAngleOffset = 0, OffsetScaleY = 0.48 },
+				{ OffsetDistance = 1054.751155, OffsetAngle = -31.429566,  AnchorAngleOffset = 0, OffsetScaleY = 0.48, PauseDuration = 0.3 },
+
+				{ OffsetDistance = 900,         OffsetAngle = 0,           AnchorAngleOffset = 0, OffsetScaleY = 0.48 },
+				{ OffsetDistance = 600,         OffsetAngle = 0,           AnchorAngleOffset = 0, OffsetScaleY = 0.48 },
+				{ OffsetDistance = 300,         OffsetAngle = 0,           AnchorAngleOffset = 0, OffsetScaleY = 0.48 },
+				{ OffsetDistance = 0,           OffsetAngle = 0,           AnchorAngleOffset = 0, OffsetScaleY = 0.48 },
+				{ OffsetDistance = 300,         OffsetAngle = 180,         AnchorAngleOffset = 0, OffsetScaleY = 0.48 },
+				{ OffsetDistance = 600,         OffsetAngle = 180,         AnchorAngleOffset = 0, OffsetScaleY = 0.48 },
+				{ OffsetDistance = 900,         OffsetAngle = 180,         AnchorAngleOffset = 0, OffsetScaleY = 0.48, PauseDuration = 0.3 },
+
+				{ OffsetDistance = 1054.751155, OffsetAngle = 148.570434,  AnchorAngleOffset = 0, OffsetScaleY = 0.48 },
+				{ OffsetDistance = 813.941030,  OffsetAngle = 137.489553,  AnchorAngleOffset = 0, OffsetScaleY = 0.48 },
+				{ OffsetDistance = 626.498204,  OffsetAngle = 118.610460,  AnchorAngleOffset = 0, OffsetScaleY = 0.48 },
+				{ OffsetDistance = 550,         OffsetAngle = 90,          AnchorAngleOffset = 0, OffsetScaleY = 0.48 },
+				{ OffsetDistance = 626.498204,  OffsetAngle = 61.389540,   AnchorAngleOffset = 0, OffsetScaleY = 0.48 },
+				{ OffsetDistance = 813.941030,  OffsetAngle = 42.510447,   AnchorAngleOffset = 0, OffsetScaleY = 0.48 },
+				{ OffsetDistance = 1054.751155, OffsetAngle = 31.429566,   AnchorAngleOffset = 0, OffsetScaleY = 0.48 },
+			},
 		},
+	},
+	SummonTisiphoneFog = {
+		IgnoreOutgoingDamageModifiers = false,
 	},
 	-- #endregion
 	-- #endregion
@@ -1315,6 +1296,7 @@ local weaponModifications = {
 	-- #region ASPHODEL - Hydra (Purple/Wavemaker)
 	HydraRoar = {
 		AIData = {
+			MoveWithinRange = false,
 			PreAttackDuration = 0.5,
 			PostAttackDuration = 1.2,
 			FireRotationDampening = 0.01,
@@ -1322,6 +1304,7 @@ local weaponModifications = {
 	},
 	HydraRoarVolleyLeft = {
 		AIData = {
+			MoveWithinRange = true,
 			PreAttackDuration = 0.5,
 			PostAttackDuration = 1.2,
 			FireProjectileTowardTarget = true,
@@ -1330,6 +1313,7 @@ local weaponModifications = {
 	},
 	HydraRoarVolleyRight = {
 		AIData = {
+			MoveWithinRange = true,
 			PreAttackDuration = 0.5,
 			PostAttackDuration = 1.2,
 			FireProjectileTowardTarget = true,
@@ -1338,6 +1322,7 @@ local weaponModifications = {
 	},
 	HydraRoarVolleyInsideOut = {
 		AIData = {
+			MoveWithinRange = true,
 			PreAttackDuration = 0.5,
 			PostAttackDuration = 1.2,
 			FireProjectileTowardTarget = true,
@@ -1576,8 +1561,6 @@ local weaponModifications = {
 			StopBeforeFire = true,
 			-- If not set, Minotaur stays in one spot each leap
 			TrackTargetDuringCharge = true,
-			-- Can jump from anywhere
-			MoveWithinRange = false,
 			PreFireDuration = 0.0,
 			-- Slightly adjusted so he doesn't hover at the end before the touchdown
 			FireDuration = 0.28,
@@ -1649,7 +1632,6 @@ local weaponModifications = {
 			FireSelfUpwardVelocity = 2000,
 			StopBeforeFire = true,
 			TrackTargetDuringCharge = true,
-			MoveWithinRange = false,
 			PreFireDuration = 0.0,
 			FireDuration = 0.28,
 			ImmuneToProjectileSlow = true,
@@ -1736,8 +1718,7 @@ local weaponModifications = {
 			FireRotationDampening = 0.8,
 			MoveWithinRange = true,
 			ImmuneToProjectileSlow = true,
-			-- A lower value causes consistent crashes
-			MoveSuccessDistance = 35,
+			MoveSuccessDistance = 125,
 			PostAttackStop = true,
 			PostAttackDuration = 1.2,
 			PostAttackFx = "MinotaurBullRushHornStrike",
@@ -1754,10 +1735,9 @@ local weaponModifications = {
 		},
 	},
 	MinotaurTheseusThrow_Minotaur = {
-		GameStateRequirements = {
-			RequiredAnyTextLines = { "TheseusAboutFraternalBonds06_A", "TheseusAboutFraternalBonds06_B" },
-		},
 		AIData = {
+			MoveWithinRange = false,
+			PreMoveTrackTarget = true,
 			PartnerForceWeaponInterrupt = "MinotaurTheseusThrow_Theseus",
 			WaitForComboPartnerMoveAnimation = "Minotaur_Crouch",
 			MaxDistanceFromComboPartner = 500,
@@ -1917,9 +1897,9 @@ local weaponModifications = {
 			DeepInheritance = true,
 		},
 	},
-	-- Combo attacks require TheseusAboutFraternalBonds06_A/B to have run, which requires PersephoneFirstMeeting at the root
 	MinotaurTheseusSlam_Theseus = {
 		AIData = {
+			MoveWithinRange = false,
 			PartnerForceWeaponInterrupt = "MinotaurTheseusSlam_Minotaur",
 			WaitDurationForComboPartnerMove = mod.NilValue,
 			PreAttackAnimation = mod.NilValue,
@@ -1929,9 +1909,6 @@ local weaponModifications = {
 		},
 	},
 	MinotaurTheseusThrow_Theseus = {
-		GameStateRequirements = {
-			RequiredAnyTextLines = { "TheseusAboutFraternalBonds06_A", "TheseusAboutFraternalBonds06_B" },
-		},
 		AIData = {
 			RequireComboPartnerNotifyName = "MinotaurTheseusThrow_Theseus",
 			ForceIfComboPartnerNotifyName = "MinotaurTheseusThrow_Theseus",
@@ -2063,9 +2040,7 @@ local weaponModifications = {
 	},
 	SatyrDash = {
 		AIData = {
-			ForceFirst = true,
-			-- Only fire naturally at the start, then only through PreAttackDash
-			MinAttacksBetweenUse = 99999,
+			MoveWithinRange = false,
 			ImmuneToProjectileSlow = true,
 		},
 	},
@@ -2083,11 +2058,12 @@ local weaponModifications = {
 	-- #region STYX - Minibosses
 	CrawlerSpawns = {
 		AIData = {
-			MinAttacksBetweenUse = 9,
-			MaxAttacksBetweenUse = 12,
 			ThreadFunctionName = _PLUGIN.guid .. "." .. "HandleBossSpawns",
-			-- Prevents the weird wait between the animation start and the FX
-			PreAttackDuration = 0.0,
+		},
+	},
+	CrawlerReburrow = {
+		AIData = {
+			TeleportEndFx = "ModsNikkelMHadesBiomesEnemyBurrowEntranceSmall",
 		},
 	},
 	CrawlerReburrowShockwave = {
@@ -2167,13 +2143,8 @@ local weaponModifications = {
 	HadesBidentStrikeCombo3 = {
 		AIData = {
 			ProjectileName = "HadesBidentStrike",
-			MoveWithinRange = true,
-			PreAttackStop = true,
-			PreAttackEndStop = true,
 			PostAttackStop = true,
 			TargetPlayer = true,
-			PreAttackAngleTowardTarget = true,
-			WaitForAngleTowardTarget = true,
 			FireRotationDampening = 0.001,
 			ImmuneToProjectileSlow = true,
 		},
@@ -2240,7 +2211,6 @@ local weaponModifications = {
 			TrackTargetDuringCharge = true,
 			StopBeforeFire = true,
 			PostAttackStop = true,
-			MoveWithinRange = false,
 			AttackDistance = 9999,
 			ApplyEffectsOnWeaponFire = { game.WeaponEffectData.AttackLowGrip, },
 			ImmuneToProjectileSlow = true,
@@ -2256,6 +2226,7 @@ local weaponModifications = {
 	HadesSideDash = {
 		AIData = {
 			DeepInheritance = true,
+			MoveWithinRange = false,
 			PreAttackAnimation = "HadesBattleDash_Start",
 			PostAttackAnimation = "HadesBattleDash_ReturnToIdle",
 			PreAttackDuration = 0.03,
@@ -2265,7 +2236,6 @@ local weaponModifications = {
 			TrackTargetDuringCharge = true,
 			StopBeforeFire = true,
 			PostAttackStop = true,
-			MoveWithinRange = false,
 			AttackDistance = 9999,
 			ApplyEffectsOnWeaponFire = { game.WeaponEffectData.AttackLowGrip, },
 			ImmuneToProjectileSlow = true,
@@ -2288,15 +2258,16 @@ local weaponModifications = {
 	HadesBidentThrow = {
 		AIData = {
 			TrackTargetDuringFire = false,
+			StopBeforeFire = true,
 			PostAttackStop = true,
 			ImmuneToProjectileSlow = true,
+			InterruptAnimation = "HadesBattleIdle",
 		},
 	},
 	HadesBidentRecoveryDash = {
 		AIData = {
 			FireProjectileTowardTarget = true,
 			AngleTowardsTargetWhileFiring = true,
-			WaitForAngleTowardTarget = false,
 			TrackTargetDuringCharge = false,
 			PreAttackStop = true,
 			ModsNikkelMHadesBiomesDestroyObstacleOnFire = "HadesBidentReturnPoint",
@@ -2307,7 +2278,6 @@ local weaponModifications = {
 			PostAttackDuration = 0.2,
 			StopBeforeFire = true,
 			PostAttackStop = true,
-			MoveWithinRange = false,
 			AttackDistance = 9999,
 			ApplyEffectsOnWeaponFire = { game.WeaponEffectData.AttackLowGrip, },
 			ImmuneToProjectileSlow = true,
@@ -2322,6 +2292,7 @@ local weaponModifications = {
 	},
 	HadesInvisibility = {
 		AIData = {
+			MoveWithinRange = false,
 			-- Different call, as for FireFunctionName, CurrentRun is also passed as an argument
 			FireFunctionName = _PLUGIN.guid .. "." .. "HadesEnemyInvisibility",
 			-- To prevent him from being invulnerable when PreDamageBoss might be called
@@ -2372,6 +2343,7 @@ local weaponModifications = {
 	},
 	HadesConsumeHeal = {
 		AIData = {
+			MoveWithinRange = false,
 			RequireExistingIdsOfType = "ModsNikkelMHadesBiomesHadesTombstone",
 			PreAttackFunctionName = _PLUGIN.guid .. "." .. "HadesConsumeHeal",
 		},
@@ -2595,6 +2567,7 @@ local weaponModifications = {
 			TargetOffsetDistanceMin = 250,
 			TargetOffsetDistanceMax = 400,
 			PreAttackStop = true,
+			PreAttackAngleTowardTarget = false,
 			PreAttackDuration = 0.0,
 			-- Rifts ban
 			DumbFireWeapons = {},
@@ -2605,6 +2578,7 @@ local weaponModifications = {
 		AIData = {
 			DeepInheritance = true,
 			ProjectileName = "ShadeNakedEliteTrapDeath",
+			PreAttackAngleTowardTarget = false,
 		},
 	},
 	ShadeDeathSpawn = {
@@ -2616,6 +2590,7 @@ local weaponModifications = {
 			TargetOffsetDistanceMin = 250,
 			TargetOffsetDistanceMax = 400,
 			PreAttackStop = true,
+			PreAttackAngleTowardTarget = false,
 			PreAttackDuration = 0.0,
 			-- Exclude from Massive elite attribute projectile size increase
 			ProjectileScaleMultiplier = 1,
@@ -2630,6 +2605,7 @@ local weaponModifications = {
 			TargetOffsetDistanceMin = 250,
 			TargetOffsetDistanceMax = 400,
 			PreAttackStop = true,
+			PreAttackAngleTowardTarget = false,
 			PreAttackDuration = 0.0,
 			-- Exclude from Massive elite attribute projectile size increase
 			ProjectileScaleMultiplier = 1,
@@ -2644,10 +2620,27 @@ local weaponModifications = {
 			TargetOffsetDistanceMin = 250,
 			TargetOffsetDistanceMax = 400,
 			PreAttackStop = true,
+			PreAttackAngleTowardTarget = false,
 			PreAttackDuration = 0.0,
 			-- Exclude from Massive elite attribute projectile size increase
 			ProjectileScaleMultiplier = 1,
 		},
+	},
+	-- #endregion
+
+	-- #region Companions/Assists
+	-- To ensure only one sim slow is started for each use of the assist
+	NPC_FurySister_01_Assist = {
+		HitSimSlowCooldown = 1.0,
+	},
+	NPC_Sisyphus_01_Assist = {
+		HitSimSlowCooldown = 1.0,
+	},
+	NPC_Achilles_01_Assist = {
+		HitSimSlowCooldown = 1.0,
+	},
+	NPC_Patroclus_01_Assist = {
+		HitSimSlowCooldown = 1.0,
 	},
 	-- #endregion
 }

@@ -265,7 +265,6 @@ function mod.HarpyKillPresentation(unit, args)
 	game.thread(game.DoRumble,
 		{ { ScreenPreWait = 0.04, RightFraction = 0.17, Duration = 0.65 }, { ScreenPreWait = 2.8, LeftFraction = 0.3, Duration = 0.6 } })
 
-	Flash({ Id = victimId, Speed = 0.02, MinFraction = 1.0, MaxFraction = 1.0, Color = game.Color.Red, Duration = 1.55, ExpireAfterCycle = true })
 	game.thread(game.BossDeathFlash,
 		{ DestinationId = victimId, StartDelay = 0.52, StopDelay = 0.3, OffsetY = args.DeathFlashOffsetY or 0 })
 
@@ -420,6 +419,12 @@ function mod.HarpyBuildRage(enemy, weaponAIData, currentRun)
 	local hitsTaken = 0
 
 	for tick = 1, weaponAIData.BuildRageTicks, 1 do
+		if game.ReachedAIStageEnd(enemy) or enemy.InTransition then
+			enemy.HarpyBuildRageEarlyExit = true
+			StopFlashing({ Id = game.ScreenAnchors.BossRageFill })
+			return
+		end
+
 		if enemy.RageHit then
 			enemy.RageHit = nil
 			hitsTaken = hitsTaken + 1
@@ -777,8 +782,6 @@ function mod.Harpy3MapTransition(enemy)
 	end
 
 	if currentRoom.CurrentPhase == 1 then
-		--activateObstacles = GetInactiveIds({ Name = "Phase2Add" })
-		--deactivateObstacles = GetIds({ Name = "Phase2Remove" })
 	elseif currentRoom.CurrentPhase == 2 then
 		activateObstacles = game.CombineTables(GetInactiveIds({ Name = "Phase3Add" }), GetInactiveIds({ Name = "Phase2Add" })) or
 				{}
@@ -813,6 +816,14 @@ function mod.Harpy3MapTransition(enemy)
 	})
 	StopAnimation({ DestinationIds = ammoIds, Name = "AmmoReturnTimer" })
 
+	-- To ensure the InvinciBubble doesn't float above Tisiphone after the map transition, since she no longer floats but stands now
+	local replacementInvulnerableFx = nil
+	if IsInvulnerable({ Id = enemy.ObjectId }) then
+		StopAnimation({ Name = enemy.InvulnerableFx, DestinationId = enemy.ObjectId, PreventChain = true })
+		replacementInvulnerableFx = "Invincibubble"
+		CreateAnimation({ Name = replacementInvulnerableFx, DestinationId = enemy.ObjectId })
+	end
+
 	RemoveInputBlock({ Name = "Harpy3MapTransition" })
 	PlaySound({ Name = "/SFX/Menu Sounds/HadesTextDisappearFade" })
 	game.FullScreenFadeInAnimation()
@@ -824,6 +835,14 @@ function mod.Harpy3MapTransition(enemy)
 
 	AdjustColorGrading({ Name = "Off", Duration = 0.45 })
 	currentRoom.InStageTransition = false
+
+	-- To ensure we remove the replaced InvinciBubble visual after the unit is no longer vulnerable
+	if replacementInvulnerableFx ~= nil then
+		while IsInvulnerable({ Id = enemy.ObjectId }) do
+			game.wait(0.05)
+		end
+		StopAnimation({ Name = replacementInvulnerableFx, DestinationId = enemy.ObjectId })
+	end
 end
 
 function mod.Harpy3MapRestore()
@@ -870,9 +889,9 @@ function mod.SpawnSupportAI(enemy)
 	game.thread(game.SetupUnit, supportUnit, game.CurrentRun)
 end
 
--- We need to reset this before the FireFunction, as the DumbFireAttack is called before it and would get cancelled otherwise
+-- Set this before the DumbFireAttack starts so a late eligibility change cancels it immediately
 function mod.ModsNikkelMHadesBiomesHarpyBuildRageStart(enemy, aiData)
-	enemy.HarpyBuildRageEarlyExit = false
+	enemy.HarpyBuildRageEarlyExit = enemy.Enraged or IsInvulnerable({ Id = enemy.ObjectId })
 end
 
 function mod.FuryDreamRunIntro(source, args)

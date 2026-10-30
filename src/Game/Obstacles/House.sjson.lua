@@ -8,6 +8,7 @@ local hadesTwoHouseObstacleFile = rom.path.combine(rom.paths.Content(), "Game\\O
 -- These need to be added before the others, as they are inherited from
 -- local hadesObstacleAdditionsParents = {}
 local hadesObstacleAdditions = {
+	-- #region Skelly statues
 	ModsNikkelMHadesBiomes_HouseStatueDraped01 = {
 		Name = "ModsNikkelMHadesBiomes_HouseStatueDraped01",
 		InheritFrom = "1_BaseInvulnerableImpassableObstacle",
@@ -88,6 +89,16 @@ local hadesObstacleAdditions = {
 			},
 		},
 	},
+	-- #endregion
+	-- #region Orpheus
+	ModsNikkelMHadesBiomes_HouseLyre01 = {
+		Name = "ModsNikkelMHadesBiomes_HouseLyre01",
+		InheritFrom = "HouseLyre01",
+		Thing = {
+			Graphic = "NikkelM-HadesBiomesFxModded\\Tilesets\\House\\House_Lyre_01",
+		},
+	},
+	-- #endregion
 }
 
 -- Add the added obstacles

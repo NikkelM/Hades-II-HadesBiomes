@@ -88,6 +88,8 @@ mod.HadesPortraitAnimationAdditionsParents = {
 		EndFrame = 1,
 		StartFrame = 1,
 		OffsetY = -8.0,
+		StartOffsetX = -20.0,
+		StartOffsetY = 0,
 	},
 	{
 		Name = "ModsNikkelMHadesBiomes_Portrait_Demeter_Default_01",

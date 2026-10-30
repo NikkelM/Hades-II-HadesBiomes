@@ -162,3 +162,58 @@ function mod.PostCosmeticsIncantationDoraCheckForNewItems(source, args)
 		end
 	end
 end
+
+-- #region Family Portrait
+modutil.mod.Path.Wrap("UpdateFamilyPortraitVisibility", function(base, eventSource, args)
+	-- Always force it to be undraped during the H1 ending sequence
+	if game.CurrentRun.TextLinesRecord["Ending01"] then
+		return
+	end
+
+	return base(eventSource, args)
+end)
+
+function mod.SelectFamilyPortrait(eventSource)
+	local forceHadesPortrait = game.CurrentRun.TextLinesRecord["Ending01"]
+
+	-- Keep the H2 true-ending portrait priority and preserve the drape on normal returns
+	if game.CurrentRun.PlayedTrueEnding or (game.CurrentRun.FamilyPortraitHidden and not forceHadesPortrait) then
+		return
+	end
+
+	-- Default chance is 50%, if last run was modded it's 75%, if last run was normal H2 run, it's 25%
+	local hadesPortraitChance = 0.5
+	if not game.CurrentRun.IsDreamRun and game.CurrentRun.ActiveBounty == nil then
+		hadesPortraitChance = game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and 0.75 or 0.25
+	end
+
+	-- Force the H1 portrait on the Ending01 run, then choose based on the chance above
+	if not (forceHadesPortrait or (game.GameState.TextLinesRecord["Ending01"] and game.RandomChance(hadesPortraitChance))) then
+		return
+	end
+
+	-- Need to load here as the DeathAreaRoomTransition is called too late and the texture would be missing
+	LoadPackages({ Name = "NikkelM-HadesBiomesCrossroads" })
+
+	local animationName = "ModsNikkelMHadesBiomesTentFamilyPortrait"
+	game.OverwriteSelf(eventSource, {
+		Animation = animationName,
+		PortraitAnimation = "PortraitFamily",
+		UseText = "UseFinishedFamilyPortrait",
+		OnUsedFunctionArgs = {
+			StartScale = 1.3,
+			EndScale = 1.0,
+			PanDuration = 9.8,
+		},
+	})
+	-- For the voicelines
+	game.MapState.ModsNikkelMHadesBiomesIsHadesFamilyPortrait = true
+	if forceHadesPortrait then
+		game.CurrentRun.FamilyPortraitHidden = nil
+		UseableOn({ Id = eventSource.ObjectId })
+	end
+	SetThingProperty({ DestinationId = eventSource.ObjectId, Property = "Graphic", Value = animationName })
+	SetAnimation({ DestinationId = eventSource.ObjectId, Name = animationName })
+end
+
+-- #endregion

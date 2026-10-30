@@ -140,11 +140,10 @@ mod.CombatOverMusicEvents = {
 -- #region Voicelines
 -- Replace cues with the modded name
 local requiredGlobalVoiceLineModifications = {
-	-- These voicelines are not currently used
-	-- HadesDeathTauntVoiceLines = {
-	-- 	Find = "Hades_",
-	-- 	Replace = "Modsnikkelmhadesbiomeshades_"
-	-- },
+	HadesDeathTauntVoiceLines = {
+		Find = "Hades_",
+		Replace = mod.VoiceoverFileNames.Hades .. "_",
+	},
 	HadesPostBossVoiceLines = {
 		Find = "Intercom_",
 		Replace = mod.VoiceoverFileNames.Intercom .. "_",
@@ -216,9 +215,8 @@ for voicelineGroup, replacement in pairs(requiredGlobalVoiceLineModifications) d
 end
 
 -- #region GlobalVoiceLines
--- These would overlap with Melinoe's own voicelines when dying
--- game.GlobalVoiceLines.HadesDeathTauntVoiceLines = game.GlobalVoiceLines.HadesDeathTauntVoiceLines or
--- 		mod.GlobalVoiceLines.HadesDeathTauntVoiceLines
+game.GlobalVoiceLines.HadesDeathTauntVoiceLines = game.GlobalVoiceLines.HadesDeathTauntVoiceLines or
+		mod.GlobalVoiceLines.HadesDeathTauntVoiceLines
 game.GlobalVoiceLines.HadesPostBossVoiceLines = game.GlobalVoiceLines.HadesPostBossVoiceLines or
 		mod.GlobalVoiceLines.HadesPostBossVoiceLines
 game.GlobalVoiceLines.HadesWrathAttackVoiceLines = game.GlobalVoiceLines.HadesWrathAttackVoiceLines or
@@ -236,6 +234,8 @@ game.GlobalVoiceLines.ModsNikkelMHadesBiomes_HadesInvisibilityReactionVoiceLines
 game.GlobalVoiceLines.HadesSighVoiceLines = game.GlobalVoiceLines.HadesSighVoiceLines or
 		mod.GlobalVoiceLines.HadesSighVoiceLines
 
+game.GlobalVoiceLines.EnteredFuryChamberVoiceLines = game.GlobalVoiceLines.EnteredFuryChamberVoiceLines or
+		mod.GlobalVoiceLines.EnteredFuryChamberVoiceLines
 game.GlobalVoiceLines.MultiFuryFightStartVoiceLines = game.GlobalVoiceLines.MultiFuryFightStartVoiceLines or
 		mod.GlobalVoiceLines.MultiFuryFightStartVoiceLines
 game.GlobalVoiceLines.MegaeraGreetingVoiceLines = game.GlobalVoiceLines.MegaeraGreetingVoiceLines or
@@ -516,6 +516,23 @@ game.HeroVoiceLines.AssistUnavailableVoiceLines = game.HeroVoiceLines.AssistUnav
 		mod.HeroVoiceLines.AssistUnavailableVoiceLines
 game.HeroVoiceLines.AssistUpgradedVoiceLines = game.HeroVoiceLines.AssistUpgradedVoiceLines or
 		mod.HeroVoiceLines.AssistUpgradedVoiceLines
+game.HeroVoiceLines.ModsNikkelMHadesBiomesSkellyAssistEquipReactionVoiceLines = game.HeroVoiceLines
+		.ModsNikkelMHadesBiomesSkellyAssistEquipReactionVoiceLines or
+		mod.HeroVoiceLines.ModsNikkelMHadesBiomesSkellyAssistEquipReactionVoiceLines
+
+table.insert(game.HeroVoiceLines.OverlookVoiceLines, 2,
+	mod.HeroVoiceLines.ModsNikkelMHadesBiomes_AsphodelFirstOverlookVoiceLines)
+table.insert(game.HeroVoiceLines.OverlookVoiceLines, 3,
+	mod.HeroVoiceLines.ModsNikkelMHadesBiomes_AsphodelOverlookVoiceLines)
+table.insert(game.HeroVoiceLines.OverlookVoiceLines, 4,
+	mod.HeroVoiceLines.ModsNikkelMHadesBiomes_ElysiumFirstOverlookVoiceLines)
+table.insert(game.HeroVoiceLines.OverlookVoiceLines, 5,
+	mod.HeroVoiceLines.ModsNikkelMHadesBiomes_ElysiumOverlookVoiceLines)
+
+table.insert(game.HeroVoiceLines.UsedFamilyPortraitVoiceLines, 2,
+	mod.HeroVoiceLines.ModsNikkelMHadesBiomes_HadesFamilyPortraitPreEndingVoiceLines)
+table.insert(game.HeroVoiceLines.UsedFamilyPortraitVoiceLines, 3,
+	mod.HeroVoiceLines.ModsNikkelMHadesBiomes_HadesFamilyPortraitPostEndingVoiceLines)
 -- #endregion
 
 -- #region Chaos Gate voiceline adjustments for Orpheus Chaos boon (free entry)
