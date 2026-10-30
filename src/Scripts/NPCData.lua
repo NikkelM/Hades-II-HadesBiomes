@@ -180,12 +180,19 @@ local function applyNPCGlobalModifications(base, npcModifications)
 	end
 end
 
--- Replace status animations showing a character has dialogue available with the H1 variants
+-- Use modded status icons for mod conversations (mod NPCs and modded conversations on vanilla NPCs)
 local function applyModdedStatusAnimations(npcData)
 	for key, value in pairs(npcData) do
 		if key == "StatusAnimation" and type(value) == "string" then
 			npcData[key] = mod.ModdedStatusAnimations[value] or value
 		elseif type(value) == "table" then
+			if key == "InteractTextLineSets" then
+				for _, textLines in pairs(value) do
+					if textLines.PlayOnce and textLines.StatusAnimation == nil then
+						textLines.StatusAnimation = mod.ModdedStatusAnimations.StatusIconWantsToTalk
+					end
+				end
+			end
 			applyModdedStatusAnimations(value)
 		end
 	end
