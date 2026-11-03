@@ -414,6 +414,13 @@ local function copyHadesNPCTexts()
 							if speaker and mod.VoiceoverFileNames[speaker] then
 								entry.Id = mod.VoiceoverFileNames[speaker] .. "_" .. rest
 							end
+							-- Custom renames
+							if entry.Id == "Scratch_0004" then
+								entry.Id = "Modsnikkelmhadesbiomesachilles_50001"
+							end
+							if entry.Id == "ZagreusScratch_0019" then
+								entry.Id = "Modsnikkelmhadesbiomeszagreushome_50001"
+							end
 							-- Custom rename, moved into MegaeraHome bank
 							entry.Id = entry.Id:gsub("MegaeraExtra_", "Modsnikkelmhadesbiomesmegaerahome_5")
 

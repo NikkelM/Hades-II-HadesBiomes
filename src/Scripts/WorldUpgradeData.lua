@@ -1,4 +1,5 @@
 --[[ Modded incantation order (in the menu):
+ModsNikkelMHadesBiomes_AchillesPatroclusQuestItem - Reunite Achilles and Patroclus - on Quest progress
 ModsNikkelMHadesBiomes_OrpheusEurydiceQuestItem - Reunite Orpheus and Eurydice - on Quest progress
 ModsNikkelMHadesBiomes_SisyphusQuestItem - Release Sisyphus - on Quest progress
 ModsNikkelMHadesBiomes_OrpheusUnlockItem - Allow Orpheus to spawn in Tartarus - after visiting Sisyphus and Asphodel
@@ -26,7 +27,7 @@ WorldUpgradeMusicPlayerModsNikkelMUnlockHadesMusic - New Music for the Music Mak
 
 local newIncantations = {
 	-- #region Critical/Story Items
-	ModsNikkelMHadesBiomes_OrpheusEurydiceQuestItem = {
+	ModsNikkelMHadesBiomes_AchillesPatroclusQuestItem = {
 		-- ModsNikkelMHadesBiomesInsertAfterItem = nil,
 		ModsNikkelMHadesBiomesCauldronCategory = "WorldUpgradeScreen_ModsNikkelMHadesBiomes_Critical",
 
@@ -34,10 +35,34 @@ local newIncantations = {
 
 		Icon = "NikkelM-HadesBiomesCrossroads\\Cauldron\\cosmetic_sealedDocument_01",
 		Cost = {
-			ModsNikkelMHadesBiomes_BossResourceAsphodel = 3,
+			ModsNikkelMHadesBiomes_PlantTartarus = 5,
+			ModsNikkelMHadesBiomes_CropStyx = 2,
 			ModsNikkelMHadesBiomes_BossResourceElysium = 3,
+			ModsNikkelMHadesBiomes_BossResourceStyx = 3,
+		},
+		GameStateRequirements = {
+			{
+				Path = { "GameState", "TextLinesRecord" },
+				HasAny = {
+					"AchillesAboutMyrmidonReunionQuest03_A",
+					"AchillesAboutMyrmidonReunionQuest03_B",
+					"AchillesAboutMyrmidonReunionQuest03_C",
+				},
+			},
+		},
+	},
+	ModsNikkelMHadesBiomes_OrpheusEurydiceQuestItem = {
+		ModsNikkelMHadesBiomesInsertAfterItem = "ModsNikkelMHadesBiomes_AchillesPatroclusQuestItem",
+		ModsNikkelMHadesBiomesCauldronCategory = "WorldUpgradeScreen_ModsNikkelMHadesBiomes_Critical",
+
+		InheritFrom = { "DefaultHubItem", "DefaultCriticalItem" },
+
+		Icon = "NikkelM-HadesBiomesCrossroads\\Cauldron\\cosmetic_sealedDocument_01",
+		Cost = {
 			ModsNikkelMHadesBiomes_CropAsphodel = 4,
 			ModsNikkelMHadesBiomes_PlantStyx = 3,
+			ModsNikkelMHadesBiomes_BossResourceTartarus = 3,
+			ModsNikkelMHadesBiomes_BossResourceAsphodel = 3,
 		},
 		GameStateRequirements = {
 			{

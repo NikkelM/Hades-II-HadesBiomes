@@ -22,6 +22,31 @@ function mod.CalcNumModdedCodexEntriesUnlocked()
 	return unlockCount
 end
 
+-- Pre-select the Achilles entry after Achilles grants the H1 Codex category
+function mod.EnableAchillesCodex()
+	game.SelectCodexEntry("ModsNikkelMHadesBiomes_NPC_Achilles_01")
+	game.wait(0.25)
+	game.DisplayInfoToast(nil, {
+		Title = "ThingUnlocked",
+		Text = "ModsNikkelMHadesBiomes_Codex_Unlocked_Subtitle",
+	})
+	game.wait(0.25)
+	game.thread(game.ShowCodexUpdate)
+end
+
+modutil.mod.Path.Wrap("HasUnlockedEntries", function(base, chapterName)
+	if game.SessionState.CodexDebugUnlocked then
+		return true
+	end
+
+	-- Mod chapter only unlocks after Achilles grants the Codex
+	if chapterName == mod.CodexChapterName and not game.GameState.TextLinesRecord.AchillesGrantsCodex then
+		return false
+	end
+
+	return base(chapterName)
+end)
+
 modutil.mod.Path.Wrap("CalcNumCodexEntriesUnlocked", function(base)
 	game.GameState.ModsNikkelMHadesBiomesCodexEntriesUnlockedCache = mod.CalcNumModdedCodexEntriesUnlocked()
 

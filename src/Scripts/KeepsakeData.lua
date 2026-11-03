@@ -9,10 +9,11 @@ game.GiftData.NPC_FurySister_01.UnlockGameStateRequirements = game.GiftData.NPC_
 game.GiftData.NPC_FurySister_01.UnlockGameStateRequirements.RequiredAnyTextLines = { "MegaeraBedroom02",
 	"MegaeraBedroom02B", }
 
-game.GiftData.NPC_Achilles_01 = game.GiftData.NPC_Achilles_01 or {}
-game.GiftData.NPC_Achilles_01.UnlockGameStateRequirements = game.GiftData.NPC_Achilles_01.UnlockGameStateRequirements or
-		{}
-game.GiftData.NPC_Achilles_01.UnlockGameStateRequirements.RequiredTextLines = { "MyrmidonReunionQuestComplete" }
+game.GiftData.ModsNikkelMHadesBiomes_NPC_Achilles_01 = game.GiftData.ModsNikkelMHadesBiomes_NPC_Achilles_01 or {}
+game.GiftData.ModsNikkelMHadesBiomes_NPC_Achilles_01.UnlockGameStateRequirements = game.GiftData
+		.ModsNikkelMHadesBiomes_NPC_Achilles_01.UnlockGameStateRequirements or {}
+game.GiftData.ModsNikkelMHadesBiomes_NPC_Achilles_01.UnlockGameStateRequirements.RequiredTextLines = {
+	"MyrmidonReunionQuestComplete" }
 
 game.GiftData.NPC_Dusa_01 = game.GiftData.NPC_Dusa_01 or {}
 -- game.GiftData.NPC_Dusa_01.UnlockGameStateRequirements = game.GiftData.NPC_Dusa_01.UnlockGameStateRequirements or
@@ -38,7 +39,7 @@ table.insert(game.GiftData.NPC_Thanatos_01, {
 	},
 })
 
-table.insert(game.GiftData.NPC_Achilles_01, {
+table.insert(game.GiftData.ModsNikkelMHadesBiomes_NPC_Achilles_01, {
 	Gift = "AchillesPatroclusAssistTrait",
 	GameStateRequirements = {
 		{

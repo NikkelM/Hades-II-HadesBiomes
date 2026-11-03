@@ -11,6 +11,7 @@ mod.AudioFileMappings = {
 -- Mapped H1 cue names <-> Modded cue names for localization mapping support
 -- The file name must be the same as the event names within the file
 mod.VoiceoverFileNames = {
+	Achilles = "Modsnikkelmhadesbiomesachilles",
 	Alecto = "Alecto",
 	Eurydice = "Eurydice",
 	Hades = "Modsnikkelmhadesbiomeshades",
@@ -45,7 +46,7 @@ mod.VoiceoverFileNames = {
 }
 
 mod.SubtitleCsvFileNameMappings = {
-	-- Achilles = "Modsnikkelmhadesbiomesachilles_",
+	Achilles = "Modsnikkelmhadesbiomesachilles_",
 	Alecto = "Alecto_",
 	-- Dusa = "Dusa_",
 	Eurydice = "Eurydice_",
@@ -830,7 +831,7 @@ mod.NPCTextFileNames = {
 		Zagreus = true,
 	},
 	_NPCData = {
-		-- Achilles = true,
+		Achilles = true,
 		Charon = true,
 		-- Dusa = true,
 		Eurydice = true,
@@ -841,7 +842,7 @@ mod.NPCTextFileNames = {
 		Orpheus = true,
 		Patroclus = true,
 		Persephone = true,
-		-- Scratch = true, -- This is a single Achilles line
+		Scratch = true, -- This is a single Achilles line
 		Sisyphus = true,
 		Storyteller = true,
 		Thanatos = true,

@@ -353,6 +353,41 @@ end
 
 -- #endregion
 
+-- #region Achilles
+function mod.AchillesExit(source, args)
+	args = args or {}
+	game.wait(args.WaitTime or 0)
+
+	SetAnimation({ Name = "NPCAchillesExit", DestinationId = source.ObjectId })
+	source.NextInteractLines = nil
+	UseableOff({ Id = source.ObjectId })
+	game.RefreshUseButton(source.ObjectId, source)
+	game.StopStatusAnimation(source)
+	source.Mute = true
+
+	if args.AnimationState ~= nil then
+		game.CurrentRun.AnimationState = game.CurrentRun.AnimationState or {}
+		game.CurrentRun.AnimationState[source.ObjectId] = args.AnimationState
+	end
+
+	game.wait(1.0, game.RoomThreadName)
+
+	game.ActiveEnemies[source.ObjectId] = nil
+	if game.ActivatedObjects ~= nil and game.ActivatedObjects[source.ObjectId] ~= nil and not game.CurrentRun.Hero.IsDead then
+		game.ActivatedObjects[source.ObjectId] = nil
+		if game.MapState.RoomRequiredObjects ~= nil then
+			game.MapState.RoomRequiredObjects[source.ObjectId] = nil
+		end
+		game.wait(0.2, game.RoomThreadName)
+		if game.CheckRoomExitsReady(game.CurrentRun.CurrentRoom) then
+			game.UnlockRoomExits(game.CurrentRun, game.CurrentRun.CurrentRoom)
+		end
+	end
+
+	SetAlpha({ Id = source.ObjectId, Fraction = 0.0, Duration = 0.2 })
+end
+-- #endregion
+
 -- #region Patroclus
 function mod.ModsNikkelMHadesBiomesPatroclusBuff(args, source)
 	args = args or {}

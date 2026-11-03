@@ -4,6 +4,7 @@
 
 <!--Releasenotes start-->
 ### Patch Highlights:
+- You can now meet **Achilles** in Asphodel, and advance his and Patroclus' storyline.
 - Added **companions** from the first game to the mod. Your friends may now give these to you once you advance your relationships with the accordingly. Not all companions are unlockable yet (Unlockables are: Sisyphus, Thanatos, Megaera, Skelly).
 - You may now naturally encounter **Artemis** and **Athena** in Zagreus' Journey, and they will use their dialogues from the first game when you speak to one of them.
 - Picking up boons from Aphrodite, Ares, Chaos, Demeter, Hermes, Poseidon or Zeus while in a Zagreus' Journey run will now use their respective dialogues and advance their storylines from the first game.
@@ -23,6 +24,8 @@ Other fixes and improvements:
 - Melinoë will now react to overlooking Asphodel and Elysium in the first rooms of those regions.
 - Hades will now taunt you if you die during a Survival or Erebus encounter.
 - Added a new wing-end combat room to Styx.
+- You can now only meet one new story NPC/character per run.
+- The mod's Codex category is now only unlocked after having the required conversation with Achilles.
 - Added a new irreversible "cheat" config option to immediately unlock all (non-story) incantations.
 - Added a new irreversible "cheat" config option to immediately unlock all cosmetics (except badges).
 - Added a new reversible "cheat" config option to immediately unlock all keepsakes and companions (except those not yet available).

@@ -4656,8 +4656,8 @@ local preRunCosmetics = {
 		AnimationScale = 2,
 		GameStateRequirements = {
 			{
-				-- Patroclus bond forged
-				PathTrue = { "GameState", "TextLinesRecord", "PatroclusGift08_A" }
+				-- Achilles has given you his companion
+				PathTrue = { "GameState", "TextLinesRecord", "AchillesGift07_A" }
 			},
 			NamedRequirements = { "T4Cosmetic" },
 		},

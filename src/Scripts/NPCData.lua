@@ -651,6 +651,11 @@ local npcModifications = {
 			-- The new name from SharedKeepsakePort
 			PatroclusAboutKeepsake01 = { RequiredKeepsake = mod.SharedKeepsakePortPatroclusKeepsakeTrait, },
 			PatroclusAboutKeepsake02 = { RequiredKeepsake = mod.SharedKeepsakePortPatroclusKeepsakeTrait, },
+			PatroclusAboutBracer01A = { RequiredTrait = mod.SharedKeepsakePortAchillesKeepsakeTrait, },
+			PatroclusAboutBracer01B = { RequiredTrait = mod.SharedKeepsakePortAchillesKeepsakeTrait, },
+			PatroclusAboutBracer01C = { RequiredTrait = mod.SharedKeepsakePortAchillesKeepsakeTrait, },
+			PatroclusAboutBracer01D = { RequiredTrait = mod.SharedKeepsakePortAchillesKeepsakeTrait, },
+			PatroclusAboutBracer01E = { RequiredTrait = mod.SharedKeepsakePortAchillesKeepsakeTrait, },
 		},
 		GiftGivenVoiceLines = {
 			[1] = { Cue = "/VO/MelinoeField_2571", Text = "I'm most grateful." },
@@ -684,6 +689,380 @@ local npcModifications = {
 				[6] = { PostLineFunctionArgs = { Icon = mod.SharedKeepsakePortPatroclusKeepsakeBondIcon }, },
 			},
 		},
+	},
+	ModsNikkelMHadesBiomes_NPC_Achilles_01 = {
+		ModsNikkelMHadesBiomesIsModdedEnemy = true,
+		AlwaysShowInvulnerabubbleOnInvulnerableHit = true,
+		ActivateRequirements = {
+			RequiredFalsePlayedThisRun = mod.NilValue,
+			RequiredFalseTextLinesThisRun = mod.NilValue,
+			RequiredFalseFlags = mod.NilValue,
+			{
+				Path = { "GameState", "RoomsEntered", "X_Intro" },
+				Comparison = ">",
+				Value = 1,
+			},
+			{
+				Path = { "CurrentRun", "TextLinesRecord" },
+				HasNone = mod.HadesNPCFirstMeetingTextLines,
+			},
+			{
+				PathFalse = { "GameState", "Flags", "AchillesReunionInProgress" },
+			},
+			{
+				PathFalse = { "CurrentRun", "IsDreamRun" },
+			},
+			NamedRequirementsFalse = { "StandardPackageBountyActive" },
+		},
+		SubtitleColor = game.Color.AchillesVoice,
+		SpeakerName = "Achilles",
+		LineHistoryName = "NPC_Achilles_01",
+		CodexName = "ModsNikkelMHadesBiomes_NPC_Achilles_01",
+		SpecialInteractFunctionName = "SpecialInteractSalute",
+		SpecialInteractGameStateRequirements = {
+			{
+				PathTrue = { "GameState", "TextLinesRecord", "AchillesGift01" },
+			},
+		},
+		SpecialInteractCooldown = 60,
+		InteractVoiceLines = {
+			{ GlobalVoiceLines = "ModsNikkelMHadesBiomes_SaluteVoiceLines" },
+			{
+				RandomRemaining = true,
+				PreLineWait = 0.3,
+				ObjectType = "ModsNikkelMHadesBiomes_NPC_Achilles_01",
+				PreLineAnim = "AchillesIdleGreeting",
+				-- From AchillesGreeting
+				-- Hail.
+				{ Cue = "/VO/Modsnikkelmhadesbiomesachilles_0009", RequiredFalsePlayedThisRoom = { "/VO/Modsnikkelmhadesbiomesachilles_0009" } },
+				-- Hmm.
+				{ Cue = "/VO/Modsnikkelmhadesbiomesachilles_0059", RequiredFalsePlayedThisRoom = { "/VO/Modsnikkelmhadesbiomesachilles_0059" } },
+				-- Be well.
+				{ Cue = "/VO/Modsnikkelmhadesbiomesachilles_0060", RequiredFalsePlayedThisRoom = { "/VO/Modsnikkelmhadesbiomesachilles_0060" } },
+				-- Be strong.
+				{ Cue = "/VO/Modsnikkelmhadesbiomesachilles_0061", RequiredFalsePlayedThisRoom = { "/VO/Modsnikkelmhadesbiomesachilles_0061" } },
+				-- Your Highness.
+				{ Cue = "/VO/Modsnikkelmhadesbiomesachilles_0063", RequiredFalsePlayedThisRoom = { "/VO/Modsnikkelmhadesbiomesachilles_0063" } },
+				-- And you in turn.
+				{ Cue = "/VO/Modsnikkelmhadesbiomesachilles_0332", RequiredFalsePlayedThisRoom = { "/VO/Modsnikkelmhadesbiomesachilles_0332" } },
+				-- Hail.
+				{ Cue = "/VO/Modsnikkelmhadesbiomesachilles_0349", RequiredFalsePlayedThisRoom = { "/VO/Modsnikkelmhadesbiomesachilles_0349" } },
+				-- How goes it?
+				{ Cue = "/VO/Modsnikkelmhadesbiomesachilles_0351", RequiredFalsePlayedThisRoom = { "/VO/Modsnikkelmhadesbiomesachilles_0351" } },
+				-- From dialogues
+				-- Just watch yourself.
+				{ Cue = "/VO/Modsnikkelmhadesbiomesachilles_0369", RequiredFalsePlayedThisRoom = { "/VO/Modsnikkelmhadesbiomesachilles_0369" } },
+				-- Keep at it.
+				{ Cue = "/VO/Modsnikkelmhadesbiomesachilles_0373", RequiredFalsePlayedThisRoom = { "/VO/Modsnikkelmhadesbiomesachilles_0373" } },
+			},
+		},
+		OnHitVoiceLines = {
+			RandomRemaining = true,
+			BreakIfPlayed = true,
+			PreLineWait = 0.45,
+			SuccessiveChanceToPlay = 0.25,
+			PlayFromTarget = true,
+			Cooldowns = {
+				{ Name = "AchillesAnyQuipSpeech", Time = 12 },
+			},
+			-- I've fought enough I think.
+			{ Cue = "/VO/Modsnikkelmhadesbiomesachilles_0241" },
+			-- Rest while you're able.
+			{ Cue = "/VO/Modsnikkelmhadesbiomesachilles_0242" },
+			-- Heh.
+			{ Cue = "/VO/Modsnikkelmhadesbiomesachilles_0244" },
+			-- Ehh.
+			{ Cue = "/VO/Modsnikkelmhadesbiomesachilles_0245" },
+			-- No, thank you.
+			{ Cue = "/VO/Modsnikkelmhadesbiomesachilles_0246" },
+		},
+		InteractTextLineSets = {
+			AchillesFirstMeeting = {
+				-- Scratch cues need to be manually renamed
+				[1] = { Cue = "/VO/Modsnikkelmhadesbiomesachilles_50001" },
+				[2] = { Cue = "/VO/Modsnikkelmhadesbiomeszagreushome_50001" },
+			},
+			AchillesGrantsCodex = {
+				EndCue = mod.NilValue,
+				GameStateRequirements = {
+					{
+						PathTrue = { "CodexStatus", "Enabled" },
+					},
+				},
+				[2] = {
+					PreLineAnim = "MelTalkExplaining01",
+					PostLineAnim = "MelTalkExplaining01ReturnToIdle",
+					PostLineAnimTarget = "Hero",
+				},
+				[3] = {
+					PostLineThreadedFunctionName = _PLUGIN.guid .. "." .. "EnableAchillesCodex",
+				},
+			},
+			AchillesCodexProgress01 = {
+				RequiredCodexEntriesMin = 35,
+			},
+			AchillesCodexProgress02 = {
+				RequiredCodexEntriesMin = 50,
+			},
+			AchillesCodexProgress05 = {
+				RequiredCodexEntriesMin = 25,
+			},
+			AchillesMiscMeeting02 = {
+				RequiredWeaponsUnlocked = mod.NilValue,
+				GameStateRequirements = {
+					{
+						Path = { "GameState", "WeaponsUnlocked" },
+						HasAll = { "WeaponDagger" },
+					},
+				},
+			},
+			AchillesMiscMeeting04 = {
+				RequiredAnyWeaponsUnlocked = mod.NilValue,
+				GameStateRequirements = {
+					{
+						Path = { "GameState", "WeaponsUnlocked" },
+						HasAny = { "WeaponTorch", "WeaponAxe" },
+					},
+				},
+			},
+			AchillesMiscMeeting04_B = {
+				RequiredWeaponsUnlocked = mod.NilValue,
+				GameStateRequirements = {
+					{
+						Path = { "GameState", "WeaponsUnlocked" },
+						HasAll = { "WeaponTorch", "WeaponAxe", "WeaponLob" },
+					},
+				},
+			},
+			AchillesAboutQuestLog01 = {
+				RequiredCosmetics = mod.NilValue,
+				GameStateRequirements = {
+					{
+						PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradeQuestLog" },
+					},
+				},
+			},
+			AchillesAboutBoonList01 = {
+				RequiredCosmetics = mod.NilValue,
+				GameStateRequirements = {
+					{
+						PathTrue = { "GameState", "WorldUpgrades", "WorldUpgradeBoonList" },
+					},
+				},
+				EndVoiceLines = { ObjectType = "ModsNikkelMHadesBiomes_NPC_Achilles_01" },
+			},
+			AchillesAboutOnions01 = {
+				EndVoiceLines = { ObjectType = "ModsNikkelMHadesBiomes_NPC_Achilles_01" },
+			},
+			AchillesAboutOrpheus01 = {
+				RequiredFalseCosmetics = mod.NilValue,
+				GameStateRequirements = {
+					{
+						PathFalse = { "GameState", "WorldUpgrades", "ModsNikkelMHadesBiomes_OrpheusUnlockItem" },
+					},
+				},
+			},
+			AchillesAboutSkelly02 = {
+				EndVoiceLines = { ObjectType = "ModsNikkelMHadesBiomes_NPC_Achilles_01" },
+			},
+			AchillesAboutGilgameshAspect01 = {
+				EndVoiceLines = { ObjectType = "ModsNikkelMHadesBiomes_NPC_Achilles_01" },
+			},
+			AchillesAboutLegendaryAspects01 = {
+				EndVoiceLines = { ObjectType = "ModsNikkelMHadesBiomes_NPC_Achilles_01" },
+			},
+			AchillesRunProgress03 = {
+				EndVoiceLines = { ObjectType = "ModsNikkelMHadesBiomes_NPC_Achilles_01" },
+			},
+			AchillesAboutStyxFoes01 = {
+				EndVoiceLines = { ObjectType = "ModsNikkelMHadesBiomes_NPC_Achilles_01" },
+			},
+			AchillesRunCleared01 = {
+				EndVoiceLines = { ObjectType = "ModsNikkelMHadesBiomes_NPC_Achilles_01" },
+			},
+			AchillesPostEpilogue01 = {
+				EndVoiceLines = { ObjectType = "ModsNikkelMHadesBiomes_NPC_Achilles_01" },
+			},
+			AchillesPostEpilogue02 = {
+				EndVoiceLines = { ObjectType = "ModsNikkelMHadesBiomes_NPC_Achilles_01" },
+			},
+			AchillesCodexProgress06 = {
+				EndVoiceLines = { ObjectType = "ModsNikkelMHadesBiomes_NPC_Achilles_01" },
+			},
+			AchillesAboutReunionQuests01 = {
+				EndVoiceLines = { ObjectType = "ModsNikkelMHadesBiomes_NPC_Achilles_01" },
+			},
+			AchillesWithHadesAboutMyrmidonReunionQuest01 = {
+				EndVoiceLines = {
+					[1] = { ObjectType = "ModsNikkelMHadesBiomes_NPC_Achilles_01" },
+				},
+				[3] = {
+					PostLineThreadedFunctionName = _PLUGIN.guid .. "." .. "AchillesExit",
+				},
+			},
+			AchillesWithMegaeraAboutMyrmidonReunionQuest01 = {
+				EndVoiceLines = { ObjectType = "ModsNikkelMHadesBiomes_NPC_Achilles_01" },
+			},
+			AchillesDrinking01 = {
+				TeleportToId = mod.NilValue,
+				TeleportOffsetX = mod.NilValue,
+				TeleportOffsetY = mod.NilValue,
+			},
+			AchillesAboutPatroclusBackstory01 = {
+				[2] = {
+					PostLineThreadedFunctionName = mod.NilValue,
+					PostLineFunctionName = _PLUGIN.guid .. "." .. "TimePassesPresentation",
+					PostLineFunctionArgs = { IsLoungeRevelryPresentation = true, PreTextWait = 0.75, Sound2 = "/EmptyCue" },
+				},
+				[3] = {
+					FadeOutTime = mod.NilValue,
+					FullFadeTime = mod.NilValue,
+					FadeInTime = mod.NilValue,
+					FadeInSound = mod.NilValue,
+					TeleportToId = mod.NilValue,
+					AngleTowardTargetId = mod.NilValue,
+					TeleportHeroToId = mod.NilValue,
+					AngleHeroTowardTargetId = mod.NilValue,
+				},
+				[8] = {
+					FadeOutTime = mod.NilValue,
+					FullFadeTime = mod.NilValue,
+					FadeInTime = mod.NilValue,
+					FadeInSound = mod.NilValue,
+					TeleportToId = mod.NilValue,
+					AngleTowardTargetId = mod.NilValue,
+					TeleportHeroToId = mod.NilValue,
+					AngleHeroTowardTargetId = mod.NilValue,
+				},
+			},
+			AchillesAboutMyrmidonReunionQuest02 = {
+				EndCue = mod.NilValue,
+			},
+			MyrmidonReunionQuestComplete = {
+				RequiredCosmetics = mod.NilValue,
+				EndVoiceLines = mod.NilValue,
+				GameStateRequirements = {
+					{
+						PathTrue = { "GameState", "WorldUpgradesAdded", "ModsNikkelMHadesBiomes_AchillesPatroclusQuestItem" },
+					},
+				},
+				[6] = {
+					PostLineThreadedFunctionName = _PLUGIN.guid .. "." .. "AchillesExit",
+					PostLineFunctionArgs = { WaitTime = 1.5 },
+				},
+			},
+			AchillesAfterMyrmidonReunionQuestComplete01 = {
+				EndVoiceLines = mod.NilValue,
+			},
+			AchillesWithHades01 = {
+				[4] = {
+					PostLineThreadedFunctionName = _PLUGIN.guid .. "." .. "AchillesExit",
+				},
+			},
+			AchillesAboutMyrmidonReunionQuest03_A = {
+				RequiredCosmetics = mod.NilValue,
+				EndVoiceLines = { ObjectType = "ModsNikkelMHadesBiomes_NPC_Achilles_01" },
+			},
+			AchillesAboutMyrmidonReunionQuest03_B = {
+				RequiredCosmetics = mod.NilValue,
+				EndVoiceLines = { ObjectType = "ModsNikkelMHadesBiomes_NPC_Achilles_01" },
+			},
+			AchillesAboutMyrmidonReunionQuest03_C = {
+				RequiredCosmetics = mod.NilValue,
+				EndVoiceLines = { ObjectType = "ModsNikkelMHadesBiomes_NPC_Achilles_01" },
+			},
+			AchillesAboutMyrmidonReunionQuest04 = {
+				RequiredFalseCosmetics = { "ModsNikkelMHadesBiomes_AchillesPatroclusQuestItem", },
+				RequiredFalseTextLines = { "AchillesAboutMyrmidonReunionQuest04_B", },
+			},
+			-- TODO: Skip?
+			AchillesAboutHadesBedroom01 = {
+				Skip = true,
+			},
+		},
+		GiftTextLineSets = {
+			AchillesGift01 = {
+				UnfilledIcon = "EmptyHeartWithGiftIcon",
+				FilledIcon = "FilledHeartWithGiftIcon",
+			},
+			AchillesGift02 = {
+				UnfilledIcon = "EmptyHeartWithProphecyIcon",
+				FilledIcon = "FilledHeartWithProphecyIcon",
+			},
+			AchillesGift05_A = {
+				RequiredFalseTextLines = mod.NilValue,
+			},
+			AchillesGift05_B = mod.NilValue,
+			AchillesGift06_A = {
+				[2] = {
+					PostLineThreadedFunctionName = mod.NilValue,
+					PostLineFunctionName = _PLUGIN.guid .. "." .. "TimePassesPresentation",
+					PostLineFunctionArgs = { IsLoungeRevelryPresentation = true, PreTextWait = 0.75, Sound2 = "/EmptyCue" },
+				},
+				[3] = {
+					FadeOutTime = mod.NilValue,
+					FullFadeTime = mod.NilValue,
+					FadeInTime = mod.NilValue,
+					FadeInSound = mod.NilValue,
+					TeleportToId = mod.NilValue,
+					AngleTowardTargetId = mod.NilValue,
+					TeleportHeroToId = mod.NilValue,
+					AngleHeroTowardTargetId = mod.NilValue,
+					AttachedDim = mod.NilValue,
+				},
+				[6] = {
+					FadeOutTime = mod.NilValue,
+					FullFadeTime = mod.NilValue,
+					FadeInTime = mod.NilValue,
+					FadeInSound = mod.NilValue,
+					TeleportToId = mod.NilValue,
+					AngleTowardTargetId = mod.NilValue,
+					TeleportHeroToId = mod.NilValue,
+					AngleHeroTowardTargetId = mod.NilValue,
+				},
+			},
+			AchillesGift07_A = {
+				GameStateRequirements = {
+					{
+						Path = { "GameState", "TextLinesRecord", },
+						HasAll = { "AchillesGift06_A", "MyrmidonReunionQuestComplete" },
+					},
+				},
+				LockedHintId = "ModsNikkelMHadesBiomes_Codex_AchillesUnlockHint01",
+				UnfilledIcon = "EmptyHeartWithAmbrosiaIcon",
+				FilledIcon = "FilledHeartWithAmbrosiaIcon",
+				Cost = { SuperGiftPoints = 1, GiftPoints = mod.NilValue },
+			},
+			AchillesGift08_A = {
+				UnfilledIcon = "EmptyHeartWithAmbrosiaIcon",
+				FilledIcon = "FilledHeartWithAmbrosiaIcon",
+				Cost = { SuperGiftPoints = 1, GiftPoints = mod.NilValue },
+			},
+			AchillesGift09_A = {
+				CompletedHintId = "ModsNikkelMHadesBiomes_Codex_BondForgedAchilles",
+				UnfilledIcon = "EmptyHeartWithAmbrosiaIcon",
+				FilledIcon = "FilledHeartWithAmbrosiaIcon",
+				Cost = { SuperGiftPoints = 1, GiftPoints = mod.NilValue },
+				EndVoiceLines = mod.NilValue,
+				[6] = { PostLineFunctionArgs = { Icon = mod.SharedKeepsakePortAchillesKeepsakeBondIcon }, },
+			},
+		},
+		GiftGivenVoiceLines = {
+			[1] = {
+				[1] = { Cue = "/VO/MelinoeField_4207", Text = "Thank you both for this." },
+			},
+			[2] = {
+				[1] = { Cue = "/VO/Melinoe_1149", Text = "How thoughtful, I accept!" },
+			},
+		},
+	},
+	NPC_Achilles_Story_01 = {
+		ModsNikkelMHadesBiomesIsModdedEnemy = true,
+		AlwaysShowInvulnerabubbleOnInvulnerableHit = true,
+		SubtitleColor = game.Color.AchillesVoice,
+		SpeakerName = "Achilles",
+		LineHistoryName = "NPC_Achilles_01",
+		CodexName = "ModsNikkelMHadesBiomes_NPC_Achilles_01",
 	},
 	ModsNikkelMHadesBiomes_NPC_Cerberus_Field_01 = {
 		ModsNikkelMHadesBiomesIsModdedEnemy = true,
@@ -870,7 +1249,25 @@ local npcModifications = {
 		},
 		AlwaysShowInvulnerabubbleOnInvulnerableHit = true,
 		ExcludeFromDamageDealtRecord = true,
-		ActivateRequirements = mod.NilValue,
+		ActivateRequirements = {
+			RequiredTextLines = mod.NilValue,
+			RequiredFalseTextLinesThisRun = mod.NilValue,
+			RequiredAnyEncountersThisRun = mod.NilValue,
+			{
+				PathTrue = { "GameState", "TextLinesRecord", "ThanatosFieldFirstMeeting" },
+			},
+			{
+				PathFalse = { "PrevRun", "TextLinesRecord", "PersephoneFirstMeeting" },
+			},
+			{
+				Path = { "PrevRun", "EncountersOccurredCache", },
+				HasAny = { "ThanatosTartarus", "ThanatosAsphodel", "ThanatosElysium", "ThanatosElysiumIntro", },
+			},
+			{
+				PathFalse = { "CurrentRun", "IsDreamRun" },
+			},
+			NamedRequirementsFalse = { "StandardPackageBountyActive", },
+		},
 
 		InteractTextLineSets = {
 			-- #region Moved from DeathLoopData - Romance
@@ -2010,6 +2407,10 @@ local npcModifications = {
 		ActivateRequirements = {
 			RequiredAnyKillsThisRun = mod.NilValue,
 			{
+				Path = { "CurrentRun", "TextLinesRecord" },
+				HasNone = mod.HadesNPCFirstMeetingTextLines,
+			},
+			{
 				Path = { "CurrentRun", "EnemyKills" },
 				HasAny = { "Harpy", "Harpy2" }
 			},
@@ -2027,6 +2428,7 @@ local npcModifications = {
 			{
 				PathFalse = { "CurrentRun", "IsDreamRun" },
 			},
+			NamedRequirementsFalse = { "StandardPackageBountyActive" },
 		},
 		SpecialInteractFunctionName = "SpecialInteractSalute",
 		SpecialInteractGameStateRequirements = {
