@@ -5,7 +5,7 @@
 <!--Releasenotes start-->
 ### Patch Highlights:
 - You can now meet **Achilles** in Asphodel, and advance his and Patroclus' storyline.
-- Added **companions** from the first game to the mod. Your friends may now give these to you once you advance your relationships with the accordingly. Not all companions are unlockable yet (Unlockables are: Sisyphus, Thanatos, Megaera, Skelly).
+- Added **companions** from the first game to the mod. Your friends may now give these to you once you advance your relationships with the accordingly. Dusa's companion is not unlockable yet, but will be in the future.
 - You may now naturally encounter **Artemis** and **Athena** in Zagreus' Journey, and they will use their dialogues from the first game when you speak to one of them.
 - Picking up boons from Aphrodite, Ares, Chaos, Demeter, Hermes, Poseidon or Zeus while in a Zagreus' Journey run will now use their respective dialogues and advance their storylines from the first game.
 - **Theseus** may now call upon the aid of Apollo, Hestia, Hera and Hephaestus.

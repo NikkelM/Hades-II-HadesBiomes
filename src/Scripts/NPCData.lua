@@ -985,10 +985,6 @@ local npcModifications = {
 				UnfilledIcon = "EmptyHeartWithGiftIcon",
 				FilledIcon = "FilledHeartWithGiftIcon",
 			},
-			AchillesGift02 = {
-				UnfilledIcon = "EmptyHeartWithProphecyIcon",
-				FilledIcon = "FilledHeartWithProphecyIcon",
-			},
 			AchillesGift05_A = {
 				RequiredFalseTextLines = mod.NilValue,
 			},
