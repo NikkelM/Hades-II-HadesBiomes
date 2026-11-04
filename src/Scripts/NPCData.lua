@@ -968,9 +968,24 @@ local npcModifications = {
 				RequiredFalseCosmetics = { "ModsNikkelMHadesBiomes_AchillesPatroclusQuestItem", },
 				RequiredFalseTextLines = { "AchillesAboutMyrmidonReunionQuest04_B", },
 			},
-			-- TODO: Skip?
 			AchillesAboutHadesBedroom01 = {
-				Skip = true,
+				EndVoiceLines = {
+					{ Cue = "/VO/Melinoe_1236", Text = "Thank you for your service." },
+				},
+				[5] = {
+					PreLineFunctionName = mod.NilValue,
+					PostLineAnim = "MelinoeSalute",
+					PostLineAnimTarget = "Hero",
+					PostLineThreadedFunctionName = "MaxedRelationshipPresentation",
+					PostLineFunctionArgs = {
+						Delay = 1.0,
+						Title = "ModsNikkelMHadesBiomes_MemoryUnlocked_Title",
+						Text = "HadesBedroomUnlocked_Subtitle",
+						TextRevealSound = "/Leftovers/Menu Sounds/TextReveal3",
+						AnimationName = "LocationTextBGGeneric",
+						AnimationOutName = "LocationTextBGGenericOut",
+					},
+				},
 			},
 		},
 		GiftTextLineSets = {

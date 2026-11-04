@@ -115,4 +115,6 @@ mod.StorytellerVoicelines = {
 	Storyteller_0386 = true,
 	Storyteller_0387 = true,
 	Storyteller_0410 = true,
+	-- "Flashback" scenes
+	Storyteller_0350 = true,
 }

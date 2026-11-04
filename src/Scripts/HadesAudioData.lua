@@ -4410,6 +4410,17 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 			{ Name = "MelinoeAnyQuipSpeech", Time = 4 },
 		},
 		-- #region Modded
+		-- After the Achilles bedroom flashback to inspect Persephone's portrait
+		{
+			BreakIfPlayed = true,
+			PreLineWait = 0.7,
+			GameStateRequirements = {
+				{
+					PathTrue = { "CurrentRun", "TextLinesRecord", "Inspect_DeathAreaBedroomHades_Portrait_01" },
+				},
+			},
+			{ Cue = "/VO/MelinoeField_5676", Text = "My dreams are my reality..." },
+		},
 		-- After the first modded run
 		{
 			BreakIfPlayed = true,

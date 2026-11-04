@@ -902,6 +902,7 @@ mod.HadesHelpTextCopyKeys = {
 	SisyphusQuestItem = true,
 	AchillesPatroclusQuestItem = true,
 	OrpheusUnlockItem = true,
+	HadesBedroomUnlocked_Subtitle = true,
 	-- #endregion
 	-- #region Orpheus Boons/Songs
 	MusicMusicPlayerMainThemeMusicPlayer = true,

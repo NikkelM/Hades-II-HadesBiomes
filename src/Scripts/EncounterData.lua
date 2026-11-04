@@ -1,6 +1,6 @@
 -- Adds EncounterData for ShrineChallenges and Charon's fight from Hades to Hades II
 local encounterData = mod.LoadHadesEncounterData("EncounterData.lua") or {}
-local encounterDataChallengeCharon = {
+local modEncounterData = {
 	-- ShrineChallenge
 	BasePerfectClear = encounterData.BasePerfectClear,
 	ShrineChallengeTartarus = encounterData.ShrineChallengeTartarus,
@@ -11,11 +11,11 @@ local encounterDataChallengeCharon = {
 	BossCharon = encounterData.BossCharon,
 }
 
-mod.UpdateField(encounterDataChallengeCharon, "Generated", "ModsNikkelMHadesBiomesGenerated", { "InheritFrom" },
+mod.UpdateField(modEncounterData, "Generated", "ModsNikkelMHadesBiomesGenerated", { "InheritFrom" },
 	"EncounterData")
 
 -- For TimeChallengeAsphodel
-mod.UpdateField(encounterDataChallengeCharon, "Challenge", "TimeChallenge", { "InheritFrom" }, "EncounterData")
+mod.UpdateField(modEncounterData, "Challenge", "TimeChallenge", { "InheritFrom" }, "EncounterData")
 
 -- For tables that should be replaced. The modifications append table data!
 -- Can still use modifications if the modified table did not exist beforehand
@@ -89,4 +89,4 @@ table.insert(game.EncounterData.EliteChallenge.BannedEliteAttributes, "Smoked")
 table.insert(game.TimerBlockCombatExcludes, "ThanatosEncounter")
 table.insert(game.TimerBlockCombatExcludes, "SurvivalEncounter")
 
-mod.ApplyModificationsAndInheritEncounterData(encounterDataChallengeCharon, encounterModifications, encounterReplacements)
+mod.ApplyModificationsAndInheritEncounterData(modEncounterData, encounterModifications, encounterReplacements)

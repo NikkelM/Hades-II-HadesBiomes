@@ -118,6 +118,19 @@ local obstacleModifications = {
 	-- #region STYX
 	-- #endregion
 
+	-- #region FLASHBACKS
+	HousePaintingPersephone01 = {
+		DistanceTrigger = {
+			GameStateRequirements = {
+				{
+					Path = { "CurrentHubRoom", "Name" },
+					IsNone = { "DeathAreaBedroomHades" },
+				},
+			},
+		},
+	},
+	-- #endregion
+
 	-- #region Resource Points
 	HarvestPoint = {
 		ModsNikkelMHadesBiomesBreakBreakablesOnPlace = true,
