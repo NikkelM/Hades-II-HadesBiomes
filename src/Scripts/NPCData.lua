@@ -693,6 +693,7 @@ local npcModifications = {
 	ModsNikkelMHadesBiomes_NPC_Achilles_01 = {
 		ModsNikkelMHadesBiomesIsModdedEnemy = true,
 		AlwaysShowInvulnerabubbleOnInvulnerableHit = true,
+		RepulseOnMeleeInvulnerableHit = 150,
 		ActivateRequirements = {
 			RequiredFalsePlayedThisRun = mod.NilValue,
 			RequiredFalseTextLinesThisRun = mod.NilValue,
@@ -1144,6 +1145,7 @@ local npcModifications = {
 	ModsNikkelMHadesBiomes_NPC_Persephone_01 = {
 		ModsNikkelMHadesBiomesIsModdedEnemy = true,
 		AlwaysShowInvulnerabubbleOnInvulnerableHit = true,
+		RepulseOnMeleeInvulnerableHit = 150,
 		-- So we don't play the Prophecy completed animation and SFX over the Zagreus death animation
 		TextLinesIgnoreQuests = true,
 		SubtitleColor = game.Color.PersephoneVoice,
@@ -1244,6 +1246,7 @@ local npcModifications = {
 			},
 		},
 		AlwaysShowInvulnerabubbleOnInvulnerableHit = true,
+		RepulseOnMeleeInvulnerableHit = 150,
 		ExcludeFromDamageDealtRecord = true,
 		ActivateRequirements = {
 			RequiredTextLines = mod.NilValue,
