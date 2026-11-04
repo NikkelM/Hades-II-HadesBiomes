@@ -180,6 +180,14 @@ local requiredGlobalVoiceLineModifications = {
 		Find = "Persephone_",
 		Replace = mod.VoiceoverFileNames.Persephone .. "_",
 	},
+	PatroclusGreetingLines = {
+		Find = "Achilles_",
+		Replace = mod.VoiceoverFileNames.Achilles .. "_",
+	},
+	PatroclusMutteringLines = {
+		Find = "Achilles_",
+		Replace = mod.VoiceoverFileNames.Achilles .. "_",
+	},
 	ModsNikkelMHadesBiomes_FishNotCaughtVoiceLines = {
 		Find = "Persephone_",
 		Replace = mod.VoiceoverFileNames.Persephone .. "_",

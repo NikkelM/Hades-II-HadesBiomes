@@ -500,7 +500,7 @@ local roomReplacements = {
 				{ Name = "MelinoeAnyQuipSpeech" },
 				{ Name = "MelinoeRoomExitVoiceLines", Time = 25 },
 			},
-			{ Cue = "/VO/MelinoeField_4244", Text = "Enjoy the rest of your evening, everyone!",    PlayFirst = true },
+			{ Cue = "/VO/MelinoeField_4244", Text = "Enjoy the rest of your evening, everyone!", PlayFirst = true },
 			{ Cue = "/VO/Melinoe_4319",      Text = "Farewell, everyone." },
 			{ Cue = "/VO/MelinoeField_4993", Text = "Was that enough of a good show?" },
 			{ Cue = "/VO/MelinoeField_4994", Text = "No one crosses the Unseen!" },
@@ -755,13 +755,15 @@ local roomModifications = {
 
 	-- OTHER
 	Y_Story01 = {
-		LoadModdedVoiceBanks = { "Patroclus", "ZagreusField" },
+		LoadModdedVoiceBanks = { "Patroclus", "ZagreusField", "Modsnikkelmhadesbiomesachilles" },
 		-- "/Ambience/ElysiumAmbientLoop"
 		Ambience = "{0ad1ff34-6b23-42a9-a46c-8da523a8fc6b}",
 		RewardPreviewOverride = "ModsNikkelMHadesBiomes_StoryPreview",
 		ModsNikkelMHadesBiomes_DisableRewardPreviewOverrideOnChaosCurse = true,
 		GameStateRequirements = {
 			NamedRequirementsFalse = { "StandardPackageBountyActive" },
+			RequiredFalseTextLinesThisRun = game.ConcatTableValuesIPairs({ "HermesFirstPickUp" },
+				mod.HadesNPCFirstMeetingTextLines),
 		},
 
 		HarvestPointChances = { 0.5 },

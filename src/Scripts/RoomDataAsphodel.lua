@@ -493,12 +493,22 @@ local roomModifications = {
 
 	-- OPENING ROOMS
 	X_Intro = {
+		LoadModdedVoiceBanks = { "Modsnikkelmhadesbiomesachilles", "Modsnikkelmhadesbiomeszagreushome" },
 		InheritFrom = { "BaseAsphodel", "BiomeStartRoom", },
 		Starting = true,
 		BlockRunProgressUI = true,
 		StartUnthreadedEvents = {
 			{ FunctionName = "EndBiomeRecords", },
 			{ FunctionName = "EndAllBiomeStates" },
+			{
+				FunctionName = "ActivatePrePlaced",
+				Args = {
+					FractionMin = 1.0,
+					FractionMax = 1.0,
+					LegalTypes = { "ModsNikkelMHadesBiomes_NPC_Achilles_01" },
+				},
+			},
+			{ FunctionName = "CheckConversations" },
 		},
 
 		-- For Dream Dives
@@ -675,7 +685,9 @@ local roomModifications = {
 			NamedRequirementsFalse = { "StandardPackageBountyActive" },
 			-- Since Orpheus is now appearing during the current run instead of in the house (previous run), fix the requirement
 			RequiredFalseTextLinesLastRun = mod.NilValue,
-			RequiredFalseTextLinesThisRun = { "HermesFirstPickUp", "SisyphusFirstMeeting", "Fury2FirstAppearance", "Fury3FirstAppearance", "OrpheusAboutSingersReunionQuest01" },
+			RequiredFalseTextLinesThisRun = game.ConcatTableValuesIPairs(
+				{ "HermesFirstPickUp", "Fury2FirstAppearance", "Fury3FirstAppearance", "OrpheusAboutSingersReunionQuest01" },
+				mod.HadesNPCFirstMeetingTextLines),
 		},
 
 		HarvestPointChances = { 0.4, 0.1, },

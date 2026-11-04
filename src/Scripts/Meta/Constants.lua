@@ -488,6 +488,8 @@ mod.SharedKeepsakePortOrpheusKeepsakeTrait = "zannc-SharedKeepsakePort-DistanceD
 mod.SharedKeepsakePortOrpheusKeepsakeBondIcon = "Keepsake_zannc-SharedKeepsakePort-Orpheus"
 mod.SharedKeepsakePortMegaeraKeepsakeTrait = "zannc-SharedKeepsakePort-LowHealthDamageKeepsake"
 mod.SharedKeepsakePortMegaeraKeepsakeBondIcon = "Keepsake_zannc-SharedKeepsakePort-Megaera"
+mod.SharedKeepsakePortAchillesKeepsakeTrait = "zannc-SharedKeepsakePort-DirectionalArmorKeepsake"
+mod.SharedKeepsakePortAchillesKeepsakeBondIcon = "Keepsake_zannc-SharedKeepsakePort-Achilles"
 
 mod.SharedKeepsakePortKeepsakeTraitNames = {
 	mod.SharedKeepsakePortSisyphusKeepsakeTrait,
@@ -496,6 +498,7 @@ mod.SharedKeepsakePortKeepsakeTraitNames = {
 	mod.SharedKeepsakePortThanatosKeepsakeTrait,
 	mod.SharedKeepsakePortOrpheusKeepsakeTrait,
 	mod.SharedKeepsakePortMegaeraKeepsakeTrait,
+	mod.SharedKeepsakePortAchillesKeepsakeTrait,
 }
 
 -- Not actually a constant, will be populated in mod.AddNarrativeDataEntries()
@@ -573,7 +576,7 @@ mod.FormalNPCRelationships = {
 	"NPC_Thanatos_Field_01",
 	"NPC_Orpheus_01",
 	-- "NPC_Dusa_01",
-	-- "NPC_Achilles_01",
+	"ModsNikkelMHadesBiomes_NPC_Achilles_01",
 }
 
 mod.InformalNPCRelationshipsF = {
@@ -1209,7 +1212,7 @@ mod.AssistTraitNames = {
 	"SisyphusAssistTrait",
 	"SkellyAssistTrait",
 	-- "DusaAssistTrait",
-	-- "AchillesPatroclusAssistTrait",
+	"AchillesPatroclusAssistTrait",
 }
 
 mod.OrpheusLyreInteractionThresholds = {
@@ -1229,4 +1232,20 @@ mod.OrpheusLyreInteractionThresholds = {
 		Medium = 40,
 		Good = 75,
 	},
+}
+
+-- Used in the requirement checks to ensure only one new NPC is met each run
+mod.HadesNPCFirstMeetingTextLines = {
+	"SisyphusFirstMeeting",
+	"EurydiceFirstMeeting01_A",
+	"EurydiceFirstMeeting01_B",
+	"EurydiceFirstMeeting01_C",
+	"PatroclusFirstMeeting",
+	"ThanatosFirstAppearance",
+	"AchillesFirstMeeting",
+	"AchillesFirstMeeting_Alt",
+	"MegaeraMeeting01",
+	"MegaeraMeeting01_B",
+	"MegaeraMeeting01_Alt",
+	"MegaeraMeeting01_Alt_B",
 }

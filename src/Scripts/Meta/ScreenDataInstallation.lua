@@ -104,8 +104,9 @@ for screenName, textId in pairs(screenTextIdsByName) do
 end
 
 -- #region Mod update screens
+-- Add the required screen to Z_ScreenText.en.ModsNikkelMHadesBiomes.sjson in the data folder
 mod.UpdateInstallScreenTextIdsByVersion = {
-	["1.3.0"] = "ModsNikkelMHadesBiomes_UpdateSuccess_1_3_0",
+	["2.0.0"] = "ModsNikkelMHadesBiomes_UpdateSuccess_2_0_0",
 }
 
 game.ScreenData.ModsNikkelMHadesBiomesUpdateSuccess = game.DeepCopyTable(game.ScreenData

@@ -471,6 +471,18 @@ function mod.RecordPairedEncounterAppearance(source, args)
 	game.GameState.ModsNikkelMHadesBiomesCustomCounters[args.OtherEncounterName] = 0
 end
 
+function mod.IsModdedCodexFullyUnlocked()
+	for entryName, entryData in pairs(game.CodexData[mod.CodexChapterName].Entries) do
+		for index = 1, #entryData.Entries do
+			if game.CodexStatus[mod.CodexChapterName] == nil or game.CodexStatus[mod.CodexChapterName][entryName] == nil or game.CodexStatus[mod.CodexChapterName][entryName][index] == nil or not game.CodexStatus[mod.CodexChapterName][entryName][index].Unlocked then
+				return false
+			end
+		end
+	end
+
+	return true
+end
+
 function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, args)
 	if args == nil then
 		args = {}
@@ -670,6 +682,7 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 		local npcNameMappings = {
 			NPC_Hades_01 = "NPC_Hades_Field_01",
 			NPC_Nyx_01 = "NPC_Nyx_Story_01",
+			NPC_Achilles_01 = "ModsNikkelMHadesBiomes_NPC_Achilles_01",
 		}
 		local mappedInteractions = {}
 		for npcName, interactCount in pairs(requirements.RequiredMinNPCInteractions) do
@@ -894,27 +907,29 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 		end
 	end
 
-	if requirements.RequiredCodexEntry ~= nil then
-		local requiredEntryName = requirements.RequiredCodexEntry.EntryName
-		local requiredEntryIndex = requirements.RequiredCodexEntry.EntryIndex or 1
+	local codexEntryNameMappings = {
+		NPC_Achilles_01 = "ModsNikkelMHadesBiomes_NPC_Achilles_01",
+	}
 
-		if game.CodexData[mod.CodexChapterName].Entries[requiredEntryName] and game.CodexData[mod.CodexChapterName].Entries[requiredEntryName].Entries[requiredEntryIndex] then
-			local codexRequirements = game.CodexData[mod.CodexChapterName].Entries[requiredEntryName].Entries
-					[requiredEntryIndex].UnlockGameStateRequirements or {}
-			if not mod.ModsNikkelMHadesBiomesIsGameStateEligible(nil, codexRequirements) then
-				return false
-			end
+	if requirements.RequiredCodexEntry ~= nil then
+		local requiredEntryName = codexEntryNameMappings[requirements.RequiredCodexEntry.EntryName] or
+				requirements.RequiredCodexEntry.EntryName
+		local requiredEntryIndex = requirements.RequiredCodexEntry.EntryIndex or 1
+		local requiredEntry = game.CodexData[mod.CodexChapterName].Entries[requiredEntryName]
+
+		if requiredEntry == nil or requiredEntry.Entries[requiredEntryIndex] == nil then
+			return false
 		end
-		-- local requiredEntryName = requirements.RequiredCodexEntry.EntryName
-		-- local requiredEntryIndex = requirements.RequiredCodexEntry.EntryIndex or 1
-		-- local requiredCodexEntryFound = HasCodexEntryBeenFound(requiredEntryName, requiredEntryIndex)
-		-- if not requiredCodexEntryFound then
-		-- 	return false
-		-- end
+
+		local codexRequirements = requiredEntry.Entries[requiredEntryIndex].UnlockGameStateRequirements or {}
+		if not mod.ModsNikkelMHadesBiomesIsGameStateEligible(nil, codexRequirements) then
+			return false
+		end
 	end
 
 	if requirements.RequiredCodexEntries ~= nil then
-		for requiredEntryName, requiredEntryIndex in pairs(requirements.RequiredCodexEntries) do
+		for sourceEntryName, requiredEntryIndex in pairs(requirements.RequiredCodexEntries) do
+			local requiredEntryName = codexEntryNameMappings[sourceEntryName] or sourceEntryName
 			if game.CodexData[mod.CodexChapterName].Entries[requiredEntryName] and game.CodexData[mod.CodexChapterName].Entries[requiredEntryName].Entries[requiredEntryIndex] then
 				local codexRequirements = game.CodexData[mod.CodexChapterName].Entries[requiredEntryName].Entries
 						[requiredEntryIndex].UnlockGameStateRequirements or {}
@@ -929,24 +944,27 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 	end
 
 	if requirements.RequiredCodexEntriesMin ~= nil then
-		if game.CalcNumCodexEntriesUnlocked() < requirements.RequiredCodexEntriesMin then
+		if mod.CalcNumModdedCodexEntriesUnlocked() < requirements.RequiredCodexEntriesMin then
 			return false
 		end
 	end
 
-	if requirements.RequiresCodexFullyUnlocked ~= nil then -- not implemented in mod
-		for chapterName, chapterData in pairs(game.CodexData) do
-			for entryName, entryData in pairs(game.CodexData[chapterName].Entries) do
-				if CodexStatus[chapterName] == nil or CodexStatus[chapterName][entryName] == nil then
-					return false
-				else
-					for i = 1, #entryData.Entries do
-						if not CodexStatus[chapterName][entryName][i] or not CodexStatus[chapterName][entryName][i].Unlocked then
-							return false
-						end
-					end
-				end
-			end
+	if requirements.RequiresCodexFullyUnlocked ~= nil then
+		-- for chapterName, chapterData in pairs(game.CodexData) do
+		-- 	for entryName, entryData in pairs(game.CodexData[chapterName].Entries) do
+		-- 		if CodexStatus[chapterName] == nil or CodexStatus[chapterName][entryName] == nil then
+		-- 			return false
+		-- 		else
+		-- 			for i = 1, #entryData.Entries do
+		-- 				if not CodexStatus[chapterName][entryName][i] or not CodexStatus[chapterName][entryName][i].Unlocked then
+		-- 					return false
+		-- 				end
+		-- 			end
+		-- 		end
+		-- 	end
+		-- end
+		if not mod.IsModdedCodexFullyUnlocked() then
+			return false
 		end
 	end
 
@@ -2286,7 +2304,7 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 		end
 	end
 
-	if requirements.RequiredLastLinePlayed ~= nil and not Contains(requirements.RequiredLastLinePlayed, game.LastLinePlayed) then
+	if requirements.RequiredLastLinePlayed ~= nil and not game.Contains(requirements.RequiredLastLinePlayed, game.LastLinePlayed) then
 		return false
 	end
 
@@ -2302,6 +2320,7 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 		translated = translated:gsub("/VO/ZagreusHome_", "/VO/Modsnikkelmhadesbiomeszagreushome_")
 		translated = translated:gsub("/VO/Intercom_", "/VO/Modsnikkelmhadesbiomesintercom_")
 		translated = translated:gsub("/VO/MegaeraHome_", "/VO/Modsnikkelmhadesbiomesmegaerahome_")
+		translated = translated:gsub("/VO/Achilles_", "/VO/Modsnikkelmhadesbiomesachilles_")
 
 		return translated
 	end
