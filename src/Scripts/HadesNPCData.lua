@@ -3520,40 +3520,40 @@ mod.NPCData = mod.NPCData or {
 				},
 			},
 
-			-- below: old conversations from before the Welcome to Hell update
-			SisyphusGift07 = {
-				Skip = true,
-				PlayOnce = true,
-				RequiredTextLines = { "SisyphusGift06" },
-				{
-					Cue = "/VO/Sisyphus_0158",
-					Text =
-					"Wait, really, this, this is for me, you mean it, Prince? I mean, I won't say no, I can't say no to such a thing, so, thank you! Thank you kindly."
-				},
-				{
-					Cue = "/VO/ZagreusHome_0525",
-					Portrait = "Portrait_Zag_Default_01",
-					Speaker = "CharProtag",
-					Text = "You're more than welcome, sir. For all you've done for me, it's the least I could do."
-				},
-			},
-			SisyphusGift08 = {
-				Skip = true,
-				PlayOnce = true,
-				RequiredTextLines = { "SisyphusGift07", },
-				{
-					Cue = "/VO/Sisyphus_0159",
-					PreLineWait = 0.35,
-					Text =
-					"...I'm really rather speechless, Your Highness. I'm just a shade doing my time. I don't deserve your generosity."
-				},
-				{
-					Cue = "/VO/ZagreusHome_0526",
-					Portrait = "Portrait_Zag_Default_01",
-					Speaker = "CharProtag",
-					Text = "Come on, sir, what's a priceless bottle of the drink of the gods between friends?"
-				},
-			},
+			-- -- below: old conversations from before the Welcome to Hell update
+			-- SisyphusGift07 = {
+			-- 	Skip = true,
+			-- 	PlayOnce = true,
+			-- 	RequiredTextLines = { "SisyphusGift06" },
+			-- 	{
+			-- 		Cue = "/VO/Sisyphus_0158",
+			-- 		Text =
+			-- 		"Wait, really, this, this is for me, you mean it, Prince? I mean, I won't say no, I can't say no to such a thing, so, thank you! Thank you kindly."
+			-- 	},
+			-- 	{
+			-- 		Cue = "/VO/ZagreusHome_0525",
+			-- 		Portrait = "Portrait_Zag_Default_01",
+			-- 		Speaker = "CharProtag",
+			-- 		Text = "You're more than welcome, sir. For all you've done for me, it's the least I could do."
+			-- 	},
+			-- },
+			-- SisyphusGift08 = {
+			-- 	Skip = true,
+			-- 	PlayOnce = true,
+			-- 	RequiredTextLines = { "SisyphusGift07", },
+			-- 	{
+			-- 		Cue = "/VO/Sisyphus_0159",
+			-- 		PreLineWait = 0.35,
+			-- 		Text =
+			-- 		"...I'm really rather speechless, Your Highness. I'm just a shade doing my time. I don't deserve your generosity."
+			-- 	},
+			-- 	{
+			-- 		Cue = "/VO/ZagreusHome_0526",
+			-- 		Portrait = "Portrait_Zag_Default_01",
+			-- 		Speaker = "CharProtag",
+			-- 		Text = "Come on, sir, what's a priceless bottle of the drink of the gods between friends?"
+			-- 	},
+			-- },
 		},
 
 		GiftGivenVoiceLines = {
@@ -10883,46 +10883,46 @@ mod.NPCData = mod.NPCData or {
 				},
 			},
 
-			-- below: old conversations from before the Welcome to Hell update
-			PatroclusGift07 = {
-				Skip = true,
-				PlayOnce = true,
-				RequiredTextLines = { "PatroclusGift06" },
-				{
-					Cue = "/VO/Patroclus_0138",
-					Text = "You're much too kind to such a wretched shade, you know. But I'll not turn away this type of thing."
-				},
-				{
-					Cue = "/VO/ZagreusField_2867",
-					Portrait = "Portrait_Zag_Default_01",
-					Speaker = "CharProtag",
-					PreLineAnim = "ZagreusTalkEmpathyStart",
-					PreLineAnimTarget = "Hero",
-					PostLineAnim = "ZagreusTalkEmpathy_Return",
-					PostLineAnimTarget = "Hero",
-					Text = "You don't attack me indiscriminately, I give you Nectar. I don't think I'm being over-generous!"
-				},
-			},
-			PatroclusGift08 = {
-				Skip = true,
-				PlayOnce = true,
-				RequiredTextLines = { "PatroclusGift07" },
-				{
-					Cue = "/VO/Patroclus_0141",
-					Text = "Forgive my bluntness, but, why go out of your way for me like this...?"
-				},
-				{
-					Cue = "/VO/ZagreusField_1739",
-					Portrait = "Portrait_Zag_Default_01",
-					Speaker = "CharProtag",
-					PreLineAnim = "ZagreusTalkEmpathyStart",
-					PreLineAnimTarget = "Hero",
-					PostLineAnim = "ZagreusTalkEmpathy_Return",
-					PostLineAnimTarget = "Hero",
-					Text =
-					"I'm not going out of my way, sir. Look, I don't pretend to know the depths of your despair. But when I look at you, I'm reminded of how I've often felt. When I was in that dark place, someone said to me: Don't give up. If nothing else... it gives you something to do."
-				},
-			},
+			-- -- below: old conversations from before the Welcome to Hell update
+			-- PatroclusGift07 = {
+			-- 	Skip = true,
+			-- 	PlayOnce = true,
+			-- 	RequiredTextLines = { "PatroclusGift06" },
+			-- 	{
+			-- 		Cue = "/VO/Patroclus_0138",
+			-- 		Text = "You're much too kind to such a wretched shade, you know. But I'll not turn away this type of thing."
+			-- 	},
+			-- 	{
+			-- 		Cue = "/VO/ZagreusField_2867",
+			-- 		Portrait = "Portrait_Zag_Default_01",
+			-- 		Speaker = "CharProtag",
+			-- 		PreLineAnim = "ZagreusTalkEmpathyStart",
+			-- 		PreLineAnimTarget = "Hero",
+			-- 		PostLineAnim = "ZagreusTalkEmpathy_Return",
+			-- 		PostLineAnimTarget = "Hero",
+			-- 		Text = "You don't attack me indiscriminately, I give you Nectar. I don't think I'm being over-generous!"
+			-- 	},
+			-- },
+			-- PatroclusGift08 = {
+			-- 	Skip = true,
+			-- 	PlayOnce = true,
+			-- 	RequiredTextLines = { "PatroclusGift07" },
+			-- 	{
+			-- 		Cue = "/VO/Patroclus_0141",
+			-- 		Text = "Forgive my bluntness, but, why go out of your way for me like this...?"
+			-- 	},
+			-- 	{
+			-- 		Cue = "/VO/ZagreusField_1739",
+			-- 		Portrait = "Portrait_Zag_Default_01",
+			-- 		Speaker = "CharProtag",
+			-- 		PreLineAnim = "ZagreusTalkEmpathyStart",
+			-- 		PreLineAnimTarget = "Hero",
+			-- 		PostLineAnim = "ZagreusTalkEmpathy_Return",
+			-- 		PostLineAnimTarget = "Hero",
+			-- 		Text =
+			-- 		"I'm not going out of my way, sir. Look, I don't pretend to know the depths of your despair. But when I look at you, I'm reminded of how I've often felt. When I was in that dark place, someone said to me: Don't give up. If nothing else... it gives you something to do."
+			-- 	},
+			-- },
 		},
 
 		GiftGivenVoiceLines = {
@@ -18723,27 +18723,27 @@ mod.NPCData = mod.NPCData or {
 				},
 			},
 
-			-- below: old conversations from before the Welcome to Hell update
-			ThanatosGift07 = {
-				Skip = true,
-				PlayOnce = true,
-				RequiredTextLines = { "ThanatosGift06", },
-				{
-					Cue = "/VO/Thanatos_0171",
-					Text =
-					"I have to hand it to you, Zag, you're really putting in the work to get me to forgive you after all you've done. I'm honestly surprised."
-				},
-				{
-					Cue = "/VO/ZagreusHome_0782",
-					Portrait = "Portrait_Zag_Default_01",
-					Speaker = "CharProtag",
-					PreLineAnim = "ZagreusTalkEmpathyStart",
-					PreLineAnimTarget = "Hero",
-					PostLineAnim = "ZagreusTalkEmpathy_Return",
-					PostLineAnimTarget = "Hero",
-					Text = "Don't be. That feast of ours is really going to be something, Than."
-				},
-			},
+			-- -- below: old conversations from before the Welcome to Hell update
+			-- ThanatosGift07 = {
+			-- 	Skip = true,
+			-- 	PlayOnce = true,
+			-- 	RequiredTextLines = { "ThanatosGift06", },
+			-- 	{
+			-- 		Cue = "/VO/Thanatos_0171",
+			-- 		Text =
+			-- 		"I have to hand it to you, Zag, you're really putting in the work to get me to forgive you after all you've done. I'm honestly surprised."
+			-- 	},
+			-- 	{
+			-- 		Cue = "/VO/ZagreusHome_0782",
+			-- 		Portrait = "Portrait_Zag_Default_01",
+			-- 		Speaker = "CharProtag",
+			-- 		PreLineAnim = "ZagreusTalkEmpathyStart",
+			-- 		PreLineAnimTarget = "Hero",
+			-- 		PostLineAnim = "ZagreusTalkEmpathy_Return",
+			-- 		PostLineAnimTarget = "Hero",
+			-- 		Text = "Don't be. That feast of ours is really going to be something, Than."
+			-- 	},
+			-- },
 
 		},
 
