@@ -784,7 +784,6 @@ local npcModifications = {
 				[2] = { Cue = "/VO/Modsnikkelmhadesbiomeszagreushome_50001" },
 			},
 			AchillesGrantsCodex = {
-				EndCue = mod.NilValue,
 				GameStateRequirements = {
 					{
 						PathTrue = { "CodexStatus", "Enabled" },
@@ -936,12 +935,8 @@ local npcModifications = {
 					AngleHeroTowardTargetId = mod.NilValue,
 				},
 			},
-			AchillesAboutMyrmidonReunionQuest02 = {
-				EndCue = mod.NilValue,
-			},
 			MyrmidonReunionQuestComplete = {
 				RequiredCosmetics = mod.NilValue,
-				EndVoiceLines = mod.NilValue,
 				GameStateRequirements = {
 					{
 						PathTrue = { "GameState", "WorldUpgradesAdded", "ModsNikkelMHadesBiomes_AchillesPatroclusQuestItem" },
@@ -951,9 +946,6 @@ local npcModifications = {
 					PostLineThreadedFunctionName = _PLUGIN.guid .. "." .. "AchillesExit",
 					PostLineFunctionArgs = { WaitTime = 1.5 },
 				},
-			},
-			AchillesAfterMyrmidonReunionQuestComplete01 = {
-				EndVoiceLines = mod.NilValue,
 			},
 			AchillesWithHades01 = {
 				[4] = {
