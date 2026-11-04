@@ -762,7 +762,7 @@ local roomModifications = {
 		ModsNikkelMHadesBiomes_DisableRewardPreviewOverrideOnChaosCurse = true,
 		GameStateRequirements = {
 			NamedRequirementsFalse = { "StandardPackageBountyActive" },
-			RequiredFalseTextLinesThisRun = game.ConcatTableValuesIPairs({ "HermesFirstPickUp", "ThanatosFirstAppearance" },
+			RequiredFalseTextLinesThisRun = game.ConcatTableValuesIPairs({ "HermesFirstPickUp" },
 				mod.HadesNPCFirstMeetingTextLines),
 		},
 
