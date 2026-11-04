@@ -34,6 +34,21 @@ function mod.EnableAchillesCodex()
 	game.thread(game.ShowCodexUpdate)
 end
 
+modutil.mod.Path.Wrap("CheckCodexUnlock", function(base, chapterName, entryName, args)
+	-- It's a vanilla unlock or the mod chapter is already unlocked
+	if chapterName ~= mod.CodexChapterName or game.GameState.TextLinesRecord.AchillesGrantsCodex then
+		return base(chapterName, entryName, args)
+	end
+
+	-- Record mod Codex unlocks before Achilles grants the chapter without showing update presentations
+	local blockCodexUnlockPresentation = game.SessionMapState.BlockCodexUnlockPresentation
+	game.SessionMapState.BlockCodexUnlockPresentation = true
+	local result = base(chapterName, entryName, args)
+	game.SessionMapState.BlockCodexUnlockPresentation = blockCodexUnlockPresentation
+
+	return result
+end)
+
 modutil.mod.Path.Wrap("HasUnlockedEntries", function(base, chapterName)
 	if game.SessionState.CodexDebugUnlocked then
 		return true
