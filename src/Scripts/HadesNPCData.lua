@@ -34812,85 +34812,85 @@ mod.NPCData = mod.NPCData or {
 					"...If, indeed, I've something to be proud of, lad... it's that someone such as you can say a thing like that to me, and mean it."
 				},
 			},
-			-- below: old conversations from before the Welcome to Hell update
-			AchillesGift04 = {
-				Skip = true,
-				PlayOnce = true,
-				RequiredTextLines = { "AchillesGift03", },
-				{
-					Cue = "/VO/Achilles_0015",
-					Text = "My word. How very kind of you to think of me with that there, lad."
-				},
-				{
-					Cue = "/VO/ZagreusHome_0230",
-					Portrait = "Portrait_Zag_Default_01",
-					Speaker = "CharProtag",
-					Text = "Least I can do for all your guidance, sir."
-				},
-			},
-			AchillesGift05 = {
-				Skip = true,
-				PlayOnce = true,
-				RequiredTextLines = { "AchillesGift04", },
-				{
-					Cue = "/VO/Achilles_0064",
-					Text =
-					"Ah, now this is something, lad. I'd hate to think that you've returned to bring me this just for my sake. Though I am grateful, really."
-				},
-				{
-					Cue = "/VO/ZagreusHome_0250",
-					Portrait = "Portrait_Zag_Default_01",
-					Speaker = "CharProtag",
-					PreLineAnim = "ZagreusTalkEmpathyStart",
-					PreLineAnimTarget = "Hero",
-					PostLineAnim = "ZagreusTalkEmpathy_Return",
-					PostLineAnimTarget = "Hero",
-					Text =
-					"You've always been there for me, Achilles. Even when Father pushed me away. This is nothing. I don't think I can ever repay you."
-				},
-			},
-			AchillesGift06 = {
-				Skip = true,
-				PlayOnce = true,
-				RequiredTextLines = { "AchillesGift05", },
-				{
-					Cue = "/VO/Achilles_0065",
-					PostLineAnim = "ZagreusTalkEmpathyStart",
-					PostLineAnimTarget = "Hero",
-					Text =
-					"Lad, all this generosity, I... don't want you to get the wrong idea. I am alone, yes, but my heart belongs to another. Ever since I was alive. I hope you understand."
-				},
-				{
-					Cue = "/VO/ZagreusHome_0249",
-					Portrait = "Portrait_Zag_Default_01",
-					Speaker = "CharProtag",
-					PostLineAnim = "ZagreusTalkEmpathy_Return",
-					PostLineAnimTarget = "Hero",
-					Text =
-					"I... somehow knew that was the case, Achilles. I wanted you to have this, anyway, just... don't drown your sorrows, as they seem to make you stronger."
-				},
-				{
-					Cue = "/VO/Achilles_0066",
-					Text =
-					"Thank you, then, and do not worry about me. I am long since past my sorrow, and the rage I felt when first my heart was broken. Now it's but another scar. They say it's our scars that give us character."
-				},
-			},
-			AchillesGift07 = {
-				Skip = true,
-				PlayOnce = true,
-				RequiredTextLines = { "AchillesGift06", },
-				{
-					Cue = "/VO/Achilles_0067",
-					Text =
-					"I'm going to be the envy of the House with this, I thank you, lad. I hope you wouldn't mind if I shared some of it around?"
-				},
-				{
-					Cue = "/VO/ZagreusHome_0251",
-					Portrait = "Portrait_Zag_Default_01",
-					Speaker = "CharProtag",
-					Text = "It's yours, Achilles! Though not only do I hope you'll share it, why, I practically insist."
-				},
-			},
+			-- -- below: old conversations from before the Welcome to Hell update
+			-- AchillesGift04 = {
+			-- 	Skip = true,
+			-- 	PlayOnce = true,
+			-- 	RequiredTextLines = { "AchillesGift03", },
+			-- 	{
+			-- 		Cue = "/VO/Achilles_0015",
+			-- 		Text = "My word. How very kind of you to think of me with that there, lad."
+			-- 	},
+			-- 	{
+			-- 		Cue = "/VO/ZagreusHome_0230",
+			-- 		Portrait = "Portrait_Zag_Default_01",
+			-- 		Speaker = "CharProtag",
+			-- 		Text = "Least I can do for all your guidance, sir."
+			-- 	},
+			-- },
+			-- AchillesGift05 = {
+			-- 	Skip = true,
+			-- 	PlayOnce = true,
+			-- 	RequiredTextLines = { "AchillesGift04", },
+			-- 	{
+			-- 		Cue = "/VO/Achilles_0064",
+			-- 		Text =
+			-- 		"Ah, now this is something, lad. I'd hate to think that you've returned to bring me this just for my sake. Though I am grateful, really."
+			-- 	},
+			-- 	{
+			-- 		Cue = "/VO/ZagreusHome_0250",
+			-- 		Portrait = "Portrait_Zag_Default_01",
+			-- 		Speaker = "CharProtag",
+			-- 		PreLineAnim = "ZagreusTalkEmpathyStart",
+			-- 		PreLineAnimTarget = "Hero",
+			-- 		PostLineAnim = "ZagreusTalkEmpathy_Return",
+			-- 		PostLineAnimTarget = "Hero",
+			-- 		Text =
+			-- 		"You've always been there for me, Achilles. Even when Father pushed me away. This is nothing. I don't think I can ever repay you."
+			-- 	},
+			-- },
+			-- AchillesGift06 = {
+			-- 	Skip = true,
+			-- 	PlayOnce = true,
+			-- 	RequiredTextLines = { "AchillesGift05", },
+			-- 	{
+			-- 		Cue = "/VO/Achilles_0065",
+			-- 		PostLineAnim = "ZagreusTalkEmpathyStart",
+			-- 		PostLineAnimTarget = "Hero",
+			-- 		Text =
+			-- 		"Lad, all this generosity, I... don't want you to get the wrong idea. I am alone, yes, but my heart belongs to another. Ever since I was alive. I hope you understand."
+			-- 	},
+			-- 	{
+			-- 		Cue = "/VO/ZagreusHome_0249",
+			-- 		Portrait = "Portrait_Zag_Default_01",
+			-- 		Speaker = "CharProtag",
+			-- 		PostLineAnim = "ZagreusTalkEmpathy_Return",
+			-- 		PostLineAnimTarget = "Hero",
+			-- 		Text =
+			-- 		"I... somehow knew that was the case, Achilles. I wanted you to have this, anyway, just... don't drown your sorrows, as they seem to make you stronger."
+			-- 	},
+			-- 	{
+			-- 		Cue = "/VO/Achilles_0066",
+			-- 		Text =
+			-- 		"Thank you, then, and do not worry about me. I am long since past my sorrow, and the rage I felt when first my heart was broken. Now it's but another scar. They say it's our scars that give us character."
+			-- 	},
+			-- },
+			-- AchillesGift07 = {
+			-- 	Skip = true,
+			-- 	PlayOnce = true,
+			-- 	RequiredTextLines = { "AchillesGift06", },
+			-- 	{
+			-- 		Cue = "/VO/Achilles_0067",
+			-- 		Text =
+			-- 		"I'm going to be the envy of the House with this, I thank you, lad. I hope you wouldn't mind if I shared some of it around?"
+			-- 	},
+			-- 	{
+			-- 		Cue = "/VO/ZagreusHome_0251",
+			-- 		Portrait = "Portrait_Zag_Default_01",
+			-- 		Speaker = "CharProtag",
+			-- 		Text = "It's yours, Achilles! Though not only do I hope you'll share it, why, I practically insist."
+			-- 	},
+			-- },
 		},
 		MissingDistanceTrigger = {
 			WithinDistance = 400,
