@@ -126,7 +126,6 @@ for oldName, newName in pairs(mod.EnemyNameMappings) do
 end
 hadesCodexData.OtherDenizens.Entries.ModsNikkelMHadesBiomes_NPC_Achilles_01 =	hadesCodexData.OtherDenizens.Entries.NPC_Achilles_01
 hadesCodexData.OtherDenizens.Entries.NPC_Achilles_01 = nil
-mod.CodexEntryNames = game.DeepCopyTable(hadesCodexOrdering[mod.CodexChapterName])
 
 for oldName, newName in pairs(mod.HadesCodexTextNameMappings) do
 	mod.UpdateField(hadesCodexData, oldName, newName, { "Entries", "*", "Entries", "*", "Text" }, "CodexData entries")
