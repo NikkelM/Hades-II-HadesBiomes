@@ -33573,7 +33573,6 @@ mod.NPCData = mod.NPCData or {
 				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
 			},
 			-- ending
-			-- TODO: Use as flashback scene, teleport to bedroom as Zag?
 			AchillesAboutHadesBedroom01 = {
 				PlayOnce = true,
 				SuperPriority = true,
