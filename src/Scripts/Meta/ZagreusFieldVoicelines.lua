@@ -750,11 +750,6 @@ mod.ZagreusFieldVoicelines = {
 	-- #endregion
 
 	-- #region Achilles
-	-- "Flashback" scene in the bedroom
-	Modsnikkelmhadesbiomeszagreushome_3277 = true, -- ZagreusHome_3277
-	Modsnikkelmhadesbiomeszagreushome_3278 = true, -- ZagreusHome_3278
-	Modsnikkelmhadesbiomeszagreushome_3281 = true, -- ZagreusHome_3281
-
 	Modsnikkelmhadesbiomeszagreushome_0080 = true, -- ZagreusHome_0080
 	Modsnikkelmhadesbiomeszagreushome_0088 = true, -- ZagreusHome_0088
 	Modsnikkelmhadesbiomeszagreushome_0119 = true, -- ZagreusHome_0119
@@ -903,6 +898,9 @@ mod.ZagreusFieldVoicelines = {
 	Modsnikkelmhadesbiomeszagreushome_3214 = true, -- ZagreusHome_3214
 	Modsnikkelmhadesbiomeszagreushome_3215 = true, -- ZagreusHome_3215
 	Modsnikkelmhadesbiomeszagreushome_3216 = true, -- ZagreusHome_3216
+	Modsnikkelmhadesbiomeszagreushome_3277 = true, -- ZagreusHome_3277
+	Modsnikkelmhadesbiomeszagreushome_3278 = true, -- ZagreusHome_3278
+	Modsnikkelmhadesbiomeszagreushome_3281 = true, -- ZagreusHome_3281
 	Modsnikkelmhadesbiomeszagreushome_3470 = true, -- ZagreusHome_3470
 	Modsnikkelmhadesbiomeszagreushome_3471 = true, -- ZagreusHome_3471
 	Modsnikkelmhadesbiomeszagreushome_3503 = true, -- ZagreusHome_3503
