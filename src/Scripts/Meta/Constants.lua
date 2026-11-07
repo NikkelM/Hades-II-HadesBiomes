@@ -1241,6 +1241,8 @@ mod.HadesNPCFirstMeetingTextLines = {
 	"EurydiceFirstMeeting01_B",
 	"EurydiceFirstMeeting01_C",
 	"PatroclusFirstMeeting",
+	"OrpheusFirstMeeting",
+	"OrpheusFirstMeeting_Alt",
 	"ThanatosFirstAppearance",
 	"AchillesFirstMeeting",
 	"AchillesFirstMeeting_Alt",
