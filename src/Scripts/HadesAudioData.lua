@@ -4410,7 +4410,7 @@ mod.HeroVoiceLines = mod.HeroVoiceLines or {
 			{ Name = "MelinoeAnyQuipSpeech", Time = 4 },
 		},
 		-- #region Modded
-		-- After the Achilles bedroom flashback to inspect Persephone's portrait
+		-- After AchillesAboutHadesBedroom01 flashback
 		{
 			BreakIfPlayed = true,
 			PreLineWait = 0.7,
