@@ -167,7 +167,7 @@ local function on_ready()
 	public.IsValidInstallation = mod.HiddenConfig.IsValidInstallation
 
 	if config.enabled == false then
-		local numMissingFiles = mod.CheckRequiredFiles(true)
+		local numMissingFiles = mod.CheckRequiredFiles(true, true)
 		if numMissingFiles == 0 then
 			-- Mod is disabled, but has not been uninstalled - do not return early
 			mod.DebugPrint(
