@@ -317,6 +317,15 @@ local npcModifications = {
 			SisyphusAboutBouldy02 = { RequiredTextLines = { "ModsNikkelMHadesBiomes_BouldyFirstMeeting", }, },
 			SisyphusLiberationQuest_Beginning_01 = { RequiredTextLines = { "SisyphusBackstory03", "SisyphusMeeting06", "SisyphusGift06", "ModsNikkelMHadesBiomes_BouldyFirstMeeting" }, },
 			SisyphusLiberationQuestComplete = { RequiredCosmetics = { "ModsNikkelMHadesBiomes_SisyphusQuestItem", }, },
+			SisyphusAboutLegendary02 = {
+				GameStateRequirements = {
+					{
+						Path = { "GameState", "TraitUses", "SisyphusAssistTrait" },
+						Comparison = ">=",
+						Value = 1,
+					},
+				},
+			},
 			-- The new name from SharedKeepsakePort
 			SisyphusAboutKeepsake01 = { RequiredTrait = mod.SharedKeepsakePortSisyphusKeepsakeTrait, },
 			SisyphusAboutKeepsake02 = { RequiredTrait = mod.SharedKeepsakePortSisyphusKeepsakeTrait, },
@@ -648,6 +657,16 @@ local npcModifications = {
 					BoxExitAnimation = "Blank",
 				},
 			},
+			PatroclusAboutLegendary01 = {
+				RequiredPlayed = mod.NilValue,
+				GameStateRequirements = {
+					{
+						Path = { "GameState", "TraitUses", "AchillesPatroclusAssistTrait" },
+						Comparison = ">=",
+						Value = 1,
+					},
+				},
+			},
 			-- The new name from SharedKeepsakePort
 			PatroclusAboutKeepsake01 = { RequiredKeepsake = mod.SharedKeepsakePortPatroclusKeepsakeTrait, },
 			PatroclusAboutKeepsake02 = { RequiredKeepsake = mod.SharedKeepsakePortPatroclusKeepsakeTrait, },
@@ -967,6 +986,16 @@ local npcModifications = {
 			AchillesAboutMyrmidonReunionQuest04 = {
 				RequiredFalseCosmetics = { "ModsNikkelMHadesBiomes_AchillesPatroclusQuestItem", },
 				RequiredFalseTextLines = { "AchillesAboutMyrmidonReunionQuest04_B", },
+			},
+			AchillesAboutLegendary01 = {
+				RequiredPlayed = mod.NilValue,
+				GameStateRequirements = {
+					{
+						Path = { "GameState", "TraitUses", "AchillesPatroclusAssistTrait" },
+						Comparison = ">=",
+						Value = 1,
+					},
+				},
 			},
 			AchillesAboutHadesBedroom01 = {
 				EndVoiceLines = {
