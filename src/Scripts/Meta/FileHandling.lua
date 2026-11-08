@@ -382,8 +382,8 @@ function mod.OpenModInstallScreen(args)
 				updateScreenTexts.DescriptionText.Text = updateScreenTextId
 			else
 				mod.DebugPrint(
-				"No update install screen text is registered for mod version " ..
-				tostring(args.PendingUpdateScreenVersion) .. ". Showing the generic installation success screen.", 2)
+					"No update install screen text is registered for mod version " ..
+					tostring(args.PendingUpdateScreenVersion) .. ". Showing the generic installation success screen.", 2)
 				screen = game.DeepCopyTable(game.ScreenData.ModsNikkelMHadesBiomesInstallSuccess) or {}
 			end
 		else
