@@ -78,6 +78,8 @@ function mod.ApplyModificationsAndInheritRoomData(base, modifications, replaceme
 
 		game.ProcessDataInheritance(roomData, game.RoomData)
 
+		roomData.RichPresence = mod.DiscordRichPresenceMappings[roomData.RichPresence] or roomData.RichPresence
+
 		if roomData.ZoomFraction ~= nil then
 			if roomData.ZoomFractionAlt == nil then
 				roomData.ZoomFractionAlt = roomData.ZoomFraction + mod.IncreasedZoomFractionOffset

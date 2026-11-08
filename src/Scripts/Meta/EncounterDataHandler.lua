@@ -90,6 +90,8 @@ function mod.ApplyModificationsAndInheritEncounterData(base, modifications, repl
 
 		game.ProcessDataInheritance(encounterData, game.EncounterData)
 
+		encounterData.RichPresence = mod.DiscordRichPresenceMappings[encounterData.RichPresence] or	encounterData.RichPresence
+
 		if encounterData.PreSpawnMinPlayerDistance ~= nil and encounterData.PreSpawnMinEndPointDistance == nil then
 			encounterData.PreSpawnMinEndPointDistance = encounterData.PreSpawnMinPlayerDistance
 		end

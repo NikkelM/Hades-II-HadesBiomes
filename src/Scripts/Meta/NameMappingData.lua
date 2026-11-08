@@ -1489,3 +1489,17 @@ mod.HeadMarkerEffectVfxes = {
 	SorceryDebuffMoonLoopIn = true,
 }
 mod.DefaultModdedEnemyHeadVfxOffsetZ = 120
+
+mod.DiscordRichPresenceMappings = {
+	["#RichPresence_ABoss01"] = "#RichPresence_A_Boss01",
+	["#RichPresence_ABoss02"] = "#RichPresence_A_Boss02",
+	["#RichPresence_ABoss03"] = "#RichPresence_A_Boss03",
+	["#RichPresence_AStory01"] = "#RichPresence_A_Story01",
+	["#RichPresence_BBoss01"] = "#RichPresence_X_Boss01",
+	["#RichPresence_BStory01"] = "#RichPresence_X_Story01",
+	["#RichPresence_CMiniBoss01"] = "#RichPresence_Y_MiniBoss01",
+	["#RichPresence_CBoss01"] = "#RichPresence_Y_Boss01",
+	["#RichPresence_CStory01"] = "#RichPresence_Y_Story01",
+	["#RichPresence_DBoss01"] = "#RichPresence_D_Boss01",
+	["#RichPresence_PostBoss"] = "#RichPresence_PostBossH1",
+}
