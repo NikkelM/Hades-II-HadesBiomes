@@ -16,7 +16,17 @@ modutil.mod.Path.Context.Wrap.Static("CheckSprintPhasingCollision", function(ori
 					local playerVelocity = GetVelocity({ Id = game.CurrentRun.Hero.ObjectId })
 					for _, collisionReaction in pairs(breakable.CollisionReactions) do
 						if collisionReaction.MinVelocity == nil or playerVelocity >= collisionReaction.MinVelocity then
-							game.DoReaction(breakable, collisionReaction, { TriggeredByTable = game.CurrentRun.Hero })
+							if collisionReaction.KillSelf then
+								game.Damage(breakable, {
+									AttackerId = game.CurrentRun.Hero.ObjectId,
+									AttackerTable = game.CurrentRun.Hero,
+									DamageAmount = breakable.MaxHealth,
+									IgnoreHealthBuffer = true,
+									PureDamage = true,
+								})
+							else
+								game.DoReaction(breakable, collisionReaction, { TriggeredByTable = game.CurrentRun.Hero })
+							end
 						end
 					end
 				end

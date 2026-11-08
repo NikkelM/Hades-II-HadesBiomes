@@ -136,7 +136,19 @@ local encounterModifications = {
 		NextRoomResumeMusic = true,
 	},
 	Story_Patroclus_01 = {
-		ExitVoiceLines = { ObjectType = "NPC_Patroclus_01", },
+		ExitVoiceLines = {
+			ObjectType = "NPC_Patroclus_01",
+			[1] = {
+				[1] = { Cue = "/VO/Modsnikkelmhadesbiomesachilles_0230" },
+				[2] = { Cue = "/VO/Modsnikkelmhadesbiomesachilles_0231" },
+				[3] = { Cue = "/VO/Modsnikkelmhadesbiomesachilles_0232" },
+				[4] = { Cue = "/VO/Modsnikkelmhadesbiomesachilles_0233" },
+				[5] = { Cue = "/VO/Modsnikkelmhadesbiomesachilles_0234" },
+				[6] = { Cue = "/VO/Modsnikkelmhadesbiomesachilles_0235" },
+				[7] = { Cue = "/VO/Modsnikkelmhadesbiomesachilles_0236" },
+				[8] = { Cue = "/VO/Modsnikkelmhadesbiomesachilles_0237" },
+			},
+		},
 		NextRoomResumeMusic = true,
 	},
 

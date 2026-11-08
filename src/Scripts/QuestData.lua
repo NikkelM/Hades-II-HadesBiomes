@@ -9,9 +9,10 @@ local nighmareFearActive = mod.IsOtherModActive("ReadEmAndWeep-Nightmare_Fear")
 local dreamDiveTweaksActive = mod.IsOtherModActive("zerp-DreamDiveTweaks")
 
 -- #region The order of the quests in the Quest log, these will be appended to the end of the vanilla list
--- Current number of quests: 44 (41 base + one Dream Dive Tweaks + one flipped + one nightmare)
+-- Current number of quests: 45 (42 base + one Dream Dive Tweaks + one flipped + one nightmare)
 local newQuestOrderData = {
 	-- key / mission-critical
+	"ModsNikkelMHadesBiomes_QuestReuniteAchillesPatroclus",
 	"ModsNikkelMHadesBiomes_QuestSisyphusLiberation",
 	"ModsNikkelMHadesBiomes_QuestReuniteOrpheusEurydice",
 	"ModsNikkelMHadesBiomes_QuestOrpheusRelease",
@@ -198,10 +199,10 @@ local newQuestData = {
 		RewardResourceAmount = 2,
 		UnlockGameStateRequirements = {
 			-- Has met any two of the new NPCs
-			-- TODO: Once implemented, Achilles, Dusa
+			-- TODO: Once implemented, Dusa
 			{
 				Path = { "GameState", "UseRecord" },
-				CountOf = { "NPC_Sisyphus_01", "NPC_Eurydice_01", "NPC_Patroclus_01", "NPC_Thanatos_01", "NPC_Thanatos_Field_01", "NPC_Orpheus_01", },
+				CountOf = { "NPC_Sisyphus_01", "NPC_Eurydice_01", "NPC_Patroclus_01", "NPC_Thanatos_01", "NPC_Thanatos_Field_01", "NPC_Orpheus_01", "ModsNikkelMHadesBiomes_NPC_Achilles_01", },
 				Comparison = ">=",
 				Value = 2,
 			},
@@ -268,28 +269,21 @@ local newQuestData = {
 			},
 		},
 	},
-	-- Codex entries (there are 53 in total in the mod)
+	-- Codex entries (there are 60 in total in the mod)
 	ModsNikkelMHadesBiomes_QuestCodexSmall = {
 		InheritFrom = { "DefaultQuestItem", "DefaultUnseenQuest" },
 		RewardResourceName = "MetaCurrency",
 		RewardResourceAmount = 500,
 		UnlockGameStateRequirements = {
 			{
-				PathTrue = { "GameState", "TextLinesRecord", "HecateBossGrantsCodex01" },
-			},
-			{
-				Path = { "GameState", "ModsNikkelMHadesBiomesCodexEntriesUnlockedCache", },
-				CountOf = mod.CodexEntryNames,
-				Comparison = ">=",
-				Value = 1,
+				PathTrue = { "GameState", "TextLinesRecord", "AchillesGrantsCodex" },
 			},
 		},
 		CompleteGameStateRequirements = {
 			{
 				Path = { "GameState", "ModsNikkelMHadesBiomesCodexEntriesUnlockedCache", },
-				CountOf = mod.CodexEntryNames,
 				Comparison = ">=",
-				Value = 30,
+				Value = 35,
 			},
 		},
 	},
@@ -1327,7 +1321,7 @@ local newQuestData = {
 			},
 		},
 	},
-	-- Meet all Story NPCs (Sisyphus, Eurydice, Patroclus, Orpheus)
+	-- Meet all Story NPCs (Sisyphus, Eurydice, Patroclus, Orpheus, Achilles)
 	ModsNikkelMHadesBiomes_QuestMeetStoryNPCs = {
 		InheritFrom = { "DefaultQuestItem", "DefaultFatesQuest" },
 		RewardResourceName = "MetaCurrency",
@@ -1335,7 +1329,7 @@ local newQuestData = {
 		UnlockGameStateRequirements = {
 			{
 				Path = { "GameState", "TextLinesRecord" },
-				HasAny = { "SisyphusFirstMeeting", "EurydiceFirstMeeting01_A", "EurydiceFirstMeeting01_B", "EurydiceFirstMeeting01_C", "PatroclusFirstMeeting", "OrpheusFirstMeeting", "OrpheusFirstMeeting_Alt" },
+				HasAny = { "SisyphusFirstMeeting", "EurydiceFirstMeeting01_A", "EurydiceFirstMeeting01_B", "EurydiceFirstMeeting01_C", "PatroclusFirstMeeting", "OrpheusFirstMeeting", "OrpheusFirstMeeting_Alt", "AchillesFirstMeeting", "AchillesFirstMeeting_Alt" },
 			},
 		},
 		CompleteGameStateRequirements = {
@@ -1353,17 +1347,23 @@ local newQuestData = {
 				Path = { "GameState", "TextLinesRecord" },
 				HasAny = { "EurydiceFirstMeeting01_A", "EurydiceFirstMeeting01_B", "EurydiceFirstMeeting01_C" },
 			},
+			-- Achilles
+			{
+				Path = { "GameState", "TextLinesRecord" },
+				HasAny = { "AchillesFirstMeeting", "AchillesFirstMeeting_Alt" },
+			},
 			-- Patroclus
 			{
 				PathTrue = { "GameState", "TextLinesRecord", "PatroclusFirstMeeting" },
 			},
-			-- TODO: Once implemented, Achilles, Dusa
+			-- TODO: Once implemented, Dusa
 		},
 		IncompleteName = "UnknownCondition_Meet",
 		ModsNikkelMHadesBiomesCustomCompleteRequirementsDisplayStrings = {
 			"ModsNikkelMHadesBiomes_QuestMeetStoryNPCs_Sisyphus",
 			"ModsNikkelMHadesBiomes_QuestMeetStoryNPCs_Orpheus",
 			"ModsNikkelMHadesBiomes_QuestMeetStoryNPCs_Eurydice",
+			"ModsNikkelMHadesBiomes_QuestMeetStoryNPCs_Achilles",
 			"ModsNikkelMHadesBiomes_QuestMeetStoryNPCs_Patroclus",
 		},
 	},
@@ -1505,6 +1505,27 @@ local newQuestData = {
 			},
 		},
 		IncompleteName = "Quest_UnknownCondition",
+	},
+	-- Reunite Achilles and Patroclus
+	ModsNikkelMHadesBiomes_QuestReuniteAchillesPatroclus = {
+		InheritFrom = { "DefaultQuestItem", "DefaultBondQuest" },
+		RewardResourceName = "WeaponPointsRare",
+		RewardResourceAmount = 4,
+		UnlockGameStateRequirements = {
+			{
+				Path = { "GameState", "TextLinesRecord" },
+				HasAny = {
+					"AchillesAboutMyrmidonReunionQuest03_A",
+					"AchillesAboutMyrmidonReunionQuest03_B",
+					"AchillesAboutMyrmidonReunionQuest03_C",
+				},
+			},
+		},
+		CompleteGameStateRequirements = {
+			{
+				PathTrue = { "GameState", "TextLinesRecord", "MyrmidonReunionQuestComplete" },
+			},
+		},
 	},
 	-- #endregion
 }

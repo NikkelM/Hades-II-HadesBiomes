@@ -271,6 +271,14 @@ local newMapGroups = {
       },
     },
   },
+  {
+    Name = "DeathAreaModsNikkelMHadesBiomes",
+    Maps = {
+      {
+        Name = "DeathAreaBedroomHades",
+      },
+    },
+  },
 }
 
 local mapGroupsFile = rom.path.combine(rom.paths.Content(), "Game/MapGroups.sjson")

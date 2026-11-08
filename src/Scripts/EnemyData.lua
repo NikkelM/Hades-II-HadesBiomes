@@ -10,6 +10,7 @@ function mod.ApplyModificationsAndInheritEnemyData(base, modifications, replacem
 		Intercom_ = mod.VoiceoverFileNames.Intercom .. "_",
 		MegaeraHome_ = mod.VoiceoverFileNames.MegaeraHome .. "_",
 		Skelly_ = mod.VoiceoverFileNames.Skelly .. "_",
+		Achilles_ = mod.VoiceoverFileNames.Achilles .. "_",
 	}
 	local function applyVoiceCueMappings(data)
 		for key, value in pairs(data) do

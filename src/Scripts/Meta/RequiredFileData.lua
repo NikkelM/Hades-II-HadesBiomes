@@ -11,6 +11,7 @@ mod.AudioFileMappings = {
 -- Mapped H1 cue names <-> Modded cue names for localization mapping support
 -- The file name must be the same as the event names within the file
 mod.VoiceoverFileNames = {
+	Achilles = "Modsnikkelmhadesbiomesachilles",
 	Alecto = "Alecto",
 	Eurydice = "Eurydice",
 	Hades = "Modsnikkelmhadesbiomeshades",
@@ -45,7 +46,7 @@ mod.VoiceoverFileNames = {
 }
 
 mod.SubtitleCsvFileNameMappings = {
-	-- Achilles = "Modsnikkelmhadesbiomesachilles_",
+	Achilles = "Modsnikkelmhadesbiomesachilles_",
 	Alecto = "Alecto_",
 	-- Dusa = "Dusa_",
 	Eurydice = "Eurydice_",
@@ -453,6 +454,10 @@ mod.BikFileNames = {
 	"Enemy_Fury_IdleInHouseGreeting_Bink",
 	"Enemy_Fury_IdleInHouseFidgetWhipTaunt_Bink",
 	-- #endregion
+	-- #region Achilles
+	"NPC_AchillesIdle_Bink",
+	"NPC_AchillesIdleGreeting_Bink",
+	-- #endregion
 	-- #region COMPANIONS/ASSISTS
 	-- Skelly
 	"SkellyAssistTrait_Bink",
@@ -743,6 +748,8 @@ mod.MapFileMappings = {
 	["Return04"] = "Return04",
 	["Return05"] = "Return05",
 	["Return06"] = "Return06",
+	-- Death Area
+	["DeathAreaBedroomHades"] = "DeathAreaBedroomHades",
 	-- Erebus/Challenge
 	["RoomChallenge01"] = "RoomChallenge01",
 	["RoomChallenge02"] = "RoomChallenge02",
@@ -821,12 +828,12 @@ mod.NPCTextFileNames = {
 		Megaera = true,
 		-- Persephone = true,
 		Skelly = true,
-		-- Storyteller = true,
+		Storyteller = true,
 		Thanatos = true,
 		Zagreus = true,
 	},
 	_NPCData = {
-		-- Achilles = true,
+		Achilles = true,
 		Charon = true,
 		-- Dusa = true,
 		Eurydice = true,
@@ -837,7 +844,7 @@ mod.NPCTextFileNames = {
 		Orpheus = true,
 		Patroclus = true,
 		Persephone = true,
-		-- Scratch = true, -- This is a single Achilles line
+		Scratch = true, -- This is a single Achilles line
 		Sisyphus = true,
 		Storyteller = true,
 		Thanatos = true,

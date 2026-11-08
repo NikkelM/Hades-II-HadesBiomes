@@ -1406,6 +1406,60 @@ For ID `486504`, change the `Location.Y` property to `4107.464111328125` (+25).
 
 #### X_Intro
 
+ModsNikkelMHadesBiomes_NPC_Achilles_01:
+Add the following after the last entry in the list, take care of the Angle and Location values for Achilles.
+
+```
+{
+	"Active": false,
+	"AllowMovementReaction": false,
+	"Ambient": -1.0,
+	"Angle": 225.0,
+	"AttachToID": 0,
+	"AttachedIDs": [],
+	"CausesOcculsion": false,
+	"Clutter": false,
+	"Collision": true,
+	"Color": {
+		"A": 255,
+		"B": 255,
+		"G": 255,
+		"R": 255
+	},
+	"Comments": null,
+	"CreatesShadows": true,
+	"DataType": "Unit",
+	"DrawVfxOnTop": true,
+	"FlipHorizontal": false,
+	"FlipVertical": false,
+	"GroupNames": [
+		"Standing"
+	],
+	"HelpTextID": null,
+	"Hue": 0.0,
+	"Id": 390082,
+	"IgnoreGridManager": false,
+	"Invert": false,
+	"Location": {
+		"X": 5688.0,
+		"Y": 8036.0
+	},
+	"Name": "ModsNikkelMHadesBiomes_NPC_Achilles_01",
+	"OffsetZ": 0.0,
+	"ParallaxAmount": 1.0,
+	"Points": [],
+	"Saturation": 0.0,
+	"Scale": 1.0,
+	"SkewAngle": 0.0,
+	"SkewScale": 1.0,
+	"SortIndex": 0,
+	"StopsLight": true,
+	"Tallness": 0.0,
+	"UseBoundsForSortArea": true,
+	"Value": 0.0
+}
+```
+
 We need to add a new HeroEnd point to be used for DreamRun entrances, as otherwise the smoke effects are mislayered with some obstacles.
 
 Add this below `HeroEnd` with ID `50059`:

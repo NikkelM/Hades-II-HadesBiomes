@@ -359,6 +359,100 @@ mod.PresetEventArgs = mod.PresetEventArgs or {
 		},
 	},
 	-- #endregion
+	-- #region Achilles
+	AchillesGreeting = {
+		WithinDistance = 530,
+		PostTriggerAnimation = "AchillesIdleGreeting",
+		VoiceLines = {
+			-- -- ending / make sure Achilles spawns here
+			-- {
+			-- 	RequiredQueuedTextLines = "AchillesAboutHadesBedroom01",
+			-- 	UsePlayerSource = true,
+			-- 	BreakIfPlayed = true,
+			-- 	PlayOnce = true,
+			-- 	-- Achilles! I need your help.
+			-- 	{ Cue = "/VO/ZagreusHome_3276" },
+			-- },
+			-- {
+			-- 	{
+			-- 		RequiredQueuedTextLines = "AchillesAfterMyrmidonReunionQuestComplete01",
+			-- 		SuccessiveChanceToPlay = 0.33,
+			-- 		UsePlayerSource = true,
+			-- 		-- Achilles!
+			-- 		{ Cue = "/VO/ZagreusHome_2585" },
+			-- 	},
+			-- },
+			{
+				BreakIfPlayed = true,
+				RequiredQueuedTextLines = "AchillesRevealsGuanYuAspect01",
+				SuccessiveChanceToPlay = 0.33,
+				-- Your Highness, over here.
+				{ Cue = "/VO/Modsnikkelmhadesbiomesachilles_0163" },
+			},
+			{
+				BreakIfPlayed = true,
+				RequiredAnyQueuedTextLines = { "MyrmidonReunionQuestComplete" },
+				SuccessiveChanceToPlay = 0.33,
+				-- Oh there you are, Highness.
+				{ Cue = "/VO/Modsnikkelmhadesbiomesachilles_0164" },
+			},
+			-- {
+			-- 	BreakIfPlayed = true,
+			-- 	RequiredAnyQueuedTextLines = { "AchillesAboutMyrmidonReunionQuest03_A", "AchillesAboutMyrmidonReunionQuest03_B", "AchillesAboutMyrmidonReunionQuest03_C" },
+			-- 	SuccessiveChanceToPlay = 0.33,
+			-- 	-- A word, Prince?
+			-- 	{ Cue = "/VO/Modsnikkelmhadesbiomesachilles_0162" },
+			-- },
+			-- {
+			-- 	BreakIfPlayed = true,
+			-- 	RequiredQueuedTextLines = "AchillesRunNotCleared01",
+			-- 	SuccessiveChanceToPlay = 0.33,
+			-- 	-- A moment, lad?
+			-- 	{ Cue = "/VO/Modsnikkelmhadesbiomesachilles_0008" },
+			-- },
+			{
+				PlayOnce = true,
+				BreakIfPlayed = true,
+				RequiredTrueFlags = { "InFlashback" },
+				SuccessiveChanceToPlay = 0.33,
+				-- Suggest you hurry in there, lad...
+				{ Cue = "/VO/Modsnikkelmhadesbiomesachilles_0184" },
+			},
+			{
+				BreakIfPlayed = true,
+				RandomRemaining = true,
+				SuccessiveChanceToPlay = 0.25,
+				RequiresNullAmbientMusicId = true,
+				-- You've returned.
+				{ Cue = "/VO/Modsnikkelmhadesbiomesachilles_0007" },
+				-- Hey, lad.
+				-- { Cue = "/VO/Modsnikkelmhadesbiomesachilles_0005", RequiredPlayed = { "/VO/Achilles_0007" }, },
+				-- You're back.
+				{ Cue = "/VO/Modsnikkelmhadesbiomesachilles_0006", RequiredPlayed = { "/VO/Achilles_0007" }, },
+				-- Hail.
+				{ Cue = "/VO/Modsnikkelmhadesbiomesachilles_0009", RequiredPlayed = { "/VO/Achilles_0007" }, },
+				-- Hmm.
+				{ Cue = "/VO/Modsnikkelmhadesbiomesachilles_0059", RequiredPlayed = { "/VO/Achilles_0007" }, },
+				-- Be well.
+				{ Cue = "/VO/Modsnikkelmhadesbiomesachilles_0060", RequiredPlayed = { "/VO/Achilles_0007" }, },
+				-- Be strong.
+				{ Cue = "/VO/Modsnikkelmhadesbiomesachilles_0061", RequiredPlayed = { "/VO/Achilles_0007" }, RequiresRunNotCleared = true },
+				-- Prince.
+				-- { Cue = "/VO/Modsnikkelmhadesbiomesachilles_0062", RequiredPlayed = { "/VO/Achilles_0007" }, },
+				-- Your Highness.
+				{ Cue = "/VO/Modsnikkelmhadesbiomesachilles_0063", RequiredPlayed = { "/VO/Achilles_0007" }, },
+				-- Hail, Prince.
+				-- { Cue = "/VO/Modsnikkelmhadesbiomesachilles_0348", RequiredPlayed = { "/VO/Achilles_0007" }, },
+				-- Hail.
+				{ Cue = "/VO/Modsnikkelmhadesbiomesachilles_0349", RequiredPlayed = { "/VO/Achilles_0007" }, },
+				-- Prince.
+				-- { Cue = "/VO/Modsnikkelmhadesbiomesachilles_0350", RequiredPlayed = { "/VO/Achilles_0007" }, },
+				-- How goes it?
+				{ Cue = "/VO/Modsnikkelmhadesbiomesachilles_0351", RequiredPlayed = { "/VO/Achilles_0007" }, },
+			}
+		},
+	},
+	-- #endregion
 	-- #region NPC Benefit choices
 	SisyphusBenefitChoices = {
 		SkipComponents = {
@@ -579,7 +673,7 @@ mod.PresetEventArgs = mod.PresetEventArgs or {
 }
 
 -- Selected NPC data from Hades, loaded alongside other enemies in EnemyData.lua
--- Make modifications in EnemyData.lua, not here!
+-- Make modifications in NPCData.lua, not here!
 mod.NPCData = mod.NPCData or {
 	-- Id 370001
 	NPC_Sisyphus_01 = {
@@ -3426,40 +3520,40 @@ mod.NPCData = mod.NPCData or {
 				},
 			},
 
-			-- below: old conversations from before the Welcome to Hell update
-			SisyphusGift07 = {
-				Skip = true,
-				PlayOnce = true,
-				RequiredTextLines = { "SisyphusGift06" },
-				{
-					Cue = "/VO/Sisyphus_0158",
-					Text =
-					"Wait, really, this, this is for me, you mean it, Prince? I mean, I won't say no, I can't say no to such a thing, so, thank you! Thank you kindly."
-				},
-				{
-					Cue = "/VO/ZagreusHome_0525",
-					Portrait = "Portrait_Zag_Default_01",
-					Speaker = "CharProtag",
-					Text = "You're more than welcome, sir. For all you've done for me, it's the least I could do."
-				},
-			},
-			SisyphusGift08 = {
-				Skip = true,
-				PlayOnce = true,
-				RequiredTextLines = { "SisyphusGift07", },
-				{
-					Cue = "/VO/Sisyphus_0159",
-					PreLineWait = 0.35,
-					Text =
-					"...I'm really rather speechless, Your Highness. I'm just a shade doing my time. I don't deserve your generosity."
-				},
-				{
-					Cue = "/VO/ZagreusHome_0526",
-					Portrait = "Portrait_Zag_Default_01",
-					Speaker = "CharProtag",
-					Text = "Come on, sir, what's a priceless bottle of the drink of the gods between friends?"
-				},
-			},
+			-- -- below: old conversations from before the Welcome to Hell update
+			-- SisyphusGift07 = {
+			-- 	Skip = true,
+			-- 	PlayOnce = true,
+			-- 	RequiredTextLines = { "SisyphusGift06" },
+			-- 	{
+			-- 		Cue = "/VO/Sisyphus_0158",
+			-- 		Text =
+			-- 		"Wait, really, this, this is for me, you mean it, Prince? I mean, I won't say no, I can't say no to such a thing, so, thank you! Thank you kindly."
+			-- 	},
+			-- 	{
+			-- 		Cue = "/VO/ZagreusHome_0525",
+			-- 		Portrait = "Portrait_Zag_Default_01",
+			-- 		Speaker = "CharProtag",
+			-- 		Text = "You're more than welcome, sir. For all you've done for me, it's the least I could do."
+			-- 	},
+			-- },
+			-- SisyphusGift08 = {
+			-- 	Skip = true,
+			-- 	PlayOnce = true,
+			-- 	RequiredTextLines = { "SisyphusGift07", },
+			-- 	{
+			-- 		Cue = "/VO/Sisyphus_0159",
+			-- 		PreLineWait = 0.35,
+			-- 		Text =
+			-- 		"...I'm really rather speechless, Your Highness. I'm just a shade doing my time. I don't deserve your generosity."
+			-- 	},
+			-- 	{
+			-- 		Cue = "/VO/ZagreusHome_0526",
+			-- 		Portrait = "Portrait_Zag_Default_01",
+			-- 		Speaker = "CharProtag",
+			-- 		Text = "Come on, sir, what's a priceless bottle of the drink of the gods between friends?"
+			-- 	},
+			-- },
 		},
 
 		GiftGivenVoiceLines = {
@@ -10789,46 +10883,46 @@ mod.NPCData = mod.NPCData or {
 				},
 			},
 
-			-- below: old conversations from before the Welcome to Hell update
-			PatroclusGift07 = {
-				Skip = true,
-				PlayOnce = true,
-				RequiredTextLines = { "PatroclusGift06" },
-				{
-					Cue = "/VO/Patroclus_0138",
-					Text = "You're much too kind to such a wretched shade, you know. But I'll not turn away this type of thing."
-				},
-				{
-					Cue = "/VO/ZagreusField_2867",
-					Portrait = "Portrait_Zag_Default_01",
-					Speaker = "CharProtag",
-					PreLineAnim = "ZagreusTalkEmpathyStart",
-					PreLineAnimTarget = "Hero",
-					PostLineAnim = "ZagreusTalkEmpathy_Return",
-					PostLineAnimTarget = "Hero",
-					Text = "You don't attack me indiscriminately, I give you Nectar. I don't think I'm being over-generous!"
-				},
-			},
-			PatroclusGift08 = {
-				Skip = true,
-				PlayOnce = true,
-				RequiredTextLines = { "PatroclusGift07" },
-				{
-					Cue = "/VO/Patroclus_0141",
-					Text = "Forgive my bluntness, but, why go out of your way for me like this...?"
-				},
-				{
-					Cue = "/VO/ZagreusField_1739",
-					Portrait = "Portrait_Zag_Default_01",
-					Speaker = "CharProtag",
-					PreLineAnim = "ZagreusTalkEmpathyStart",
-					PreLineAnimTarget = "Hero",
-					PostLineAnim = "ZagreusTalkEmpathy_Return",
-					PostLineAnimTarget = "Hero",
-					Text =
-					"I'm not going out of my way, sir. Look, I don't pretend to know the depths of your despair. But when I look at you, I'm reminded of how I've often felt. When I was in that dark place, someone said to me: Don't give up. If nothing else... it gives you something to do."
-				},
-			},
+			-- -- below: old conversations from before the Welcome to Hell update
+			-- PatroclusGift07 = {
+			-- 	Skip = true,
+			-- 	PlayOnce = true,
+			-- 	RequiredTextLines = { "PatroclusGift06" },
+			-- 	{
+			-- 		Cue = "/VO/Patroclus_0138",
+			-- 		Text = "You're much too kind to such a wretched shade, you know. But I'll not turn away this type of thing."
+			-- 	},
+			-- 	{
+			-- 		Cue = "/VO/ZagreusField_2867",
+			-- 		Portrait = "Portrait_Zag_Default_01",
+			-- 		Speaker = "CharProtag",
+			-- 		PreLineAnim = "ZagreusTalkEmpathyStart",
+			-- 		PreLineAnimTarget = "Hero",
+			-- 		PostLineAnim = "ZagreusTalkEmpathy_Return",
+			-- 		PostLineAnimTarget = "Hero",
+			-- 		Text = "You don't attack me indiscriminately, I give you Nectar. I don't think I'm being over-generous!"
+			-- 	},
+			-- },
+			-- PatroclusGift08 = {
+			-- 	Skip = true,
+			-- 	PlayOnce = true,
+			-- 	RequiredTextLines = { "PatroclusGift07" },
+			-- 	{
+			-- 		Cue = "/VO/Patroclus_0141",
+			-- 		Text = "Forgive my bluntness, but, why go out of your way for me like this...?"
+			-- 	},
+			-- 	{
+			-- 		Cue = "/VO/ZagreusField_1739",
+			-- 		Portrait = "Portrait_Zag_Default_01",
+			-- 		Speaker = "CharProtag",
+			-- 		PreLineAnim = "ZagreusTalkEmpathyStart",
+			-- 		PreLineAnimTarget = "Hero",
+			-- 		PostLineAnim = "ZagreusTalkEmpathy_Return",
+			-- 		PostLineAnimTarget = "Hero",
+			-- 		Text =
+			-- 		"I'm not going out of my way, sir. Look, I don't pretend to know the depths of your despair. But when I look at you, I'm reminded of how I've often felt. When I was in that dark place, someone said to me: Don't give up. If nothing else... it gives you something to do."
+			-- 	},
+			-- },
 		},
 
 		GiftGivenVoiceLines = {
@@ -18629,27 +18723,27 @@ mod.NPCData = mod.NPCData or {
 				},
 			},
 
-			-- below: old conversations from before the Welcome to Hell update
-			ThanatosGift07 = {
-				Skip = true,
-				PlayOnce = true,
-				RequiredTextLines = { "ThanatosGift06", },
-				{
-					Cue = "/VO/Thanatos_0171",
-					Text =
-					"I have to hand it to you, Zag, you're really putting in the work to get me to forgive you after all you've done. I'm honestly surprised."
-				},
-				{
-					Cue = "/VO/ZagreusHome_0782",
-					Portrait = "Portrait_Zag_Default_01",
-					Speaker = "CharProtag",
-					PreLineAnim = "ZagreusTalkEmpathyStart",
-					PreLineAnimTarget = "Hero",
-					PostLineAnim = "ZagreusTalkEmpathy_Return",
-					PostLineAnimTarget = "Hero",
-					Text = "Don't be. That feast of ours is really going to be something, Than."
-				},
-			},
+			-- -- below: old conversations from before the Welcome to Hell update
+			-- ThanatosGift07 = {
+			-- 	Skip = true,
+			-- 	PlayOnce = true,
+			-- 	RequiredTextLines = { "ThanatosGift06", },
+			-- 	{
+			-- 		Cue = "/VO/Thanatos_0171",
+			-- 		Text =
+			-- 		"I have to hand it to you, Zag, you're really putting in the work to get me to forgive you after all you've done. I'm honestly surprised."
+			-- 	},
+			-- 	{
+			-- 		Cue = "/VO/ZagreusHome_0782",
+			-- 		Portrait = "Portrait_Zag_Default_01",
+			-- 		Speaker = "CharProtag",
+			-- 		PreLineAnim = "ZagreusTalkEmpathyStart",
+			-- 		PreLineAnimTarget = "Hero",
+			-- 		PostLineAnim = "ZagreusTalkEmpathy_Return",
+			-- 		PostLineAnimTarget = "Hero",
+			-- 		Text = "Don't be. That feast of ours is really going to be something, Than."
+			-- 	},
+			-- },
 
 		},
 
@@ -29504,5 +29598,5395 @@ mod.NPCData = mod.NPCData or {
 		Groups = { "NPCs" },
 		ActivateRequirements = {},
 		InteractTextLineSets = {},
+	},
+
+	-- Achilles House Version, Id = 390082
+	-- Manually replaced PresetEventArgs.AchillesGreeting with mod.PresetEventArgs.AchillesGreeting for simplicity
+	ModsNikkelMHadesBiomes_NPC_Achilles_01 = {
+		InheritFrom = { "NPC_Neutral", "NPC_Giftable" },
+		UseText = "UseTalkToMaleGhost",
+		Portrait = "Portrait_MaleGhost_Default_01",
+		AnimOffsetZ = 205,
+		EmoteOffsetX = 50,
+		EmoteOffsetY = -200,
+		Groups = { "NPCs" },
+		Binks = {
+			"NPC_AchillesIdle_Bink",
+			"NPC_AchillesIdleGreeting_Bink",
+		},
+		ActivateRequirements = {
+			RequiredFalsePlayedThisRun = { "/VO/ZagreusHome_2028" },
+			RequiredFalseTextLinesThisRun = { "Inspect_DeathAreaOffice_SealedContract_03" },
+			RequiredFalseFlags = { "AchillesReunionInProgress" },
+		},
+		InteractTextLineSets = {
+			AchillesFirstMeeting = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredFalseFlags = { "InFlashback" },
+				RequiredFalseTextLines = { "Ending01" },
+				{
+					Cue = "/VO/Scratch_0004",
+					Text =
+					"Good to see you, lad, despite the circumstances. Remember your training out there. The pain of death is but another obstacle."
+				},
+				{
+					Cue = "/VO/ZagreusScratch_0019",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text = "And fear is for the weak. Take care, Achilles."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			AchillesFirstMeeting_Alt = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredFalseFlags = { "InFlashback" },
+				RequiredFalseTextLines = { "AchillesFirstMeeting" },
+				RequiredTextLines = { "Ending01" },
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Achilles",
+				{
+					Cue = "/VO/Achilles_0354",
+					Text =
+					"Good to see you, lad. You've been awful busy as of late, there, haven't you? Let me know if there's something I can do, though from what I can tell, you've had a pretty good handle on it."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			AchillesGrantsCodex = {
+				Priority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				StatusAnimation = "StatusIconWantsToTalkImportant",
+				RequiredMinNPCInteractions = { NPC_Achilles_01 = 1 },
+				RequiredFalseFlags = { "InFlashback" },
+				RequiredMinCompletedRuns = 2,
+				-- I'm grateful.
+				EndWait = 0.45,
+				EndCue = "/VO/ZagreusHome_0329",
+				{
+					Cue = "/VO/Achilles_0002",
+					Text =
+					"You'll get the hang of it out there, lad. For all our sparring practice, there's no teacher like the real thing. Now then, I have something for you."
+				},
+				{
+					Cue = "/VO/ZagreusHome_0080",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusInteractEquip",
+					PreLineAnimTarget = "Hero",
+					Text = "What, wait, you're giving me your Codex? I can't accept something like this!"
+				},
+				{
+					Cue = "/VO/Achilles_0003",
+					PostLineThreadedFunctionName = "EnableCodex",
+					Text =
+					"Please, I insist. I want your love of history to grow, not just your love of warfare. Besides, maybe you can finish out the rest of it."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			AchillesLoungeClosed01 = {
+				Priority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "InspectLoungeClosed01" },
+				RequiredMaxCompletedRuns = 4,
+				RequiredFalseFlags = { "InFlashback", },
+				{
+					Cue = "/VO/ZagreusHome_0415",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Achilles, is it really true that Cerberus ripped the lounge up right after I left? He must have gotten in a lot of trouble."
+				},
+				{
+					Cue = "/VO/Achilles_0088",
+					Text =
+					"I only wish you could have seen it, lad. The place looked like a vineyard after a typhoon! Your lord father was livid. But he never gets so angry with the dog. Poor Dusa, though, she's picking the place up."
+				},
+				{
+					Cue = "/VO/ZagreusHome_0416",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusInteractionThoughtful",
+					PreLineAnimTarget = "Hero",
+					Text =
+					"Oh, no... I wondered what became of Dusa. She's always worried Father's going to fire her, even without something like this."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			AchillesGhostAdminProgress01 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredMinNPCInteractions = { NPC_Achilles_01 = 1 },
+				RequiredLifetimeResourcesSpentMin = { Gems = 250 },
+				RequiredFalseFlags = { "InFlashback" },
+				RequiredMinAnyCosmetics = {
+					Cosmetics = GameData.MiscCosmetics,
+					Count = 15,
+				},
+				-- Glad to hear it.
+				EndCue = "/VO/ZagreusHome_0986",
+				EndWait = 0.45,
+				{
+					Cue = "/VO/Achilles_0131",
+					Text =
+					"I have to say, lad! This place is livelier than usual, of late. Some of the old fixtures of the House getting patched up, new furnishings... it's rather nice, really. We've you to thank, don't we."
+				},
+				{
+					Cue = "/VO/ZagreusHome_0985",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Oh, that? It's nothing. Though I'm glad it's made a difference for the better. Our contractor's been doing all the work, I'm just putting in the orders."
+				},
+				{
+					Cue = "/VO/Achilles_0132",
+					Text =
+					"And the funds. Your father runs the Underworld a certain way. This old House is lavish, I suppose, but he has long since ceased trying to make it livable, at all. So the changes are appreciated."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			AchillesMiscMeeting01 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredMinNPCInteractions = { NPC_Achilles_01 = 1 },
+				RequiredFalseFlags = { "InFlashback" },
+				{
+					Cue = "/VO/Achilles_0004",
+					Text =
+					"Keep at it, lad. I've known great men throughout my life, and I can always tell when someone's better than their circumstances. Fight like I'd fight out there."
+				},
+				{
+					Cue = "/VO/ZagreusHome_0088",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"I'll give them hell as you once did, Achilles. Though, doubtless many of the shades who stand against me first arrived in Tartarus because of you."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			AchillesMiscMeeting02 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredMinNPCInteractions = { NPC_Achilles_01 = 1 },
+				RequiredWeaponsUnlocked = { "BowWeapon" },
+				RequiredFalseTextLines = { "AchillesMiscMeeting04", "AchillesMiscMeeting04_B" },
+				RequiredFalseFlags = { "InFlashback" },
+				{
+					Cue = "/VO/ZagreusHome_0226",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text = "Happen to know whom I should thank for the weapons just outside my chambers, Achilles?"
+				},
+				{
+					Cue = "/VO/Achilles_0010",
+					Text = "I'm sure I wouldn't, lad. Though if I happen to run into them, I'll let them know."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			AchillesMiscMeeting03 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredMinNPCInteractions = { NPC_Achilles_01 = 1 },
+				RequiredMinCompletedRuns = 4,
+				RequiredMaxCompletedRuns = 30,
+				RequiredFalseFlags = { "InFlashback" },
+				{
+					Cue = "/VO/Achilles_0083",
+					Text =
+					"Your enemy is not the wretched dead, and not your father, lad. It is the Underworld, itself. It has been fashioned to prevent escape. You must have seen, by now, how all the chambers seem to rearrange themselves."
+				},
+				{
+					Cue = "/VO/ZagreusHome_0257",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					Text = "The Underworld itself, my enemy... I'll do my best anticipating its surprises, sir."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			-- alt below
+			AchillesMiscMeeting04 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredMinNPCInteractions = { NPC_Achilles_01 = 1 },
+				RequiredFalseTextLines = { "AchillesMiscMeeting04_B" },
+				RequiredAnyWeaponsUnlocked = { "ShieldWeapon", "SpearWeapon" },
+				RequiredFalseFlags = { "InFlashback" },
+				{
+					Cue = "/VO/Achilles_0086",
+					Text =
+					"The sealed weapons by your chambers; your father won't observe their absence, I don't think. They remind him of a time he stood together with his brothers and sisters. He wants nothing more to do with any of that. I think it's fitting you've inherited their power."
+				},
+				{
+					Cue = "/VO/ZagreusHome_0259",
+					Portrait = "Portrait_Zag_Serious_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusInteractionThoughtful",
+					PreLineAnimTarget = "Hero",
+					Text =
+					"A power that once sealed away the Titans... maybe it's a power that can break me out of here. Thank you for helping me, Achilles."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			-- prioritized version so Guan Yu can unlock more reliably
+			AchillesMiscMeeting04_B = {
+				Priority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredMinNPCInteractions = { NPC_Achilles_01 = 1 },
+				RequiredFalseTextLines = { "AchillesMiscMeeting04" },
+				RequiredWeaponsUnlocked = { "BowWeapon", "SpearWeapon", "ShieldWeapon" },
+				RequiredFalseFlags = { "InFlashback" },
+				{
+					Cue = "/VO/Achilles_0086",
+					Text =
+					"The sealed weapons by your chambers; your father won't observe their absence, I don't think. They remind him of a time he stood together with his brothers and sisters. He wants nothing more to do with any of that. I think it's fitting you've inherited their power."
+				},
+				{
+					Cue = "/VO/ZagreusHome_0259",
+					Portrait = "Portrait_Zag_Serious_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusInteractionThoughtful",
+					PreLineAnimTarget = "Hero",
+					Text =
+					"A power that once sealed away the Titans... maybe it's a power that can break me out of here. Thank you for helping me, Achilles."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			AchillesAboutFistWeapon01 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredAnyTextLines = { "AchillesMiscMeeting02", "AchillesMiscMeeting04", "AchillesMiscMeeting04_B", "SkellyAboutFistWeapon01" },
+				RequiredMinRunsWithWeapons = { FistWeapon = 1, },
+				RequiredMaxRunsWithWeapons = { FistWeapon = 15, },
+				RequiredFalseFlags = { "InFlashback" },
+				-- Thank you.
+				EndCue = "/VO/ZagreusHome_2064",
+				EndWait = 0.4,
+				{
+					Cue = "/VO/ZagreusHome_2063",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"I got acquainted with the Twin Fists of Malphon recently, sir. Fills me with a kind of battle-hunger I'd not felt before. To think the empty hand could have as much destructive force as any weapon."
+				},
+				{
+					Cue = "/VO/Achilles_0170",
+					Text =
+					"The empty hand has more destructive force than any weapon, lad. It is the only weapon that can wield all others. And without it, all others are nearly powerless. The Twin Fists are a testament to that. Use them with care. Don't lose your head out there."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			AchillesAboutGunWeapon01 = {
+				Priority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "AchillesGrantsCodex" },
+				RequiredAnyTextLines = { "AchillesMiscMeeting02", "AchillesMiscMeeting04", "AchillesMiscMeeting04_B" },
+				RequiredMinRunsWithWeapons = { GunWeapon = 1, },
+				RequiredMaxRunsWithWeapons = { GunWeapon = 15, },
+				RequiredFalseFlags = { "InFlashback" },
+				EndVoiceLines = {
+					PreLineWait = 0.35,
+					UsePlayerSource = true,
+					RequiredMinElapsedTime = 3,
+					-- I'll use it to the best of my ability, sir.
+					{ Cue = "/VO/ZagreusHome_0744" },
+				},
+				{
+					Cue = "/VO/ZagreusHome_0743",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"I found another weapon waiting for me in the courtyard, Achilles. {#DialogueItalicFormat}Exagryph{#PreviousFormat}. I never entirely believed it was real."
+				},
+				{
+					Cue = "/VO/Achilles_0367",
+					Text =
+					"Between us, lad... I wish it wasn't. Were such a thing available to my enemies during my fighting days, I surely would have come here even sooner. But I trust you have the training to use it well. May it serve you as it served the fire goddess Hestia... she hasn't needed it in a while."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			AchillesAboutQuestLog01 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredAnyTextLines = { "AchillesFirstMeeting", "AchillesFirstMeeting_Alt" },
+				RequiredCosmetics = { "QuestLog", },
+				RequiredMaxQuestsComplete = 20,
+				RequiredFalseFlags = { "InFlashback" },
+				EndVoiceLines = {
+					PreLineWait = 0.45,
+					UsePlayerSource = true,
+					RequiredMinElapsedTime = 3,
+					-- I wouldn't mind their help I guess!
+					{ Cue = "/VO/ZagreusHome_1528" },
+				},
+				{
+					Cue = "/VO/Achilles_0140",
+					Text =
+					"I have to say, lad? Authorizing transfer of the Fated List from the old archives, straight into your chambers... bold of you! And right beneath your father's nose, at that."
+				},
+				{
+					Cue = "/VO/ZagreusHome_1527",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Oh, that? Just another job from the House Contractor near as I'm concerned, sir. Not like anything on the list was getting done while it was stuck in the archives, besides!"
+				},
+				{
+					Cue = "/VO/Achilles_0141",
+					Text =
+					"Well, that's the spirit, I suppose. If there's one thing I know, it's that the Three Fates always get their way; but if you wish to help them go about it, then perhaps they'll pay you back in kind."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			AchillesAboutBoonList01 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredMinNPCInteractions = { NPC_Achilles_01 = 1 },
+				RequiredCosmetics = { "CodexBoonList" },
+				RequiredFalseFlags = { "InFlashback" },
+				EndVoiceLines = {
+					PreLineWait = 0.45,
+					RequiredMinElapsedTime = 3,
+					ObjectType = "NPC_Achilles_01",
+					-- Keep at it.
+					{ Cue = "/VO/Achilles_0373", PreLineAnim = "AchillesIdleGreeting" },
+				},
+				{
+					Cue = "/VO/Achilles_0372",
+					Text =
+					"Thought I'd put in a House Contractor order to keep that Codex of yours sorted, lad. Now that you know so many on Olympus, figured it must be a lot keeping track of all their blessings and such."
+				},
+				{
+					Cue = "/VO/ZagreusHome_3670",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Yes, that should definitely come in handy, sir! I'm still getting a handle on everything I can do, with all the Olympians' powers fused with mine."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			AchillesAboutSuperLockKeys01 = {
+				Priority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredMinNPCInteractions = { NPC_Achilles_01 = 1 },
+				RequiredTextLines = { "AchillesGrantsCodex" },
+				RequiredFalseTextLinesThisRun = { "PersephoneMeeting08" },
+				RequiredLifetimeResourcesGainedMin = { SuperLockKeys = 1 },
+				RequiredLifetimeResourcesGainedMax = { SuperLockKeys = 4 },
+				RequiredLifetimeResourcesSpentMax = { SuperLockKeys = 1 },
+				RequiredScreenViewedFalse = "WeaponUpgradeScreen",
+				RequiredSeenRooms = { "A_PostBoss01" },
+				RequiredFalseSeenRoomsThisRun = { "D_Boss01" },
+				RequiredFalseFlags = { "InFlashback" },
+				RequiredRunsCleared = 0,
+				EndVoiceLines = {
+					PreLineWait = 0.4,
+					UsePlayerSource = true,
+					RequiredMinElapsedTime = 3,
+					-- Well! I wasn't about to drink it.
+					{ Cue = "/VO/ZagreusHome_1530" },
+				},
+				{
+					Cue = "/VO/ZagreusHome_1529",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Achilles, sir? I got a relic of some sort out there... a globule of ancient blood, which formed after I fought with Megaera. Is this really the Titans' blood I found?"
+				},
+				{
+					Cue = "/VO/Achilles_0142",
+					Text =
+					"As far as I know, yes, lad. That it is. Though whose, exactly, I'm not so sure. You'd best hang onto it, and keep it safe. Your weapons... they shall thirst for it and drink it up. Not yet, perhaps, but soon."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			AchillesAboutSuperGiftPoints01 = {
+				Priority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredMinCompletedRuns = 4,
+				RequiredMinNPCInteractions = { NPC_Achilles_01 = 1 },
+				RequiredTextLines = { "AchillesGrantsCodex" },
+				RequiredFalseTextLinesThisRun = { "PersephoneMeeting08" },
+				RequiredLifetimeResourcesGainedMin = { SuperGiftPoints = 1 },
+				RequiredLifetimeResourcesGainedMax = { SuperGiftPoints = 4 },
+				RequiredLifetimeResourcesSpentMax = { SuperGiftPoints = 1 },
+				RequiredFalseTextLines = { "ZeusGift07", "PoseidonGift07", "AthenaGift07", "AphroditeGift07", "AresGift07", "ArtemisGift07", "DionysusGift07", "DemeterGift07", "HermesGift07", "ChaosGift07", "AchillesGift07_A", "PatroclusGift07_A", "OrpheusGift07", "EurydiceGift07", "CerberusGift07", "SisyphusGift07_A", "ThanatosGift07_A", "HypnosGift07", "NyxGift07", "DusaGift07", "SkellyGift07", "PersephoneGift07" },
+				RequiredSeenRooms = { "C_PostBoss01" },
+				RequiredFalseSeenRoomsThisRun = { "D_Boss01" },
+				RequiredFalseFlags = { "InFlashback" },
+				RequiredRunsCleared = 0,
+				EndVoiceLines = {
+					PreLineWait = 0.4,
+					UsePlayerSource = true,
+					RequiredMinElapsedTime = 3,
+					-- Sell it or keep it, huh.
+					{ Cue = "/VO/ZagreusHome_1532" },
+				},
+				{
+					Cue = "/VO/ZagreusHome_1531",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Hey, look at what I got out there, Achilles sir! A vintage bottle of Ambrosia, plucked straight from Elysium! I hear this stuff is very good, but... can't even open it. I've no idea what to do with it, right now."
+				},
+				{
+					Cue = "/VO/Achilles_0143",
+					Text =
+					"The drink of the gods! I hear it's good, all right. But only for recipients with whom you're close. Perhaps hang onto it until it's ripe for use? Somebody would be grateful I am sure. Or it could fetch you something from the Wretched Broker over there."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			AchillesAboutOnions01 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredMinNPCInteractions = { NPC_Achilles_01 = 1 },
+				RequiredTextLines = { "AchillesGift03" },
+				RequiredCodexEntry = {
+					EntryName = "RoomRewardConsolationPrize",
+					EntryIndex = 3,
+				},
+				RequiredFalseFlags = { "InFlashback" },
+				EndVoiceLines = {
+					PreLineWait = 0.5,
+					ObjectType = "NPC_Achilles_01",
+					-- I'll have to take your word for it.
+					{ Cue = "/VO/Achilles_0366" },
+				},
+				{
+					Cue = "/VO/ZagreusHome_3132",
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Achilles, sir, I have a very important question... why do you detest onions so much? Have they wronged you, somehow?"
+				},
+				{
+					Cue = "/VO/Achilles_0365",
+					Text =
+					"As soon as you slice into one of those things... it makes you cry. Don't you find that a bit unsettling, lad? I won't shed tears over a cut-up vegetable."
+				},
+				{
+					Cue = "/VO/ZagreusHome_3133",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "Well, apparently they're pretty tasty if you don't eat them raw."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			AchillesPostFlashback01 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "AchillesGrantsCodex", "ZeusFirstPickUp", "PoseidonFirstPickUp", "AthenaFirstPickUp" },
+				RequiredAnyTextLines = { "Flashback_Mother_01", "CerberusStyxMeeting01" },
+				RequiredFalseTextLines = { "Ending01" },
+				RequiredFalseFlags = { "InFlashback" },
+				{
+					Cue = "/VO/Achilles_0084",
+					Text =
+					"Your extended family, the Olympians... they wish to help you from this place, don't they? I just hope that their intentions are as pure as they appear. They don't get on well with your father."
+				},
+				{
+					Cue = "/VO/ZagreusHome_0256",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "Neither do I, last time I checked. I'll take all the help I can get trying to break out of here."
+				},
+				{
+					Cue = "/VO/Achilles_0085",
+					Text =
+					"I'm pleased to hear you say that. I have known too many far too proud to accept help, even when it was sorely needed. You just be careful, lad."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			AchillesFlashback02 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTrueFlags = { "InFlashback" },
+				RequiredTextLines = { "NyxFlashback01" },
+				{
+					Cue = "/VO/Achilles_0185",
+					Text = "Talk later. Best not keep your father waiting."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+				StatusAnimation = false,
+			},
+			AchillesAboutMegaeraRelationship01 = {
+				Priority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "AchillesGift02", "MegaeraGift07" },
+				RequiredFalseTextLines = { "AchillesAboutThanatosRelationship01", "AchillesAboutMegAndThanRelationship01", "MegaeraGift10", "ThanatosGift07", "ThanatosGift07_A" },
+				RequiredFalseFlags = { "InFlashback" },
+				EndVoiceLines = {
+					PreLineWait = 0.4,
+					UsePlayerSource = true,
+					RequiredMinElapsedTime = 3,
+					-- Thank you for the advice, Achilles, sir.
+					{ Cue = "/VO/ZagreusHome_1538" },
+				},
+				{
+					Cue = "/VO/Achilles_0147",
+					Text =
+					"Hold just a moment, lad. That look... I think I know it all too well. Things getting complicated for you lately, then?"
+				},
+				{
+					Cue = "/VO/ZagreusHome_1536",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Well, you know, just... the usual struggles of battling toward the surface, generally to some ignoble death, though... wait, you mean between myself and Megaera, don't you."
+				},
+				{
+					Cue = "/VO/Achilles_0148",
+					Text =
+					"I think she likes you more than she lets on. You have a certain way, besides. I know you two got off to a rough start. And circumstances lately haven't helped. But, if you love her... follow your heart."
+				},
+				{
+					Cue = "/VO/ZagreusHome_1537",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusInteractionThoughtful",
+					PreLineAnimTarget = "Hero",
+					Text = "And, what if I don't...? I hesitate to even use the word."
+				},
+				{
+					Cue = "/VO/Achilles_0149",
+					Text =
+					"If you don't... then cease with giving her such lavish gifts, I ought to think! No need to send the wrong impression, and there is nothing to be gained from such an empty gesture, anyhow."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			AchillesAboutThanatosRelationship01 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "AchillesGift02", "ThanatosAboutRelationship01" },
+				RequiredFalseTextLines = { "AchillesAboutMegaeraRelationship01", "AchillesAboutMegAndThanRelationship01", "ThanatosGift10", "MegaeraGift07" },
+				RequiredFalseFlags = { "InFlashback" },
+				EndVoiceLines = {
+					PreLineWait = 0.5,
+					UsePlayerSource = true,
+					RequiredMinElapsedTime = 3,
+					-- Right. You're right, Achilles.
+					{ Cue = "/VO/ZagreusHome_1541" },
+				},
+				{
+					Cue = "/VO/Achilles_0147",
+					Text =
+					"Hold just a moment, lad. That look... I think I know it all too well. Things getting complicated for you lately, then?"
+				},
+				{
+					Cue = "/VO/ZagreusHome_1539",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Well, you know, just... the usual struggles of battling toward the surface, generally to some ignoble death, though... wait, you mean between myself and Thanatos, don't you."
+				},
+				{
+					Cue = "/VO/Achilles_0150",
+					Text =
+					"I think he cares for you more deeply than you know. You have a certain way, besides. It has been difficult between you two. And circumstances lately haven't helped. But, if you love him... follow your heart."
+				},
+				{
+					Cue = "/VO/ZagreusHome_1540",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusInteractionThoughtful",
+					PreLineAnimTarget = "Hero",
+					Text = "Whoa, just a moment, there, I mean... I've never said something like that, have I?"
+				},
+				{
+					Cue = "/VO/Achilles_0151",
+					Text =
+					"You haven't, no. And it is not my business to presume too much. Nevertheless, if your friendship with Thanatos is bounded... then, I would suggest you cease with giving him more lavish gifts. No need to send the wrong impression, right?"
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			AchillesAboutMegAndThanRelationship01 = {
+				Priority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "AchillesGift02", "MegaeraGift07", "ThanatosAboutRelationship01" },
+				RequiredFalseTextLines = { "AchillesAboutMegaeraRelationship01", "AchillesAboutThanatosRelationship01", "MegaeraGift10", "ThanatosGift10" },
+				RequiredFalseFlags = { "InFlashback" },
+				EndVoiceLines = {
+					PreLineWait = 0.5,
+					UsePlayerSource = true,
+					RequiredMinElapsedTime = 3,
+					-- Right. You're right, Achilles.
+					{ Cue = "/VO/ZagreusHome_1541" },
+				},
+				{
+					Cue = "/VO/Achilles_0147",
+					Text =
+					"Hold just a moment, lad. That look... I think I know it all too well. Things getting complicated for you lately, then?"
+				},
+				{
+					Cue = "/VO/ZagreusHome_1615",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Well, you know, just... the usual struggles of battling toward the surface, generally to some ignoble death, though... wait, you mean between me, Meg, and Thanatos, don't you."
+				},
+				{
+					Cue = "/VO/Achilles_0156",
+					Text =
+					"If I may presume a bit, I gather that they share by now the feelings that you have for each of them; each in their respective way, of course. If you love them... one, the other, perhaps both? I mean, you're gods...! Follow your heart."
+				},
+				{
+					Cue = "/VO/ZagreusHome_1616",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusInteractionThoughtful",
+					PreLineAnimTarget = "Hero",
+					Text =
+					"{#DialogueItalicFormat}Whoa{#PreviousFormat}, just a moment, there, I mean... ugh, I suppose you're not presuming much at all. Follow my heart, though? Where?"
+				},
+				{
+					Cue = "/VO/Achilles_0157",
+					Text =
+					"Wherever it should lead; that's how it works. Yours to decide when you've gone as far as you ought, and cease with the lavish gifts. No need to send the wrong impression, and there's nothing to be gained from such an empty gesture, anyhow, right?"
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			AchillesAboutMultipleRelationships01 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "MegaeraGift08", "ThanatosGift08" },
+				RequiredAnyTextLines = { "AchillesAboutMegaeraRelationship01", "AchillesAboutThanatosRelationship01", "AchillesAboutMegAndThanRelationship01" },
+				MinRunsSinceAnyTextLines = { TextLines = { "AchillesAboutMegaeraRelationship01", "AchillesAboutThanatosRelationship01", "AchillesAboutMegAndThanRelationship01" }, Count = 2 },
+				RequiredFalseFlags = { "InFlashback" },
+				EndVoiceLines = {
+					PreLineWait = 0.6,
+					UsePlayerSource = true,
+					RequiredMinElapsedTime = 3,
+					RequiredFalseTextLines = { "HadesGift05" },
+					-- I'm nothing like him.
+					{ Cue = "/VO/ZagreusHome_1546" },
+				},
+				{
+					Cue = "/VO/Achilles_0153",
+					Text =
+					"I think I see that look again, if I am not mistaken in it, lad. What's on your mind? If you would like to share, I'm listening."
+				},
+				{
+					Cue = "/VO/ZagreusHome_1544",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusInteractionThoughtful",
+					PreLineAnimTarget = "Hero",
+					Text =
+					"{#DialogueItalicFormat}Oh{#PreviousFormat}, it's just... sometimes, I find my thoughts, they wander between those I care about, it's... not just one. You mortals, typically you had a single suitor, did you not...? "
+				},
+				{
+					Cue = "/VO/Achilles_0154",
+					Text =
+					"So we often told each other, yes. But... you're not like us mortals, or us shades. Nor are most of the others here. You gods... I cannot think of even one who had a single mate. Although, your father... maybe he is one."
+				},
+				{
+					Cue = "/VO/ZagreusHome_1545",
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text = "Wait, you're saying Father, he was never with somebody else besides... my mother?"
+				},
+				{
+					Cue = "/VO/Achilles_0155",
+					Text =
+					"Well, I of course don't know so very much about him, lad. But that's the way of it, from what I've learned. You needn't follow in his footsteps, though; I think you know that well enough by now."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			AchillesAboutBeingCloseWithMegaera01 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredMinNPCInteractions = { NPC_Achilles_01 = 1 },
+				RequiredAnyTextLines = { "BecameCloseWithMegaera01Meg_GoToHer", "BecameCloseWithMegaera01_BMeg_GoToHer" },
+				RequiredFalseFlags = { "InFlashback" },
+				EndVoiceLines = {
+					PreLineWait = 0.45,
+					UsePlayerSource = true,
+					RequiredMinElapsedTime = 3,
+					-- Thanks, Achilles. That means a lot.
+					{ Cue = "/VO/ZagreusHome_1501" },
+				},
+				{
+					Cue = "/VO/Achilles_0135",
+					Text =
+					"Meant to tell you. Recently, I noticed Megaera, and... I believe I saw the faintest smile play across her lips. That anything to do with you, perhaps? Not asking for specifics, mind."
+				},
+				{
+					Cue = "/VO/ZagreusHome_1500",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"You really think that has to do with me...? I mean, I hope you're right, and I suppose it's possible, it's just... how can you tell?"
+				},
+				{
+					Cue = "/VO/Achilles_0136",
+					Text =
+					"Perhaps with time, I've grown keen to more than just the weaknesses of my enemies on the battlefield. Especially since I don't have those anymore. I'm happy for you, lad. The two of you."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			AchillesAboutBeingCloseWithThanatos01 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredMinNPCInteractions = { NPC_Achilles_01 = 1 },
+				RequiredAnyTextLines = { "BecameCloseWithThanatos01Than_GoToHim", "BecameCloseWithThanatos01_BThan_GoToHim" },
+				RequiredFalseFlags = { "InFlashback" },
+				EndVoiceLines = {
+					PreLineWait = 0.45,
+					UsePlayerSource = true,
+					-- He is.
+					{ Cue = "/VO/ZagreusHome_1503" },
+				},
+				{
+					Cue = "/VO/Achilles_0137",
+					Text =
+					"I have to tell you something, lad. When Thanatos returned to seek you out, I was very concerned. Not just for you, either. But you've since patched things up...?"
+				},
+				{
+					Cue = "/VO/ZagreusHome_1502",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"I think so. I hope so. It was complicated for a while there, but... I think things are clearer for us, now. Not just in the moment, but in retrospect. {#DialogueItalicFormat}Ugh{#PreviousFormat}, I'm not making any sense."
+				},
+				{
+					Cue = "/VO/Achilles_0138",
+					Text =
+					"Oh, on the contrary. I think I know exactly what you mean. I don't know Thanatos particularly well. Wasn't he who brought me here, you see. And he was always very busy, like your father. But, he always struck me as a decent sort."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			AchillesAboutFurySisters01 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredMinNPCInteractions = { NPC_Achilles_01 = 1 },
+				RequiredTextLines = { "FuryMetSisters01" },
+				MaxRunsSinceAnyTextLines = { TextLines = { "Fury2FirstAppearance", "Fury3FirstAppearance" }, Count = 30 },
+				RequiredAnyTextLines = { "AchillesFirstMeeting", "AchillesRevealsGuanYuAspect02", "AchillesVsHades02", "AchillesAboutMyrmidonReunionQuest03_A", "AchillesAboutMyrmidonReunionQuest03_B", "AchillesAboutMyrmidonReunionQuest03_C" },
+				RequiredFalseFlags = { "InFlashback" },
+				{
+					Cue = "/VO/ZagreusHome_0789",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Achilles, I ran into Meg's sisters out there. We didn't really hit it off. Meg said they're not permitted in the House. Not that I'm complaining, but... what's that about?"
+				},
+				{
+					Cue = "/VO/Achilles_0100",
+					Text =
+					"They have not earned the right, lad. Nor expressed any desire to exist here with the rest of us. Your father has assigned them to specific roles that suit their dispositions. They're... not as sensible as Megaera, in my experience."
+				},
+				{
+					Cue = "/VO/ZagreusHome_0790",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text = "That's what I was afraid of. Although, fear is for the weak."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			AchillesAboutThanatos01 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredMinNPCInteractions = { NPC_Achilles_01 = 1 },
+				RequiredTextLines = { "ThanatosFieldFirstMeeting" },
+				MaxRunsSinceAnyTextLines = { TextLines = { "ThanatosFieldFirstMeeting" }, Count = 20 },
+				RequiredFalseTextLines = { "ThanatosGift06", "BecameCloseWithThanatos01", "BecameCloseWithThanatos01_B", "Ending01" },
+				RequiredFalseFlags = { "InFlashback" },
+				IsIdAlive = 423052,
+				EndVoiceLines = {
+					PreLineWait = 0.45,
+					UsePlayerSource = true,
+					RequiredMinElapsedTime = 3,
+					-- I will. You're right as always, sir.
+					{ Cue = "/VO/ZagreusHome_0792" },
+				},
+				{
+					Cue = "/VO/Achilles_0101",
+					Text =
+					"You saw that Thanatos is back, didn't you, lad? He's been over there brooding, when he's around, at least."
+				},
+				{
+					Cue = "/VO/ZagreusHome_0791",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"I saw, Achilles. I think he's angry with me because of my decision to leave the House. Not that it's any of his business."
+				},
+				{
+					Cue = "/VO/Achilles_0144",
+					Text =
+					"Oh, don't say that. It isn't everyday or night when one discovers that his closest friend has had it with his temperamental father, and decided to leave home. I think he's struggling with what to make of it. Be gentle with him, will you?"
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			AchillesAboutZagreus01 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredFalseFlags = { "InFlashback" },
+				RequiredMinNPCInteractions = { NPC_Achilles_01 = 1 },
+				RequiredAnyTextLines = { "Flashback_Mother_01", "CerberusStyxMeeting01" },
+				RequiredCodexEntry = {
+					EntryName = "NPC_Thanatos_01",
+					EntryIndex = 4,
+				},
+				EndVoiceLines = {
+					PreLineWait = 0.45,
+					UsePlayerSource = true,
+					RequiredMinElapsedTime = 3,
+					-- I'm not the god of anything, all right?
+					{ Cue = "/VO/ZagreusHome_1543" },
+				},
+				{
+					Cue = "/VO/ZagreusHome_1542",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusInteractionThoughtful",
+					PreLineAnimTarget = "Hero",
+					Text =
+					"Hey, Achilles, I... uncovered a late passage in the Codex, with regard to Thanatos and me. It says, {#DialogueItalicFormat}you {#PreviousFormat}say, you think that I'm the god of {#DialogueItalicFormat}blood{#PreviousFormat}? I'm not the god of anything, I think..."
+				},
+				{
+					Cue = "/VO/Achilles_0152",
+					Text =
+					"Oh, nonsense, lad! If you're a god, then you're the god of {#DialogueItalicFormat}something{#PreviousFormat}, I'm sure. It's just an observation, and I genuinely hope it's no offense. But, see... your father, and your mother, and your bloodstones, and your disposition..."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			AchillesAboutSkelly01 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredFalseFlags = { "InFlashback" },
+				RequiredTextLines = { "NyxAboutSkelly01", "AchillesGift01", "SkellyGift01" },
+				EndVoiceLines = {
+					PreLineWait = 0.45,
+					UsePlayerSource = true,
+					RequiredMinElapsedTime = 3,
+					-- Not a concern, just a morbid curiosity.
+					{ Cue = "/VO/ZagreusHome_0989" },
+				},
+				{
+					Cue = "/VO/ZagreusHome_0987",
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Achilles, I've been meaning to ask you about the odd skeleton usually standing around in the courtyard. Old acquaintance of yours? A hireling, perhaps?"
+				},
+				{
+					Cue = "/VO/Achilles_0133",
+					Text =
+					"That one, Skelly, was it? We only met when all this business of escape began. If I have a connection to him, I am unaware. Does he claim to know me? Perhaps I slew him when we were alive."
+				},
+				{
+					Cue = "/VO/ZagreusHome_0988",
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"I don't know that that's it. So neither of us has any idea where he's from or how he got there, huh. Can you think of any leads? Nyx doesn't seem to know him, either."
+				},
+				{
+					Cue = "/VO/Achilles_0134",
+					Text =
+					"Perhaps the gods of Olympus sent him to your aid? Their methods can be odd. And, there are many who support you. Regardless, he does not appear to be your father's spy, if that is your concern."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			AchillesAboutSkelly02 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredFalseFlags = { "InFlashback" },
+				RequiredTextLines = { "AchillesAboutSkelly01", "SkellyAboutSources04" },
+				MinRunsSinceAnyTextLines = { TextLines = { "AchillesAboutSkelly01" }, Count = 4 },
+				RequiredCodexEntry = {
+					EntryName = "NPC_Skelly_01",
+					EntryIndex = 4,
+				},
+				EndVoiceLines = {
+					PreLineWait = 0.45,
+					ObjectType = "NPC_Achilles_01",
+					-- Maybe both. I've met the sort.
+					{ Cue = "/VO/Achilles_0379" },
+				},
+				{
+					Cue = "/VO/ZagreusHome_3741",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Remember that Skelly character out in the courtyard, sir? Turns out he's been working with Charon all this time. Working for him more like! I had so much help in this, from all of you."
+				},
+				{
+					Cue = "/VO/Achilles_0378",
+					Text =
+					"Charon! Of course. He has a stake in all that goes on in the Underworld. And he probably thinks highly of you. This Skelly character, though... he must have been somebody if Charon's confided in him."
+				},
+				{
+					Cue = "/VO/ZagreusHome_3742",
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text = "He won't tell me. He was either a venerable sea captain, or a petty thief. Maybe both?"
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			AchillesAboutNyx01 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredMinNPCInteractions = { NPC_Achilles_01 = 1 },
+				RequiredTextLines = { "AchillesGift01", "NyxAboutChaos03" },
+				RequiredFalseTextLines = { "ChaosAboutNyx06" },
+				RequiredFalseFlags = { "InFlashback" },
+				EndVoiceLines = {
+					PreLineWait = 0.55,
+					UsePlayerSource = true,
+					RequiredMinElapsedTime = 3,
+					-- They drifted apart...
+					{ Cue = "/VO/ZagreusHome_2402" },
+				},
+				{
+					Cue = "/VO/Achilles_0178",
+					Text =
+					"In my recent audience with Nyx, lad, she let on that you have mentioned Chaos as of late. Is it true you've met her parent, yourself?"
+				},
+				{
+					Cue = "/VO/ZagreusHome_2401",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"I have. Chaos is... not like anyone I've ever met. At first I was a little worried, meeting this vast primordial entity apparently responsible for all creation, but... they seem all right. Chaos and Nyx haven't been talking for a while, though. You don't know what happened there, do you?"
+				},
+				{
+					Cue = "/VO/Achilles_0179",
+					Text =
+					"I know a little bit, I think. Nyx, she and Chaos, they just... slowly drifted apart. No animosity, not anymore, at least. It happens between parents and children. And once such ties are severed, they cannot always be restored. Especially among primordial gods as old as time, I suppose."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			AchillesAboutNyx02 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "AchillesAboutNyx01" },
+				RequiredFalseTextLines = { "ThanatosAboutErisAspect01" },
+				RequiredFalseFlags = { "InFlashback" },
+				EndVoiceLines = {
+					PreLineWait = 0.5,
+					UsePlayerSource = true,
+					RequiredMinElapsedTime = 3,
+					-- Yeah... I can see that.
+					{ Cue = "/VO/ZagreusHome_2405" },
+				},
+				{
+					Cue = "/VO/ZagreusHome_2403",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusInteractionThoughtful",
+					PreLineAnimTarget = "Hero",
+					Text =
+					"Wanted to ask you more about Nyx and Chaos, sir. So they just drifted apart, I mean... why not just keep in touch? I don't understand. How hard is it just to say hello from time to time?"
+				},
+				{
+					Cue = "/VO/Achilles_0180",
+					Text =
+					"It can be harder than you know. For someone like Nyx... she was responsible for no small part of creation, herself. As her relationship with Chaos grew more strained, she gave birth to Strife, Misery, Doom... sons and daughters you don't hear about too much."
+				},
+				{
+					Cue = "/VO/ZagreusHome_2404",
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"What, really? I've never heard Hypnos or Thanatos mention any of them, let alone Nyx. They sound like a handful. Where are they, what happened?"
+				},
+				{
+					Cue = "/VO/Achilles_0181",
+					Text =
+					"I don't know, lad. On the surface, I suppose? My point is, Nyx had her own problems to contend with. Dealing with her brood, governing the Underworld all on her own before your father arrived. Her relationship with Chaos suffered for it."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			AchillesAboutNyxChaosReunionQuest01 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "NyxChaosReunionQuestComplete" },
+				RequiredFalseFlags = { "InFlashback" },
+				EndVoiceLines = {
+					PreLineWait = 0.4,
+					UsePlayerSource = true,
+					RequiredMinElapsedTime = 3,
+					-- I couldn't stand it.
+					{ Cue = "/VO/ZagreusHome_2407" },
+				},
+				{
+					Cue = "/VO/Achilles_0182",
+					Text =
+					"Lad, I heard from Nyx! She said that she was able recently to reestablish contact with Chaos, thanks to you? You're just full of surprises, reforging old bonds between primordial gods like it was nothing."
+				},
+				{
+					Cue = "/VO/ZagreusHome_2406",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Oh, just took a bit of tampering with the Sigil in the admin chamber. Whole bunch of Darkness, too. But I could tell that Nyx and Chaos, they... seemed to really miss each other, to the extent they are able to miss anybody."
+				},
+				{
+					Cue = "/VO/Achilles_0183",
+					Text =
+					"I think they're plenty capable of missing their loved ones, lad. The amount of time that either of us have existed... it's nothing compared to either of them. Imagine, being apart from someone you care about, for that long..."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			AchillesAboutTheseusExtremeMeasures01 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredMinNPCInteractions = { NPC_Achilles_01 = 1 },
+				RequiredTextLines = { "TheseusExtremeMeasures01" },
+				RequiredFalseFlags = { "InFlashback" },
+				EndVoiceLines = {
+					PreLineWait = 0.4,
+					UsePlayerSource = true,
+					RequiredMinElapsedTime = 3,
+					-- That it did most definitely, sir.
+					{ Cue = "/VO/ZagreusHome_1535" },
+				},
+				{
+					Cue = "/VO/ZagreusHome_1533",
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Achilles, sir? You happen to know whether Father authorized the transfer of a Macedonian Tau-Lambda chariot to Elysium in recent memory? I ran into the former hero Theseus, all joyriding about in one of those."
+				},
+				{
+					Cue = "/VO/Achilles_0145",
+					Text =
+					"I know the chariot you mean. It's not just any Macedonian. It's modified, apparently by Daedalus, himself. No earthly weapons can do what it does. Though, please don't tell me Theseus put on that mask...?"
+				},
+				{
+					Cue = "/VO/ZagreusHome_1534",
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"What, you mean the golden matching mask? I saw him wearing it, all right. Looked like a proper fool, I thought. What of it, though?"
+				},
+				{
+					Cue = "/VO/Achilles_0146",
+					Text =
+					"{#DialogueItalicFormat}Hahah{#PreviousFormat}, well! I think that Daedalus would certainly agree. Heard that he fashioned that mask and outfit as a little joke. For someone deeply prideful, and well unaware. It must have suited Theseus quite well, then, yes?"
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			AchillesAboutWeaponEnchantments01 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredMinNPCInteractions = { NPC_Achilles_01 = 1 },
+				RequiredFalseTextLines = { "AchillesRevealsGuanYuAspect01" },
+				RequiredFalseFlags = { "InFlashback" },
+				RequiredScreenViewed = "WeaponUpgradeScreen",
+				RequiredMinUnlockedWeaponEnchantments = 1,
+				EndVoiceLines = {
+					PreLineWait = 0.45,
+					UsePlayerSource = true,
+					RequiredMinElapsedTime = 3,
+					-- In the mean time, I'll take good care of them.
+					{ Cue = "/VO/ZagreusHome_0984" },
+				},
+				{
+					Cue = "/VO/ZagreusHome_0983",
+					Portrait = "Portrait_Zag_Serious_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Achilles, wanted to ask you more about the weapons I've been using. They can change shape! So, they've molded themselves to suit me, and remember their past wielders, something like that?"
+				},
+				{
+					Cue = "/VO/Achilles_0130",
+					Text =
+					"Something like that. They seem alive, don't they? Taking everything in. I think they long predate even your father's time. Some have seen many different owners. Chances are, you shall not be the last."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			AchillesRevealsGuanYuAspect01 = {
+				Priority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				InitialGiftableOffSource = true,
+				StatusAnimation = "StatusIconWantsToTalkImportant",
+				RequiredCosmetics = { "QuestLog" },
+				RequiredScreenViewed = "WeaponUpgradeScreen",
+				RequiredMinUnlockedWeaponEnchantments = 5,
+				RequiredSeenRooms = { "D_Boss01" },
+				RequiredAnyTextLines = { "AchillesMiscMeeting02", "AchillesMiscMeeting04", "AchillesMiscMeeting04_B", "AchillesAboutWeaponEnchantments01", "AchillesAboutChironAspect01", "AchillesAboutAchillesAspect01" },
+				RequiredFalseTextLinesThisRun = { "PersephoneMeeting08", "PersephoneMeeting09" },
+				RequiredFalseFlags = { "InFlashback" },
+				EndVoiceLines = {
+					PreLineWait = 0.5,
+					UsePlayerSource = true,
+					-- I see you through the eyes of the crimson phoenix...
+					{ Cue = "/VO/ZagreusHome_2024" },
+				},
+				{
+					Cue = "/VO/Achilles_0166",
+					Text =
+					"As you may know, lad, I've a connection to the weapons that you use, having once wielded one of them myself. Of course not knowing its significance back then, but I digress. Sometimes, it... well, it keeps in touch. And I've a vision from it to impart."
+				},
+				{
+					Cue = "/VO/ZagreusHome_2022",
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"What, you mean a vision from Varatha the Eternal Spear? That's... out of the ordinary, and also a bit concerning. So, what did you see?"
+				},
+				{
+					Cue = "/VO/Achilles_0167",
+					Text =
+					"Well... I saw a great, bearded warrior. Bigger than me, pitch-black hair. Bearing an aspect of Varatha unlike any with which I'm familiar. Then he was gone. But, what still lingered were these words: {#DialogueItalicFormat}I see you through the eyes of the crimson phoenix{#PreviousFormat}."
+				},
+				{
+					Cue = "/VO/ZagreusHome_2023",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusInteractionThoughtful",
+					PreLineAnimTarget = "Hero",
+					Text =
+					"{#DialogueItalicFormat}I see you through the eyes of the crimson phoenix{#PreviousFormat}... I don't understand. What's that supposed to mean?"
+				},
+				{
+					Cue = "/VO/Achilles_0168",
+					Text =
+					"There's one more thing. This was not my first such vision. Long ago... I saw one of Varatha's other bearers. It was {#DialogueItalicFormat}you{#PreviousFormat}. Your Infernal Arms... they must be weapons of the Fates' design. They know already who shall brandish them. Now they ask a favor. Seek Varatha. Speak the words. Go."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			AchillesRevealsGuanYuAspect02 = {
+				-- SuperPriority = true,
+				Priority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "AchillesRevealsGuanYuAspect01" },
+				MaxRunsSinceAnyTextLines = { TextLines = { "AchillesRevealsGuanYuAspect01" }, Count = 15 },
+				RequiredPlayed = { "/VO/ZagreusHome_2027" },
+				RequiredFalseTextLinesThisRun = { "PersephoneMeeting08" },
+				RequiredFalseFlags = { "InFlashback" },
+				EndVoiceLines = {
+					PreLineWait = 0.4,
+					UsePlayerSource = true,
+					-- Fear is for the weak.
+					{ Cue = "/VO/ZagreusHome_2026" },
+				},
+				{
+					Cue = "/VO/ZagreusHome_2025",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Achilles...! Something awakened in Varatha when I spoke the words. It revealed to me a form I'd never seen. Wielded by the warrior called Guan Yu. Handsomely dressed! And just as you described. That's no Greek name, is it..."
+				},
+				{
+					Cue = "/VO/Achilles_0169",
+					Text =
+					"No, I don't think so, lad. I don't know who this Guan Yu is, or where he's from. Or even {#DialogueItalicFormat}when {#PreviousFormat}he's from. But the Fates must have a plan for him, and you. Anyway... I think my part in this is ended. Varatha's served you well, no? I trusted it in life; I trust it now. Fear is for the weak."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			AchillesAboutArthurAspect01 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "AchillesRevealsGuanYuAspect01", "NyxRevealsArthurAspect01" },
+				RequiredLastInteractedWeaponUpgrade = "SwordConsecrationTrait",
+				RequiredFalseFlags = { "InFlashback" },
+				EndVoiceLines = {
+					PreLineWait = 0.35,
+					UsePlayerSource = true,
+					-- Must be the regular feedings.
+					{ Cue = "/VO/ZagreusHome_2348" },
+				},
+				{
+					Cue = "/VO/ZagreusHome_2065",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Achilles, sir! I've uncovered the hidden aspect for Stygius! Nyx gave me the words this time, and a vision of a noble leader among mortals. An entire armored legion of them! Arthur was his name. {#DialogueItalicFormat}Will be {#PreviousFormat}his name, I guess."
+				},
+				{
+					Cue = "/VO/Achilles_0171",
+					Text =
+					"A future leader among men, wielding that blade? The mysteries of the Infernal Arms run deep, don't they. Although it seems that you and Stygius formed quite a bond."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			AchillesAboutRamaAspect01 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "AchillesRevealsGuanYuAspect01", "ArtemisRevealsRamaAspect01" },
+				RequiredLastInteractedWeaponUpgrade = "BowBondTrait",
+				RequiredFalseFlags = { "InFlashback" },
+				EndVoiceLines = {
+					PreLineWait = 0.35,
+					UsePlayerSource = true,
+					RequiredMinElapsedTime = 3,
+					-- I have this feeling that he will.
+					{ Cue = "/VO/ZagreusHome_2068" },
+				},
+				{
+					Cue = "/VO/ZagreusHome_2067",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Achilles, I've revealed the hidden aspect of the Heart-Seeker. Lady Artemis herself told me the words, and... it seems Coronacht belonged to, maybe {#DialogueItalicFormat}will {#PreviousFormat}belong to somebody called Rama. Peerless with the bow. Even among gods..."
+				},
+				{
+					Cue = "/VO/Achilles_0172",
+					Text =
+					"Many lay claim to peerlessness with bows in my experience, there, lad, although... I'm not to judge a vision from an ancient weapon such as that. I hope this Rama shall use his weapon wisely when the time comes; same as you."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			AchillesAboutBeowulfAspect01 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "AchillesRevealsGuanYuAspect01", "ChaosRevealsBeowulfAspect01" },
+				RequiredLastInteractedWeaponUpgrade = "ShieldLoadAmmoTrait",
+				RequiredFalseFlags = { "InFlashback" },
+				EndVoiceLines = {
+					PreLineWait = 0.35,
+					UsePlayerSource = true,
+					RequiredMinElapsedTime = 3,
+					-- I doubt he would be any match for you.
+					{ Cue = "/VO/ZagreusHome_2716" },
+				},
+				{
+					Cue = "/VO/ZagreusHome_2715",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Achilles, sir, I've revealed the hidden aspect of the Shield of Chaos... thanks to Chaos, themself. Apparently someday it'll protect an armored warrior known as Beowulf from all sorts of dangers... even a dragon! Mortals don't stand much of a chance against those, do they?"
+				},
+				{
+					Cue = "/VO/Achilles_0306",
+					Text =
+					"Depends upon the dragon, I suppose. I've heard they differ all across the world. Though, that's a fascinating find, there, lad. This Beowulf... sounds like he'll find a way to make good use of all that protective gear. Always preferred mobility, myself, but then, to each his own."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			AchillesAboutGilgameshAspect01 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "AchillesRevealsGuanYuAspect01", "MinotaurRevealsGilgameshAspect01" },
+				RequiredLastInteractedWeaponUpgrade = "FistDetonateTrait",
+				RequiredFalseFlags = { "InFlashback" },
+				EndVoiceLines = {
+					PreLineWait = 0.45,
+					ObjectType = "NPC_Achilles_01",
+					-- I know the type. Both types.
+					{ Cue = "/VO/Achilles_0371" },
+				},
+				{
+					Cue = "/VO/ZagreusHome_3503",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"The Bull of Minos led me to another hidden aspect, Achilles! A beastly form of the Twin Fists, belonging to an ancient god-king known as Gilgamesh. You ever hear that name? He had a half-beast friend, apparently. Like how Asterius is friend to Theseus."
+				},
+				{
+					Cue = "/VO/Achilles_0370",
+					Text =
+					"Gilgamesh, you said...? That name isn't familiar to me, but... with these hidden aspects, there's bound to be a connection to the future, or the past. Say, why is the Bull of Minos aiding you? I thought he was one of your rivals barring passage from Elysium."
+				},
+				{
+					Cue = "/VO/ZagreusHome_3504",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Oh, he is. He's loyal through and through to Theseus, and never holds back when we fight. But he seems to be the respect-for-his-opponent type. Unlike his companion."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			AchillesAboutLuciferAspect01 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "AchillesRevealsGuanYuAspect01", "ZeusRevealsLuciferAspect01" },
+				RequiredLastInteractedWeaponUpgrade = "GunLoadedGrenadeTrait",
+				RequiredFalseFlags = { "InFlashback" },
+				EndVoiceLines = {
+					PreLineWait = 0.4,
+					UsePlayerSource = true,
+					RequiredMinElapsedTime = 3,
+					-- I'll take it as a warning. Even the Rail has its limits.
+					{ Cue = "/VO/ZagreusHome_2718" },
+				},
+				{
+					Cue = "/VO/ZagreusHome_2717",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Achilles, I discovered the hidden aspect of the Adamant Rail, after Lord Zeus himself told me the waking-phrase. It's from a winged fellow by the name of Lucifer... apparently had a bit of a falling out with his lord father. Wonder how that worked out for him."
+				},
+				{
+					Cue = "/VO/Achilles_0307",
+					Text =
+					"{#DialogueItalicFormat}Huh{#PreviousFormat}! Perhaps it's from a time even before the Olympians rebelled against the Titans. But I've never heard of any Lucifer, with or without wings. Suggests to me, perhaps that falling out of his did not work out so well."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			AchillesAboutLegendaryAspects01 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "AchillesAboutAchillesAspect01", "AchillesAboutArthurAspect01", "AchillesAboutRamaAspect01", "AchillesAboutBeowulfAspect01", "AchillesAboutGilgameshAspect01", "AchillesAboutLuciferAspect01", },
+				RequiredFalseFlags = { "InFlashback" },
+				EndVoiceLines = {
+					PreLineWait = 0.4,
+					RequiredMinElapsedTime = 3,
+					ObjectType = "NPC_Achilles_01",
+					-- It sounds absurd when you put it quite like that... but yes.
+					{ Cue = "/VO/Achilles_0341" },
+				},
+				{
+					Cue = "/VO/ZagreusHome_3212",
+					Portrait = "Portrait_Zag_Serious_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusInteractionThoughtful",
+					PreLineAnimTarget = "Hero",
+					Text =
+					"Achilles, something I've been wondering... now that I've discovered all the hidden aspects of my weapons... as far as I know, anyway... I can't see any pattern there, at all. Guan Yu, Gilgamesh, Rama, and so on... any idea why them?"
+				},
+				{
+					Cue = "/VO/Achilles_0339",
+					Text =
+					"To know for certain, I suppose you'd have to ask the Fates, themselves... and get an answer from them, too. I ask myself how come you found an aspect of mine, among them all. What made me so special, do you suppose?"
+				},
+				{
+					Cue = "/VO/ZagreusHome_3213",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"You were a great warrior! Famous, in your time! It's no surprise to me at all the Fates chose you to have a stint with one of their world-altering weapons."
+				},
+				{
+					Cue = "/VO/Achilles_0340",
+					Text =
+					"Well, that's just it! I was quite famous, yes. Infamous, perhaps, but no matter. Perhaps it's just that these weapons demand to make themselves known, above all. To leave a lasting impression in the hands of their wielders."
+				},
+				{
+					Cue = "/VO/ZagreusHome_3214",
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"You think the Infernal Arms just want to be {#DialogueItalicFormat}popular{#PreviousFormat}? Have exciting stories told about them and whatnot?"
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			AchillesAboutAchillesAspect01 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredMinNPCInteractions = { NPC_Achilles_01 = 1 },
+				RequiredTraitsTaken = { "SpearTeleportTrait" },
+				RequiredFalseFlags = { "InFlashback" },
+				EndVoiceLines = {
+					PreLineWait = 0.35,
+					UsePlayerSource = true,
+					RequiredMinElapsedTime = 4,
+					-- I can't imagine you weren't always a good listener, Achilles.
+					{ Cue = "/VO/ZagreusHome_2727" },
+				},
+				{
+					Cue = "/VO/ZagreusHome_2726",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"I've had the opportunity to use your aspect of Varatha, sir. So, you once wielded it yourself? It... fills me with a hunger for battle even more so than usual. A bit of your fighting spirit, perhaps."
+				},
+				{
+					Cue = "/VO/Achilles_0312",
+					Text =
+					"Be very wary of that spirit, lad. It was what brought me here before my time. Although that spear indeed once served me well. A parting gift from my old master Chiron. He cautioned me as I am cautioning you. Though, may you be a better listener."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			AchillesAboutChironAspect01 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredMinNPCInteractions = { NPC_Achilles_01 = 1 },
+				RequiredTraitsTaken = { "BowMarkHomingTrait" },
+				RequiredFalseFlags = { "InFlashback" },
+				EndVoiceLines = {
+					PreLineWait = 0.35,
+					UsePlayerSource = true,
+					RequiredMinElapsedTime = 4,
+					-- I'm sure his skill did most of the work.
+					{ Cue = "/VO/ZagreusHome_2808" },
+				},
+				{
+					Cue = "/VO/ZagreusHome_2725",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Achilles, I meant to ask, did you know that Coronacht the Heart-Seeker once belonged to the centaur, Chiron? Because one of its aspects is his own. He didn't have it back when you trained with him, did he...?"
+				},
+				{
+					Cue = "/VO/Achilles_0311",
+					Text =
+					"Master Chiron, truly...? Ah, of course. He granted me a spear, I think you know. If he possessed one such weapon, why not more? I remember his bow shined like the sun. It was splendid, and never missed its mark... though I attributed that to Chiron's extraordinary skill."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			AchillesAboutMirror01 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredMinNPCInteractions = { NPC_Achilles_01 = 1 },
+				RequiredCosmetics = { "Cosmetic_NorthHallMirror" },
+				RequiredFalseFlags = { "InFlashback" },
+				EndVoiceLines = {
+					PreLineWait = 0.4,
+					UsePlayerSource = true,
+					RequiredMinElapsedTime = 4,
+					-- Well this should help you keep an eye on him.
+					{ Cue = "/VO/ZagreusHome_2347" },
+				},
+				{
+					Cue = "/VO/Achilles_0173",
+					Text =
+					"I have to thank you for the mirror back there, lad. Lets me get a better look at things out in the great hall every now and then."
+				},
+				{
+					Cue = "/VO/ZagreusHome_2069",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Of course, sir, don't mention it. You're really stuck having to guard this corridor most of the time, huh?"
+				},
+				{
+					Cue = "/VO/Achilles_0174",
+					Text =
+					"Oh certainly, it's an important corridor! Think of it, if just any shade could pass through either of those doors back there. Your father's barely keeping it together, as it is."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			AchillesAboutWarriorStatue01 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredMinNPCInteractions = { NPC_Achilles_01 = 1 },
+				RequiredCosmetics = { "Cosmetic_NorthHallWarriorStatue" },
+				RequiredFalseFlags = { "InFlashback" },
+				EndVoiceLines = {
+					PreLineWait = 0.4,
+					UsePlayerSource = true,
+					RequiredMinElapsedTime = 3,
+					-- I'm sure he's in no hurry to return.
+					{ Cue = "/VO/ZagreusHome_3123" },
+				},
+				{
+					Cue = "/VO/Achilles_0360",
+					Text =
+					"Quite a statue you commissioned over there. I suppose I can think of worse subjects than mighty Heracles for me to have to stand about and stare at."
+				},
+				{
+					Cue = "/VO/ZagreusHome_3122",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"They say he was the strongest demigod who ever lived. Though, I bet you could take him, sir. Big guy like that, you'd be too quick, I'm sure. You ever meet him?"
+				},
+				{
+					Cue = "/VO/Achilles_0361",
+					Text =
+					"Only in passing. He once died a mortal's death... worse than mine. Had a brief stint down here, but... he's favored by Olympus. Got a special arrangement of some sort, I heard. Haven't seen him since."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			AchillesAboutOfficeBackstory01 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredMinNPCInteractions = { NPC_Achilles_01 = 1 },
+				RequiredFalseTextLines = { "AchillesAboutOffice01" },
+				RequiredFalseFlags = { "InFlashback" },
+				RequiredSeenCosmeticPurchaseable = "OfficeDoorUnlockItem",
+				RequiredFalseCosmetics = { "OfficeDoorUnlockItem" },
+				EndVoiceLines = {
+					PreLineWait = 0.4,
+					RequiredMinElapsedTime = 3,
+					UsePlayerSource = true,
+					-- Don't know how I'd ever find something in there, but I suppose so, yes.
+					{ Cue = "/VO/ZagreusHome_2552" },
+				},
+				{
+					Cue = "/VO/ZagreusHome_2551",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Achilles, looks like I could buy back my right to go in the administrative chamber, there. I never want to go in there again, but... can you think of any reason whatsoever that I should?"
+				},
+				{
+					Cue = "/VO/Achilles_0186",
+					Text =
+					"{#DialogueItalicFormat}Hah{#PreviousFormat}, well. Perhaps we all want what we cannot have. Other than that, I suppose certain documents or records in there could be of some benefit under the circumstances, right?"
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			AchillesAboutLegendary01 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "AchillesGift07_A" },
+				RequiredPlayed = { "/VO/ZagreusField_3584" },
+				RequiredRunHasOneOfTraits = {
+					"AchillesPatroclusAssistTrait",
+				},
+				EndVoiceLines = {
+					PreLineWait = 0.4,
+					RequiredMinElapsedTime = 3,
+					UsePlayerSource = true,
+					-- Most definitely!
+					{ Cue = "/VO/ZagreusHome_2731" },
+				},
+				{
+					Cue = "/VO/ZagreusHome_2730",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"That Chthonic Companion you gave me, sir... have to say it's been amazing to see you and Patroclus in action. I thought you said your fighting days were over?"
+				},
+				{
+					Cue = "/VO/Achilles_0342",
+					Text =
+					"Yes, well... that was before I was reunited with Patroclus, and had the opportunity to help you in a pinch, with him at my side. I trust we were of some small service, then?"
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			AchillesVsHades01 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "AchillesGift01" },
+				RequiredAnyTextLines = { "AchillesMiscMeeting02", "AchillesMiscMeeting04", "AchillesMiscMeeting04_B", "AchillesRevealsGuanYuAspect01", "AchillesAboutOffice01", "AchillesAboutHadesBedroom01" },
+				RequiredFalseTextLines = { "Ending01" },
+				RequiredFalseFlags = { "InFlashback" },
+				EndVoiceLines = {
+					PreLineWait = 0.35,
+					RequiredMinElapsedTime = 3,
+					UsePlayerSource = true,
+					-- I hope you're right.
+					{ Cue = "/VO/ZagreusHome_0261" },
+				},
+				{
+					Cue = "/VO/ZagreusHome_0260",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Achilles, I... sometimes I fear that Father, if he learns that you've been aiding me, that he will... not be generous with you."
+				},
+				{
+					Cue = "/VO/Achilles_0075",
+					Text =
+					"Don't worry about me, lad. Your father's still getting caught up with work that I created for him in my mortal days. Besides... there's nothing he can take from me. We have a mutual arrangement, he and I."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			AchillesVsHades02 = {
+				Priority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "AchillesWithHades01", "AchillesGrantsCodex" },
+				RequiredFalseTextLines = { "Ending01", "AchillesWithHadesAboutMyrmidonReunionQuest01", },
+				RequiredFalseFlags = { "InFlashback" },
+				EndVoiceLines = {
+					PreLineWait = 0.55,
+					RequiredMinElapsedTime = 3,
+					UsePlayerSource = true,
+					-- I... fear is for the weak.
+					{ Cue = "/VO/ZagreusHome_0746" },
+				},
+				{
+					Cue = "/VO/ZagreusHome_0745",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Achilles, I'm concerned that Father's growing angrier with you. He thinks you've taken sides against him in all this. I don't want anything to happen."
+				},
+				{
+					Cue = "/VO/Achilles_0097",
+					Text =
+					"He's right, lad. I have taken sides. But, as for you not wanting anything to happen... while I know what you meant, I don't want you to say such things again. Do you understand? You're doing this because something here {#DialogueItalicFormat}needs {#PreviousFormat}to happen. Hold back your fear."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			AchillesVsAphrodite01 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "AchillesGrantsCodex", "AphroditeVsAchilles02" },
+				RequiredFalseTextLines = { "OlympianReunionQuestComplete" },
+				RequiredFalseFlags = { "InFlashback" },
+				{
+					Cue = "/VO/ZagreusHome_0255",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Wanted to say, the Lady Aphrodite asked that I relay a message to you, sir. She said that she admires you. Mentioned a certain war."
+				},
+				{
+					Cue = "/VO/Achilles_0082",
+					Text =
+					"Admires me, does she? Sometimes, lad, I think that Aphrodite is the mightiest of all the gods. Her power is what spurs us all to action. Whether to love, or war. Or sometimes both the two. I'm grateful for the message."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			AchillesVsArtemis01 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "AchillesGrantsCodex", "ArtemisVsAchilles01" },
+				RequiredFalseTextLines = { "OlympianReunionQuestComplete", "MyrmidonReunionQuestComplete" },
+				RequiredFalseFlags = { "InFlashback" },
+				{
+					Cue = "/VO/ZagreusHome_0254",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Hey, Achilles! I heard from Lady Artemis out there. It seems you have a bit of a fan in her. She wanted me to tell you you're the best! She's not mistaken, by the way."
+				},
+				{
+					Cue = "/VO/Achilles_0081",
+					Text =
+					"The goddess of the hunt herself said that? That's very flattering to hear. Good thing she doesn't know I'm all washed up, by now. Her memory is of my glory days."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			AchillesAboutDaedalus01 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredMinNPCInteractions = { NPC_Achilles_01 = 1 },
+				RequiredFalseFlags = { "InFlashback" },
+				RequiredMinWeaponUpgrades = 1,
+				EndVoiceLines = {
+					PreLineWait = 0.45,
+					RequiredMinElapsedTime = 3,
+					UsePlayerSource = true,
+					-- Indeed I have.
+					{ Cue = "/VO/ZagreusHome_1505" },
+				},
+				{
+					Cue = "/VO/ZagreusHome_1504",
+					Portrait = "Portrait_Zag_Serious_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Achilles, have you ever run across the shade of Daedalus in all your time? I've found some of his legendary hammers out there, but no sign of him."
+				},
+				{
+					Cue = "/VO/Achilles_0139",
+					Text =
+					"I've never met him, no. Your father keeps him fully occupied with building out his Underworld, and renovating constantly. No wonder some of his old crafting-tools are strewn about. I take it you've been able to make use of them?"
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			AchillesAboutGiftingGods01 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredMinNPCInteractions = { NPC_Achilles_01 = 1 },
+				RequiredMinAnyTextLines = { TextLines = { "ZeusGift01", "PoseidonGift01", "AthenaGift01", "AphroditeGift01", "AresGift01", "ArtemisGift01", "DionysusGift01", "HermesGift01", "DemeterGift01" }, Count = 2 },
+				RequiredFalseFlags = { "InFlashback" },
+				EndVoiceLines = {
+					PreLineWait = 0.35,
+					RequiredMinElapsedTime = 3,
+					UsePlayerSource = true,
+					-- They're helping, definitely, sir.
+					{ Cue = "/VO/ZagreusHome_2729" },
+				},
+				{
+					Cue = "/VO/ZagreusHome_2728",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Achilles, did you ever use to pray to the gods? Make offerings to them and such, back when you were alive?"
+				},
+				{
+					Cue = "/VO/Achilles_0313",
+					Text =
+					"Prayed mostly to my mother, lad. I always had my doubts the gods were listening. That they could even hear. Though, I suppose that if you make an offering, they might be so inclined, just for the moment, anyway. They helping much?"
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			AchillesAboutDemeter01 = {
+				Priority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredLootThisRun = "DemeterUpgrade",
+				RequiredTextLines = { "DemeterFirstPickUp", "AchillesGrantsCodex" },
+				RequiredFalseTextLines = { "OlympianReunionQuestComplete" },
+				RequiredMinNPCInteractions = { NPC_Achilles_01 = 1 },
+				RequiredFalseFlags = { "InFlashback" },
+				EndVoiceLines = {
+					PreLineWait = 0.55,
+					RequiredMinElapsedTime = 3,
+					UsePlayerSource = true,
+					-- ...I will.
+					{ Cue = "/VO/ZagreusHome_1618" },
+				},
+				{
+					Cue = "/VO/Achilles_0160",
+					Text = "You have a worried look about you, lad. Spare me your thoughts?"
+				},
+				{
+					Cue = "/VO/ZagreusHome_1617",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusInteractionThoughtful",
+					PreLineAnimTarget = "Hero",
+					Text =
+					"Oh, it's just... I met the goddess Demeter out there. The blessings that she offered, they... just drained the heat and life from everything. I thought she saw to fruits and grains and vegetables and such? Not that I'm complaining."
+				},
+				{
+					Cue = "/VO/Achilles_0161",
+					Text =
+					"All gods and goddesses are to be feared. Demeter, she has the power to give life, or take it. Seems she's more interested in the latter, though. She's the eldest on Olympus, and your father seems to harbor a particular dislike for her. I don't know why. Be careful."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			-- alt below
+			AchillesAboutDusaFiring01_A = {
+				Priority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredMinNPCInteractions = { NPC_Achilles_01 = 1 },
+				RequiredTextLines = { "DusaVsNyx04" },
+				RequiredFalseTextLines = { "DusaWithNyx03", "AchillesAboutDusaFiring01_B" },
+				RequiredTrueFlags = { "DusaFiredFromJob" },
+				RequiredFalseFlags = { "InFlashback" },
+				AreIdsNotAlive = { 370010 },
+				EndVoiceLines = {
+					PreLineWait = 0.4,
+					RequiredMinElapsedTime = 3,
+					UsePlayerSource = true,
+					-- I'll talk to her.
+					{ Cue = "/VO/ZagreusHome_2722" },
+				},
+				{
+					Cue = "/VO/ZagreusHome_2719",
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "Achilles, what happened between Nyx and Dusa? Dusa's really gone?"
+				},
+				{
+					Cue = "/VO/Achilles_0308",
+					Text =
+					"Nyx cut her off, lad. I'm sorry. I know you cared about her. I was as surprised as you when I found out. I knew that Nyx had her concerns about Dusa's propensity to overwork herself, but... this wasn't the step I was expecting."
+				},
+				{
+					Cue = "/VO/ZagreusHome_2720",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Propensity to overwork herself... you really think that's what this was about? I can't shake the feeling it's my fault. Nyx didn't want her talking to me, as though she's beneath me or something! {#DialogueItalicFormat}Ugh{#PreviousFormat}, what am I going to do."
+				},
+				{
+					Cue = "/VO/Achilles_0309",
+					Text =
+					"Look... I don't have all the information on this one, and neither do you from the sound of things. Nyx loves you and respects you. I trust she would want to know how this affects you."
+				},
+			},
+			AchillesAboutDusaFiring01_B = {
+				Priority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredMinNPCInteractions = { NPC_Achilles_01 = 1 },
+				RequiredTextLines = { "NyxAboutDusa03" },
+				RequiredFalseTextLines = { "DusaWithNyx03", "AchillesAboutDusaFiring01_A" },
+				RequiredTrueFlags = { "DusaFiredFromJob" },
+				RequiredFalseFlags = { "InFlashback" },
+				EndVoiceLines = {
+					PreLineWait = 0.35,
+					RequiredMinElapsedTime = 3,
+					UsePlayerSource = true,
+					-- Oh, I let her know.
+					{ Cue = "/VO/ZagreusHome_2721" },
+				},
+				{
+					Cue = "/VO/ZagreusHome_2719",
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "Achilles, what happened between Nyx and Dusa? Dusa's really gone?"
+				},
+				{
+					Cue = "/VO/Achilles_0308",
+					Text =
+					"Nyx cut her off, lad. I'm sorry. I know you cared about her. I was as surprised as you when I found out. I knew that Nyx had her concerns about Dusa's propensity to overwork herself, but... this wasn't the step I was expecting."
+				},
+				{
+					Cue = "/VO/ZagreusHome_2720",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Propensity to overwork herself... you really think that's what this was about? I can't shake the feeling it's my fault. Nyx didn't want her talking to me, as though she's beneath me or something! {#DialogueItalicFormat}Ugh{#PreviousFormat}, what am I going to do."
+				},
+				{
+					Cue = "/VO/Achilles_0309",
+					Text =
+					"Look... I don't have all the information on this one, and neither do you from the sound of things. Nyx loves you and respects you. I trust she would want to know how this affects you."
+				},
+			},
+			AchillesAboutDusaReHiring01 = {
+				Priority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredMinNPCInteractions = { NPC_Achilles_01 = 1 },
+				RequiredTextLines = { "DusaWithNyx03" },
+				RequiredFalseFlags = { "InFlashback" },
+				MaxRunsSinceAnyTextLines = { TextLines = { "DusaWithNyx03" }, Count = 15 },
+				AreIdsNotAlive = { 370010 },
+				EndVoiceLines = {
+					PreLineWait = 0.35,
+					RequiredMinElapsedTime = 3,
+					UsePlayerSource = true,
+					-- I'm just glad she's back.
+					{ Cue = "/VO/ZagreusHome_2724" },
+				},
+				{
+					Cue = "/VO/ZagreusHome_2723",
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "Did you see, sir? Dusa's returned! Nyx must have reconsidered her decision."
+				},
+				{
+					Cue = "/VO/Achilles_0310",
+					Text =
+					"She must have, indeed, lad. I was pleased to see Dusa return. And you know what...? I daresay she seemed rather well-rested, for a change. It might not have been the best of circumstances, though my hope is that some good has come of it."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			AchillesRunProgress01 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredRoomThisRun = "B_Intro",
+				RequiredFalseSeenRooms = { "C_Intro" },
+				RequiredKillsThisRun = { "Harpy" },
+				RequiredTextLines = { "AchillesGrantsCodex" },
+				RequiredFalseTextLines = { "AchillesRunProgress02", "PatroclusFirstMeeting" },
+				RequiredFalseFlags = { "InFlashback" },
+				{
+					Cue = "/VO/Achilles_0011",
+					Text = "I understand you've made it all the way to Asphodel of late, haven't you, lad?"
+				},
+				{
+					Cue = "/VO/ZagreusHome_0227",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text = "I guess word travels faster than I do. Why do you ask, Achilles?"
+				},
+				{
+					Cue = "/VO/Achilles_0012",
+					PreLineWait = 0.35,
+					Text = "...No reason in particular. Just that it brings me joy to hear of your progress."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			AchillesRunProgress02 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredMinNPCInteractions = { NPC_Achilles_01 = 1 },
+				RequiredRoomThisRun = "C_Intro",
+				RequiredFalseSeenRoomThisRun = "D_Intro",
+				RequiredFalseFlags = { "InFlashback" },
+				EndVoiceLines = {
+					PreLineWait = 0.55,
+					RequiredMinElapsedTime = 3,
+					UsePlayerSource = true,
+					-- Their pride. I'll remember that.
+					{ Cue = "/VO/ZagreusHome_0849" },
+				},
+				{
+					Cue = "/VO/Achilles_0103",
+					Text = "I haven't seen you in a while, lad. You made it to Elysium last time, didn't you."
+				},
+				{
+					Cue = "/VO/ZagreusHome_0848",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"I did, Achilles. It's crawling with great warriors still looking for a fight. It's not exactly what I was expecting."
+				},
+				{
+					Cue = "/VO/Achilles_0104",
+					Text =
+					"Your father's marshalled the most willing ones to deal with you. Doubtless there's much at stake in it for them, if but the pride of having done the task. Although I think that pride will always be their weakness."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			AchillesRunProgress03 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredSeenRooms = { "D_Hub" },
+				RequiredMinNPCInteractions = { NPC_Achilles_01 = 1 },
+				RequiredFalseFlags = { "InFlashback" },
+				RequiredFalsePlayed = { "/VO/HadesField_0625", "/VO/HadesField_0626", "/VO/HadesField_0627", "/VO/HadesField_0628" },
+				RequiresRunNotCleared = true,
+				AreIdsNotAlive = { 370007 },
+				EndVoiceLines = {
+					PreLineWait = 0.55,
+					ObjectType = "NPC_Achilles_01",
+					PreLineAnim = "AchillesIdleGreeting",
+					-- That's good, then. Glad to hear it.
+					{ Cue = "/VO/Achilles_0121" },
+				},
+				{
+					Cue = "/VO/Achilles_0120",
+					Text =
+					"I couldn't help but notice, lad, that Cerberus has been away for quite some time. Turns out your father's put him back to work above. I truly hope you shall not have to come to blows."
+				},
+				{
+					Cue = "/VO/ZagreusHome_0953",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Don't worry, sir. I've run into Cerberus up top, all right. Even if he's technically Father's pet, he'd never bare his fangs at me. No matter how much Father might wish otherwise."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			AchillesAboutStyxFoes01 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredRoomThisRun = "D_Hub",
+				RequiredTextLines = { "AchillesGift03" },
+				RequiredKills = { SatyrRanged = 2, RatThug = 2, Crawler = 2 },
+				RequiredFalseFlags = { "InFlashback" },
+				EndVoiceLines = {
+					PreLineWait = 0.55,
+					ObjectType = "NPC_Achilles_01",
+					-- Indeed, lad.
+					{ Cue = "/VO/Achilles_0125" },
+				},
+				{
+					Cue = "/VO/Achilles_0126",
+					Text =
+					"I don't wish to presume, lad, but you seem more glum than usual. What's weighing on you, there, if you don't mind?"
+				},
+				{
+					Cue = "/VO/ZagreusHome_0958",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Oh, it's just... I've never slain a living creature, sir. Until my recent journey to the Temple up above. I know they're just Satyrs and vermin, but... it's not the same as sending wretches to the depths."
+				},
+				{
+					Cue = "/VO/Achilles_0127",
+					Text =
+					"Look. All mortal life is fragile; it simply is a struggle to survive. Sooner or later it fails to succeed, and then, it ends up here. And we have room enough for everyone, even the Satyrs and the vermin of the world."
+				},
+				{
+					Cue = "/VO/ZagreusHome_0959",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Now that you mention it, I have to say I'm glad we can accommodate all former-living things. And at least mortals get to rest assured knowing what happens once they die! Must really ease the mind."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			AchillesRunNotCleared01 = {
+				Priority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredDeathRoom = "D_Boss01",
+				RequiresRunNotCleared = true,
+				RequiredFalseTextLines = { "AchillesRunCleared01" },
+				RequiredFalseFlags = { "InFlashback" },
+				EndVoiceLines = {
+					PreLineWait = 0.65,
+					RequiredMinElapsedTime = 3,
+					UsePlayerSource = true,
+					-- Just a god...
+					{ Cue = "/VO/ZagreusHome_0955" },
+				},
+				{
+					Cue = "/VO/Achilles_0122",
+					Text =
+					"I saw your father storm out of the House in his regalia. So he must have confronted you himself, at last. I... see that must have not gone well. You were so close."
+				},
+				{
+					Cue = "/VO/ZagreusHome_0954",
+					Portrait = "Portrait_Zag_Defiant_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Well, at least I know who will be waiting for me the next time I climb all the way to the Temple of Styx and manage my way out."
+				},
+				{
+					Cue = "/VO/Achilles_0123",
+					Text =
+					"Don't lose heart, lad. I did not train your father, only you. He is a god; but he is just a god. If you'll forgive my bit of treason there."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			AchillesAboutPersephoneMeeting01 = {
+				SuperPriority = true,
+				PlayOnce = true,
+				InitialGiftableOffSource = true,
+				UseableOffSource = true,
+				RequiresRunCleared = true,
+				RequiredTextLines = { "PersephoneFirstMeeting" },
+				RequiredFalseTextLines = { "PersephoneMeeting08" },
+				RequiredFalseFlags = { "InFlashback" },
+				EndVoiceLines = {
+					PreLineWait = 0.45,
+					RequiredMinElapsedTime = 3,
+					UsePlayerSource = true,
+					-- It is. I have to speak with her.
+					{ Cue = "/VO/ZagreusHome_3193" },
+				},
+				{
+					Cue = "/VO/ZagreusHome_3191",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"I found her, sir! My mother, she's... alive and well, and... {#DialogueItalicFormat}ugh{#PreviousFormat}, but I just couldn't stay up there, for very long. I have to get back to her!"
+				},
+				{
+					Cue = "/VO/Achilles_0314",
+					Text =
+					"You really made it all the way? You must have... gotten past your father, that's amazing, lad. But, wait, what was she like, what happened to you there?"
+				},
+				{
+					Cue = "/VO/ZagreusHome_3192",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"She was... she was great! Nothing like Father, more like... {#DialogueItalicFormat}you{#PreviousFormat}, a little bit, I guess! Though, being on the surface, it just seemed to suck the life right out of me. Even without the wretches of the Underworld trying to do me in."
+				},
+				{
+					Cue = "/VO/Achilles_0315",
+					Text =
+					"But then, you had a little time at least! Sounds like you have unfinished business with her, there. You got to her this once... surely you're able to again, isn't that right?"
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			AchillesAboutPersephoneMeeting02 = {
+				SuperPriority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiresRunCleared = true,
+				RequiredTextLines = { "PersephoneMeeting02", "AchillesAboutPersephoneMeeting01" },
+				RequiredFalseTextLinesThisRun = { "PersephoneMeeting08" },
+				RequiredFalseTextLines = { "Ending01" },
+				RequiredFalseFlags = { "InFlashback" },
+				EndVoiceLines = {
+					PreLineWait = 0.55,
+					RequiredMinElapsedTime = 3,
+					UsePlayerSource = true,
+					-- Yes. I will.
+					{ Cue = "/VO/ZagreusHome_3197" },
+				},
+				{
+					Cue = "/VO/Achilles_0318",
+					Text = "How did it go, lad? You've been gone a while. For good reason, I hope?"
+				},
+				{
+					Cue = "/VO/ZagreusHome_3196",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"I found her, again, sir, and... we were able to talk some more. But, I have so many questions left for her, and Father's certainly not been of any help..."
+				},
+				{
+					Cue = "/VO/Achilles_0319",
+					Text =
+					"Well, first of all, good work. I knew you had it in you. Secondly... you know what you have to do. Go find her, for as many chances as it takes. It's not just her you've sought... it's the answers to those questions that you have."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			AchillesAboutPersephoneMeeting03 = {
+				Priority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiresRunCleared = true,
+				RequiredTextLines = { "AchillesAboutPersephoneMeeting02" },
+				RequiredFalseTextLines = { "Ending01" },
+				RequiredFalseFlags = { "InFlashback" },
+				EndVoiceLines = {
+					PreLineWait = 0.45,
+					UsePlayerSource = true,
+					-- Thanks, sir.
+					{ Cue = "/VO/ZagreusHome_3199" },
+				},
+				{
+					Cue = "/VO/Achilles_0320",
+					Text =
+					"So, you can tell me in due time if you decide to, lad. But I do have a question, same as you did, going into this. Why did she leave? Why did she leave {#DialogueItalicFormat}you{#PreviousFormat}, in particular?"
+				},
+				{
+					Cue = "/VO/ZagreusHome_3198",
+					Portrait = "Portrait_Zag_Serious_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"It's that she didn't even know I was alive. Sounds as though Nyx revived me sometime after I was born, but by that point... Mother had already left, and... they let her be. For reasons I am trying to find out."
+				},
+				{
+					Cue = "/VO/Achilles_0321",
+					Text =
+					"Ah, that's... quite a bit to take in, there. And it explains more than a bit, I think. Look, I'm not one to speculate too much. I trust you'll find the answers that you seek as you proceed."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			AchillesRunNotCleared02 = {
+				Priority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredDeathRoom = "D_Boss01",
+				RequiresRunNotCleared = true,
+				RequiredTextLines = { "AchillesAboutPersephoneMeeting01" },
+				RequiredFalseTextLines = { "Ending01" },
+				RequiredFalseFlags = { "InFlashback" },
+				EndVoiceLines = {
+					PreLineWait = 0.55,
+					RequiredMinElapsedTime = 3,
+					UsePlayerSource = true,
+					-- I hope you're right.
+					{ Cue = "/VO/ZagreusHome_3195" },
+				},
+				{
+					Cue = "/VO/Achilles_0316",
+					Text = "What news this time, lad? Did you find your mother, once again?"
+				},
+				{
+					Cue = "/VO/ZagreusHome_3194",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusInteractionThoughtful",
+					PreLineAnimTarget = "Hero",
+					Text =
+					"No, I failed, sir. No thanks to Father! {#DialogueItalicFormat}Urgh{#PreviousFormat}, what am I going to do?"
+				},
+				{
+					Cue = "/VO/Achilles_0317",
+					Text =
+					"Just take it easy, now. You got there once, there isn't any question in my mind that you can do it once again. Your father's acting as though nothing's changed, besides. So, don't lose hope. You're capable of this."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			AchillesRunCleared01 = {
+				Priority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiresRunCleared = true,
+				RequiredKills = { Hades = 4 },
+				RequiredMinNPCInteractions = { NPC_Achilles_01 = 1 },
+				RequiredFalseTextLinesThisRun = { "PersephoneMeeting08" },
+				RequiredFalseFlags = { "InFlashback" },
+				EndVoiceLines = {
+					PreLineWait = 0.55,
+					ObjectType = "NPC_Achilles_01",
+					-- Indeed, lad.
+					{ Cue = "/VO/Achilles_0125" },
+				},
+				{
+					Cue = "/VO/ZagreusHome_0956",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Hey, tell me something, sir. Any rumors swirling about the House regarding the outcome of a certain interaction I had with my father recently? Involving a great deal of violence? Because I'd like for everyone to know: I won."
+				},
+				{
+					Cue = "/VO/Achilles_0124",
+					Text =
+					"I wouldn't know of what you mean, there, lad. For there are certain subjects so forbidden here right now that not even rumors can take hold. But, just between us for the time: Congratulations. Truly."
+				},
+				{
+					Cue = "/VO/ZagreusHome_0957",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Thank you, sir. I didn't know whether I had it in me. As for the other bit, I'll keep it quiet, then, for now. I probably shouldn't be tying my sense of self-worth to praise from friends, acquaintances, and strangers, anyway."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			AchillesPostEnding01 = {
+				SuperPriority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "Ending01" },
+				RequiredFalseFlags = { "InFlashback" },
+				MaxRunsSinceAnyTextLines = { TextLines = { "Ending01" }, Count = 18 },
+				EndVoiceLines = {
+					PreLineWait = 0.4,
+					RequiredMinElapsedTime = 3,
+					UsePlayerSource = true,
+					-- Thank you. It's mine as well.
+					{ Cue = "/VO/ZagreusHome_3201" },
+				},
+				{
+					Cue = "/VO/Achilles_0326",
+					Text =
+					"The Queen is back! You did it, lad. You must have lots of catching up to do. Or patching up. And, I'm to understand that your escape attempts, they are officially approved, isn't that so?"
+				},
+				{
+					Cue = "/VO/ZagreusHome_3200",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"That's so, indeed, sir. Especially for now, at least, I'm going to keep on fighting to the surface. Helps me to vent a bit, and, like Hypnos says, it makes the Underworld a better place! Though indirectly, I suppose."
+				},
+				{
+					Cue = "/VO/Achilles_0327",
+					PreLineAnim = "AchillesIdleGreeting",
+					Text =
+					"Well, then, I look forward to working with you in a more formal capacity. And, it is my sincerest hope that you, your mother, and your father learn to get on better with each other, now."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			AchillesPostEnding02 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "Ending01" },
+				RequiredMinNPCInteractions = { NPC_Achilles_01 = 1 },
+				RequiredFalseFlags = { "InFlashback" },
+				EndVoiceLines = {
+					PreLineWait = 0.4,
+					RequiredMinElapsedTime = 3,
+					UsePlayerSource = true,
+					-- Mother can be quite persuasive!
+					{ Cue = "/VO/ZagreusHome_3207" },
+				},
+				{
+					Cue = "/VO/ZagreusHome_3206",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Hey sir, meant to say I hope I didn't get you into too much trouble after letting me in Father's bedchambers."
+				},
+				{
+					Cue = "/VO/Achilles_0335",
+					Text =
+					"Think nothing of it, lad. It was a risk I was willing to take, and for his part, your father looked the other way on that one. Though I did not expect you'd get free rein to go there as you please."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			AchillesPostEpilogue01 = {
+				SuperPriority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "OlympianReunionQuestComplete" },
+				MaxRunsSinceAnyTextLines = { TextLines = { "OlympianReunionQuestComplete" }, Count = 10 },
+				RequiredFalseFlags = { "InFlashback" },
+				EndVoiceLines = {
+					PreLineWait = 0.3,
+					PreLineAnim = "AchillesIdleGreeting",
+					ObjectType = "NPC_Achilles_01",
+					-- And you in turn.
+					{ Cue = "/VO/Achilles_0332" },
+				},
+				{
+					Cue = "/VO/Achilles_0328",
+					Text = "So, lad, tell me, then. How went the family feast, was everything all right?"
+				},
+				{
+					Cue = "/VO/ZagreusHome_3202",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Well, I confess I was perhaps a little nervous for practically the entire thing, but... all in all, I had a good time, and I'm very, very glad it all turned out the way it did. How about yourself?"
+				},
+				{
+					Cue = "/VO/Achilles_0329",
+					Text =
+					"I quite enjoyed it, too. Last time I was invited to a feast, I was still busy warring on the surface, that's how long it's been. I must say, your mother is quite good with words! Had everybody chatting, laughing..."
+				},
+				{
+					Cue = "/VO/ZagreusHome_3203",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusInteractionThoughtful",
+					PreLineAnimTarget = "Hero",
+					Text =
+					"She really pulled it off! But... for all her confidence, I don't think she knew she had it in her. Because if she did... if she reached out to Olympus sooner... a lot of things could have been different."
+				},
+				{
+					Cue = "/VO/Achilles_0330",
+					Text =
+					"Don't dwell on that. I spoke a bit with Nyx. Your mother had her reasons. No one gets to act on perfect information, right? All we have is what we think we know, and what our conscience tells us. Your mother got to where all this was possible... all thanks to you."
+				},
+				{
+					Cue = "/VO/ZagreusHome_3204",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"All thanks to me, sir? I had ample help along the way. For instance, I could not have done it without {#DialogueItalicFormat}you{#PreviousFormat}. Would have been using an old chair leg as a weapon, I suppose."
+				},
+				{
+					Cue = "/VO/Achilles_0331",
+					Text =
+					"And what a fearsome chair leg it would be! In any case... you heading out there, soon? Olympus should be more than happy to assist in your security review. If that's what we're calling it now."
+				},
+				{
+					Cue = "/VO/ZagreusHome_3205",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					Text = "Yeah, I should go. I'll see you not too long from now."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			AchillesPostEpilogue02 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "OlympianReunionQuestComplete" },
+				RequiredFalseTextLinesLastRun = { "AchillesPostEpilogue01" },
+				RequiredAnyTextLines = { "AchillesGift06_A", "AchillesAboutPatroclusBackstory01" },
+				RequiredFalseFlags = { "InFlashback" },
+				RequiresRunCleared = true,
+				EndVoiceLines = {
+					PreLineWait = 0.3,
+					RequiredMinElapsedTime = 3,
+					PreLineAnim = "AchillesIdleGreeting",
+					ObjectType = "NPC_Achilles_01",
+					-- Hahaha, well... you got me there.
+					{ Cue = "/VO/Achilles_0364" },
+				},
+				{
+					Cue = "/VO/Achilles_0362",
+					Text =
+					"I'm so impressed with what you've managed to accomplish, lad. When I was closer to your age... or, the age you appear to be... all I wanted was glory. To be remembered forever. Look where that got me! I'm glad you know better than I did."
+				},
+				{
+					Cue = "/VO/ZagreusHome_3130",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"So in pursuing glory... you think you lost it? Forgive me, here, but I just disagree. I settled a family squabble. You single-handedly turned an entire war!"
+				},
+				{
+					Cue = "/VO/Achilles_0363",
+					Text =
+					"A foolish war. Glory comes to those driven to excel in worthwhile pursuits. A happy side effect, not a goal unto itself. Though, you don't need for me to tell you that."
+				},
+				{
+					Cue = "/VO/ZagreusHome_3131",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"If not for all your training and advice, I wouldn't have come this far. You prepared me for this. Wasn't that a worthwhile pursuit? Must mean you got some glory after all, then, right?"
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			AchillesCodexProgress01 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "AchillesGrantsCodex" },
+				RequiredFalseTextLines = { "AchillesCodexProgress02" },
+				RequiredFalseFlags = { "InFlashback" },
+				RequiredCodexEntriesMin = 50,
+				{
+					Cue = "/VO/Achilles_0087",
+					Text =
+					"You're getting somewhere with that Codex, lad. I'm pleased to see it. My duties to the House have meant that, lately, I can't travel quite as much as once I did."
+				},
+				{
+					Cue = "/VO/ZagreusHome_0417",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusInteractionThoughtful",
+					PreLineAnimTarget = "Hero",
+					Text = "I'll try to travel for the both of us, Achilles. I've seen so little other than these walls."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			AchillesCodexProgress02 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "AchillesGrantsCodex" },
+				RequiredFalseFlags = { "InFlashback" },
+				RequiredCodexEntriesMin = 88,
+				{
+					Cue = "/VO/Achilles_0090",
+					Text =
+					"Well, look at you, lad, with that Codex brimming with our history! I knew I could rely on you to fill it out. Back when I was alive, why, no one would have ever believed what goes on down here."
+				},
+				{
+					Cue = "/VO/ZagreusHome_0483",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Mortals must have had their stories, though. About what happens to them once they die, and once they end up in this place."
+				},
+				{
+					Cue = "/VO/Achilles_0091",
+					Text =
+					"They have their stories, definitely so. They fear your father, understandably. They also fear your dog. But most of them know precious little else. Even their fears, I think, are born of ignorance. As most fears tend to be."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			AchillesCodexProgress03 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredFalseTextLines = { "AchillesGift08", "AchillesGift06_A", "AchillesAboutPatroclus01A", "AchillesAboutPatroclus01B", "AchillesAboutPatroclus01C" },
+				RequiredFalseFlags = { "InFlashback" },
+				RequiredCodexEntry = {
+					EntryName = "NPC_Achilles_01",
+					EntryIndex = 3,
+				},
+				EndVoiceLines = {
+					PreLineWait = 0.55,
+					RequiredMinElapsedTime = 3,
+					UsePlayerSource = true,
+					-- Oh. Of course, sir.
+					{ Cue = "/VO/ZagreusHome_0885" },
+				},
+				{
+					Cue = "/VO/ZagreusHome_0884",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Achilles, sir... within the Codex, you'd written something, about someone with whom you shared your life... when you were flesh and blood?"
+				},
+				{
+					Cue = "/VO/Achilles_0118",
+					PreLineWait = 0.35,
+					PostLineAnim = "AchillesIdleGreeting",
+					Text =
+					"...{#DialogueItalicFormat}Ah{#PreviousFormat}. That is a private matter for me, lad. From a time I had convinced myself the Codex would be for my own eyes, alone. My past is not really worth mentioning. And, I am presently on duty, so... begging your pardon, please."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			AchillesCodexProgress05 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "AchillesGrantsCodex" },
+				RequiredFalseFlags = { "InFlashback" },
+				RequiredCodexEntriesMin = 40,
+				EndVoiceLines = {
+					PreLineWait = 0.45,
+					RequiredMinElapsedTime = 3,
+					UsePlayerSource = true,
+					-- I see. I think. I'm grateful for it, sir.
+					{ Cue = "/VO/ZagreusHome_0887" },
+				},
+				{
+					Cue = "/VO/ZagreusHome_0886",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"{#DialogueItalicFormat}Erm{#PreviousFormat}, Achilles sir, there's something I've been wondering, about your Codex. The words are yours, and yet it's through my actions that I'm able to absorb them. Is that how mortal scriptures always work?"
+				},
+				{
+					Cue = "/VO/Achilles_0119",
+					PreLineWait = 0.35,
+					Text =
+					"{#DialogueItalicFormat}Ah{#PreviousFormat}. You have to understand, lad, I've been here in your father's realm for quite some time. My documented learnings became bound to me, much like this spear, you see? You can undo those bindings over time. Thus my knowledge can be yours. Whatever it amounts to."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			AchillesCodexProgress06 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiresCodexFullyUnlocked = true,
+				RequiredFalseFlags = { "InFlashback" },
+				EndVoiceLines = {
+					PreLineWait = 0.3,
+					RequiredMinElapsedTime = 3,
+					ObjectType = "NPC_Achilles_01",
+					-- Hah, I suppose that's true.
+					{ Cue = "/VO/Achilles_0347" },
+				},
+				{
+					Cue = "/VO/Achilles_0345",
+					Text = "I had the strangest feeling, lad, you mind if... can I see that Codex, there?"
+				},
+				{
+					Cue = "/VO/ZagreusHome_3215",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusInteractEquip",
+					PreLineAnimTarget = "Hero",
+					Text = "Of course, sir! I've been keeping busy with it, you could say. It's almost complete!"
+				},
+				{
+					Cue = "/VO/Achilles_0346",
+					Emote = "PortraitEmoteSurprise",
+					Text =
+					"It {#DialogueItalicFormat}is {#PreviousFormat}complete! That's amazing... a chronicle of this place... everything I've ever learned and felt."
+				},
+				{
+					Cue = "/VO/ZagreusHome_3216",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text = "Still always more to learn and feel, though, isn't there?"
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			AchillesMysteryDoor01 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "Flashback_Mother_01", "AchillesGrantsCodex" },
+				RequiredFalseTextLines = { "PersephoneMeeting08" },
+				RequiredFalseFlags = { "InFlashback" },
+				EndVoiceLines = {
+					PreLineWait = 0.35,
+					RequiredMinElapsedTime = 3,
+					UsePlayerSource = true,
+					-- Hah, I suppose that's true.
+					{ Cue = "/VO/ZagreusHome_0482" },
+				},
+				{
+					Cue = "/VO/ZagreusHome_0481",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Hey, Achilles? My father's hall back there. I don't suppose you'll let me have myself a look? Lots for me to rummage through, I'm sure."
+				},
+				{
+					Cue = "/VO/Achilles_0089",
+					Text =
+					"You know I'd do just about anything to aid you, lad. But my ability to do so hinges on me sticking to my post. Though if I do catch wind of anything back there requiring attention, you shall know."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			AchillesDrinking01 = {
+				PlayOnce = true,
+				RequiredSeenRooms = { "C_Intro" },
+				RequiredTextLines = { "AchillesGrantsCodex" },
+				RequiredFalseTextLines = { "AchillesGift06_A", "AchillesAboutPatroclusBackstory01" },
+				RequiredFalseFlags = { "InFlashback" },
+				InitialGiftableOffSource = true,
+				GiftableOffSource = true,
+				UseableOffSource = true,
+				TeleportToId = 391469,
+				TeleportOffsetX = 100,
+				TeleportOffsetY = 50,
+				{
+					Cue = "/VO/Achilles_0013",
+					Text =
+					"I'd ask you join me for a drink, lad, but I know you've a task ahead of you, and liquor dulls the senses. Fortunately so, under most circumstances except yours. Leave me to it, will you, and I'll have one for the both of us."
+				},
+				{
+					Cue = "/VO/ZagreusHome_0228",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					Text = "Some other time, Achilles. Just checking in on you, but I'll be on my way again shortly."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			-- alt below
+			AchillesBackstory01 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "AchillesGrantsCodex" },
+				RequiredAnyTextLines = { "AchillesGift08", "AchillesGift06_A" },
+				RequiredFalseTextLines = { "AchillesAboutPatroclus01A", "AchillesAboutPatroclus01B", "AchillesAboutPatroclus01C", "AchillesBackstory01B", "MyrmidonReunionQuestComplete" },
+				RequiredFalseFlags = { "InFlashback" },
+				{
+					Cue = "/VO/ZagreusHome_0262",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					Text = "Achilles, would you... tell me something more of Patroclus? You mentioned you were very close."
+				},
+				{
+					Cue = "/VO/Achilles_0076",
+					PreLineAnim = "ZagreusTalkEmpathy_Return",
+					PreLineAnimTarget = "Hero",
+					Text =
+					"We could have been no closer. The ashes of our bodies yet mingle together somewhere on the surface there. What can I tell you, lad? I loved him with all my heart. And he left me too soon."
+				},
+				{
+					Cue = "/VO/ZagreusHome_0263",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Then, surely he must be in the Underworld, somewhere... have you not tried to seek him out? Or asked my father?"
+				},
+				{
+					Cue = "/VO/Achilles_0077",
+					Text =
+					"{#DialogueItalicFormat}Hah, haha. {#PreviousFormat}I tried, lad, I have tried. On both accounts. What you propose is not that simple, it turns out. You've seen what it is like out there... it's difficult to find one's way. But I shall tell you what. If you see Patroclus among the countless shades, you tell him I said hi."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			AchillesBackstory01B = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "AchillesGrantsCodex", "AchillesAboutPatroclus02" },
+				RequiredAnyTextLines = { "AchillesGift08", "AchillesGift06_A" },
+				RequiredFalseTextLines = { "AchillesBackstory01", "MyrmidonReunionQuestComplete" },
+				RequiredFalseFlags = { "InFlashback" },
+				-- Understood, sir.
+				EndCue = "/VO/ZagreusHome_0880",
+				EndWait = 0.55,
+				{
+					Cue = "/VO/ZagreusHome_0262",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					Text = "Achilles, would you... tell me something more of Patroclus? You mentioned you were very close."
+				},
+				{
+					Cue = "/VO/Achilles_0076",
+					PreLineAnim = "ZagreusTalkEmpathy_Return",
+					PreLineAnimTarget = "Hero",
+					Text =
+					"We could have been no closer. The ashes of our bodies yet mingle together somewhere on the surface there. What can I tell you, lad? I loved him with all my heart. And he left me too soon."
+				},
+				{
+					Cue = "/VO/ZagreusHome_0879",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"But now you're both here, in the Underworld! Can't you go seek him out? Or alter your arrangement with my father?"
+				},
+				{
+					Cue = "/VO/Achilles_0115",
+					Text =
+					"{#DialogueItalicFormat}Ha, hah. {#PreviousFormat}I tried, lad, I have tried. On both accounts. What you propose is not that simple, it turns out. But I shall tell you what. When next you see Patroclus on your journeys, you keep speaking to him for me, won't you?"
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			-- if you don't know his connection to patroclus
+			AchillesAboutPatroclus01A = {
+				SuperPriority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				RequiredAnyTextLines = { "PatroclusAboutAchilles01A", "PatroclusAboutBracer01A", "PatroclusAboutBracer01C" },
+				RequiredFalseTextLines = { "AchillesGift08", "AchillesGift06_A", "AchillesAboutPatroclus01B", "AchillesAboutPatroclus01C", "AchillesAboutPatroclus01D", "PatroclusAboutBracer01B", "PatroclusAboutBracer01D" },
+				RequiredFalseTextLinesThisRun = { "PersephoneMeeting08" },
+				RequiredFalseFlags = { "InFlashback" },
+				-- I... take care, then, sir.
+				EndCue = "/VO/ZagreusHome_0853",
+				EndWait = 0.5,
+				{
+					Cue = "/VO/Achilles_0105",
+					Text = "How fare your labors, lad? You have a certain look about you. Everything all right?"
+				},
+				{
+					Cue = "/VO/ZagreusHome_0850",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"It's just... within Elysium, I happened on a shade, who said he knew you. Said he misses you. Do you know a Patroclus, sir?"
+				},
+				{
+					Cue = "/VO/Achilles_0106",
+					Emote = "PortraitEmoteSurprise",
+					Text = "What... I... yes. I knew Patroclus, did he... is he all right?"
+				},
+				{
+					Cue = "/VO/ZagreusHome_0851",
+					Portrait = "Portrait_Zag_Serious_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusInteractionThoughtful",
+					PreLineAnimTarget = "Hero",
+					Text =
+					"He... I don't know. He seems like he's known better times than these. Is... there something I should say to him, if I run into him again?"
+				},
+				{
+					Cue = "/VO/Achilles_0107",
+					PreLineWait = 0.35,
+					Text =
+					"...Please send him my regards. And... all my love. I think of him always. But I cannot see him any longer. And you mustn't ask me why, do you understand? Now, leave me be, please, lad. I need some time."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			-- if you do know his connection to patroclus (another alt below)
+			AchillesAboutPatroclus01B = {
+				SuperPriority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				RequiredAnyTextLines = { "PatroclusFirstMeeting", "PatroclusAboutBracer01B", "PatroclusAboutBracer01D" },
+				RequiredAnyOtherTextLines = { "AchillesGift08", "AchillesGift06_A" },
+				RequiredFalseTextLines = { "AchillesAboutPatroclus01A", "AchillesAboutPatroclus01C", "AchillesAboutPatroclus01D", "PatroclusAboutBracer01A", "PatroclusAboutBracer01C" },
+				RequiredFalseTextLinesThisRun = { "PersephoneMeeting08" },
+				RequiredFalseFlags = { "InFlashback" },
+				RequiredCodexEntry = {
+					EntryName = "NPC_Patroclus_01",
+					EntryIndex = 1,
+				},
+				-- I... take care, then, sir.
+				EndCue = "/VO/ZagreusHome_0853",
+				EndWait = 0.5,
+				{
+					Cue = "/VO/Achilles_0105",
+					Text = "How fare your labors, lad? You have a certain look about you. Everything all right?"
+				},
+				{
+					Cue = "/VO/ZagreusHome_0852",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"It's just... within Elysium, I happened on a shade. It's your Patroclus. He's all right, but he seems like he's known better times than these. Is there something I should say to him, if I run into him again?"
+				},
+				{
+					Cue = "/VO/Achilles_0108",
+					Emote = "PortraitEmoteSurprise",
+					Text =
+					"Oh...! Well, then, please send him my regards. And... all my love. I think of him always. But I cannot see him any longer. And you mustn't ask me why, do you understand? Now, leave me be, please, lad. I need some time."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			-- if you know his connection to patroclus and learned patroclus' name via bracer
+			AchillesAboutPatroclus01C = {
+				SuperPriority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				RequiredAnyTextLines = { "PatroclusAboutBracer01B", "PatroclusAboutBracer01D" },
+				RequiredAnyOtherTextLines = { "AchillesGift08", "AchillesGift06_A" },
+				RequiredFalseTextLines = { "AchillesAboutPatroclus01A", "AchillesAboutPatroclus01B", "AchillesAboutPatroclus01D" },
+				RequiredFalseTextLinesThisRun = { "PersephoneMeeting08" },
+				RequiredFalseFlags = { "InFlashback" },
+				-- I... take care, then, sir.
+				EndCue = "/VO/ZagreusHome_0853",
+				EndWait = 0.5,
+				{
+					Cue = "/VO/Achilles_0105",
+					Text = "How fare your labors, lad? You have a certain look about you. Everything all right?"
+				},
+				{
+					Cue = "/VO/ZagreusHome_0852",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"It's just... within Elysium, I happened on a shade. It's your Patroclus. He's all right, but he seems like he's known better times than these. Is there something I should say to him, if I run into him again?"
+				},
+				{
+					Cue = "/VO/Achilles_0108",
+					Emote = "PortraitEmoteSurprise",
+					Text =
+					"Oh...! Well, then, please send him my regards. And... all my love. I think of him always. But I cannot see him any longer. And you mustn't ask me why, do you understand? Now, leave me be, please, lad. I need some time."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			-- if you know of Patroclus from high gift level (then had Bracer conv)
+			AchillesAboutPatroclus01D = {
+				SuperPriority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				RequiredAnyTextLines = { "PatroclusAboutAchilles01A", "PatroclusAboutBracer01A", "PatroclusAboutBracer01C" },
+				RequiredAnyOtherTextLines = { "AchillesGift08", "AchillesGift06_A" },
+				RequiredFalseTextLines = { "AchillesAboutPatroclus01A", "AchillesAboutPatroclus01B" },
+				RequiredFalseTextLinesThisRun = { "PersephoneMeeting08" },
+				RequiredFalseFlags = { "InFlashback" },
+				RequiredCodexEntry = {
+					EntryName = "NPC_Patroclus_01",
+					EntryIndex = 1,
+				},
+				-- I... take care, then, sir.
+				EndCue = "/VO/ZagreusHome_0853",
+				EndWait = 0.5,
+				{
+					Cue = "/VO/Achilles_0105",
+					Text = "How fare your labors, lad? You have a certain look about you. Everything all right?"
+				},
+				{
+					Cue = "/VO/ZagreusHome_0852",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"It's just... within Elysium, I happened on a shade. It's your Patroclus. He's all right, but he seems like he's known better times than these. Is there something I should say to him, if I run into him again?"
+				},
+				{
+					Cue = "/VO/Achilles_0108",
+					Emote = "PortraitEmoteSurprise",
+					Text =
+					"Oh...! Well, then, please send him my regards. And... all my love. I think of him always. But I cannot see him any longer. And you mustn't ask me why, do you understand? Now, leave me be, please, lad. I need some time."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			-- alt below
+			AchillesAboutPatroclus02 = {
+				SuperPriority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredAnyTextLines = { "AchillesAboutPatroclus01A", "AchillesAboutPatroclus01B", "AchillesAboutPatroclus01C" },
+				RequiredFalseTextLines = { "AchillesAboutPatroclus02B" },
+				RequiredFalseTextLinesThisRun = { "PersephoneMeeting08" },
+				RequiredFalseFlags = { "InFlashback" },
+				-- ...All right.
+				EndCue = "/VO/ZagreusHome_0856",
+				EndWait = 0.6,
+				{
+					Cue = "/VO/Achilles_0109",
+					Text =
+					"Hey, listen a moment, lad. I require your discretion with regards to whom we spoke about last time. The shade you met within Elysium."
+				},
+				{
+					Cue = "/VO/ZagreusHome_0854",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"I understand. What can I do about this, sir? There must be something. But, you have to let me know what's going on."
+				},
+				{
+					Cue = "/VO/Achilles_0110",
+					Text =
+					"Simply put, he is the reason that I'm here. Patroclus lost his life before I did. Because of me. I shortly followed, in a rage. When I arrived here, I received a hero's welcome. Your father himself ushered me to Elysium. But that's not what I wanted."
+				},
+				{
+					Cue = "/VO/ZagreusHome_0855",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text = "You wanted to see Patroclus. But, he's in Elysium, while you... oh, no."
+				},
+				{
+					Cue = "/VO/Achilles_0111",
+					Text =
+					"I signed a pact, lad. Felt that the terms were good enough. He could live there, while I'd live here, at least for now. Such deals are most uncommon, and their confidentiality must be upheld. But, let's speak no more of this for now, all right? Some other time."
+				},
+				-- intentionally no greeting
+			},
+			AchillesAboutPatroclus02B = {
+				SuperPriority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "AchillesAboutPatroclus01D" },
+				RequiredAnyTextLines = { "PatroclusAboutAchilles01B", "PatroclusAboutAchilles01C_01", "PatroclusAboutAchilles01C_02" },
+				RequiredFalseTextLines = { "AchillesAboutPatroclus02" },
+				RequiredFalseTextLinesThisRun = { "PersephoneMeeting08" },
+				RequiredFalseFlags = { "InFlashback" },
+				-- ...All right.
+				EndCue = "/VO/ZagreusHome_0856",
+				EndWait = 0.6,
+				{
+					Cue = "/VO/Achilles_0109",
+					Text =
+					"Hey, listen a moment, lad. I require your discretion with regards to whom we spoke about last time. The shade you met within Elysium."
+				},
+				{
+					Cue = "/VO/ZagreusHome_0854",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"I understand. What can I do about this, sir? There must be something. But, you have to let me know what's going on."
+				},
+				{
+					Cue = "/VO/Achilles_0110",
+					Text =
+					"Simply put, he is the reason that I'm here. Patroclus lost his life before I did. Because of me. I shortly followed, in a rage. When I arrived here, I received a hero's welcome. Your father himself ushered me to Elysium. But that's not what I wanted."
+				},
+				{
+					Cue = "/VO/ZagreusHome_0855",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text = "You wanted to see Patroclus. But, he's in Elysium, while you... oh, no."
+				},
+				{
+					Cue = "/VO/Achilles_0111",
+					Text =
+					"I signed a pact, lad. Felt that the terms were good enough. He could live there, while I'd live here, at least for now. Such deals are most uncommon, and their confidentiality must be upheld. But, let's speak no more of this for now, all right? Some other time."
+				},
+				-- intentionally no greeting
+			},
+			AchillesAboutPatroclus03 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "PatroclusAboutAchilles02" },
+				RequiredAnyTextLines = { "AchillesAboutPatroclus02", "AchillesAboutPatroclus02B" },
+				RequiredFalseFlags = { "InFlashback" },
+				-- ...I do. I think.
+				EndCue = "/VO/ZagreusHome_0859",
+				EndWait = 0.65,
+				{
+					Cue = "/VO/ZagreusHome_0857",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"You have to tell me more about this pact you signed, Achilles. You and Patroclus... so, you're doomed to never be together, then?"
+				},
+				{
+					Cue = "/VO/Achilles_0112",
+					Text =
+					"You must safeguard the details of it, lad. Although it's not as bad as you make out. I ensured Patroclus is provided for. We wouldn't have been together anyway. Initially he wasn't sent into Elysium, you see."
+				},
+				{
+					Cue = "/VO/ZagreusHome_0858",
+					Portrait = "Portrait_Zag_Serious_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "There has to be a way for me to make this right. Not just for him, for you."
+				},
+				{
+					Cue = "/VO/Achilles_0113",
+					Text =
+					"You've other, pressing matters to attend to, lad. And Patroclus and I have ample time to wait this out. I know you mean well, but... do not discuss this matter with your father, now. I fear that it could make things worse. Do you understand?"
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			AchillesAboutPatroclus04 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredAnyTextLines = { "PatroclusAboutAchilles03A", "PatroclusAboutAchilles03B" },
+				RequiredFalseFlags = { "InFlashback" },
+				-- He shouldn't, sir. And neither should you.
+				EndCue = "/VO/ZagreusHome_0883",
+				EndWait = 0.65,
+				{
+					Cue = "/VO/ZagreusHome_0881",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"The... fallen warrior in Elysium we spoke of. He seems like a good man, though... was he always the despondent sort?"
+				},
+				{
+					Cue = "/VO/Achilles_0116",
+					Text =
+					"No, lad. I was that sort, I think, but he was not. He was... one of the only men I knew who did not look upon me as a threat. He saw something in me I never knew was there. And in turn, with him, I felt... how to describe it? Calm. Whole."
+				},
+				{
+					Cue = "/VO/ZagreusHome_0882",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "{#DialogueItalicFormat}Hah{#PreviousFormat}! I'm restless all the time. I can only imagine."
+				},
+				{
+					Cue = "/VO/Achilles_0117",
+					Text =
+					"He had this wry humor about him. Like he was wise beyond his years. A quality I trust shall see him through his struggles now. Although... I hoped residing in Elysium would mean he wouldn't have to struggle any longer."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			AchillesAboutPatroclusBackstory01 = {
+				Priority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "PatroclusAboutAchilles04" },
+				RequiredFalseQueuedTextLines = { "PersephoneWithNyx02" },
+				EndVoiceLines = {
+					PreLineWait = 0.4,
+					UsePlayerSource = true,
+					-- ...Of course.
+					{ Cue = "/VO/ZagreusHome_2556" },
+				},
+				{
+					Cue = "/VO/ZagreusHome_2553",
+					Portrait = "Portrait_Zag_Serious_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"I know that it's a painful subject, sir, but can you tell me... what exactly happened, in the war that claimed Patroclus and yourself? He brought it up. Said you refused to fight."
+				},
+				{
+					Cue = "/VO/Achilles_0197",
+					PreLineWait = 0.5,
+					PreLineAnim = "AchillesIdleGreeting",
+					PostLineThreadedFunctionName = "LoungeRevelryPresentation",
+					PostLineFunctionArgs = { Sound2 = "/EmptyCue", Sound3 = "/EmptyCue" },
+					PortraitExitAnimation = "Portrait_MaleGhost_Default_01_Exit",
+					Text =
+					"Until he died. I did refuse to fight, until he died, but at that point... {#DialogueItalicFormat}ungh{#PreviousFormat}, look, lad, if we're going to discuss these matters, best we do so in the lounge, not here."
+				},
+				{
+					Cue = "/VO/Achilles_0198",
+					PreLineWait = 0.35,
+					FadeOutTime = 0.5,
+					FullFadeTime = 7.8,
+					FadeInTime = 2.0,
+					FadeInSound = "/Leftovers/World Sounds/MapZoomInShortHigh",
+					TeleportToId = 556834,
+					AngleTowardTargetId = 556835,
+					TeleportHeroToId = 556835,
+					AngleHeroTowardTargetId = 556834,
+					Text =
+					"...The fool of a king I served... I'd never take up arms, for him. But, Patroclus, he always had a different way of looking at things. As I refused to fight, he rose to the occasion. Took up my armor, led my brothers into battle, in my guise. Fought nobly... but then, he... well."
+				},
+				{
+					Cue = "/VO/ZagreusHome_2554",
+					Portrait = "Portrait_Zag_Serious_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusInteractionThoughtful",
+					PreLineAnimTarget = "Hero",
+					Text = "And after you found out... you sought vengeance for him. Took vengeance."
+				},
+				{
+					Cue = "/VO/Achilles_0199",
+					Text =
+					"That I did. They got me, finally, of course. But, not before I broke them, first. The war soon ended, after that. It is an awful contradiction, that to quickly end war, one need only extinguish many lives at once. I had not realized it at the time."
+				},
+				{
+					Cue = "/VO/ZagreusHome_2555",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text = "Did you... allow yourself to die? So that you could see Patroclus again, here?"
+				},
+				{
+					Cue = "/VO/Achilles_0200",
+					PreLineWait = 0.35,
+					PreLineAnim = "AchillesIdleGreeting",
+					PortraitExitAnimation = "Portrait_MaleGhost_Default_01_Exit",
+					Text =
+					"...I don't know. Maybe. I only know that I was filled with rage. Rage that subsided, soon after I arrived here. I felt... empty. I never saw Patroclus again. But, I learned my brothers honored my last request, as my ashes were laid to rest with his. {#DialogueItalicFormat}<Sigh> {#PreviousFormat}Anyway...! Appreciate the drink."
+				},
+				{
+					Cue = "/VO/Achilles_0201",
+					PreLineWait = 0.55,
+					FadeOutTime = 0.5,
+					FullFadeTime = 0.5,
+					TeleportToId = 391565,
+					AngleTowardTargetId = 421072,
+					TeleportHeroToId = 391570,
+					AngleHeroTowardTargetId = 391565,
+					FadeInTime = 0.5,
+					FadeInSound = "/Leftovers/World Sounds/MapZoomInShortHigh",
+					Text =
+					"Suppose I'd best be getting back to standing quietly about. Though, that war, lad? Don't ask me about it again. All right?"
+				},
+			},
+			AchillesAboutPatroclus05 = {
+				Priority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "PatroclusAboutAchilles06" },
+				MinRunsSinceAnyTextLines = { TextLines = { "PatroclusAboutAchilles06" }, Count = 2 },
+				RequiredFalseFlags = { "InFlashback" },
+				-- I swear I will.
+				EndCue = "/VO/ZagreusHome_2559",
+				EndWait = 0.4,
+				{
+					Cue = "/VO/Achilles_0202",
+					Text =
+					"How is he, anyway, if you've encountered him of late during your journeys, lad? The fallen warrior you've run into in Elysium, that is."
+				},
+				{
+					Cue = "/VO/ZagreusHome_2557",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"He's doing relatively well, I think. There's a lot you've told me... that he didn't know. About what led up to his present circumstances, and your own."
+				},
+				{
+					Cue = "/VO/Achilles_0203",
+					Text =
+					"You told him, then. Without requesting my consent to tell him, first! What, exactly, did you say to him?"
+				},
+				{
+					Cue = "/VO/ZagreusHome_2558",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Achilles, I... I'm sorry, I... just told him about your ashes being intermingled, that whole thing? And about the pact. You told me once to send him your love and regards! This brought him no joy, only questions! You told me not to speak to Father, not to him!"
+				},
+				{
+					Cue = "/VO/Achilles_0204",
+					Text =
+					"{#DialogueItalicFormat}<Sigh>{#PreviousFormat}...You're right, I... should have specified. Or shouldn't have. Because what you said, probably is for the best. I didn't mean to lose my temper with you, lad, it's just... look, thank you for looking out for him. For both of us. Just, please be careful."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			AchillesAboutMyrmidonReunionQuest01 = {
+				PlayOnce = true,
+				SuperPriority = true,
+				UseableOffSource = true,
+				RequiredAnyTextLines = { "PatroclusAboutMyrmidonReunionQuest01" },
+				RequiredFalseTextLinesThisRun = { "PersephoneMeeting08" },
+				RequiredFalseFlags = { "InFlashback" },
+				EndWait = 0.4,
+				{
+					Cue = "/VO/ZagreusHome_2560",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"I have a message for you from the fallen warrior over in Elysium, Achilles sir. He says... he simply said to let you know to risk it all."
+				},
+				{
+					Cue = "/VO/Achilles_0205",
+					Emote = "PortraitEmoteSurprise",
+					Text = "To risk it all. He said to risk it all?"
+				},
+				{
+					Cue = "/VO/ZagreusHome_2561",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					Text = "Yes. Is... there something significant about that phrase?"
+				},
+				{
+					Cue = "/VO/Achilles_0206",
+					Text =
+					"When last he said to risk it all, to me... I didn't listen to him, then. But should have. I should have."
+				},
+				{
+					Cue = "/VO/ZagreusHome_2562",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					Text = "He's asking you to take another chance."
+				},
+				{
+					Cue = "/VO/Achilles_0207",
+					Text = "No... he's giving me another chance, I think. I... leave me lad, for now. Thank you for telling me."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			AchillesAboutMyrmidonReunionQuest02 = {
+				Priority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "AchillesAboutMyrmidonReunionQuest01" },
+				RequiredFalseTextLines = { "AchillesAboutMyrmidonReunionQuest03_A", "AchillesAboutMyrmidonReunionQuest03_B", "AchillesAboutMyrmidonReunionQuest03_C" },
+				MinRunsSinceAnyTextLines = { TextLines = { "AchillesAboutMyrmidonReunionQuest01" }, Count = 2 },
+				RequiredFalseFlags = { "InFlashback" },
+				-- Please do.
+				EndCue = "/VO/ZagreusHome_2564",
+				EndWait = 0.4,
+				{
+					Cue = "/VO/ZagreusHome_2563",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text = "About risking it all, sir. Did you come to any decision about what that meant? What you should do?"
+				},
+				{
+					Cue = "/VO/Achilles_0208",
+					Text =
+					"I'm getting there, lad. In battle, I would operate on instincts, make snap judgments almost instantly. In other matters, though... I need some time. Your patience, please. I'll let you know if I can figure something out."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			-- alts below
+			AchillesAboutMyrmidonReunionQuest03_A = {
+				Priority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				StatusAnimation = "StatusIconWantsToTalkImportant",
+				RequiredTextLines = { "AchillesAboutMyrmidonReunionQuest01", "SisyphusLiberationQuestComplete" },
+				RequiredAnyTextLines = { "AchillesGift08", "AchillesGift06_A" },
+				RequiredFalseTextLines = { "OrpheusAboutSingersReunionQuest01", "AchillesAboutMyrmidonReunionQuest03_B", "AchillesAboutMyrmidonReunionQuest03_C" },
+				RequiredCosmetics = { "OfficeDoorUnlockItem" },
+				RequiredFalseFlags = { "InFlashback" },
+				EndVoiceLines = {
+					PreLineWait = 0.4,
+					ObjectType = "NPC_Achilles_01",
+					-- You have my thanks.
+					{ Cue = "/VO/Achilles_0214" },
+				},
+				{
+					Cue = "/VO/Achilles_0209",
+					Text = "I need your help with something, lad. As I'm about to risk it all, I think. Will you hear me out?"
+				},
+				{
+					Cue = "/VO/ZagreusHome_2565",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text = "Of course, sir, what is it? I'm listening."
+				},
+				{
+					Cue = "/VO/Achilles_0210",
+					Text =
+					"The pact I signed with your father. It must be buried somewhere down in the administrative chamber there. I dared not ask that you locate it, out of fear that tampering with it would only make things worse, except..."
+				},
+				{
+					Cue = "/VO/ZagreusHome_2566",
+					Portrait = "Portrait_Zag_Serious_01",
+					Speaker = "CharProtag",
+					Text = "...Except that fear is for the weak, Achilles, sir."
+				},
+				{
+					Cue = "/VO/Achilles_0211",
+					Text =
+					"Indeed. Besides... your father has been more abiding than I expected with how you were able to nullify the Knave-King's Sentence... so, perhaps my case isn't a lost cause, yet."
+				},
+				{
+					Cue = "/VO/ZagreusHome_2567",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					Text = "I'll speak with Nyx about it the next chance I get. And I'll be careful, sir. I promise you."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			AchillesAboutMyrmidonReunionQuest03_B = {
+				Priority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				StatusAnimation = "StatusIconWantsToTalkImportant",
+				RequiredTextLines = { "AchillesAboutMyrmidonReunionQuest01", "OrpheusAboutSingersReunionQuest01" },
+				RequiredFalseTextLines = { "SisyphusLiberationQuestComplete", "AchillesAboutMyrmidonReunionQuest03_A", "AchillesAboutMyrmidonReunionQuest03_C" },
+				RequiredAnyTextLines = { "AchillesGift08", "AchillesGift06_A" },
+				RequiredCosmetics = { "OfficeDoorUnlockItem" },
+				RequiredFalseFlags = { "InFlashback" },
+				EndVoiceLines = {
+					PreLineWait = 0.4,
+					ObjectType = "NPC_Achilles_01",
+					-- You have my thanks.
+					{ Cue = "/VO/Achilles_0214" },
+				},
+				{
+					Cue = "/VO/Achilles_0209",
+					Text = "I need your help with something, lad. As I'm about to risk it all, I think. Will you hear me out?"
+				},
+				{
+					Cue = "/VO/ZagreusHome_2565",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text = "Of course, sir, what is it? I'm listening."
+				},
+				{
+					Cue = "/VO/Achilles_0210",
+					Text =
+					"The pact I signed with your father. It must be buried somewhere down in the administrative chamber there. I dared not ask that you locate it, out of fear that tampering with it would only make things worse, except..."
+				},
+				{
+					Cue = "/VO/ZagreusHome_2566",
+					Portrait = "Portrait_Zag_Serious_01",
+					Speaker = "CharProtag",
+					PreLineWait = 0.35,
+					Text = "...Except that fear is for the weak, Achilles, sir."
+				},
+				{
+					Cue = "/VO/Achilles_0212",
+					Text =
+					"Indeed. Besides... your father has been more abiding than I expected with how you were able to void the pact that separated Orpheus and Eurydice... so, perhaps my case isn't a lost cause, yet."
+				},
+				{
+					Cue = "/VO/ZagreusHome_2567",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					Text = "I'll speak with Nyx about it the next chance I get. And I'll be careful, sir. I promise you."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			AchillesAboutMyrmidonReunionQuest03_C = {
+				Priority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				StatusAnimation = "StatusIconWantsToTalkImportant",
+				RequiredTextLines = { "AchillesAboutMyrmidonReunionQuest01", "SisyphusLiberationQuestComplete", "OrpheusAboutSingersReunionQuest01" },
+				RequiredFalseTextLines = { "AchillesAboutMyrmidonReunionQuest03_A", "AchillesAboutMyrmidonReunionQuest03_B" },
+				RequiredAnyTextLines = { "AchillesGift08", "AchillesGift06_A" },
+				RequiredCosmetics = { "OfficeDoorUnlockItem" },
+				RequiredFalseFlags = { "InFlashback" },
+				EndVoiceLines = {
+					PreLineWait = 0.4,
+					ObjectType = "NPC_Achilles_01",
+					-- You have my thanks.
+					{ Cue = "/VO/Achilles_0214" },
+				},
+				{
+					Cue = "/VO/Achilles_0209",
+					Text = "I need your help with something, lad. As I'm about to risk it all, I think. Will you hear me out?"
+				},
+				{
+					Cue = "/VO/ZagreusHome_2565",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text = "Of course, sir, what is it? I'm listening."
+				},
+				{
+					Cue = "/VO/Achilles_0210",
+					Text =
+					"The pact I signed with your father. It must be buried somewhere down in the administrative chamber there. I dared not ask that you locate it, out of fear that tampering with it would only make things worse, except..."
+				},
+				{
+					Cue = "/VO/ZagreusHome_2566",
+					Portrait = "Portrait_Zag_Serious_01",
+					Speaker = "CharProtag",
+					PreLineWait = 0.35,
+					Text = "...Except that fear is for the weak, Achilles, sir."
+				},
+				{
+					Cue = "/VO/Achilles_0213",
+					Text =
+					"Indeed. Besides... your father has been more abiding than I expected with how you were able to nullify the terms for Orpheus and Sisyphus alike, so... perhaps my case isn't a lost cause, yet."
+				},
+				{
+					Cue = "/VO/ZagreusHome_2567",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					Text = "I'll speak with Nyx about it the next chance I get. And I'll be careful, sir. I promise you."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			AchillesAboutMyrmidonReunionQuest04 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredAnyTextLines = { "AchillesAboutMyrmidonReunionQuest03_A", "AchillesAboutMyrmidonReunionQuest03_B", "AchillesAboutMyrmidonReunionQuest03_C" },
+				RequiredFalseCosmetics = { "AchillesPatroclusQuestItem" },
+				MinRunsSinceAnyTextLines = { TextLines = { "AchillesAboutMyrmidonReunionQuest03_A", "AchillesAboutMyrmidonReunionQuest03_B", "AchillesAboutMyrmidonReunionQuest03_C" }, Count = 2 },
+				RequiredFalseTextLines = { "Inspect_DeathAreaOffice_SealedContract_03", "AchillesAboutMyrmidonReunionQuest04_B" },
+				RequiredFalseFlags = { "InFlashback" },
+				{
+					Cue = "/VO/ZagreusHome_2568",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text = "I'm working on trying to find your pact, Achilles. Just need a little more time to sort it out."
+				},
+				{
+					Cue = "/VO/Achilles_0215",
+					Text =
+					"I've nothing if not patience, lad. And I shall try to keep my hopes in check. Thank you for your effort around this. When next we speak of it, may it be when you've succeeded."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			AchillesAboutMyrmidonReunionQuest04_B = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "Inspect_DeathAreaOffice_SealedContract_03" },
+				RequiredAnyTextLines = { "AchillesAboutMyrmidonReunionQuest03_A", "AchillesAboutMyrmidonReunionQuest03_B", "AchillesAboutMyrmidonReunionQuest03_C" },
+				RequiredFalseCosmetics = { "AchillesPatroclusQuestItem" },
+				MinRunsSinceAnyTextLines = { TextLines = { "AchillesAboutMyrmidonReunionQuest03_A", "AchillesAboutMyrmidonReunionQuest03_B", "AchillesAboutMyrmidonReunionQuest03_C" }, Count = 2 },
+				RequiredFalseTextLines = { "AchillesAboutMyrmidonReunionQuest04" },
+				RequiredFalseFlags = { "InFlashback" },
+				{
+					Cue = "/VO/ZagreusHome_3727",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text = "I'm working on your pact, Achilles. Just need a little more time to sort it out."
+				},
+				{
+					Cue = "/VO/Achilles_0215",
+					Text =
+					"I've nothing if not patience, lad. And I shall try to keep my hopes in check. Thank you for your effort around this. When next we speak of it, may it be when you've succeeded."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			MyrmidonReunionQuestComplete = {
+				SuperPriority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				StatusAnimation = "StatusIconWantsToTalkImportant",
+				RequiredCosmetics = { "AchillesPatroclusQuestItem" },
+				RequiredFalseTextLinesThisRun = { "PersephoneMeeting08" },
+				RequiredFalseFlags = { "InFlashback" },
+				EndVoiceLines = {
+					PreLineWait = 0.4,
+					UsePlayerSource = true,
+					-- Farewell for now, sir.
+					{ Cue = "/VO/ZagreusHome_2576" },
+				},
+				{
+					Cue = "/VO/ZagreusHome_2573",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Achilles! Your pact with Father is officially amended, sir. Specifically, it no longer has any stipulation barring you from entering Elysium during the indefinite term of your employment. On my authority in the name of Hades, thank you for your service."
+				},
+				{
+					Cue = "/VO/Achilles_0216",
+					PreLineWait = 0.35,
+					Emote = "PortraitEmoteSurprise",
+					Text =
+					"What, are you... you're serious. I'm able to go. You're right, I feel it. I'm unbound. So I can... simply leave... right now."
+				},
+				{
+					Cue = "/VO/ZagreusHome_2574",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					Text = "You can simply leave, right now. And, might I add... it's about damn time."
+				},
+				{
+					Cue = "/VO/Achilles_0217",
+					Text =
+					"I... should get going then, although... I am unprepared, I... didn't think it would come to this. Not that I had no faith in you, it's just..."
+				},
+				{
+					Cue = "/VO/ZagreusHome_2575",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					Text =
+					"Incidentally, there's this one glade out in Elysium I highly recommend... go to him, sir. You've waited long enough. Fear is for the weak."
+				},
+				{
+					Cue = "/VO/Achilles_0218",
+					PreLineWait = 0.35,
+					PostLineThreadedFunctionName = "AchillesExit",
+					PostLineFunctionArgs = { AnimationState = "NPCAchillesExited", WaitTime = 3.5 },
+					SetFlagTrue = "AchillesReunionInProgress",
+					PreLineWait = 0.35,
+					Text = "...Fear is for the weak. Farewell for now, lad. I can't thank you enough."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			AchillesAfterMyrmidonReunionQuestComplete01 = {
+				SuperPriority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				InitialGiftableOffSource = true,
+				RequiredTextLines = { "PatroclusWithAchilles01" },
+				RequiredFalseTextLinesThisRun = { "PersephoneMeeting08" },
+				RequiredFalseFlags = { "InFlashback" },
+				EndVoiceLines = {
+					PreLineWait = 0.4,
+					UsePlayerSource = true,
+					-- Count on it, sir.
+					{ Cue = "/VO/ZagreusHome_2581" },
+				},
+				{
+					Cue = "/VO/ZagreusHome_2578",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "Sir, you're back! How was it in Elysium, was everything all right?"
+				},
+				{
+					Cue = "/VO/Achilles_0247",
+					Text =
+					"It went well, lad. As well as I could have hoped. Better than I might have feared. Hey, don't take Patroclus calling you 'stranger' personally, all right? He has less charitable terms for those he doesn't care for."
+				},
+				{
+					Cue = "/VO/ZagreusHome_2579",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text = "Come on, Achilles, I want details, here! What happened with you two? If you don't mind."
+				},
+				{
+					Cue = "/VO/Achilles_0248",
+					Text =
+					"{#DialogueItalicFormat}Hahah{#PreviousFormat}, well. Thankfully, your efforts meant that no words really needed to be said, when I arrived. He simply said my name. Then, we just... were. Two souls together in one spot. The way shades linger, it looks mournful, right? But it isn't always."
+				},
+				{
+					Cue = "/VO/ZagreusHome_2580",
+					PreLineAnim = "ZagreusInteractionThoughtful",
+					PreLineAnimTarget = "Hero",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					Text =
+					"That's wonderful to hear. He seemed uplifted in your presence. You must have lots of catching up to do."
+				},
+				{
+					Cue = "/VO/Achilles_0249",
+					PreLineWait = 0.35,
+					Text =
+					"Lots of making up for lost time. And finally we have some time to spare. It's odd, because so many of my memories of him are from a time of war. Now, we can make new memories in peace. Anyway... see you out there again sometime, I hope?"
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			-- ending
+			AchillesAboutHadesBedroom01 = {
+				PlayOnce = true,
+				SuperPriority = true,
+				UseableOffSource = true,
+				StatusAnimation = "StatusIconWantsToTalkImportant",
+				RequiredTextLines = { "PersephoneMeeting08" },
+				-- for ending testing
+				RequiredFalseTextLines = { "Ending01" },
+				InitialGiftableOffSource = true,
+				GiftableOffSource = true,
+				EndVoiceLines = {
+					PreLineWait = 0.4,
+					UsePlayerSource = true,
+					-- Thank you!!
+					{ Cue = "/VO/ZagreusHome_3279" },
+				},
+				{
+					Cue = "/VO/Achilles_0322",
+					Text = "What is it, lad, what's wrong? What can I do?"
+				},
+				{
+					Cue = "/VO/ZagreusHome_3277",
+					Portrait = "Portrait_Zag_Serious_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text = "Let me in Father's chambers. Please."
+				},
+				{
+					Cue = "/VO/Achilles_0323",
+					PreLineWait = 0.35,
+					Text =
+					"...That's high atop the list of things I'm not to do, for anyone, and under any circumstances. What is it you need? I've never even been in there, myself..."
+				},
+				{
+					Cue = "/VO/ZagreusHome_3278",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusInteractionThoughtful",
+					PreLineAnimTarget = "Hero",
+					Text =
+					"I don't know, I don't know! But, if I know Father, and I think I do, he's got to have something of hers in there. Of Mother's! She still doesn't get it, doesn't believe me about him, and... I said I'd prove it. That he cares for her!"
+				},
+				{
+					Cue = "/VO/Achilles_0324",
+					PreLineFunctionName = "ActivateHadesBedroomDoor",
+					PostLineAnim = "ZagreusInteractEquip",
+					PostLineAnimTarget = "Hero",
+					PostLineThreadedFunctionName = "MaxedRelationshipPresentation",
+					PostLineFunctionArgs = { Delay = 2.5, Title = "HadesBedroomUnlocked_Title", Text = "HadesBedroomUnlocked_Subtitle", TextRevealSound = "/Leftovers/Menu Sounds/TextReveal3", AnimationName = "LocationTextBGGeneric", AnimationOutName = "LocationTextBGGenericOut" },
+					Text =
+					"All right, slow down, I understand. Look... this can get me in a lot of trouble, like you've no idea. And, not just me, so... be careful, and be quick, while he's still out. Take this and go. Don't leave anything there out of place, all right?"
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			AchillesAboutReunionQuests01 = {
+				Priority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredMinNPCInteractions = { NPC_Achilles_01 = 1 },
+				RequiredAnyTextLines = { "SisyphusLiberationQuest_Beginning_01", "EurydiceAboutOrpheus04", "NyxAboutChaos05" },
+				RequiredFalseTextLines = { "NyxAboutSisyphusLiberationQuest01", "NyxAboutSingersReunionQuest01", "NyxAboutChaos07", "NyxAboutOffice01" },
+				RequiredFalseFlags = { "InFlashback" },
+				EndVoiceLines = {
+					PreLineWait = 0.5,
+					ObjectType = "NPC_Achilles_01",
+					-- Just watch yourself.
+					{ Cue = "/VO/Achilles_0369" },
+				},
+				{
+					Cue = "/VO/ZagreusHome_3470",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Achilles... if a friend of yours were in need of assistance, but the only way you could assist them was to somehow change the terms of an ancient pact Father probably forced on them, what would you do?"
+				},
+				{
+					Cue = "/VO/Achilles_0368",
+					Text =
+					"I would be very careful, above all. Do you understand, lad? I would not wish to make things any worse. How many pacts such as the one you're thinking of are buried back in the administrative chamber, there? Even your father can't keep track. Although... perhaps Nyx can."
+				},
+				{
+					Cue = "/VO/ZagreusHome_3471",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineWait = 0.35,
+					PreLineAnim = "ZagreusInteractionThoughtful",
+					PreLineAnimTarget = "Hero",
+					Text = "Nyx... you're right. She knows everything! Wouldn't hurt to ask her, I suppose..."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			AchillesAboutOffice01 = {
+				PlayOnce = true,
+				Priority = true,
+				UseableOffSource = true,
+				RequiredMinNPCInteractions = { NPC_Achilles_01 = 1 },
+				RequiredCosmetics = { "OfficeDoorUnlockItem" },
+				RequiredFalseTextLines = { "AchillesAboutOffice02" },
+				RequiredFalseFlags = { "InFlashback" },
+				EndVoiceLines = {
+					PreLineWait = 0.4,
+					UsePlayerSource = true,
+					RequiredMinElapsedTime = 3,
+					-- Appreciated, sir.
+					{ Cue = "/VO/ZagreusHome_2072" },
+				},
+				{
+					Cue = "/VO/Achilles_0175",
+					Text =
+					"Hold, lad! You've regained access to the administrative chamber, right? I never thought you'd want to go in there again."
+				},
+				{
+					Cue = "/VO/ZagreusHome_2071",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Oh, believe me, I don't. But I would like to be able to go where I please around here, and confounding Father is another benefit."
+				},
+				{
+					Cue = "/VO/Achilles_0176",
+					Text =
+					"Suppose I can see that. Well then, on my quite limited authority, it pleases me to say: You may proceed."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			AchillesAboutOffice02 = {
+				Priority = true,
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "AchillesAboutPatroclus03", "NyxAboutOffice01" },
+				RequiredAnyTextLines = { "Inspect_DeathAreaOffice_SealedContract_01", "Inspect_DeathAreaOffice_SealedContract_02" },
+				RequiredAnyCosmetics = { "SisyphusQuestItem", "OrpheusEurydiceQuestItem" },
+				RequiredCosmetics = { "OfficeDoorUnlockItem" },
+				RequiredFalseTextLines = { "AchillesAboutMyrmidonReunionQuest01" },
+				RequiredFalseCosmetics = { "AchillesPatroclusQuestItem" },
+				RequiredFalseFlags = { "InFlashback" },
+				{
+					Cue = "/VO/ZagreusHome_2329",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Achilles, now that I have access to the administrative area again, I... well, I've access to the archives, and... I have some authority, to void those, under certain circumstances. So, about your pact..."
+				},
+				{
+					Cue = "/VO/Achilles_0177",
+					Text =
+					"I know you mean well, lad. And, from the bottom of my heart, where once it was, I thank you truly for the thought. However... don't exert your influence on this. Not now, at least. The Fates can twist intentions. I don't want to take the risk."
+				},
+				{
+					Cue = "/VO/ZagreusHome_2330",
+					Portrait = "Portrait_Zag_Serious_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusInteractionThoughtful",
+					PreLineAnimTarget = "Hero",
+					Text =
+					"You're sure...? Well then... I'll wait. But I am going to ask you again. We have to find a way to fix this. Patroclus is waiting."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			-- orpheus Foreshadow
+			AchillesAboutOrpheus01 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "AchillesGrantsCodex" },
+				RequiredFalseTextLines = { "HadesAboutOrpheusUnlockItem01" },
+				RequiredFalseCosmetics = { "OrpheusUnlockItem" },
+				RequiredFalseFlags = { "InFlashback" },
+				{
+					Cue = "/VO/ZagreusHome_0549",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Say, I was wondering, Achilles. Any news of Orpheus of late? I've not seen him around here in some time. He still paying his dues?"
+				},
+				{
+					Cue = "/VO/Achilles_0092",
+					Text =
+					"That I believe he is, lad. Your father, he was none too pleased with him last time I saw him here. I tried my best to simmer down the situation, but... you know how it goes. I hope your father cuts his sentence short."
+				},
+				{
+					Cue = "/VO/ZagreusHome_0550",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusInteractionThoughtful",
+					PreLineAnimTarget = "Hero",
+					Text = "I hope so, too. If you do see him, tell him I said hi."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			AchillesAboutOrpheus02 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				RequiredTextLines = { "AchillesGrantsCodex" },
+				RequiredAnyTextLines = { "OrpheusFirstMeeting", "OrpheusFirstMeeting_Alt" },
+				RequiredFalseTextLines = { "OrpheusSingsAgain01", "OrpheusSingsAgain01_B", "OrpheusSingsAgain01_C", "OrpheusSingsAgain01_D", "OrpheusSingsAgain02", "OrpheusSingsAgain03", "OrpheusSingsAgain03_B" },
+				RequiredFalseFlags = { "InFlashback" },
+				EndVoiceLines = {
+					PreLineWait = 0.35,
+					UsePlayerSource = true,
+					RequiredMinElapsedTime = 3,
+					-- Interesting.
+					{ Cue = "/VO/ZagreusField_0201" },
+				},
+				{
+					Cue = "/VO/ZagreusHome_0551",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					Text = "Good to see old Orpheus is back with us. He hasn't changed a bit. Was he always like this?"
+				},
+				{
+					Cue = "/VO/Achilles_0093",
+					PreLineAnim = "ZagreusTalkEmpathy_Return",
+					PreLineAnimTarget = "Hero",
+					Text =
+					"I'm guessing not. Never knew him when we were alive, but since we met he's always been the melancholy sort. The few times I heard him sing, though...? It was beautiful. I'm not surprised your father's kept him here."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+			},
+			AchillesWithHades01 = {
+				Partner = "NPC_Hades_01",
+				RequiredAnyTextLines = { "AchillesGrantsCodex", "AchillesRevealsGuanYuAspect01", "AchillesAboutHadesBedroom01" },
+				RequiredWeaponsUnlocked = { "BowWeapon", "SpearWeapon", "ShieldWeapon" },
+				RequiredSeenRooms = { "D_Intro" },
+				RequiredFalseTextLinesThisRun = { "PersephoneFirstMeeting" },
+				RequiredFalseTextLines = { "AchillesWithHadesAboutMyrmidonReunionQuest01", "Ending01" },
+				MinRunsSinceAnyTextLines = { TextLines = GameData.HadesMiscPartnerTextLines, Count = 4 },
+				RequiredLifetimeResourcesGainedMin = { LockKeys = 12 },
+				RequiredFalseValues = { CurrentEmployeeOfTheMonth = "Achilles" },
+				PlayOnce = true,
+				UseText = "UseListenNPC",
+				BlockDistanceTriggers = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				TeleportToId = 370006,
+				TeleportOffsetX = -380,
+				TeleportOffsetY = 260,
+				AngleTowardTargetId = 424947,
+				InteractDistance = 400,
+				-- Achilles...
+				EndCue = "/VO/ZagreusHome_0630",
+				EndWait = 0.6,
+				{
+					Cue = "/VO/Achilles_0094",
+					PreLineWait = 0.3,
+					Text = "...You asked I train him, Master. Prepare him for life's labors. You ordered it! Now you admonish me?"
+				},
+				{
+					Cue = "/VO/Hades_0338",
+					Portrait = "Portrait_Hades_Default_01",
+					PreLineWait = 0.35,
+					Speaker = "NPC_Hades_01",
+					Text =
+					"Be careful of your tone and temper, Shade. You are in my employ. You could be wandering the pastures of Elysium again instead. Or lesser planes, if I so choose."
+				},
+				{
+					Cue = "/VO/Achilles_0095",
+					PreLineWait = 0.3,
+					Text = "...What would you have me do?"
+				},
+				{
+					Cue = "/VO/Hades_0339",
+					Portrait = "Portrait_Hades_Default_01",
+					Speaker = "NPC_Hades_01",
+					PostLineThreadedFunctionName = "AchillesExit",
+					PostLineFunctionArgs = { AnimationState = "NPCAchillesExited", WaitTime = 3.5 },
+					Text = "I shall be giving it some thought. Until then, you just watch that hall. And watch yourself, as well."
+				},
+			},
+			AchillesWithHadesAboutMyrmidonReunionQuest01 = {
+				Partner = "NPC_Hades_01",
+				RequiredTextLines = { "AchillesAfterMyrmidonReunionQuestComplete01", "MyrmidonReunionQuestComplete" },
+				RequiredFalseTextLinesThisRun = { "PersephoneFirstMeeting" },
+				PlayOnce = true,
+				UseText = "UseListenNPC",
+				BlockDistanceTriggers = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				TeleportToId = 370006,
+				TeleportOffsetX = -380,
+				TeleportOffsetY = 260,
+				AngleTowardTargetId = 424947,
+				InteractDistance = 400,
+				BlockDistanceTriggers = true,
+				StatusAnimation = false,
+				EndVoiceLines = {
+					{
+						PreLineWait = 0.4,
+						ObjectType = "NPC_Achilles_01",
+						PreLineAnim = "AchillesIdleGreeting",
+						-- Yes, Master. Thank you.
+						{ Cue = "/VO/Achilles_0251" },
+					},
+					{
+						PreLineWait = 0.3,
+						UsePlayerSource = true,
+						-- Sometimes the law is not so bad.
+						{ Cue = "/VO/ZagreusHome_2586" },
+					},
+				},
+				{
+					Cue = "/VO/Hades_0863",
+					Portrait = "Portrait_Hades_Default_01",
+					PreLineWait = 0.35,
+					Speaker = "NPC_Hades_01",
+					Text =
+					"...I understand the terms of your employment have been altered in my name, Shade. Be grateful that you lack the standing for such changes to require my personal approval. Though you remain in my employ, correct?"
+				},
+				{
+					Cue = "/VO/Achilles_0250",
+					PreLineAnim = "AchillesIdleGreeting",
+					Text =
+					"As far as I'm aware, yes, Master. I'm sworn eternally here to this House, except... it seems I'm now at liberty to see Elysium, from time to time. While off duty, of course."
+				},
+				{
+					Cue = "/VO/Hades_0864",
+					Portrait = "Portrait_Hades_Default_01",
+					Speaker = "NPC_Hades_01",
+					PreLineAnim = "Hades_HouseFistSlam",
+					PreLineAnimTarget = 370006,
+					PostLineThreadedFunctionName = "AchillesExit",
+					PostLineFunctionArgs = { AnimationState = "NPCAchillesExited", WaitTime = 3.5 },
+					Text =
+					"How lenient they make these pacts, today. You are off duty now, is that not so? Go, then, take advantage of the added benefit."
+				},
+			},
+			AchillesWithMegaera01 = {
+				Partner = "NPC_FurySister_01",
+				PlayOnce = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				RequiredTextLines = { "AchillesWithHades01", "MegaeraWithHades01", "AchillesGift01", "MegaeraGift01" },
+				MinRunsSinceAnyTextLines = { TextLines = { "AchillesWithMegaera01", "AchillesWithMegaera02" }, Count = 5 },
+				RequiredKills = { Harpy = 5 },
+				RequiredFalseTextLinesThisRun = { "PersephoneFirstMeeting" },
+				UseText = "UseListenNPC",
+				BlockDistanceTriggers = true,
+				StatusAnimation = false,
+				TeleportToId = 390082,
+				TeleportOffsetX = -155,
+				TeleportOffsetY = 55,
+				InteractDistance = 300,
+				-- Huh...
+				EndCue = "/VO/ZagreusHome_0775",
+				EndWait = 0.6,
+				{
+					Cue = "/VO/MegaeraHome_0116",
+					Portrait = "Portrait_FurySister01_Standoffish_01",
+					PreLineWait = 0.35,
+					Speaker = "NPC_FurySister_01",
+					Text = "...What's that you have there, Shade? That looks like contraband to me."
+				},
+				{
+					Cue = "/VO/Achilles_0098",
+					Text = "It is, Mistress. I'm glad you're here, as maybe you can help me quickly to dispose of it."
+				},
+				{
+					Cue = "/VO/MegaeraHome_0117",
+					Portrait = "Portrait_FurySister01_Standoffish_01",
+					Speaker = "NPC_FurySister_01",
+					Text =
+					"Let us immediately do so, then. Before concerns arise around the presence of this stuff within the House."
+				},
+			},
+			AchillesWithMegaera02 = {
+				Partner = "NPC_FurySister_01",
+				PlayOnce = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				RequiredTextLines = { "AchillesWithHades01", "MegaeraWithHades01", "AchillesGift01", "MegaeraGift01" },
+				MinRunsSinceAnyTextLines = { TextLines = { "AchillesWithMegaera01", "AchillesWithMegaera02" }, Count = 5 },
+				RequiredSeenRooms = { "C_Story01" },
+				RequiredKills = { Harpy = 5 },
+				RequiredFalseTextLines = { "AchillesAboutPatroclus03" },
+				RequiredFalseTextLinesThisRun = { "PersephoneFirstMeeting" },
+				RequiredMinRunsCleared = 1,
+				UseText = "UseListenNPC",
+				BlockDistanceTriggers = true,
+				StatusAnimation = false,
+				TeleportToId = 390082,
+				TeleportOffsetX = -155,
+				TeleportOffsetY = 55,
+				InteractDistance = 300,
+				-- Huh...
+				-- EndCue = "/VO/ZagreusHome_0565",
+				-- EndWait = 0.6,
+				{
+					Cue = "/VO/MegaeraHome_0118",
+					Portrait = "Portrait_FurySister01_Standoffish_01",
+					PreLineWait = 0.35,
+					Speaker = "NPC_FurySister_01",
+					Text = "...He must be somewhere in Elysium, you know. Where else could he have gone?"
+				},
+				{
+					Cue = "/VO/Achilles_0099",
+					Text =
+					"I realize that, Mistress. It's just... I think we've other matters to attend to, such as... emptying the contents of this contraband."
+				},
+				{
+					Cue = "/VO/MegaeraHome_0119",
+					Portrait = "Portrait_FurySister01_Standoffish_01",
+					Speaker = "NPC_FurySister_01",
+					Text =
+					"I see. That's fine. But you will need to face your fears someday, in all of this. You act as if you can't afford to get involved, but it's a little late for that."
+				},
+			},
+			AchillesWithMegaeraAboutMyrmidonReunionQuest01 = {
+				Partner = "NPC_FurySister_01",
+				PlayOnce = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				RequiredTextLines = { "AchillesAfterMyrmidonReunionQuestComplete01", "MegaeraGift03" },
+				RequiredFalseTextLinesThisRun = { "PersephoneFirstMeeting" },
+				UseText = "UseListenNPC",
+				BlockDistanceTriggers = true,
+				StatusAnimation = false,
+				TeleportToId = 390082,
+				TeleportOffsetX = -155,
+				TeleportOffsetY = 55,
+				InteractDistance = 300,
+				EndVoiceLines = {
+					PreLineWait = 0.4,
+					ObjectType = "NPC_Achilles_01",
+					PreLineAnim = "AchillesIdleGreeting",
+					-- Of course, Mistress, I shall. By your command.
+					{ Cue = "/VO/Achilles_0253" },
+				},
+				{
+					Cue = "/VO/MegaeraHome_0363",
+					Portrait = "Portrait_FurySister01_Standoffish_01",
+					PreLineWait = 0.35,
+					Speaker = "NPC_FurySister_01",
+					Text = "...You found him after all? Because of Zag? That's... how very fortunate for you, Shade."
+				},
+				{
+					Cue = "/VO/Achilles_0252",
+					Text =
+					"Mistress, for certain it is more than I deserve. Although, perhaps it's for the best that a forgotten shade ought to be put out with the rest of them. I shall not cause you so much trouble, then."
+				},
+				{
+					Cue = "/VO/MegaeraHome_0364",
+					Portrait = "Portrait_FurySister01_Standoffish_01",
+					Speaker = "NPC_FurySister_01",
+					Text =
+					"Well, if your journeys take you from this House, then... you are nothing but a Shade, and so... there will be others, but... take care, OK?"
+				},
+			},
+			AchillesWithPersephone01 = {
+				Partner = "NPC_Persephone_Home_01",
+				PlayOnce = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				RequiredTextLines = { "Ending01" },
+				MinRunsSinceAnyTextLines = { TextLines = { "Ending01" }, Count = 3 },
+				MaxRunsSinceAnyTextLines = { TextLines = { "Ending01" }, Count = 25 },
+				RequiredFalseFlags = { "PersephoneGoingAway" },
+				UseText = "UseListenNPC",
+				BlockDistanceTriggers = true,
+				StatusAnimation = false,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				TeleportToId = 555714,
+				TeleportOffsetX = -40,
+				TeleportOffsetY = 100,
+				AngleTowardTargetId = 555714,
+				InteractDistance = 300,
+				{
+					Cue = "/VO/Persephone_0195",
+					Portrait = "Portrait_Persephone_Queen_01",
+					Speaker = "NPC_Persephone_Home_01",
+					PreLineWait = 0.35,
+					Text =
+					"...Honored to have met you, great Achilles, our royal guard! Good to know whom to turn to, should anything run afoul around here. So it was you who instructed my son in the martial ways?"
+				},
+				{
+					Cue = "/VO/Achilles_0333",
+					PreLineAnim = "AchillesIdleGreeting",
+					Text =
+					"Indeed, Your Grace. He was a talented student. If only you could have seen his progress. Surely you would have been very proud."
+				},
+				{
+					Cue = "/VO/Persephone_0196",
+					Portrait = "Portrait_Persephone_Queen_01",
+					Speaker = "NPC_Persephone_Home_01",
+					PreLineAnim = "PersephoneUnderworld_Dismiss",
+					PreLineAnimTarget = 555714,
+					Text =
+					"I {#DialogueItalicFormat}am {#PreviousFormat}proud! You know, you were already quite the name back on the surface when I lived upon Olympus. I should think your legend's spread much farther still, since then!"
+				},
+				{
+					Cue = "/VO/Achilles_0334",
+					Text = "Oh, I doubt that... although, thank you, Your Grace."
+				},
+			},
+			NyxWithAchilles01 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				Skip = true,
+			},
+			NyxWithAchilles02 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				StatusAnimation = false,
+				Skip = true,
+			},
+			NyxWithAchillesAfterMyrmidonReunionQuest01 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				Skip = true,
+			},
+			OrpheusWithAchilles01 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				StatusAnimation = false,
+				Skip = true,
+			},
+			OrpheusWithAchilles02 = {
+				PlayOnce = true,
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				StatusAnimation = false,
+				Skip = true,
+			},
+		},
+		RepeatableTextLineSets = {
+			AchillesChat01 = {
+				UseableOffSource = true,
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Achilles",
+				{
+					Cue = "/VO/Achilles_0017",
+					Text = "Remember your training, lad."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+				StatusAnimation = false,
+			},
+			AchillesChat02 = {
+				UseableOffSource = true,
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Achilles",
+				{
+					Cue = "/VO/Achilles_0018",
+					Text = "I've not the faintest doubt that you can do this."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+				StatusAnimation = false,
+			},
+			AchillesChat03 = {
+				UseableOffSource = true,
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Achilles",
+				{
+					Cue = "/VO/Achilles_0019",
+					Text = "Go forth, lad, and do as you must."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+				StatusAnimation = false,
+			},
+			AchillesChat04 = {
+				UseableOffSource = true,
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Achilles",
+				{
+					Cue = "/VO/Achilles_0020",
+					Text = "I'll keep an eye on things while you're away."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+				StatusAnimation = false,
+			},
+			AchillesChat05 = {
+				UseableOffSource = true,
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Achilles",
+				{
+					Cue = "/VO/Achilles_0021",
+					Text = "Don't tarry longer than you need to, lad."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+				StatusAnimation = false,
+			},
+			AchillesChat06 = {
+				UseableOffSource = true,
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Achilles",
+				RequiredMinRunsCleared = 1,
+				{
+					Cue = "/VO/Achilles_0022",
+					Text = "I've nothing left to teach you, lad."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+				StatusAnimation = false,
+			},
+			AchillesChat07 = {
+				UseableOffSource = true,
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Achilles",
+				{
+					Cue = "/VO/Achilles_0023",
+					Text = "Fight as though you've but one life to live."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+				StatusAnimation = false,
+			},
+			AchillesChat08 = {
+				UseableOffSource = true,
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Achilles",
+				{
+					Cue = "/VO/Achilles_0024",
+					Text = "Fight like I'd fight out there."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+				StatusAnimation = false,
+			},
+			AchillesChat09 = {
+				UseableOffSource = true,
+				RequiredFalseTextLines = { "Ending01" },
+				{
+					Cue = "/VO/Achilles_0025",
+					Text = "Don't come back anytime soon if you can help it, lad."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+				StatusAnimation = false,
+			},
+			AchillesChat10 = {
+				UseableOffSource = true,
+				{
+					Cue = "/VO/Achilles_0026",
+					Text = "Let your instincts take over while you're out there."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+				StatusAnimation = false,
+			},
+			AchillesChat11 = {
+				UseableOffSource = true,
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Achilles",
+				{
+					Cue = "/VO/Achilles_0027",
+					Text = "The House is secure, lad. Go."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+				StatusAnimation = false,
+			},
+			AchillesChat12 = {
+				UseableOffSource = true,
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Achilles",
+				{
+					Cue = "/VO/Achilles_0028",
+					Text = "Experience is the greatest teacher, lad."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+				StatusAnimation = false,
+			},
+			AchillesChat13 = {
+				UseableOffSource = true,
+				RequiresRunNotCleared = true,
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Achilles",
+				{
+					Cue = "/VO/Achilles_0029",
+					Text = "Get back out and finish what you started, lad."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+				StatusAnimation = false,
+			},
+			AchillesChat14 = {
+				UseableOffSource = true,
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Achilles",
+				AreIdsAlive = { 370010 },
+				{
+					Cue = "/VO/Achilles_0030",
+					Text = "Nyx and I have matters here under control."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+				StatusAnimation = false,
+			},
+			AchillesChat15 = {
+				UseableOffSource = true,
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Achilles",
+				{
+					Cue = "/VO/Achilles_0031",
+					Text = "Mistakes are opportunities for learning, lad."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+				StatusAnimation = false,
+			},
+			AchillesChat16 = {
+				UseableOffSource = true,
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Achilles",
+				RequiredMaxRunsCleared = 5,
+				{
+					Cue = "/VO/Achilles_0032",
+					Text = "Go to your room, Zagreus."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+				StatusAnimation = false,
+			},
+			AchillesChat17 = {
+				UseableOffSource = true,
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Achilles",
+				{
+					Cue = "/VO/Achilles_0033",
+					Text = "I have your back. No matter what."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+				StatusAnimation = false,
+			},
+			AchillesChat18 = {
+				UseableOffSource = true,
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Achilles",
+				{
+					Cue = "/VO/Achilles_0034",
+					Text = "Ready yourself, lad, and give it another attempt."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+				StatusAnimation = false,
+			},
+			AchillesChat19 = {
+				UseableOffSource = true,
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Achilles",
+				{
+					Cue = "/VO/Achilles_0035",
+					Text = "There's no such thing as lesser gods, lad."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+				StatusAnimation = false,
+			},
+			-- relationship improved
+			AchillesChat20 = {
+				UseableOffSource = true,
+				RequiredAnyTextLines = { "AchillesGift05_A", "AchillesGift05_B" },
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Achilles",
+				{
+					Cue = "/VO/Achilles_0036",
+					Text = "If ever there is something I can do, you need but ask."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+				StatusAnimation = false,
+			},
+			AchillesChat21 = {
+				UseableOffSource = true,
+				RequiredAnyTextLines = { "AchillesGift05_A", "AchillesGift05_B" },
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Achilles",
+				{
+					Cue = "/VO/Achilles_0037",
+					Text = "There's nothing you cannot achieve. I'm sure of it."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+				StatusAnimation = false,
+			},
+			AchillesChat22 = {
+				-- Priority = true,
+				UseableOffSource = true,
+				RequiredAnyTextLines = { "AchillesGift05_A", "AchillesGift05_B" },
+				RequiredFalseTextLines = { "MyrmidonReunionQuestComplete" },
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Achilles",
+				{
+					Cue = "/VO/Achilles_0038",
+					Text = "Do not throw away your life as I did mine, lad."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+				StatusAnimation = false,
+			},
+			AchillesChat23 = {
+				UseableOffSource = true,
+				RequiredAnyTextLines = { "AchillesGift05_A", "AchillesGift05_B" },
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Achilles",
+				{
+					Cue = "/VO/Achilles_0039",
+					Text = "It brings me joy knowing you've found something worth fighting for."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+				StatusAnimation = false,
+			},
+			AchillesChat24 = {
+				UseableOffSource = true,
+				RequiredAnyTextLines = { "AchillesGift05_A", "AchillesGift05_B" },
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Achilles",
+				{
+					Cue = "/VO/Achilles_0040",
+					Text = "You have this, lad. The Fates be damned."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+				StatusAnimation = false,
+			},
+			AchillesChat25 = {
+				UseableOffSource = true,
+				RequiredAnyTextLines = { "AchillesGift05_A", "AchillesGift05_B" },
+				EndGlobalVoiceLines = "MiscEndVoiceLines_Achilles",
+				{
+					Cue = "/VO/Achilles_0041",
+					Text = "You have a good heart, lad. Keep listening to it."
+				},
+				OnQueuedFunctionName = "CheckDistanceTriggerThread",
+				OnQueuedFunctionArgs = mod.PresetEventArgs.AchillesGreeting,
+				StatusAnimation = false,
+			},
+			AchillesChatWithMegaera01 = {
+				PlayOnce = true,
+				Partner = "NPC_FurySister_01",
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				UseText = "UseListenNPC",
+				BlockDistanceTriggers = true,
+				RequiredTextLines = { "AchillesWithMegaeraAboutMyrmidonReunionQuest01", "AchillesGift09_A", "MegaeraGift10" },
+				MinRunsSinceAnyTextLines = { TextLines = GameData.MegAchillesPartnerRepeatableTextLines, Count = 15 },
+				StatusAnimation = false,
+				TeleportToId = 390082,
+				TeleportOffsetX = -155,
+				TeleportOffsetY = 55,
+				{
+					Cue = "/VO/MegaeraHome_0184",
+					Portrait = "Portrait_FurySister01_Standoffish_01",
+					PreLineWait = 0.35,
+					Speaker = "NPC_FurySister_01",
+					Text = "The Shade here was just regaling me about a famous war."
+				},
+				{
+					Cue = "/VO/Achilles_0355",
+					Text = "I'm afraid most of my tales revolve around bloodshed for one reason or another..."
+				},
+			},
+			AchillesChatWithMegaera02 = {
+				PlayOnce = true,
+				Partner = "NPC_FurySister_01",
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				UseText = "UseListenNPC",
+				BlockDistanceTriggers = true,
+				RequiredTextLines = { "AchillesWithMegaeraAboutMyrmidonReunionQuest01", "AchillesGift09_A", "MegaeraGift10" },
+				MinRunsSinceAnyTextLines = { TextLines = GameData.MegAchillesPartnerRepeatableTextLines, Count = 15 },
+				StatusAnimation = false,
+				TeleportToId = 390082,
+				TeleportOffsetX = -155,
+				TeleportOffsetY = 55,
+				{
+					Cue = "/VO/MegaeraHome_0185",
+					Portrait = "Portrait_FurySister01_Standoffish_01",
+					PreLineWait = 0.35,
+					Speaker = "NPC_FurySister_01",
+					Text = "...The spear is competent in the right hands, but it can't stop a whip."
+				},
+				{
+					Cue = "/VO/Achilles_0356",
+					Text =
+					"I must admit, Mistress, I've not enough experience against such a weapon to refute your claim. Quite fortunately so."
+				},
+			},
+			AchillesChatWithMegaera03 = {
+				PlayOnce = true,
+				Partner = "NPC_FurySister_01",
+				UseableOffSource = true,
+				GiftableOffSource = true,
+				UseText = "UseListenNPC",
+				BlockDistanceTriggers = true,
+				RequiredTextLines = { "AchillesWithMegaeraAboutMyrmidonReunionQuest01", "AchillesGift09_A", "MegaeraGift10" },
+				MinRunsSinceAnyTextLines = { TextLines = GameData.MegAchillesPartnerRepeatableTextLines, Count = 15 },
+				StatusAnimation = false,
+				TeleportToId = 390082,
+				TeleportOffsetX = -155,
+				TeleportOffsetY = 55,
+				{
+					Cue = "/VO/MegaeraHome_0186",
+					Portrait = "Portrait_FurySister01_Standoffish_01",
+					PreLineWait = 0.35,
+					Speaker = "NPC_FurySister_01",
+					Text = "...Pour another bottle when you've finished with the one there, Shade."
+				},
+				{
+					Cue = "/VO/Achilles_0357",
+					Text = "As you say, Mistress! Pardon us, here, lad."
+				},
+			},
+		},
+		GiftTextLineSets = {
+			-- grants a gift
+			AchillesGift01 = {
+				PlayOnce = true,
+				{
+					Cue = "/VO/ZagreusHome_0119",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text = "Hey Achilles, look this really isn't much, but... here."
+				},
+				{
+					Cue = "/VO/Achilles_0072",
+					Text =
+					"This really is for me? You beat me to it, then, as I had meant to give you this when next we spoke. Please, take it."
+				},
+			},
+			AchillesGift02 = {
+				PlayOnce = true,
+				RequiredTextLines = { "AchillesGift01", },
+				{
+					Cue = "/VO/Achilles_0016",
+					Text = "No, this is for me? You really shouldn't have. You're spoiling me rotten...!"
+				},
+				{
+					Cue = "/VO/ZagreusHome_0231",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					Text = "I just happen to think you deserve better than you've got down here, Achilles."
+				},
+			},
+			AchillesGift03 = {
+				PlayOnce = true,
+				RequiredTextLines = { "AchillesGift02", },
+				{
+					Cue = "/VO/Achilles_0014",
+					Emote = "PortraitEmoteSurprise",
+					Text = "What, for me...? I can't accept something like this, lad, you know that."
+				},
+				{
+					Cue = "/VO/ZagreusHome_0229",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					Text = "Come on, Achilles, live a little... such as you're able. I won't tell if you won't tell."
+				},
+			},
+			AchillesGift04_A = {
+				PlayOnce = true,
+				RequiredTextLines = { "AchillesGift03", },
+				{
+					Cue = "/VO/Achilles_0064",
+					Text =
+					"{#DialogueItalicFormat}Ah{#PreviousFormat}, now this is something, lad! I'd hate to think that you've returned to bring me this just for my sake. Though I'm grateful, really."
+				},
+				{
+					Cue = "/VO/ZagreusHome_0250",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"You've always been there for me, Achilles. Even when Father pushed me away. This is nothing. I don't think I can ever repay you."
+				},
+			},
+			AchillesGift05_A = {
+				PlayOnce = true,
+				RequiredTextLines = { "AchillesGift04_A", },
+				RequiredFalseTextLines = { "AchillesGift05_B", "AchillesAboutPatroclus01A", "AchillesAboutPatroclus01B", "AchillesAboutPatroclus01C" },
+				{
+					Cue = "/VO/Achilles_0065",
+					PostLineAnim = "ZagreusTalkEmpathyStart",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Lad, all this generosity, I... don't want you to get the wrong idea. I am alone, yes, but my heart belongs to another. Ever since I was alive. I hope you understand."
+				},
+				{
+					Cue = "/VO/ZagreusHome_0249",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"I... somehow knew that was the case, Achilles. I wanted you to have this, anyway, just... don't drown your sorrows, as they seem to make you stronger."
+				},
+				{
+					Cue = "/VO/Achilles_0066",
+					Text =
+					"Thank you, then, and do not worry about me. I am long since past my sorrow, and the rage I felt when first my heart was broken. Now it's but another scar. They say it's our scars that give us character."
+				},
+			},
+			AchillesGift05_B = {
+				PlayOnce = true,
+				RequiredTextLines = { "AchillesGift04_A" },
+				RequiredAnyTextLines = { "AchillesAboutPatroclus01A", "AchillesAboutPatroclus01B", "AchillesAboutPatroclus01C" },
+				RequiredFalseTextLines = { "AchillesGift05_A" },
+				EndVoiceLines = {
+					PreLineWait = 0.65,
+					UsePlayerSource = true,
+					-- Other way around.
+					{ Cue = "/VO/ZagreusHome_2837" },
+				},
+				{
+					Cue = "/VO/Achilles_0343",
+					PostLineAnim = "ZagreusTalkEmpathyStart",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Lad, all this generosity, I... I'm just an old killer, yet you treat me like I'm the one who's royalty around here. That's about the last thing I would have expected when first I set foot in this House."
+				},
+				{
+					Cue = "/VO/ZagreusHome_2836",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"You were a great hero, Achilles, and guess what? You still are! And always will be if you ask me. You deserve so much better than just this. I wish there was more that I could do."
+				},
+				{
+					Cue = "/VO/Achilles_0344",
+					Text =
+					"Thank you, then, and do not worry about me. I'm fortunate to be here, and besides... a teacher couldn't have asked for a better pupil."
+				},
+			},
+			-- formerly AchillesGift08
+			AchillesGift06_A = {
+				-- cutaway scene
+				PlayOnce = true,
+				RequiredAnyTextLines = { "AchillesGift05_A", "AchillesGift05_B" },
+				{
+					Cue = "/VO/ZagreusHome_0252",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Achilles, I was wondering if you'd split this with me at the lounge. A small excuse for both ourselves to take a break?"
+				},
+				{
+					Cue = "/VO/Achilles_0068",
+					PortraitExitAnimation = "Portrait_MaleGhost_Default_01_Exit",
+					PostLineThreadedFunctionName = "LoungeRevelryPresentation",
+					PostLineFunctionArgs = { Sound2 = "/EmptyCue", Sound3 = "/EmptyCue" },
+					Text =
+					"Are you most certain you have time for me now, lad...? Though, how could I decline. I'll see you there."
+				},
+				{
+					Cue = "/VO/Achilles_0069",
+					PreLineWait = 0.35,
+					FadeOutTime = 0.5,
+					FullFadeTime = 7.8,
+					FadeInTime = 2.0,
+					FadeInSound = "/Leftovers/World Sounds/MapZoomInShortHigh",
+					TeleportToId = 556834,
+					AngleTowardTargetId = 556835,
+					TeleportHeroToId = 556835,
+					AngleHeroTowardTargetId = 556834,
+					AttachedDim = "Lounge",
+					Text =
+					"...I was a fool, you see. The gods promised me eternal glory beyond death. I could have stayed out of the war. Stayed home with Patroclus. I threw everything away. And sent so very many to this place."
+				},
+				{
+					Cue = "/VO/ZagreusHome_0253",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"What's done is done, sir. In my mind you're the greatest warrior who ever lived. So is it glory you still seek, or is it Patroclus?"
+				},
+				{
+					Cue = "/VO/Achilles_0070",
+					PreLineAnim = "AchillesIdleGreeting",
+					PortraitExitAnimation = "Portrait_MaleGhost_Default_01_Exit",
+					Text =
+					"It isn't glory anymore, lad. I'm sure of that. Patroclus, however, I... fear he's gone to me, forever. Although his shade might yet reside within this realm, we left on terms I'd not forgive if I were him. Though... I had better get back to my post now, I think."
+				},
+				{
+					Cue = "/VO/Achilles_0071",
+					PreLineWait = 0.55,
+					FadeOutTime = 0.5,
+					FullFadeTime = 0.5,
+					TeleportToId = 391565,
+					AngleTowardTargetId = 421072,
+					TeleportHeroToId = 391570,
+					AngleHeroTowardTargetId = 391565,
+					FadeInTime = 0.5,
+					FadeInSound = "/Leftovers/World Sounds/MapZoomInShortHigh",
+					Text =
+					"...I hope I didn't cast a greater pall over this place back there. I'm very thankful that we had this chance to get caught up. Now you had best be off! Take care out there."
+				},
+			},
+			-- keepsake
+			AchillesGift07_A = {
+				PlayOnce = true,
+				RequiredTextLines = { "AchillesGift06_A", },
+				{
+					Cue = "/VO/ZagreusHome_2587",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Achilles, next time you're in Elysium, I thought this might be something you'd enjoy. That you might share."
+				},
+				{
+					Cue = "/VO/Achilles_0254",
+					Text =
+					"Ambrosia... well I am honored, lad, truly. Although it's I who ought to be bestowing thoughtful gifts upon you, for what you've done for me, not the other way around. And, I happen to have one here, on Pat's and my behalf."
+				},
+			},
+			AchillesGift08_A = {
+				PlayOnce = true,
+				RequiredTextLines = { "AchillesGift07_A", },
+				{
+					Cue = "/VO/ZagreusHome_2589",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"It's hard to think of anybody more deserving of this than you, sir. So when next you are off duty, or whenever the occasion warrants, please, enjoy, all right?"
+				},
+				{
+					Cue = "/VO/Achilles_0255",
+					Text =
+					"I suppose this must be what it's like to be a god, lad. Being shown affection such as this. And getting offerings! Are you quite sure?"
+				},
+				{
+					Cue = "/VO/ZagreusHome_2590",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Oh, I'm absolutely positive. I would never have been remotely prepared for everything I've had to face, if not for all your guidance. And, I don't just mean the violent stuff."
+				},
+				{
+					Cue = "/VO/Achilles_0256",
+					Text =
+					"Come now, lad. Admittedly I was quite good at it, but I was nothing other than a killer. I would be wary of all my advice, if I were you."
+				},
+				{
+					Cue = "/VO/ZagreusHome_2591",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					Text = "See, that's why you give such good advice, right there!"
+				},
+			},
+			AchillesGift09_A = {
+				PlayOnce = true,
+				RequiredTextLines = { "AchillesGift08_A", },
+				EndVoiceLines = {
+					PreLineWait = 0.35,
+					UsePlayerSource = true,
+					-- I mean it.
+					{ Cue = "/VO/ZagreusHome_2595" },
+				},
+				{
+					Cue = "/VO/ZagreusHome_2592",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkDenialStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkDenialReturnToIdle",
+					PostLineAnimTarget = "Hero",
+					Text =
+					"Here, sir! To you, and to Patroclus. May the remainder of eternity more than make up for everything it took for you to come this far."
+				},
+				{
+					Cue = "/VO/Achilles_0257",
+					Text =
+					"Oh, thank you, lad. Prince. Zagreus. You really oughtn't have. In fact, I shall accept this from you once again, but not a bottle more."
+				},
+				{
+					Cue = "/VO/ZagreusHome_2593",
+					Portrait = "Portrait_Zag_Empathetic_01",
+					Speaker = "CharProtag",
+					PreLineAnim = "ZagreusTalkEmpathyStart",
+					PreLineAnimTarget = "Hero",
+					PostLineAnim = "ZagreusTalkEmpathy_Return",
+					PostLineAnimTarget = "Hero",
+					Text = "Really? I mean... I meant no offense, of course, it's just... I thought you enjoyed this stuff, no?"
+				},
+				{
+					Cue = "/VO/Achilles_0258",
+					Text =
+					"We do enjoy it, quite a bit, in fact. But in Elysium... it's something to be earned more than accepted, and, well... perhaps in being there, a bit of our old pride is coming back."
+				},
+				{
+					Cue = "/VO/ZagreusHome_2594",
+					Portrait = "Portrait_Zag_Default_01",
+					Speaker = "CharProtag",
+					Text =
+					"Well, good. You have much to be proud of, Achilles. You're a great warrior. A great instructor. A great friend."
+				},
+				{
+					Cue = "/VO/Achilles_0259",
+					PreLineWait = 0.35,
+					PostLineThreadedFunctionName = "MaxedRelationshipPresentation",
+					PostLineFunctionArgs = { Text = "NPC_Achilles_01", Icon = "Keepsake_AchillesSticker_Max" },
+					Text =
+					"...If, indeed, I've something to be proud of, lad... it's that someone such as you can say a thing like that to me, and mean it."
+				},
+			},
+			-- -- below: old conversations from before the Welcome to Hell update
+			-- AchillesGift04 = {
+			-- 	Skip = true,
+			-- 	PlayOnce = true,
+			-- 	RequiredTextLines = { "AchillesGift03", },
+			-- 	{
+			-- 		Cue = "/VO/Achilles_0015",
+			-- 		Text = "My word. How very kind of you to think of me with that there, lad."
+			-- 	},
+			-- 	{
+			-- 		Cue = "/VO/ZagreusHome_0230",
+			-- 		Portrait = "Portrait_Zag_Default_01",
+			-- 		Speaker = "CharProtag",
+			-- 		Text = "Least I can do for all your guidance, sir."
+			-- 	},
+			-- },
+			-- AchillesGift05 = {
+			-- 	Skip = true,
+			-- 	PlayOnce = true,
+			-- 	RequiredTextLines = { "AchillesGift04", },
+			-- 	{
+			-- 		Cue = "/VO/Achilles_0064",
+			-- 		Text =
+			-- 		"Ah, now this is something, lad. I'd hate to think that you've returned to bring me this just for my sake. Though I am grateful, really."
+			-- 	},
+			-- 	{
+			-- 		Cue = "/VO/ZagreusHome_0250",
+			-- 		Portrait = "Portrait_Zag_Default_01",
+			-- 		Speaker = "CharProtag",
+			-- 		PreLineAnim = "ZagreusTalkEmpathyStart",
+			-- 		PreLineAnimTarget = "Hero",
+			-- 		PostLineAnim = "ZagreusTalkEmpathy_Return",
+			-- 		PostLineAnimTarget = "Hero",
+			-- 		Text =
+			-- 		"You've always been there for me, Achilles. Even when Father pushed me away. This is nothing. I don't think I can ever repay you."
+			-- 	},
+			-- },
+			-- AchillesGift06 = {
+			-- 	Skip = true,
+			-- 	PlayOnce = true,
+			-- 	RequiredTextLines = { "AchillesGift05", },
+			-- 	{
+			-- 		Cue = "/VO/Achilles_0065",
+			-- 		PostLineAnim = "ZagreusTalkEmpathyStart",
+			-- 		PostLineAnimTarget = "Hero",
+			-- 		Text =
+			-- 		"Lad, all this generosity, I... don't want you to get the wrong idea. I am alone, yes, but my heart belongs to another. Ever since I was alive. I hope you understand."
+			-- 	},
+			-- 	{
+			-- 		Cue = "/VO/ZagreusHome_0249",
+			-- 		Portrait = "Portrait_Zag_Default_01",
+			-- 		Speaker = "CharProtag",
+			-- 		PostLineAnim = "ZagreusTalkEmpathy_Return",
+			-- 		PostLineAnimTarget = "Hero",
+			-- 		Text =
+			-- 		"I... somehow knew that was the case, Achilles. I wanted you to have this, anyway, just... don't drown your sorrows, as they seem to make you stronger."
+			-- 	},
+			-- 	{
+			-- 		Cue = "/VO/Achilles_0066",
+			-- 		Text =
+			-- 		"Thank you, then, and do not worry about me. I am long since past my sorrow, and the rage I felt when first my heart was broken. Now it's but another scar. They say it's our scars that give us character."
+			-- 	},
+			-- },
+			-- AchillesGift07 = {
+			-- 	Skip = true,
+			-- 	PlayOnce = true,
+			-- 	RequiredTextLines = { "AchillesGift06", },
+			-- 	{
+			-- 		Cue = "/VO/Achilles_0067",
+			-- 		Text =
+			-- 		"I'm going to be the envy of the House with this, I thank you, lad. I hope you wouldn't mind if I shared some of it around?"
+			-- 	},
+			-- 	{
+			-- 		Cue = "/VO/ZagreusHome_0251",
+			-- 		Portrait = "Portrait_Zag_Default_01",
+			-- 		Speaker = "CharProtag",
+			-- 		Text = "It's yours, Achilles! Though not only do I hope you'll share it, why, I practically insist."
+			-- 	},
+			-- },
+		},
+		MissingDistanceTrigger = {
+			WithinDistance = 400,
+			RequiredFalseFlags = { "InFlashback", },
+			VoiceLines = {
+				{
+					BreakIfPlayed = true,
+					RandomRemaining = true,
+					UsePlayerSource = true,
+					SuccessiveChanceToPlayAll = 0.1,
+					RequiredTextLines = { "PatroclusWithAchilles01" },
+					AreIdsNotAlive = { 370009 },
+					Cooldowns = {
+						{ Name = "ZagreusAnyQuipSpeech", Time = 30 },
+					},
+					-- Achilles might be in Elysium I guess.
+					{ Cue = "/VO/ZagreusHome_2582" },
+					-- Achilles must be with Patroclus now.
+					{ Cue = "/VO/ZagreusHome_2583" },
+					-- Achilles is probably in Elysium.
+					{ Cue = "/VO/ZagreusHome_2584" },
+				},
+				{
+					BreakIfPlayed = true,
+					RandomRemaining = true,
+					UsePlayerSource = true,
+					SuccessiveChanceToPlayAll = 0.1,
+					AreIdsNotAlive = { 370009 },
+					Cooldowns = {
+						{ Name = "ZagreusAnyQuipSpeech", Time = 30 },
+					},
+					-- Achilles is off duty.
+					{ Cue = "/VO/ZagreusHome_0444" },
+					-- Must have missed Achilles.
+					{ Cue = "/VO/ZagreusHome_0445" },
+					-- Achilles on break I guess.
+					{ Cue = "/VO/ZagreusHome_0446" },
+				},
+			},
+		},
+		GiftGivenVoiceLines = {
+			{
+				BreakIfPlayed = true,
+				PreLineWait = 1.0,
+				PlayFromTarget = true,
+				RequiredTextLines = { "AchillesGift07_A" },
+				-- You have a Chthonic Companion! And you're giving it to me?!
+				{ Cue = "/VO/ZagreusHome_2588" },
+			},
+			{
+				BreakIfPlayed = true,
+				PreLineWait = 1.0,
+				PlayFromTarget = true,
+				-- Thanks so much, sir.
+				{ Cue = "/VO/ZagreusHome_0313" },
+			},
+		},
+	},
+
+	NPC_Achilles_Story_01 = {
+		InheritFrom = { "ModsNikkelMHadesBiomes_NPC_Achilles_01" },
+		CanReceiveGift = false,
+		ActivateRequirements = {
+			SuccessiveChanceToPlay = 0.5,
+			RequiredTextLines = { "MyrmidonReunionQuestComplete" },
+			MinRunsSinceAnyTextLines = { TextLines = game.GameData.AchillesWithPatroclusTextLines, Count = 3 },
+		},
+		RepulseOnMeleeInvulnerableHit = 150,
+		OnHitVoiceLines = {
+			RandomRemaining = true,
+			BreakIfPlayed = true,
+			PreLineWait = 0.45,
+			SuccessiveChanceToPlay = 0.25,
+			PlayFromTarget = true,
+			CooldownTime = 12,
+			-- Come, lad.
+			-- { Cue = "/VO/Achilles_0238" },
+			-- No mood for sparring, lad.
+			-- { Cue = "/VO/Achilles_0239" },
+			-- Not now, lad.
+			-- { Cue = "/VO/Achilles_0240" },
+			-- I've fought enough I think.
+			{ Cue = "/VO/Achilles_0241" },
+			-- Rest while you're able.
+			{ Cue = "/VO/Achilles_0242" },
+			-- Not here to fight you, lad.
+			-- { Cue = "/VO/Achilles_0243" },
+			-- Heh.
+			{ Cue = "/VO/Achilles_0244" },
+			-- Ehh.
+			{ Cue = "/VO/Achilles_0245" },
+			-- No, thank you.
+			{ Cue = "/VO/Achilles_0246" },
+		},
+		InteractTextLineSets = {
+		},
+		RepeatableTextLineSets = {
+		},
 	},
 }

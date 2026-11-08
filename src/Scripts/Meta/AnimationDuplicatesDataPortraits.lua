@@ -580,10 +580,10 @@ mod.HadesPortraitAnimationAdditions = {
 	-- 	Name = "ModsNikkelMHadesBiomes_Codex_Portrait_Nyx",
 	-- 	InheritFrom = "Codex_Portrait_Nyx",
 	-- },
-	-- {
-	-- 	Name = "ModsNikkelMHadesBiomes_Codex_Portrait_Achilles",
-	-- 	InheritFrom = "Codex_Portrait_Achilles",
-	-- },
+	{
+		Name = "ModsNikkelMHadesBiomes_Codex_Portrait_Achilles",
+		InheritFrom = "Codex_Portrait_Achilles",
+	},
 	-- {
 	-- 	Name = "ModsNikkelMHadesBiomes_Codex_Portrait_Medusa",
 	-- 	InheritFrom = "Codex_Portrait_Dusa",

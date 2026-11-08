@@ -167,7 +167,7 @@ local function on_ready()
 	public.IsValidInstallation = mod.HiddenConfig.IsValidInstallation
 
 	if config.enabled == false then
-		local numMissingFiles = mod.CheckRequiredFiles(true)
+		local numMissingFiles = mod.CheckRequiredFiles(true, true)
 		if numMissingFiles == 0 then
 			-- Mod is disabled, but has not been uninstalled - do not return early
 			mod.DebugPrint(
@@ -407,6 +407,7 @@ local function on_ready()
 			import "Scripts/RoomDataStyx.lua"
 			import "Scripts/HadesRoomDataSurface.lua"
 			import "Scripts/RoomDataSurface.lua"
+			import "Scripts/RoomDataFlashbacks.lua"
 			DebugLogScriptImportProgress("Room Sets and Room Data")
 
 			-- Loads Weapon data
@@ -514,6 +515,7 @@ local function on_ready()
 			import "Scripts/EventLogic.lua"
 			import "Scripts/EventPresentation.lua"
 			import "Scripts/FamiliarData.lua"
+			import "Scripts/FlashbackPresentation.lua"
 			import "Scripts/GameStatsLogic.lua"
 			import "Scripts/GardenLogic.lua"
 			import "Scripts/GiftPresentation.lua"

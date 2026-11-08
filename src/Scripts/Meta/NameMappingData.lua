@@ -513,6 +513,7 @@ mod.HadesHelpTextCopyKeys = {
 	UseTalkToPatroclus = true,
 	UseTalkToCerberus = true,
 	UseTalkToEurydice = true,
+	UseTalkToMaleGhost = true,
 	UseTalkToFemaleGhost = true,
 	UseFinalBossDoor = true,
 	UseCerberusDoor = true,
@@ -901,6 +902,7 @@ mod.HadesHelpTextCopyKeys = {
 	SisyphusQuestItem = true,
 	AchillesPatroclusQuestItem = true,
 	OrpheusUnlockItem = true,
+	HadesBedroomUnlocked_Subtitle = true,
 	-- #endregion
 	-- #region Orpheus Boons/Songs
 	MusicMusicPlayerMainThemeMusicPlayer = true,
@@ -1420,6 +1422,7 @@ mod.HadesHelpTextAliases = {
 	NPC_Hades_Story_02 = "NPC_LordHades_01",
 	NPC_Thanatos_Field_01 = "NPC_Thanatos_01",
 	NPC_Orpheus_Story_01 = "NPC_Orpheus_01",
+	ModsNikkelMHadesBiomes_NPC_Achilles_01 = "NPC_Achilles_01",
 	NPC_Achilles_Story_01 = "NPC_Achilles_01",
 	NPC_Patroclus_Standing_01 = "NPC_Patroclus_01",
 	Charon = "NPC_Charon_01",

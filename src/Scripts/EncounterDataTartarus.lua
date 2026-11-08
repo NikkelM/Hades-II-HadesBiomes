@@ -346,21 +346,6 @@ local encounterModifications = {
 		StartRoomUnthreadedEvents = {
 			{
 				FunctionName = "ActivatePrePlaced",
-				GameStateRequirements = {
-					-- Adapted from NPC_Thanatos_01 ActivateRequirements
-					RequiredTextLines = { "ThanatosFieldFirstMeeting", },
-					RequiredFalseTextLinesLastRun = { "PersephoneFirstMeeting", },
-					-- Will appear in any run after you met him during a run in his Field version
-					{
-						Path = { "PrevRun", "EncountersOccurredCache", },
-						HasAny = { "ThanatosTartarus", "ThanatosAsphodel", "ThanatosElysium", "ThanatosElysiumIntro", },
-					},
-					-- Don't spawn in Dream Dives
-					{
-						PathFalse = { "CurrentRun", "IsDreamRun" },
-					},
-					NamedRequirementsFalse = { "StandardPackageBountyActive", },
-				},
 				Args = { FractionMin = 1.0, FractionMax = 1.0, LegalTypes = { "NPC_Thanatos_01" }, },
 			},
 			{ FunctionName = "CheckConversations" },

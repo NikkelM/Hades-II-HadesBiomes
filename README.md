@@ -3,7 +3,7 @@
 ![Zagreus' Journey](./img/Readme/ZagreusJourneyTartarus.png)
 
 _Zagreus' Journey_ is a mod for Hades II that adds the original route Zagreus took through Tartarus, Asphodel, Elysium and the Temple of Styx in the first game to the sequel. <br>
-Escape the Underworld as Melinoë, battle familiar foes and bosses using her unique abilities and weapons, meet Zagreus' old friends, and reconnect with your family's past - all integrated into the main game as if it was always there: Naturally progress through the new biomes, unlock new incantations to perform, reveal and complete new Minor Prophecies, forge bonds with NPCs in familiar and new locations, collect over 30 new resources to spend on new cosmetics and music, and test your skills with new Testaments, Chaos Trials and in Dream Dives.
+Escape the Underworld as Melinoë, battle familiar foes and bosses using her unique abilities and weapons, meet Zagreus' old friends, and reconnect with your family's past - all integrated into the main game as if it was always there: Naturally progress through the new regions, unlock new incantations to perform, reveal and complete new Minor Prophecies, forge bonds with NPCs in familiar and new locations, collect over 30 new resources to spend on new cosmetics and music, and test your skills with new Testaments, Chaos Trials and in Dream Dives.
 Find the full list of features below!
 
 This mod has been officially endorsed by the developers!
@@ -38,14 +38,14 @@ It is highly recommended that you complete the main story of the first Hades gam
 ![Features](./img/Readme/FeaturesStyx.png)
 
 - Start playing at any time - the mod integrates seemlessly into the main game, and can be used on a fresh file as well as after completing the epilogue.
-- Journey through the original four biomes of Hades as Melinoë: Tartarus, Asphodel, Elysium and the Temple of Styx.
+- Journey through the original four regions of Hades as Melinoë: Tartarus, Asphodel, Elysium and the Temple of Styx.
 - Discover and overcome the challenge of fighting all of the original game's enemies and bosses using Melinoë's unique abilities and weapons.
 - Relive Zagreus' story by escaping to the Surface, forging bonds with your brother's old friends, and conversing with the Fury Sisters, the Champions of Elysium and [REDACTED] himself.
-- Benefit from a multitude of entirely new boons and effects offered to you by Sisyphus, Eurydice, Patroclus... and other familiar faces that you will now be able to meet along the way!
-- Collect **30+** new resources specific to the new biomes, use them for unlocks in this and other mods (see section below), and trade them with the Broker.
+- Receive a multitude of **entirely new boons** and effects offered to you by Sisyphus, Eurydice, Patroclus... and other familiar faces that you will now be able to meet along the way!
+- Collect **30+** new resources specific to the new regions, use them for unlocks in this and other mods (see section below), and trade them with the Broker.
 - Unlock **28** new musical tracks from Hades' original soundtrack through the [Hades OST for the Music Maker](https://thunderstore.io/c/hades-ii/p/NikkelM/Hades_OST_for_the_Music_Maker/) mod integration (automatically installed with this mod).
 - Decorate the Crossroads with **55+** new cosmetics, including new **Cauldrons**, **Arcana Card Backs**, and **Charms** inspired by Zagreus' companions from the first game.
-- Discover and complete **40+** new Minor Prophecies at the Fated List.
+- Discover and complete **45+** new Minor Prophecies at the Fated List.
 - Complete **24** new testaments by clearing the new bosses using each of your weapons with new fear levels.
 - Discover and perform **20+** new incantations to unlock gameplay features and progress story events in Zagreus' Journey (use the mod config if you want to immediately unlock all of them).
 - Unlock **ten** of the original game's keepsakes and companions by forging relationships with Sisyphus, Eurydice, Patroclus, Orpheus, Megaera and Thanatos through the [Shared Keepsake Port](https://thunderstore.io/c/hades-ii/p/zannc/SharedKeepsakePort/) mod integration (automatically installed with this mod).
@@ -53,7 +53,7 @@ It is highly recommended that you complete the main story of the first Hades gam
 - Advance through **50** new cosmetic-only ranks at the Spirit Mixer, from the lowly "_Alpha Warden_" to the feared "_Unseen One_".
 - Earn a new set of **three statues** from Commander Schelemeus by escaping the Nightmare Realm at progressively higher fear.
 - The four new regions can also appear in **Dream Dives** (but you can use the mod config to exclude them if you so wish).
-- Read all about the new biomes, enemies, bosses and friends in a **new chapter** in your Codex.
+- Read all about the new regions, enemies, bosses and friends in a **new chapter** in your Codex.
 
 ### Integrations with other Mods
 
