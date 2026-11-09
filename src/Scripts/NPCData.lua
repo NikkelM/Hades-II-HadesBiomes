@@ -713,6 +713,7 @@ local npcModifications = {
 		ModsNikkelMHadesBiomesIsModdedEnemy = true,
 		AlwaysShowInvulnerabubbleOnInvulnerableHit = true,
 		RepulseOnMeleeInvulnerableHit = 150,
+		MissingDistanceTrigger = mod.NilValue,
 		ActivateRequirements = {
 			RequiredFalsePlayedThisRun = mod.NilValue,
 			RequiredFalseTextLinesThisRun = mod.NilValue,
@@ -1227,6 +1228,7 @@ local npcModifications = {
 	},
 	NPC_Thanatos_01 = {
 		ModsNikkelMHadesBiomesIsModdedEnemy = true,
+		MissingDistanceTrigger = mod.NilValue,
 		SpecialInteractFunctionName = "SpecialInteractSalute",
 		SpecialInteractGameStateRequirements = {
 			{
@@ -3712,7 +3714,6 @@ local npcChoiceMappings = {
 	},
 }
 
--- Custom, more complicated changes before anything else
 -- Replace duplicated Bouldy conversations
 mod.NPCData.ModsNikkelMHadesBiomes_NPC_Bouldy_01.InteractTextLineSets.ModsNikkelMHadesBiomes_BouldyFirstMeeting = game
 		.DeepCopyTable(mod.NPCData.ModsNikkelMHadesBiomes_NPC_Bouldy_01.InteractTextLineSets.BouldyFirstMeeting) or {}
