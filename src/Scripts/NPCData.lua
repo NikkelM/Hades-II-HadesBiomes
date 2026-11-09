@@ -2457,9 +2457,9 @@ local npcModifications = {
 				Comparison = ">",
 				Value = 1,
 			},
-			-- Can't appear if she left after a dialogue (e.g. romance), set in game.ExitNPCPresentation()
+			-- Can't appear if she left after a dialogue
 			{
-				PathFalse = { "CurrentRun", "ModsNikkelMHadesBiomesExitNPCRecord", "NPC_FurySister_01" },
+				PathFalse = { "CurrentRun", "NPCLeaveOutRecord", "NPC_FurySister_01" },
 			},
 			-- Can't appear in Dream Dives
 			{
