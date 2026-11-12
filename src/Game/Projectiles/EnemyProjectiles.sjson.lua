@@ -189,6 +189,9 @@ local hadesProjectilesModifications = {
 	CrusherUnitSlamUpgraded = {
 		Fuse = 0.1,
 	},
+	HydraTouchdown = {
+		DamageRadius = 400,
+	},
 	HydraDart = {
 		DissipateFx = "EnemyProjectileDissipate",
 		CanBeReflected = true,
