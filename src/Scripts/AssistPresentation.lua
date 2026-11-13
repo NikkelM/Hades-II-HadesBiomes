@@ -263,6 +263,11 @@ function mod.AssistHintPresentation()
 end
 
 function mod.AssistFailedPresentation(attacker)
+	local currentEncounter = game.CurrentRun and game.CurrentRun.CurrentRoom and game.CurrentRun.CurrentRoom.Encounter
+	if currentEncounter == nil or currentEncounter.EncounterType == nil or currentEncounter.EncounterType == "NonCombat" then
+		return
+	end
+
 	if (attacker.IsDead and game.CurrentHubRoom ~= nil and not game.CurrentHubRoom.AllowAssistFailedPresentation) or not game.IsInputAllowed({}) then
 		return
 	end
