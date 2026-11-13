@@ -3348,7 +3348,10 @@ local enemyModifications = {
 			Queue = "Interrupt",
 			[1] = { Source = { LineHistoryName = "Hades" } },
 			[2] = { Source = { LineHistoryName = "Hades" } },
-			[3] = { Source = { LineHistoryName = "Hades" } },
+			[3] = {
+				Source = { LineHistoryName = "Hades" },
+				[21] = { RequiredOneOfTraits = game.GameData.AllDuoBoons },
+			},
 			[4] = { Source = { LineHistoryName = "Hades" } },
 			[5] = { Source = { LineHistoryName = "Hades" } },
 		},
@@ -3379,6 +3382,12 @@ local enemyModifications = {
 					NamedRequirements = { "BossDifficultyActive" },
 				},
 			},
+		},
+		BossPresentationOutroRepeatableTextLineSets = {
+			LordHadesMiscDefeat16 = { RequiredOneOfTraits = game.GameData.AllDuoBoons },
+			LordHadesMiscDefeat17 = { RequiredOneOfTraits = game.GameData.AllDuoBoons },
+			LordHadesMiscPostEndingDefeat07 = { RequiredOneOfTraits = game.GameData.AllDuoBoons },
+			LordHadesMiscPostEndingDefeat08 = { RequiredOneOfTraits = game.GameData.AllDuoBoons },
 		},
 		AltHealthBarTextIds = {
 			{
