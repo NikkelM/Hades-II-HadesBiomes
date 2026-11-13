@@ -118,6 +118,7 @@ Other fixes and improvements:
 - Fixed: After buying one of two identical items in the Styx Hub with "Travel Deal" active, returning from a wing may cause the replacement item to have disappeared.
 - Fixed: Resource spawns can slightly overlap with each other or Chaos or Erebus Gates.
 - Fixed: The in-game timer continues running after Hades lets Melinoë pass on the tenth clear.
+- Fixed: The last run of the Zagreus' Journey story does not count as a cleared run after returning to the Crossroads.
 - Fixed: If playing with controller and a Hex is ready after Hades' boss fight completes, using the "Proceed" action to enter the Surface after the true ending of Zagreus' Journey fires the Hex at the same time as exiting the room.
 - Fixed: Blood Triad progress and indicators are cleared when enemies teleport.
 - Fixed: Flying bats are missing on many maps in Tartarus and Asphodel.

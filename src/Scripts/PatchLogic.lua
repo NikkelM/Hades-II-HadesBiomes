@@ -323,8 +323,101 @@ modutil.mod.Path.Wrap("DoPatches", function(base)
 			end
 		end
 
+		if game.GameState.ModsNikkelMHadesBiomesPatchRevision < 16 then
+			-- The peaceful tenth clear was recorded as a failure because it skipped the run-clear screen
+			-- This emulates RecordRunCleared() which we can't directly call as it uses CurrentRun directly
+			local patchedClears = 0
+			local function patchPeacefulEndingRun(runData)
+				if runData == nil or runData.Cleared then
+					return
+				end
+
+				runData.Cleared = true
+				runData.RunResult = game.RunResultData.ModsNikkelMHadesBiomesUnderworldSuccess
+				runData.EndingRoomName = "D_Boss01"
+				runData.KilledByName = nil
+				patchedClears = patchedClears + 1
+
+				local biomeName = "Styx"
+				game.GameState.ClearedWithWeapons[biomeName] = game.GameState.ClearedWithWeapons[biomeName] or {}
+				for weaponName in pairs(runData.WeaponsCache or {}) do
+					game.GameState.ClearedWithWeapons[weaponName] = true
+					game.GameState.ClearedWithWeapons[biomeName][weaponName] = true
+				end
+
+				for traitName in pairs(runData.TraitCache or {}) do
+					local traitData = game.TraitData[traitName]
+					if traitData ~= nil and traitData.Slot == "Aspect" then
+						local actualTraitName = game.GetKey(game.ScreenData.GameStats.WeaponBaseAspectMapping, traitName) or
+								traitName
+						game.GameState.ClearedWithAspects[actualTraitName] = true
+					end
+
+					game.GameState.LifetimeTraitStats[traitName] = game.GameState.LifetimeTraitStats[traitName] or {}
+					local traitStats = game.GameState.LifetimeTraitStats[traitName]
+					traitStats.ModsNikkelMHadesBiomesClearCount = (traitStats.ModsNikkelMHadesBiomesClearCount or 0) + 1
+					traitStats.ClearCount = (traitStats.ClearCount or 0) + 1
+					traitStats.ModsNikkelMHadesBiomesFastestTime = math.min(traitStats.ModsNikkelMHadesBiomesFastestTime or 999999,
+						runData.GameplayTime or 999999)
+					traitStats.ModsNikkelMHadesBiomesHighestShrinePoints = math.max(
+						traitStats.ModsNikkelMHadesBiomesHighestShrinePoints or 0, runData.ShrinePointsCache or 0)
+				end
+
+				for familiarName, familiarData in pairs(game.FamiliarData) do
+					for _, traitName in ipairs(familiarData.TraitNames or {}) do
+						if runData.TraitCache ~= nil and runData.TraitCache[traitName] then
+							game.GameState.ClearedWithFamiliars[familiarName] = true
+							break
+						end
+					end
+				end
+
+				if runData.ActiveBounty == nil and #(runData.KeepsakeCache or {}) == 1 then
+					local keepsakeName = runData.KeepsakeCache[1]
+					game.GameState.ClearedFullRunWithKeepsakes[keepsakeName] = true
+					game.GameState.ModsNikkelMHadesBiomes_ClearedFullRunWithKeepsakes[keepsakeName] = true
+				end
+
+				game.GameState.ModsNikkelMHadesBiomes_ClearedWithShrineUpgrades[biomeName] = game.GameState
+						.ModsNikkelMHadesBiomes_ClearedWithShrineUpgrades[biomeName] or {}
+				for shrineUpgradeName, shrineUpgradeLevel in pairs(runData.ShrineUpgradesCache or {}) do
+					local recordedLevel = game.GameState.ModsNikkelMHadesBiomes_ClearedWithShrineUpgrades[biomeName]
+							[shrineUpgradeName] or 0
+					if shrineUpgradeLevel > recordedLevel then
+						game.GameState.ModsNikkelMHadesBiomes_ClearedWithShrineUpgrades[biomeName][shrineUpgradeName] =
+								shrineUpgradeLevel
+					end
+				end
+
+				if (runData.ShrinePointsCache or 0) > game.GameState.ModsNikkelMHadesBiomesHighestShrinePointClearModdedRunCache then
+					game.GameState.ModsNikkelMHadesBiomesHighestShrinePointClearModdedRunCache = runData.ShrinePointsCache
+				end
+				if (runData.GameplayTime or 999999) < game.GameState.ModsNikkelMHadesBiomesFastestModdedRunClearTimeCache then
+					game.GameState.ModsNikkelMHadesBiomesFastestModdedRunClearTimeCache = runData.GameplayTime
+					runData.NewRecordClearTime = true
+				end
+			end
+
+			local peacefulEndingRun = nil
+			for runIndex = #game.GameState.RunHistory, 1, -1 do
+				local runData = game.GameState.RunHistory[runIndex]
+				if runData.TextLinesRecord ~= nil and runData.TextLinesRecord.Ending01 then
+					peacefulEndingRun = runData
+					break
+				end
+			end
+			if peacefulEndingRun == nil and game.CurrentRun ~= nil and game.CurrentRun.TextLinesRecord ~= nil and game.CurrentRun.TextLinesRecord.Ending01 then
+				peacefulEndingRun = game.CurrentRun
+			end
+			patchPeacefulEndingRun(peacefulEndingRun)
+
+			game.GameState.ClearedRunsCache = game.GameState.ClearedRunsCache + patchedClears
+			game.GameState.ModsNikkelMHadesBiomesClearedRunsCache = game.GameState.ModsNikkelMHadesBiomesClearedRunsCache +
+					patchedClears
+		end
+
 		-- IMPORTANT: This must be incremented every time this function is changed
-		game.GameState.ModsNikkelMHadesBiomesPatchRevision = 15
+		game.GameState.ModsNikkelMHadesBiomesPatchRevision = 16
 	end
 
 	return base()
