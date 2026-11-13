@@ -34049,8 +34049,6 @@ mod.NPCData = mod.NPCData or {
 			AchillesWithPersephone01 = {
 				Partner = "NPC_Persephone_Home_01",
 				PlayOnce = true,
-				UseableOffSource = true,
-				GiftableOffSource = true,
 				RequiredTextLines = { "Ending01" },
 				MinRunsSinceAnyTextLines = { TextLines = { "Ending01" }, Count = 3 },
 				MaxRunsSinceAnyTextLines = { TextLines = { "Ending01" }, Count = 25 },

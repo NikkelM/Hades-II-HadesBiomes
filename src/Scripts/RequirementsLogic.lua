@@ -888,7 +888,10 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 	end
 
 	-- Custom added
-	if requirements.RequiredTextLinesLastRun ~= nil and prevRun ~= nil and prevRun.TextLinesRecord ~= nil then
+	if requirements.RequiredTextLinesLastRun ~= nil then
+		if prevRun == nil or prevRun.TextLinesRecord == nil then
+			return false
+		end
 		if type(requirements.RequiredTextLinesLastRun) == "string" then
 			requirements.RequiredTextLinesLastRun = { requirements.RequiredTextLinesLastRun }
 		end
@@ -925,6 +928,10 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 		if not mod.ModsNikkelMHadesBiomesIsGameStateEligible(nil, codexRequirements) then
 			return false
 		end
+
+		if game.GameState.CodexEntriesViewed == nil or not game.GameState.CodexEntriesViewed[requiredEntryName] then
+			return false
+		end
 	end
 
 	if requirements.RequiredCodexEntries ~= nil then
@@ -934,6 +941,9 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 				local codexRequirements = game.CodexData[mod.CodexChapterName].Entries[requiredEntryName].Entries
 						[requiredEntryIndex].UnlockGameStateRequirements or {}
 				if not mod.ModsNikkelMHadesBiomesIsGameStateEligible(nil, codexRequirements) then
+					return false
+				end
+				if game.GameState.CodexEntriesViewed == nil or not game.GameState.CodexEntriesViewed[requiredEntryName] then
 					return false
 				end
 			end
@@ -1456,7 +1466,7 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 					if separatorIndex ~= nil and string.sub(prevRun.VictoryMessage, separatorIndex + 1) == requirements.RequiredDeathRoom then
 						-- Saw the room and died in it
 					else
-						-- Saw the room run and didn't die in it
+						-- Saw the room and didn't die in it
 						return false
 					end
 				elseif not prevRun.Cleared and prevRun.EndingRoomName == requirements.RequiredDeathRoom then
@@ -1465,7 +1475,12 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 					-- Saw the room and didn't die in it
 					return false
 				end
+			else
+				-- Didn't see the room last run at all, so can't have died in it
+				return false
 			end
+		else
+			return false
 		end
 	end
 	if requirements.RequiredAnyDeathRooms ~= nil then
@@ -1473,6 +1488,16 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 		-- 	return false
 		-- end
 		if prevRun ~= nil and prevRun.BiomesReached ~= nil then
+			local hasSeenRequiredDeathRoom = false
+			for _, roomName in ipairs(requirements.RequiredAnyDeathRooms) do
+				if mod.HasSeenRoomInRun(prevRun, roomName) then
+					hasSeenRequiredDeathRoom = true
+					break
+				end
+			end
+			if not hasSeenRequiredDeathRoom then
+				return false
+			end
 			for _, roomName in ipairs(requirements.RequiredAnyDeathRooms) do
 				if mod.HasSeenRoomInRun(prevRun, roomName) then
 					-- For the encoded EndingRoomName for uninstall compatibility
@@ -1481,7 +1506,7 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 						if separatorIndex ~= nil and string.sub(prevRun.VictoryMessage, separatorIndex + 1) == roomName then
 							-- Saw the room and died in it
 						else
-							-- Saw the room run and didn't die in it
+							-- Saw the room and didn't die in it
 							return false
 						end
 					elseif not prevRun.Cleared and prevRun.EndingRoomName == roomName then
@@ -1492,6 +1517,8 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 					end
 				end
 			end
+		else
+			return false
 		end
 	end
 	if requirements.RequiredFalseDeathRoom ~= nil then -- and DidFailRun(game.CurrentRun) and game.CurrentRun.CurrentRoom.Name == requirements.RequiredFalseDeathRoom then
@@ -1504,7 +1531,7 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 						-- Saw the room and died in it
 						return false
 					else
-						-- Saw the room run and didn't die in it
+						-- Saw the room and didn't die in it
 					end
 				elseif not prevRun.Cleared and prevRun.EndingRoomName == requirements.RequiredFalseDeathRoom then
 					-- Saw the room and died in it
@@ -1526,7 +1553,7 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 							-- Saw the room and died in it
 							return false
 						else
-							-- Saw the room run and didn't die in it
+							-- Saw the room and didn't die in it
 						end
 					elseif not prevRun.Cleared and prevRun.EndingRoomName == roomName then
 						-- Saw the room and died in it

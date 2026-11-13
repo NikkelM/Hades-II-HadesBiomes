@@ -871,8 +871,36 @@ local npcModifications = {
 				},
 				EndVoiceLines = { ObjectType = "ModsNikkelMHadesBiomes_NPC_Achilles_01" },
 			},
+			-- References getting Titan Blood from Megaera
+			AchillesAboutSuperLockKeys01 = mod.NilValue,
+			AchillesAboutSuperGiftPoints01 = {
+				RequiredFalseSeenRoomsThisRun = mod.NilValue,
+				RequiredFalseSeenRoomLastRun = "D_Boss01",
+			},
+			-- Achilles is not in the House
+			AchillesMysteryDoor01 = mod.NilValue,
 			AchillesAboutOnions01 = {
+				RequiredCodexEntry = mod.NilValue,
+				RequiredConsumablesThisRun = {
+					Count = 1,
+					Names = { "RoomRewardConsolationPrize" },
+				},
 				EndVoiceLines = { ObjectType = "ModsNikkelMHadesBiomes_NPC_Achilles_01" },
+			},
+			AchillesAboutWeaponEnchantments01 = {
+				RequiredScreenViewed = mod.NilValue,
+				RequiredMinUnlockedWeaponEnchantments = mod.NilValue,
+				GameStateRequirements = {
+					{
+						PathTrue = { "GameState", "ScreensViewed", "WeaponUpgradeScreen" },
+					},
+					{
+						Path = { "GameState", "WeaponsUnlocked" },
+						CountOf = game.GameData.AllWeaponAspects,
+						Comparison = ">=",
+						Value = 1,
+					},
+				},
 			},
 			AchillesAboutOrpheus01 = {
 				RequiredFalseCosmetics = mod.NilValue,
@@ -885,20 +913,36 @@ local npcModifications = {
 			AchillesAboutSkelly02 = {
 				EndVoiceLines = { ObjectType = "ModsNikkelMHadesBiomes_NPC_Achilles_01" },
 			},
+			AchillesAboutThanatos01 = {
+				IsIdAlive = mod.NilValue,
+			},
 			AchillesAboutGilgameshAspect01 = {
 				EndVoiceLines = { ObjectType = "ModsNikkelMHadesBiomes_NPC_Achilles_01" },
 			},
 			AchillesAboutLegendaryAspects01 = {
 				EndVoiceLines = { ObjectType = "ModsNikkelMHadesBiomes_NPC_Achilles_01" },
 			},
+			-- References reaching Asphodel, but Achilles is already in Asphodel
+			AchillesRunProgress01 = mod.NilValue,
+			AchillesRunProgress02 = {
+				RequiredRoomThisRun = mod.NilValue,
+				RequiredRoomLastRun = "C_Intro",
+			},
 			AchillesRunProgress03 = {
 				EndVoiceLines = { ObjectType = "ModsNikkelMHadesBiomes_NPC_Achilles_01" },
 			},
 			AchillesAboutStyxFoes01 = {
-				EndVoiceLines = { ObjectType = "ModsNikkelMHadesBiomes_NPC_Achilles_01" },
+				RequiredRoomThisRun = mod.NilValue,
+				RequiredRoomLastRun = "D_Hub",
+				-- Mentions "lad"
+				EndVoiceLines = mod.NilValue,
 			},
 			AchillesRunCleared01 = {
-				EndVoiceLines = { ObjectType = "ModsNikkelMHadesBiomes_NPC_Achilles_01" },
+				-- Mentions "lad"
+				EndVoiceLines = mod.NilValue,
+			},
+			AchillesPostEnding02 = {
+				RequiredTextLines = { "Ending01", "Inspect_DeathAreaBedroomHades_Portrait_01" },
 			},
 			AchillesPostEpilogue01 = {
 				EndVoiceLines = { ObjectType = "ModsNikkelMHadesBiomes_NPC_Achilles_01" },
@@ -3484,6 +3528,16 @@ local npcChoiceMappings = {
 		TextToMatch = { "Patroclus_OfferText02", "Patroclus_OfferText03", "Patroclus_OfferText04", "Patroclus_OfferText05" },
 		PrePortraitExitFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesBenefitChoice",
 		PrePortraitExitFunctionArgs = mod.PresetEventArgs.PatroclusBenefitChoices,
+	},
+	ModsNikkelMHadesBiomes_NPC_Achilles_01 = {
+		TextLineGroups = { "InteractTextLineSets", "RepeatableTextLineSets" },
+		-- These requirements refer to events after X_Intro or to the completed run
+		AlwaysReplaceKeysIfExist = {
+			RequiresRunCleared = "RequiresLastRunCleared",
+			RequiresRunNotCleared = "RequiresLastRunNotCleared",
+			RequiredFalseTextLinesThisRun = "RequiredFalseTextLinesLastRun",
+			RequiredFalseSeenRoomThisRun = "RequiredFalseSeenRoomLastRun",
+		},
 	},
 	ModsNikkelMHadesBiomes_NPC_Persephone_01 = {
 		TextLineGroups = { "InteractTextLineSets" },

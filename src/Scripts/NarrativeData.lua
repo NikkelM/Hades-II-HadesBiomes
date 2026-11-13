@@ -123,6 +123,32 @@ local newGameDataTables = {
 		"ArtemisAboutCallisto05",
 		"ArtemisAboutCallisto06",
 	},
+	ArtemisBasicPickUpTextLines = {
+		"ArtemisFirstPickUp",
+		"ArtemisMiscPickup03",
+		"ArtemisMiscPickup04",
+		"ArtemisMiscPickup05",
+		"ArtemisMiscPickup06",
+		"ArtemisMiscPickup07",
+		"ArtemisMiscPickup08",
+		"ArtemisMiscPickup10",
+		"ArtemisMiscPickup11",
+		"ArtemisMiscPickup12",
+		"ArtemisMiscPickup13",
+		"ArtemisMiscPickup14",
+		"ArtemisMiscPickup15",
+		"ArtemisMiscPickup16",
+		"ArtemisMiscPickup17",
+		"ArtemisMiscPickup18",
+		"ArtemisMiscPickup19",
+		"ArtemisMiscPickup20",
+		"ArtemisMiscPickupExtra01",
+		"ArtemisMiscPickupExtra02",
+		"ArtemisMiscPickupExtra06",
+		"ArtemisMiscPickupExtra08",
+		"ArtemisMiscPickupExtra09",
+		"ArtemisMiscPickupExtra14",
+	},
 	AphroditeBasicPickUpTextLines = {
 		"AphroditeFirstPickUp",
 		"AphroditeMiscPickup01",
@@ -266,6 +292,20 @@ local newGameDataTables = {
 		"PoseidonRejection08",
 		"PoseidonRejection09",
 		"PoseidonRejection10",
+	},
+	LegendaryAspectIntroTextLines = {
+		"AchillesRevealsGuanYuAspect01",
+		"NyxRevealsArthurAspect01",
+		"ZeusRevealsLuciferAspect01",
+		"ArtemisRevealsRamaAspect01",
+		"ChaosRevealsBeowulfAspect01",
+		"MinotaurRevealsGilgameshAspect01",
+	},
+	MegAchillesPartnerRepeatableTextLines = {
+		"AchillesWithMegaeraAboutMyrmidonReunionQuest01",
+		"AchillesChatWithMegaera01",
+		"AchillesChatWithMegaera02",
+		"AchillesChatWithMegaera03",
 	},
 }
 
@@ -630,11 +670,6 @@ local hadesNPCNarrativeData = {
 			},
 			-- Unblock key story dialogues
 			{
-				"AchillesMiscMeeting01",
-				"AchillesMiscMeeting02",
-				"AchillesMiscMeeting03",
-				"AchillesMiscMeeting04",
-				"AchillesMiscMeeting04_B",
 				"AchillesBackstory01",
 				"AchillesBackstory01B",
 				"AchillesAboutPatroclus01A",
@@ -725,6 +760,11 @@ local hadesNPCNarrativeData = {
 			},
 			-- Evergreen/Lower priority story
 			{
+				"AchillesMiscMeeting01",
+				"AchillesMiscMeeting02",
+				"AchillesMiscMeeting03",
+				"AchillesMiscMeeting04",
+				"AchillesMiscMeeting04_B",
 				"AchillesGhostAdminProgress01",
 				"AchillesDrinking01",
 			},
@@ -745,8 +785,8 @@ local hadesNPCNarrativeData = {
 	NPC_Patroclus_01 = {
 		InteractTextLinePriorities = {
 			-- Key story
-			"PatroclusFirstMeeting",
 			"PatroclusWithAchilles01",
+			"PatroclusFirstMeeting",
 			"PatroclusAboutMyrmidonReunionQuest01",
 			-- Immediate contextual
 			"PatroclusAfterMyrmidonReunionQuest01",
