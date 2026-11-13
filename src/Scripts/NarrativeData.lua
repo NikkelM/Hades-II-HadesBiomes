@@ -505,6 +505,7 @@ local newGameDataTables = {
 		"PatroclusWithAchilles03",
 		"PatroclusReunionChat02",
 		"PatroclusReunionChat05",
+		"PatroclusReunionChat05A",
 		"PatroclusReunionChat06",
 		"PatroclusReunionChat07",
 		"PatroclusReunionChat11",

@@ -675,6 +675,82 @@ local npcModifications = {
 			PatroclusAboutBracer01C = { RequiredTrait = mod.SharedKeepsakePortAchillesKeepsakeTrait, },
 			PatroclusAboutBracer01D = { RequiredTrait = mod.SharedKeepsakePortAchillesKeepsakeTrait, },
 			PatroclusAboutBracer01E = { RequiredTrait = mod.SharedKeepsakePortAchillesKeepsakeTrait, },
+			-- #region After the reunion
+			PatroclusWithAchilles01 = {
+				PreEventFunctionName = "OverwriteSelf",
+				PreEventFunctionArgs = { MenuTitle = "ModsNikkelMHadesBiomes_Achilles_Patroclus", },
+				PrePortraitExitFunctionArgs = {
+					ModsNikkelMHadesBiomesFlavorTextIds = { "ModsNikkelMHadesBiomes_Achilles_Patroclus_OfferText" },
+				},
+			},
+			PatroclusWithAchilles02 = {
+				PreEventFunctionName = "OverwriteSelf",
+				PreEventFunctionArgs = { MenuTitle = "ModsNikkelMHadesBiomes_Achilles_Patroclus", },
+				PrePortraitExitFunctionArgs = {
+					ModsNikkelMHadesBiomesFlavorTextIds = { "ModsNikkelMHadesBiomes_Achilles_Patroclus_OfferText" },
+				},
+			},
+			PatroclusWithAchilles03 = {
+				PreEventFunctionName = "OverwriteSelf",
+				PreEventFunctionArgs = { MenuTitle = "ModsNikkelMHadesBiomes_Achilles_Patroclus", },
+				PrePortraitExitFunctionArgs = {
+					ModsNikkelMHadesBiomesFlavorTextIds = { "ModsNikkelMHadesBiomes_Achilles_Patroclus_OfferText" },
+				},
+			},
+			-- #endregion
+		},
+		RepeatableTextLineSets = {
+			-- #region After the reunion
+			PatroclusReunionChat02 = {
+				PreEventFunctionName = "OverwriteSelf",
+				PreEventFunctionArgs = { MenuTitle = "ModsNikkelMHadesBiomes_Achilles_Patroclus", },
+				PrePortraitExitFunctionArgs = {
+					ModsNikkelMHadesBiomesFlavorTextIds = { "ModsNikkelMHadesBiomes_Achilles_Patroclus_OfferText" },
+				},
+			},
+			PatroclusReunionChat05A = {
+				PreEventFunctionName = "OverwriteSelf",
+				PreEventFunctionArgs = { MenuTitle = "ModsNikkelMHadesBiomes_Achilles_Patroclus", },
+				PrePortraitExitFunctionArgs = {
+					ModsNikkelMHadesBiomesFlavorTextIds = { "ModsNikkelMHadesBiomes_Achilles_Patroclus_OfferText" },
+				},
+			},
+			PatroclusReunionChat05 = {
+				PreEventFunctionName = "OverwriteSelf",
+				PreEventFunctionArgs = { MenuTitle = "ModsNikkelMHadesBiomes_Achilles_Patroclus", },
+				PrePortraitExitFunctionArgs = {
+					ModsNikkelMHadesBiomesFlavorTextIds = { "ModsNikkelMHadesBiomes_Achilles_Patroclus_OfferText" },
+				},
+			},
+			PatroclusReunionChat06 = {
+				PreEventFunctionName = "OverwriteSelf",
+				PreEventFunctionArgs = { MenuTitle = "ModsNikkelMHadesBiomes_Achilles_Patroclus", },
+				PrePortraitExitFunctionArgs = {
+					ModsNikkelMHadesBiomesFlavorTextIds = { "ModsNikkelMHadesBiomes_Achilles_Patroclus_OfferText" },
+				},
+			},
+			PatroclusReunionChat07 = {
+				PreEventFunctionName = "OverwriteSelf",
+				PreEventFunctionArgs = { MenuTitle = "ModsNikkelMHadesBiomes_Achilles_Patroclus", },
+				PrePortraitExitFunctionArgs = {
+					ModsNikkelMHadesBiomesFlavorTextIds = { "ModsNikkelMHadesBiomes_Achilles_Patroclus_OfferText" },
+				},
+			},
+			PatroclusReunionChat11 = {
+				PreEventFunctionName = "OverwriteSelf",
+				PreEventFunctionArgs = { MenuTitle = "ModsNikkelMHadesBiomes_Achilles_Patroclus", },
+				PrePortraitExitFunctionArgs = {
+					ModsNikkelMHadesBiomesFlavorTextIds = { "ModsNikkelMHadesBiomes_Achilles_Patroclus_OfferText" },
+				},
+			},
+			PatroclusReunionChat12 = {
+				PreEventFunctionName = "OverwriteSelf",
+				PreEventFunctionArgs = { MenuTitle = "ModsNikkelMHadesBiomes_Achilles_Patroclus", },
+				PrePortraitExitFunctionArgs = {
+					ModsNikkelMHadesBiomesFlavorTextIds = { "ModsNikkelMHadesBiomes_Achilles_Patroclus_OfferText" },
+				},
+			},
+			-- #endregion
 		},
 		GiftGivenVoiceLines = {
 			[1] = { Cue = "/VO/MelinoeField_2571", Text = "I'm most grateful." },
