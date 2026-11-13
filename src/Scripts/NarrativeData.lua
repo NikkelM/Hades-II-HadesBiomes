@@ -547,6 +547,7 @@ local hadesNPCNames = {
 	"NPC_Orpheus_Story_01",
 	"NPC_Eurydice_01",
 	"NPC_Patroclus_01",
+	"NPC_Achilles_Story_01",
 	"NPC_Thanatos_01",
 	"NPC_FurySister_01",
 	"ModsNikkelMHadesBiomes_NPC_Achilles_01",

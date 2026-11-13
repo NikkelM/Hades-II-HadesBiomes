@@ -577,6 +577,7 @@ mod.FormalNPCRelationships = {
 	"NPC_Orpheus_01",
 	-- "NPC_Dusa_01",
 	"ModsNikkelMHadesBiomes_NPC_Achilles_01",
+	"NPC_Achilles_Story_01",
 }
 
 mod.InformalNPCRelationshipsF = {

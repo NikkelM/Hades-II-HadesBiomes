@@ -3424,9 +3424,6 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 	-- #endregion
 	-- #region Salute/Interact voicelines
 	ModsNikkelMHadesBiomes_SaluteVoiceLines = {
-		Cooldowns = {
-			{ Name = "MelinoeSaluteSpeech", Time = 6 },
-		},
 		TriggerCooldowns = { "MelinoeRoomExitVoiceLines" },
 		-- formal relationships
 		{

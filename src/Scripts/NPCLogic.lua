@@ -3,6 +3,11 @@ function mod.ModsNikkelMHadesBiomesBenefitChoice(source, args, screen)
 	source = source or {}
 	args = args or {}
 
+	-- Allow re-enabling salute interaction after the boon choice
+	if source.InPartnerConversation and source.NextInteractLines ~= nil and source.NextInteractLines.UseableOffSource and game.Contains({ " NPC_Orpheus_Story_01", "NPC_Patroclus_01" }, source.Name) then
+		screen.ModsNikkelMHadesBiomesPartnerConversationSaluteSourceId = source.ObjectId
+	end
+
 	-- Change the portrait if requested
 	if args.PortraitName ~= nil and screen.CurrentPortrait ~= nil and screen.CurrentPortrait ~= args.PortraitName then
 		SetAnimation({ DestinationId = screen.PortraitId, Name = screen.CurrentPortrait .. "_Exit" })
@@ -131,6 +136,19 @@ function mod.ModsNikkelMHadesBiomesBenefitChoice(source, args, screen)
 	AddInputBlock({ Name = "PlayTextLines" })
 end
 
+local function restorePartnerConversationSalute(sourceId)
+	while game.PlayingTextLines do
+		game.wait(0.01)
+	end
+	game.wait(0.01)
+
+	local source = game.ActiveEnemies[sourceId]
+	if source ~= nil and source.InteractBlocks ~= nil and source.InteractBlocks.SetAvailableUseText then
+		source.NextInteractLines = nil
+		game.SetAvailableUseText(source)
+	end
+end
+
 function mod.ModsNikkelMHadesBiomesNPCPostChoicePresentation(screen, args)
 	-- Trait has been applied; restore any deep-copied TraitData entries from dream run scaling
 	mod.RestoreDreamRunScaledTraits()
@@ -141,6 +159,10 @@ function mod.ModsNikkelMHadesBiomesNPCPostChoicePresentation(screen, args)
 	local heroId = game.CurrentRun.Hero.ObjectId
 	local npcId = screen.Source.ObjectId
 	local npc = game.ActiveEnemies[npcId]
+
+	if screen.ModsNikkelMHadesBiomesPartnerConversationSaluteSourceId ~= nil then
+		game.thread(restorePartnerConversationSalute, screen.ModsNikkelMHadesBiomesPartnerConversationSaluteSourceId)
+	end
 
 	PlaySound({ Name = screen.Source.ConfirmSound or "/SFX/Menu Sounds/GodBoonChoiceConfirm" })
 	if npc and npc.CharacterInteractions and npc.CharacterInteractions.Rescue and npc.CharacterInteractions.Rescue.VoiceLines then
@@ -386,6 +408,7 @@ function mod.AchillesExit(source, args)
 
 	SetAlpha({ Id = source.ObjectId, Fraction = 0.0, Duration = 0.2 })
 end
+
 -- #endregion
 
 -- #region Patroclus

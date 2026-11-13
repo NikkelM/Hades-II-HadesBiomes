@@ -576,6 +576,7 @@ local npcModifications = {
 		RequiredRoomInteraction = true,
 		BlockedLootInteractionText = "NPCUseTextTalkLocked",
 		SpecialInteractFunctionName = "SpecialInteractSalute",
+		AllowSpecialInteractInPartnerConversation = true,
 		SpecialInteractGameStateRequirements = {
 			{
 				PathTrue = { "GameState", "TextLinesRecord", "PatroclusGift01" },
@@ -677,6 +678,7 @@ local npcModifications = {
 			PatroclusAboutBracer01E = { RequiredTrait = mod.SharedKeepsakePortAchillesKeepsakeTrait, },
 			-- #region After the reunion
 			PatroclusWithAchilles01 = {
+				Partner = "NPC_Achilles_Story_01",
 				PreEventFunctionName = "OverwriteSelf",
 				PreEventFunctionArgs = { MenuTitle = "ModsNikkelMHadesBiomes_Achilles_Patroclus", },
 				PrePortraitExitFunctionArgs = {
@@ -684,6 +686,7 @@ local npcModifications = {
 				},
 			},
 			PatroclusWithAchilles02 = {
+				Partner = "NPC_Achilles_Story_01",
 				PreEventFunctionName = "OverwriteSelf",
 				PreEventFunctionArgs = { MenuTitle = "ModsNikkelMHadesBiomes_Achilles_Patroclus", },
 				PrePortraitExitFunctionArgs = {
@@ -691,6 +694,7 @@ local npcModifications = {
 				},
 			},
 			PatroclusWithAchilles03 = {
+				Partner = "NPC_Achilles_Story_01",
 				PreEventFunctionName = "OverwriteSelf",
 				PreEventFunctionArgs = { MenuTitle = "ModsNikkelMHadesBiomes_Achilles_Patroclus", },
 				PrePortraitExitFunctionArgs = {
@@ -702,6 +706,7 @@ local npcModifications = {
 		RepeatableTextLineSets = {
 			-- #region After the reunion
 			PatroclusReunionChat02 = {
+				Partner = "NPC_Achilles_Story_01",
 				PreEventFunctionName = "OverwriteSelf",
 				PreEventFunctionArgs = { MenuTitle = "ModsNikkelMHadesBiomes_Achilles_Patroclus", },
 				PrePortraitExitFunctionArgs = {
@@ -709,6 +714,7 @@ local npcModifications = {
 				},
 			},
 			PatroclusReunionChat05A = {
+				Partner = "NPC_Achilles_Story_01",
 				PreEventFunctionName = "OverwriteSelf",
 				PreEventFunctionArgs = { MenuTitle = "ModsNikkelMHadesBiomes_Achilles_Patroclus", },
 				PrePortraitExitFunctionArgs = {
@@ -716,6 +722,7 @@ local npcModifications = {
 				},
 			},
 			PatroclusReunionChat05 = {
+				Partner = "NPC_Achilles_Story_01",
 				PreEventFunctionName = "OverwriteSelf",
 				PreEventFunctionArgs = { MenuTitle = "ModsNikkelMHadesBiomes_Achilles_Patroclus", },
 				PrePortraitExitFunctionArgs = {
@@ -723,6 +730,7 @@ local npcModifications = {
 				},
 			},
 			PatroclusReunionChat06 = {
+				Partner = "NPC_Achilles_Story_01",
 				PreEventFunctionName = "OverwriteSelf",
 				PreEventFunctionArgs = { MenuTitle = "ModsNikkelMHadesBiomes_Achilles_Patroclus", },
 				PrePortraitExitFunctionArgs = {
@@ -730,6 +738,7 @@ local npcModifications = {
 				},
 			},
 			PatroclusReunionChat07 = {
+				Partner = "NPC_Achilles_Story_01",
 				PreEventFunctionName = "OverwriteSelf",
 				PreEventFunctionArgs = { MenuTitle = "ModsNikkelMHadesBiomes_Achilles_Patroclus", },
 				PrePortraitExitFunctionArgs = {
@@ -737,6 +746,7 @@ local npcModifications = {
 				},
 			},
 			PatroclusReunionChat11 = {
+				Partner = "NPC_Achilles_Story_01",
 				PreEventFunctionName = "OverwriteSelf",
 				PreEventFunctionArgs = { MenuTitle = "ModsNikkelMHadesBiomes_Achilles_Patroclus", },
 				PrePortraitExitFunctionArgs = {
@@ -744,6 +754,7 @@ local npcModifications = {
 				},
 			},
 			PatroclusReunionChat12 = {
+				Partner = "NPC_Achilles_Story_01",
 				PreEventFunctionName = "OverwriteSelf",
 				PreEventFunctionArgs = { MenuTitle = "ModsNikkelMHadesBiomes_Achilles_Patroclus", },
 				PrePortraitExitFunctionArgs = {
@@ -1217,6 +1228,96 @@ local npcModifications = {
 		SpeakerName = "Achilles",
 		LineHistoryName = "NPC_Achilles_01",
 		CodexName = "ModsNikkelMHadesBiomes_NPC_Achilles_01",
+		AllowSpecialInteractInPartnerConversation = true,
+		InteractVoiceLines = {
+			{ GlobalVoiceLines = "ModsNikkelMHadesBiomes_SaluteVoiceLines" },
+			{
+				RandomRemaining = true,
+				PreLineWait = 0.3,
+				ObjectType = "NPC_Achilles_Story_01",
+				PreLineAnim = "AchillesIdleGreeting",
+				-- From AchillesGreeting
+				-- Hail.
+				{ Cue = "/VO/Modsnikkelmhadesbiomesachilles_0009", RequiredFalsePlayedThisRoom = { "/VO/Modsnikkelmhadesbiomesachilles_0009" } },
+				-- Hmm.
+				{ Cue = "/VO/Modsnikkelmhadesbiomesachilles_0059", RequiredFalsePlayedThisRoom = { "/VO/Modsnikkelmhadesbiomesachilles_0059" } },
+				-- Be well.
+				{ Cue = "/VO/Modsnikkelmhadesbiomesachilles_0060", RequiredFalsePlayedThisRoom = { "/VO/Modsnikkelmhadesbiomesachilles_0060" } },
+				-- Be strong.
+				{ Cue = "/VO/Modsnikkelmhadesbiomesachilles_0061", RequiredFalsePlayedThisRoom = { "/VO/Modsnikkelmhadesbiomesachilles_0061" } },
+				-- Your Highness.
+				{ Cue = "/VO/Modsnikkelmhadesbiomesachilles_0063", RequiredFalsePlayedThisRoom = { "/VO/Modsnikkelmhadesbiomesachilles_0063" } },
+				-- And you in turn.
+				{ Cue = "/VO/Modsnikkelmhadesbiomesachilles_0332", RequiredFalsePlayedThisRoom = { "/VO/Modsnikkelmhadesbiomesachilles_0332" } },
+				-- Hail.
+				{ Cue = "/VO/Modsnikkelmhadesbiomesachilles_0349", RequiredFalsePlayedThisRoom = { "/VO/Modsnikkelmhadesbiomesachilles_0349" } },
+				-- How goes it?
+				{ Cue = "/VO/Modsnikkelmhadesbiomesachilles_0351", RequiredFalsePlayedThisRoom = { "/VO/Modsnikkelmhadesbiomesachilles_0351" } },
+				-- From dialogues
+				-- Just watch yourself.
+				{ Cue = "/VO/Modsnikkelmhadesbiomesachilles_0369", RequiredFalsePlayedThisRoom = { "/VO/Modsnikkelmhadesbiomesachilles_0369" } },
+				-- Keep at it.
+				{ Cue = "/VO/Modsnikkelmhadesbiomesachilles_0373", RequiredFalsePlayedThisRoom = { "/VO/Modsnikkelmhadesbiomesachilles_0373" } },
+			},
+		},
+		InteractTextLineSets = {
+			PatroclusWithAchilles01 = {
+				PlayOnce = true,
+				SuperPriority = true,
+				UseableOffSource = true,
+				Skip = true,
+				StatusAnimation = false,
+			},
+			PatroclusWithAchilles02 = {
+				PlayOnce = true,
+				SuperPriority = true,
+				UseableOffSource = true,
+				Skip = true,
+				StatusAnimation = false,
+			},
+			PatroclusWithAchilles03 = {
+				PlayOnce = true,
+				SuperPriority = true,
+				UseableOffSource = true,
+				Skip = true,
+				StatusAnimation = false,
+			},
+			PatroclusReunionChat02 = {
+				UseableOffSource = true,
+				Skip = true,
+				StatusAnimation = false,
+			},
+			PatroclusReunionChat05A = {
+				UseableOffSource = true,
+				Skip = true,
+				StatusAnimation = false,
+			},
+			PatroclusReunionChat05 = {
+				UseableOffSource = true,
+				Skip = true,
+				StatusAnimation = false,
+			},
+			PatroclusReunionChat06 = {
+				UseableOffSource = true,
+				Skip = true,
+				StatusAnimation = false,
+			},
+			PatroclusReunionChat07 = {
+				UseableOffSource = true,
+				Skip = true,
+				StatusAnimation = false,
+			},
+			PatroclusReunionChat11 = {
+				UseableOffSource = true,
+				Skip = true,
+				StatusAnimation = false,
+			},
+			PatroclusReunionChat12 = {
+				UseableOffSource = true,
+				Skip = true,
+				StatusAnimation = false,
+			},
+		},
 	},
 	ModsNikkelMHadesBiomes_NPC_Cerberus_Field_01 = {
 		ModsNikkelMHadesBiomesIsModdedEnemy = true,
