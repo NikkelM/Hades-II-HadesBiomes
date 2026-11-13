@@ -583,6 +583,7 @@ local hadesNPCNarrativeData = {
 				"AchillesFirstMeeting",
 				"AchillesFirstMeeting_Alt",
 			},
+			"AchillesAboutHadesBedroom01",
 			"MyrmidonReunionQuestComplete",
 			"AchillesAfterMyrmidonReunionQuestComplete01",
 			"AchillesGrantsCodex",
@@ -593,6 +594,7 @@ local hadesNPCNarrativeData = {
 				"AchillesAboutMyrmidonReunionQuest03_B",
 				"AchillesAboutMyrmidonReunionQuest03_C",
 				"AchillesAboutMyrmidonReunionQuest04",
+				"AchillesAboutMyrmidonReunionQuest04_B",
 			},
 			-- Immediate contextual
 			{
@@ -709,6 +711,11 @@ local hadesNPCNarrativeData = {
 				"AchillesAboutDusaFiring01_A",
 				"AchillesAboutDusaFiring01_B",
 				"AchillesAboutDusaReHiring01",
+				"NyxWithAchilles01",
+				"NyxWithAchilles02",
+				"NyxWithAchillesAfterMyrmidonReunionQuest01",
+				"OrpheusWithAchilles01",
+				"OrpheusWithAchilles02",
 				"AchillesWithHades01",
 				"AchillesWithHadesAboutMyrmidonReunionQuest01",
 				"AchillesWithMegaera01",
