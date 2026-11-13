@@ -196,7 +196,7 @@ modutil.mod.Path.Wrap("RecordRunCleared", function(base)
 		end
 
 		-- Record full run clears for modded runs separately
-		if #game.CurrentRun.KeepsakeCache == 1 then
+		if game.CurrentRun.ActiveBounty == nil and #game.CurrentRun.KeepsakeCache == 1 then
 			game.GameState.ModsNikkelMHadesBiomes_ClearedFullRunWithKeepsakes[game.CurrentRun.KeepsakeCache[1]] = true
 		end
 	end

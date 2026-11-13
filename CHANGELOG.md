@@ -119,6 +119,7 @@ Other fixes and improvements:
 - Fixed: Resource spawns can slightly overlap with each other or Chaos or Erebus Gates.
 - Fixed: The in-game timer continues running after Hades lets Melinoë pass on the tenth clear.
 - Fixed: The last run of the Zagreus' Journey story does not count as a cleared run after returning to the Crossroads.
+- Fixed: After returning to the Crossroads after the ending sequence, music from the Music Player can briefly play before the outro narration begins.
 - Fixed: If playing with controller and a Hex is ready after Hades' boss fight completes, using the "Proceed" action to enter the Surface after the true ending of Zagreus' Journey fires the Hex at the same time as exiting the room.
 - Fixed: Blood Triad progress and indicators are cleared when enemies teleport.
 - Fixed: Flying bats are missing on many maps in Tartarus and Asphodel.
@@ -128,12 +129,12 @@ Other fixes and improvements:
 - Fixed: Some enemies summoned by Hades are not credited correctly if they killed you when viewing the run at the Learned Sage.
 - Fixed: Some minor environment textures and animations are missing or flickering on some maps.
 - Fixed: Music can sometimes stutter and cut out during gameplay when a lot of different audio sources try to play at once.
-- Fixed: After returning to the Crossroads after the ending sequence, music from the Music Player can briefly play before the outro narration begins.
 - Fixed: The displayed resurrection chance of "God of the Dead" does not account for "Success Rate".
 - Fixed: Clearing the tenth run of the story with the Vow of Rivals on Rank 4 counts for completion of "Extreme Measures".
 - Fixed: Some damage sources during Charon's boss fight show a placeholder text in the run clear screen.
 - Fixed: Codex entries after the first unlock too early.
 - Fixed: Unlocking Arcana card-back packs does not count towards the completion of "A Simple Job".
+- Fixed: "Amusing Chaos" can be completed during a randomized Chaos Trial instead of requiring the clear during a normal run.
 - Fixed: The Narrator's subtitles added through the mod are not italicized.
 - Fixed: Various typos and clarifications in incantation, prophecy and cosmetics texts.
 <!--Releasenotes end-->
