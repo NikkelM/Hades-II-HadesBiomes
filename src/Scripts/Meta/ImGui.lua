@@ -166,7 +166,7 @@ local function drawDebuggingSettings()
 	rom.ImGui.TextWrapped(
 		"\"root\" means Hades and Hades II are installed under the same parent folder. See below for default install paths:")
 	rom.ImGui.TextWrapped("Steam: C:\\Program Files (x86)\\Steam\\steamapps\\common\\Hades")
-	rom.ImGui.TextWrapped("Epic Games: C:\\Program Files (x86)\\Epic Games\\Games\\Hades")
+	rom.ImGui.TextWrapped("Epic Games: C:\\Program Files\\Epic Games\\Hades")
 	rom.ImGui.TextWrapped("Microsoft Store: C:\\Xbox\\Hades")
 
 	local reinstallEnabled = config.debugging.firstTimeSetup and config.debugging.uninstall

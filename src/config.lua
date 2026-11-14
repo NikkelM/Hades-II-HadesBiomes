@@ -72,7 +72,7 @@ local configDesc = {
   },
   debugging = {
     hadesGameFolder =
-    "The path to the Hades game folder. When set to \"root\", resolves to the \"Hades\" directory in the same parent directory as your Hades II installation. Leave this at \"root\" if you have both games installed through the same store and on the same drive. Otherwise, set to the full path of your Hades installation, e.g. C:\\Program Files (x86)\\Steam\\steamapps\\common\\Hades for Steam, C:\\Program Files (x86)\\Epic Games\\Games\\Hades for Epic Games or C:\\Xbox\\Hades for the Microsoft Store. A full game restart is required after changing this setting.",
+    "The path to the Hades game folder. When set to \"root\", resolves to the \"Hades\" directory in the same parent directory as your Hades II installation. Leave this at \"root\" if you have both games installed through the same store and on the same drive. Otherwise, set to the full path of your Hades installation, e.g. C:\\Program Files (x86)\\Steam\\steamapps\\common\\Hades for Steam, C:\\Program Files\\Epic Games\\Hades for Epic Games or C:\\Xbox\\Hades for the Microsoft Store. A full game restart is required after changing this setting.",
     logLevel =
     "What kinds of logs should be printed to the console, inclusive all previous log levels. Set a higher level to see more detailed logs. Set to one of: Off/No logs (0), Errors (1), Warnings (2), Info (3), Debug (4)",
     enableVanillaDebugPrint =

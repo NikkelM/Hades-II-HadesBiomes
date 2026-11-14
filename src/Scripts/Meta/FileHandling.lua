@@ -53,7 +53,7 @@ function mod.ConfirmHadesInstallation()
 		"\". Please set the \"hadesGameFolder\" path in the config file through your mod manager, or leave it as \"root\" to search next to your Hades II installation automatically." ..
 		"\nThe path must point at the folder that contains the Hades executable, which by default is:" ..
 		"\n - Steam: C:\\Program Files (x86)\\Steam\\steamapps\\common\\Hades" ..
-		"\n - Epic Games: C:\\Program Files\\Epic Games\\Hades\\Hades" ..
+		"\n - Epic Games: C:\\Program Files\\Epic Games\\Hades" ..
 		"\n - Microsoft Store/Game Pass: C:\\XboxGames\\Hades\\Content",
 		1)
 
