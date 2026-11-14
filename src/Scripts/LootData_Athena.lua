@@ -1,72 +1,8 @@
--- #region Hermes-delivered opener
-local newHermesDeliveredDialogues = {
+-- #region Ported Athena interact dialogues
+local newAthenaInteractTextLines = {
+	-- #region First meeting
 	{
-		Name = "AthenaFirstPickUp",
-		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAtFirstPriority = true,
-			CreateNewPriorityGroup = true,
-			HermesDeliveredDialoguesSkipIntroLine = true,
-		},
-		PlayOnce = true,
-		PreEventFunctionName = "BoonInteractPresentation",
-		PreEventFunctionArgs = { PickupWait = 1.0, },
-		{
-			Cue = "/VO/Modsnikkelmhadesbiomescustomhermes_0000",
-			Speaker = "HermesUpgrade",
-			Portrait = "ModsNikkelMHadesBiomes_Portrait_Hermes_Default_01",
-			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
-			-- Custom for this dialogue
-			PreLineThreadedFunctionName = _PLUGIN.guid .. "." .. "PlayDummyLootPickupCue",
-			PreLineThreadedFunctionArgs = {
-				DummyCues = { "/VO/Hermes_0129" },
-				DummyVoiceBank = "HermesUpgrade",
-			},
-			PostLineThreadedFunctionName = _PLUGIN.guid .. "." .. "PlayDummyLootPickupCue",
-			PostLineThreadedFunctionArgs = {
-				DummyCues = { "/SFX/AthenaBoonHolyShield" },
-			},
-			NarrativeContextArt = "DialogueBackground_Olympus",
-			PostLineRemoveContextArt = true,
-			ExitPortraitImmediately = true,
-			Text =
-			"Hey boss, glad to catch you here. Got a message here from a friend of Nyx's that I was supposed to deliver a while ago, one of many to come, take a look!"
-		},
-		{
-			Cue = "/VO/ZagreusField_0774",
-			Portrait = "Portrait_Zag_Default_01",
-			Speaker = "CharProtag",
-			PreLineFunctionName = "BoonInteractPresentation",
-			PreLineWait = 0.8,
-			PreLineThreadedFunctionName = "PowerWordPresentation",
-			PreLineThreadedFunctionArgs = { WaitTime = 5.7 },
-			PostLineAnim = "ZagreusInteractEquip",
-			PostLineAnimTarget = "Hero",
-			PostLineFunctionName = "BoonInteractPresentation",
-			Text =
-			"It's got to be her. Then, here goes nothing... {#DialogueItalicFormat}Ahem{#PreviousFormat}. In the name of Hades! Olympus, I accept this message."
-		},
-		{
-			Cue = "/VO/Athena_0002",
-			PortraitExitWait = 1.25,
-			PreContentSound = "/Leftovers/Menu Sounds/TextReveal2",
-			UseEventEndSound = true,
-			Text =
-			"Hail, noble Cousin. Now, let's get you from that miserable place. I'll see that all of us upon Olympus do our part, beginning here with me."
-		},
-	},
-}
-mod.AddHermesDeliveredDialogues(newHermesDeliveredDialogues,
-	{ Hermes = { "Modsnikkelmhadesbiomesathena", "ZagreusField" } }, { Athena_ = "Modsnikkelmhadesbiomesathena_" },
-	{ Athena_ = "ModsNikkelMHadesBiomes_Portrait_Athena_Default_01" }, "/SFX/AthenaBoonHolyShield",
-	{ Athena = { Speaker = "NPC_Athena_01", NarrativeContextArt = "DialogueBackground_Olympus" } })
--- #endregion
-
--- #region Only added to Athena herself, not Hermes
-local newAthenaExclusivePortedInteractTextLines = {
-	-- #region Opener
-	{
-		Name = "AthenaFirstPickUp",
+		Name = "ModsNikkelMHadesBiomes_AthenaFirstMeeting01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
 			InsertAtFirstPriority = true,
 			CreateNewPriorityGroup = true,
@@ -927,27 +863,12 @@ local newAthenaExclusivePortedInteractTextLines = {
 		},
 	},
 	-- #endregion
-}
-mod.AddNarrativeDataEntries(newAthenaExclusivePortedInteractTextLines, "NPC_Athena_01", "InteractTextLineSets",
-	{
-		TextLinePriorityType = "InteractTextLinePriorities",
-		VoiceBankMappings = { Athena = { "Modsnikkelmhadesbiomesathena", "ZagreusField" } },
-		CueMappings = { Athena_ = "Modsnikkelmhadesbiomesathena_" },
-		PortraitMappings = { Athena_ = "ModsNikkelMHadesBiomes_Portrait_Athena_Default_01" },
-		IgnoreDuplicates = true,
-		StripProperties = { "PreEventFunctionName", "PreEventFunctionArgs" },
-		IsWorldNpc = true,
-	}
-)
--- #endregion
 
--- #region Ported Athena interact dialogues
--- #region Hermes-delivered super-priority
-local newAthenaOlympianReunionTextLines = {
+	-- #region Super-priority: Reunion quest
 	{
 		Name = "AthenaAboutOlympianReunionQuest01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterTextLineGroupContaining = "AthenaFirstPickUp",
+			InsertAfterTextLineGroupContaining = "ModsNikkelMHadesBiomes_AthenaFirstMeeting01",
 			CreateNewPriorityGroup = true,
 		},
 		PlayOnce = true,
@@ -975,11 +896,9 @@ local newAthenaOlympianReunionTextLines = {
 			"Is this some kind of offering for me? No, hold a moment, this appears to be a message! Part of one. Then, can this mean...? I have to notify the others. I trust they also have received something from you, or shortly shall."
 		},
 	},
-}
--- #endregion
+	-- #endregion
 
--- #region Athena priority
-local newAthenaPriorityTextLines = {
+	-- #region Priority: Gods and post-ending
 	{
 		Name = "AthenaAboutDemeter01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
@@ -1192,11 +1111,9 @@ local newAthenaPriorityTextLines = {
 			"So you've another blessing from Lord Hades, then. Zagreus, I'm under no delusion you and your father shall become the closest friends, from here. Neverthless, I do believe it's possible to move forward even such a relationship as yours. Believe me... I know."
 		},
 	},
-}
--- #endregion
+	-- #endregion
 
--- #region Athena-only contextual
-local newAthenaExclusivePostGiftTextLines = {
+	-- #region Contextual: Post-gift
 	{
 		Name = "AthenaPostGiftPickup01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
@@ -1284,11 +1201,9 @@ local newAthenaExclusivePostGiftTextLines = {
 			"Let my voice be a glimmer in the darkness, noble Cousin; though, may the blessing I am about to provide be even more than that."
 		},
 	},
-}
--- #endregion
+	-- #endregion
 
--- #region Athena priority
-local newAthenaRelationshipTextLines = {
+	-- #region Priority: Relationships and backstory
 	{
 		Name = "AthenaVsOlympians01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
@@ -1416,11 +1331,9 @@ local newAthenaRelationshipTextLines = {
 			"You're nothing like your father, Zagreus. I mean that as a compliment. He cut himself off from the rest of us. Many times have we attempted peace, to no avail."
 		},
 	},
-}
--- #endregion
+	-- #endregion
 
--- #region Athena-only contextual
-local newAthenaExclusiveRunTextLines = {
+	-- #region Contextual: Run progress
 	{
 		Name = "AthenaRunProgress01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
@@ -1549,11 +1462,9 @@ local newAthenaExclusiveRunTextLines = {
 			"Despite whatever difficulties you've encountered, dear Cousin, again and again, you have never yielded. I must admit, your strength of will is quite inspiring. For, even I have doubts, from time to time. It's all the clearer to me why the goddess Nyx spoke so highly of you."
 		},
 	},
-}
--- #endregion
+	-- #endregion
 
--- #region Athena priority
-local newAthenaLateStoryTextLines = {
+	-- #region Priority: Late story
 	{
 		Name = "AthenaPostEpilogue02",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
@@ -1663,11 +1574,9 @@ local newAthenaLateStoryTextLines = {
 			"The goddess Nyx has indicated you possess a list of prophecies from the Three Fates. I've such a list upon Olympus, here! It seems to be connected to your own, as several prophecies already are fulfilled. Isn't it such an honor to urge Fate along?"
 		},
 	},
-}
--- #endregion
+	-- #endregion
 
--- #region Athena-only contextual
-local newAthenaExclusiveContextualTextLines = {
+	-- #region Contextual: Situational pickups
 	{
 		Name = "AthenaLegendaryPickUp01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
@@ -1868,34 +1777,9 @@ local newAthenaExclusiveContextualTextLines = {
 		},
 	},
 }
--- #endregion
+	-- #endregion
 
-mod.AddHermesDeliveredDialogues(game.DeepCopyTable(newAthenaOlympianReunionTextLines) or {},
-	{ Hermes = { "Modsnikkelmhadesbiomesathena", "ZagreusField" } }, { Athena_ = "Modsnikkelmhadesbiomesathena_" },
-	{ Athena_ = "ModsNikkelMHadesBiomes_Portrait_Athena_Default_01" }, "/SFX/AthenaBoonHolyShield",
-	{ Athena = { Speaker = "NPC_Athena_01", NarrativeContextArt = "DialogueBackground_Olympus" } })
-
-local athenaPriorityTextLines = game.ConcatTableValuesIPairs(
-	game.ConcatTableValuesIPairs(
-		game.ConcatTableValuesIPairs(newAthenaOlympianReunionTextLines, newAthenaPriorityTextLines),
-		newAthenaRelationshipTextLines),
-	newAthenaLateStoryTextLines) or {}
-mod.AddNarrativeDataEntries(athenaPriorityTextLines, "NPC_Athena_01", "InteractTextLineSets",
-	{
-		TextLinePriorityType = "InteractTextLinePriorities",
-		VoiceBankMappings = { Athena = { "Modsnikkelmhadesbiomesathena", "ZagreusField" } },
-		CueMappings = { Athena_ = "Modsnikkelmhadesbiomesathena_" },
-		PortraitMappings = { Athena_ = "ModsNikkelMHadesBiomes_Portrait_Athena_Default_01" },
-		IgnoreDuplicates = true,
-		StripProperties = { "PreEventFunctionName", "PreEventFunctionArgs" },
-		IsWorldNpc = true,
-	}
-)
-
-local exclusiveAthenaContextualTextLines = game.ConcatTableValuesIPairs(
-	game.ConcatTableValuesIPairs(newAthenaExclusivePostGiftTextLines, newAthenaExclusiveRunTextLines),
-	newAthenaExclusiveContextualTextLines) or {}
-mod.AddNarrativeDataEntries(exclusiveAthenaContextualTextLines, "NPC_Athena_01", "InteractTextLineSets",
+mod.AddNarrativeDataEntries(newAthenaInteractTextLines, "NPC_Athena_01", "InteractTextLineSets",
 	{
 		TextLinePriorityType = "InteractTextLinePriorities",
 		VoiceBankMappings = { Athena = { "Modsnikkelmhadesbiomesathena", "ZagreusField" } },

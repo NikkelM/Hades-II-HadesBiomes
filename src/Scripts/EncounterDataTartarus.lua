@@ -332,7 +332,7 @@ local encounterModifications = {
 		CanEncounterSkip = false,
 		BlockNextBiomeEnemyShrineUpgrade = true,
 		BlockAthenaEncounterKeepsake = true,
-		-- Requires AthenaFirstPickup voiceline, which is not implemented
+		-- AthenaFirstPickUp is handled separately
 		RequiredTextLines = mod.NilValue,
 		WaveTemplate = {
 			Spawns = {},

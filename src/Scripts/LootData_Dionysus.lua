@@ -4,17 +4,42 @@ local newHermesDeliveredDialogues = {
 	{
 		Name = "DionysusFirstPickUp",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AthenaFirstPickUp",
+			InsertAtFirstPriority = true,
+			CreateNewPriorityGroup = true,
+			HermesDeliveredDialoguesSkipIntroLine = true,
 		},
 		PlayOnce = true,
-		-- Always allow, to not block this if Hermes wasn't met in a modded run yet
+		-- Always allow, since Athena is met independently in person
 		-- RequiredTextLines = { "AthenaFirstPickUp", },
 		PreEventFunctionName = "BoonInteractPresentation",
 		PreEventFunctionArgs = { PickupWait = 1.0, },
 		{
+			Cue = "/VO/Modsnikkelmhadesbiomescustomhermes_0000",
+			Speaker = "HermesUpgrade",
+			Portrait = "ModsNikkelMHadesBiomes_Portrait_Hermes_Default_01",
+			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
+			UseEventEndSound = true,
+			PreLineThreadedFunctionName = _PLUGIN.guid .. "." .. "PlayDummyLootPickupCue",
+			PreLineThreadedFunctionArgs = {
+				DummyCues = { "/VO/Hermes_0129" },
+				DummyVoiceBank = "HermesUpgrade",
+			},
+			PostLineThreadedFunctionName = _PLUGIN.guid .. "." .. "PlayDummyLootPickupCue",
+			PostLineThreadedFunctionArgs = {
+				DummyCues = { "/SFX/DionysusBoonWineLaugh" },
+			},
+			NarrativeContextArt = "DialogueBackground_Olympus",
+			PostLineRemoveContextArt = true,
+			ExitPortraitImmediately = true,
+			Text =
+			"Hey, boss, glad I caught you! Got a message here from someone up on Olympus, says he hasn't the time to come down himself! One of many to come, so stay on your toes!"
+		},
+		{
 			Cue = "/VO/ZagreusField_0792",
 			Portrait = "Portrait_Zag_Default_01",
 			Speaker = "CharProtag",
+			PreLineFunctionName = "BoonInteractPresentation",
+			PreLineWait = 0.8,
 			PreLineThreadedFunctionName = "PowerWordPresentation",
 			PreLineThreadedFunctionArgs = { WaitTime = 6.1 },
 			PostLineAnim = "ZagreusInteractEquip",
@@ -37,7 +62,8 @@ local newHermesDeliveredDialogues = {
 	{
 		Name = "DionysusAboutOrpheus01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AthenaAboutOlympianReunionQuest01",
+			InsertAfterTextLineGroupContaining = "DionysusFirstPickUp",
+			CreateNewPriorityGroup = true,
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -72,7 +98,7 @@ local newHermesDeliveredDialogues = {
 	{
 		Name = "DionysusAboutOlympianReunionQuest01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AthenaAboutOlympianReunionQuest01",
+			InsertAfterNarrativeTextLine = "DionysusAboutOrpheus01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -101,7 +127,7 @@ local newHermesDeliveredDialogues = {
 	{
 		Name = "DionysusPostEpilogue01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AthenaAboutOlympianReunionQuest01",
+			InsertAfterNarrativeTextLine = "DionysusAboutOlympianReunionQuest01",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
@@ -119,7 +145,7 @@ local newHermesDeliveredDialogues = {
 	{
 		Name = "DionysusAboutOrpheus02",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterTextLineGroupContaining = "AthenaAboutOlympianReunionQuest01",
+			InsertAfterTextLineGroupContaining = "DionysusAboutOrpheus01",
 			CreateNewPriorityGroup = true,
 		},
 		PlayOnce = true,

@@ -25,6 +25,7 @@ Other fixes and improvements:
 - Hades will now taunt you if you die during a Survival or Erebus encounter.
 - Added a new wing-end combat room to Styx.
 - You can now only meet one new story NPC/character per run.
+- Hermes will no longer deliver dialogues from Athena.
 - The mod's Codex category is now only unlocked after having the required conversation with Achilles.
 - Added a new irreversible "cheat" config option to immediately unlock all (non-story) incantations.
 - Added a new irreversible "cheat" config option to immediately unlock all cosmetics (except badges).

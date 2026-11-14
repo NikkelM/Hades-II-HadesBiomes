@@ -169,7 +169,7 @@ local newGameDataTables = {
 		"AphroditeMiscPickup20",
 	},
 	AthenaBasicPickUpTextLines = {
-		"AthenaFirstPickUp",
+		"ModsNikkelMHadesBiomes_AthenaFirstMeeting01",
 		"AthenaMiscPickup02",
 		"AthenaMiscPickup03",
 		"AthenaMiscPickup04",
@@ -1004,8 +1004,8 @@ local hadesNPCNarrativeData = {
 	NPC_Patroclus_01 = {
 		InteractTextLinePriorities = {
 			-- Key story
-			"PatroclusWithAchilles01",
 			"PatroclusFirstMeeting",
+			"PatroclusWithAchilles01",
 			"PatroclusAboutMyrmidonReunionQuest01",
 			-- Immediate contextual
 			"PatroclusAfterMyrmidonReunionQuest01",

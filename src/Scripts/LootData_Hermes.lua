@@ -15,7 +15,7 @@ local newPortedInteractTextLines = {
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
 		PreEventFunctionArgs = { PickupWait = 1.0, },
-		-- Removing this prerequisite to allow this one to play before the delivered AthenaFirstPickUp
+		-- Always allow, since Athena is met independently in person
 		-- RequiredTextLines = { "AthenaFirstPickUp", },
 		{
 			Cue = "/VO/ZagreusField_1923",
@@ -42,7 +42,7 @@ local newPortedInteractTextLines = {
 	{
 		Name = "HermesSecondPickUp",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterNarrativeTextLine = "AthenaFirstPickUp",
+			InsertAfterNarrativeTextLine = "DionysusFirstPickUp",
 		},
 		PlayOnce = true,
 		PreEventFunctionName = "BoonInteractPresentation",
