@@ -39,7 +39,7 @@ local newAthenaInteractTextLines = {
 	{
 		Name = "AthenaMiscPickup01",
 		ModsNikkelMHadesBiomes_TextLineMetadata = {
-			InsertAfterTextLineGroupContaining = "AthenaFirstPickUp",
+			InsertAfterTextLineGroupContaining = "ModsNikkelMHadesBiomes_AthenaFirstMeeting01",
 			CreateNewPriorityGroup = true,
 		},
 		Priority = true,
