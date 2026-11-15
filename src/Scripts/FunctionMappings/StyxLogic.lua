@@ -66,7 +66,7 @@ end
 
 -- Saves the name of the last attacker that inflicted Styx poison, for the run history
 function mod.ModsNikkelMHadesBiomesStyxPoisonWeaponHit(victim, victimId, triggerArgs)
-	if triggerArgs.AttackerName then
+	if victimId == game.CurrentRun.Hero.ObjectId and triggerArgs.AttackerName then
 		game.CurrentRun.ModsNikkelMHadesBiomesStyxPoisonLastInflictedBy = triggerArgs.AttackerName
 	end
 end
@@ -94,7 +94,9 @@ function mod.StyxPoisonApply(triggerArgs)
 end
 
 function mod.StyxPoisonClear(triggerArgs)
-	mod.EndStyxPoisonPresentation()
+	if triggerArgs.Victim == game.CurrentRun.Hero then
+		mod.EndStyxPoisonPresentation()
+	end
 end
 
 function mod.StartStyxPoisonPresentation(unit)

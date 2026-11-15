@@ -3143,9 +3143,6 @@ local enemyModifications = {
 		ModsNikkelMHadesBiomesIgnoreDeathAngle = true,
 		ActivateDuration = 0.4,
 		ModsNikkelMHadesBiomesEffectVfxOffsetZ = 80,
-		-- Their poison doesn't damage enemies
-		BlockCharm = true,
-		BlockRaiseDead = true,
 	},
 	SatyrRangedElite = {
 		EliteAttributeOptions = game.CombineTables(
@@ -3166,14 +3163,6 @@ local enemyModifications = {
 			ModsNikkelMHadesBiomesSkipIfCharmed = true,
 		},
 		ModsNikkelMHadesBiomesEffectVfxOffsetZ = 40,
-		-- Don't allow poison attack when summoned on the player's side
-		SpellSummonDataOverrides = {
-			WeaponOptions = {
-				"RatThugMelee"
-			},
-			OnDeathThreadedFunctionName = mod.NilValue,
-			OnDeathFunctionArgs = mod.NilValue,
-		},
 	},
 	Crawler = {
 		StunAnimations = { Default = "EnemyCrawlerIdle" },

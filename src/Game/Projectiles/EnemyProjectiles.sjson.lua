@@ -372,7 +372,6 @@ local hadesProjectilesModifications = {
 				Cooldown = 0.23,
 				InitialDelay = 1,
 				FrontFx = "PoisonStatusFx",
-				OnlyAffectName = "_PlayerUnit",
 			},
 		},
 	},
@@ -484,11 +483,6 @@ local hadesProjectilesModifications = {
 	},
 	SawTrapWeapon = {
 		ImpactFx = "SawTrapProjectileEnd",
-	},
-	PoisonTrapWeapon = {
-		Effect = {
-			OnlyAffectName = "_PlayerUnit",
-		}
 	},
 	ArcherTrapWeapon = {
 		DissipateGraphic = "null",

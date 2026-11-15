@@ -1999,9 +1999,17 @@ local weaponModifications = {
 		},
 		Sounds = { FireSounds = { { Name = "/SFX/Enemy Sounds/RatThug/EmoteAttacking" }, }, },
 	},
+	RatPoisonShake = {
+		Requirements = {
+			RequiresNotCharmed = true,
+		},
+	},
 	RatThugMelee = {
 		AIData = {
 			ImmuneToProjectileSlow = true,
+			AttackFailWeaponRequirements = {
+				RequiresNotCharmed = true,
+			},
 		},
 	},
 	HeavyRangedWeaponFork = {

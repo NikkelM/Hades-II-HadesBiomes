@@ -63,6 +63,7 @@ Other fixes and improvements:
 - Balancing: The small heads summoned by the Lernaean Bone Hydra can now be resurrected with "Night Bloom", "Sun Worshipper" or "God of the Dead".
 - Balancing: Revenants created by the "Vow of Return" in Asphodel will now be destroyed automatically when they land on lava.
 - Balancing: Exalted Shades can no longer create Lone Shades when dying.
+- Balancing: Satyr Cultists can now be charmed or resurrected.
 - Balancing: Lone Elite enemies in Styx tunnel rooms can no longer be imbued with the "Linker" elite perk.
 - Balancing: Slightly reduced the base encounter difficulty of wing-end combat rooms in the Temple of Styx.
 - Balancing: Hades will now dash and side-dash more frequently during combat to close the distance between him and Melinoë.
@@ -108,6 +109,7 @@ Other fixes and improvements:
 - Fixed: Clones spawned by enemies with the "Cloner" perk do not die automatically when their parent dies.
 - Fixed: A background ambience track in Elysium does not play.
 - Fixed: Gale burns a block when Melinoë is poisoned in Styx (or Elysium), instead of allowing it to happen as is the case with poison in the Polyphemus & Medea boss fight.
+- Fixed: Charmed or resurrected enemies aren't poisoned by poison traps in Styx.
 - Fixed: "Fire Away" does not destroy some enemy projectiles that should be destroyable.
 - Fixed: If no Hex is owned yet, entering Styx may offer one as both an item in the shop and a reward on a door, causing you to own two Hexes when picking both.
 - Fixed: Hades' portrait does not show during some of his taunt voicelines, e.g. after boss fights or Erebus encounters.
