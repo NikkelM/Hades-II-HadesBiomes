@@ -659,12 +659,6 @@ local enemyReplacements = {
 			},
 		},
 	},
-	Harpy3 = {
-		MapTransitionReactionVoiceLines = {
-			-- Removing the Zagreus voicelines that are still in the VO file
-			[2] = mod.NilValue,
-		}
-	},
 	-- #endregion
 	-- #endregion
 
@@ -1600,6 +1594,10 @@ local enemyModifications = {
 		},
 	},
 	Harpy3 = {
+		MapTransitionReactionVoiceLines = {
+			-- Removing the Zagreus voicelines that are still in the VO file
+			[2] = mod.NilValue,
+		},
 		-- Base Health: 5200
 		-- EM Health: 5600
 		MaxHealth = 11400,
