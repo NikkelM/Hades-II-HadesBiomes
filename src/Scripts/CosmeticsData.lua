@@ -21,8 +21,8 @@
 	"ModsNikkelMHadesBiomes_BossResourceStyx",
 ]] --
 
--- In total, as of 2026-10-18: 57 cosmetics
--- Last added: Wall-Scroll, Gigaros
+-- In total, as of 2026-11-15: 62 cosmetics
+-- Last added: Chthonic Chid, Patroclus
 
 -- #region CosmeticsShop_Tent
 local tentCosmetics = {
@@ -5242,7 +5242,7 @@ local preRunCosmetics = {
 			{
 				PreLineWait = 0.35,
 				ObjectType = "NPC_Dora_01",
-				{ Cue = "/VO/Dora_0789", Text = "{#Emph}I am the only visage of Death you shall ever require!", PreLineFunctionName = "GenericPresentation", PreLineFunctionArgs = game.PresetAudioArgs.DoraScaryAppearArgs },
+				{ Cue = "/VO/Dora_0739", Text = "Is that a good-luck rat or something...? I like it!", PreLineFunctionName = "GenericPresentation", PreLineFunctionArgs = game.PresetAudioArgs.DoraNormalAppearArgs, },
 			},
 			{ GlobalVoiceLines = "PositiveReactionVoiceLines" },
 		},
@@ -6567,9 +6567,1041 @@ CosmeticsAPI.RegisterCardBack({
 	CardBackPath = "NikkelM-HadesBiomesCosmeticsCardbacks\\GUI\\Screens\\Cardback\\CardBackGodsHermes",
 })
 -- #endregion
--- #endregion
 
 -- Register the cosmetics package to be loaded automatically by the CosmeticsAPI when entering the Crossroads
 CosmeticsAPI.RegisterCrossroadsPackages({ "NikkelM-HadesBiomesCosmetics" })
 -- Register the arcana card back package to be loaded automatically by the CosmeticsAPI
 CosmeticsAPI.RegisterCrossroadsPackages({ "NikkelM-HadesBiomesCosmeticsCardbacks" })
+-- #endregion
+
+-- #region Chthonic Chids
+CosmeticsAPI.RegisterChthonicChid({
+	Id = _PLUGIN.guid .. "." .. "Cosmetic_CollectableMegaera",
+	Name = {
+		de = "Kind der Unterwelt (Megaira)",
+		el = "Χθόνιο τέκνο: Μέγαιρα",
+		en = "Chthonic Chid, Megaera",
+		es = "Mini Ctónica de Megera",
+		fr = "Chthoni'mini Mégère",
+		it = "Figurina Ctonia (Megera)",
+		ja = "冥府キッド（メガイラ）",
+		ko = "명계의 딸: 메가이라",
+		pl = "Miniaturka chtoniczna (Megajra)",
+		["pt-BR"] = "Minictôn da Megaira",
+		ru = "Хтоническая малышка Мегера",
+		tr = "Kitonik Biblo, Megaira",
+		uk = "Хтонічне маля (Мегера)",
+		["zh-CN"] = "冥界玩偶：墨纪拉",
+		["zh-TW"] = "墨紀拉冥界公仔",
+	},
+	Description = {
+		-- de =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after the the First of the Furies.",
+		-- el =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after the the First of the Furies.",
+		en =
+		"{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after the the First of the Furies.",
+		-- es =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after the the First of the Furies.",
+		-- fr =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after the the First of the Furies.",
+		-- it =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after the the First of the Furies.",
+		-- ja =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after the the First of the Furies.",
+		-- ko =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after the the First of the Furies.",
+		-- pl =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after the the First of the Furies.",
+		-- ["pt-BR"] =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after the the First of the Furies.",
+		-- ru =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after the the First of the Furies.",
+		-- tr =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after the the First of the Furies.",
+		-- uk =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after the the First of the Furies.",
+		-- ["zh-CN"] =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after the the First of the Furies.",
+		-- ["zh-TW"] =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after the the First of the Furies.",
+	},
+	FlavorText = {
+		-- de =
+		-- "“You know I can't let you pass, Zagreus. Don't expect me to go easy on you just because we've done this before.”",
+		-- el =
+		-- "“You know I can't let you pass, Zagreus. Don't expect me to go easy on you just because we've done this before.”",
+		en =
+		"“You know I can't let you pass, Zagreus. Don't expect me to go easy on you just because we've done this before.”",
+		-- es =
+		-- "“You know I can't let you pass, Zagreus. Don't expect me to go easy on you just because we've done this before.”",
+		-- fr =
+		-- "“You know I can't let you pass, Zagreus. Don't expect me to go easy on you just because we've done this before.”",
+		-- it =
+		-- "“You know I can't let you pass, Zagreus. Don't expect me to go easy on you just because we've done this before.”",
+		-- ja =
+		-- "“You know I can't let you pass, Zagreus. Don't expect me to go easy on you just because we've done this before.”",
+		-- ko =
+		-- "“You know I can't let you pass, Zagreus. Don't expect me to go easy on you just because we've done this before.”",
+		-- pl =
+		-- "“You know I can't let you pass, Zagreus. Don't expect me to go easy on you just because we've done this before.”",
+		-- ["pt-BR"] =
+		-- "“You know I can't let you pass, Zagreus. Don't expect me to go easy on you just because we've done this before.”",
+		-- ru =
+		-- "“You know I can't let you pass, Zagreus. Don't expect me to go easy on you just because we've done this before.”",
+		-- tr =
+		-- "“You know I can't let you pass, Zagreus. Don't expect me to go easy on you just because we've done this before.”",
+		-- uk =
+		-- "“You know I can't let you pass, Zagreus. Don't expect me to go easy on you just because we've done this before.”",
+		-- ["zh-CN"] =
+		-- "“You know I can't let you pass, Zagreus. Don't expect me to go easy on you just because we've done this before.”",
+		-- ["zh-TW"] =
+		-- "“You know I can't let you pass, Zagreus. Don't expect me to go easy on you just because we've done this before.”",
+	},
+	CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\ChthonicChids\\Meg_chid",
+	IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Icons\\ChthonicChids\\Meg_chid_Icon",
+	Cost = {
+		CosmeticsPoints = 999,
+		ModsNikkelMHadesBiomes_BossResourceTartarus = 3,
+		ModsNikkelMHadesBiomes_BossResourceStyx = 1,
+	},
+	GameStateRequirements = {
+		{
+			PathTrue = { "GameState", "TextLinesRecord", "MegaeraGift10" },
+		},
+		{
+			PathTrue = { "GameState", "TextLinesRecord", "Ending01" },
+		},
+		NamedRequirements = { "T5Cosmetic" },
+	},
+	AlwaysRevealImmediately = true,
+})
+CosmeticsAPI.RegisterChthonicChid({
+	Id = _PLUGIN.guid .. "." .. "Cosmetic_CollectableThanatos",
+	Name = {
+		de = "Kind der Unterwelt (Thanatos)",
+		el = "Χθόνιο τέκνο: Θάνατος",
+		en = "Chthonic Chid, Thanatos",
+		es = "Mini Ctónica de Tánatos",
+		fr = "Chthoni'mini Thanatos",
+		it = "Figurina Ctonia (Thanatos)",
+		ja = "冥府キッド（タナトス）",
+		ko = "명계의 아들: 타나토스",
+		pl = "Miniaturka chtoniczna (Tanatos)",
+		["pt-BR"] = "Minictôn do Tânato",
+		ru = "Хтонический малыш Танатос",
+		tr = "Kitonik Biblo, Thanatos",
+		uk = "Хтонічне маля (Танатос)",
+		["zh-CN"] = "冥界玩偶：塔纳托斯",
+		["zh-TW"] = "塔納托斯冥界公仔",
+	},
+	Description = {
+		-- de =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after the Harbinger of Death.",
+		-- el =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after the Harbinger of Death.",
+		en =
+		"{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after the Harbinger of Death.",
+		-- es =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after the Harbinger of Death.",
+		-- fr =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after the Harbinger of Death.",
+		-- it =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after the Harbinger of Death.",
+		-- ja =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after the Harbinger of Death.",
+		-- ko =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after the Harbinger of Death.",
+		-- pl =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after the Harbinger of Death.",
+		-- ["pt-BR"] =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after the Harbinger of Death.",
+		-- ru =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after the Harbinger of Death.",
+		-- tr =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after the Harbinger of Death.",
+		-- uk =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after the Harbinger of Death.",
+		-- ["zh-CN"] =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after the Harbinger of Death.",
+		-- ["zh-TW"] =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after the Harbinger of Death.",
+	},
+	FlavorText = {
+		-- de =
+		-- "“Death approaches, whether you choose to embrace or reject it. Live your life with that in mind.”",
+		-- el =
+		-- "“Death approaches, whether you choose to embrace or reject it. Live your life with that in mind.”",
+		en = "“Death approaches, whether you choose to embrace or reject it. Live your life with that in mind.”",
+		-- es =
+		-- "“Death approaches, whether you choose to embrace or reject it. Live your life with that in mind.”",
+		-- fr =
+		-- "“Death approaches, whether you choose to embrace or reject it. Live your life with that in mind.”",
+		-- it =
+		-- "“Death approaches, whether you choose to embrace or reject it. Live your life with that in mind.”",
+		-- ja =
+		-- "“Death approaches, whether you choose to embrace or reject it. Live your life with that in mind.”",
+		-- ko =
+		-- "“Death approaches, whether you choose to embrace or reject it. Live your life with that in mind.”",
+		-- pl =
+		-- "“Death approaches, whether you choose to embrace or reject it. Live your life with that in mind.”",
+		-- ["pt-BR"] =
+		-- "“Death approaches, whether you choose to embrace or reject it. Live your life with that in mind.”",
+		-- ru =
+		-- "“Death approaches, whether you choose to embrace or reject it. Live your life with that in mind.”",
+		-- tr =
+		-- "“Death approaches, whether you choose to embrace or reject it. Live your life with that in mind.”",
+		-- uk =
+		-- "“Death approaches, whether you choose to embrace or reject it. Live your life with that in mind.”",
+		-- ["zh-CN"] =
+		-- "“Death approaches, whether you choose to embrace or reject it. Live your life with that in mind.”",
+		-- ["zh-TW"] =
+		-- "“Death approaches, whether you choose to embrace or reject it. Live your life with that in mind.”",
+	},
+	CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\ChthonicChids\\Thanatos_chid",
+	IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Icons\\ChthonicChids\\Thanatos_chid_Icon",
+	Cost = {
+		CosmeticsPoints = 999,
+		ModsNikkelMHadesBiomes_OreAsphodel = 4,
+		ModsNikkelMHadesBiomes_PlantStyx = 2,
+	},
+	GameStateRequirements = {
+		{
+			PathTrue = { "GameState", "TextLinesRecord", "ThanatosGift10" },
+		},
+		{
+			PathTrue = { "GameState", "TextLinesRecord", "Ending01" },
+		},
+		NamedRequirements = { "T5Cosmetic" },
+	},
+	AlwaysRevealImmediately = true,
+	RevealReactionVoiceLines = {
+		{
+			PreLineWait = 0.35,
+			ObjectType = "NPC_Dora_01",
+			{ Cue = "/VO/Dora_0789", Text = "{#Emph}I am the only visage of Death you shall ever require!", PreLineFunctionName = "GenericPresentation", PreLineFunctionArgs = game.PresetAudioArgs.DoraScaryAppearArgs },
+		},
+		{ GlobalVoiceLines = "PositiveReactionVoiceLines" },
+	},
+})
+CosmeticsAPI.RegisterChthonicChid({
+	Id = _PLUGIN.guid .. "." .. "Cosmetic_CollectableSisyphus",
+	Name = {
+		de = "Kind der Unterwelt (Sisyphos)",
+		-- el = "Chthonic Chid, Sisyphus",
+		en = "Chthonic Chid, Sisyphus",
+		es = "Mini Ctónica de Sísifo",
+		fr = "Chthoni'mini Sisyphe",
+		it = "Figurina Ctonia (Sisifo)",
+		ja = "冥府キッド（シシュポス）",
+		ko = "명계의 아들: 시시포스",
+		pl = "Miniaturka chtoniczna (Syzyf)",
+		["pt-BR"] = "Minictôn do Sísifo",
+		ru = "Хтонический малыш Сизиф",
+		-- tr = "Chthonic Chid, Sisyphus",
+		-- uk = "Chthonic Chid, Sisyphus",
+		["zh-CN"] = "冥界玩偶：西西弗斯",
+		-- ["zh-TW"] = "Chthonic Chid, Sisyphus",
+	},
+	Description = {
+		-- de =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after the Knave-King condemned to eternal toil.",
+		-- el =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after the Knave-King condemned to eternal toil.",
+		en =
+		"{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after the Knave-King condemned to eternal toil.",
+		-- es =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after the Knave-King condemned to eternal toil.",
+		-- fr =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after the Knave-King condemned to eternal toil.",
+		-- it =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after the Knave-King condemned to eternal toil.",
+		-- ja =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after the Knave-King condemned to eternal toil.",
+		-- ko =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after the Knave-King condemned to eternal toil.",
+		-- pl =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after the Knave-King condemned to eternal toil.",
+		-- ["pt-BR"] =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after the Knave-King condemned to eternal toil.",
+		-- ru =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after the Knave-King condemned to eternal toil.",
+		-- tr =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after the Knave-King condemned to eternal toil.",
+		-- uk =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after the Knave-King condemned to eternal toil.",
+		-- ["zh-CN"] =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after the Knave-King condemned to eternal toil.",
+		-- ["zh-TW"] =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after the Knave-King condemned to eternal toil.",
+	},
+	FlavorText = {
+		-- de =
+		-- "“I used to think that being king meant having all the answers. My time with Bouldy has taught me that sometimes, less is more.”",
+		-- el =
+		-- "“I used to think that being king meant having all the answers. My time with Bouldy has taught me that sometimes, less is more.”",
+		en =
+		"“I used to think that being king meant having all the answers. My time with Bouldy has taught me that sometimes, less is more.”",
+		-- es =
+		-- "“I used to think that being king meant having all the answers. My time with Bouldy has taught me that sometimes, less is more.”",
+		-- fr =
+		-- "“I used to think that being king meant having all the answers. My time with Bouldy has taught me that sometimes, less is more.”",
+		-- it =
+		-- "“I used to think that being king meant having all the answers. My time with Bouldy has taught me that sometimes, less is more.”",
+		-- ja =
+		-- "“I used to think that being king meant having all the answers. My time with Bouldy has taught me that sometimes, less is more.”",
+		-- ko =
+		-- "“I used to think that being king meant having all the answers. My time with Bouldy has taught me that sometimes, less is more.”",
+		-- pl =
+		-- "“I used to think that being king meant having all the answers. My time with Bouldy has taught me that sometimes, less is more.”",
+		-- ["pt-BR"] =
+		-- "“I used to think that being king meant having all the answers. My time with Bouldy has taught me that sometimes, less is more.”",
+		-- ru =
+		-- "“I used to think that being king meant having all the answers. My time with Bouldy has taught me that sometimes, less is more.”",
+		-- tr =
+		-- "“I used to think that being king meant having all the answers. My time with Bouldy has taught me that sometimes, less is more.”",
+		-- uk =
+		-- "“I used to think that being king meant having all the answers. My time with Bouldy has taught me that sometimes, less is more.”",
+		-- ["zh-CN"] =
+		-- "“I used to think that being king meant having all the answers. My time with Bouldy has taught me that sometimes, less is more.”",
+		-- ["zh-TW"] =
+		-- "“I used to think that being king meant having all the answers. My time with Bouldy has taught me that sometimes, less is more.”",
+	},
+	CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\ChthonicChids\\Sisyphus_chid",
+	IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Icons\\ChthonicChids\\Sisyphus_chid_Icon",
+	Cost = {
+		CosmeticsPoints = 999,
+		ModsNikkelMHadesBiomes_OreTartarus = 4,
+		ModsNikkelMHadesBiomes_BossResourceAsphodel = 2,
+	},
+	GameStateRequirements = {
+		{
+			PathTrue = { "GameState", "TextLinesRecord", "SisyphusGift09_A" },
+		},
+		{
+			PathTrue = { "GameState", "TextLinesRecord", "Ending01" },
+		},
+		NamedRequirements = { "T5Cosmetic" },
+	},
+	AlwaysRevealImmediately = true,
+	RevealReactionVoiceLines = {
+		{
+			PreLineWait = 0.35,
+			ObjectType = "NPC_Dora_01",
+			{ Cue = "/VO/Dora_0486", Text = "Oh I've been looking forward to this thing!", PreLineFunctionName = "GenericPresentation", PreLineFunctionArgs = game.PresetAudioArgs.DoraNormalAppearArgs, },
+		},
+		{ GlobalVoiceLines = "PositiveReactionVoiceLines" },
+	},
+})
+-- CosmeticsAPI.RegisterChthonicChid({
+-- 	Id = _PLUGIN.guid .. "." .. "Cosmetic_CollectableOrpheus",
+-- 	Name = {
+-- 		de = "Kind der Unterwelt (Orpheus)",
+-- 		el = "Χθόνιο τέκνο: Ορφέας",
+-- 		en = "Chthonic Chid, Orpheus",
+-- 		es = "Mini Ctónica de Orfeo",
+-- 		fr = "Chthoni'mini Orphée",
+-- 		it = "Figurina Ctonia (Orfeo)",
+-- 		ja = "冥府キッド（オルフェウス）",
+-- 		ko = "명계의 아들: 오르페우스",
+-- 		pl = "Miniaturka chtoniczna (Orfeusz)",
+-- 		["pt-BR"] = "Minictôn do Orfeu",
+-- 		ru = "Хтонический малыш Орфей",
+-- 		tr = "Kitonik Biblo, Orfeus",
+-- 		uk = "Хтонічне маля (Орфей)",
+-- 		["zh-CN"] = "冥界玩偶：俄耳甫斯",
+-- 		["zh-TW"] = "俄爾甫斯冥界公仔",
+-- 	},
+-- 	Description = {
+-- 		-- de =
+-- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a certain Underworld Musician.",
+-- 		-- el =
+-- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a certain Underworld Musician.",
+-- 		en = "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a certain Underworld Musician.",
+-- 		-- es =
+-- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a certain Underworld Musician.",
+-- 		-- fr =
+-- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a certain Underworld Musician.",
+-- 		-- it =
+-- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a certain Underworld Musician.",
+-- 		-- ja =
+-- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a certain Underworld Musician.",
+-- 		-- ko =
+-- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a certain Underworld Musician.",
+-- 		-- pl =
+-- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a certain Underworld Musician.",
+-- 		-- ["pt-BR"] =
+-- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a certain Underworld Musician.",
+-- 		-- ru =
+-- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a certain Underworld Musician.",
+-- 		-- tr =
+-- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a certain Underworld Musician.",
+-- 		-- uk =
+-- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a certain Underworld Musician.",
+-- 		-- ["zh-CN"] =
+-- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a certain Underworld Musician.",
+-- 		-- ["zh-TW"] =
+-- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a certain Underworld Musician.",
+-- 	},
+-- 	FlavorText = {
+-- 		-- de =
+-- 		-- "“Once upon a time, the mere thought of singing again sent shivers down my spine. But you have given me the gift of song all over again, Zagreus.”",
+-- 		-- el =
+-- 		-- "“Once upon a time, the mere thought of singing again sent shivers down my spine. But you have given me the gift of song all over again, Zagreus.”",
+-- 		en =
+-- 		"“Once upon a time, the mere thought of singing again sent shivers down my spine. But you have given me the gift of song all over again, Zagreus.”",
+-- 		-- es =
+-- 		-- "“Once upon a time, the mere thought of singing again sent shivers down my spine. But you have given me the gift of song all over again, Zagreus.”",
+-- 		-- fr =
+-- 		-- "“Once upon a time, the mere thought of singing again sent shivers down my spine. But you have given me the gift of song all over again, Zagreus.”",
+-- 		-- it =
+-- 		-- "“Once upon a time, the mere thought of singing again sent shivers down my spine. But you have given me the gift of song all over again, Zagreus.”",
+-- 		-- ja =
+-- 		-- "“Once upon a time, the mere thought of singing again sent shivers down my spine. But you have given me the gift of song all over again, Zagreus.”",
+-- 		-- ko =
+-- 		-- "“Once upon a time, the mere thought of singing again sent shivers down my spine. But you have given me the gift of song all over again, Zagreus.”",
+-- 		-- pl =
+-- 		-- "“Once upon a time, the mere thought of singing again sent shivers down my spine. But you have given me the gift of song all over again, Zagreus.”",
+-- 		-- ["pt-BR"] =
+-- 		-- "“Once upon a time, the mere thought of singing again sent shivers down my spine. But you have given me the gift of song all over again, Zagreus.”",
+-- 		-- ru =
+-- 		-- "“Once upon a time, the mere thought of singing again sent shivers down my spine. But you have given me the gift of song all over again, Zagreus.”",
+-- 		-- tr =
+-- 		-- "“Once upon a time, the mere thought of singing again sent shivers down my spine. But you have given me the gift of song all over again, Zagreus.”",
+-- 		-- uk =
+-- 		-- "“Once upon a time, the mere thought of singing again sent shivers down my spine. But you have given me the gift of song all over again, Zagreus.”",
+-- 		-- ["zh-CN"] =
+-- 		-- "“Once upon a time, the mere thought of singing again sent shivers down my spine. But you have given me the gift of song all over again, Zagreus.”",
+-- 		-- ["zh-TW"] =
+-- 		-- "“Once upon a time, the mere thought of singing again sent shivers down my spine. But you have given me the gift of song all over again, Zagreus.”",
+-- 	},
+-- 	CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\ChthonicChids\\Orpheus_chid",
+-- 	IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Icons\\ChthonicChids\\Orpheus_chid_Icon",
+-- 	Cost = {
+-- 		CosmeticsPoints = 999,
+-- 		ModsNikkelMHadesBiomes_PlantTartarus = 3,
+-- 		ModsNikkelMHadesBiomes_PlantElysium = 2,
+-- 	},
+-- 	GameStateRequirements = {
+-- 		{
+-- 			PathTrue = { "GameState", "TextLinesRecord", "OrpheusGift08" },
+-- 		},
+-- 		{
+-- 			PathTrue = { "GameState", "TextLinesRecord", "Ending01" },
+-- 		},
+-- 		NamedRequirements = { "T5Cosmetic" },
+-- 	},
+-- 	AlwaysRevealImmediately = true,
+-- })
+-- CosmeticsAPI.RegisterChthonicChid({
+-- 	Id = _PLUGIN.guid .. "." .. "Cosmetic_CollectableEurydice",
+-- 	Name = {
+-- 		de = "Kind der Unterwelt (Eurydike)",
+-- 		-- el = "Chthonic Chid, Eurydice",
+-- 		en = "Chthonic Chid, Eurydice",
+-- 		es = "Mini Ctónica de Eurídice",
+-- 		fr = "Chthoni'mini Eurydice",
+-- 		it = "Figurina Ctonia (Euridice)",
+-- 		ja = "冥府キッド（エウリュディケ）",
+-- 		ko = "명계의 딸: 에우리디케",
+-- 		pl = "Miniaturka chtoniczna (Eurydyka)",
+-- 		["pt-BR"] = "Minictôn da Eurídice",
+-- 		ru = "Хтоническая малышка Эвридика",
+-- 		-- tr = "Chthonic Chid, Eurydice",
+-- 		-- uk = "Chthonic Chid, Eurydice",
+-- 		["zh-CN"] = "冥界玩偶：欧律狄克",
+-- 		-- ["zh-TW"] = "Chthonic Chid, Eurydice",
+-- 	},
+-- 	Description = {
+-- 		-- de =
+-- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a nymph that inspired many a song.",
+-- 		-- el =
+-- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a nymph that inspired many a song.",
+-- 		en =
+-- 		"{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a nymph that inspired many a song.",
+-- 		-- es =
+-- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a nymph that inspired many a song.",
+-- 		-- fr =
+-- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a nymph that inspired many a song.",
+-- 		-- it =
+-- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a nymph that inspired many a song.",
+-- 		-- ja =
+-- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a nymph that inspired many a song.",
+-- 		-- ko =
+-- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a nymph that inspired many a song.",
+-- 		-- pl =
+-- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a nymph that inspired many a song.",
+-- 		-- ["pt-BR"] =
+-- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a nymph that inspired many a song.",
+-- 		-- ru =
+-- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a nymph that inspired many a song.",
+-- 		-- tr =
+-- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a nymph that inspired many a song.",
+-- 		-- uk =
+-- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a nymph that inspired many a song.",
+-- 		-- ["zh-CN"] =
+-- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a nymph that inspired many a song.",
+-- 		-- ["zh-TW"] =
+-- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a nymph that inspired many a song.",
+-- 	},
+-- 	FlavorText = {
+-- 		-- de =
+-- 		-- "“Come here, Your Royal Majesty, and enjoy one of these treats I've prepared just for you.”",
+-- 		-- el =
+-- 		-- "“Come here, Your Royal Majesty, and enjoy one of these treats I've prepared just for you.”",
+-- 		en = "“Come here, Your Royal Majesty, and enjoy one of these treats I've prepared just for you.”",
+-- 		-- es =
+-- 		-- "“Come here, Your Royal Majesty, and enjoy one of these treats I've prepared just for you.”",
+-- 		-- fr =
+-- 		-- "“Come here, Your Royal Majesty, and enjoy one of these treats I've prepared just for you.”",
+-- 		-- it =
+-- 		-- "“Come here, Your Royal Majesty, and enjoy one of these treats I've prepared just for you.”",
+-- 		-- ja =
+-- 		-- "“Come here, Your Royal Majesty, and enjoy one of these treats I've prepared just for you.”",
+-- 		-- ko =
+-- 		-- "“Come here, Your Royal Majesty, and enjoy one of these treats I've prepared just for you.”",
+-- 		-- pl =
+-- 		-- "“Come here, Your Royal Majesty, and enjoy one of these treats I've prepared just for you.”",
+-- 		-- ["pt-BR"] =
+-- 		-- "“Come here, Your Royal Majesty, and enjoy one of these treats I've prepared just for you.”",
+-- 		-- ru =
+-- 		-- "“Come here, Your Royal Majesty, and enjoy one of these treats I've prepared just for you.”",
+-- 		-- tr =
+-- 		-- "“Come here, Your Royal Majesty, and enjoy one of these treats I've prepared just for you.”",
+-- 		-- uk =
+-- 		-- "“Come here, Your Royal Majesty, and enjoy one of these treats I've prepared just for you.”",
+-- 		-- ["zh-CN"] =
+-- 		-- "“Come here, Your Royal Majesty, and enjoy one of these treats I've prepared just for you.”",
+-- 		-- ["zh-TW"] =
+-- 		-- "“Come here, Your Royal Majesty, and enjoy one of these treats I've prepared just for you.”",
+-- 	},
+-- 	CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\ChthonicChids\\Eurydice_chid",
+-- 	IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Icons\\ChthonicChids\\Eurydice_chid_Icon",
+-- 	Cost = {
+-- 		CosmeticsPoints = 999,
+-- 		ModsNikkelMHadesBiomes_BossResourceElysium = 2,
+-- 		ModsNikkelMHadesBiomes_CropStyx = 2,
+-- 	},
+-- 	GameStateRequirements = {
+-- 		{
+-- 			PathTrue = { "GameState", "TextLinesRecord", "EurydiceGift08" },
+-- 		},
+-- 		{
+-- 			PathTrue = { "GameState", "TextLinesRecord", "Ending01" },
+-- 		},
+-- 		NamedRequirements = { "T5Cosmetic" },
+-- 	},
+-- 	AlwaysRevealImmediately = true,
+-- })
+CosmeticsAPI.RegisterChthonicChid({
+	Id = _PLUGIN.guid .. "." .. "Cosmetic_CollectableAchilles",
+	Name = {
+		de = "Kind der Unterwelt (Achilles)",
+		el = "Χθόνιο τέκνο: Αχιλλέας",
+		en = "Chthonic Chid, Achilles",
+		es = "Mini Ctónica de Aquiles",
+		fr = "Chthoni'mini Achille",
+		it = "Figurina Ctonia (Achille)",
+		ja = "冥府キッド（アキレウス）",
+		ko = "명계의 아들: 아킬레우스",
+		pl = "Miniaturka chtoniczna (Achilles)",
+		["pt-BR"] = "Minictôn do Aquiles",
+		ru = "Хтонический малыш Ахиллес",
+		tr = "Kitonik Biblo, Aşil",
+		uk = "Хтонічне маля (Ахілл)",
+		["zh-CN"] = "冥界玩偶：阿喀琉斯",
+		["zh-TW"] = "阿基里斯冥界公仔",
+	},
+	Description = {
+		-- de =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a famed Hero of Troy.",
+		-- el =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a famed Hero of Troy.",
+		en =
+		"{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a famed Hero of Troy.",
+		-- es =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a famed Hero of Troy.",
+		-- fr =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a famed Hero of Troy.",
+		-- it =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a famed Hero of Troy.",
+		-- ja =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a famed Hero of Troy.",
+		-- ko =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a famed Hero of Troy.",
+		-- pl =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a famed Hero of Troy.",
+		-- ["pt-BR"] =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a famed Hero of Troy.",
+		-- ru =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a famed Hero of Troy.",
+		-- tr =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a famed Hero of Troy.",
+		-- uk =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a famed Hero of Troy.",
+		-- ["zh-CN"] =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a famed Hero of Troy.",
+		-- ["zh-TW"] =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a famed Hero of Troy.",
+	},
+	FlavorText = {
+		-- de =
+		-- "“My fighting days are behind me, lad. But there is still more out there for you to discover, so seize the moment. Fear is for the weak.”",
+		-- el =
+		-- "“My fighting days are behind me, lad. But there is still more out there for you to discover, so seize the moment. Fear is for the weak.”",
+		en =
+		"“My fighting days are behind me, lad. But there is still more out there for you to discover, so seize the moment. Fear is for the weak.”",
+		-- es =
+		-- "“My fighting days are behind me, lad. But there is still more out there for you to discover, so seize the moment. Fear is for the weak.”",
+		-- fr =
+		-- "“My fighting days are behind me, lad. But there is still more out there for you to discover, so seize the moment. Fear is for the weak.”",
+		-- it =
+		-- "“My fighting days are behind me, lad. But there is still more out there for you to discover, so seize the moment. Fear is for the weak.”",
+		-- ja =
+		-- "“My fighting days are behind me, lad. But there is still more out there for you to discover, so seize the moment. Fear is for the weak.”",
+		-- ko =
+		-- "“My fighting days are behind me, lad. But there is still more out there for you to discover, so seize the moment. Fear is for the weak.”",
+		-- pl =
+		-- "“My fighting days are behind me, lad. But there is still more out there for you to discover, so seize the moment. Fear is for the weak.”",
+		-- ["pt-BR"] =
+		-- "“My fighting days are behind me, lad. But there is still more out there for you to discover, so seize the moment. Fear is for the weak.”",
+		-- ru =
+		-- "“My fighting days are behind me, lad. But there is still more out there for you to discover, so seize the moment. Fear is for the weak.”",
+		-- tr =
+		-- "“My fighting days are behind me, lad. But there is still more out there for you to discover, so seize the moment. Fear is for the weak.”",
+		-- uk =
+		-- "“My fighting days are behind me, lad. But there is still more out there for you to discover, so seize the moment. Fear is for the weak.”",
+		-- ["zh-CN"] =
+		-- "“My fighting days are behind me, lad. But there is still more out there for you to discover, so seize the moment. Fear is for the weak.”",
+		-- ["zh-TW"] =
+		-- "“My fighting days are behind me, lad. But there is still more out there for you to discover, so seize the moment. Fear is for the weak.”",
+	},
+	CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\ChthonicChids\\Achilles_chid",
+	IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Icons\\ChthonicChids\\Achilles_chid_Icon",
+	Cost = {
+		CosmeticsPoints = 999,
+		ModsNikkelMHadesBiomes_PlantElysium = 2,
+		ModsNikkelMHadesBiomes_CropElysium = 3,
+	},
+	GameStateRequirements = {
+		{
+			PathTrue = { "GameState", "TextLinesRecord", "AchillesGift09_A" },
+		},
+		{
+			PathTrue = { "GameState", "TextLinesRecord", "Ending01" },
+		},
+		NamedRequirements = { "T5Cosmetic" },
+	},
+	AlwaysRevealImmediately = true,
+})
+CosmeticsAPI.RegisterChthonicChid({
+	Id = _PLUGIN.guid .. "." .. "Cosmetic_CollectablePatroclus",
+	Name = {
+		de = "Kind der Unterwelt (Patroklos)",
+		-- el = "Chthonic Chid, Patroclus",
+		en = "Chthonic Chid, Patroclus",
+		es = "Mini Ctónica de Patroclo",
+		fr = "Chthoni'mini Patrocle",
+		it = "Figurina Ctonia (Patroclo)",
+		ja = "冥府キッド（パトロクロス）",
+		ko = "명계의 아들: 파트로클로스",
+		pl = "Miniaturka chtoniczna (Patrokles)",
+		["pt-BR"] = "Minictôn do Pátroclo",
+		ru = "Хтонический малыш Патрокл",
+		-- tr = "Chthonic Chid, Patroclus",
+		-- uk = "Chthonic Chid, Patroclus",
+		["zh-CN"] = "冥界玩偶：普特洛克勒斯",
+		-- ["zh-TW"] = "Chthonic Chid, Patroclus",
+	},
+	Description = {
+		-- de =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a Fallen Warrior.",
+		-- el =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a Fallen Warrior.",
+		en =
+		"{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a Fallen Warrior.",
+		-- es =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a Fallen Warrior.",
+		-- fr =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a Fallen Warrior.",
+		-- it =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a Fallen Warrior.",
+		-- ja =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a Fallen Warrior.",
+		-- ko =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a Fallen Warrior.",
+		-- pl =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a Fallen Warrior.",
+		-- ["pt-BR"] =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a Fallen Warrior.",
+		-- ru =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a Fallen Warrior.",
+		-- tr =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a Fallen Warrior.",
+		-- uk =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a Fallen Warrior.",
+		-- ["zh-CN"] =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a Fallen Warrior.",
+		-- ["zh-TW"] =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a Fallen Warrior.",
+	},
+	FlavorText = {
+		-- de =
+		-- "“Come sit with me, stranger. I have come to welcome your visits, as they help distract myself from thinking of what was.”",
+		-- el =
+		-- "“Come sit with me, stranger. I have come to welcome your visits, as they help distract myself from thinking of what was.”",
+		en =
+		"“Come sit with me, stranger. I have come to welcome your visits, as they help distract myself from thinking of what was.”",
+		-- es =
+		-- "“Come sit with me, stranger. I have come to welcome your visits, as they help distract myself from thinking of what was.”",
+		-- fr =
+		-- "“Come sit with me, stranger. I have come to welcome your visits, as they help distract myself from thinking of what was.”",
+		-- it =
+		-- "“Come sit with me, stranger. I have come to welcome your visits, as they help distract myself from thinking of what was.”",
+		-- ja =
+		-- "“Come sit with me, stranger. I have come to welcome your visits, as they help distract myself from thinking of what was.”",
+		-- ko =
+		-- "“Come sit with me, stranger. I have come to welcome your visits, as they help distract myself from thinking of what was.”",
+		-- pl =
+		-- "“Come sit with me, stranger. I have come to welcome your visits, as they help distract myself from thinking of what was.”",
+		-- ["pt-BR"] =
+		-- "“Come sit with me, stranger. I have come to welcome your visits, as they help distract myself from thinking of what was.”",
+		-- ru =
+		-- "“Come sit with me, stranger. I have come to welcome your visits, as they help distract myself from thinking of what was.”",
+		-- tr =
+		-- "“Come sit with me, stranger. I have come to welcome your visits, as they help distract myself from thinking of what was.”",
+		-- uk =
+		-- "“Come sit with me, stranger. I have come to welcome your visits, as they help distract myself from thinking of what was.”",
+		-- ["zh-CN"] =
+		-- "“Come sit with me, stranger. I have come to welcome your visits, as they help distract myself from thinking of what was.”",
+		-- ["zh-TW"] =
+		-- "“Come sit with me, stranger. I have come to welcome your visits, as they help distract myself from thinking of what was.”",
+	},
+	CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\ChthonicChids\\Patroclus_chid",
+	IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Icons\\ChthonicChids\\Patroclus_chid_Icon",
+	Cost = {
+		CosmeticsPoints = 999,
+		ModsNikkelMHadesBiomes_PlantElysium = 3,
+		ModsNikkelMHadesBiomes_CropElysium = 2,
+	},
+	GameStateRequirements = {
+		{
+			PathTrue = { "GameState", "TextLinesRecord", "PatroclusGift08_A" },
+		},
+		{
+			PathTrue = { "GameState", "TextLinesRecord", "Ending01" },
+		},
+		NamedRequirements = { "T5Cosmetic" },
+	},
+	AlwaysRevealImmediately = true,
+	RevealReactionVoiceLines = {
+		{
+			PreLineWait = 0.35,
+			ObjectType = "NPC_Dora_01",
+			{ Cue = "/VO/Dora_0788", Text = "Can't get these in Elysium anymore... but we have our ways.", PreLineFunctionName = "GenericPresentation", PreLineFunctionArgs = game.PresetAudioArgs.DoraNormalAppearArgs, },
+		},
+		{ GlobalVoiceLines = "PositiveReactionVoiceLines" },
+	},
+})
+-- CosmeticsAPI.RegisterChthonicChid({
+-- 	Id = _PLUGIN.guid .. "." .. "Cosmetic_CollectablePersephone",
+-- 	Name = {
+-- 		de = "Kind der Unterwelt (Persephone)",
+-- 		el = "Χθόνιο τέκνο: Περσεφόνη",
+-- 		en = "Chthonic Chid, Persephone",
+-- 		es = "Mini Ctónica de Perséfone",
+-- 		fr = "Chthoni'mini Perséphone",
+-- 		it = "Figurina Ctonia (Persefone)",
+-- 		ja = "冥府キッド（ペルセポネ）",
+-- 		ko = "명계의 딸: 페르세포네",
+-- 		pl = "Miniaturka chtoniczna (Persefona)",
+-- 		["pt-BR"] = "Minictôn da Perséfone",
+-- 		ru = "Хтоническая малышка Персефона",
+-- 		tr = "Kitonik Biblo, Persefone",
+-- 		uk = "Хтонічне маля (Персефона)",
+-- 		["zh-CN"] = "冥界玩偶：珀尔塞福涅",
+-- 		["zh-TW"] = "波瑟芬妮冥界公仔",
+-- 	},
+-- 	Description = {
+-- 		-- de =
+-- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after the Queen of the Underworld.",
+-- 		-- el =
+-- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after the Queen of the Underworld.",
+-- 		en = "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after the Queen of the Underworld.",
+-- 		-- es =
+-- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after the Queen of the Underworld.",
+-- 		-- fr =
+-- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after the Queen of the Underworld.",
+-- 		-- it =
+-- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after the Queen of the Underworld.",
+-- 		-- ja =
+-- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after the Queen of the Underworld.",
+-- 		-- ko =
+-- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after the Queen of the Underworld.",
+-- 		-- pl =
+-- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after the Queen of the Underworld.",
+-- 		-- ["pt-BR"] =
+-- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after the Queen of the Underworld.",
+-- 		-- ru =
+-- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after the Queen of the Underworld.",
+-- 		-- tr =
+-- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after the Queen of the Underworld.",
+-- 		-- uk =
+-- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after the Queen of the Underworld.",
+-- 		-- ["zh-CN"] =
+-- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after the Queen of the Underworld.",
+-- 		-- ["zh-TW"] =
+-- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after the Queen of the Underworld.",
+-- 	},
+-- 	FlavorText = {
+-- 		-- de =
+-- 		-- "“Oh, my wonderful child, if only you knew what I would have done had only I known you breathed still and walked your Father's halls.”",
+-- 		-- el =
+-- 		-- "“Oh, my wonderful child, if only you knew what I would have done had only I known you breathed still and walked your Father's halls.”",
+-- 		en =
+-- 		"“Oh, my wonderful child, if only you knew what I would have done had only I known you breathed still and walked your Father's halls.”",
+-- 		-- es =
+-- 		-- "“Oh, my wonderful child, if only you knew what I would have done had only I known you breathed still and walked your Father's halls.”",
+-- 		-- fr =
+-- 		-- "“Oh, my wonderful child, if only you knew what I would have done had only I known you breathed still and walked your Father's halls.”",
+-- 		-- it =
+-- 		-- "“Oh, my wonderful child, if only you knew what I would have done had only I known you breathed still and walked your Father's halls.”",
+-- 		-- ja =
+-- 		-- "“Oh, my wonderful child, if only you knew what I would have done had only I known you breathed still and walked your Father's halls.”",
+-- 		-- ko =
+-- 		-- "“Oh, my wonderful child, if only you knew what I would have done had only I known you breathed still and walked your Father's halls.”",
+-- 		-- pl =
+-- 		-- "“Oh, my wonderful child, if only you knew what I would have done had only I known you breathed still and walked your Father's halls.”",
+-- 		-- ["pt-BR"] =
+-- 		-- "“Oh, my wonderful child, if only you knew what I would have done had only I known you breathed still and walked your Father's halls.”",
+-- 		-- ru =
+-- 		-- "“Oh, my wonderful child, if only you knew what I would have done had only I known you breathed still and walked your Father's halls.”",
+-- 		-- tr =
+-- 		-- "“Oh, my wonderful child, if only you knew what I would have done had only I known you breathed still and walked your Father's halls.”",
+-- 		-- uk =
+-- 		-- "“Oh, my wonderful child, if only you knew what I would have done had only I known you breathed still and walked your Father's halls.”",
+-- 		-- ["zh-CN"] =
+-- 		-- "“Oh, my wonderful child, if only you knew what I would have done had only I known you breathed still and walked your Father's halls.”",
+-- 		-- ["zh-TW"] =
+-- 		-- "“Oh, my wonderful child, if only you knew what I would have done had only I known you breathed still and walked your Father's halls.”",
+-- 	},
+-- 	CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\ChthonicChids\\Persephone_chid",
+-- 	IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Icons\\ChthonicChids\\Persephone_chid_Icon",
+-- 	Cost = {
+-- 		CosmeticsPoints = 999,
+-- 		ModsNikkelMHadesBiomes_BossResourceAsphodel = 1,
+-- 		ModsNikkelMHadesBiomes_BossResourceStyx = 3,
+-- 	},
+-- 	GameStateRequirements = {
+-- 		-- Once her gifting is implemented
+-- 		-- {
+-- 		-- 	PathTrue = { "GameState", "TextLinesRecord", "PersephoneGift09" },
+-- 		-- },
+-- 		{
+-- 			PathTrue = { "GameState", "TextLinesRecord", "Ending01" },
+-- 		},
+-- 		NamedRequirements = { "T5Cosmetic" },
+-- 	},
+-- 	AlwaysRevealImmediately = true,
+-- })
+-- CosmeticsAPI.RegisterChthonicChid({
+-- 	Id = _PLUGIN.guid .. "." .. "Cosmetic_CollectableDusa",
+-- 	Name = {
+-- 		de = "Kind der Unterwelt (Dusa)",
+-- 		el = "Χθόνιο τέκνο: Δούσα",
+-- 		en = "Chthonic Chid, Dusa",
+-- 		es = "Mini Ctónica de Dusa",
+-- 		fr = "Chthoni'mini Dusa",
+-- 		it = "Figurina Ctonia (Dusa)",
+-- 		ja = "冥府キッド（デューサ）",
+-- 		ko = "명계의 딸: 두사",
+-- 		pl = "Miniaturka chtoniczna (Duza)",
+-- 		["pt-BR"] = "Minictôn da Dusa",
+-- 		ru = "Хтоническая малышка Дуза",
+-- 		tr = "Kitonik Biblo, Dusa",
+-- 		uk = "Хтонічне маля (Дуза)",
+-- 		["zh-CN"] = "冥界玩偶：杜莎",
+-- 		["zh-TW"] = "杜莎冥界公仔",
+-- 	},
+-- 	Description = {
+-- 		-- de =
+-- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a shy Gorgon Housekeeper.",
+-- 		-- el =
+-- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a shy Gorgon Housekeeper.",
+-- 		en = "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a shy Gorgon Housekeeper.",
+-- 		-- es =
+-- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a shy Gorgon Housekeeper.",
+-- 		-- fr =
+-- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a shy Gorgon Housekeeper.",
+-- 		-- it =
+-- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a shy Gorgon Housekeeper.",
+-- 		-- ja =
+-- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a shy Gorgon Housekeeper.",
+-- 		-- ko =
+-- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a shy Gorgon Housekeeper.",
+-- 		-- pl =
+-- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a shy Gorgon Housekeeper.",
+-- 		-- ["pt-BR"] =
+-- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a shy Gorgon Housekeeper.",
+-- 		-- ru =
+-- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a shy Gorgon Housekeeper.",
+-- 		-- tr =
+-- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a shy Gorgon Housekeeper.",
+-- 		-- uk =
+-- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a shy Gorgon Housekeeper.",
+-- 		-- ["zh-CN"] =
+-- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a shy Gorgon Housekeeper.",
+-- 		-- ["zh-TW"] =
+-- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a shy Gorgon Housekeeper.",
+-- 	},
+-- 	FlavorText = {
+-- 		-- de =
+-- 		-- "“Oh b-b-but Prince, I am just a servant of the House, I'm not important enough to have any figures being fashioned after myself!”",
+-- 		-- el =
+-- 		-- "“Oh b-b-but Prince, I am just a servant of the House, I'm not important enough to have any figures being fashioned after myself!”",
+-- 		en =
+-- 		"“Oh b-b-but Prince, I am just a servant of the House, I'm not important enough to have any figures being fashioned after myself!”",
+-- 		-- es =
+-- 		-- "“Oh b-b-but Prince, I am just a servant of the House, I'm not important enough to have any figures being fashioned after myself!”",
+-- 		-- fr =
+-- 		-- "“Oh b-b-but Prince, I am just a servant of the House, I'm not important enough to have any figures being fashioned after myself!”",
+-- 		-- it =
+-- 		-- "“Oh b-b-but Prince, I am just a servant of the House, I'm not important enough to have any figures being fashioned after myself!”",
+-- 		-- ja =
+-- 		-- "“Oh b-b-but Prince, I am just a servant of the House, I'm not important enough to have any figures being fashioned after myself!”",
+-- 		-- ko =
+-- 		-- "“Oh b-b-but Prince, I am just a servant of the House, I'm not important enough to have any figures being fashioned after myself!”",
+-- 		-- pl =
+-- 		-- "“Oh b-b-but Prince, I am just a servant of the House, I'm not important enough to have any figures being fashioned after myself!”",
+-- 		-- ["pt-BR"] =
+-- 		-- "“Oh b-b-but Prince, I am just a servant of the House, I'm not important enough to have any figures being fashioned after myself!”",
+-- 		-- ru =
+-- 		-- "“Oh b-b-but Prince, I am just a servant of the House, I'm not important enough to have any figures being fashioned after myself!”",
+-- 		-- tr =
+-- 		-- "“Oh b-b-but Prince, I am just a servant of the House, I'm not important enough to have any figures being fashioned after myself!”",
+-- 		-- uk =
+-- 		-- "“Oh b-b-but Prince, I am just a servant of the House, I'm not important enough to have any figures being fashioned after myself!”",
+-- 		-- ["zh-CN"] =
+-- 		-- "“Oh b-b-but Prince, I am just a servant of the House, I'm not important enough to have any figures being fashioned after myself!”",
+-- 		-- ["zh-TW"] =
+-- 		-- "“Oh b-b-but Prince, I am just a servant of the House, I'm not important enough to have any figures being fashioned after myself!”",
+-- 	},
+-- 	CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\ChthonicChids\\Dusa_chid",
+-- 	IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Icons\\ChthonicChids\\Dusa_chid_Icon",
+-- 	Cost = {
+-- 		CosmeticsPoints = 999,
+-- 		ModsNikkelMHadesBiomes_PlantAsphodel = 2,
+-- 		ModsNikkelMHadesBiomes_OreStyx = 4,
+-- 	},
+-- 	GameStateRequirements = {
+--    -- This is the actual conversation where the bond is forged for her, not the final gift
+-- 		{
+-- 			PathTrue = { "GameState", "TextLinesRecord", "BecameCloseWithDusa01" },
+-- 		},
+-- 		{
+-- 			PathTrue = { "GameState", "TextLinesRecord", "Ending01" },
+-- 		},
+-- 		NamedRequirements = { "T5Cosmetic" },
+-- 	},
+-- 	AlwaysRevealImmediately = true,
+-- })
+-- CosmeticsAPI.RegisterChthonicChid({
+-- 	Id = _PLUGIN.guid .. "." .. "Cosmetic_CollectableNyx",
+-- 	Name = {
+-- 		de = "Kind der Unterwelt (Nyx)",
+-- 		el = "Χθόνιο τέκνο: Νυξ",
+-- 		en = "Chthonic Chid, Nyx",
+-- 		es = "Mini Ctónica de Nicte",
+-- 		fr = "Chthoni'mini Nyx",
+-- 		it = "Figurina Ctonia (Nyx)",
+-- 		ja = "冥府キッド（ニュクス）",
+-- 		ko = "명계의 딸: 닉스",
+-- 		pl = "Miniaturka chtoniczna (Nyks)",
+-- 		["pt-BR"] = "Minictôn da Nix",
+-- 		ru = "Хтоническая малышка Никта",
+-- 		tr = "Kitonik Biblo, Niks",
+-- 		uk = "Хтонічне маля (Нікс)",
+-- 		["zh-CN"] = "冥界玩偶：倪克斯",
+-- 		["zh-TW"] = "涅克絲冥界公仔",
+-- 	},
+-- 	Description = {
+-- 		-- de =
+-- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned Night Incarnate.",
+-- 		-- el =
+-- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned Night Incarnate.",
+-- 		en = "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned Night Incarnate.",
+-- 		-- es =
+-- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned Night Incarnate.",
+-- 		-- fr =
+-- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned Night Incarnate.",
+-- 		-- it =
+-- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned Night Incarnate.",
+-- 		-- ja =
+-- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned Night Incarnate.",
+-- 		-- ko =
+-- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned Night Incarnate.",
+-- 		-- pl =
+-- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned Night Incarnate.",
+-- 		-- ["pt-BR"] =
+-- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned Night Incarnate.",
+-- 		-- ru =
+-- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned Night Incarnate.",
+-- 		-- tr =
+-- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned Night Incarnate.",
+-- 		-- uk =
+-- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned Night Incarnate.",
+-- 		-- ["zh-CN"] =
+-- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned Night Incarnate.",
+-- 		-- ["zh-TW"] =
+-- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned Night Incarnate.",
+-- 	},
+-- 	FlavorText = {
+-- 		-- de =
+-- 		-- "“I may not be your Monther, Zagreus, but know that you will always be my Son.”",
+-- 		-- el =
+-- 		-- "“I may not be your Monther, Zagreus, but know that you will always be my Son.”",
+-- 		en = "“I may not be your Monther, Zagreus, but know that you will always be my Son.”",
+-- 		-- es =
+-- 		-- "“I may not be your Monther, Zagreus, but know that you will always be my Son.”",
+-- 		-- fr =
+-- 		-- "“I may not be your Monther, Zagreus, but know that you will always be my Son.”",
+-- 		-- it =
+-- 		-- "“I may not be your Monther, Zagreus, but know that you will always be my Son.”",
+-- 		-- ja =
+-- 		-- "“I may not be your Monther, Zagreus, but know that you will always be my Son.”",
+-- 		-- ko =
+-- 		-- "“I may not be your Monther, Zagreus, but know that you will always be my Son.”",
+-- 		-- pl =
+-- 		-- "“I may not be your Monther, Zagreus, but know that you will always be my Son.”",
+-- 		-- ["pt-BR"] =
+-- 		-- "“I may not be your Monther, Zagreus, but know that you will always be my Son.”",
+-- 		-- ru =
+-- 		-- "“I may not be your Monther, Zagreus, but know that you will always be my Son.”",
+-- 		-- tr =
+-- 		-- "“I may not be your Monther, Zagreus, but know that you will always be my Son.”",
+-- 		-- uk =
+-- 		-- "“I may not be your Monther, Zagreus, but know that you will always be my Son.”",
+-- 		-- ["zh-CN"] =
+-- 		-- "“I may not be your Monther, Zagreus, but know that you will always be my Son.”",
+-- 		-- ["zh-TW"] =
+-- 		-- "“I may not be your Monther, Zagreus, but know that you will always be my Son.”",
+-- 	},
+-- 	CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\ChthonicChids\\Nyx_chid",
+-- 	IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Icons\\ChthonicChids\\Nyx_chid_Icon",
+-- 	Cost = {
+-- 		CosmeticsPoints = 999,
+-- 		ModsNikkelMHadesBiomes_CropAsphodel = 2,
+-- 		ModsNikkelMHadesBiomes_BossResourceElysium = 1,
+-- 	},
+-- 	GameStateRequirements = {
+-- 		{
+-- 			PathTrue = { "GameState", "TextLinesRecord", "NyxGift09" },
+-- 		},
+-- 		{
+-- 			PathTrue = { "GameState", "TextLinesRecord", "Ending01" },
+-- 		},
+-- 		NamedRequirements = { "T5Cosmetic" },
+-- 	},
+-- 	AlwaysRevealImmediately = true,
+-- })
+-- #endregion
