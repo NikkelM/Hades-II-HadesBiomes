@@ -526,10 +526,6 @@ local roomReplacements = {
 			},
 		},
 	},
-
-	Y_Combat07 = mod.NilValue,
-	Y_Combat15 = mod.NilValue,
-	Y_MiniBoss03 = mod.NilValue,
 }
 
 local roomModifications = {

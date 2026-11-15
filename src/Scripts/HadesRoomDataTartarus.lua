@@ -1491,39 +1491,39 @@ mod.RoomData.Tartarus = mod.RoomData.Tartarus or {
 	},
 
 
-	A_Combat25 =
-	{
-		InheritFrom = { "BaseTartarus", "AllPrePlacedTraps" },
-		DebugOnly = true,
+	-- A_Combat25 =
+	-- {
+	-- 	InheritFrom = { "BaseTartarus", "AllPrePlacedTraps" },
+	-- 	DebugOnly = true,
 
-		GameStateRequirements =
-		{
-			-- None
-		},
+	-- 	GameStateRequirements =
+	-- 	{
+	-- 		-- None
+	-- 	},
 
-		EntranceDirection = "LeftRight",
-		NumExits = 1,
-		ZoomFraction = 0.85,
-		ZoomFractionSwitch = 0.9,
+	-- 	EntranceDirection = "LeftRight",
+	-- 	NumExits = 1,
+	-- 	ZoomFraction = 0.85,
+	-- 	ZoomFractionSwitch = 0.9,
 
-		RemoteTrapChains =
-		{
-			[430045] =
-			{
-				Chains =
-				{
-					{ 430025, 430026, 430027, 430028, 430029 },
-				}
-			},
-			[430046] =
-			{
-				Chains =
-				{
-					{ 430058, 430057, 430051, 430052, 430056, 430055, 430047, 430048, 430049, 430050, }
-				}
-			}
-		},
-	},
+	-- 	RemoteTrapChains =
+	-- 	{
+	-- 		[430045] =
+	-- 		{
+	-- 			Chains =
+	-- 			{
+	-- 				{ 430025, 430026, 430027, 430028, 430029 },
+	-- 			}
+	-- 		},
+	-- 		[430046] =
+	-- 		{
+	-- 			Chains =
+	-- 			{
+	-- 				{ 430058, 430057, 430051, 430052, 430056, 430055, 430047, 430048, 430049, 430050, }
+	-- 			}
+	-- 		}
+	-- 	},
+	-- },
 
 
 	A_Reprieve01 =

@@ -164,21 +164,21 @@ mod.RoomData.Elysium = mod.RoomData.Elysium or {
 		RushMaxRangeOverride = 510,
 	},
 
-	Y_Combat07 =
-	{
-		DebugOnly = true,
-		InheritFrom = { "BaseElysium", "RandomizeTrapTypes" },
+	-- Y_Combat07 =
+	-- {
+	-- 	DebugOnly = true,
+	-- 	InheritFrom = { "BaseElysium", "RandomizeTrapTypes" },
 
-		GameStateRequirements =
-		{
-			-- None
-		},
+	-- 	GameStateRequirements =
+	-- 	{
+	-- 		-- None
+	-- 	},
 
-		NumExits = 2,
-		ZoomFraction = 0.80,
-		ZoomFractionSwitch = 0.85,
-		EntranceDirection = "Left",
-	},
+	-- 	NumExits = 2,
+	-- 	ZoomFraction = 0.80,
+	-- 	ZoomFractionSwitch = 0.85,
+	-- 	EntranceDirection = "Left",
+	-- },
 
 	Y_Combat08 =
 	{
@@ -289,21 +289,21 @@ mod.RoomData.Elysium = mod.RoomData.Elysium or {
 		RushMaxRangeOverride = 450,
 	},
 
-	Y_Combat15 =
-	{
-		DebugOnly = true,
-		InheritFrom = { "BaseElysium", "RandomizeTrapTypes" },
+	-- Y_Combat15 =
+	-- {
+	-- 	DebugOnly = true,
+	-- 	InheritFrom = { "BaseElysium", "RandomizeTrapTypes" },
 
-		GameStateRequirements =
-		{
-			-- None
-		},
+	-- 	GameStateRequirements =
+	-- 	{
+	-- 		-- None
+	-- 	},
 
-		NumExits = 2,
-		ZoomFraction = 0.80,
-		ZoomFractionSwitch = 0.85,
-		EntranceDirection = "Left",
-	},
+	-- 	NumExits = 2,
+	-- 	ZoomFraction = 0.80,
+	-- 	ZoomFractionSwitch = 0.85,
+	-- 	EntranceDirection = "Left",
+	-- },
 
 	Y_PreBoss01 =
 	{
@@ -1116,51 +1116,50 @@ mod.RoomData.Elysium = mod.RoomData.Elysium or {
 		},
 	},
 
-	-- Not implemented in Hades
-	Y_MiniBoss03 =
-	{
-		DebugOnly = true,
-		InheritFrom = { "BaseElysium" },
-		IsMiniBossRoom = true,
-		RewardPreviewIcon = "RoomElitePreview2",
-		RewardPreviewFx = "RoomRewardAvailableRareSparkles",
-		ResultText = "RunHistoryScreenResult_C_MiniBoss03",
+	-- Y_MiniBoss03 =
+	-- {
+	-- 	DebugOnly = true,
+	-- 	InheritFrom = { "BaseElysium" },
+	-- 	IsMiniBossRoom = true,
+	-- 	RewardPreviewIcon = "RoomElitePreview2",
+	-- 	RewardPreviewFx = "RoomRewardAvailableRareSparkles",
+	-- 	ResultText = "RunHistoryScreenResult_C_MiniBoss03",
 
-		GameStateRequirements =
-		{
-			RequiredFalseSeenRoomsThisRun = { "C_MiniBoss01", "C_MiniBoss02" },
-			RequiredSeenEncounter = "BossTheseusAndMinotaur",
-		},
+	-- 	GameStateRequirements =
+	-- 	{
+	-- 		RequiredFalseSeenRoomsThisRun = { "C_MiniBoss01", "C_MiniBoss02" },
+	-- 		RequiredSeenEncounter = "BossTheseusAndMinotaur",
+	-- 	},
 
-		LegalEncounters = { "MiniBossShadeMagic" },
+	-- 	LegalEncounters = { "MiniBossShadeMagic" },
 
-		ForcedRewardStore = "RunProgress",
-		EligibleRewards = { "Boon" },
-		BoonRaritiesOverride = { LegendaryChance = 0.1, EpicChance = 0.25, RareChance = 0.90 },
+	-- 	ForcedRewardStore = "RunProgress",
+	-- 	EligibleRewards = { "Boon" },
+	-- 	BoonRaritiesOverride = { LegendaryChance = 0.1, EpicChance = 0.25, RareChance = 0.90 },
 
-		MaxCreationsThisRun = 1,
-		ForceAtBiomeDepthMin = 4,
-		ForceAtBiomeDepthMax = 7,
-		MaxAppearancesThisBiome = 1,
-		NumExits = 1,
-		EntranceDirection = "Left",
-		ZoomFraction = 0.85,
+	-- 	MaxCreationsThisRun = 1,
+	-- 	ForceAtBiomeDepthMin = 4,
+	-- 	ForceAtBiomeDepthMax = 7,
+	-- 	MaxAppearancesThisBiome = 1,
+	-- 	NumExits = 1,
+	-- 	EntranceDirection = "Left",
+	-- 	ZoomFraction = 0.85,
 
-		MusicSection = 2,
-		MusicActiveStems = { "Guitar", "Bass", "Drums", },
-		EndMusicOnCombatOver = 20,
+	-- 	MusicSection = 2,
+	-- 	MusicActiveStems = { "Guitar", "Bass", "Drums", },
+	-- 	EndMusicOnCombatOver = 20,
 
-		UnthreadedEvents =
-		{
-			{
-				FunctionName = "CheckAssistHint",
-				Args =
-				{
-					Delay = 10.0,
-				}
-			},
-		},
-	},
+	-- 	UnthreadedEvents =
+	-- 	{
+	-- 		{
+	-- 			FunctionName = "CheckAssistHint",
+	-- 			Args =
+	-- 			{
+	-- 				Delay = 10.0,
+	-- 			}
+	-- 		},
+	-- 	},
+	-- },
 
 	Y_Shop01 =
 	{
