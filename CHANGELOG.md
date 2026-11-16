@@ -9,7 +9,7 @@
 - You may now naturally encounter **Artemis** and **Athena** in Zagreus' Journey, and they will use their dialogues from the first game when you speak to one of them.
 - Picking up boons from Aphrodite, Ares, Chaos, Demeter, Hermes, Poseidon or Zeus while in a Zagreus' Journey run will now use their respective dialogues and advance their storylines from the first game.
 - **Theseus** may now call upon the aid of Apollo, Hestia, Hera and Hephaestus.
-- Added 5 new collectible Chtonic Chids fashioned after characters from Zagreus' Journey for your display shelf in the Training Grounds.
+- Added **5** new collectible Chthonic Chid cosmetics fashioned after characters from Zagreus' Journey.
 - Balancing: Slightly reduced health and armour of non-boss enemies in all biomes.
 - Balancing: Encounters should now be more cleanly separated into 1-3 distinct waves, with fewer waves that keep spawning in new enemies one after another.
 - Fixed: Some enemies do not properly move within range for certain attacks, rotate toward the player too fast or too slow, or can try to repeatedly attack from behind obstacles (e.g. you can no longer hide from Hades behind the pillars in his chamber).
