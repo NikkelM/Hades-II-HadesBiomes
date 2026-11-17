@@ -14,7 +14,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0320",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text =
 			"I faintly sensed that you were able to confront your father while in possession of my small round catalyst. It seems my asking you, and your success, was in accordance with the Fates' design, as well. The result is more amusing even than expected. Thus, thank you."
 		},
@@ -35,7 +34,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0283",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text =
 			"I have detected some unusual activity within the reaches of the Underworld, Son of Hades... vast sums of Darkness, collected in an ancient catalyst, which I see now almost like a beacon, shining in the night. This either is the work of Nyx, or you, or both. I am anticipating the result."
 		},
@@ -54,7 +52,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0284",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			SetFlagFalse = "NyxChaosReunionInProgress",
 			Text =
 			"It pleases me immensely, Son of Hades, to have seen the goddess Nyx again. The significant amount of time that has elapsed since last this happened dulled sufficiently old pains, I think. Thus, it becomes a basis on which our connection may, in time, take shape again."
@@ -93,7 +90,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0169",
 			SecretMusicActiveStems = { "ChaosBass" },
-			UseEventEndSound = true,
 			Text =
 			"I cannot offer you advice. But you were prompted, yes. You may speak freely, then, or anytime, despite my wishes that you not do so. Absolute silence is my general preference. It may not be yours."
 		},
@@ -129,7 +125,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0082",
 			SecretMusicActiveStems = { "ChaosBass" },
-			UseEventEndSound = true,
 			Text =
 			"Oh, I know the goddess Nyx quite well, of course. Though, it has been a while since we last communicated, and I fear... well, I was not the charitable sort, back then. It is my hope that Nyx is faring well."
 		},
@@ -165,7 +160,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0278",
 			SecretMusicActiveStems = { "ChaosBass" },
-			UseEventEndSound = true,
 			Text =
 			"You move in darkness, not as infinitely black as hers, but reminiscent to me, nonetheless. I would invite her to try to elude me, and then attempt to locate her. A minor amusement for the both of us. Now, I have you for this, I see."
 		},
@@ -201,7 +195,6 @@ local newPortedInteractTextLines = {
 		},
 		{
 			Cue = "/VO/Chaos_0308",
-			UseEventEndSound = true,
 			SecretMusicActiveStems = { "ChaosBass" },
 			Text =
 			"You may not sense these shifts as I. The lightness of this space bends and adjusts with time. What you describe... it must have been the cause. I trust that the occasion is a welcome one. And I am pleased that you returned, nevertheless."
@@ -239,7 +232,6 @@ local newPortedInteractTextLines = {
 		},
 		{
 			Cue = "/VO/Chaos_0314",
-			UseEventEndSound = true,
 			SecretMusicActiveStems = { "ChaosBass" },
 			PreLineWait = 0.35,
 			Text =
@@ -260,7 +252,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0315",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text =
 			"It pleases me your gathering of the Olympians occurred. I must inform you... I had never once before detected quite so many of my offspring in a single space. At least not without violent intent. I appreciate that you included me, and that you have returned. Shall we continue, then?"
 		},
@@ -279,7 +270,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0335",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text =
 			"It pleases me your gathering of the Olympians occurred. I must inform you... I had never once before detected quite so many of my offspring in a single space. At least not without violent intent."
 		},
@@ -301,7 +291,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0085",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text =
 			"You have met many of the Olympians by now, each spurring you toward their mountaintop. They place such value on familial bonds, yet none of them remember who I am. Do not place too much faith in them, O Son of Hades."
 		},
@@ -319,7 +308,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0170",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text =
 			"I ask you listen but not speak, O Son of Hades, whilst the Olympians? They do not ask at all. They merely send their messages to you, unprompted, providing a choice of blessing, but no say. I seek to understand their point of view. But it is difficult."
 		},
@@ -338,7 +326,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0171",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text =
 			"When you extend an offering to the Olympians, for a fleeting instant, it appears as though they are able to hear your prayer. Or so I have observed. How interesting that your thoughts are capable of breaking free, yet you cannot."
 		},
@@ -358,7 +345,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0086",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text =
 			"Your father and his brothers, when they sealed the Titans in the darkest reaches of this world, that was the last they saw of me, as well. You are dissimilar from them, and I feel safe communicating thus with you."
 		},
@@ -375,7 +361,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0321",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text =
 			"I was at times uncharitable with the goddess Nyx, when we were closer, long ago. After she bore her first children, I nevertheless expected her attention to remain undivided. I kept creating. When finally I slowed, I realized my mistake. But our connection had been severed, by that point."
 		},
@@ -412,7 +397,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0279",
 			SecretMusicActiveStems = { "ChaosBass" },
-			UseEventEndSound = true,
 			Text =
 			"The goddess Nyx wishes to hear from me...? Now that is unexpected, Son of Hades, and I wonder if, perhaps, this is a jest of yours. Though, your intentions evidently are sincere. Then, I shall make no promises in this, except that... I am considering the possibility."
 		},
@@ -430,7 +414,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0280",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text =
 			"Son of Hades, should eventually you spawn your own offspring... I recommend maintaining sub-infinite distances with them in space and time. Even if they are most tiresome, there always seems to come a point when one wishes to be in their presence once again."
 		},
@@ -465,7 +448,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0282",
 			SecretMusicActiveStems = { "ChaosBass" },
-			UseEventEndSound = true,
 			Text =
 			"I see. Well, she shall find a way, if it is warranted. I always did expect the world from her. There were times when I expected her to shine as bright as day, though she is Night. When she achieved a certain level of ability... she left. And I could not find her."
 		},
@@ -485,7 +467,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0322",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text =
 			"My daughter, the goddess Nyx. When I learned the Olympians mistakenly assumed she was your mother, I did not fully consider the possibility that she essentially was a mother to you... the technicality of birth, aside. She cares for you to the extent a mother can."
 		},
@@ -505,7 +486,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0323",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text =
 			"Prior to your intervention, Son of Hades, I expected that the goddess Nyx had forgotten about me... whether purposefully, or from passage of time. I believed that to be forgotten was the one true inevitability. Perhaps, however, I was incorrect."
 		},
@@ -525,7 +505,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0324",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text =
 			"I find that it is difficult maintaining my connection with many consciousnesses, such as yours, and that of the goddess Nyx. Yet I am also finding that this difficulty is fully warranted. Our connections give me much to consider as I await our next exchange."
 		},
@@ -543,7 +522,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0070",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text =
 			"Ah, here is my favorite among those immortals dwelling underneath the Earth. How may I change your life today, O Son of Hades?"
 		},
@@ -562,7 +540,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0071",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text =
 			"May you enjoy a moment's peace within my space before venturing on in uncertainty. To my surprise, I must admit I do appreciate the company."
 		},
@@ -597,7 +574,6 @@ local newPortedInteractTextLines = {
 		},
 		{
 			Cue = "/VO/Chaos_0080",
-			UseEventEndSound = true,
 			SecretMusicActiveStems = { "ChaosBass" },
 			Text =
 			"A difficult position to be in, Son of Hades. The Olympians may not appreciate being misled. But you can trust that I shall keep your secret. I wish to see how your predicament plays out."
@@ -615,7 +591,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0299",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text =
 			"How strange it is to be subjected to the Fates. But do not fall into the cognitive delusion that they have already made your choices for you, Son of Hades. Rather, they are keen about anticipating every choice that everyone shall make. Such as the following."
 		},
@@ -649,7 +624,6 @@ local newPortedInteractTextLines = {
 		},
 		{
 			Cue = "/VO/Chaos_0297",
-			UseEventEndSound = true,
 			SecretMusicActiveStems = { "ChaosBass" },
 			Text =
 			"All of this simply came to be, and so did I, presumably after a former time had finally reached its end. I hesitate to say it was an act of will. It was more like a sudden shift, as when a conflagration happens from a spark. I arrived at such a time, and all else then arrived, from me."
@@ -668,7 +642,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0300",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text =
 			"When you expire, and then suddenly return to life within your father's residence, perhaps it is akin to when I first gained consciousness so long ago. Perhaps I, too, had just expired, only to reawaken."
 		},
@@ -685,7 +658,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0301",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text =
 			"You may have wondered, Son of Hades, how it is you came to find me in this space, when I have gone unseen by most for quite some time. I have wondered this, as well, and think that our connection to Goddess Nyx is the most likely answer."
 		},
@@ -719,7 +691,6 @@ local newPortedInteractTextLines = {
 		},
 		{
 			Cue = "/VO/Chaos_0303",
-			UseEventEndSound = true,
 			SecretMusicActiveStems = { "ChaosBass" },
 			Text =
 			"I hope that your attempts achieve success. She is beyond my senses, presently, though of course I am still able to assist you in your journey, thus."
@@ -757,7 +728,6 @@ local newPortedInteractTextLines = {
 		},
 		{
 			Cue = "/VO/Chaos_0306",
-			UseEventEndSound = true,
 			SecretMusicActiveStems = { "ChaosBass" },
 			Text =
 			"I see. Then, it is good to know that you have been in contact. And I trust that your successive visits shall be worth their while. Not unlike our visits here."
@@ -794,7 +764,6 @@ local newPortedInteractTextLines = {
 		},
 		{
 			Cue = "/VO/Chaos_0305",
-			UseEventEndSound = true,
 			SecretMusicActiveStems = { "ChaosBass" },
 			PreLineWait = 0.5,
 			Text = "...I would miss you as well. Thank you for telling me."
@@ -830,7 +799,6 @@ local newPortedInteractTextLines = {
 		},
 		{
 			Cue = "/VO/Chaos_0310",
-			UseEventEndSound = true,
 			SecretMusicActiveStems = { "ChaosBass" },
 			PreLineWait = 0.35,
 			Text =
@@ -852,7 +820,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0317",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text =
 			"You have traveled recently beyond my senses, Son of Hades. I persist here only in the fathomless depths. I know what lies out there, having created it. But I know nothing of what it is like, right now. Do not tell me. I prefer to think of all the possibilities."
 		},
@@ -890,7 +857,6 @@ local newPortedInteractTextLines = {
 		},
 		{
 			Cue = "/VO/Chaos_0319",
-			UseEventEndSound = true,
 			SecretMusicActiveStems = { "ChaosBass" },
 			Text =
 			"Well, then. Consider bringing to one of your future interactions the small round catalyst, which I provided you. The one in the shape you call an egg? It shall serve no purpose there at all. Yet if you succeed, then it shall bring us some amusement, shall it not?"
@@ -914,7 +880,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0072",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text =
 			"You bear the blessing of the great Lord Zeus. He still believes he holds dominion over both heaven and earth. I think, perhaps, he has forgotten about me."
 		},
@@ -934,7 +899,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0073",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text =
 			"Lord Poseidon offered you his blessing, it would seem. He can be rather boastful and belligerent, exhibiting the most unattractive manners of your father and Lord Zeus alike."
 		},
@@ -955,7 +919,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0074",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text =
 			"This wise goddess Athena has imbued you with her charms, I see, O Son of Hades. Perhaps to her you are a tool with which her broken family may as yet be mended."
 		},
@@ -975,7 +938,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0075",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text =
 			"It is not unexpected that you consorted with the violent Ares, and now bear his Boon. He still worships me, you know; yet, I would say he does not know me very well."
 		},
@@ -995,7 +957,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0077",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text =
 			"The charms of goddess Aphrodite are upon you unmistakably, although I shall be curious to see if her command over one's sense of love shall have any effect beneath the earth."
 		},
@@ -1015,7 +976,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0076",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text =
 			"I understand the hunting-goddess Artemis recently has turned her gaze towards you. It is unexpected she would offer her assistance, even to a relative in need."
 		},
@@ -1035,7 +995,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0294",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text =
 			"Swift Hermes spurs you on, I see, O Son of Hades. Beware the narrow distance between hastiness and swiftness; a distinction I am not so sure the god of travel fully understands."
 		},
@@ -1056,7 +1015,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0295",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text =
 			"Embittered Demeter has reached you, hasn't she? She once was full of warmth, you know; but lately, as I understand, she is more prone to taking it away."
 		},
@@ -1075,7 +1033,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0298",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text =
 			"Such darkness emanates from you, O Son of Hades, that I once again did not entirely anticipate you would arrive just now. I suspect even your father must have difficulty keeping track of you through the domain he calls his own."
 		},
@@ -1093,7 +1050,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0325",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text =
 			"You move in darkness, practically unseen, Son of Hades. It is quite difficult even for me to sense your presence at times. The Olympians catch their glimpses now and then. But you are always in a shroud. Thus is the influence of Nyx."
 		},
@@ -1113,7 +1069,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0176",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text =
 			"I am impressed that you were able to procure a specimen out from the flowing currents here in my domain, with nothing but a simple instrument. I shall look forward to your subsequent attempts."
 		},
@@ -1132,7 +1087,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0292",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text =
 			"I trust the small round catalyst which I provided you has been of value, Son of Hades? It is my hope it makes your journeys to this space less difficult, perhaps inducing them on a more frequent interval."
 		},
@@ -1153,7 +1107,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0103",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"It seems to me that you are very close to death, O Son of Hades, and yet you deigned to visit me within my space. I could hasten your demise, if you so choose?"
 		},
@@ -1174,7 +1127,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0104",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"I almost did not notice you, O Son of Hades, for you are closer now to death than life. Perhaps, though, we can stave off the inevitable for a little while."
 		},
@@ -1195,7 +1147,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0180",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Your deaths are but a temporary setback, Son of Hades. Though it appears to me you are quite close to having such a setback, now."
 		},
@@ -1216,7 +1167,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0181",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "Your next experience with death seems to be imminent, though let us see if I can hasten or forestall it."
 		},
 	},
@@ -1236,7 +1186,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0182",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"It may seem cruel that I would wish you death, O Son of Hades. But from my perspective, it means you are much more likely to return to me."
 		},
@@ -1257,7 +1206,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0183",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Although you may succumb soon to your injuries, please make the most of your remaining life, rather than anticipate the next. The future is uncertain to all save the Fates."
 		},
@@ -1278,7 +1226,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0050",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text =
 			"I sensed a certain rumbling here within the bowels of the earth. It is as though it had ingested something that did not sit well... perhaps the earth itself wishes to spit you up and out...?"
 		},
@@ -1296,7 +1243,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0051",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text =
 			"The Olympians are vying for your favor, are they not? So often they forget themselves. They force their blessings onto you, whilst I? I merely offer you a choice."
 		},
@@ -1313,7 +1259,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0052",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text =
 			"Your path is yours to shape as you see fit, regardless of the Fates' design. Together we may twist that path a bit, if you would like."
 		},
@@ -1330,7 +1275,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0053",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text =
 			"I both expected you to come and am surprised to see you, Son of Hades. Where shall your journey take you from this point?"
 		},
@@ -1347,7 +1291,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0054",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text = "Please tell me how my power over all existence may be of small assistance to you this time, Son of Hades?"
 		},
 	},
@@ -1363,7 +1306,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0055",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text =
 			"The tremors underneath the earth foretold of your arrival at this very moment, Son of Hades; and, I have anticipated it."
 		},
@@ -1380,7 +1322,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0056",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text =
 			"You chose to visit me again within these darkest reaches of the earth, as I, in turn, now choose to offer you the means to alter your reality."
 		},
@@ -1397,7 +1338,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0057",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text =
 			"Back when I conceived the world and the immortals, Son of Hades, I did not expect you would be standing here before me now."
 		},
@@ -1414,7 +1354,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0058",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text =
 			"You have arrived at last, just as I wondered how we might best alter one another's courses of existence here today."
 		},
@@ -1431,7 +1370,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0059",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text =
 			"Son of Hades, let me welcome your return here to my space within the Underworld, and bid you choose an alteration to the fabric of reality."
 		},
@@ -1448,7 +1386,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0060",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text =
 			"It pleases me that you are here again; for, through you I can tinker with reality, along the fringes that are not yet fully formed."
 		},
@@ -1466,7 +1403,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0061",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text =
 			"Your presence never ceases to intrigue me, Son of Hades; for you are not like the Olympians on high, who have forgotten me, or thusly choose to act."
 		},
@@ -1483,7 +1419,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0062",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text =
 			"From my perspective I have summoned you, whilst you believe you came of your volition; both statements can be true, is that not so?"
 		},
@@ -1500,7 +1435,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0063",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text =
 			"Come forth, O Son of Hades, and together, let us sow my namesake through the depths of what your father thinks his own domain."
 		},
@@ -1517,7 +1451,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0064",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text =
 			"How fares these days the never-ending cycle of rebirth and death for you, O Son of Hades? Sufficiently amusing, I should hope?"
 		},
@@ -1536,7 +1469,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0065",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text =
 			"Out of the infinitely spanning possibilities before us, Son of Hades, I have arbitrarily selected only three again from which to let you choose."
 		},
@@ -1553,7 +1485,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0066",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text =
 			"The Fates have much in store for you, O Son of Hades. Perhaps, however, we can tamper with their weavings here to some extent."
 		},
@@ -1570,7 +1501,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0067",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text =
 			"Let us conspire to expand and frustrate your lord father's sense of both what is and is not possible within his Underworld."
 		},
@@ -1589,7 +1519,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0068",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text =
 			"Infinite possibilities can be tedious to choose from, so, let me provide you with a significantly smaller set with which you may yet change the Fates' designs."
 		},
@@ -1606,7 +1535,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0069",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text =
 			"Through the expanse of time, I often wondered, is it necessary to be fair? The immortals are my offspring; surely I should treat them equally. And yet I find that there is little sport in doing so."
 		},
@@ -1625,7 +1553,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0154",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text = "Among infinite possibilities, consider only these."
 		},
 	},
@@ -1643,7 +1570,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0155",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text = "Choose carefully, in general, and now."
 		},
 	},
@@ -1658,7 +1584,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0156",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text = "We are the sum of all decisions that we make, and that are made for us."
 		},
 	},
@@ -1674,7 +1599,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0157",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text = "This space grows far more interesting when you occupy a small amount of it."
 		},
 	},
@@ -1692,7 +1616,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0158",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text = "How you evaluate decisions is of limitless interest to me."
 		},
 	},
@@ -1710,7 +1633,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0159",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text = "The burden of the passing time shall force a choice from you."
 		},
 	},
@@ -1726,7 +1648,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0160",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text = "Is there not pleasure in determining an outcome, Son of Hades?"
 		},
 	},
@@ -1744,7 +1665,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0161",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text = "My mark be with you, Son of Hades. You need merely choose its shape."
 		},
 	},
@@ -1760,7 +1680,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0162",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text = "Though the waters of the Styx may wash away my mark, I can restore it."
 		},
 	},
@@ -1776,7 +1695,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0163",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text = "The rhythm of your visits here over the course of time is pleasant, Son of Hades."
 		},
 	},
@@ -1792,7 +1710,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0164",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text = "You are already back, and you are always welcome, Son of Hades."
 		},
 	},
@@ -1808,7 +1725,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0165",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text = "Please visit me as frequently as you would like or dare."
 		},
 	},
@@ -1824,7 +1740,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0166",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text = "I find myself anticipating your arrivals, Son of Hades."
 		},
 	},
@@ -1842,7 +1757,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0167",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text = "I require no exchange of words with you. Merely a choice."
 		},
 	},
@@ -1858,7 +1772,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0002",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text = "Once more you have returned to my domain."
 		},
 	},
@@ -1874,7 +1787,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0003",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text = "I have a proposition, Son of Hades."
 		},
 	},
@@ -1890,7 +1802,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0004",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text = "I bid you welcome here within my space."
 		},
 	},
@@ -1906,7 +1817,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0005",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text = "How fares the solitary Son of Hades?"
 		},
 	},
@@ -1922,7 +1832,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0006",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text = "What shall we do for one another, Son of Hades?"
 		},
 	},
@@ -1938,7 +1847,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0007",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text = "You are within my presence, Son of Hades."
 		},
 	},
@@ -1954,7 +1862,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0008",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text = "What brings you here to me this time around?"
 		},
 	},
@@ -1969,7 +1876,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0009",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text = "Your such visits are agreeable with me."
 		},
 	},
@@ -1985,7 +1891,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0010",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text = "How may the force of Chaos alter you?"
 		},
 	},
@@ -2001,7 +1906,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0011",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text = "You have arrived before me once again."
 		},
 	},
@@ -2017,7 +1921,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0012",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text = "I see that you are here, and so am I."
 		},
 	},
@@ -2033,7 +1936,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0013",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text = "You stand before me, Son of Hades."
 		},
 	},
@@ -2049,7 +1951,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0015",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text = "How might I mend the fabric of existence for you, Son of Hades?"
 		},
 	},
@@ -2065,7 +1966,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0016",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text = "There need not be a reason for your visit."
 		},
 	},
@@ -2081,7 +1981,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0017",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text = "How may I shape reality for you?"
 		},
 	},
@@ -2096,7 +1995,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0018",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text = "You are always welcome here within this space."
 		},
 	},
@@ -2112,7 +2010,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0019",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text = "What occupies your mind at this occasion?"
 		},
 	},
@@ -2128,7 +2025,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0020",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text = "Let us consider certain possibilities."
 		},
 	},
@@ -2146,7 +2042,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0021",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text = "Among infinite outcomes, I propose these three."
 		},
 	},
@@ -2162,7 +2057,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0022",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text = "Choose how to circumvent the Fates' design."
 		},
 	},
@@ -2178,7 +2072,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0105",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text = "Hail, Son of Hades."
 		},
 	},
@@ -2194,7 +2087,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0106",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text = "I am amused to see you once again."
 		},
 	},
@@ -2210,7 +2102,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0107",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text = "You have descended to my space once more."
 		},
 	},
@@ -2226,7 +2117,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0108",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text = "You have returned to me."
 		},
 	},
@@ -2242,7 +2132,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0109",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text = "You are most welcome here."
 		},
 	},
@@ -2257,7 +2146,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0285",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text = "Your presence is appreciated, Son of Hades, but please leave us here, for now."
 		},
 	},
@@ -2273,7 +2161,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0286",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text = "Forgive us, Son of Hades, as we are amid exchanging memories."
 		},
 	},
@@ -2289,7 +2176,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0287",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text = "Son of Hades, I am pleased the goddess Nyx returned to me."
 		},
 	},
@@ -2305,7 +2191,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0288",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text = "Forgive me, Son of Hades, but I must continue this discussion with the goddess Nyx."
 		},
 	},
@@ -2321,7 +2206,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0289",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text = "I had not seen the goddess Nyx in quite some time."
 		},
 	},
@@ -2337,7 +2221,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0290",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text = "I am quite unaccustomed to having all this company of late."
 		},
 	},
@@ -2353,7 +2236,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0326",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text = "My daughter was just in the midst of telling me the latest occurrences about your House."
 		},
 	},
@@ -2369,7 +2251,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Chaos_0327",
 			StartSound = "/SFX/Menu Sounds/ChaosMiscSFX",
-			UseEventEndSound = true,
 			Text = "As you are able to observe, the goddess Nyx and I are in the midst of conversation now."
 		},
 	},

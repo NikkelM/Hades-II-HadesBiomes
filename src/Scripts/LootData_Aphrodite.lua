@@ -26,7 +26,6 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Aphrodite_0010",
 			PortraitExitWait = 1.25,
 			PreContentSound = "/Leftovers/Menu Sounds/TextReveal2",
-			UseEventEndSound = true,
 			Emote = "PortraitEmoteAffection",
 			Text =
 			"Why hello, hello, there, little godling. I have to say you're quite the specimen, and so, I've decided I shall aid you for the moment. You interested?",
@@ -60,7 +59,6 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Aphrodite_0207",
 			PortraitExitWait = 1.25,
 			PreContentSound = "/Leftovers/Menu Sounds/TextReveal2",
-			UseEventEndSound = true,
 			Emote = "PortraitEmoteAffection",
 			Text =
 			"Why, {#DialogueItalicFormat}this {#PreviousFormat}is something, dearest! Such an enigmatic message you have sent. How positively captivating; I must know what it says. It bears the marks of others on Olympus, so... perhaps we ought to share some common knowledge on the subject, hm?",
@@ -78,7 +76,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Aphrodite_0208",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Emote = "PortraitEmoteAffection",
 			Text =
 			"Oh, dearest, you've no idea what a delightful time I had while visiting you recently! So many new sights and sounds and smells, why, it was wonderful! And you are burdened with a big responsibility, aren't you? Mind if I lend my graces to you still from time to time...?",
@@ -102,7 +99,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Aphrodite_0044",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Lord Zeus has made acquaintances with you? Oh I sometimes forget that he's your uncle! His favor's well worth having, I assure you.",
 		},
@@ -122,7 +118,6 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Aphrodite_0045",
 			Emote = "PortraitEmoteDepressed",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"That oaf Poseidon spoke to you already, didn't he? All bluster, muscles, and bravado, that one. I'm glad you're not the type.",
 		},
@@ -141,7 +136,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Aphrodite_0042",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"You've met Athena, dearest, so you know not all the ladies on Olympus are alike. And I, for one, am grateful to our forebears for {#DialogueItalicFormat}that{#PreviousFormat}!",
 		},
@@ -160,7 +154,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Aphrodite_0046",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"I sense the mark of my Lord Ares on you, love. He's poorly understood among the gods, yet surely you can see fair qualities in him, and me?",
 		},
@@ -179,7 +172,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Aphrodite_0047",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"The sullen Artemis reached out to you, did she? Oh, that's adorable, dearest! Just don't make any sudden movements with her, {#DialogueItalicFormat}hm{#PreviousFormat}?",
 		},
@@ -198,7 +190,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Aphrodite_0048",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"You are so fortunate to have received the Boon of Dionysus prior to my own! He, the most noble and important of us all, the god of wine, himself!",
 		},
@@ -218,7 +209,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Aphrodite_0181",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Why, did sorrowful old Demeter get all the way to you before I did? She stubbornly refuses me when I offer to help! Unlike you, little godling!",
 		},
@@ -236,7 +226,6 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Aphrodite_0040",
 			Emote = "PortraitEmoteAffection",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"How I {#DialogueItalicFormat}love {#PreviousFormat}to have these unexpected little run-ins with you, love! You are just so spontaneous, and I've a liking for that sort of thing!",
 		},
@@ -253,7 +242,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Aphrodite_0041",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Keep following that heart of yours, dearest! It's good enough a guide, believe you me. Mine tells me you are going to succeed!",
 		},
@@ -270,7 +258,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Aphrodite_0058",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"You {#DialogueItalicFormat}do {#PreviousFormat}know that I'm married, don't you, love...? I'd forgive you if you didn't, for my husband, he's always... busy with his work. I'm grateful that you're there for me to talk to.",
 		},
@@ -290,7 +277,6 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Aphrodite_0059",
 			Emote = "PortraitEmoteAffection",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"You're going to love it on Olympus, little godling. The air is beautiful and brisk, the gardens lush, the feasting plentiful...! Why, it must be the opposite of everything to which you are accustomed!",
 		},
@@ -309,7 +295,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Aphrodite_0060",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			PreLineThreadedFunctionName = "PlayEmoteAnimFromSource",
 			PreLineThreadedFunctionArgs = { Emote = "PortraitEmoteAffection", WaitTime = 4.5 },
 			Text =
@@ -330,7 +315,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Aphrodite_0056",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"A little bird once told me that the shade of the great hero called Achilles now resides within your father's residence, dearest? I always wished to meet with him someday...",
 		},
@@ -347,7 +331,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Aphrodite_0057",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"You met Achilles after all, godling. He was quite instrumental in a war of my design. Still, he resisted my attempts to sway his actions. You tell him, simply, I admire him.",
 		},
@@ -365,7 +348,6 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Aphrodite_0179",
 			Emote = "PortraitEmoteDepressed",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"The great hero Achilles, he continues to ignore my polite outreach, doesn't he? Why, I've attempted to reach out at least several times! Your father's realm is really quite a lot. How terribly frustrating it must be!",
 		},
@@ -384,7 +366,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Aphrodite_0054",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"You've had a brush with Megaera, the Fury, haven't you? Oh I know a thing or two about that one. Though, lately we Olympians no longer mingle with those living in the Underworld. You're the only exception!",
 		},
@@ -404,7 +385,6 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Aphrodite_0055",
 			Emote = "PortraitEmoteCheerful",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"A little birdy told me recently that you and Megaera the Fury, why, you've grown quite close! Now {#DialogueItalicFormat}do {#PreviousFormat}be careful around her, and, try not to get attached, there, {#DialogueItalicFormat}hm{#PreviousFormat}?",
 		},
@@ -423,7 +403,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Aphrodite_0180",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Oh what is going {#DialogueItalicFormat}on {#PreviousFormat}down there, dearest? I thought for certain you would make it out, but seems that nasty place has kept you grounded, hasn't it. But don't despair, and you take heart, won't you?",
 		},
@@ -440,7 +419,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Aphrodite_0218",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Emote = "PortraitEmoteAffection",
 			Text =
 			"Something has stirred within your heart, dearest! Oh, I can always tell! A certain kind of love, for family? Yes, that must be it, I think! What could have transpired with you, {#DialogueItalicFormat}hm{#PreviousFormat}?",
@@ -458,7 +436,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Aphrodite_0219",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Emote = "PortraitEmoteAffection",
 			Text =
 			"To think your father and that sweet Persephone, they were together down there, all along! I was so certain that your father's heart was cold. That's just the thing with love, dearest! That, sometimes, it surprises even me!",
@@ -478,7 +455,6 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Aphrodite_0206",
 			Emote = "PortraitEmoteAffection",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"My dearest little godling, how fares everything with you of late? I love to have these little interactions with you, simple as they are, for they have brightened many of my evenings here.",
 		},
@@ -497,7 +473,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Aphrodite_0198",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Little godling, you must know the seven types of love by now, don't you? It's quite a complicated field, though several types intrigue me most of all. In fact, why, I have several types of love for you, right here!",
 		},
@@ -517,7 +492,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Aphrodite_0199",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Emote = "PortraitEmoteAffection",
 			Text =
 			"Dearest, why... I sense your heart is very full, indeed! You positively emanate with love. You must have grown quite close to many dear to you. Perhaps so you may do the same with me...? I'm so delighted to have seen your spirit shine.",
@@ -536,7 +510,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Aphrodite_0220",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Emote = "PortraitEmoteAffection",
 			Text =
 			"Oh, my, dearest! I have to say, your heart is positively bursting with such love for so many you have come to care about! Your dearest friends, your burning passions, family, {#DialogueItalicFormat}everyone{#PreviousFormat}! Why, you're like a living testament to my entire body of work!",
@@ -555,7 +528,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Aphrodite_0053",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"I cannot help but wonder, dearest, why Lord Hades would have kept your mere existence hidden from us all this time. Perhaps he knew that, once you met us, you would stop at nothing to come seek us out!",
 		},
@@ -573,7 +545,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Aphrodite_0173",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Emote = "PortraitEmoteAffection",
 			Text =
 			"I sense you finally acted on your pent-up passion for the Fury Megaera, yes, little godling? These types of things, they don't escape my notice, and they're always so enjoyable to see!",
@@ -592,7 +563,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Aphrodite_0174",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Emote = "PortraitEmoteAffection",
 			Text =
 			"How's fearsome Megaera the Fury treating you of late, {#DialogueItalicFormat}hmm{#PreviousFormat}, dearest? I know her type so very well, indeed. She acts as though there's nothing that can get under her skin, isn't that right?",
@@ -611,7 +581,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Aphrodite_0175",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Emote = "PortraitEmoteAffection",
 			Text =
 			"{#DialogueItalicFormat}Mmm{#PreviousFormat}, so my heart tells me that you've developed quite the bond with moody Thanatos, haven't you, there? I always figured that his brooding quality was just an act!",
@@ -632,7 +601,6 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Aphrodite_0176",
 			Emote = "PortraitEmoteAffection",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Little godling, would that I knew every last detail of how you and Thanatos are getting on of late! The notorious incarnate of death, and the newly discovered son of Hades, fraternizing? It's positively scandalous I think!",
 		},
@@ -650,7 +618,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Aphrodite_0177",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Emote = "PortraitEmoteCheerful",
 			Text =
 			"{#DialogueItalicFormat}Erm{#PreviousFormat}, dearest? If my perfectly developed senses are correct, then you appear to be quite smitten with a little gorgon that you've met down there...? Why that must be adorable, if rather strange! ",
@@ -669,7 +636,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Aphrodite_0178",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Emote = "PortraitEmoteCheerful",
 			Text =
 			"Why, something's changed about the beating of your heart, dearest! {#DialogueItalicFormat}Oh{#PreviousFormat}, it's the little gorgon, isn't it. You Underworld dwellers and your complicated feelings! I can never get enough. My blessings to the both of you, then, {#DialogueItalicFormat}hm{#PreviousFormat}?",
@@ -688,7 +654,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Aphrodite_0197",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Emote = "PortraitEmoteAffection",
 			Text =
 			"Why, you have my Eternal Rose, don't you? I am so very touched that you'd think first of me among my mighty kin. It pleases me to know I'm in your thoughts!",
@@ -712,7 +677,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Aphrodite_0078",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Emote = "PortraitEmoteSurprise",
 			Text = "Oh, look at you, you poor, poor thing, you're hurt! Though, let me see if I can make it better.",
 		},
@@ -732,7 +696,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Aphrodite_0079",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"{#DialogueItalicFormat}Tsk{#PreviousFormat}, you're in no condition for an outing with me, dearest. Though, perhaps you might recover from your hardships with my aid?",
 		},
@@ -753,7 +716,6 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Aphrodite_0200",
 			Emote = "PortraitEmoteSurprise",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Dearest, why, your heart rate's fluctuating wildly! Has it really been that bad up to this point? I'll try to help however much I can.",
 		},
@@ -774,7 +736,6 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Aphrodite_0201",
 			Emote = "PortraitEmoteDepressed",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Oh, you're just in an awful situation, aren't you. Yet, I can tell your proud heart keeps on beating, for the moment anyway! Don't die just yet!",
 		},
@@ -795,7 +756,6 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Aphrodite_0202",
 			Emote = "PortraitEmoteSurprise",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Ah, little godling, you're about to die! Why, none of us want {#DialogueItalicFormat}that{#PreviousFormat}, because if so, you won't get to enjoy my blessings here!",
 		},
@@ -816,7 +776,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Aphrodite_0032",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"I have been waiting for a special moment to confess my great appreciation for your deeds... this moment's special enough, isn't it?",
 		},
@@ -838,7 +797,6 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Aphrodite_0033",
 			Emote = "PortraitEmoteAffection",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"My loveliest of blessings is reserved only for those who've earned my deepest adoration. So, congratulations, love! And here you go!",
 		},
@@ -860,7 +818,6 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Aphrodite_0158",
 			Emote = "PortraitEmoteAffection",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Sometimes, our hearts become so full that they could burst! If only you could see how much I care. I would do anything to aid you in your plight! My heartfelt blessings be with you, dearest.",
 		},
@@ -881,7 +838,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Aphrodite_0159",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Little godling, you must know that the heart has infinite capacity for empathy. And I so feel for you there, that I have mustered for you some of the most beautiful of blessings I can offer!",
 		},
@@ -901,7 +857,6 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Aphrodite_0011",
 			Emote = "PortraitEmoteAffection",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Did you miss me, little godling, {#DialogueItalicFormat}hm{#PreviousFormat}? I thought I'd steal away a bit and that together we might make up for lost time.",
 		},
@@ -918,7 +873,6 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Aphrodite_0012",
 			Emote = "PortraitEmoteCheerful",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Hello again, there, little godling, let's get to it, {#DialogueItalicFormat}hm{#PreviousFormat}? I want what you want; there's no further need for words.",
 		},
@@ -936,7 +890,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Aphrodite_0013",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Emote = "PortraitEmoteDepressed",
 			Text =
 			"Oh, boo, looks like you've rather got yourself into a bind, there, haven't you. Though, not to worry, dearest. I can pull some strings.",
@@ -955,7 +908,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Aphrodite_0014",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"There, there, dearest, you'll tell me all your troubles just as soon as you arrive, so let's just get you out of there for now.",
 		},
@@ -971,7 +923,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Aphrodite_0015",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"What is it, love, are you still having problems with the dead? I swear, you'd think they had enough of me in life!",
 		},
@@ -987,7 +938,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Aphrodite_0016",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"What did I miss since last time, anything of interest, {#DialogueItalicFormat}hm{#PreviousFormat}? You'll have to fill me in once you break free, dearest.",
 		},
@@ -1004,7 +954,6 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Aphrodite_0017",
 			Emote = "PortraitEmoteCheerful",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Well, look at you, there, love! So well-prepared to take on any danger that may come! But, I must wonder, are you well-prepared for {#DialogueItalicFormat}this{#PreviousFormat}?",
 		},
@@ -1020,7 +969,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Aphrodite_0018",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Ready yourself, dearest, because you and I? We're going to have ourselves a little outing I expect that neither one of us shall soon forget.",
 		},
@@ -1036,7 +984,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Aphrodite_0019",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Would you by any chance have room, there, in your heart for a most-gentle blessing from a goddess such as me?",
 		},
@@ -1054,7 +1001,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Aphrodite_0020",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Don't lose heart, now, little godling! I won't have you giving up before you get to see me in the flesh among the gardens of Olympus here...!",
 		},
@@ -1070,7 +1016,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Aphrodite_0021",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Dearest, I've known many gods and godlings through the ages. And, I have to say, you're {#DialogueItalicFormat}quite {#PreviousFormat}intriguing, even for our kind.",
 		},
@@ -1086,7 +1031,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Aphrodite_0022",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Oh, dearest, I suspect we'll have ourselves a most exciting time together, you and I! Just do your best and it'll all be fine!",
 		},
@@ -1102,7 +1046,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Aphrodite_0023",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"I am always here, or close enough, to help you through whatever troubles you may face, my little godling. So do not hesitate to call upon me, {#DialogueItalicFormat}hm{#PreviousFormat}?",
 		},
@@ -1120,7 +1063,6 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Aphrodite_0024",
 			Emote = "PortraitEmoteAffection",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"I'd ask you show me a good time, there, love, although I almost can't imagine a good time where you reside! So dreary, constantly!",
 		},
@@ -1136,7 +1078,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Aphrodite_0025",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"I missed you terribly, my little godling! All that I ask is that you do not die on me again, why, I don't think that I can take it anymore!",
 		},
@@ -1152,7 +1093,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Aphrodite_0026",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"How you must yearn to reach the surface, little godling! It likewise stirs in me a yearning to assist you, by all means at my disposal!",
 		},
@@ -1169,7 +1109,6 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Aphrodite_0027",
 			Emote = "PortraitEmoteCheerful",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"No need to worry any longer, dearest! I bring you strength and comfort, and I shall be watching every step of yours most carefully.",
 		},
@@ -1188,7 +1127,6 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Aphrodite_0028",
 			Emote = "PortraitEmoteAffection",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Ah, how I long to see you face-to-face! Until such time, however, this old means of keeping touch shall have to do. So you take care, now, {#DialogueItalicFormat}hm{#PreviousFormat}?",
 		},
@@ -1207,7 +1145,6 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Aphrodite_0029",
 			Emote = "PortraitEmoteCheerful",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"You know I would do anything to have you here among us, don't you, love? Oh, I just hope my blessings are enough...!",
 		},
@@ -1223,7 +1160,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Aphrodite_0030",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Love tends to blossom in the strangest places at the strangest times, you know that, don't you, dearest? All one can do is entertain the chance.",
 		},
@@ -1241,7 +1177,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Aphrodite_0031",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Don't work yourself too hard down there, you promise, little godling? We need you in good shape and spirits on Olympus here.",
 		},
@@ -1257,7 +1192,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Aphrodite_0002",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "What do you say we skip the chat and get right to it, {#DialogueItalicFormat}hm{#PreviousFormat}?",
 		},
 	},
@@ -1272,7 +1206,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Aphrodite_0003",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "Oh, would you look at whom I found, all by his lonely self.",
 		},
 	},
@@ -1287,7 +1220,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Aphrodite_0004",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "Let's see what mischief we can make, between the two of us!",
 		},
 	},
@@ -1302,7 +1234,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Aphrodite_0005",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "You want my blessings, dearest, here they are!",
 		},
 	},
@@ -1317,7 +1248,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Aphrodite_0006",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "I hope I didn't keep you waiting very long, did I?",
 		},
 	},
@@ -1332,7 +1262,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Aphrodite_0007",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "Even immortal hearts can break, my little godling.",
 		},
 	},
@@ -1348,7 +1277,6 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Aphrodite_0008",
 			Emote = "PortraitEmoteCheerful",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "What do you say we go and make new friends together, {#DialogueItalicFormat}hm{#PreviousFormat}?",
 		},
 	},
@@ -1363,7 +1291,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Aphrodite_0009",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "You seem like you could use a helping hand, there, love.",
 		},
 	},
@@ -1378,7 +1305,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Aphrodite_0142",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "The bond of love is strong enough to suffer any hardship, dearest.",
 		},
 	},
@@ -1393,7 +1319,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Aphrodite_0143",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "Times of adversity make love grow even stronger, little godling.",
 		},
 	},
@@ -1408,7 +1333,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Aphrodite_0144",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "I hate to see you struggling, dearest! Please do be careful, {#DialogueItalicFormat}hm{#PreviousFormat}?",
 		},
 	},
@@ -1423,7 +1347,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Aphrodite_0145",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "Love conquers everything, you see that, don't you, dearest?",
 		},
 	},
@@ -1438,7 +1361,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Aphrodite_0146",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "Think of all those you love, and may they spur your courage, little godling.",
 		},
 	},
@@ -1453,7 +1375,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Aphrodite_0147",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "Your passion to achieve your goal is quite inspiring, I have to say!",
 		},
 	},
@@ -1468,7 +1389,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Aphrodite_0148",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "It's such a pity I can barely see you in that awful darkness, little godling.",
 		},
 	},
@@ -1483,7 +1403,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Aphrodite_0149",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "Love spurs the heart to greater acts of valor, doesn't it, dearest?",
 		},
 	},
@@ -1499,7 +1418,6 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Aphrodite_0150",
 			Emote = "PortraitEmoteAffection",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "Take heart, now, little godling. And how about you take this from me, as well.",
 		},
 	},
@@ -1514,7 +1432,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Aphrodite_0151",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "I'd love to help you however best I'm able, my little godling.",
 		},
 	},
@@ -1533,7 +1450,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Aphrodite_0152",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "I have the loveliest selection of my blessings for you this time, dearest!",
 		},
 	},
@@ -1553,7 +1469,6 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Aphrodite_0153",
 			Emote = "PortraitEmoteAffection",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "I think I'll give you something very special this time, little godling.",
 		},
 	},
@@ -1572,7 +1487,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Aphrodite_0154",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "Is not the purest act of love to aid somebody in their time of need?",
 		},
 	},
@@ -1592,7 +1506,6 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Aphrodite_0155",
 			Emote = "PortraitEmoteCheerful",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "I'm feeling wonderful of late, dearest, so here, enjoy the benefits!",
 		},
 	},
@@ -1736,7 +1649,6 @@ local newPortedLootBoughtTextLines = {
 		{
 			Cue = "/VO/Aphrodite_0061",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Emote = "PortraitEmoteCheerful",
 			Text =
 			"Looks like we meet again, dearest, here among the foul detritus of the boatman's wares! You truly take me to the best of places!",
@@ -1755,7 +1667,6 @@ local newPortedLootBoughtTextLines = {
 		{
 			Cue = "/VO/Aphrodite_0062",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"At first I didn't know how to get through to that odd river-boatman, Charon. Turns out he lusts for coin, and now I understand him well!",
 		},
@@ -1774,7 +1685,6 @@ local newPortedLootBoughtTextLines = {
 			Cue = "/VO/Aphrodite_0156",
 			Emote = "PortraitEmoteAffection",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "You spent your hard-earned wealth on my account, dearest? Why if that isn't just the sweetest thing!",
 		},
 	},
@@ -1791,7 +1701,6 @@ local newPortedLootBoughtTextLines = {
 		{
 			Cue = "/VO/Aphrodite_0157",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"One cannot put a price on love, but on my blessings, from the boatman, for my dearest? I'd say we're settled up.",
 		},
@@ -1814,7 +1723,6 @@ local newPortedRejectionTextLines = {
 			PreLineFunctionName = "BoonInteractPresentation",
 			PreLineWait = 1.0,
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"And here I was beginning to think that we had something special going, no...? Look here, little godling, let me save you lots of future suffering: I happen to be the jealous type.",
 		},
@@ -1826,7 +1734,6 @@ local newPortedRejectionTextLines = {
 			PreLineFunctionName = "BoonInteractPresentation",
 			PreLineWait = 1.0,
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"You'd best not take for granted my affection, godling. Yes, I've lots of it to go around; but I can just as easily rescind such privileges.",
 		},
@@ -1838,7 +1745,6 @@ local newPortedRejectionTextLines = {
 			PreLineFunctionName = "BoonInteractPresentation",
 			PreLineWait = 1.0,
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"They say a lot of things about me, dearest; and they'll tell you, in your dealings with me, ample caution is in order. Let me show you why.",
 		},
@@ -1850,7 +1756,6 @@ local newPortedRejectionTextLines = {
 			PreLineFunctionName = "BoonInteractPresentation",
 			PreLineWait = 1.0,
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Don't {#DialogueItalicFormat}ever {#PreviousFormat}take me for some thoughtless nymph to be manipulated, dearest. I expect reciprocal devotion from you. Do you understand?",
 		},
@@ -1862,7 +1767,6 @@ local newPortedRejectionTextLines = {
 			PreLineFunctionName = "BoonInteractPresentation",
 			PreLineWait = 1.0,
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Emote = "PortraitEmoteCheerful",
 			Text =
 			"Oh, {#DialogueItalicFormat}really{#PreviousFormat}? You shall find I don't take such rejections lying down. And you shall find it out the hard way.",
@@ -1875,7 +1779,6 @@ local newPortedRejectionTextLines = {
 			PreLineFunctionName = "BoonInteractPresentation",
 			PreLineWait = 1.0,
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Emote = "PortraitEmoteCheerful",
 			Text =
 			"If it's your wish to test the limits of the fine relationship we've built, why then... I can confirm you're testing them, all right!",
@@ -1888,7 +1791,6 @@ local newPortedRejectionTextLines = {
 			PreLineFunctionName = "BoonInteractPresentation",
 			PreLineWait = 1.0,
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Emote = "PortraitEmoteCheerful",
 			Text =
 			"Now, dearest... surely there's no way that could have been one of the wiser choices that you've lately made?",
@@ -1901,7 +1803,6 @@ local newPortedRejectionTextLines = {
 			PreLineFunctionName = "BoonInteractPresentation",
 			PreLineWait = 1.0,
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Emote = "PortraitEmoteCheerful",
 			Text =
 			"Dearest, just in case it hasn't been made clear as crystal lately, let me tell you: When presented with the opportunity, don't {#DialogueItalicFormat}ever {#PreviousFormat}reject me.",
@@ -1914,7 +1815,6 @@ local newPortedRejectionTextLines = {
 			PreLineFunctionName = "BoonInteractPresentation",
 			PreLineWait = 1.0,
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"You'd spurn my love this easily, dearest? You are about to find the consequences are much harder to dismiss without a second thought.",
 		},
@@ -1926,7 +1826,6 @@ local newPortedRejectionTextLines = {
 			PreLineFunctionName = "BoonInteractPresentation",
 			PreLineWait = 1.0,
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Emote = "PortraitEmoteCheerful",
 			Text =
 			"I must admit I'm unaccustomed to rejection, love. But {#DialogueItalicFormat}you {#PreviousFormat}must be accustomed to swift death! Here comes one for you now.",
@@ -1939,7 +1838,6 @@ local newPortedRejectionTextLines = {
 			PreLineFunctionName = "BoonInteractPresentation",
 			PreLineWait = 1.0,
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Emote = "PortraitEmoteDepressed",
 			Text =
 			"Oh, but this is such a heartbreak, dearest! Why would you do that? You know that I won't take this lying down.",
@@ -1952,7 +1850,6 @@ local newPortedRejectionTextLines = {
 			PreLineFunctionName = "BoonInteractPresentation",
 			PreLineWait = 1.0,
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Emote = "PortraitEmoteAnger",
 			Text =
 			"You {#DialogueItalicFormat}dare {#PreviousFormat}to play with {#DialogueItalicFormat}my {#PreviousFormat}heart, little godling? I'll just take yours, and shatter it to pieces, then, I think!",
@@ -1965,7 +1862,6 @@ local newPortedRejectionTextLines = {
 			PreLineFunctionName = "BoonInteractPresentation",
 			PreLineWait = 1.0,
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Sometimes I think that you're quite {#DialogueItalicFormat}different {#PreviousFormat}than most all the others here, darling. And then, you go and do something like {#DialogueItalicFormat}this{#PreviousFormat}.",
 		},
@@ -1977,7 +1873,6 @@ local newPortedRejectionTextLines = {
 			PreLineFunctionName = "BoonInteractPresentation",
 			PreLineWait = 1.0,
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Emote = "PortraitEmoteAnger",
 			Text =
 			"You think you can brush me aside like that? Well, I think I can crush you into tiny, little bits! Let's see who's right, shall we?",
@@ -2001,7 +1896,6 @@ local newPortedMakeUpTextLines = {
 			Cue = "/VO/Aphrodite_0069",
 			Emote = "PortraitEmoteAffection",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Let's say we kissed and made up, dearest. Just, do not anger me again, or I might come down and kill you there myself!",
 		},
@@ -2014,7 +1908,6 @@ local newPortedMakeUpTextLines = {
 			Cue = "/VO/Aphrodite_0070",
 			Emote = "PortraitEmoteCheerful",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Alas that passion sometimes drives me into vengeance, dearest! Yet, who among us isn't without vices, {#DialogueItalicFormat}hm{#PreviousFormat}?",
 		},
@@ -2027,7 +1920,6 @@ local newPortedMakeUpTextLines = {
 			Cue = "/VO/Aphrodite_0071",
 			Emote = "PortraitEmoteAffection",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Oh, how I hate to fight with you like this! Let's forgive each other and forget, go back to how things used to be?",
 		},
@@ -2039,7 +1931,6 @@ local newPortedMakeUpTextLines = {
 		{
 			Cue = "/VO/Aphrodite_0072",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"I'm not angry with you any longer, dearest! Though, might I suggest you take some extra steps to keep it that way, hm?",
 		},
@@ -2053,7 +1944,6 @@ local newPortedMakeUpTextLines = {
 			PreLineThreadedFunctionName = "PlayEmoteAnimFromSource",
 			PreLineThreadedFunctionArgs = { Emote = "PortraitEmoteAffection", WaitTime = 7.6 },
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"A loving heart is a forgiving heart, don't you agree? So I shall let this little matter slide, and you've my loving heart to thank for it, {#DialogueItalicFormat}hm-hm{#PreviousFormat}!",
 		},
@@ -2065,7 +1955,6 @@ local newPortedMakeUpTextLines = {
 		{
 			Cue = "/VO/Aphrodite_0074",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"The truth is I'm a lover, not a fighter, dearest. So how about we call this matter put to bed, and get on with our lives?",
 		},
@@ -2077,7 +1966,6 @@ local newPortedMakeUpTextLines = {
 		{
 			Cue = "/VO/Aphrodite_0137",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"I'd say this little squabble can be put to bed, for now. I'm better for the moment, but I was very angry with you, love!",
 		},
@@ -2090,7 +1978,6 @@ local newPortedMakeUpTextLines = {
 			Cue = "/VO/Aphrodite_0138",
 			Emote = "PortraitEmoteCheerful",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"I cannot bring myself to stay upset with you forever, little godling, so let's move along from that small misunderstanding there.",
 		},
@@ -2102,7 +1989,6 @@ local newPortedMakeUpTextLines = {
 		{
 			Cue = "/VO/Aphrodite_0139",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"There is no common sense with love, godling, so... why don't we pretend your indiscretion there did not occur.",
 		},
@@ -2114,7 +2000,6 @@ local newPortedMakeUpTextLines = {
 		{
 			Cue = "/VO/Aphrodite_0140",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"It is through times of difficulty that the love we share is tested and reforged. But you just watch yourself when testing it like that.",
 		},
@@ -2126,7 +2011,6 @@ local newPortedMakeUpTextLines = {
 		{
 			Cue = "/VO/Aphrodite_0141",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Love and jealousy go hand in hand, don't they, dearest? Although the former's much more pleasant, isn't it.",
 		},
@@ -2139,7 +2023,6 @@ local newPortedMakeUpTextLines = {
 			Cue = "/VO/Aphrodite_0217",
 			Emote = "PortraitEmoteAffection",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Oh, all this fighting! It's just not like us at {#DialogueItalicFormat}all{#PreviousFormat}, dearest! Let's say we kissed and then made up, all right?",
 		},

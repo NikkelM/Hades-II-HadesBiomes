@@ -31,7 +31,6 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Demeter_0002",
 			PortraitExitWait = 1.25,
 			PreContentSound = "/Leftovers/Menu Sounds/TextReveal2",
-			UseEventEndSound = true,
 			Text =
 			"I understand, young Zagreus, that you would seek to leave that bitter darkness for this bitter cold? Quite honestly I fail to see why. But I'll aid your plight, why not? For I can offer plenty of assistance, and you soon shall grow fond of it, I think.",
 		},
@@ -52,7 +51,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0062",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"I see the noble King of the Olympians has reached you prior to me, Zagreus. I wonder which of all his many lies he's told you last.",
 		},
@@ -71,7 +69,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0078",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			-- used for moments when Zag follow-up VO isn't appropriate
 			TriggerCooldowns = { "ZagreusBoonPickUpSpeech" },
 			Text =
@@ -92,7 +89,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0086",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			TriggerCooldowns = { "ZagreusBoonPickUpSpeech" },
 			Text =
 			"My daughter to a baseborn farm-boy, she... why, little sprout, I wasn't very kind to her, I think. Certainly not once her father passed. It was her mortal blood that made her weak! Born to mortals, taken by mortals, I suspect. So now, they {#DialogueItalicFormat}pay{#PreviousFormat}.",
@@ -112,7 +108,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0085",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			TriggerCooldowns = { "ZagreusBoonPickUpSpeech" },
 			Text =
 			"I don't suppose... no, it is nothing, little sprout, it's just... I hear such wicked rumors now and then, about my daughter, lost to me, and what became of her. Kore, we called her, then. Persephone is what she called herself. Before she vanished utterly, leaving no trace....",
@@ -132,7 +127,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0159",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			TriggerCooldowns = { "ZagreusBoonPickUpSpeech" },
 			Text =
 			"After my daughter Kore disappeared, I left this mountaintop. Wandered the earth, in search. For naught, of course. It was a necessary journey, I suppose. May yours fare better.",
@@ -163,7 +157,6 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Demeter_0212",
 			PortraitExitWait = 1.25,
 			PreContentSound = "/Leftovers/Menu Sounds/TextReveal2",
-			UseEventEndSound = true,
 			Text =
 			"What's all of this, young Zagreus, a message of some sort, for me, indeed? I... can't decipher it, although... it bears the marks of my two foster-brothers here, and... well! It seems we'd better compare notes!",
 		},
@@ -180,7 +173,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0226",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			-- used for moments when Zag follow-up VO isn't appropriate
 			TriggerCooldowns = { "ZagreusBoonPickUpSpeech" },
 			Text =
@@ -199,7 +191,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0197",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			TriggerCooldowns = { "ZagreusBoonPickUpSpeech" },
 			Text =
 			"My little grandson, little sprout, I've thought... if my Persephone's alive, why then... this winter, hasn't it endured for long enough...? It's grown to have a certain stubbornness, but I... I am the goddess of the seasons, Zagreus. Perhaps it's time I changed them once again."
@@ -218,7 +209,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0225",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			TriggerCooldowns = { "ZagreusBoonPickUpSpeech" },
 			Text =
 			"I've lifted the cold from the earth, much as I said I would, grandson. But, near your father's realm... I have decided it shall stay the way it is. Bereft of warmth. As a reminder to us all, about all this.",
@@ -242,7 +232,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0063",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"You bear the blessing of Poseidon, Zagreus? Someday I shall remind him of his place, and freeze his watery domain entirely.",
 		},
@@ -261,7 +250,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0061",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Athena has imparted you her {#DialogueItalicFormat}wisdom{#PreviousFormat}, Zagreus? A simulacrum of the real thing, at any rate. True wisdom only comes with age, I think.",
 		},
@@ -280,7 +268,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0064",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"All of the love and beauty in the world can wither in a season, Zagreus. Remember that when next the goddess Aphrodite makes her promises.",
 		},
@@ -299,7 +286,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0065",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Lord Ares already got hold of you, has he? He's good at making mortals kill each other, yes. But he has utterly no knack for subtlety.",
 		},
@@ -318,7 +304,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0066",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"The gentle Artemis already found you, Zagreus? She takes my orders well; one cannot blame her, for she'd have nothing to hunt if not for me.",
 		},
@@ -337,7 +322,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0067",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"You stumbled into Dionysus, Zagreus? One of these days I shall prevent his vineyards all from ripening; put to the test his carefree attitude.",
 		},
@@ -355,7 +339,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0068",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"The mark of Chaos is upon you, isn't it? A force older than I! Yet one which you ought not trust so readily. No rhyme or reason to that one at all.",
 		},
@@ -373,7 +356,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0069",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Is that the bloodlike stain of pomegranate on you, Zagreus? A hardy fruit resistant to a winter's chill. How fascinating they survive, down there.",
 		},
@@ -394,7 +376,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0020",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"I don't often divulge such blessings as I am about to, Zagreus. Don't thank me for it, but make certain that you use my power well.",
 		},
@@ -415,7 +396,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0021",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"I have affection for you, little sprout. No need for reciprocity, but now I'll offer you the fiercest of my capabilities.",
 		},
@@ -432,7 +412,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0059",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"I must admit I have grown fond of you, young sprout; nevertheless, I shall not spoil you like some ill-mannered child.",
 		},
@@ -449,7 +428,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0060",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"My, but you're as determined as my foster-brothers were, when my sisters and I stood with them 'gainst the Titans way back when.",
 		},
@@ -467,7 +445,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0070",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Our family, why, I think we understand something of loss, now, don't we, Zagreus? Unlike the mortals on the surface. Always begging me for plenty. They'll get none. But as for you, I have a plethora to offer!",
 		},
@@ -485,7 +462,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0073",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"You are entirely too young to have had meaningful experience with loss, young Zagreus. Pray to me that you never have to learn.",
 		},
@@ -503,7 +479,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0071",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"You live within the bosom of the earth, and know its warmth. But there is no such warmth up here, young Zagreus. You truly wish to feel the bitter cold of the outside? Then, here.",
 		},
@@ -522,7 +497,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0072",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Someday, you'll gain the surface, Zagreus; and you shall see firsthand what mortalkind has wrought. You'll find it has some commonality with your domain.",
 		},
@@ -540,7 +514,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0079",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Motherhood's a curse, young Zagreus. Be thankful you're immune. You sprang from Nyx herself, or so I hear? I sprang from Theia, whoever she was. And I once bore a child, too. Long gone. A mother's work... isn't it such a waste?",
 		},
@@ -558,7 +531,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0074",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Your father Hades and I share a common fate, each having lost a child fully grown; except that he's a hollow fool, whose child left! Whereas my daughter never would have. Ever!",
 		},
@@ -576,7 +548,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0156",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Your father always had a sternness to him that his brothers lacked. Thought him a decent sort, comparatively anyway; though evidently he is no such thing.",
 		},
@@ -594,7 +565,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0157",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Should you achieve your goal, and see this surface-world, Zagreus, I've but one bit of knowledge to impart: Don't ever fall for mortals. Use them if you must, but do not waste your love on those who waste away.",
 		},
@@ -612,7 +582,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0161",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			-- used for moments when Zag follow-up VO isn't appropriate
 			TriggerCooldowns = { "ZagreusBoonPickUpSpeech" },
 			Text =
@@ -632,7 +601,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0162",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"This land is not unlike your own in certain ways. For, Helios the Sun has not shone down upon it for some time. How long, I really couldn't tell you, little sprout! Long enough for mortals to take notice, certainly.",
 		},
@@ -650,7 +618,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0075",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"My sisters Hestia and Hera surely would assist as well, young sprout. Except they and our foster-brothers haven't been getting along of late. Though as for me? I'll never leave this mountaintop of mine.",
 		},
@@ -667,7 +634,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0076",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			TriggerCooldowns = { "ZagreusBoonPickUpSpeech" },
 			Text =
 			"We all are willful children, are we not? I'm daughter to Hyperion, you know; a Titan so obscure and hated that Lord Zeus, he started calling me his birth-sister, so much did he dislike this bit of truth! And to get a rise out of me, too.",
@@ -685,7 +651,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0077",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			TriggerCooldowns = { "ZagreusBoonPickUpSpeech" },
 			Text =
 			"As seasons give to one another, so do generations, I suppose. Hyperion, my father? He'd not a one redeeming quality. My sisters and my foster-brothers and myself; this world owes us a debt for ridding it of him and his kind.",
@@ -703,7 +668,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0082",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			TriggerCooldowns = { "ZagreusBoonPickUpSpeech" },
 			Text =
 			"I ought to warn you that my foster-brother Zeus, he has just a {#DialogueItalicFormat}disgusting {#PreviousFormat}sense of humor, little sprout. He'd have you think he sired half the countryside! I have to shudder at the very thought.",
@@ -721,7 +685,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0160",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			TriggerCooldowns = { "ZagreusBoonPickUpSpeech" },
 			Text =
 			"There's so much nonsense that the mortals say to one another of our family, Zagreus. How viciously the rumors spread! Whether from that oaf, Zeus, or likely from the mortal drunkard-poets with no better use of their limited time!",
@@ -740,7 +703,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0115",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			TriggerCooldowns = { "ZagreusBoonPickUpSpeech" },
 			Text =
 			"I warn you, Zagreus, best not to make attempts to grow much closer with me, thus. I'm much your elder, after all, and you're my little sprout. What say we keep it that way, hm?",
@@ -758,7 +720,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0196",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			TriggerCooldowns = { "ZagreusBoonPickUpSpeech" },
 			Text =
 			"I... I am so very moved, I... have a daughter once again. And... I've a grandson, too! I thought, I felt something when first I met you, but... I brushed it off. Just like a fleck of snow...",
@@ -779,7 +740,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0083",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Someday, my little sprout, you'll gain the surface of your father's realm, and see my handiwork. Until such time, I'll come to your aid as I can. It's quite the entertaining pastime, honestly!",
 		},
@@ -796,7 +756,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0227",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"By the way, we had entirely a lovely time within your father's house, Grandson. And, to see Kore once again, it... warmed my heart. I'm beyond grateful that your mother's safe. And that you've an important job to do. Here, I shall help.",
 		},
@@ -813,7 +772,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0228",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			TriggerCooldowns = { "ZagreusBoonPickUpSpeech" },
 			Text =
 			"I meant to tell you something, Grandson... you needn't have deceived the rest of us. You could have sent word that my daughter was with you down there, all along! Ah, but families are a complicated thing. Just swear that you'll be candid with us, next time.",
@@ -832,7 +790,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0229",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			TriggerCooldowns = { "ZagreusBoonPickUpSpeech" },
 			Text =
 			"You must visit us sometime up here, Grandson! I understand the surface hasn't been agreeable with you... though perhaps if not in this age, then the next, we shall have you over. It's brisk up here... but nice enough, I think.",
@@ -850,7 +807,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0214",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			TriggerCooldowns = { "ZagreusBoonPickUpSpeech" },
 			Text =
 			"Young sprout, I cannot fully understand my daughter's choices, such as what she saw in your gloom-filled father to have eloped with him. But if you are the result, then she is clearly wiser than I estimated.",
@@ -868,7 +824,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0215",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			TriggerCooldowns = { "ZagreusBoonPickUpSpeech" },
 			Text =
 			"I made mistakes raising your mother, sprout. When she was my Kore. I was blind to the possibility that she could have left me, but... I see it now. If you become a parent yourself, someday... may you listen more than I.",
@@ -888,7 +843,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0201",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			TriggerCooldowns = { "ZagreusBoonPickUpSpeech" },
 			Text =
 			"You tell my Kore... {#DialogueItalicFormat}erm, Persephone{#PreviousFormat}, that is... the Queen! You tell her that her mother sends her warm regards. You tell her that. And you take care of her.",
@@ -907,7 +861,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0198",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Grandson, my daughter Queen Persephone, she sent me the most precious message, courtesy of Hermes, as of late. I'm pleased to hear that you are getting on all right. Though, I know you're at work, so here!",
 		},
@@ -925,7 +878,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0155",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"The Frostbitten Horn which you bear once overflowed. It holds a certain power still, of course. But never again shall mortalkind take it for granted.",
 		},
@@ -945,7 +897,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0080",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"The heat has risen quite considerably there, is that not so? Then if my foster-brother's tampered with the temperature, I'll have to cool things off.",
 		},
@@ -964,7 +915,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0081",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"The heat of your surroundings must be difficult to bear, my little sprout. It's fortunate I've just the thing for that.",
 		},
@@ -984,7 +934,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0158",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"That chill sensation I detect must indicate that you are near the surface, Zagreus. If you can overcome the final challenges ahead, you soon shall see the long winter yourself.",
 		},
@@ -1004,7 +953,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0116",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Why, you've the look of one who has endured a terribly long winter, Zagreus! I trust you'll cling to life a little longer, now.",
 		},
@@ -1024,7 +972,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0117",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"I sense your grip on life is coming loose, young Zagreus. Now turn that cold you feel against your enemies.",
 		},
@@ -1044,7 +991,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0118",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "You seem to be in dire need of some assistance, Zagreus. I think perhaps I have a bit to spare.",
 		},
 	},
@@ -1063,7 +1009,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0119",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"You're in the winter of your current stretch of life, aren't you, Zagreus? Do try and live a little longer for me, hm?",
 		},
@@ -1083,7 +1028,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0120",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "You waste away just like a common mortal, Zagreus. How rather unbecoming of a god.",
 		},
 	},
@@ -1102,7 +1046,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0121",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"The flame of life is easily extinguished by the cold, young Zagreus. Surely you feel the warmth within you giving way?",
 		},
@@ -1122,7 +1065,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0122",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "Cold comfort for your terrible predicament, young Zagreus, but I am here.",
 		},
 	},
@@ -1140,7 +1082,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0003",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"I once had plentitudes of blessings I would offer readily, young Zagreus; but I am feeling not as generous of late.",
 		},
@@ -1156,7 +1097,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0004",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "Did you detect perhaps a certain spirit-shaking chill within the air, young Zagreus?",
 		},
 	},
@@ -1171,7 +1111,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0005",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "Plenty of blessings left to go around; although, only for you, young Zagreus.",
 		},
 	},
@@ -1186,7 +1125,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0006",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "Your enemies shall have no shelter from the cold whilst I am at your side, young Zagreus.",
 		},
 	},
@@ -1201,7 +1139,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0007",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "There's something to the barrenness, where you reside; perhaps someday it shall be more like that up here.",
 		},
 	},
@@ -1216,7 +1153,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0008",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Your realm there is much like the wind-swept surface here. Mostly devoid of life, such as it's been of late.",
 		},
@@ -1232,7 +1168,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0009",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Olympus must seem like a distant paradise to you, young Zagreus; it is a frozen waste to me. But still, it's home.",
 		},
@@ -1248,7 +1183,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0010",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "Your foes shall more than catch cold by the time we're through, don't you agree, young sprout?",
 		},
 	},
@@ -1263,7 +1197,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0011",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "All those who stand opposed to you, why, we shall shatter more than their resolve, I think, young Zagreus.",
 		},
 	},
@@ -1278,7 +1211,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0012",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"One of these seasons I suppose I ought to double-check the mortals haven't gone extinct without my intervention at each step.",
 		},
@@ -1295,7 +1227,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0013",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"None can endure an everlasting winter's chill, young Zagreus; not even your father's lifeless servants there beneath the earth.",
 		},
@@ -1312,7 +1243,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0014",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"The seasons have a certain beauty to them, I suppose. Though struggle onward, and you needn't take my word for it.",
 		},
@@ -1328,7 +1258,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0015",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"I've known your father and his brothers here for many seasons now; they bicker endlessly with me and one another.",
 		},
@@ -1344,7 +1273,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0016",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"I have to tell you something, little sprout. I take cold comfort knowing that my foster-brother Hades is no better at his parenting than I.",
 		},
@@ -1361,7 +1289,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0017",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "I'd gladly scour all your father's realm if doing so would free you from his clutches, Zagreus.",
 		},
 	},
@@ -1376,7 +1303,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0018",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"I'll have you know something, young Zagreus: The bitter cold and frost is just as inescapable as death itself.",
 		},
@@ -1392,7 +1318,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0019",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "The seasons turn relentlessly, without regard, and thusly should you doggedly push forward on your path.",
 		},
 	},
@@ -1407,7 +1332,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0154",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "I shall bring desolation upon those who wrong you, little sprout.",
 		},
 	},
@@ -1422,7 +1346,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0022",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "I hope that you're aware how seldomly I give my blessing as of late, young Zagreus.",
 		},
 	},
@@ -1437,7 +1360,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0023",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "There's no escaping from the bitter cold, you know.",
 		},
 	},
@@ -1452,7 +1374,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0024",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "Your adversaries soon shall know something of loss, I think.",
 		},
 	},
@@ -1467,7 +1388,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0025",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "Let us see to it your foes are left with nothing.",
 		},
 	},
@@ -1482,7 +1402,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0026",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "There shall be only souls for harvesting this day, I think, young Zagreus.",
 		},
 	},
@@ -1497,7 +1416,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0027",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "My warm regards, and all my blessings to you, little sprout.",
 		},
 	},
@@ -1512,7 +1430,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0028",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "The bitterness of cold and death go hand in hand, I do suppose.",
 		},
 	},
@@ -1527,7 +1444,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0029",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "When all is taken away, the cold yet remains, young Zagreus.",
 		},
 	},
@@ -1544,7 +1460,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0030",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "I am not feeling quite so generous of late, young Zagreus, but nevertheless: Choose.",
 		},
 	},
@@ -1559,7 +1474,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0031",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "Your lifeless foes must foolishly believe they've nothing left to lose.",
 		},
 	},
@@ -1576,7 +1490,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0032",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "Go with my blessings, Zagreus; though you may take but one.",
 		},
 	},
@@ -1591,7 +1504,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0033",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "Decay is the inevitable state of things; we are merely helping it along.",
 		},
 	},
@@ -1606,7 +1518,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0035",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "The cold of Mount Olympus shall bring utter ruin on your enemies.",
 		},
 	},
@@ -1621,7 +1532,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0036",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "Death and cold, they are irrevocably bound together, Zagreus.",
 		},
 	},
@@ -1637,7 +1547,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0037",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "The climate in those depths needs cooling, then, I take it, Zagreus?",
 		},
 	},
@@ -1652,7 +1561,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0038",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "You bring with you the season of decay, young Zagreus.",
 		},
 	},
@@ -1667,7 +1575,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0039",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "Your foes shall all wither before you like unwatered crops.",
 		},
 	},
@@ -1682,7 +1589,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0040",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "The frost eventually shall cover everything, young Zagreus.",
 		},
 	},
@@ -1697,7 +1603,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0041",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "You'll find that life gives way quite easily to cold, young sprout.",
 		},
 	},
@@ -1714,7 +1619,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0042",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "Look carefully upon my blessings, Zagreus, and take no more than one.",
 		},
 	},
@@ -1729,7 +1633,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0043",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "I trust that harvesting dead souls is not unlike the harvest we have on the surface, Zagreus.",
 		},
 	},
@@ -1744,7 +1647,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0044",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "You're like a little flame there in your father's realm; easy enough to spot.",
 		},
 	},
@@ -1759,7 +1661,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0045",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "It seems to me your foes are ripe for harvesting, young Zagreus.",
 		},
 	},
@@ -1774,7 +1675,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0046",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "Any who stand against you soon shall wither from the cold, young sprout.",
 		},
 	},
@@ -1793,7 +1693,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0048",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "I seldom feel too generous of late, and yet for you, young Zagreus? Why not.",
 		},
 	},
@@ -1812,7 +1711,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0049",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "I once offered the mortals generosities as this in much more copious supply.",
 		},
 	},
@@ -1831,7 +1729,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0050",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "It soon shall be exceptionally cold down in the Underworld, I think.",
 		},
 	},
@@ -1850,7 +1747,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0051",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "I'd never give out blessings such as this to merely anyone, I hope you know.",
 		},
 	},
@@ -1871,7 +1767,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0052",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "I've quite the harvest here from which to choose, my little sprout.",
 		},
 	},
@@ -1890,7 +1785,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0053",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "Soon, the season there shall turn exceptionally cold, young Zagreus.",
 		},
 	},
@@ -1909,7 +1803,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0055",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "It is particularly cold outside, today; and soon it shall be so in there for you.",
 		},
 	},
@@ -1925,7 +1818,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0034",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "Well, my little sprout, we shall have to get you through this winter's cold.",
 		},
 	},
@@ -1941,7 +1833,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0047",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "A crisp and pleasant winter's evening to you, Zagreus; now, here.",
 		},
 	},
@@ -1957,7 +1848,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0054",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "My finest winter blessings to you, little sprout.",
 		},
 	},
@@ -1972,7 +1862,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0202",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "Well, Grandson, it's growing rather cold, don't you agree?",
 		},
 	},
@@ -1987,7 +1876,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0203",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "I'm here to ease some of your burdens, my young sprout. That's what we grandmothers are for.",
 		},
 	},
@@ -2002,7 +1890,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0204",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "I trust you're keeping yourself warm enough in all of this, Grandson?",
 		},
 	},
@@ -2017,7 +1904,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0205",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "When all this is over, please do come and visit us sometime, Grandson.",
 		},
 	},
@@ -2032,7 +1918,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0206",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "I'd tell you not to work too hard, Grandson, although your family is in need of more hard-working sorts.",
 		},
 	},
@@ -2047,7 +1932,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0207",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "Foul weather's on the forecast for your foes, Grandson.",
 		},
 	},
@@ -2062,7 +1946,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0208",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "Don't let my foster-brother bully you about, you hear, Grandson?",
 		},
 	},
@@ -2077,7 +1960,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0209",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "Let's cool down that hot head of yours a bit, why don't we, Grandson?",
 		},
 	},
@@ -2093,7 +1975,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0210",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "My best regards to Queen Persephone and your lord father, little sprout. You keep it up.",
 		},
 	},
@@ -2109,7 +1990,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0211",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "I trust your mother Queen Persephone is faring well if she has as fine a son as you, young Zagreus.",
 		},
 	},
@@ -2125,7 +2005,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0222",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "Your mother sends you all her love from Mount Olympus, Grandson.",
 		},
 	},
@@ -2141,7 +2020,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0223",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "All the best from Queen Persephone, young sprout. She misses you, you know.",
 		},
 	},
@@ -2157,7 +2035,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Demeter_0224",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "Persephone is doing well here on Olympus, Zagreus. You ought to visit, too, sometime.",
 		},
 	},
@@ -2300,7 +2177,6 @@ local newPortedLootBoughtTextLines = {
 		{
 			Cue = "/VO/Demeter_0056",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "Be thankful that the rivers to your realm have not yet frozen over, Zagreus.",
 		},
 	},
@@ -2316,7 +2192,6 @@ local newPortedLootBoughtTextLines = {
 		{
 			Cue = "/VO/Demeter_0057",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "I trust your ferry-boatman Charon has no qualms about the freezing temperatures up here?",
 		},
 	},
@@ -2332,7 +2207,6 @@ local newPortedLootBoughtTextLines = {
 		{
 			Cue = "/VO/Demeter_0058",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"My message comes to you by river-boat this time, young Zagreus. At least that Charon is amenable to our attempts to contact you.",
 		},
@@ -2355,7 +2229,6 @@ local newPortedRejectionTextLines = {
 			PreLineFunctionName = "BoonInteractPresentation",
 			PreLineWait = 1.0,
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "My blessing's seldom given and ought not be so readily refused, young Zagreus.",
 		},
 	},
@@ -2366,7 +2239,6 @@ local newPortedRejectionTextLines = {
 			PreLineFunctionName = "BoonInteractPresentation",
 			PreLineWait = 1.0,
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"I am accustomed to such disrespect from all those blasted mortals, Zagreus, but {#DialogueItalicFormat}you{#PreviousFormat}?",
 		},
@@ -2378,7 +2250,6 @@ local newPortedRejectionTextLines = {
 			PreLineFunctionName = "BoonInteractPresentation",
 			PreLineWait = 1.0,
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "If you are so disinterested in my generosity, young Zagreus, then you shall have my wrath.",
 		},
 	},
@@ -2389,7 +2260,6 @@ local newPortedRejectionTextLines = {
 			PreLineFunctionName = "BoonInteractPresentation",
 			PreLineWait = 1.0,
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "I don't recall if I yet warned against this type of attitude, although it doesn't matter either way.",
 		},
 	},
@@ -2400,7 +2270,6 @@ local newPortedRejectionTextLines = {
 			PreLineFunctionName = "BoonInteractPresentation",
 			PreLineWait = 1.0,
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "Do you believe I give my blessings liberally, Zagreus? Well then I've news for you.",
 		},
 	},
@@ -2411,7 +2280,6 @@ local newPortedRejectionTextLines = {
 			PreLineFunctionName = "BoonInteractPresentation",
 			PreLineWait = 1.0,
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "Offend me, and I'll drain the last traces of color from those cheeks of yours.",
 		},
 	},
@@ -2422,7 +2290,6 @@ local newPortedRejectionTextLines = {
 			PreLineFunctionName = "BoonInteractPresentation",
 			PreLineWait = 1.0,
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "That was an ill-advised decision, Zagreus. I'm past quickly forgiving such mistakes.",
 		},
 	},
@@ -2433,7 +2300,6 @@ local newPortedRejectionTextLines = {
 			PreLineFunctionName = "BoonInteractPresentation",
 			PreLineWait = 1.0,
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "You truly think you can withstand the ravages of winter, Zagreus? That I would like to see.",
 		},
 	},
@@ -2444,7 +2310,6 @@ local newPortedRejectionTextLines = {
 			PreLineFunctionName = "BoonInteractPresentation",
 			PreLineWait = 1.0,
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "A harsh winter is coming for you, Zagreus. And I'm afraid you've brought it on yourself.",
 		},
 	},
@@ -2455,7 +2320,6 @@ local newPortedRejectionTextLines = {
 			PreLineFunctionName = "BoonInteractPresentation",
 			PreLineWait = 1.0,
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "For that decision, Zagreus, it is about to be a very cold day down there in your Underworld.",
 		},
 	},
@@ -2466,7 +2330,6 @@ local newPortedRejectionTextLines = {
 			PreLineFunctionName = "BoonInteractPresentation",
 			PreLineWait = 1.0,
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"A careless choice you've made, there, Zagreus. As you grow long in years, perhaps you shall learn better judgment as to whom to trust, and whom to never, ever disrespect.",
 		},
@@ -2488,7 +2351,6 @@ local newPortedMakeUpTextLines = {
 		{
 			Cue = "/VO/Demeter_0098",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "Perhaps you'll exercise more wisdom in such interactions moving forward, hm?",
 		},
 	},
@@ -2499,7 +2361,6 @@ local newPortedMakeUpTextLines = {
 		{
 			Cue = "/VO/Demeter_0099",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "It ultimately isn't my intent to leave you in the cold like this, young Zagreus.",
 		},
 	},
@@ -2510,7 +2371,6 @@ local newPortedMakeUpTextLines = {
 		{
 			Cue = "/VO/Demeter_0100",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "The freezing cold ought to have drained the life from you; but I've allowed it to relent, for now.",
 		},
 	},
@@ -2521,7 +2381,6 @@ local newPortedMakeUpTextLines = {
 		{
 			Cue = "/VO/Demeter_0101",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "Next time, young Zagreus, perhaps I'll take every last bit of warmth you've left down there.",
 		},
 	},
@@ -2532,7 +2391,6 @@ local newPortedMakeUpTextLines = {
 		{
 			Cue = "/VO/Demeter_0102",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "I am the eldest of Olympus, Zagreus. And I expect for you to treat me suitably.",
 		},
 	},
@@ -2543,7 +2401,6 @@ local newPortedMakeUpTextLines = {
 		{
 			Cue = "/VO/Demeter_0103",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "The harsh of winter's gone for now, young Zagreus; and so take heart, but also you take heed.",
 		},
 	},
@@ -2554,7 +2411,6 @@ local newPortedMakeUpTextLines = {
 		{
 			Cue = "/VO/Demeter_0104",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"So you survived a little winter's chill, didn't you, there? Be careful, though; next season could be worse.",
 		},
@@ -2566,7 +2422,6 @@ local newPortedMakeUpTextLines = {
 		{
 			Cue = "/VO/Demeter_0105",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "Remember, next time, Zagreus, that on my whim I can take everything from you.",
 		},
 	},
@@ -2577,7 +2432,6 @@ local newPortedMakeUpTextLines = {
 		{
 			Cue = "/VO/Demeter_0106",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "I am quite capable of making your life plenty difficult, you do now realize, young Zagreus?",
 		},
 	},
@@ -2588,7 +2442,6 @@ local newPortedMakeUpTextLines = {
 		{
 			Cue = "/VO/Demeter_0107",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "Perhaps a few more winter seasons such as that might teach you more of how this world works.",
 		},
 	},
@@ -2599,7 +2452,6 @@ local newPortedMakeUpTextLines = {
 		{
 			Cue = "/VO/Demeter_0108",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "Enough; I do not hold to grudges, Zagreus. You've my good graces, and my temper's cooled, for now.",
 		},
 	},

@@ -25,7 +25,6 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Zeus_0133",
 			PortraitExitWait = 1.25,
 			PreContentSound = "/Leftovers/Menu Sounds/TextReveal2",
-			UseEventEndSound = true,
 			Text =
 			"Greetings there, young man! Look, your father's always been rather difficult, and he's not so much as called in quite some time. You'll have a better home where you belong, here on Olympus! And to help you on your journey, have my blessing."
 		},
@@ -46,7 +45,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Zeus_0204",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"I gather Lady Demeter's already got her frigid hold on you, certainly not the warmest member of the clan, now, is she? But do be patient with her, she's been through a lot."
 		},
@@ -64,7 +62,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Zeus_0186",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"My good sister Demeter already tried to poison you against me, as I understand, young man? Oh, {#DialogueItalicFormat}foster{#PreviousFormat}-sister she prefers I say, loath as she is to accept her role as part of our great family."
 		},
@@ -82,7 +79,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Zeus_0187",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			FontSize = 26,
 			Text =
 			"You must forgive the Lady Demeter her scornfulness, Nephew, for she is still recovering after the sudden disappearance of her daughter, though it was quite some time ago the girl, {#DialogueItalicFormat}poof{#PreviousFormat}! Just vanished. I try to lighten up the mood around it every now and then, but {#DialogueItalicFormat}no{#PreviousFormat}, a sore spot, still!"
@@ -102,7 +98,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Zeus_0188",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			FontSize = 26,
 			Text =
 			"Poor Demeter, young man. We still wonder what became of her fair daughter. Ran away with mortals, there, perhaps? Some of the tales, even more preposterous. Don't go believing everything you hear, and do be sensitive about the subject, hm? Demeter, she's been through quite enough."
@@ -123,7 +118,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Zeus_0189",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			TriggerCooldowns = { "ZagreusBoonPickUpSpeech" },
 			Text =
 			"The Lady Demeter still prattles on about her missing girl, Zagreus. But I want you to understand something, all right? She's gone. We all have grieved. Perhaps Demeter shall finally accept what has occurred, and we can move forward, having grown stronger as a family."
@@ -154,7 +148,6 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Zeus_0219",
 			PortraitExitWait = 1.25,
 			PreContentSound = "/Leftovers/Menu Sounds/TextReveal2",
-			UseEventEndSound = true,
 			Text =
 			"My, what is this you have for me, young man? Appears to be a message of some sort, bearing my thunder sigil! Though, there's one for everybody on Olympus? Have they as yet received their own? I must know what it says... it's from your father, who else could it be? I'd better check on this!"
 		},
@@ -172,7 +165,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Zeus_0220",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"I eagerly await learning some more about the contents of that fascinating message you had sent up here, Nephew! How mysterious, indeed. I'll be keeping an eye on all the others that come in!"
 		},
@@ -189,7 +181,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Zeus_0221",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			FontSize = 26,
 			Text =
 			"I have to tell you, Zagreus, that it was wonderful to meet with you, at last! We were so pleased to learn Persephone was safe! And Nyx, why, she's as stunning as they say. Shouldn't have lied to us about your parentage, but, I know things get complicated, here, and that what's done is done!"
@@ -213,7 +204,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Zeus_0037",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Poseidon sought you out already, hm? My boastful brother gets on with Lord Hades even worse than I, so let me put a little spark into his storms for you!"
 		},
@@ -232,7 +222,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Zeus_0035",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"My brave daughter Athena beat me to you this time, has she? No matter, with her blessing and my own, you shall be nigh unstoppable!"
 		},
@@ -251,7 +240,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Zeus_0040",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Has lovely Aphrodite put you in a trance already, Zagreus? Or might I offer you the blessing of Olympus to intensify her catastrophic power with my own?"
 		},
@@ -270,7 +258,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Zeus_0039",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"So my elusive Artemis has shown you favor, has she? The little scamp, she seldom shows respect to anyone, not even me! But I'll enhance her blessing nonetheless."
 		},
@@ -289,7 +276,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Zeus_0038",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Getting along with Ares, are you, Nephew? {#DialogueItalicFormat}Heh{#PreviousFormat}. Would that you were my son instead of he, but no, I jest, I jest! Here, take my blessing, please!"
 		},
@@ -308,7 +294,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Zeus_0036",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"It pleases me to know, young man, that you and Dionysus have been getting on so well. He could use a level-headed friend, and you could use my blessing!"
 		},
@@ -327,7 +312,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Zeus_0203",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"{#DialogueItalicFormat}Hmm{#PreviousFormat}! You've traveled rather quickly to this point... which reminds me, I've not seen swift Hermes anywhere of late! The rascal's likely dallying about!"
 		},
@@ -347,7 +331,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Zeus_0041",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Nephew, I have somewhat of a favor I must ask. You tell your father, if you so happen to run into him again, that his brother Zeus forgives him, and would like to reconnect, and welcome him into the family again. You tell him for me, hm?"
 		},
@@ -365,7 +348,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Zeus_0046",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"So you are son to Hades by that Nyx, the night-goddess, is that correct, Nephew...? Well I suppose she's closest to a queen as your lord father's like to find down there. I tried to match him up with some more wholesome types, but no, and here we are."
 		},
@@ -382,7 +364,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Zeus_0047",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"After we learned about your plight and your existence from the goddess Nyx, all of us on Olympus rallied to assist you just as best we could. A family such as mine protects its own!"
 		},
@@ -400,7 +381,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Zeus_0043",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"My brothers Hades and Poseidon once fought bravely by my side, you know that, don't you, Nephew? We prevailed against the Titans and established law upon the earth. Your father then descended to the land of death, and we've not seen much of each other since."
 		},
@@ -418,7 +398,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Zeus_0044",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Your father must have told you that his governance over the Underworld is due more to the weaving of the Fates than by his choice. Admittedly, he got the short end of the stick. Whereas Poseidon and myself, why, we've been doing rather well indeed."
 		},
@@ -437,7 +416,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Zeus_0045",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"My brother Hades always was a lonesome man, you know. I pitied him! But I could never quite extract him from his thorny shell. Now he stews resentfully down there. You needn't bear the brunt of his frustrations."
 		},
@@ -457,7 +435,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Zeus_0042",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Old Hades has continued to ignore my every effort to reach out to him, young man. Ah well, but he is obstinate, indeed. You are wise to seek your family's better half."
 		},
@@ -476,7 +453,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Zeus_0190",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"By the way, Nephew, I hear-tell your mother Nyx is quite the catch! If you'll forgive my saying so, of course. Your father's never had much of a sensibility around companionship, though perhaps this concubine of his brought something out in him, at last!"
 		},
@@ -498,7 +474,6 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Zeus_0048",
 			TriggerCooldowns = { "ZagreusBoonPickUpSpeech" },
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"If and when you reach the surface, Zagreus, you call upon me then and there, all right? I'll personally see to it that you'll be escorted up to Olympus, and your quest shall be complete!"
 		},
@@ -517,7 +492,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Zeus_0183",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"I know just how much you must want out of there, young man. And I want that as well! {#DialogueItalicFormat}Heh{#PreviousFormat}. Good thing for you, as I get what I want around here. Ask anybody!"
 		},
@@ -537,7 +511,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Zeus_0191",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			-- used for moments when Zag follow-up VO isn't appropriate
 			TriggerCooldowns = { "ZagreusBoonPickUpSpeech" },
 			Text =
@@ -556,7 +529,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Zeus_0222",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Your dear mother Persephone is a shrewd woman, Zagreus. More than an equal to your mighty father! I'm pleased to know you've made amends with her, and taken new responsibilities within your House! Naturally, I'll continue to pitch in. And, I hope that we'll meet again, someday!"
 		},
@@ -573,7 +545,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Zeus_0234",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"I must say, Nephew! Although it pleases me that we, here, reconnected with your father's realm... just between us, it pleases me even more that you are able to keep sticking it to him! You keep that up, all right?"
 		},
@@ -590,7 +561,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Zeus_0223",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Zagreus, you have a clever mother in Persephone! A very clever mother. And a lordly father! They make quite the team, that's evident! True rivals for Hera and me!"
 		},
@@ -607,7 +577,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Zeus_0184",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"The lord and ruler of Olympus and the world, why, he needs a healthy sense of humor, no, young man? Now there's an awful lot of spoil-sports out here, can't take even a little joke, well, I know all their mothers, fie on all of them, I say! Let's joke away!"
 		},
@@ -626,7 +595,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Zeus_0218",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"I suppose even down in the Underworld, you would have heard such tales of me, young man. They're all untrue, {#DialogueItalicFormat}hahaha{#PreviousFormat}! Except the tales of my bravery. Those are completely accurate, though all too modest, in most cases, I must say."
 		},
@@ -643,7 +611,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Zeus_0205",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Ah, must be my gleaming Thunder Signet that I transferred to you! Why, I could feel its call from all the way up here!"
 		},
@@ -662,7 +629,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Zeus_0075",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Why you look positively dreadful, Zagreus. That place is doing you no favors, I can tell! Luckily, I'll do you favors aplenty!"
 		},
@@ -681,7 +647,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Zeus_0076",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"You seem in dire need of some assistance, Nephew. So, of course, I dropped what I was doing and then sought you out as quickly as I could!"
 		},
@@ -700,7 +665,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Zeus_0208",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Zagreus, you must have left most of your lifeblood back the other way, {#DialogueItalicFormat}hahahaha{#PreviousFormat}! Oh, I jest, I jest! But you look {#DialogueItalicFormat}terrible{#PreviousFormat}."
 		},
@@ -719,7 +683,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Zeus_0209",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"No, no one likes to die, young man! But since you seem about to any moment now, you keep your head held high, do you hear me?"
 		},
@@ -738,7 +701,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Zeus_0210",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Well, let's face it, Zagreus, you are as good as dead right now. But you'll just slosh right back out of the River Styx, and give it a good try again, won't you?"
 		},
@@ -757,7 +719,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Zeus_0211",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Remember, young man, dying is for mortals. So don't go making a habit of it, there! But if you have to do it, do it fighting, like a {#DialogueItalicFormat}hero {#PreviousFormat}would!"
 		},
@@ -778,7 +739,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Zeus_0031",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"I wonder, Nephew, whether you're prepared as yet to harness the surpassing power I shall grant you now? Don't take this blessing lightly, and may you use it well."
 		},
@@ -799,7 +759,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Zeus_0032",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"How about, young man, we cease with all the trifling down there and cause a real storm for once? Take now the fiercest of my powers, and you show your no-good father what you're made of!"
 		},
@@ -820,7 +779,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Zeus_0011",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"We meet again, young man! Yours isn't my affair, I know, and yet I cannot help but take an interest in your plight. Your father cast his lot; he need not take his anger out on you."
 		},
@@ -836,7 +794,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Zeus_0012",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Hello, young man, and might I offer you a little taste of the heavens themselves? Though, don't go telling your old sulky father I've been spoiling you rotten!"
 		},
@@ -852,7 +809,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Zeus_0010",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"I and all of us upon Olympus are anticipating your success, dear Nephew! Now let me see if I can't help spur you along."
 		},
@@ -870,7 +826,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Zeus_0013",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Well, my nephew, you're admittedly in quite a bind down there, but what is life without its struggles, hm? You'll make it here, eventually, I'm certain."
 		},
@@ -886,7 +841,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Zeus_0014",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"I like the fire in you, Zagreus, and I have every confidence you'll someday clamber from the shadows there into the light!"
 		},
@@ -904,7 +858,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Zeus_0015",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Here on Olympus, Nephew, we take care of one another and support each other, quite unlike how it must be there in your father's grim domain. No wonder you intend to leave!"
 		},
@@ -920,7 +873,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Zeus_0016",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"I'd ask you offer my respects to your lord father, Zagreus, but I suspect you won't have such a chance anytime soon, considering how far you'll come with my support!"
 		},
@@ -938,7 +890,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Zeus_0017",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Remember you've as many chances as it takes, young man, to fight your way out of the dark and join us in the splendor of Olympus!"
 		},
@@ -954,7 +905,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Zeus_0018",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Your grim-faced father's such a spoilsport, Nephew, the way he keeps impeding your escape. Ah, well, just keep at it, hm?"
 		},
@@ -972,7 +922,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Zeus_0019",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"My greetings, young Nephew, and more importantly, my blessing and my strength be with you as you journey towards your rightful home."
 		},
@@ -988,7 +937,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Zeus_0020",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Faith and courage, Zagreus, for each and every one of us upon Olympus is behind you all the way throughout this whole affair."
 		},
@@ -1004,7 +952,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Zeus_0021",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"What can I say, young man? You may not make your father very proud, but it is just the opposite with me! Now go, get out of there!"
 		},
@@ -1022,7 +969,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Zeus_0022",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Now, Nephew, how about we put both of our backs into this one, and see to it that you go farther through those depths than you have ever managed yet!"
 		},
@@ -1038,7 +984,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Zeus_0023",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Know that many mortals ask me for my blessings constantly, and I mean all the time, young Nephew, but for you! You needn't ask at all!"
 		},
@@ -1056,7 +1001,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Zeus_0024",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Far be it from me to raise my hand against your father, dear Nephew! Although I do suppose old Hades has it coming, doesn't he."
 		},
@@ -1072,7 +1016,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Zeus_0025",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"I've every confidence in you, young man! Now you remember that, and take my blessing here, and fight your way on out of there for me!"
 		},
@@ -1088,7 +1031,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Zeus_0026",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Nephew, I want you to go and show that surly Hades everything you're made of! And, I've arranged for you a little bit of help along the way!"
 		},
@@ -1105,7 +1047,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Zeus_0027",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"How is old Hades doing, anyway, Nephew? I suspect he's every bit as prickly as ever, whereas you are nothing of the sort!"
 		},
@@ -1123,7 +1064,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Zeus_0028",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"I eagerly anticipate getting to meet you face-to-face someday, dear Nephew, just as soon as you can up and out of there!"
 		},
@@ -1139,7 +1079,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Zeus_0029",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Good Nephew, I return once more to lend to you my power! I'd like to see your discontented father try and stop you now!"
 		},
@@ -1157,7 +1096,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Zeus_0030",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"It is my solemn wish, dear Zagreus, that eventually we settle up our differences with your lord father. But for now, we fight!"
 		},
@@ -1175,7 +1113,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Zeus_0034",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Hail, my most honorable, beloved nephew, and I bring to you the blessing of Olympus, so that you might finally get out of there, already!"
 		},
@@ -1193,7 +1130,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Zeus_0148",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"I just know you'll reach the surface here eventually, Zagreus! And I look forward to our meeting when you do!"
 		},
@@ -1211,7 +1147,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Zeus_0149",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"We'll keep you safe here from your father, Zagreus! But while you're still inside that Underworld, there's only so much we can do."
 		},
@@ -1227,7 +1162,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Zeus_0150",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"You've a good head on your shoulders, Zagreus, so stay positive, stay healthy, and let nothing stand between you and your goal!"
 		},
@@ -1243,7 +1177,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Zeus_0151",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"I wish you well in your continued quest, and offer my sincerest blessings, and of course my power, there, Nephew!"
 		},
@@ -1259,7 +1192,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Zeus_0152",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"You've seen the sheer destructive power of the heavens! Just imagine what it's like above the surface of the earth!"
 		},
@@ -1278,7 +1210,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Zeus_0153",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Someday when we'll be resting easy on these heights, why, we'll look back at this and laugh, I'm sure of it!"
 		},
@@ -1294,7 +1225,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Zeus_0033",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"{#DialogueItalicFormat}Ahh{#PreviousFormat}, but if it isn't my most favored nephew! Striving always toward the surface of my world. Your father cannot possibly believe he can contain you, can he?"
 		},
@@ -1310,7 +1240,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Zeus_0002",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "You have my blessing now as ever there, young man."
 		},
 	},
@@ -1325,7 +1254,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Zeus_0003",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "I trust you shall be getting out of there in due course, Nephew."
 		},
 	},
@@ -1340,7 +1268,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Zeus_0004",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "I shall be watching over you, young man, though it is dark down there!"
 		},
 	},
@@ -1355,7 +1282,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Zeus_0005",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "May the might of Olympus guide you through the shadows, Nephew."
 		},
 	},
@@ -1370,7 +1296,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Zeus_0006",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "Don't let your father get to you, young man, and climb on out from there."
 		},
 	},
@@ -1385,7 +1310,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Zeus_0007",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "Zagreus, we won't be giving up on you, so you keep at it, {#DialogueItalicFormat}hm{#PreviousFormat}?"
 		},
 	},
@@ -1400,7 +1324,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Zeus_0008",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "I shall make the heavens themselves now aid your ascent, Nephew."
 		},
 	},
@@ -1415,7 +1338,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Zeus_0154",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "You'll watch yourself down there, won't you, young man?"
 		},
 	},
@@ -1430,7 +1352,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Zeus_0155",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "All of us, we're here for you, young man!"
 		},
 	},
@@ -1447,7 +1368,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Zeus_0156",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "Please do be careful not to make your situation any worse, Nephew!"
 		},
 	},
@@ -1462,7 +1382,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Zeus_0157",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"I'm here for you, young man, so you take heart, and more than that, take {#DialogueItalicFormat}this{#PreviousFormat}!"
 		},
@@ -1479,7 +1398,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Zeus_0158",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "All of us believe in you, though certainly no one so much as I!"
 		},
 	},
@@ -1494,7 +1412,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Zeus_0159",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "Here's something I can do to help, young man!"
 		},
 	},
@@ -1510,7 +1427,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Zeus_0160",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "You just take all the time you need in terms of fighting your way out of there, young man!"
 		},
 	},
@@ -1525,7 +1441,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Zeus_0161",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "Now, don't lose heart, young man, and we'll keep at it with you here, as well!"
 		},
 	},
@@ -1540,7 +1455,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Zeus_0162",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "As my kin, you are a born fighter, Zagreus! So put your back into it, and you climb right up!"
 		},
 	},
@@ -1557,7 +1471,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Zeus_0163",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "It shall be glorious, indeed, the day you finally burst from that oppressive den into the light!"
 		},
 	},
@@ -1572,7 +1485,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Zeus_0164",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "I know you have it in you to surpass your father, Zagreus. Assuming you are anything like me!"
 		},
 	},
@@ -1588,7 +1500,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Zeus_0226",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "How fares your lovely mother? Things still good with her and Hades, hm?"
 		},
 	},
@@ -1603,7 +1514,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Zeus_0227",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "You tell your good lord father that his brother Zeus shall be always watching over you!"
 		},
 	},
@@ -1618,7 +1528,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Zeus_0228",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "I trust your good lord father's treating you all right?"
 		},
 	},
@@ -1633,7 +1542,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Zeus_0229",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "I know you're busy, Zagreus, though someday you shall have to visit us!"
 		},
 	},
@@ -1648,7 +1556,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Zeus_0230",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "I'm never quite so busy that I can't make time for family, young man!"
 		},
 	},
@@ -1663,7 +1570,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Zeus_0231",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "We're all in this together, aren't we, Nephew?"
 		},
 	},
@@ -1779,7 +1685,6 @@ local newPortedLootBoughtTextLines = {
 		{
 			Cue = "/VO/Zeus_0049",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"I see the boatman of the Underworld has found the means to reach you with my blessing, Nephew. Such strange alliances we forge these days!"
 		},
@@ -1796,7 +1701,6 @@ local newPortedLootBoughtTextLines = {
 		{
 			Cue = "/VO/Zeus_0050",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Why here I am, young man, in such strange circumstances I might add! Luckily the boatman Charon is much easier to get ahold of than your father!"
 		},
@@ -1813,7 +1717,6 @@ local newPortedLootBoughtTextLines = {
 		{
 			Cue = "/VO/Zeus_0212",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Ah, so then the boatman Charon came through for us after all, did he? Whatever means we have to reach you, we'll employ!"
 		},
@@ -1830,7 +1733,6 @@ local newPortedLootBoughtTextLines = {
 		{
 			Cue = "/VO/Zeus_0213",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Your Charon there must drive quite a hard bargain, Zagreus, if he would keep you from your victory just for a bit of coin!"
 		},
@@ -1847,7 +1749,6 @@ local newPortedLootBoughtTextLines = {
 		{
 			Cue = "/VO/Zeus_0214",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"I thought that ferryman would be content to transfer souls across the River Styx, not rob you on your journey to the surface, there, Nephew!"
 		},
@@ -1870,7 +1771,6 @@ local newPortedRejectionTextLines = {
 			PreLineFunctionName = "BoonInteractPresentation",
 			PreLineWait = 1.0,
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Emote = "PortraitEmoteAnger",
 			Text =
 			"My blessing isn't good enough for you, is that the way of it, young man? How impetuous of you. {#DialogueItalicFormat}Oh{#PreviousFormat}, I never!"
@@ -1883,7 +1783,6 @@ local newPortedRejectionTextLines = {
 			PreLineFunctionName = "BoonInteractPresentation",
 			PreLineWait = 1.0,
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"It isn't wise to go against me, Nephew, both in matters large and small. I am not known for being charitable to the insolent."
 		},
@@ -1895,7 +1794,6 @@ local newPortedRejectionTextLines = {
 			PreLineFunctionName = "BoonInteractPresentation",
 			PreLineWait = 1.0,
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Perhaps you have defied me here in jest, young man. Though in such cases pertinent to my authority, you'll find I lack a sense of humor."
 		},
@@ -1907,7 +1805,6 @@ local newPortedRejectionTextLines = {
 			PreLineFunctionName = "BoonInteractPresentation",
 			PreLineWait = 1.0,
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Audacity runs in our family, Zagreus, but my advice to you is that you keep it carefully suppressed in your relationship with me."
 		},
@@ -1919,7 +1816,6 @@ local newPortedRejectionTextLines = {
 			PreLineFunctionName = "BoonInteractPresentation",
 			PreLineWait = 1.0,
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"What have I done, good Nephew, to deserve such scorn? Your lapse in judgment here is not so easy to forgive, yet easily punished."
 		},
@@ -1931,7 +1827,6 @@ local newPortedRejectionTextLines = {
 			PreLineFunctionName = "BoonInteractPresentation",
 			PreLineWait = 1.0,
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Your father likewise turned his back on me before, Nephew, and we both know what has become of him. I'd caution you against this."
 		},
@@ -1944,7 +1839,6 @@ local newPortedRejectionTextLines = {
 			PreLineFunctionName = "BoonInteractPresentation",
 			PreLineWait = 1.0,
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Apparently, the consequences of displeasing me have slipped your mind, young man. A harsh reminder is in order, then."
 		},
@@ -1956,7 +1850,6 @@ local newPortedRejectionTextLines = {
 			PreLineFunctionName = "BoonInteractPresentation",
 			PreLineWait = 1.0,
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Emote = "PortraitEmoteAnger",
 			Text =
 			"I did not restore order to this world, and claim the heavens for myself, only to be insulted by my own nephew!"
@@ -1969,7 +1862,6 @@ local newPortedRejectionTextLines = {
 			PreLineFunctionName = "BoonInteractPresentation",
 			PreLineWait = 1.0,
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Emote = "PortraitEmoteAnger",
 			Text = "Why, Nephew, is this all some sort of jest to you? It isn't one that I appreciate!"
 		},
@@ -1981,7 +1873,6 @@ local newPortedRejectionTextLines = {
 			PreLineFunctionName = "BoonInteractPresentation",
 			PreLineWait = 1.0,
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Nephew, when presented with a choice to side against me or not to be such a fool, do be sure to choose the latter next time, hm?"
 		},
@@ -1993,7 +1884,6 @@ local newPortedRejectionTextLines = {
 			PreLineFunctionName = "BoonInteractPresentation",
 			PreLineWait = 1.0,
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "Don't say I didn't warn you, young man! I only wish that I could say you didn't insult me!"
 		},
 	},
@@ -2004,7 +1894,6 @@ local newPortedRejectionTextLines = {
 			PreLineFunctionName = "BoonInteractPresentation",
 			PreLineWait = 1.0,
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Emote = "PortraitEmoteAnger",
 			Text = "This is outrageous, Zagreus! Even your father would agree that actions such as that can't go unpunished."
 		},
@@ -2016,7 +1905,6 @@ local newPortedRejectionTextLines = {
 			PreLineFunctionName = "BoonInteractPresentation",
 			PreLineWait = 1.0,
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Young man, I don't know why you would do this to me, though I trust you're going to think twice, next time!"
 		},
@@ -2028,7 +1916,6 @@ local newPortedRejectionTextLines = {
 			PreLineFunctionName = "BoonInteractPresentation",
 			PreLineWait = 1.0,
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "You overstep your bounds with me, Nephew! But I shall make you fall right back in line."
 		},
 	},
@@ -2050,7 +1937,6 @@ local newPortedMakeUpTextLines = {
 		{
 			Cue = "/VO/Zeus_0057",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Ah, very well, good show, young man! And I think I shall let you off the hook, and take you back under my wing, for now."
 		},
@@ -2062,7 +1948,6 @@ local newPortedMakeUpTextLines = {
 		{
 			Cue = "/VO/Zeus_0058",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Commendable of you to live through that, and I suspect you shall think twice next time before so brazenly defying me, won't you?"
 		},
@@ -2074,7 +1959,6 @@ local newPortedMakeUpTextLines = {
 		{
 			Cue = "/VO/Zeus_0059",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Now, now, no need to hold such grudges any longer I suppose, but you just mind yourself around your Uncle Zeus."
 		},
@@ -2086,7 +1970,6 @@ local newPortedMakeUpTextLines = {
 		{
 			Cue = "/VO/Zeus_0060",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Do not spurn me again like that, do you hear me, young man? I think you do, so let's put this to bed and move along."
 		},
@@ -2098,7 +1981,6 @@ local newPortedMakeUpTextLines = {
 		{
 			Cue = "/VO/Zeus_0061",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Oh Nephew, but I simply can't stay wrathful toward you, much as I might try! Though, better not to tempt me, just in case."
 		},
@@ -2110,7 +1992,6 @@ local newPortedMakeUpTextLines = {
 		{
 			Cue = "/VO/Zeus_0062",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"All right, all right, let's call the score between us settled up for now. Just don't go spurning me again, you understand?"
 		},
@@ -2122,7 +2003,6 @@ local newPortedMakeUpTextLines = {
 		{
 			Cue = "/VO/Zeus_0142",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "All right, this is becoming unproductive, Zagreus. As you were!"
 		},
 	},
@@ -2133,7 +2013,6 @@ local newPortedMakeUpTextLines = {
 		{
 			Cue = "/VO/Zeus_0143",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "Oh, I don't have the heart to keep exacting vengeance on you, Nephew."
 		},
 	},
@@ -2144,7 +2023,6 @@ local newPortedMakeUpTextLines = {
 		{
 			Cue = "/VO/Zeus_0144",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "I say, such petty squabbles. Aren't we better than this, Zagreus?"
 		},
 	},
@@ -2155,7 +2033,6 @@ local newPortedMakeUpTextLines = {
 		{
 			Cue = "/VO/Zeus_0145",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "Well, young man, I'd say it's best we put this little slight behind us, wouldn't you?"
 		},
 	},
@@ -2166,7 +2043,6 @@ local newPortedMakeUpTextLines = {
 		{
 			Cue = "/VO/Zeus_0146",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"{#DialogueItalicFormat}Pah{#PreviousFormat}! All is forgiven and forgotten, Zagreus. What were we even going on about back there?"
 		},
@@ -2179,7 +2055,6 @@ local newPortedMakeUpTextLines = {
 			Cue = "/VO/Zeus_0147",
 			Emote = "PortraitEmoteSparkly",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"{#DialogueItalicFormat}Hahaha{#PreviousFormat}, that is quite enough, that's quite enough, I say! You're still alive, aren't you?"
 		},

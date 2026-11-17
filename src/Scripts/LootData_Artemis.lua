@@ -26,7 +26,6 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Artemis_0225",
 			PortraitExitWait = 1.25,
 			PreContentSound = "/Leftovers/Menu Sounds/TextReveal2",
-			UseEventEndSound = true,
 			Text =
 			"Some kind of special message for me...! Oh, looks like there's one for everybody on Olympus, then. Felt rather special for a moment, there! And now you're making me check in with all the others. Great!"
 		},
@@ -44,7 +43,6 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Artemis_0226",
 			PreLineThreadedFunctionName = "PlayEmoteAnimFromSource",
 			PreLineThreadedFunctionArgs = { Emote = "PortraitEmoteSparkly", WaitTime = 7.0 },
-			UseEventEndSound = true,
 			Text =
 			"Have to say, I had a pretty decent time with everybody at our little visit recently! Met you, Uncle Hades, even great Achilles! Still don't quite appreciate you tricking us, but {#DialogueItalicFormat}eh{#PreviousFormat}! I can get over it eventually. Anyway, you still could use assistance from me, right?"
 		},
@@ -76,7 +74,6 @@ local newPortedInteractTextLines = {
 			Cue = "/VO/Artemis_0011",
 			PortraitExitWait = 1.25,
 			PreContentSound = "/Leftovers/Menu Sounds/TextReveal2",
-			UseEventEndSound = true,
 			Text =
 			"I heard about you. Look, I'm not like all the others on Olympus. The power of the hunt helps keep me company, so... maybe it'll help you, too!"
 		},
@@ -98,7 +95,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0034",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Ah, good old Father Zeus, he must have blessed you with his lightning bolts, did he? Always looking out for everyone."
 		},
@@ -117,7 +113,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0035",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Uncle Poseidon blessed you, didn't he. To think that big, fat oaf is your own father's brother. I'm told to be respectful near him, but it's hard."
 		},
@@ -136,7 +131,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0033",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"You met Athena earlier, I guess? I'd never trade my bow for all that pomp and armor, but... I guess to each her own."
 		},
@@ -155,7 +149,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0036",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"You're pretty close with Ares, aren't you? And here they said it couldn't be done. If I were you I'd watch myself with him."
 		},
@@ -174,7 +167,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0037",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"So Aphrodite reached you first, did she? Sounds exactly like something she'd do. She has a knack for trouble. So, let's just stay focused, here!"
 		},
@@ -193,7 +185,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0038",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"That lush and lecher, Dionysus, counts you as a friend? I'm hoping that there must be some mistake, yeah, Zagreus?"
 		},
@@ -213,7 +204,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0240",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"You seem particularly light on your feet, there, Zagreus. I'd figure Hermes, himself, was speeding you along, except I've not seen him about in... been a while, really."
 		},
@@ -232,7 +222,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0191",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"So even Demeter's become involved in this! Didn't think she would. Though you'll be glad she did! Provided you stay on her warm and fuzzy side, of course. Working on that, myself!"
 		},
@@ -252,7 +241,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0039",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Something's troubled me a little, about you. You fight so desperately. At first I thought you simply lacked in patience. But now I see it's urgency that drives you. What is it that you're after, really...?"
 		},
@@ -270,7 +258,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0040",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Let's see. You blundered headlong into danger for the past six chambers or more. And you made such a racket I could almost hear it from Olympus. I have to say, your hunting skills are rather unconventional."
 		},
@@ -289,7 +276,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0141",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"I'm with you every step till you arrive here, Zagreus. Then I will probably ignore you like the rest. Just warning you ahead of time, all right?"
 		},
@@ -307,7 +293,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0189",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Say, were you hunting vermin near the surface lately, Zagreus? That's practically just like the real thing! It must have been a thrill!"
 		},
@@ -326,7 +311,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0190",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"You've become a right accomplished vermin hunter, Zagreus! Maybe you'll get to use those skills against worthier creatures soon enough."
 		},
@@ -348,7 +332,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0041",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"That Fury down in Tartarus has been a real problem, hasn't she. I see the huntress instinct in her. She thinks she knows your weaknesses. Don't let yourself become predictable."
 		},
@@ -366,7 +349,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0042",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Hey, I once heard Lord Hades has in his employ the greatest hero of the Trojan War, you happen to know anything about that? I'm kind of a fan. You see Achilles, tell him he's the best for me!"
 		},
@@ -383,7 +365,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0043",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"So, I have heard that Achilles, himself, taught you how to fight! No wonder you can hold your own down there, that is amazing...! You be sure to honor him from time to time, got it?"
 		},
@@ -402,7 +383,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0044",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Living on Olympus here, I'm surrounded by my family, but I always felt alone. I know that's not the same as your experience, but, I'm just saying I relate to what you're going through."
 		},
@@ -419,7 +399,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0045",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"I think you might enjoy it on Olympus, there's... a lot of feasting here, I guess, and the air is cool and crisp, and it's much brighter than it is down there. Sounds like a dream, right?"
 		},
@@ -437,7 +416,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0046",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"I hope that once you make it to Olympus we'll go hunting sometime, you and I, you know? I like being on my own and all, but it's been nice, talking to you like this."
 		},
@@ -454,7 +432,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0215",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"I grow so tired of the others here, you know? Much rather be out with the woodland nymphs than with these gods upon this mountaintop. You must know what it's like."
 		},
@@ -471,7 +448,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0216",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Not everybody on Olympus is a total disappointment, Zagreus. Why, someday maybe you could meet Callisto, she goes hunting with me all the time! Bet you don't see many woodland nymphs down there."
 		},
@@ -489,7 +465,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0217",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Hey Zagreus, that Nectar you sent? Callisto and the nymphs and I, we popped it open recently, and it was really good! Had us positively frolicking about. So, thanks!"
 		},
@@ -507,7 +482,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0218",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"You must have a friend or two, don't you? It's hard being alone all of the time. At least I have Callisto and the other nymphs, and... I have you! A distant friend is still a friend, isn't that right?"
 		},
@@ -525,7 +499,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0219",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Hope you don't mind, I told Callisto all about you recently! Don't worry, I was quite discreet about it, the two of us were on the hunt, not like I just shouted out your story from the mountaintops!"
 		},
@@ -543,7 +516,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0220",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Zagreus, if only you could turn yourself into a woodland creature and just fly or burrow out of there! My Callisto, she can turn into a bear, you ever seen those? Monstrous, furry things, quite huggable, if they don't kill you first!"
 		},
@@ -561,7 +533,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0221",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"You've never even seen the woods, have you? I hope you do, someday. You could meet Callisto and the others! It's quite beautiful, and green, and calm, it's... anyway."
 		},
@@ -579,7 +550,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0222",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Don't know what it is about you, Zagreus, but I feel like I can be me with you, you know? Maybe it's that you don't constantly talk over me like everybody else, besides Callisto and the nymphs I guess. Not that I can even hear you, but, you know what I mean, right?"
 		},
@@ -597,7 +567,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0208",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Your name, it means {#DialogueItalicFormat}'great hunter'{#PreviousFormat}, Zagreus! I guess your mother Nyx must have expected someday that you'd pick up a few pointers from myself!"
 		},
@@ -615,7 +584,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0188",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Hey, hold a moment, Zagreus, I could have sworn... you were so close, before, but now you're back? Ah, must have tripped up just when victory was close at hand, it happens all the time. We'll get you out of there, you'll see!"
 		},
@@ -634,7 +602,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0071",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Hey, you all right there, Zagreus? Wouldn't do to have you die on me just moments after meeting here like this."
 		},
@@ -653,7 +620,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0072",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Emote = "PortraitEmoteSurprise",
 			Text =
 			"{#DialogueItalicFormat}Oh{#PreviousFormat}! Look at you, you're hurt there pretty bad, but, just stay focused on the hunt, and it'll help to keep the pain at bay."
@@ -673,7 +639,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0209",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Look, I'm just goddess of the hunt, not medicine, so... I don't know if this is going to help right now, but, here!"
 		},
@@ -692,7 +657,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0210",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "Your hunt has evidently not been going very well so far, I see. Though, maybe we can still turn it around."
 		},
 	},
@@ -710,7 +674,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0211",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "Well, one good thing about all of the blood you've lost is it was even easier to track you down this time!"
 		},
 	},
@@ -730,7 +693,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0031",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"All right, get ready for this, Zagreus, because I seldom share the greatest of my hunting secrets like I am about to."
 		},
@@ -751,7 +713,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0032",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"All right, no need to keep on toying with your prey. Here comes one of my finest blessings, {#DialogueItalicFormat}now{#PreviousFormat}!"
 		},
@@ -772,7 +733,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0170",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"I don't reveal my greatest hunting techniques for just anybody, Zagreus, so you better appreciate what you're about to get, and use it to go far!"
 		},
@@ -793,7 +753,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0171",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"How about we not take any chances this time, Zagreus? So here, this is the best I've got. You better not waste it!"
 		},
@@ -812,7 +771,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0013",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"The dead must make a rather easy target, wouldn't you say? Let's see what you can do to them, given your choice of these."
 		},
@@ -830,7 +788,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0012",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "Hey. You're not alone. You're not alone down there, OK? Here, let me show you."
 		},
 	},
@@ -845,7 +802,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0014",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "You busy, Zagreus? Thought maybe I could interest you in some of these old hunting tricks of mine."
 		},
 	},
@@ -860,7 +816,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0015",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"How fares the hunt this time around, OK? I bet it could be better, so, {#DialogueItalicFormat}erm{#PreviousFormat}, here! Maybe this'll help."
 		},
@@ -876,7 +831,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0016",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Let's take a little hunting expedition, yeah? You'll do most of the work, but hey, I'll be with you in spirit!"
 		},
@@ -892,7 +846,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0017",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Sorry you're still stuck down there. Sometimes I feel stuck myself, but, a good hunt always sets me straight."
 		},
@@ -908,7 +861,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0018",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"When I am on the hunt, my mind is clear, and nothing stands between me and my target. Though, have a blessing just in case you can't relate!"
 		},
@@ -926,7 +878,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0019",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"I'd love to know about your life down there. I'll try and help you live through it this time so that way you can tell me?"
 		},
@@ -942,7 +893,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0020",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"The wretches whom you face down there have died already, sometimes more than once. Should make for easy targets, right?"
 		},
@@ -958,7 +908,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0021",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"I've never come across a target I couldn't take down. I expect the same of you, you hear me? Hopefully you hear me."
 		},
@@ -974,7 +923,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0022",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Good hunting, Zagreus! The sooner you get out of there the sooner you can save me from my insufferable relatives. Please?"
 		},
@@ -990,7 +938,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0023",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Hey, Zagreus, good luck out there, this time. I'd tell you {#DialogueItalicFormat}'may your aim be true' {#PreviousFormat}but I can guarantee it, actually."
 		},
@@ -1006,7 +953,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0024",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"The hunt requires utter concentration, so, I'll leave you to it, and... just watch your every move in silence over here..."
 		},
@@ -1023,7 +969,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0025",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"You want to make it out of there, you... don't have to listen to a word I say, to be quite honest, but... my huntress blessings ought to help."
 		},
@@ -1039,7 +984,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0026",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Well, Zagreus, you getting out of there this time, or am I going to have to keep on hunting by myself for the time being? Probably?"
 		},
@@ -1055,7 +999,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0027",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Looks to me like you could use a little help, so I'll just have a look in my big bag of blessings here, and, {#DialogueItalicFormat}oh{#PreviousFormat}! Here's just the thing."
 		},
@@ -1071,7 +1014,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0028",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"The hunt comes down to kill-or-be-killed. Except for us immortals, who have to live with our shame, which is worse?"
 		},
@@ -1087,7 +1029,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0029",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Those wretched things harassing you throughout that Underworld just won't give up, will they? Well, just keep killing them, I guess!"
 		},
@@ -1103,7 +1044,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0030",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Need a hunting partner, Zagreus? Not that I'm able to join you myself down there, or even hear you respond for that matter, but, anyway, here."
 		},
@@ -1120,7 +1060,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0065",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "Zagreus, it's me! I'm here to join the hunt with you again. Let's show them what we can do."
 		},
 	},
@@ -1135,7 +1074,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0066",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"Hello again, you ready for this hunt? Me, I've been looking forward since last time, so, let's get on with it."
 		},
@@ -1152,7 +1090,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0002",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "Stay on your guard, tread lightly, and all that."
 		},
 	},
@@ -1167,7 +1104,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0003",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "Keep a sharp eye out there, won't you?"
 		},
 	},
@@ -1182,7 +1118,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0004",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "Good hunting down there, Zagreus."
 		},
 	},
@@ -1197,7 +1132,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0005",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "What are you hunting this time, I wonder."
 		},
 	},
@@ -1212,7 +1146,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0006",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "I'll be looking out for you. If you don't mind of course."
 		},
 	},
@@ -1227,7 +1160,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0007",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "Remember, Zagreus, kill-or-be-killed."
 		},
 	},
@@ -1242,7 +1174,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0008",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "How about I join you for this hunt, OK?"
 		},
 	},
@@ -1257,7 +1188,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0009",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "Hey, you take care of yourself, all right?"
 		},
 	},
@@ -1272,7 +1202,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0010",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "Got you something I bet you could use."
 		},
 	},
@@ -1287,7 +1216,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0139",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "The finer points of hunting are not easy to communicate, though you're learning from experience, at least!"
 		},
 	},
@@ -1302,7 +1230,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0140",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"My senses sure are going to be sharp if I keep trying to keep up with you like this in all that dark down there."
 		},
@@ -1318,7 +1245,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0143",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "A good, clean shot is all it takes, most of the time!"
 		},
 	},
@@ -1333,7 +1259,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0144",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "You getting anywhere down there yet, Zagreus?"
 		},
 	},
@@ -1348,7 +1273,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0145",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "What are you waiting for, let's get to hunting, then!"
 		},
 	},
@@ -1363,7 +1287,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0146",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "Not much of a hunt when your prey knows exactly where you are, but it'll do!"
 		},
 	},
@@ -1378,7 +1301,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0147",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "I hope your every strike cuts to the vital bits of all your prey, there, Zagreus."
 		},
 	},
@@ -1393,7 +1315,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0148",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "I brought some hunting gear for you to try, if you could give me your attention, Zagreus?"
 		},
 	},
@@ -1408,7 +1329,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0149",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "All right, Zagreus, catch your breath, decide, and then what say we get you out of hell maybe?"
 		},
 	},
@@ -1423,7 +1343,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0150",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "What are we hunting this time, Zagreus? Don't tell me wretched dead, again?"
 		},
 	},
@@ -1438,7 +1357,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0151",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "You see how easily I tracked you down? Unless you went out of your way for me, that is?"
 		},
 	},
@@ -1453,7 +1371,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0152",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "I have a Boon for you, here, Zagreus, though just be sure you don't embarrass me."
 		},
 	},
@@ -1468,7 +1385,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0153",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "Well, perfect timing, Zagreus, now stock up and head out."
 		},
 	},
@@ -1483,7 +1399,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0154",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "You want to make it out of there, my Boons are just about the only way to go."
 		},
 	},
@@ -1498,7 +1413,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0155",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "Don't you let your father or let {#DialogueItalicFormat}anybody {#PreviousFormat}push you around, Zagreus."
 		},
 	},
@@ -1513,7 +1427,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0156",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "Bet I can help you break out of your father's realm in no time, Zagreus!"
 		},
 	},
@@ -1532,7 +1445,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0162",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "Decided I would pack you something extra for this hunt, if you can handle it!"
 		},
 	},
@@ -1551,7 +1463,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0163",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "Enough toying around with our prey, there, Zagreus. What do you say we finish it, this time?"
 		},
 	},
@@ -1570,7 +1481,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0164",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "I know it must be such a struggle for you, Zagreus, so here! In case this helps."
 		},
 	},
@@ -1589,7 +1499,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0165",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "A great hunter ought to have great tools, Zagreus, so here! Please allow me."
 		},
 	},
@@ -1608,7 +1517,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0166",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "Wish I could hunt with you myself, but here's the next best thing, all right?"
 		},
 	},
@@ -1624,7 +1532,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0142",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text =
 			"You know how long it took Callisto to become a master of the hunt? I'm sure you can still learn a thing or two!"
 		},
@@ -1641,7 +1548,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0157",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "I was about to head out with Callisto for a hunt, though I can spare you a quick Boon, I guess!"
 		},
 	},
@@ -1657,7 +1563,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0158",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "I have to meet Callisto soon, but it won't take me but a moment here to get you on your way!"
 		},
 	},
@@ -1673,7 +1578,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0159",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "Someday perhaps you'll join me and Callisto for a hunt! But as for now..."
 		},
 	},
@@ -1689,7 +1593,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0160",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "Greetings to you from the forest! Callisto and the woodland nymphs say hi!"
 		},
 	},
@@ -1705,7 +1608,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Artemis_0161",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			UseEventEndSound = true,
 			Text = "You'd make a real asset on the hunt, I think. Not that Callisto and I need assistance, though."
 		},
 	},
