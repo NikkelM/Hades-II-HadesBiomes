@@ -135,6 +135,9 @@ function mod.RoomEntranceHades(currentRun, currentRoom)
 end
 
 function mod.BossIntroHades(eventSource, args)
+	-- To not modify the game's Hades enemy table directly
+	args = game.DeepCopyTable(args or {})
+
 	if eventSource.Encounter.Name == "BossHadesPeaceful" then
 		args.ProcessTextLinesIds = { 552710 }
 		args.UnlockDelay = 0.0

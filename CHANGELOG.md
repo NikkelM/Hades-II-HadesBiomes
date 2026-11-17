@@ -103,6 +103,7 @@ Other fixes and improvements:
 - Fixed: When Hades enters a phase transition, some enemy projectiles are not destroyed correctly.
 - Fixed: Hades keeps rotating towards Melinoë inbetween throwing his spear and the dash towards it.
 - Fixed: If Hades is in the wind-up animation of throwing his spear when entering a phase transition, he will be stuck in the throw animation instead of resetting to his idle animation.
+- Fixed: After the tenth clear in Zagreus' Journey, meeting Hades the next time will have him not start his fight correctly until the save is reloaded from the main menu once.
 - Fixed: Bosses can be stunned when blocking their attacks using the Black Coat's Omega Attack (the attacks can still be blocked, but bosses will no longer be stunned).
 - Fixed: Elite enemies do not have yellow armour outlines.
 - Fixed: Some enemies using a specific animation type do not flash white right before their attacks.
