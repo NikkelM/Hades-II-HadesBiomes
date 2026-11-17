@@ -3247,8 +3247,10 @@ function mod.ModsNikkelMHadesBiomesIsGameStateEligible(source, requirements, arg
 
 	if requirements.RequiredMinTotalCaughtFish ~= nil then
 		local totalFishSum = 0
-		for k, fishType in pairs(game.GameState.FishCaught) do
-			totalFishSum = totalFishSum + fishType
+		-- Changed for the mod to only count mod fish, not vanilla H2 fish
+		-- Requirement is only used by Poseidon fish quest dialogues
+		for _, resourceName in ipairs(mod.GatherableResourceNames) do
+			totalFishSum = totalFishSum + (game.GameState.FishCaught[resourceName] or 0)
 		end
 		if totalFishSum < requirements.RequiredMinTotalCaughtFish then
 			return false

@@ -9,7 +9,7 @@ local nighmareFearActive = mod.IsOtherModActive("ReadEmAndWeep-Nightmare_Fear")
 local dreamDiveTweaksActive = mod.IsOtherModActive("zerp-DreamDiveTweaks")
 
 -- #region The order of the quests in the Quest log, these will be appended to the end of the vanilla list
--- Current number of quests: 45 (42 base + one Dream Dive Tweaks + one flipped + one nightmare)
+-- Current number of quests: 46 (43 base + one Dream Dive Tweaks + one flipped + one nightmare)
 local newQuestOrderData = {
 	-- key / mission-critical
 	"ModsNikkelMHadesBiomes_QuestReuniteAchillesPatroclus",
@@ -39,6 +39,7 @@ local newQuestOrderData = {
 	"ModsNikkelMHadesBiomes_QuestSongsSmall",
 	"ModsNikkelMHadesBiomes_QuestCosmeticsSmall",
 	"ModsNikkelMHadesBiomes_QuestCropsSmall",
+	"ModsNikkelMHadesBiomes_PoseidonFish",
 	-- boons & character traits
 	"ModsNikkelMHadesBiomes_QuestKeepsakesQuest",
 	"ModsNikkelMHadesBiomes_QuestCompanionUses",
@@ -1524,6 +1525,22 @@ local newQuestData = {
 		CompleteGameStateRequirements = {
 			{
 				PathTrue = { "GameState", "TextLinesRecord", "MyrmidonReunionQuestComplete" },
+			},
+		},
+	},
+	-- Catch 25 fish, including a legendary fish, in the Nightmare Realm
+	ModsNikkelMHadesBiomes_PoseidonFish = {
+		InheritFrom = { "DefaultQuestItem", "DefaultNatureQuest" },
+		RewardResourceName = "MetaCurrency",
+		RewardResourceAmount = 250,
+		UnlockGameStateRequirements = {
+			{
+				PathTrue = { "GameState", "TextLinesRecord", "PoseidonFishQuest01" },
+			},
+		},
+		CompleteGameStateRequirements = {
+			{
+				PathTrue = { "GameState", "TextLinesRecord", "PoseidonFishQuestComplete" },
 			},
 		},
 	},

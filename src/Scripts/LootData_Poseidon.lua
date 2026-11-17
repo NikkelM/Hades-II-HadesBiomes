@@ -96,7 +96,7 @@ local newPortedInteractTextLines = {
 		RequiredTextLines = { "PoseidonFishQuest01" },
 		RequiredFalseTextLinesLastRun = { "PoseidonFishQuest01" },
 		RequiredMinTotalCaughtFish = 25,
-		RequiredAnyCaughtFishTypes = { "Fish_Tartarus_Legendary_01", "Fish_Asphodel_Legendary_01", "Fish_Elysium_Legendary_01", "Fish_Styx_Legendary_01", "Fish_Chaos_Legendary_01", "Fish_Surface_Legendary_01" },
+		RequiredAnyCaughtFishTypes = { "Fish_Tartarus_Legendary_01", "Fish_Asphodel_Legendary_01", "Fish_Elysium_Legendary_01", "Fish_Styx_Legendary_01", "Fish_Surface_Legendary_01" },
 		{
 			Cue = "/VO/Poseidon_0149",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
