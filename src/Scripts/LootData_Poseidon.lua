@@ -81,7 +81,6 @@ local newPortedInteractTextLines = {
 		{
 			Cue = "/VO/Poseidon_0148",
 			StartSound = "/Leftovers/World Sounds/MapZoomInShort",
-			EndSound = "/SFX/PoseidonBoonWaveCrash",
 			Text =
 			"Nephew! I'm mightily impressed with your ability to cull those rivers there of all the denizens of my domain! Your crusty father's not entitled to the bounties of the sea! But, on my limitless authority, you {#DialogueItalicFormat}are{#PreviousFormat}! You have my Rod of Fishing... now have {#DialogueItalicFormat}this{#PreviousFormat}!",
 		},
