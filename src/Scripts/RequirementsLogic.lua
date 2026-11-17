@@ -73,6 +73,21 @@ modutil.mod.Path.Wrap("IsEnemyEligible", function(base, enemyName, encounter, wa
 	local isEligible = base(enemyName, encounter, wave)
 
 	if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and isEligible then
+		encounter = encounter or game.CurrentRun.CurrentRoom.Encounter or {}
+
+		-- Thanatos encounters force at least one elite enemy
+		if wave ~= nil and encounter.MinEliteTypes ~= nil and not game.EnemyData[enemyName].IsElite then
+			local eliteTypeCount = 0
+			for _, spawnData in pairs(wave.Spawns) do
+				if spawnData.Name ~= nil and game.EnemyData[spawnData.Name].IsElite then
+					eliteTypeCount = eliteTypeCount + 1
+				end
+			end
+			if eliteTypeCount < encounter.MinEliteTypes and encounter.WaveCount - wave.WaveIndex <= encounter.MinEliteTypes - eliteTypeCount then
+				return false
+			end
+		end
+
 		local args = {}
 		if game.EnemyData[enemyName].IsElite and game.GetNumShrineUpgrades("EnemyEliteShrineUpgrade") > 0 then
 			args.SkipMinBiomeDepth = true

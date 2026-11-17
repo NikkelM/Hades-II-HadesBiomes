@@ -1,6 +1,8 @@
 -- Adds enemy sets for the new regions
 local additionalEnemySets = {
 	-- #region ELITE ATTRIBUTES
+	-- H2 changed the name for this default set
+	AllEliteAttributes = game.EnemySets.GenericEliteAttributes,
 	RangedOnlyEliteAttributes = {
 		"Homing",
 		"Homing",

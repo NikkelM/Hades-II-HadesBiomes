@@ -53,6 +53,7 @@ Other fixes and improvements:
 - Balancing: Slightly reduced armour of the Dire Voidstone in the Vow of Shadows version of the Barge of Death miniboss encounter.
 - Balancing: Increased the difficulty rating of all "Witch"-type enemies, causing less of them to spawn when selected for an encounter.
 - Balancing: Dire Numbskulls can no longer have the "Spinner" perk.
+- Balancing: Dire Numbskulls can no longer have the "Shielder" perk.
 - Balancing: Brimstone, Snakestone and Doomstone laser attacks have a new invulnerability frame for the first tick that would normally hit the player.
 - Balancing: The fragments spawned by the Doomstone miniboss can now either target the Doomstone itself, or another fragment instead.
 - Balancing: The Doomstone's lasers no longer move towards Melinoë and are static instead.
@@ -96,9 +97,10 @@ Other fixes and improvements:
 - Fixed: Asterius can get stuck charging at Theseus during the "Delta Strike" combo attack.
 - Fixed: Asterius can face away from Melinoë during the "Bullhorn" combo attack if she moves while he waits for Theseus to come to him.
 - Fixed: The "Bullhorn" combo attack performed by Theseus and Asterius is only eligible once they reconcile, instead of from the start of the game.
-- Fixed: Gigantic Vermin that die while charmed leave behind a poison puddle that can poison Melinoë, even after an encounter ends.
 - Fixed: Theseus may move faster than expected in his second phase if the Vow of Rivals is active.
+- Fixed: Gigantic Vermin that die while charmed leave behind a poison puddle that can poison Melinoë, even after an encounter ends.
 - Fixed: The Tiny Vermin is not forced to summon more Gigantic Vermin after it has performed enough other attacks.
+- Fixed: The Tiny Vermin has an elite enemy outline.
 - Fixed: Melinoë can clip through the exit door in a specific Styx wing room.
 - Fixed: When Hades enters a phase transition, some enemy projectiles are not destroyed correctly.
 - Fixed: Hades keeps rotating towards Melinoë inbetween throwing his spear and the dash towards it.
@@ -106,6 +108,8 @@ Other fixes and improvements:
 - Fixed: After the tenth clear in Zagreus' Journey, meeting Hades the next time will have him not start his fight correctly until the save is reloaded from the main menu once.
 - Fixed: Bosses can be stunned when blocking their attacks using the Black Coat's Omega Attack (the attacks can still be blocked, but bosses will no longer be stunned).
 - Fixed: Elite enemies do not have yellow armour outlines.
+- Fixed: Some elite enemies that should be able to appear from the second room onwards in their region are only able to appear starting from the third room.
+- Fixed: Some elite enemies are not eligible for the "Seeker" perk. 
 - Fixed: Some enemies using a specific animation type do not flash white right before their attacks.
 - Fixed: Some enemies spawn looking a different direction than what their spawn animtion implies.
 - Fixed: Clones spawned by enemies with the "Cloner" perk do not die automatically when their parent dies.
@@ -118,6 +122,7 @@ Other fixes and improvements:
 - Fixed: Goddess Mode does not reduce enemy health in Zagreus' Journey regions during Dream Dives.
 - Fixed: After dying in a room with enemies that have "tethers" (e.g. the Hydra or Brimstones), after returning to the Crossroads, some objects may randomly disappear or be placed in unexpected locations.
 - Fixed: The timer sound keeps ticking when dying during an survival encounter.
+- Fixed: Thanatos encounters do not force at least one elite enemy type to appear.
 - Fixed: An interaction prompt shows for Thanatos when he is about to leave after his romance dialogue.
 - Fixed: Player summons are destroyed when either of Theseus or Asterius is defeated in their boss fight, instead of after both have been defeated.
 - Fixed: After buying one of two identical items in the Styx Hub with "Travel Deal" active, returning from a wing may cause the replacement item to have disappeared.

@@ -417,6 +417,11 @@ function mod.ApplyModificationsAndInheritEnemyData(base, modifications, replacem
 
 		game.ProcessDataInheritance(enemyData, game.EnemyData)
 
+		-- H1 uses per-enemy minimum depths, while H2 adds a blanket depth-three requirement to the shared Elite parent
+		if enemyData.IsElite then
+			enemyData.GameStateRequirements = nil
+		end
+
 		-- Need to do this after inheritance, otherwise the Outline table doesn't get taken from the parent
 		if enemyData.HighlightTopAnimOnly ~= nil and enemyData.Outline then
 			enemyData.Outline.HighlightTopAnimOnly = enemyData.HighlightTopAnimOnly
@@ -1234,10 +1239,10 @@ local enemyModifications = {
 		DreamBiomeData = tartarusEnemyDreamBiomeData,
 	},
 	SwarmerElite = {
-		BlockAttributes = { "HeavyArmor", "Orbit" },
+		BlockAttributes = { "HeavyArmor", "Orbit", "SpreadHitShields" },
 	},
 	SwarmerSuperElite = {
-		BlockAttributes = { "HeavyArmor", "Orbit" },
+		BlockAttributes = { "HeavyArmor", "Orbit", "SpreadHitShields" },
 	},
 	LightSpawner = {
 		StunAnimations = { Default = "SpawnerAttackAnim", },
@@ -1888,7 +1893,13 @@ local enemyModifications = {
 			BlockEnemyTypes = { "HadesBloodlessPitcher" },
 		},
 		BlockAttributes = { "Blink", "Fog", },
-		EliteAttributeOptions = game.CombineTables(game.EnemySets.GenericEliteAttributes, { "Hex", "Metallic", }),
+		EliteAttributeOptions = game.CombineTables(
+			game.CombineTables(
+				game.EnemySets.GenericEliteAttributes,
+				game.EnemySets.RangedOnlyEliteAttributes
+			),
+			{ "Hex", "Metallic", }
+		),
 	},
 	BloodlessPitcherSuperElite = {
 		GenusName = "BloodlessPitcher_Elite",
@@ -1926,6 +1937,10 @@ local enemyModifications = {
 			DifficultyRating = 38,
 			BlockEnemyTypes = { "HadesSpreadShotUnit" },
 		},
+		EliteAttributeOptions = game.CombineTables(
+			game.EnemySets.GenericEliteAttributes,
+			game.EnemySets.RangedOnlyEliteAttributes
+		),
 	},
 	-- Normal/new Hades enemies for Asphodel
 	FreezeShotUnit = {
@@ -1939,7 +1954,13 @@ local enemyModifications = {
 	},
 	FreezeShotUnitElite = {
 		BlockAttributes = { "Massive" },
-		EliteAttributeOptions = game.CombineTables(game.EnemySets.GenericEliteAttributes, { "Hex", }),
+		EliteAttributeOptions = game.CombineTables(
+			game.CombineTables(
+				game.EnemySets.GenericEliteAttributes,
+				game.EnemySets.RangedOnlyEliteAttributes
+			),
+			{ "Hex", }
+		),
 	},
 	DusaSummon = {
 		HideHealthBar = true,
@@ -1961,7 +1982,13 @@ local enemyModifications = {
 	RangedBurrowerElite = {
 		BlockNextBiomeEnemyShrineUpgrade = true,
 		BlockAttributes = { "Blink", "Orbit", "Beams", "Frenzy" },
-		EliteAttributeOptions = game.CombineTables(game.EnemySets.GenericEliteAttributes, { "Hex", }),
+		EliteAttributeOptions = game.CombineTables(
+			game.CombineTables(
+				game.EnemySets.GenericEliteAttributes,
+				game.EnemySets.RangedOnlyEliteAttributes
+			),
+			{ "Hex", }
+		),
 	},
 	RangedBurrowerSuperElite = {
 		RunHistoryKilledByName = "RangedBurrower",
@@ -3291,6 +3318,8 @@ local enemyModifications = {
 		},
 		-- This enemy is pre-spawned, and shouldn't be damaged by the Medea curse
 		IgnoreCurseDamage = true,
+		-- Prevent the elite outline from being added by pretending it already is
+		HasOutline = true,
 		OnDeathFunctionName = _PLUGIN.guid .. "." .. "ModsNikkelMHadesBiomesCrawlerMiniBossKillPresentation",
 		OnDeathFunctionArgs = { Message = "ModsNikkelMHadesBiomes_CrawlerDefeatedMessage", },
 		KillEnemyEvents = {
