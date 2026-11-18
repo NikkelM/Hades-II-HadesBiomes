@@ -8,17 +8,45 @@ local snakeFamiliarData = {
 
 		AIOptions = { _PLUGIN.guid .. "." .. "SnakeFamiliarAI", },
 		InitialAttackDelay = 0.5,
+		AttackInterval = 20,
+		ProjectileName = "ModsNikkelMHadesBiomesSnakeDart",
+		DartCount = 3,
+		ProjectileInterval = 0.25,
+		TargetSearchDistance = 1800,
+		TargetDistanceMin = 450,
+		TargetDistancePreferred = 650,
+		TargetDistanceMax = 850,
+		HeroDistanceMin = 200,
+		HeroDistanceMax = 900,
+		TargetRetryInterval = 0.2,
 		PreAttackDuration = 0.33,
 		FireDuration = 0.77,
 		PostAttackDuration = 1.25,
 		PostAttackBurrowDelayMin = 3.0,
 		PostAttackBurrowDelayMax = 6.0,
 		BurrowDuration = 0.34,
-		HiddenDurationMin = 0.8,
-		HiddenDurationMax = 1.8,
 		UnburrowDuration = 0.42,
 		PostUnburrowDurationMin = 0.55,
 		PostUnburrowDurationMax = 0.65,
+		OutgoingDamageModifiers = {
+			{
+				PlayerMultiplier = 0,
+			},
+		},
+		StopAIOnRunClear = true,
+
+		EncounterEndEvents = {
+			{
+				FunctionName = _PLUGIN.guid .. "." .. "SnakeFamiliarVictoryPresentation",
+				Threaded = true,
+			},
+		},
+		LeaveEvents = {
+			{
+				FunctionName = _PLUGIN.guid .. "." .. "SnakeFamiliarRoomExitPresentation",
+				Threaded = true,
+			},
+		},
 
 		ActivatePresentationFunctionName = _PLUGIN.guid .. "." .. "SnakeFamiliarSpawnPresentation",
 		MoveFunctionName = _PLUGIN.guid .. "." .. "SnakeFamiliarMoveToLocation",
@@ -46,6 +74,7 @@ local snakeFamiliarData = {
 
 		Using = {
 			GrannyModel = { "Dracon_Mesh", },
+			Projectile = "ModsNikkelMHadesBiomesSnakeDart",
 		},
 	},
 }

@@ -1,36 +1,45 @@
-function mod.SnakeFamiliarSpawnPresentation(familiar)
-	if familiar == nil or familiar.ObjectId == nil or familiar.SpawnPresentationPlayed then
-		return
-	end
-	familiar.SpawnPresentationPlayed = true
+function mod.SnakeFamiliarSpawnPresentation(familiar, args)
+	args = args or {}
 
 	SetAnimation({ Name = familiar.HiddenAnimation, DestinationId = familiar.ObjectId })
 	SetAlpha({ Id = familiar.ObjectId, Fraction = 0.0 })
 	familiar.Burrowed = true
-	mod.SnakeFamiliarUnburrowPresentation(familiar)
+	if game.CurrentHubRoom ~= nil or args.PostCombat or familiar.PreRecruit then
+		mod.SnakeFamiliarUnburrowPresentation(familiar)
+	end
 end
 
-function mod.SnakeFamiliarAttackPresentation(familiar)
-	if familiar == nil or familiar.ObjectId == nil then
-		return
-	end
+function mod.SnakeFamiliarAttackPresentation(familiar, args)
+	args = args or {}
+	local targetId = args.TargetId or familiar.CapturedTargetId
 
 	Stop({ Id = familiar.ObjectId })
+	AngleTowardTarget({ Id = familiar.ObjectId, DestinationId = targetId })
 	SetAnimation({ Name = familiar.PreAttackAnimation, DestinationId = familiar.ObjectId })
 	game.wait(familiar.PreAttackDuration, familiar.AIThreadName)
 	SetAnimation({ Name = familiar.TripleFireAnimation, DestinationId = familiar.ObjectId })
-	game.wait(familiar.FireDuration, familiar.AIThreadName)
+	for dartIndex = 1, familiar.DartCount do
+		AngleTowardTarget({ Id = familiar.ObjectId, DestinationId = targetId })
+		CreateProjectileFromUnit({
+			Name = familiar.ProjectileName,
+			Id = familiar.ObjectId,
+			DestinationId = targetId,
+		})
+		if dartIndex < familiar.DartCount then
+			game.wait(familiar.ProjectileInterval, familiar.AIThreadName)
+		end
+	end
+	familiar.LastBurstFireTime = game._worldTime or 0
+	game.wait(
+		math.max(0, familiar.FireDuration - (familiar.DartCount - 1) * familiar.ProjectileInterval),
+		familiar.AIThreadName
+	)
 	SetAnimation({ Name = familiar.PostAttackAnimation, DestinationId = familiar.ObjectId })
 	game.wait(familiar.PostAttackDuration, familiar.AIThreadName)
 	SetAnimation({ Name = familiar.IdleAnimation, DestinationId = familiar.ObjectId })
 end
 
 function mod.SnakeFamiliarBurrowPresentation(familiar)
-	if familiar == nil or familiar.ObjectId == nil or familiar.Burrowed or familiar.Burrowing then
-		return
-	end
-	familiar.Burrowing = true
-
 	StopAnimation({ Name = familiar.BurrowPersistentFx, DestinationId = familiar.ObjectId })
 	CreateAnimation({ Name = familiar.BurrowFx, DestinationId = familiar.ObjectId })
 	PlaySound({ Name = familiar.BurrowSound, Id = familiar.ObjectId })
@@ -39,16 +48,9 @@ function mod.SnakeFamiliarBurrowPresentation(familiar)
 	SetAnimation({ Name = familiar.HiddenAnimation, DestinationId = familiar.ObjectId })
 	SetAlpha({ Id = familiar.ObjectId, Fraction = 0.0 })
 	familiar.Burrowed = true
-	familiar.Burrowing = false
 end
 
 function mod.SnakeFamiliarUnburrowPresentation(familiar)
-	if familiar == nil or familiar.ObjectId == nil or not familiar.Burrowed or familiar.Unburrowing then
-		return
-	end
-	familiar.Unburrowing = true
-
-	SetAnimation({ Name = familiar.HiddenAnimation, DestinationId = familiar.ObjectId })
 	SetAnimation({ Name = familiar.UnburrowAnimation, DestinationId = familiar.ObjectId })
 	SetAlpha({ Id = familiar.ObjectId, Fraction = 1.0 })
 	game.wait(familiar.UnburrowDuration, familiar.AIThreadName)
@@ -58,5 +60,26 @@ function mod.SnakeFamiliarUnburrowPresentation(familiar)
 		familiar.AIThreadName
 	)
 	familiar.Burrowed = false
-	familiar.Unburrowing = false
+end
+
+function mod.SnakeFamiliarVictoryPresentation(familiar, args)
+	if familiar.BlockVictoryPresentation then
+		return
+	end
+
+	mod.SnakeFamiliarStopAI(familiar)
+	if familiar.Burrowed then
+		mod.SnakeFamiliarUnburrowPresentation(familiar)
+	end
+	AngleTowardTarget({ Id = familiar.ObjectId, DestinationId = game.CurrentRun.Hero.ObjectId })
+	SetAnimation({ Name = familiar.HappyAnimation, DestinationId = familiar.ObjectId })
+	game.wait(2.0, familiar.AIThreadName)
+	game.ReenableFamiliar(familiar)
+end
+
+function mod.SnakeFamiliarRoomExitPresentation(familiar, args)
+	mod.SnakeFamiliarStopAI(familiar)
+	if not familiar.Burrowed then
+		mod.SnakeFamiliarBurrowPresentation(familiar)
+	end
 end

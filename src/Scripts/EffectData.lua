@@ -4,6 +4,13 @@ game.EffectData.StyxPoison = {
 	OnApplyFunctionName = _PLUGIN.guid .. "." .. "StyxPoisonApply",
 	OnClearFunctionName = _PLUGIN.guid .. "." .. "StyxPoisonClear",
 }
+
+local snakeVenomData = game.DeepCopyTable(game.EffectData.StyxPoison)
+snakeVenomData.EffectName = "ModsNikkelMHadesBiomesSnakeVenom"
+snakeVenomData.OnApplyFunctionName = "nil"
+snakeVenomData.OnClearFunctionName = "nil"
+game.EffectData[snakeVenomData.EffectName] = snakeVenomData
+
 game.WeaponEffectData.ModsNikkelMHadesBiomesAttackSuperLowGrip = {
 	EffectName = "ModsNikkelMHadesBiomesAttackSuperLowGrip",
 	DataProperties = {

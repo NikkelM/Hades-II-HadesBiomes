@@ -313,6 +313,7 @@ local function on_ready()
 			DebugLogScriptImportProgress("GUI SJSON")
 
 			import "Game/Animations/Enemy_1Base_VFX.sjson.lua"
+			import "Game/Animations/Enemy_Ephyra_VFX.sjson.lua"
 			import "Game/Animations/Melinoe_Spell_VFX.sjson.lua"
 			import "Game/Animations/Melinoe_Zeus_VFX.sjson.lua"
 			import "Game/Animations/Obstacle_Asphodel_VFX.sjson.lua"
@@ -329,6 +330,7 @@ local function on_ready()
 			import "Game/Weapons/EnemyWeapons.sjson.lua"
 
 			import "Game/Projectiles/EnemyProjectiles.sjson.lua"
+			import "Game/Projectiles/Familiar_Projectiles.sjson.lua"
 			DebugLogScriptImportProgress("Projectile SJSON")
 
 			import "Game/Obstacles/AmbienceGenerators.sjson.lua"
