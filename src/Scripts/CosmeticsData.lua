@@ -21,8 +21,8 @@
 	"ModsNikkelMHadesBiomes_BossResourceStyx",
 ]] --
 
--- In total, as of 2026-11-15: 62 cosmetics
--- Last added: Chthonic Chid, Patroclus
+-- In total, as of 2026-11-18: 64 cosmetics
+-- Last added: Chthonic Chid, Eurydice
 
 -- #region CosmeticsShop_Tent
 local tentCosmetics = {
@@ -6893,206 +6893,206 @@ CosmeticsAPI.RegisterChthonicChid({
 		{ GlobalVoiceLines = "PositiveReactionVoiceLines" },
 	},
 })
--- CosmeticsAPI.RegisterChthonicChid({
--- 	Id = _PLUGIN.guid .. "." .. "Cosmetic_CollectableOrpheus",
--- 	Name = {
--- 		de = "Kind der Unterwelt (Orpheus)",
--- 		el = "Χθόνιο τέκνο: Ορφέας",
--- 		en = "Chthonic Chid, Orpheus",
--- 		es = "Mini Ctónica de Orfeo",
--- 		fr = "Chthoni'mini Orphée",
--- 		it = "Figurina Ctonia (Orfeo)",
--- 		ja = "冥府キッド（オルフェウス）",
--- 		ko = "명계의 아들: 오르페우스",
--- 		pl = "Miniaturka chtoniczna (Orfeusz)",
--- 		["pt-BR"] = "Minictôn do Orfeu",
--- 		ru = "Хтонический малыш Орфей",
--- 		tr = "Kitonik Biblo, Orfeus",
--- 		uk = "Хтонічне маля (Орфей)",
--- 		["zh-CN"] = "冥界玩偶：俄耳甫斯",
--- 		["zh-TW"] = "俄爾甫斯冥界公仔",
--- 	},
--- 	Description = {
--- 		-- de =
--- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a certain Underworld Musician.",
--- 		-- el =
--- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a certain Underworld Musician.",
--- 		en = "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a certain Underworld Musician.",
--- 		-- es =
--- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a certain Underworld Musician.",
--- 		-- fr =
--- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a certain Underworld Musician.",
--- 		-- it =
--- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a certain Underworld Musician.",
--- 		-- ja =
--- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a certain Underworld Musician.",
--- 		-- ko =
--- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a certain Underworld Musician.",
--- 		-- pl =
--- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a certain Underworld Musician.",
--- 		-- ["pt-BR"] =
--- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a certain Underworld Musician.",
--- 		-- ru =
--- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a certain Underworld Musician.",
--- 		-- tr =
--- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a certain Underworld Musician.",
--- 		-- uk =
--- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a certain Underworld Musician.",
--- 		-- ["zh-CN"] =
--- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a certain Underworld Musician.",
--- 		-- ["zh-TW"] =
--- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a certain Underworld Musician.",
--- 	},
--- 	FlavorText = {
--- 		-- de =
--- 		-- "“Once upon a time, the mere thought of singing again sent shivers down my spine. But you have given me the gift of song all over again, Zagreus.”",
--- 		-- el =
--- 		-- "“Once upon a time, the mere thought of singing again sent shivers down my spine. But you have given me the gift of song all over again, Zagreus.”",
--- 		en =
--- 		"“Once upon a time, the mere thought of singing again sent shivers down my spine. But you have given me the gift of song all over again, Zagreus.”",
--- 		-- es =
--- 		-- "“Once upon a time, the mere thought of singing again sent shivers down my spine. But you have given me the gift of song all over again, Zagreus.”",
--- 		-- fr =
--- 		-- "“Once upon a time, the mere thought of singing again sent shivers down my spine. But you have given me the gift of song all over again, Zagreus.”",
--- 		-- it =
--- 		-- "“Once upon a time, the mere thought of singing again sent shivers down my spine. But you have given me the gift of song all over again, Zagreus.”",
--- 		-- ja =
--- 		-- "“Once upon a time, the mere thought of singing again sent shivers down my spine. But you have given me the gift of song all over again, Zagreus.”",
--- 		-- ko =
--- 		-- "“Once upon a time, the mere thought of singing again sent shivers down my spine. But you have given me the gift of song all over again, Zagreus.”",
--- 		-- pl =
--- 		-- "“Once upon a time, the mere thought of singing again sent shivers down my spine. But you have given me the gift of song all over again, Zagreus.”",
--- 		-- ["pt-BR"] =
--- 		-- "“Once upon a time, the mere thought of singing again sent shivers down my spine. But you have given me the gift of song all over again, Zagreus.”",
--- 		-- ru =
--- 		-- "“Once upon a time, the mere thought of singing again sent shivers down my spine. But you have given me the gift of song all over again, Zagreus.”",
--- 		-- tr =
--- 		-- "“Once upon a time, the mere thought of singing again sent shivers down my spine. But you have given me the gift of song all over again, Zagreus.”",
--- 		-- uk =
--- 		-- "“Once upon a time, the mere thought of singing again sent shivers down my spine. But you have given me the gift of song all over again, Zagreus.”",
--- 		-- ["zh-CN"] =
--- 		-- "“Once upon a time, the mere thought of singing again sent shivers down my spine. But you have given me the gift of song all over again, Zagreus.”",
--- 		-- ["zh-TW"] =
--- 		-- "“Once upon a time, the mere thought of singing again sent shivers down my spine. But you have given me the gift of song all over again, Zagreus.”",
--- 	},
--- 	CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\ChthonicChids\\Orpheus_chid",
--- 	IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Icons\\ChthonicChids\\Orpheus_chid_Icon",
--- 	Cost = {
--- 		CosmeticsPoints = 999,
--- 		ModsNikkelMHadesBiomes_PlantTartarus = 3,
--- 		ModsNikkelMHadesBiomes_PlantElysium = 2,
--- 	},
--- 	GameStateRequirements = {
--- 		{
--- 			PathTrue = { "GameState", "TextLinesRecord", "OrpheusGift08" },
--- 		},
--- 		{
--- 			PathTrue = { "GameState", "TextLinesRecord", "Ending01" },
--- 		},
--- 		NamedRequirements = { "T5Cosmetic" },
--- 	},
--- 	AlwaysRevealImmediately = true,
--- })
--- CosmeticsAPI.RegisterChthonicChid({
--- 	Id = _PLUGIN.guid .. "." .. "Cosmetic_CollectableEurydice",
--- 	Name = {
--- 		de = "Kind der Unterwelt (Eurydike)",
--- 		-- el = "Chthonic Chid, Eurydice",
--- 		en = "Chthonic Chid, Eurydice",
--- 		es = "Mini Ctónica de Eurídice",
--- 		fr = "Chthoni'mini Eurydice",
--- 		it = "Figurina Ctonia (Euridice)",
--- 		ja = "冥府キッド（エウリュディケ）",
--- 		ko = "명계의 딸: 에우리디케",
--- 		pl = "Miniaturka chtoniczna (Eurydyka)",
--- 		["pt-BR"] = "Minictôn da Eurídice",
--- 		ru = "Хтоническая малышка Эвридика",
--- 		-- tr = "Chthonic Chid, Eurydice",
--- 		-- uk = "Chthonic Chid, Eurydice",
--- 		["zh-CN"] = "冥界玩偶：欧律狄克",
--- 		-- ["zh-TW"] = "Chthonic Chid, Eurydice",
--- 	},
--- 	Description = {
--- 		-- de =
--- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a nymph that inspired many a song.",
--- 		-- el =
--- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a nymph that inspired many a song.",
--- 		en =
--- 		"{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a nymph that inspired many a song.",
--- 		-- es =
--- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a nymph that inspired many a song.",
--- 		-- fr =
--- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a nymph that inspired many a song.",
--- 		-- it =
--- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a nymph that inspired many a song.",
--- 		-- ja =
--- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a nymph that inspired many a song.",
--- 		-- ko =
--- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a nymph that inspired many a song.",
--- 		-- pl =
--- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a nymph that inspired many a song.",
--- 		-- ["pt-BR"] =
--- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a nymph that inspired many a song.",
--- 		-- ru =
--- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a nymph that inspired many a song.",
--- 		-- tr =
--- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a nymph that inspired many a song.",
--- 		-- uk =
--- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a nymph that inspired many a song.",
--- 		-- ["zh-CN"] =
--- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a nymph that inspired many a song.",
--- 		-- ["zh-TW"] =
--- 		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a nymph that inspired many a song.",
--- 	},
--- 	FlavorText = {
--- 		-- de =
--- 		-- "“Come here, Your Royal Majesty, and enjoy one of these treats I've prepared just for you.”",
--- 		-- el =
--- 		-- "“Come here, Your Royal Majesty, and enjoy one of these treats I've prepared just for you.”",
--- 		en = "“Come here, Your Royal Majesty, and enjoy one of these treats I've prepared just for you.”",
--- 		-- es =
--- 		-- "“Come here, Your Royal Majesty, and enjoy one of these treats I've prepared just for you.”",
--- 		-- fr =
--- 		-- "“Come here, Your Royal Majesty, and enjoy one of these treats I've prepared just for you.”",
--- 		-- it =
--- 		-- "“Come here, Your Royal Majesty, and enjoy one of these treats I've prepared just for you.”",
--- 		-- ja =
--- 		-- "“Come here, Your Royal Majesty, and enjoy one of these treats I've prepared just for you.”",
--- 		-- ko =
--- 		-- "“Come here, Your Royal Majesty, and enjoy one of these treats I've prepared just for you.”",
--- 		-- pl =
--- 		-- "“Come here, Your Royal Majesty, and enjoy one of these treats I've prepared just for you.”",
--- 		-- ["pt-BR"] =
--- 		-- "“Come here, Your Royal Majesty, and enjoy one of these treats I've prepared just for you.”",
--- 		-- ru =
--- 		-- "“Come here, Your Royal Majesty, and enjoy one of these treats I've prepared just for you.”",
--- 		-- tr =
--- 		-- "“Come here, Your Royal Majesty, and enjoy one of these treats I've prepared just for you.”",
--- 		-- uk =
--- 		-- "“Come here, Your Royal Majesty, and enjoy one of these treats I've prepared just for you.”",
--- 		-- ["zh-CN"] =
--- 		-- "“Come here, Your Royal Majesty, and enjoy one of these treats I've prepared just for you.”",
--- 		-- ["zh-TW"] =
--- 		-- "“Come here, Your Royal Majesty, and enjoy one of these treats I've prepared just for you.”",
--- 	},
--- 	CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\ChthonicChids\\Eurydice_chid",
--- 	IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Icons\\ChthonicChids\\Eurydice_chid_Icon",
--- 	Cost = {
--- 		CosmeticsPoints = 999,
--- 		ModsNikkelMHadesBiomes_BossResourceElysium = 2,
--- 		ModsNikkelMHadesBiomes_CropStyx = 2,
--- 	},
--- 	GameStateRequirements = {
--- 		{
--- 			PathTrue = { "GameState", "TextLinesRecord", "EurydiceGift08" },
--- 		},
--- 		{
--- 			PathTrue = { "GameState", "TextLinesRecord", "Ending01" },
--- 		},
--- 		NamedRequirements = { "T5Cosmetic" },
--- 	},
--- 	AlwaysRevealImmediately = true,
--- })
+CosmeticsAPI.RegisterChthonicChid({
+	Id = _PLUGIN.guid .. "." .. "Cosmetic_CollectableOrpheus",
+	Name = {
+		de = "Kind der Unterwelt (Orpheus)",
+		el = "Χθόνιο τέκνο: Ορφέας",
+		en = "Chthonic Chid, Orpheus",
+		es = "Mini Ctónica de Orfeo",
+		fr = "Chthoni'mini Orphée",
+		it = "Figurina Ctonia (Orfeo)",
+		ja = "冥府キッド（オルフェウス）",
+		ko = "명계의 아들: 오르페우스",
+		pl = "Miniaturka chtoniczna (Orfeusz)",
+		["pt-BR"] = "Minictôn do Orfeu",
+		ru = "Хтонический малыш Орфей",
+		tr = "Kitonik Biblo, Orfeus",
+		uk = "Хтонічне маля (Орфей)",
+		["zh-CN"] = "冥界玩偶：俄耳甫斯",
+		["zh-TW"] = "俄爾甫斯冥界公仔",
+	},
+	Description = {
+		-- de =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a certain Underworld Musician.",
+		-- el =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a certain Underworld Musician.",
+		en = "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a certain Underworld Musician.",
+		-- es =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a certain Underworld Musician.",
+		-- fr =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a certain Underworld Musician.",
+		-- it =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a certain Underworld Musician.",
+		-- ja =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a certain Underworld Musician.",
+		-- ko =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a certain Underworld Musician.",
+		-- pl =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a certain Underworld Musician.",
+		-- ["pt-BR"] =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a certain Underworld Musician.",
+		-- ru =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a certain Underworld Musician.",
+		-- tr =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a certain Underworld Musician.",
+		-- uk =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a certain Underworld Musician.",
+		-- ["zh-CN"] =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a certain Underworld Musician.",
+		-- ["zh-TW"] =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a certain Underworld Musician.",
+	},
+	FlavorText = {
+		-- de =
+		-- "“Once upon a time, the mere thought of singing again sent shivers down my spine. But you have given me the gift of song all over again, Zagreus.”",
+		-- el =
+		-- "“Once upon a time, the mere thought of singing again sent shivers down my spine. But you have given me the gift of song all over again, Zagreus.”",
+		en =
+		"“Once upon a time, the mere thought of singing again sent shivers down my spine. But you have given me the gift of song all over again, Zagreus.”",
+		-- es =
+		-- "“Once upon a time, the mere thought of singing again sent shivers down my spine. But you have given me the gift of song all over again, Zagreus.”",
+		-- fr =
+		-- "“Once upon a time, the mere thought of singing again sent shivers down my spine. But you have given me the gift of song all over again, Zagreus.”",
+		-- it =
+		-- "“Once upon a time, the mere thought of singing again sent shivers down my spine. But you have given me the gift of song all over again, Zagreus.”",
+		-- ja =
+		-- "“Once upon a time, the mere thought of singing again sent shivers down my spine. But you have given me the gift of song all over again, Zagreus.”",
+		-- ko =
+		-- "“Once upon a time, the mere thought of singing again sent shivers down my spine. But you have given me the gift of song all over again, Zagreus.”",
+		-- pl =
+		-- "“Once upon a time, the mere thought of singing again sent shivers down my spine. But you have given me the gift of song all over again, Zagreus.”",
+		-- ["pt-BR"] =
+		-- "“Once upon a time, the mere thought of singing again sent shivers down my spine. But you have given me the gift of song all over again, Zagreus.”",
+		-- ru =
+		-- "“Once upon a time, the mere thought of singing again sent shivers down my spine. But you have given me the gift of song all over again, Zagreus.”",
+		-- tr =
+		-- "“Once upon a time, the mere thought of singing again sent shivers down my spine. But you have given me the gift of song all over again, Zagreus.”",
+		-- uk =
+		-- "“Once upon a time, the mere thought of singing again sent shivers down my spine. But you have given me the gift of song all over again, Zagreus.”",
+		-- ["zh-CN"] =
+		-- "“Once upon a time, the mere thought of singing again sent shivers down my spine. But you have given me the gift of song all over again, Zagreus.”",
+		-- ["zh-TW"] =
+		-- "“Once upon a time, the mere thought of singing again sent shivers down my spine. But you have given me the gift of song all over again, Zagreus.”",
+	},
+	CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\ChthonicChids\\Orpheus_chid",
+	IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Icons\\ChthonicChids\\Orpheus_chid_Icon",
+	Cost = {
+		CosmeticsPoints = 999,
+		ModsNikkelMHadesBiomes_PlantTartarus = 3,
+		ModsNikkelMHadesBiomes_PlantElysium = 2,
+	},
+	GameStateRequirements = {
+		{
+			PathTrue = { "GameState", "TextLinesRecord", "OrpheusGift08" },
+		},
+		{
+			PathTrue = { "GameState", "TextLinesRecord", "Ending01" },
+		},
+		NamedRequirements = { "T5Cosmetic" },
+	},
+	AlwaysRevealImmediately = true,
+})
+CosmeticsAPI.RegisterChthonicChid({
+	Id = _PLUGIN.guid .. "." .. "Cosmetic_CollectableEurydice",
+	Name = {
+		de = "Kind der Unterwelt (Eurydike)",
+		-- el = "Chthonic Chid, Eurydice",
+		en = "Chthonic Chid, Eurydice",
+		es = "Mini Ctónica de Eurídice",
+		fr = "Chthoni'mini Eurydice",
+		it = "Figurina Ctonia (Euridice)",
+		ja = "冥府キッド（エウリュディケ）",
+		ko = "명계의 딸: 에우리디케",
+		pl = "Miniaturka chtoniczna (Eurydyka)",
+		["pt-BR"] = "Minictôn da Eurídice",
+		ru = "Хтоническая малышка Эвридика",
+		-- tr = "Chthonic Chid, Eurydice",
+		-- uk = "Chthonic Chid, Eurydice",
+		["zh-CN"] = "冥界玩偶：欧律狄克",
+		-- ["zh-TW"] = "Chthonic Chid, Eurydice",
+	},
+	Description = {
+		-- de =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a nymph that inspired many a song.",
+		-- el =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a nymph that inspired many a song.",
+		en =
+		"{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a nymph that inspired many a song.",
+		-- es =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a nymph that inspired many a song.",
+		-- fr =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a nymph that inspired many a song.",
+		-- it =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a nymph that inspired many a song.",
+		-- ja =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a nymph that inspired many a song.",
+		-- ko =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a nymph that inspired many a song.",
+		-- pl =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a nymph that inspired many a song.",
+		-- ["pt-BR"] =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a nymph that inspired many a song.",
+		-- ru =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a nymph that inspired many a song.",
+		-- tr =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a nymph that inspired many a song.",
+		-- uk =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a nymph that inspired many a song.",
+		-- ["zh-CN"] =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a nymph that inspired many a song.",
+		-- ["zh-TW"] =
+		-- "{$Keywords.CosmeticAdd}: Oddly proportioned collectable figure fashioned after a nymph that inspired many a song.",
+	},
+	FlavorText = {
+		-- de =
+		-- "“Come here, Your Royal Majesty, and enjoy one of these treats I've prepared just for you.”",
+		-- el =
+		-- "“Come here, Your Royal Majesty, and enjoy one of these treats I've prepared just for you.”",
+		en = "“Come here, Your Royal Majesty, and enjoy one of these treats I've prepared just for you.”",
+		-- es =
+		-- "“Come here, Your Royal Majesty, and enjoy one of these treats I've prepared just for you.”",
+		-- fr =
+		-- "“Come here, Your Royal Majesty, and enjoy one of these treats I've prepared just for you.”",
+		-- it =
+		-- "“Come here, Your Royal Majesty, and enjoy one of these treats I've prepared just for you.”",
+		-- ja =
+		-- "“Come here, Your Royal Majesty, and enjoy one of these treats I've prepared just for you.”",
+		-- ko =
+		-- "“Come here, Your Royal Majesty, and enjoy one of these treats I've prepared just for you.”",
+		-- pl =
+		-- "“Come here, Your Royal Majesty, and enjoy one of these treats I've prepared just for you.”",
+		-- ["pt-BR"] =
+		-- "“Come here, Your Royal Majesty, and enjoy one of these treats I've prepared just for you.”",
+		-- ru =
+		-- "“Come here, Your Royal Majesty, and enjoy one of these treats I've prepared just for you.”",
+		-- tr =
+		-- "“Come here, Your Royal Majesty, and enjoy one of these treats I've prepared just for you.”",
+		-- uk =
+		-- "“Come here, Your Royal Majesty, and enjoy one of these treats I've prepared just for you.”",
+		-- ["zh-CN"] =
+		-- "“Come here, Your Royal Majesty, and enjoy one of these treats I've prepared just for you.”",
+		-- ["zh-TW"] =
+		-- "“Come here, Your Royal Majesty, and enjoy one of these treats I've prepared just for you.”",
+	},
+	CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\ChthonicChids\\Eurydice_chid",
+	IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Icons\\ChthonicChids\\Eurydice_chid_Icon",
+	Cost = {
+		CosmeticsPoints = 999,
+		ModsNikkelMHadesBiomes_BossResourceElysium = 2,
+		ModsNikkelMHadesBiomes_CropStyx = 2,
+	},
+	GameStateRequirements = {
+		{
+			PathTrue = { "GameState", "TextLinesRecord", "EurydiceGift08" },
+		},
+		{
+			PathTrue = { "GameState", "TextLinesRecord", "Ending01" },
+		},
+		NamedRequirements = { "T5Cosmetic" },
+	},
+	AlwaysRevealImmediately = true,
+})
 CosmeticsAPI.RegisterChthonicChid({
 	Id = _PLUGIN.guid .. "." .. "Cosmetic_CollectableAchilles",
 	Name = {
