@@ -63,13 +63,19 @@ function mod.SnakeFamiliarMoveToLocation(familiar, args)
 		return
 	end
 
-	mod.SnakeFamiliarStopAI(familiar)
-	mod.SnakeFamiliarBurrowPresentation(familiar)
+	if not args.KeepAIAlive then
+		mod.SnakeFamiliarStopAI(familiar)
+	end
+	if not familiar.Burrowed then
+		mod.SnakeFamiliarBurrowPresentation(familiar)
+	end
 	Teleport({
 		Id = familiar.ObjectId,
 		DestinationId = destinationId,
 		OffsetX = args.OffsetX,
 		OffsetY = args.OffsetY,
 	})
-	mod.SnakeFamiliarUnburrowPresentation(familiar)
+	if not args.KeepBurrowedOnFinish then
+		mod.SnakeFamiliarUnburrowPresentation(familiar)
+	end
 end

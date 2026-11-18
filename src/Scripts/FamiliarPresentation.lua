@@ -1,28 +1,13 @@
-local function waitForSnakeFamiliarAnimation(familiar, animationName)
-	familiar.AnimationNotifyIndex = (familiar.AnimationNotifyIndex or 0) + 1
-	local notifyName = "SnakeFamiliarAnimation_" .. familiar.ObjectId .. "_" .. familiar.AnimationNotifyIndex
-	NotifyOnAnimationTimeRemaining({
-		Id = familiar.ObjectId,
-		Animation = animationName,
-		Remaining = 0.01,
-		Notify = notifyName,
-		Timeout = 9.0,
-	})
-	game.waitUntil(notifyName)
-end
-
 function mod.SnakeFamiliarSpawnPresentation(familiar)
 	if familiar == nil or familiar.ObjectId == nil or familiar.SpawnPresentationPlayed then
 		return
 	end
 	familiar.SpawnPresentationPlayed = true
 
-	SetAnimation({ Name = familiar.SpawnAnimation, DestinationId = familiar.ObjectId })
-	CreateAnimation({ Name = familiar.SpawnFx, DestinationId = familiar.ObjectId })
-	SetAlpha({ Id = familiar.ObjectId, Fraction = 1.0 })
-	waitForSnakeFamiliarAnimation(familiar, familiar.SpawnAnimation)
-	SetAnimation({ Name = familiar.IdleAnimation, DestinationId = familiar.ObjectId })
-	familiar.Burrowed = false
+	SetAnimation({ Name = familiar.HiddenAnimation, DestinationId = familiar.ObjectId })
+	SetAlpha({ Id = familiar.ObjectId, Fraction = 0.0 })
+	familiar.Burrowed = true
+	mod.SnakeFamiliarUnburrowPresentation(familiar)
 end
 
 function mod.SnakeFamiliarAttackPresentation(familiar)
@@ -41,9 +26,10 @@ function mod.SnakeFamiliarAttackPresentation(familiar)
 end
 
 function mod.SnakeFamiliarBurrowPresentation(familiar)
-	if familiar == nil or familiar.ObjectId == nil or familiar.Burrowed then
+	if familiar == nil or familiar.ObjectId == nil or familiar.Burrowed or familiar.Burrowing then
 		return
 	end
+	familiar.Burrowing = true
 
 	StopAnimation({ Name = familiar.BurrowPersistentFx, DestinationId = familiar.ObjectId })
 	CreateAnimation({ Name = familiar.BurrowFx, DestinationId = familiar.ObjectId })
@@ -53,15 +39,18 @@ function mod.SnakeFamiliarBurrowPresentation(familiar)
 	SetAnimation({ Name = familiar.HiddenAnimation, DestinationId = familiar.ObjectId })
 	SetAlpha({ Id = familiar.ObjectId, Fraction = 0.0 })
 	familiar.Burrowed = true
+	familiar.Burrowing = false
 end
 
 function mod.SnakeFamiliarUnburrowPresentation(familiar)
-	if familiar == nil or familiar.ObjectId == nil or not familiar.Burrowed then
+	if familiar == nil or familiar.ObjectId == nil or not familiar.Burrowed or familiar.Unburrowing then
 		return
 	end
+	familiar.Unburrowing = true
 
-	SetAlpha({ Id = familiar.ObjectId, Fraction = 1.0 })
+	SetAnimation({ Name = familiar.HiddenAnimation, DestinationId = familiar.ObjectId })
 	SetAnimation({ Name = familiar.UnburrowAnimation, DestinationId = familiar.ObjectId })
+	SetAlpha({ Id = familiar.ObjectId, Fraction = 1.0 })
 	game.wait(familiar.UnburrowDuration, familiar.AIThreadName)
 	SetAnimation({ Name = familiar.IdleAnimation, DestinationId = familiar.ObjectId })
 	game.wait(
@@ -69,4 +58,5 @@ function mod.SnakeFamiliarUnburrowPresentation(familiar)
 		familiar.AIThreadName
 	)
 	familiar.Burrowed = false
+	familiar.Unburrowing = false
 end

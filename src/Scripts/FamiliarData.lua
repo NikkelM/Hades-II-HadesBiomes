@@ -32,7 +32,6 @@ local snakeFamiliarData = {
 		TurnInPlaceAnimation = "Enemy_DragonBurrower_Idle",
 
 		HiddenAnimation = "Enemy_DragonBurrower_Hidden",
-		SpawnAnimation = "Enemy_DragonBurrower_Spawn",
 		BurrowAnimation = "Enemy_DragonBurrower_Burrow",
 		UnburrowAnimation = "Enemy_DragonBurrower_Unburrow",
 		PreAttackAnimation = "Enemy_DragonBurrower_RangedPreFire",
@@ -41,7 +40,6 @@ local snakeFamiliarData = {
 		PostAttackAnimation = "Enemy_DragonBurrower_RangedPostFire",
 		OnHitAnimation = "Enemy_DragonBurrower_OnHit",
 		OnHitHeavyAnimation = "Enemy_DragonBurrower_OnHit_Heavy",
-		SpawnFx = "DragonBurrowerBurrowFxActivate",
 		BurrowFx = "DragonBurrowerBurrowFxOut",
 		BurrowPersistentFx = "DragonBurrowerBurrowFxPersistent",
 		BurrowSound = "/SFX/Enemy Sounds/RangedBurrower/DraconSubmerge",
