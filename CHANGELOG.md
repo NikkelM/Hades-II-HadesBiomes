@@ -5,11 +5,11 @@
 <!--Releasenotes start-->
 ### Patch Highlights:
 - You can now meet **Achilles** in Asphodel, and advance his and Patroclus' storyline.
-- Added **companions** from the first game to the mod. Your friends may now give these to you once you advance your relationships with the accordingly. Dusa's companion is not unlockable yet, but will be in the future.
+- Added **companions** from the first game to the mod. Your friends may now give these to you once you advance your relationships with them accordingly. Dusa's companion is not unlockable yet, but will be in the future.
 - You may now naturally encounter **Artemis** and **Athena** in Zagreus' Journey, and they will use their dialogues from the first game when you speak to one of them.
 - Picking up boons from **Aphrodite**, **Ares**, **Chaos**, **Demeter**, **Hermes**, **Poseidon** or **Zeus** while in a Zagreus' Journey run will now use their respective dialogues and advance their storylines from the first game.
 - **Theseus** may now call upon the aid of Apollo, Hestia, Hera and Hephaestus.
-- Added **5** new collectible Chthonic Chid cosmetics fashioned after characters from Zagreus' Journey.
+- Added **7** new collectible Chthonic Chid cosmetics fashioned after characters from Zagreus' Journey.
 - Balancing: Slightly reduced health and armour of non-boss enemies in all biomes.
 - Balancing: Encounters should now be more cleanly separated into 1-3 distinct waves, with fewer waves that keep spawning in new enemies one after another.
 - Fixed: Some enemies do not properly move within range for certain attacks, rotate toward the player too fast or too slow, or can try to repeatedly attack from behind obstacles (e.g. you can no longer hide from Hades behind the pillars in his chamber).
@@ -40,6 +40,7 @@ Other fixes and improvements:
 - Added a new cosmetic displaying Gigaros in Melinoë's tent in the slot used by Wall-Scrolls.
 - Added a card back for Hermes to the "Arcana, Olympian" card-back pack.
 - "Charm, Battie" is now unlocked by progressing Megaera's relationship instead of by the number of times you have beaten her.
+- "Charm, Antos" is now unlocked by progressing Achilles' instead of Patroclus' relationship.
 - Added the ending portrait from Zagreus' Journey as a portrait that can be showcased in Melinoë's tent after the mod's ending.
 - Added community translators to the mod's credits.
 - Added the mod's credits to the Options menu's "Credits" category.
