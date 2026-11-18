@@ -6065,7 +6065,7 @@ end
 
 -- #region Arcana Card Backs
 -- #region Biomes Pack
-table.insert(mod.ModdedCosmeticIds, _PLUGIN.guid .. ".Cosmetic_Arcana_Biomes")
+table.insert(mod.ModdedCosmeticIds, _PLUGIN.guid .. "." .. "Cosmetic_Arcana_Biomes")
 CosmeticsAPI.RegisterCardBackPack({
 	Id = _PLUGIN.guid .. "." .. "Cosmetic_Arcana_Biomes",
 	Name = {
@@ -6216,7 +6216,7 @@ CosmeticsAPI.RegisterCardBack({
 })
 -- #endregion
 -- #region Bosses Pack
-table.insert(mod.ModdedCosmeticIds, _PLUGIN.guid .. ".Cosmetic_Arcana_Bosses")
+table.insert(mod.ModdedCosmeticIds, _PLUGIN.guid .. "." .. "Cosmetic_Arcana_Bosses")
 CosmeticsAPI.RegisterCardBackPack({
 	Id = _PLUGIN.guid .. "." .. "Cosmetic_Arcana_Bosses",
 	Name = {
@@ -6354,7 +6354,7 @@ CosmeticsAPI.RegisterCardBack({
 })
 -- #endregion
 -- #region Gods Pack
-table.insert(mod.ModdedCosmeticIds, _PLUGIN.guid .. ".Cosmetic_Arcana_Gods")
+table.insert(mod.ModdedCosmeticIds, _PLUGIN.guid .. "." .. "Cosmetic_Arcana_Gods")
 CosmeticsAPI.RegisterCardBackPack({
 	Id = _PLUGIN.guid .. "." .. "Cosmetic_Arcana_Gods",
 	Name = {
