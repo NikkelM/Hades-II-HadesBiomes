@@ -232,6 +232,34 @@ local enemyAdditions = {
 		},
 	},
 	--#endregion
+
+	-- #region FAMILIARS
+	{
+		Name = "ModsNikkelMHadesBiomesSnakeFamiliar",
+		InheritFrom = "BaseFamiliar",
+		DisplayInEditor = true,
+		RotationSpeed = 1000,
+		Speed = 0,
+		Thing = {
+			EditorOutlineDrawBounds = false,
+			Graphic = "Enemy_DragonBurrower_Idle",
+			GrannyModel = "Dracon_Mesh",
+			ImmuneToForce = true,
+			OffsetZ = 0,
+			SelectionHeight = 220.0,
+			SelectionWidth = 200.0,
+			SelectionShiftY = 50,
+			StopsProjectiles = false,
+			Tallness = 140,
+			Points = {
+				{ X = 0,   Y = 32 },
+				{ X = 48,  Y = 0 },
+				{ X = 0,   Y = -32 },
+				{ X = -48, Y = 0 },
+			},
+		},
+	},
+	-- #endregion
 }
 
 local enemyKeyReplacements = {}
