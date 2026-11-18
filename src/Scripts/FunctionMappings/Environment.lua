@@ -80,6 +80,17 @@ function mod.RemoteAttackModsNikkelMHadesBiomes(enemy)
 						end
 						chainedWeaponAIData.WeaponName = chainedEnemy.WeaponName
 
+						if chainedWeaponAIData.WaitForAngleTowardTarget then
+							chainedEnemy.AINotifyName = "WaitForRotation" .. chainedEnemy.ObjectId
+							NotifyOnRotationComplete({
+								Id = chainedEnemy.ObjectId,
+								Cosmetic = true,
+								Notify = chainedEnemy.AINotifyName,
+								Timeout = 9.0,
+							})
+							game.waitUntil(chainedEnemy.AINotifyName)
+						end
+
 						game.thread(game.DoAttack, chainedEnemy, chainedWeaponAIData)
 					end
 				end
