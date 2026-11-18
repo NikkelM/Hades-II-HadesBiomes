@@ -416,6 +416,11 @@ modutil.mod.Path.Wrap("DoPatches", function(base)
 					patchedClears
 		end
 
+		-- Must run before revision 17 backfills AthenaFirstPickUp for dialogue requirements
+		if game.GameState.ModsNikkelMHadesBiomesPatchRevision < 18 and game.GameState.TextLinesRecord["AthenaFirstPickUp"] then
+			game.GameState.TextLinesRecord["ModsNikkelMHadesBiomes_AthenaFirstMeeting01"] = true
+		end
+
 		if game.GameState.ModsNikkelMHadesBiomesPatchRevision < 17 then
 			-- Record the H1 version of the dialogue to unblock other God dialogues since Athena is in-person only and may not always show
 			-- The actual dialogue is renamed and still plays when first meeting her
@@ -423,7 +428,7 @@ modutil.mod.Path.Wrap("DoPatches", function(base)
 		end
 
 		-- IMPORTANT: This must be incremented every time this function is changed
-		game.GameState.ModsNikkelMHadesBiomesPatchRevision = 17
+		game.GameState.ModsNikkelMHadesBiomesPatchRevision = 18
 	end
 
 	return base()
