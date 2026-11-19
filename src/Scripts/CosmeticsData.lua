@@ -6719,11 +6719,6 @@ CosmeticsAPI.RegisterCardBack({
 	CardBackPath = "NikkelM-HadesBiomesCosmeticsCardbacks\\GUI\\Screens\\Cardback\\CardBackGodsHermes",
 })
 -- #endregion
-
--- Register the cosmetics package to be loaded automatically by the CosmeticsAPI when entering the Crossroads
-CosmeticsAPI.RegisterCrossroadsPackages({ "NikkelM-HadesBiomesCosmetics" })
--- Register the arcana card back package to be loaded automatically by the CosmeticsAPI
-CosmeticsAPI.RegisterCrossroadsPackages({ "NikkelM-HadesBiomesCosmeticsCardbacks" })
 -- #endregion
 
 -- #region Chthonic Chids
@@ -7757,3 +7752,8 @@ CosmeticsAPI.RegisterChthonicChid({
 -- 	AlwaysRevealImmediately = true,
 -- })
 -- #endregion
+
+-- Register the cosmetics package to be loaded automatically by the CosmeticsAPI when entering the Crossroads
+CosmeticsAPI.RegisterCrossroadsPackages({ "NikkelM-HadesBiomesCosmetics" })
+-- Register the arcana card back package to be loaded automatically by the CosmeticsAPI
+CosmeticsAPI.RegisterCardBackPackages({ "NikkelM-HadesBiomesCosmeticsCardbacks" })

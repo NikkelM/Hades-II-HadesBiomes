@@ -146,6 +146,7 @@ Other fixes and improvements:
 - Fixed: Some damage sources during Charon's boss fight show a placeholder text in the run clear screen.
 - Fixed: Codex entries after the first unlock too early.
 - Fixed: Unlocking Arcana card-back packs does not count towards the completion of "A Simple Job".
+- Fixed: Mod-added Arcana card backs do not show correctly if a save is loaded during a run.
 - Fixed: "Amusing Chaos" can be completed during a randomized Chaos Trial instead of requiring the clear during a normal run.
 - Fixed: The Narrator's subtitles added through the mod are not italicized.
 - Fixed: Various typos and clarifications in incantation, prophecy and cosmetics texts.
