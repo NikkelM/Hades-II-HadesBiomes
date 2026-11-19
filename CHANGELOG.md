@@ -38,6 +38,7 @@ Other fixes and improvements:
 - Added two new Minor Prophecies revealed by talking to Poseidon in the Nightmare Realm.
 - The "A True Nightmare" Minor Prophecy can now only be revealed if the [Dream Dive Tweaks](https://thunderstore.io/c/hades-ii/p/zerp/DreamDiveTweaks/) mod is also installed (*It would be quite difficult to complete otherwise*).
 - Added a new cosmetic displaying Gigaros in Melinoë's tent in the slot used by Wall-Scrolls.
+- Added a new type of cosmetic, the "Altar of Ashes". A variant of it can be unlocked through the mod now.
 - Added a card back for Hermes to the "Arcana, Olympian" card-back pack.
 - "Charm, Battie" is now unlocked by progressing Megaera's relationship instead of by the number of times you have beaten her.
 - "Charm, Antos" is now unlocked by progressing Achilles' instead of Patroclus' relationship.
