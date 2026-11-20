@@ -244,6 +244,7 @@ local enemyAdditions = {
 			EditorOutlineDrawBounds = false,
 			Graphic = "Enemy_DragonBurrower_Idle",
 			GrannyModel = "Dracon_Mesh",
+			Scale = 0.6,
 			ImmuneToForce = true,
 			OffsetZ = 0,
 			SelectionHeight = 220.0,

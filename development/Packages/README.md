@@ -75,10 +75,8 @@ Install the dependencies, then run the build script from the repository root:
 
 ```powershell
 python -m pip install pillow lz4 etcpak
-python .\development\Packages\build_pkg.py
+python .\development\Packages\build_pkg.py ModsNikkelMHadesBiomesSnakeFamiliar
 ```
-
-The script reads PNGs directly under `development\Packages\NikkelM-HadesBiomesFamiliarSkins_source` and writes `NikkelM-HadesBiomesFamiliarSkins.pkg` to both `data\Content\Packages\1080p` and `data\Content\Packages\720p`. The vanilla `FrogFamiliar` packages and extracted 512x512 atlas PNGs are identical at both resolutions, so both outputs are 512x512 BC7 with mipmaps and no manifest. This package build is for 3D textures only.
 
 ## For Original Biome Packages
 

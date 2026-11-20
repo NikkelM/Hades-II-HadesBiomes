@@ -9,6 +9,7 @@ local snakeVenomData = game.DeepCopyTable(game.EffectData.StyxPoison)
 snakeVenomData.EffectName = "ModsNikkelMHadesBiomesSnakeVenom"
 snakeVenomData.OnApplyFunctionName = "nil"
 snakeVenomData.OnClearFunctionName = "nil"
+snakeVenomData.CancelUnitHitFlash = true
 game.EffectData[snakeVenomData.EffectName] = snakeVenomData
 
 game.WeaponEffectData.ModsNikkelMHadesBiomesAttackSuperLowGrip = {

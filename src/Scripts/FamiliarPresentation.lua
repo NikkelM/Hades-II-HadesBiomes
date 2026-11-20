@@ -1,10 +1,22 @@
 function mod.SnakeFamiliarSpawnPresentation(familiar, args)
 	args = args or {}
 
+	if game.CurrentHubRoom ~= nil then
+		SetAnimation({ Name = familiar.IdleAnimation, DestinationId = familiar.ObjectId })
+		SetAlpha({ Id = familiar.ObjectId, Fraction = 1.0 })
+		CreateAnimation({ Name = familiar.BurrowPersistentFx, DestinationId = familiar.ObjectId })
+		familiar.Burrowed = false
+		return
+	end
+
 	SetAnimation({ Name = familiar.HiddenAnimation, DestinationId = familiar.ObjectId })
 	SetAlpha({ Id = familiar.ObjectId, Fraction = 0.0 })
 	familiar.Burrowed = true
-	if game.CurrentHubRoom ~= nil or args.PostCombat or familiar.PreRecruit then
+	if not familiar.PreRecruit then
+		familiar.OnUsedFunctionName = nil
+		AddInteractBlock(familiar, "SnakeFamiliarInRun")
+	end
+	if args.PostCombat or familiar.PreRecruit or not game.FamiliarShouldUseCombatLogic() then
 		mod.SnakeFamiliarUnburrowPresentation(familiar)
 	end
 end

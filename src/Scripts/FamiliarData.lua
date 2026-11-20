@@ -1,4 +1,6 @@
 -- #region New Mod Familiars
+-- #region SnakeFamiliar/Ophis
+-- #region Familiar definition
 local snakeFamiliarData = {
 	ModsNikkelMHadesBiomesSnakeFamiliar = {
 		InheritFrom = { "BaseFamiliar", },
@@ -8,7 +10,6 @@ local snakeFamiliarData = {
 
 		AIOptions = { _PLUGIN.guid .. "." .. "SnakeFamiliarAI", },
 		InitialAttackDelay = 0.5,
-		AttackInterval = 20,
 		ProjectileName = "ModsNikkelMHadesBiomesSnakeDart",
 		DartCount = 3,
 		ProjectileInterval = 0.25,
@@ -52,7 +53,49 @@ local snakeFamiliarData = {
 		MoveFunctionName = _PLUGIN.guid .. "." .. "SnakeFamiliarMoveToLocation",
 		StopAIFunctionName = _PLUGIN.guid .. "." .. "SnakeFamiliarStopAI",
 
-		GrannyTexture = "GR2/DraconTyphon_Color",
+		AlwaysShowDefaultUseText = true,
+		CanReceiveGift = false,
+		FamiliarScreenAnimationName = "Codex_Portrait_DragonBurrowerTyphon",
+		FamiliarScreenAnimationOutName = "Blank",
+		KitAngle = 235,
+		ModsNikkelMHadesBiomes_CrossroadsKit = {
+			SpawnArgs = {
+				Name = "FamiliarKit",
+				Group = "Terrain_01_Decor02",
+				LocationX = 4253,
+				LocationY = 6473,
+			},
+			Decorations = {
+				{
+					SpawnArgs = {
+						Name = "CrossroadsTerrainDecorativeCircle01",
+						Group = "Terrain_01_Decor01",
+						LocationX = 4255,
+						LocationY = 6475,
+					},
+					Scale = 0.147,
+					Color = { 145, 117, 189, 255 },
+					HSV = { 0.007, -0.097, 0 },
+					Ambient = 1.0,
+				},
+				{
+					SpawnArgs = {
+						Name = "CrossroadsTerrainMoonFull01",
+						Group = "Terrain_01_Decor01",
+						LocationX = 4251,
+						LocationY = 6475,
+					},
+					Scale = 0.188,
+				},
+			},
+		},
+		TraitNames = {
+			"ModsNikkelMHadesBiomesSnakeBloodBond",
+			"ModsNikkelMHadesBiomesSnakeAurumBond",
+			"ModsNikkelMHadesBiomesSnakeToxicBond",
+		},
+
+		GrannyTexture = "ModsNikkelMHadesBiomesSnakeFamiliar/SnakeFamiliar_Color",
 		IdleAnimation = "Enemy_DragonBurrower_Idle",
 		HappyAnimation = "Enemy_DragonBurrower_Idle",
 		FleeAnimation = "Enemy_DragonBurrower_Burrow",
@@ -63,11 +106,8 @@ local snakeFamiliarData = {
 		BurrowAnimation = "Enemy_DragonBurrower_Burrow",
 		UnburrowAnimation = "Enemy_DragonBurrower_Unburrow",
 		PreAttackAnimation = "Enemy_DragonBurrower_RangedPreFire",
-		SingleFireAnimation = "Enemy_DragonBurrower_RangedFire_Single",
-		TripleFireAnimation = "Enemy_DragonBurrower_RangedFire_Triple",
+		TripleFireAnimation = "ModsNikkelMHadesBiomesSnakeFamiliar_RangedFire_Triple",
 		PostAttackAnimation = "Enemy_DragonBurrower_RangedPostFire",
-		OnHitAnimation = "Enemy_DragonBurrower_OnHit",
-		OnHitHeavyAnimation = "Enemy_DragonBurrower_OnHit_Heavy",
 		BurrowFx = "DragonBurrowerBurrowFxOut",
 		BurrowPersistentFx = "DragonBurrowerBurrowFxPersistent",
 		BurrowSound = "/SFX/Enemy Sounds/RangedBurrower/DraconSubmerge",
@@ -78,8 +118,73 @@ local snakeFamiliarData = {
 		},
 	},
 }
-mod.AddTableKeysSkipDupes(game.FamiliarData, snakeFamiliarData)
-mod.AddTableKeysSkipDupes(game.EnemyData, snakeFamiliarData)
+game.OverwriteTableKeys(game.FamiliarData, snakeFamiliarData)
+game.OverwriteTableKeys(game.EnemyData, snakeFamiliarData)
+table.insert(game.FamiliarOrderData, "ModsNikkelMHadesBiomesSnakeFamiliar")
+-- #endregion
+
+-- #region SnakeFamiliar Traits
+game.OverwriteTableKeys(game.TraitData, {
+	ModsNikkelMHadesBiomesSnakeBloodBond = {
+		InheritFrom = { "FamiliarTrait", },
+		Icon = "Codex_Portrait_DragonBurrowerTyphon",
+		CirceBonusStacks = 2,
+		AddIncomingDamageModifiers = {
+			HealthOnly = true,
+			NonTrapDamageTakenMultiplier = {
+				BaseValue = 0.97,
+				SourceIsMultiplier = true,
+				AbsoluteStackValues = {
+					[1] = 0.99,
+				},
+			},
+			ReportValues = { ReportedDamageResistance = "NonTrapDamageTakenMultiplier" },
+		},
+		ExtractValues = {
+			{
+				Key = "ReportedDamageResistance",
+				ExtractAs = "DamageResistance",
+				Format = "NegativePercentDelta",
+			},
+		},
+	},
+	ModsNikkelMHadesBiomesSnakeAurumBond = {
+		Hidden = true,
+		MoneyMultiplier = {
+			BaseValue = 1.02,
+			SourceIsMultiplier = true,
+			AbsoluteStackValues = {
+				[1] = 1.01,
+			},
+		},
+		ExtractValues = {
+			{
+				Key = "MoneyMultiplier",
+				ExtractAs = "MoneyRewardIncrease",
+				Format = "PercentDelta",
+			},
+		},
+	},
+	ModsNikkelMHadesBiomesSnakeToxicBond = {
+		Hidden = true,
+		ModsNikkelMHadesBiomesSnakeAttackInterval = {
+			BaseValue = 20,
+			AbsoluteStackValues = {
+				[1] = -5,
+				[2] = -3,
+				[3] = -2,
+			},
+		},
+		ExtractValues = {
+			{
+				Key = "ModsNikkelMHadesBiomesSnakeAttackInterval",
+				ExtractAs = "AttackInterval",
+			},
+		},
+	},
+})
+-- #endregion
+-- #endregion
 -- #endregion
 
 -- #region Frinos

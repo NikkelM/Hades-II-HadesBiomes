@@ -303,6 +303,7 @@ local function on_ready()
 			DebugLogScriptImportProgress("MapGroups SJSON")
 
 			-- SJSON changes
+			import "Game/Animations/Model/Enemy_DragonBurrower_Animation.sjson.lua"
 			import "Game/Animations/Model/Enemy_HadesTombstone_Animation.sjson.lua"
 			import "Game/Animations/Model/Hero_Melinoe_Animation_Personality.sjson.lua"
 			DebugLogScriptImportProgress("Model Animation SJSON")
@@ -638,6 +639,7 @@ local function on_ready_late()
 	import "Scripts/EffectLogic_Late.lua"
 	import "Scripts/EffectPresentation_Late.lua"
 	import "Scripts/EventPresentation_Late.lua"
+	import "Scripts/FamiliarLogic_Late.lua"
 	import "Scripts/GhostLogic_Late.lua"
 	import "Scripts/HarvestLogic_Late.lua"
 	import "Scripts/HarvestPresentation_Late.lua"
