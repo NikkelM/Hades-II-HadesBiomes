@@ -69,6 +69,17 @@ Add `--pack` to run `deppth2 hpk -c BC7` and copy the generated `.pkg` and `.pkg
 python development\Packages\Z_Generate720pSources.py --pack
 ```
 
+## Building the Familiar Skins package
+
+Install the dependencies, then run the build script from the repository root:
+
+```powershell
+python -m pip install pillow lz4 etcpak
+python .\development\Packages\build_pkg.py
+```
+
+The script reads PNGs directly under `development\Packages\NikkelM-HadesBiomesFamiliarSkins_source` and writes `NikkelM-HadesBiomesFamiliarSkins.pkg` to both `data\Content\Packages\1080p` and `data\Content\Packages\720p`. The vanilla `FrogFamiliar` packages and extracted 512x512 atlas PNGs are identical at both resolutions, so both outputs are 512x512 BC7 with mipmaps and no manifest. This package build is for 3D textures only.
+
 ## For Original Biome Packages
 
 For the original biome packages in the "Original Biomes" subfolder, they already have the manifests and atlases set up, as extracted from the Hades game files.
