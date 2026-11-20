@@ -96,11 +96,11 @@ local snakeFamiliarData = {
 		},
 
 		GrannyTexture = "ModsNikkelMHadesBiomesSnakeFamiliar/SnakeFamiliar_Color",
-		IdleAnimation = "Enemy_DragonBurrower_Idle",
-		HappyAnimation = "Enemy_DragonBurrower_Idle",
+		IdleAnimation = "ModsNikkelMHadesBiomesSnakeFamiliar_Idle",
+		HappyAnimation = "ModsNikkelMHadesBiomesSnakeFamiliar_Idle",
 		FleeAnimation = "Enemy_DragonBurrower_Burrow",
 		StartNewRunAnimation = "Enemy_DragonBurrower_Burrow",
-		TurnInPlaceAnimation = "Enemy_DragonBurrower_Idle",
+		TurnInPlaceAnimation = "ModsNikkelMHadesBiomesSnakeFamiliar_Idle",
 
 		HiddenAnimation = "Enemy_DragonBurrower_Hidden",
 		BurrowAnimation = "Enemy_DragonBurrower_Burrow",

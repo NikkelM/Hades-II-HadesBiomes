@@ -3,6 +3,11 @@ local animationsFile = rom.path.combine(rom.paths.Content(),
 
 local addAnimations = {
 	{
+		Name = "ModsNikkelMHadesBiomesSnakeFamiliar_Idle",
+		InheritFrom = "Enemy_DragonBurrower_Idle",
+		GrannyAnimationSpeed = 0.75,
+	},
+	{
 		Name = "ModsNikkelMHadesBiomesSnakeFamiliar_RangedFire_Triple",
 		InheritFrom = "EnemyDragonBurrowerBaseAnimation",
 		GrannyAnimation = "BoneDracon_Base_AttackRange_C_00",
