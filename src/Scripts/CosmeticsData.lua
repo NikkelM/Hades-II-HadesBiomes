@@ -21,8 +21,28 @@
 	"ModsNikkelMHadesBiomes_BossResourceStyx",
 ]] --
 
--- In total, as of 2026-11-18: 64 cosmetics
--- Last added: Chthonic Chid, Eurydice
+-- In total, as of 2026-11-19: 65 cosmetics
+-- Last added: Altar of Ashes, Deathly
+
+local function registerShopCosmetics(cosmetics)
+	for _, cosmeticData in ipairs(cosmetics) do
+		if cosmeticData.CreateCosmeticsGroup then
+			-- Only register if not registered by another mod already
+			if not game.WorldUpgradeData[cosmeticData.Id] then
+				CosmeticsAPI.RegisterCosmetic(cosmeticData)
+			end
+		else
+			if cosmeticData.GameStateRequirements == nil then
+				cosmeticData.GameStateRequirements = {}
+			end
+			table.insert(cosmeticData.GameStateRequirements, {
+				PathTrue = { "GameState", "WorldUpgradesAdded", mod.UnlockCosmeticsIncantationName },
+			})
+			table.insert(mod.ModdedCosmeticIds, cosmeticData.Id)
+			CosmeticsAPI.RegisterCosmetic(cosmeticData)
+		end
+	end
+end
 
 -- #region CosmeticsShop_Tent
 local tentCosmetics = {
@@ -1217,6 +1237,7 @@ local tentCosmetics = {
 				ObjectType = "NPC_Dora_01",
 				{ Cue = "/VO/Dora_0258", Text = "Guess it's OK...", PreLineFunctionName = "GenericPresentation", PreLineFunctionArgs = game.PresetAudioArgs.DoraNormalAppearArgs, },
 			},
+			{ GlobalVoiceLines = "PositiveReactionVoiceLines" },
 		},
 	},
 	-- #endregion
@@ -1432,16 +1453,7 @@ local tentCosmetics = {
 	},
 	-- #endregion
 }
-for _, cosmeticData in ipairs(tentCosmetics) do
-	if cosmeticData.GameStateRequirements == nil then
-		cosmeticData.GameStateRequirements = {}
-	end
-	table.insert(cosmeticData.GameStateRequirements, {
-		PathTrue = { "GameState", "WorldUpgradesAdded", mod.UnlockCosmeticsIncantationName },
-	})
-	table.insert(mod.ModdedCosmeticIds, cosmeticData.Id)
-	CosmeticsAPI.RegisterCosmetic(cosmeticData)
-end
+registerShopCosmetics(tentCosmetics)
 -- #endregion
 
 -- #region CosmeticsShop_Main
@@ -3189,16 +3201,7 @@ local mainHubAreaCosmetics = {
 	},
 	--#endregion
 }
-for _, cosmeticData in ipairs(mainHubAreaCosmetics) do
-	if cosmeticData.GameStateRequirements == nil then
-		cosmeticData.GameStateRequirements = {}
-	end
-	table.insert(cosmeticData.GameStateRequirements, {
-		PathTrue = { "GameState", "WorldUpgradesAdded", mod.UnlockCosmeticsIncantationName },
-	})
-	table.insert(mod.ModdedCosmeticIds, cosmeticData.Id)
-	CosmeticsAPI.RegisterCosmetic(cosmeticData)
-end
+registerShopCosmetics(mainHubAreaCosmetics)
 -- #endregion
 
 -- #region CosmeticsShop_Taverna
@@ -4427,11 +4430,7 @@ local tavernaCosmetics = {
 				UsePlayerSource = true,
 				{ Cue = "/VO/Melinoe_5387", Text = "Perhaps a more-suitable stage for your performance, Music Maker!", PostLineFunctionName = "MusicMakerReaction" },
 			},
-			{
-				PreLineWait = 0.35,
-				ObjectType = "NPC_Dora_01",
-				{ Cue = "/VO/Dora_0717", Text = "Should really help with the acoustics, whatever those are.", PreLineFunctionName = "GenericPresentation", PreLineFunctionArgs = game.PresetAudioArgs.DoraNormalAppearArgs, },
-			},
+			{ GlobalVoiceLines = "DoraCosmeticReactionVoiceLines" },
 		},
 	},
 	{
@@ -4544,21 +4543,16 @@ local tavernaCosmetics = {
 				UsePlayerSource = true,
 				{ Cue = "/VO/Melinoe_5388", Text = "Here's a new spot from which to regale us, Music Maker!", PostLineFunctionName = "MusicMakerReaction" },
 			},
-			{ GlobalVoiceLines = "DoraCosmeticReactionVoiceLines" },
+			{
+				PreLineWait = 0.35,
+				ObjectType = "NPC_Dora_01",
+				{ Cue = "/VO/Dora_0717", Text = "Should really help with the acoustics, whatever those are.", PreLineFunctionName = "GenericPresentation", PreLineFunctionArgs = game.PresetAudioArgs.DoraNormalAppearArgs, },
+			},
 		},
 	},
 	-- #endregion
 }
-for _, cosmeticData in ipairs(tavernaCosmetics) do
-	if cosmeticData.GameStateRequirements == nil then
-		cosmeticData.GameStateRequirements = {}
-	end
-	table.insert(cosmeticData.GameStateRequirements, {
-		PathTrue = { "GameState", "WorldUpgradesAdded", mod.UnlockCosmeticsIncantationName },
-	})
-	table.insert(mod.ModdedCosmeticIds, cosmeticData.Id)
-	CosmeticsAPI.RegisterCosmetic(cosmeticData)
-end
+registerShopCosmetics(tavernaCosmetics)
 -- #endregion
 
 -- #region CosmeticsShop_PreRun
@@ -6050,17 +6044,175 @@ local preRunCosmetics = {
 		},
 	},
 	-- #endregion
+	-- #region Altar floating top/CrossroadsCardAltar03Float
+	{
+		Id = "ModCosmetic_CrossroadsCardAltar03Float",
+		Name = {
+			-- de = "Altar of Ashes, Crossroads",
+			-- el = "Altar of Ashes, Crossroads",
+			en = "Altar of Ashes, Crossroads",
+			-- es = "Altar of Ashes, Crossroads",
+			-- fr = "Altar of Ashes, Crossroads",
+			-- it = "Altar of Ashes, Crossroads",
+			-- ja = "Altar of Ashes, Crossroads",
+			-- ko = "Altar of Ashes, Crossroads",
+			-- pl = "Altar of Ashes, Crossroads",
+			-- ["pt-BR"] = "Altar of Ashes, Crossroads",
+			-- ru = "Altar of Ashes, Crossroads",
+			-- tr = "Altar of Ashes, Crossroads",
+			-- uk = "Altar of Ashes, Crossroads",
+			-- ["zh-CN"] = "Altar of Ashes, Crossroads",
+			-- ["zh-TW"] = "Altar of Ashes, Crossroads",
+		},
+		Description = {
+			-- de = "{$Keywords.CosmeticSwap}: A conduit of the Arcane inspired by a moonlit evening.",
+			-- el = "{$Keywords.CosmeticSwap}: A conduit of the Arcane inspired by a moonlit evening.",
+			en = "{$Keywords.CosmeticSwap}: A conduit of the Arcane inspired by a moonlit evening.",
+			-- es = "{$Keywords.CosmeticSwap}: A conduit of the Arcane inspired by a moonlit evening.",
+			-- fr = "{$Keywords.CosmeticSwap}: A conduit of the Arcane inspired by a moonlit evening.",
+			-- it = "{$Keywords.CosmeticSwap}: A conduit of the Arcane inspired by a moonlit evening.",
+			-- ja = "{$Keywords.CosmeticSwap}: A conduit of the Arcane inspired by a moonlit evening.",
+			-- ko = "{$Keywords.CosmeticSwap}: A conduit of the Arcane inspired by a moonlit evening.",
+			-- pl = "{$Keywords.CosmeticSwap}: A conduit of the Arcane inspired by a moonlit evening.",
+			-- ["pt-BR"] = "{$Keywords.CosmeticSwap}: A conduit of the Arcane inspired by a moonlit evening.",
+			-- ru = "{$Keywords.CosmeticSwap}: A conduit of the Arcane inspired by a moonlit evening.",
+			-- tr = "{$Keywords.CosmeticSwap}: A conduit of the Arcane inspired by a moonlit evening.",
+			-- uk = "{$Keywords.CosmeticSwap}: A conduit of the Arcane inspired by a moonlit evening.",
+			-- ["zh-CN"] = "{$Keywords.CosmeticSwap}: A conduit of the Arcane inspired by a moonlit evening.",
+			-- ["zh-TW"] = "{$Keywords.CosmeticSwap}: A conduit of the Arcane inspired by a moonlit evening.",
+		},
+		FlavorText = {
+			-- de = "Suspended in the air through skilled witchcraft, this magical fixture allows the Princess of the Underworld to unlock her hidden potential.",
+			-- el = "Suspended in the air through skilled witchcraft, this magical fixture allows the Princess of the Underworld to unlock her hidden potential.",
+			en =
+			"Suspended in the air through skilled witchcraft, this magical fixture allows the Princess of the Underworld to unlock her hidden potential.",
+			-- es = "Suspended in the air through skilled witchcraft, this magical fixture allows the Princess of the Underworld to unlock her hidden potential.",
+			-- fr = "Suspended in the air through skilled witchcraft, this magical fixture allows the Princess of the Underworld to unlock her hidden potential.",
+			-- it = "Suspended in the air through skilled witchcraft, this magical fixture allows the Princess of the Underworld to unlock her hidden potential.",
+			-- ja = "Suspended in the air through skilled witchcraft, this magical fixture allows the Princess of the Underworld to unlock her hidden potential.",
+			-- ko = "Suspended in the air through skilled witchcraft, this magical fixture allows the Princess of the Underworld to unlock her hidden potential.",
+			-- pl = "Suspended in the air through skilled witchcraft, this magical fixture allows the Princess of the Underworld to unlock her hidden potential.",
+			-- ["pt-BR"] = "Suspended in the air through skilled witchcraft, this magical fixture allows the Princess of the Underworld to unlock her hidden potential.",
+			-- ru = "Suspended in the air through skilled witchcraft, this magical fixture allows the Princess of the Underworld to unlock her hidden potential.",
+			-- tr = "Suspended in the air through skilled witchcraft, this magical fixture allows the Princess of the Underworld to unlock her hidden potential.",
+			-- uk = "Suspended in the air through skilled witchcraft, this magical fixture allows the Princess of the Underworld to unlock her hidden potential.",
+			-- ["zh-CN"] = "Suspended in the air through skilled witchcraft, this magical fixture allows the Princess of the Underworld to unlock her hidden potential.",
+			-- ["zh-TW"] = "Suspended in the air through skilled witchcraft, this magical fixture allows the Princess of the Underworld to unlock her hidden potential.",
+		},
+		CreateCosmeticsGroup = true,
+		AutoUnlock = true,
+		RotateOnly = true,
+		InsertAfterCosmetic = "Cosmetic_CardDeck08",
+		ShopCategory = "CosmeticsShop_PreRun",
+		CameraFocusId = 589766,
+		SetAnimationIds = { 587206 },
+		IconPath = "Tilesets\\Crossroads\\Crossroads_CardAltar_03",
+		IconScale = 0.075,
+		CosmeticAnimationPath = "Tilesets\\Crossroads\\Crossroads_CardAltar_03",
+		AnimationInheritFrom = "CrossroadsCardAltar03Float",
+		ActivateFunctionName = "rom.mods." .. _PLUGIN.guid .. "." .. "ApplyCardAltarGlow",
+		ActivateFunctionArgs = {
+			Foreground = { 162, 255, 119, 131 },
+			Additive = { 159, 255, 115, 122 },
+		},
+	},
+	{
+		Id = _PLUGIN.guid .. "." .. "Cosmetic_CardAltarTop_Coins",
+		Name = {
+			-- de = "Altar of Ashes, Deathly",
+			-- el = "Altar of Ashes, Deathly",
+			en = "Altar of Ashes, Deathly",
+			-- es = "Altar of Ashes, Deathly",
+			-- fr = "Altar of Ashes, Deathly",
+			-- it = "Altar of Ashes, Deathly",
+			-- ja = "Altar of Ashes, Deathly",
+			-- ko = "Altar of Ashes, Deathly",
+			-- pl = "Altar of Ashes, Deathly",
+			-- ["pt-BR"] = "Altar of Ashes, Deathly",
+			-- ru = "Altar of Ashes, Deathly",
+			-- tr = "Altar of Ashes, Deathly",
+			-- uk = "Altar of Ashes, Deathly",
+			-- ["zh-CN"] = "Altar of Ashes, Deathly",
+			-- ["zh-TW"] = "Altar of Ashes, Deathly",
+		},
+		Description = {
+			-- de = "{$Keywords.CosmeticSwap}: A conduit of the Arcane inspired by the transition to the afterlife.",
+			-- el = "{$Keywords.CosmeticSwap}: A conduit of the Arcane inspired by the transition to the afterlife.",
+			en = "{$Keywords.CosmeticSwap}: A conduit of the Arcane inspired by the transition to the afterlife.",
+			-- es = "{$Keywords.CosmeticSwap}: A conduit of the Arcane inspired by the transition to the afterlife.",
+			-- fr = "{$Keywords.CosmeticSwap}: A conduit of the Arcane inspired by the transition to the afterlife.",
+			-- it = "{$Keywords.CosmeticSwap}: A conduit of the Arcane inspired by the transition to the afterlife.",
+			-- ja = "{$Keywords.CosmeticSwap}: A conduit of the Arcane inspired by the transition to the afterlife.",
+			-- ko = "{$Keywords.CosmeticSwap}: A conduit of the Arcane inspired by the transition to the afterlife.",
+			-- pl = "{$Keywords.CosmeticSwap}: A conduit of the Arcane inspired by the transition to the afterlife.",
+			-- ["pt-BR"] = "{$Keywords.CosmeticSwap}: A conduit of the Arcane inspired by the transition to the afterlife.",
+			-- ru = "{$Keywords.CosmeticSwap}: A conduit of the Arcane inspired by the transition to the afterlife.",
+			-- tr = "{$Keywords.CosmeticSwap}: A conduit of the Arcane inspired by the transition to the afterlife.",
+			-- uk = "{$Keywords.CosmeticSwap}: A conduit of the Arcane inspired by the transition to the afterlife.",
+			-- ["zh-CN"] = "{$Keywords.CosmeticSwap}: A conduit of the Arcane inspired by the transition to the afterlife.",
+			-- ["zh-TW"] = "{$Keywords.CosmeticSwap}: A conduit of the Arcane inspired by the transition to the afterlife.",
+		},
+		FlavorText = {
+			-- de = "The boatman Charon accompanies all mortal souls on their journey through the Underworld, but the judging of their fate he leaves to others.",
+			-- el = "The boatman Charon accompanies all mortal souls on their journey through the Underworld, but the judging of their fate he leaves to others.",
+			en =
+			"The boatman Charon accompanies all mortal souls on their journey through the Underworld, but the judging of their fate he leaves to others.",
+			-- es = "The boatman Charon accompanies all mortal souls on their journey through the Underworld, but the judging of their fate he leaves to others.",
+			-- fr = "The boatman Charon accompanies all mortal souls on their journey through the Underworld, but the judging of their fate he leaves to others.",
+			-- it = "The boatman Charon accompanies all mortal souls on their journey through the Underworld, but the judging of their fate he leaves to others.",
+			-- ja = "The boatman Charon accompanies all mortal souls on their journey through the Underworld, but the judging of their fate he leaves to others.",
+			-- ko = "The boatman Charon accompanies all mortal souls on their journey through the Underworld, but the judging of their fate he leaves to others.",
+			-- pl = "The boatman Charon accompanies all mortal souls on their journey through the Underworld, but the judging of their fate he leaves to others.",
+			-- ["pt-BR"] = "The boatman Charon accompanies all mortal souls on their journey through the Underworld, but the judging of their fate he leaves to others.",
+			-- ru = "The boatman Charon accompanies all mortal souls on their journey through the Underworld, but the judging of their fate he leaves to others.",
+			-- tr = "The boatman Charon accompanies all mortal souls on their journey through the Underworld, but the judging of their fate he leaves to others.",
+			-- uk = "The boatman Charon accompanies all mortal souls on their journey through the Underworld, but the judging of their fate he leaves to others.",
+			-- ["zh-CN"] = "The boatman Charon accompanies all mortal souls on their journey through the Underworld, but the judging of their fate he leaves to others.",
+			-- ["zh-TW"] = "The boatman Charon accompanies all mortal souls on their journey through the Underworld, but the judging of their fate he leaves to others.",
+		},
+		CosmeticsGroup = "ModCosmetic_CrossroadsCardAltar03Float",
+		InsertAfterCosmetic = "ModCosmetic_CrossroadsCardAltar03Float",
+		ShopCategory = "CosmeticsShop_PreRun",
+		CameraFocusId = 589766,
+		SetAnimationIds = { 587206 },
+		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Icons\\PreRun\\Crossroads_CardAltar_Coins_Icon",
+		CosmeticAnimationPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\PreRun\\Crossroads_CardAltar_Coins",
+		AnimationInheritFrom = "CrossroadsCardAltar03Float",
+		AnimationScale = 3.445,
+		GameStateRequirements = {
+			{
+				PathTrue = { "GameState", "TextLinesRecord", "Ending01" },
+			},
+			{
+				PathTrue = { "GameState", "EncountersCompletedCache", "BossCharon" },
+			},
+			NamedRequirements = { "T3Cosmetic" },
+		},
+		AlwaysRevealImmediately = true,
+		Cost = {
+			CosmeticsPoints = 4500,
+			CharonPoints = 3,
+			ModsNikkelMHadesBiomes_BossResourceStyx = 3,
+			ModsNikkelMHadesBiomes_BossResourceTartarus = 3,
+		},
+		ActivateFunctionName = "rom.mods." .. _PLUGIN.guid .. "." .. "ApplyCardAltarGlow",
+		ActivateFunctionArgs = {
+			Foreground = { 255, 190, 90, 131 },
+			Additive = { 255, 180, 75, 122 },
+		},
+		PreRevealVoiceLines = {
+			Queue = "Interrupt",
+			{
+				PreLineWait = 0.35,
+				UsePlayerSource = true,
+				{ Cue = "/VO/Melinoe_2403", Text = "The Altar of Ashes.", },
+			},
+			{ GlobalVoiceLines = "DoraCosmeticReactionVoiceLines" },
+		},
+	},
+	-- #endregion
 }
-for _, cosmeticData in ipairs(preRunCosmetics) do
-	if cosmeticData.GameStateRequirements == nil then
-		cosmeticData.GameStateRequirements = {}
-	end
-	table.insert(cosmeticData.GameStateRequirements, {
-		PathTrue = { "GameState", "WorldUpgradesAdded", mod.UnlockCosmeticsIncantationName },
-	})
-	table.insert(mod.ModdedCosmeticIds, cosmeticData.Id)
-	CosmeticsAPI.RegisterCosmetic(cosmeticData)
-end
+registerShopCosmetics(preRunCosmetics)
 -- #endregion
 
 -- #region Arcana Card Backs
@@ -6567,11 +6719,6 @@ CosmeticsAPI.RegisterCardBack({
 	CardBackPath = "NikkelM-HadesBiomesCosmeticsCardbacks\\GUI\\Screens\\Cardback\\CardBackGodsHermes",
 })
 -- #endregion
-
--- Register the cosmetics package to be loaded automatically by the CosmeticsAPI when entering the Crossroads
-CosmeticsAPI.RegisterCrossroadsPackages({ "NikkelM-HadesBiomesCosmetics" })
--- Register the arcana card back package to be loaded automatically by the CosmeticsAPI
-CosmeticsAPI.RegisterCrossroadsPackages({ "NikkelM-HadesBiomesCosmeticsCardbacks" })
 -- #endregion
 
 -- #region Chthonic Chids
@@ -7605,3 +7752,8 @@ CosmeticsAPI.RegisterChthonicChid({
 -- 	AlwaysRevealImmediately = true,
 -- })
 -- #endregion
+
+-- Register the cosmetics package to be loaded automatically by the CosmeticsAPI when entering the Crossroads
+CosmeticsAPI.RegisterCrossroadsPackages({ "NikkelM-HadesBiomesCosmetics" })
+-- Register the arcana card back package to be loaded automatically by the CosmeticsAPI
+CosmeticsAPI.RegisterCardBackPackages({ "NikkelM-HadesBiomesCosmeticsCardbacks" })

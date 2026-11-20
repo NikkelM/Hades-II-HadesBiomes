@@ -505,6 +505,7 @@ local function on_ready()
 			import "Scripts/Combat.lua"
 			import "Scripts/CombatLogic.lua"
 			import "Scripts/CombatPresentation.lua"
+			import "Scripts/CosmeticsLogic.lua"
 			import "Scripts/AssistPresentation.lua"
 			import "Scripts/AssistLogic.lua"
 			import "Scripts/DeathLoopLogic.lua"

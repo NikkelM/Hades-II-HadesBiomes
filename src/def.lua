@@ -23,4 +23,9 @@ function public.IsModEnabledAndInstallationValid() end
 ---@return any keyValue The current value of this key, or nil if the key does not exist or the mod is not enabled or the installation is invalid.
 function public.GetModConfigValueByLeafKey(leafKey) end
 
+--- Sets the Altar of Ashes glow colors in the Training Grounds when an Altar-cosmetic is activated
+---@param source table|nil The cosmetic item data supplied by the game
+---@param args table|nil Table containing Foreground and Additive RGBA values
+function public.ApplyCardAltarGlow(source, args) end
+
 return public
