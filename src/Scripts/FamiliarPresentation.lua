@@ -79,10 +79,57 @@ function mod.SnakeFamiliarSpecialInteractLockedInRun(familiar)
 	AddInputBlock({ Name = blockName })
 	game.AddInteractBlock(familiar, blockName)
 	game.HideUseButton(familiar.ObjectId, familiar)
+
+	local heroId = game.CurrentRun.Hero.ObjectId
+	Stop({ Id = heroId })
+	Halt({ Id = heroId })
+	CancelWeaponFireRequests({ Id = heroId })
+	local offset = game.CalcOffset(math.rad(GetAngle({ Id = familiar.ObjectId })), 110)
+	local petPointId = SpawnObstacle({
+		Name = "InvisibleTarget",
+		DestinationId = familiar.ObjectId,
+		OffsetX = offset.X,
+		OffsetY = offset.Y * 0.5,
+	})
+	if GetDistance({ Id = heroId, DestinationId = petPointId }) > 10 then
+		game.MoveHeroToRoomPosition({
+			DestinationId = petPointId,
+			DisableCollision = true,
+			SuccessDistance = 32,
+			NotifyDistance = 10,
+			ContinueToGoal = true,
+		})
+		game.wait(0.3)
+	end
+	Destroy({ Id = petPointId })
+	AngleTowardTarget({ Id = heroId, DestinationId = familiar.ObjectId })
+	local unequipAnimation = game.GetEquippedWeaponValue("UnequipAnimation") or "MelinoeIdleWeaponless"
+	SetAnimation({ Name = unequipAnimation, DestinationId = heroId })
+	game.wait(0.45)
+
+	local leanStartTime = 0.9
+	local burrowStartTime = 3.35
+	SetAnimation({ Name = "ModsNikkelMHadesBiomes_MelinoePetOphis", DestinationId = heroId })
+	game.thread(game.PlayVoiceLines, familiar.InteractVoiceLines)
+
+	game.wait(leanStartTime)
+	SetAnimation({ Name = familiar.PetAnimation, DestinationId = familiar.ObjectId })
+	game.wait(burrowStartTime - leanStartTime)
+
+	game.thread(mod.SnakeFamiliarFledPresentation, familiar)
+	game.wait(1.25)
+	RemoveInputBlock({ Name = blockName })
+end
+
+function mod.SnakeFamiliarFledPresentation(familiar)
+	UseableOff({ Id = familiar.ObjectId })
+
 	mod.SnakeFamiliarBurrowPresentation(familiar)
+
 	Destroy({ Id = familiar.ObjectId })
 	game.ActiveEnemies[familiar.ObjectId] = nil
-	RemoveInputBlock({ Name = blockName })
+
+	game.thread(game.PlayVoiceLines, game.GlobalVoiceLines.ModsNikkelMHadesBiomes_SnakeFamiliarFledVoiceLines)
 end
 
 function mod.SnakeFamiliarVictoryPresentation(familiar, args)

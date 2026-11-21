@@ -1,4 +1,4 @@
--- Map conversation animations for Zagreus to animations that exist for Melinoe
+-- Map conversation animations for Zagreus to animations that exist for Melinoe and add new animations
 
 local animationsFile = rom.path.combine(rom.paths.Content(),
 	"Game/Animations/Model/Hero_Melinoe_Animation_Personality.sjson")
@@ -924,6 +924,32 @@ local newData = {
 		},
 	},
 	-- #endregion
+	-- #endregion
+
+	-- #region Familiars
+	{
+		Name = "ModsNikkelMHadesBiomes_MelinoePetOphis",
+		InheritFrom = "Melinoe_PetCat",
+		ChainTo = "ModsNikkelMHadesBiomes_MelinoePetOphisReturnToIdle",
+		Frames = {
+			{ Frame = 0,   FrameSpeed = 1 },
+			{ Frame = 192, FrameSpeed = 0 },
+		},
+	},
+	{
+		Name = "ModsNikkelMHadesBiomes_MelinoePetOphisReturnToIdle",
+		InheritFrom = "Melinoe_PetCat",
+		Frames = {
+			{ Frame = 0,   FrameSpeed = 0 },
+			{ Frame = 300, FrameSpeed = 1 },
+		},
+		Blends = {
+			{
+				BlendTransitionFrom = "ModsNikkelMHadesBiomes_MelinoePetOphis",
+				Duration = 18,
+			},
+		},
+	},
 	-- #endregion
 }
 

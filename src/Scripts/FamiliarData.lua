@@ -44,6 +44,7 @@ local snakeFamiliarData = {
 		-- Animations
 		IdleAnimation = "ModsNikkelMHadesBiomesSnakeFamiliar_Idle",
 		HappyAnimation = "ModsNikkelMHadesBiomesSnakeFamiliar_Idle",
+		PetAnimation = "ModsNikkelMHadesBiomesSnakeFamiliar_Pet",
 		FleeAnimation = "Enemy_DragonBurrower_Burrow",
 		StartNewRunAnimation = "Enemy_DragonBurrower_Burrow",
 		HiddenAnimation = "Enemy_DragonBurrower_Hidden",
@@ -168,6 +169,52 @@ local snakeFamiliarData = {
 					},
 					NamedRequirements = { "ModsNikkelMHadesBiomes_HasAllSnakeUpgrades" },
 				},
+			},
+		},
+
+		-- Interaction
+		InteractVoiceLines = {
+			{
+				PreLineWait = 0.4,
+				BreakIfPlayed = true,
+				PlayOnce = true,
+				PlayOnceContext = "ModsNikkelMHadesBiomes_SnakeFirstApproach",
+				GameStateRequirements = {
+					{
+						PathFalse = { "CurrentRun", "Hero", "IsDead" },
+					},
+				},
+				{ Cue = "/VO/Melinoe_3865", Text = "You're an unusual fellow.", },
+			},
+			{
+				PreLineWait = 0.4,
+				BreakIfPlayed = true,
+				GameStateRequirements = {
+					{
+						PathFalse = { "CurrentRun", "Hero", "IsDead" },
+					},
+				},
+				{ Cue = "/VO/Melinoe_1961", Text = "{#Emph}Huh..." },
+				{ Cue = "/VO/Melinoe_0578", Text = "{#Emph}Hrm." },
+				{ Cue = "/VO/Melinoe_3865", Text = "You're an unusual fellow.", },
+				{ Cue = "/VO/Melinoe_3866", Text = "You're always here..." },
+				{ Cue = "/VO/Melinoe_3966", Text = "Feeling feisty, are we...?" },
+			},
+			{
+				PreLineWait = 0.4,
+				BreakIfPlayed = true,
+				GameStateRequirements = {
+					{
+						PathTrue = { "CurrentRun", "Hero", "IsDead" },
+					},
+				},
+				{ Cue = "/VO/Melinoe_3400", Text = "Hey..." },
+				{ Cue = "/VO/Melinoe_3402", Text = "{#Emph}<Chuckle>" },
+				{ Cue = "/VO/Melinoe_3787", Text = "It's going to be all right." },
+				{ Cue = "/VO/Melinoe_3779", Text = "You're all right." },
+				{ Cue = "/VO/Melinoe_3965", Text = "Thanks for watching out for me." },
+				{ Cue = "/VO/Melinoe_3966", Text = "Feeling feisty, are we...?" },
+				{ Cue = "/VO/Melinoe_3967", Text = "Up for another journey?" },
 			},
 		},
 

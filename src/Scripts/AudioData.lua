@@ -369,6 +369,9 @@ game.GlobalVoiceLines.SkellySummonExitReactionVoiceLines = game.GlobalVoiceLines
 game.GlobalVoiceLines.ModsNikkelMHadesBiomes_SnakeReactionVoiceLines = game.GlobalVoiceLines
 		.ModsNikkelMHadesBiomes_SnakeReactionVoiceLines or
 		mod.GlobalVoiceLines.ModsNikkelMHadesBiomes_SnakeReactionVoiceLines
+game.GlobalVoiceLines.ModsNikkelMHadesBiomes_SnakeFamiliarFledVoiceLines = game.GlobalVoiceLines
+		.ModsNikkelMHadesBiomes_SnakeFamiliarFledVoiceLines or
+		mod.GlobalVoiceLines.ModsNikkelMHadesBiomes_SnakeFamiliarFledVoiceLines
 
 table.insert(game.GlobalVoiceLines.CombatResolvedVoiceLines, mod.GlobalVoiceLines.SkellySummonCombatResolvedVoiceLines)
 table.insert(game.GlobalVoiceLines.CombatResolvedVoiceLines, mod.GlobalVoiceLines.DusaSummonCombatResolvedVoiceLines)

@@ -15,6 +15,10 @@ local addAnimations = {
 				BlendTransitionFrom = "ModsNikkelMHadesBiomesSnakeFamiliar_VictoryRecovery",
 				Duration = 8,
 			},
+			{
+				BlendTransitionFrom = "ModsNikkelMHadesBiomesSnakeFamiliar_Pet",
+				Duration = 40,
+			},
 		},
 	},
 	{
@@ -26,7 +30,7 @@ local addAnimations = {
 		Sound = "/SFX/Enemy Sounds/RangedBurrower/EmoteAttacking",
 		-- Start at the forward pose, then play the complete pullback to idle
 		Frames = {
-			{ Frame = 0, FrameSpeed = 0 },
+			{ Frame = 0,  FrameSpeed = 0 },
 			{ Frame = 50, FrameSpeed = 1 },
 		},
 		Blends = {
@@ -58,6 +62,24 @@ local addAnimations = {
 			{ Frame = 15, Sound = "/SFX/Enemy Sounds/RangedBurrower/EmoteAttacking" },
 			{ Frame = 30, Sound = "/SFX/Enemy Sounds/RangedBurrower/EmoteAttacking" },
 			{ Frame = 50, FrameSpeed = 0 },
+		},
+	},
+	{
+		Name = "ModsNikkelMHadesBiomesSnakeFamiliar_Pet",
+		InheritFrom = "EnemyDragonBurrowerBaseAnimation",
+		GrannyAnimation = "BoneDracon_Base_AttackRange_C_00",
+		GrannyAnimationSpeed = 0.15,
+		ChainTo = "ModsNikkelMHadesBiomesSnakeFamiliar_Idle",
+		Frames = {
+			{ Frame = 0,  FrameSpeed = 0 },
+			{ Frame = 4,  FrameSpeed = 1 },
+			{ Frame = 18, FrameSpeed = 0 },
+		},
+		Blends = {
+			{
+				BlendTransitionFrom = "BlendTransitionFromAll",
+				Duration = 24,
+			},
 		},
 	},
 }
