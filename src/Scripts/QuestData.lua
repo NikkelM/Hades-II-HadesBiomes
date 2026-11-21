@@ -1676,3 +1676,21 @@ if nighmareFearActive then
 	}
 	mod.AddTableKeysSkipDupes(game.QuestData, nighmareFearNewQuestData)
 end
+
+-- #region Vanilla Quest Modifications
+-- Allow SnakeFamiliar to count towards the "Recruit at least three familiars" prophecy
+table.insert(game.QuestData.QuestRecruitFamiliars.CompleteGameStateRequirements[1].CountOf, "ModsNikkelMHadesBiomesSnakeFamiliar")
+
+-- Allow SnakeFamiliar to unlock and complete the "fully upgrade a familiar" prophecy
+table.insert(game.QuestData.QuestUpgradeFamiliars.UnlockGameStateRequirements.OrRequirements, {
+	{
+		Path = { "GameState", "FamiliarUpgrades" },
+		CountOf = game.GameData.AllSnakeFamiliarUpgrades,
+		Comparison = ">=",
+		Value = 3,
+	},
+})
+table.insert(game.QuestData.QuestUpgradeFamiliars.CompleteGameStateRequirements.OrRequirements, {
+	NamedRequirements = { "ModsNikkelMHadesBiomes_HasAllSnakeUpgrades" },
+})
+-- #endregion

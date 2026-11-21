@@ -385,6 +385,15 @@ local newNamedRequirements = {
 		},
 	},
 	-- #endregion
+
+	-- #region Familiars
+	ModsNikkelMHadesBiomes_HasAllSnakeUpgrades = {
+		{
+			Path = { "GameState", "FamiliarUpgrades" },
+			HasAll = game.GameData.AllSnakeFamiliarUpgrades,
+		},
+	},
+	-- #endregion
 }
 mod.AddTableKeysSkipDupes(game.NamedRequirementsData, newNamedRequirements)
 -- #endregion
