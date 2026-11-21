@@ -119,6 +119,7 @@ local snakeFamiliarData = {
 			Text = "ModsNikkelMHadesBiomesSnakeFamiliar",
 			-- TODO: Replace with proper icon
 			Icon = "FamiliarIcon_Frog",
+			UnlockStartAnimation = "ModsNikkelMHadesBiomesSnakeFamiliar_Pet",
 			UnlockEndAnimation = "ModsNikkelMHadesBiomesSnakeFamiliar_VictoryRecovery",
 			UnlockExitAnimation = "Enemy_DragonBurrower_Burrow",
 		},

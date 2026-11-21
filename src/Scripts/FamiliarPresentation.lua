@@ -51,10 +51,18 @@ function mod.SnakeFamiliarPostAttackPresentation(familiar)
 	game.wait(familiar.PostAttackDuration, familiar.AIThreadName)
 end
 
-function mod.SnakeFamiliarBurrowPresentation(familiar)
-	StopAnimation({ Name = familiar.BurrowPersistentFx, DestinationId = familiar.ObjectId })
+function mod.SnakeFamiliarBurrowEffects(familiar, preventDecalChain)
+	StopAnimation({
+		Name = familiar.BurrowPersistentFx,
+		DestinationId = familiar.ObjectId,
+		PreventChain = preventDecalChain,
+	})
 	CreateAnimation({ Name = familiar.BurrowFx, DestinationId = familiar.ObjectId })
 	PlaySound({ Name = familiar.BurrowSound, Id = familiar.ObjectId })
+end
+
+function mod.SnakeFamiliarBurrowPresentation(familiar)
+	mod.SnakeFamiliarBurrowEffects(familiar)
 	SetAnimation({ Name = familiar.BurrowAnimation, DestinationId = familiar.ObjectId })
 	game.wait(familiar.BurrowDuration, familiar.AIThreadName)
 	SetAnimation({ Name = familiar.HiddenAnimation, DestinationId = familiar.ObjectId })

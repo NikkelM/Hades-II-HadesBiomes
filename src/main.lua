@@ -640,6 +640,7 @@ local function on_ready_late()
 	import "Scripts/EffectPresentation_Late.lua"
 	import "Scripts/EventPresentation_Late.lua"
 	import "Scripts/FamiliarLogic_Late.lua"
+	import "Scripts/FamiliarPresentation_Late.lua"
 	import "Scripts/GhostLogic_Late.lua"
 	import "Scripts/HarvestLogic_Late.lua"
 	import "Scripts/HarvestPresentation_Late.lua"
