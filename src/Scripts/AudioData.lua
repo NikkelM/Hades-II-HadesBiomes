@@ -402,6 +402,9 @@ if game.GlobalVoiceLines.HarvestPointFoundVoiceLines then
 		IsNone = { "Surface" },
 	})
 end
+
+-- Allow FamiliarRecruitedVoiceLines in the D_Reprieve01 room for SnakeFamiliar
+table.insert(game.GlobalVoiceLines.FamiliarRecruitedVoiceLines[3].GameStateRequirements[1].IsAny, "D_Reprieve01")
 -- #endregion
 
 -- #region Modifications to vanilla voiceline requirements
