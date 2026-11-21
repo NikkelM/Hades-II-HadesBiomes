@@ -33,7 +33,7 @@ function mod.SnakeFamiliarAttackPresentation(familiar, args)
 	for dartIndex = 1, familiar.DartCount do
 		AngleTowardTarget({ Id = familiar.ObjectId, DestinationId = targetId })
 		CreateProjectileFromUnit({
-			Name = familiar.ProjectileName,
+			Name = familiar.Using.Projectile,
 			Id = familiar.ObjectId,
 			DestinationId = targetId,
 		})
@@ -41,14 +41,16 @@ function mod.SnakeFamiliarAttackPresentation(familiar, args)
 			game.wait(familiar.ProjectileInterval, familiar.AIThreadName)
 		end
 	end
-	familiar.LastBurstFireTime = game._worldTime or 0
 	game.wait(
 		math.max(0, familiar.FireDuration - (familiar.DartCount - 1) * familiar.ProjectileInterval),
 		familiar.AIThreadName
 	)
+	mod.SnakeFamiliarPostAttackPresentation(familiar)
+end
+
+function mod.SnakeFamiliarPostAttackPresentation(familiar)
 	SetAnimation({ Name = familiar.PostAttackAnimation, DestinationId = familiar.ObjectId })
 	game.wait(familiar.PostAttackDuration, familiar.AIThreadName)
-	SetAnimation({ Name = familiar.IdleAnimation, DestinationId = familiar.ObjectId })
 end
 
 function mod.SnakeFamiliarBurrowPresentation(familiar)
@@ -80,12 +82,12 @@ function mod.SnakeFamiliarVictoryPresentation(familiar, args)
 	end
 
 	mod.SnakeFamiliarStopAI(familiar)
+	game.wait(1.0, familiar.AIThreadName)
 	if familiar.Burrowed then
 		mod.SnakeFamiliarUnburrowPresentation(familiar)
 	end
-	AngleTowardTarget({ Id = familiar.ObjectId, DestinationId = game.CurrentRun.Hero.ObjectId })
-	SetAnimation({ Name = familiar.HappyAnimation, DestinationId = familiar.ObjectId })
-	game.wait(2.0, familiar.AIThreadName)
+	SetAnimation({ Name = familiar.VictoryAnimation, DestinationId = familiar.ObjectId })
+	game.wait(familiar.VictoryRecoveryDuration, familiar.AIThreadName)
 	game.ReenableFamiliar(familiar)
 end
 

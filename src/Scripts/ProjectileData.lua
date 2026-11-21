@@ -52,6 +52,9 @@ local addProjectiles = {
 	ThanatosDeathCurseAoE = {
 		OnHitFunctionNames = { _PLUGIN.guid .. "." .. "CurseHealthBar" },
 	},
+	ModsNikkelMHadesBiomesSnakeDart = {
+		OnHitFunctionNames = { _PLUGIN.guid .. "." .. "SnakeVenomOnHit" },
+	},
 	-- #region Theseus
 	ModsNikkelMHadesBiomes_TheseusApolloBolt = game.DeepCopyTable(game.ProjectileData.DevotionApollo),
 	ModsNikkelMHadesBiomes_TheseusApolloBoltPassive = game.DeepCopyTable(game.ProjectileData.DevotionApollo),

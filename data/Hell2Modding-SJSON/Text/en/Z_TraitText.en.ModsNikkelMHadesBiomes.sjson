@@ -235,5 +235,23 @@
       Description = "Enemies in the {$Keywords.ModsNikkelMHadesBiomesModdedRoute} have less {$Keywords.EnemyHealth} and {$Keywords.Armor} while you are in {$Keywords.ModsNikkelMHadesBiomesGoddessMode}."
     }
     // #endregion
+    // #region Familiars
+    {
+      Id = "ModsNikkelMHadesBiomesSnakeDamageResistanceBonus"
+      InheritFrom = "BaseBoonMultiline"
+      DisplayName = "Blood Bond"
+      Description = "While together, you take {#UpgradeFormat}-{$TooltipData.ExtractData.DamageResistance}% {#Prev}damage."
+    }
+    {
+      Id = "ModsNikkelMHadesBiomesSnakeGoldBonus"
+      DisplayName = "Prosperous Bond"
+      Description = "While together, any {!Icons.Currency} you gain is worth {#AltUpgradeFormat}{$TooltipData.ExtractData.MoneyRewardIncrease:P}{#Prev}."
+    }
+    {
+      Id = "ModsNikkelMHadesBiomesSnakePoisonStacks"
+      DisplayName = "Toxic Bond"
+      Description = "{$Keywords.ModsNikkelMHadesBiomesSnakeFamiliar} fires a burst of Venom Darts that stack for {#UpgradeFormat}{$TooltipData.ExtractData.VenomStacksPerHit}{#Prev} damage per hit and slow enemies for {#UpgradeFormat}{$TooltipData.ExtractData.VenomDuration}{#Prev} Sec."
+    }
+    // #endregion
   ]
 }

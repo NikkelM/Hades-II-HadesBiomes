@@ -14,6 +14,7 @@ local newKeywords = {
 	"CharPatroclus",
 	"CharBouldy",
 	"CharZagreus",
+	"ModsNikkelMHadesBiomesSnakeFamiliar",
 	"Assist",
 	"ShrinePointGate",
 	"ModsNikkelMHadesBiomesCoreBoon",

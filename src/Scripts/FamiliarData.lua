@@ -10,7 +10,8 @@ local snakeFamiliarData = {
 
 		AIOptions = { _PLUGIN.guid .. "." .. "SnakeFamiliarAI", },
 		InitialAttackDelay = 0.5,
-		ProjectileName = "ModsNikkelMHadesBiomesSnakeDart",
+		AttackMinDuration = 7.5,
+		AttackMaxDuration = 8.5,
 		DartCount = 3,
 		ProjectileInterval = 0.25,
 		TargetSearchDistance = 1800,
@@ -90,9 +91,9 @@ local snakeFamiliarData = {
 			},
 		},
 		TraitNames = {
-			"ModsNikkelMHadesBiomesSnakeBloodBond",
-			"ModsNikkelMHadesBiomesSnakeAurumBond",
-			"ModsNikkelMHadesBiomesSnakeToxicBond",
+			"ModsNikkelMHadesBiomesSnakeDamageResistanceBonus",
+			"ModsNikkelMHadesBiomesSnakeGoldBonus",
+			"ModsNikkelMHadesBiomesSnakePoisonStacks",
 		},
 
 		GrannyTexture = "ModsNikkelMHadesBiomesSnakeFamiliar/SnakeFamiliar_Color",
@@ -106,8 +107,10 @@ local snakeFamiliarData = {
 		BurrowAnimation = "Enemy_DragonBurrower_Burrow",
 		UnburrowAnimation = "Enemy_DragonBurrower_Unburrow",
 		PreAttackAnimation = "Enemy_DragonBurrower_RangedPreFire",
+		VictoryAnimation = "ModsNikkelMHadesBiomesSnakeFamiliar_VictoryRecovery",
+		VictoryRecoveryDuration = 1.6,
 		TripleFireAnimation = "ModsNikkelMHadesBiomesSnakeFamiliar_RangedFire_Triple",
-		PostAttackAnimation = "Enemy_DragonBurrower_RangedPostFire",
+		PostAttackAnimation = "ModsNikkelMHadesBiomesSnakeFamiliar_RangedPostFire",
 		BurrowFx = "DragonBurrowerBurrowFxOut",
 		BurrowPersistentFx = "DragonBurrowerBurrowFxPersistent",
 		BurrowSound = "/SFX/Enemy Sounds/RangedBurrower/DraconSubmerge",
@@ -125,7 +128,7 @@ table.insert(game.FamiliarOrderData, "ModsNikkelMHadesBiomesSnakeFamiliar")
 
 -- #region SnakeFamiliar Traits
 game.OverwriteTableKeys(game.TraitData, {
-	ModsNikkelMHadesBiomesSnakeBloodBond = {
+	ModsNikkelMHadesBiomesSnakeDamageResistanceBonus = {
 		InheritFrom = { "FamiliarTrait", },
 		Icon = "Codex_Portrait_DragonBurrowerTyphon",
 		CirceBonusStacks = 2,
@@ -148,7 +151,7 @@ game.OverwriteTableKeys(game.TraitData, {
 			},
 		},
 	},
-	ModsNikkelMHadesBiomesSnakeAurumBond = {
+	ModsNikkelMHadesBiomesSnakeGoldBonus = {
 		Hidden = true,
 		MoneyMultiplier = {
 			BaseValue = 1.02,
@@ -165,20 +168,33 @@ game.OverwriteTableKeys(game.TraitData, {
 			},
 		},
 	},
-	ModsNikkelMHadesBiomesSnakeToxicBond = {
+	ModsNikkelMHadesBiomesSnakePoisonStacks = {
 		Hidden = true,
-		ModsNikkelMHadesBiomesSnakeAttackInterval = {
-			BaseValue = 20,
+		ModsNikkelMHadesBiomesSnakeVenomStacksPerHit = {
+			BaseValue = 1,
 			AbsoluteStackValues = {
-				[1] = -5,
-				[2] = -3,
-				[3] = -2,
+				[1] = 1,
+				[2] = 1,
+				[3] = 1,
+			},
+			AsInt = true,
+		},
+		ModsNikkelMHadesBiomesSnakeVenomDuration = {
+			BaseValue = 4,
+			AbsoluteStackValues = {
+				[1] = 2,
+				[2] = 2,
+				[3] = 2,
 			},
 		},
 		ExtractValues = {
 			{
-				Key = "ModsNikkelMHadesBiomesSnakeAttackInterval",
-				ExtractAs = "AttackInterval",
+				Key = "ModsNikkelMHadesBiomesSnakeVenomStacksPerHit",
+				ExtractAs = "VenomStacksPerHit",
+			},
+			{
+				Key = "ModsNikkelMHadesBiomesSnakeVenomDuration",
+				ExtractAs = "VenomDuration",
 			},
 		},
 	},

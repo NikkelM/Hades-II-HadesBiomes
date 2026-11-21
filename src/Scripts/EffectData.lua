@@ -5,13 +5,6 @@ game.EffectData.StyxPoison = {
 	OnClearFunctionName = _PLUGIN.guid .. "." .. "StyxPoisonClear",
 }
 
-local snakeVenomData = game.DeepCopyTable(game.EffectData.StyxPoison)
-snakeVenomData.EffectName = "ModsNikkelMHadesBiomesSnakeVenom"
-snakeVenomData.OnApplyFunctionName = "nil"
-snakeVenomData.OnClearFunctionName = "nil"
-snakeVenomData.CancelUnitHitFlash = true
-game.EffectData[snakeVenomData.EffectName] = snakeVenomData
-
 game.WeaponEffectData.ModsNikkelMHadesBiomesAttackSuperLowGrip = {
 	EffectName = "ModsNikkelMHadesBiomesAttackSuperLowGrip",
 	DataProperties = {
@@ -21,3 +14,46 @@ game.WeaponEffectData.ModsNikkelMHadesBiomesAttackSuperLowGrip = {
 		HaltOnEnd = true,
 	},
 }
+
+-- #region SnakeFamiliar
+local snakeVenomData = game.DeepCopyTable(game.EffectData.StyxPoison)
+snakeVenomData.EffectName = "ModsNikkelMHadesBiomesSnakeVenom"
+snakeVenomData.OnApplyFunctionName = _PLUGIN.guid .. "." .. "SnakeVenomApply"
+snakeVenomData.OnClearFunctionName = _PLUGIN.guid .. "." .. "SnakeVenomClear"
+snakeVenomData.CancelUnitHitFlash = true
+snakeVenomData.DataProperties = {
+	Type = "DAMAGE_OVER_TIME",
+	Amount = 1,
+	Cooldown = 0.6,
+	InitialDelay = 0,
+	Duration = 4,
+	Stacks = true,
+	MaxStacks = 12,
+	ExtendDurationOnReapply = true,
+	SilentImpact = true,
+	FrontFx = "ModsNikkelMHadesBiomesSnakeVenomFx",
+	Active = true,
+	CanAffectInvulnerable = false,
+	Cancelable = true,
+	DisableMove = false,
+	DisableRotate = false,
+	DisableAttack = false,
+}
+game.EffectData[snakeVenomData.EffectName] = snakeVenomData
+
+game.EffectData.ModsNikkelMHadesBiomesSnakeVenomSlow = {
+	Name = "ModsNikkelMHadesBiomesSnakeVenomSlow",
+	EffectName = "ModsNikkelMHadesBiomesSnakeVenomSlow",
+	DataProperties = {
+		Type = "SPEED",
+		Duration = 4,
+		Modifier = 0.60,
+		IgnoreName = "_PlayerUnit",
+		Stacks = false,
+		ExtendDurationOnReapply = true,
+		Active = true,
+		CanAffectInvulnerable = false,
+		TimeModifierFraction = 0,
+	},
+}
+-- #endregion

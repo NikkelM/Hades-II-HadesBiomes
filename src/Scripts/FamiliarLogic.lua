@@ -1,11 +1,7 @@
-local function getSnakeFamiliarTime()
-	return game._worldTime or 0
-end
-
 local function getSnakeFamiliarTarget(familiar)
 	local eligibleIds = {}
 	for id, enemy in pairs(game.ShallowCopyTable(game.ActiveEnemies)) do
-		if not enemy.IsDead and (enemy.RequiredKill or enemy.FamiliarTarget) and game.IsEmpty(enemy.InvulnerableFlags) then
+		if not enemy.IsDead and (enemy.RequiredKill or enemy.FamiliarTarget) and not IsInvulnerable({ Id = enemy.ObjectId }) then
 			table.insert(eligibleIds, id)
 		end
 	end
@@ -110,6 +106,12 @@ local function clearSnakeFamiliarRelocationTarget(familiar)
 	end
 end
 
+local function isSnakeFamiliarAttackTargetValid(familiar, targetId)
+	local enemy = game.ActiveEnemies[targetId]
+	return game.IsAIActive(familiar) and game.FamiliarShouldUseCombatLogic() and enemy ~= nil and not enemy.IsDead and
+			(enemy.RequiredKill or enemy.FamiliarTarget) and not IsInvulnerable({ Id = enemy.ObjectId })
+end
+
 local function snakeFamiliarTryAttack(familiar)
 	if not game.IsAIActive(familiar) or not game.FamiliarShouldUseCombatLogic() then
 		return false
@@ -131,8 +133,15 @@ local function snakeFamiliarTryAttack(familiar)
 	})
 	clearSnakeFamiliarRelocationTarget(familiar)
 
-	local enemy = game.ActiveEnemies[targetId]
-	if not game.IsAIActive(familiar) or not game.FamiliarShouldUseCombatLogic() or enemy == nil or enemy.IsDead or not (enemy.RequiredKill or enemy.FamiliarTarget) or not game.IsEmpty(enemy.InvulnerableFlags) then
+	if not isSnakeFamiliarAttackTargetValid(familiar, targetId) then
+		if game.IsAIActive(familiar) and game.FamiliarShouldUseCombatLogic() and not familiar.Burrowed then
+			mod.SnakeFamiliarBurrowPresentation(familiar)
+		end
+		familiar.CapturedTargetId = nil
+		return false
+	end
+
+	if not isSnakeFamiliarAttackTargetValid(familiar, targetId) then
 		if game.IsAIActive(familiar) and game.FamiliarShouldUseCombatLogic() and not familiar.Burrowed then
 			mod.SnakeFamiliarBurrowPresentation(familiar)
 		end
@@ -168,20 +177,17 @@ function mod.SnakeFamiliarAI(familiar, args)
 			end
 
 			if snakeFamiliarTryAttack(familiar) then
-				local burrowDelay = familiar.LastBurstFireTime +
-						game.RandomFloat(familiar.PostAttackBurrowDelayMin, familiar.PostAttackBurrowDelayMax) -
-						getSnakeFamiliarTime()
-				if burrowDelay > 0 then
-					game.wait(burrowDelay, familiar.AIThreadName)
-				end
+				game.wait(game.RandomFloat(familiar.PostAttackBurrowDelayMin, familiar.PostAttackBurrowDelayMax),
+					familiar.AIThreadName)
 				if game.IsAIActive(familiar) and game.FamiliarShouldUseCombatLogic() and not familiar.Burrowed then
 					mod.SnakeFamiliarBurrowPresentation(familiar)
 				end
-				attackDelay = game.GetTotalHeroTraitValue("ModsNikkelMHadesBiomesSnakeAttackInterval")
+				attackDelay = game.RandomFloat(familiar.AttackMinDuration, familiar.AttackMaxDuration)
 			elseif game.IsAIActive(familiar) and game.FamiliarShouldUseCombatLogic() then
 				game.wait(familiar.TargetRetryInterval, familiar.AIThreadName)
 			end
 		else
+			attackDelay = familiar.InitialAttackDelay
 			if familiar.Burrowed then
 				mod.SnakeFamiliarUnburrowPresentation(familiar)
 			end
