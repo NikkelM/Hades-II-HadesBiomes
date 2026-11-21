@@ -3801,6 +3801,16 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 		{ Cue = "/VO/Skelly_0452" },
 	},
 	-- #endregion
+	-- #region Familiars
+	ModsNikkelMHadesBiomes_SnakeReactionVoiceLines = {
+		UsePlayerSource = true,
+		PreLineWait = 0.55,
+		PlayOnce = true,
+		PlayOnceContext = "ModsNikkelMHadesBiomes_SnakeSightedVO",
+		GameStateRequirements = {},
+		{ Cue = "/VO/Melinoe_1958", Text = "Oh?" },
+	}
+	-- #endregion
 }
 
 mod.HeroVoiceLines = mod.HeroVoiceLines or {

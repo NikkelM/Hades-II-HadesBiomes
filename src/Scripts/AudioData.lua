@@ -366,6 +366,10 @@ game.GlobalVoiceLines.SkellySummonTauntVoiceLines = game.GlobalVoiceLines.Skelly
 game.GlobalVoiceLines.SkellySummonExitReactionVoiceLines = game.GlobalVoiceLines.SkellySummonExitReactionVoiceLines or
 		mod.GlobalVoiceLines.SkellySummonExitReactionVoiceLines
 
+game.GlobalVoiceLines.ModsNikkelMHadesBiomes_SnakeReactionVoiceLines = game.GlobalVoiceLines
+		.ModsNikkelMHadesBiomes_SnakeReactionVoiceLines or
+		mod.GlobalVoiceLines.ModsNikkelMHadesBiomes_SnakeReactionVoiceLines
+
 table.insert(game.GlobalVoiceLines.CombatResolvedVoiceLines, mod.GlobalVoiceLines.SkellySummonCombatResolvedVoiceLines)
 table.insert(game.GlobalVoiceLines.CombatResolvedVoiceLines, mod.GlobalVoiceLines.DusaSummonCombatResolvedVoiceLines)
 

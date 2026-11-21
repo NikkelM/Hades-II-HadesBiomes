@@ -1,7 +1,7 @@
 function mod.SnakeFamiliarSpawnPresentation(familiar, args)
 	args = args or {}
 
-	if game.CurrentHubRoom ~= nil then
+	if game.CurrentHubRoom ~= nil or familiar.PreRecruit then
 		SetAnimation({ Name = familiar.IdleAnimation, DestinationId = familiar.ObjectId })
 		SetAlpha({ Id = familiar.ObjectId, Fraction = 1.0 })
 		CreateAnimation({ Name = familiar.BurrowPersistentFx, DestinationId = familiar.ObjectId })
@@ -12,11 +12,9 @@ function mod.SnakeFamiliarSpawnPresentation(familiar, args)
 	SetAnimation({ Name = familiar.HiddenAnimation, DestinationId = familiar.ObjectId })
 	SetAlpha({ Id = familiar.ObjectId, Fraction = 0.0 })
 	familiar.Burrowed = true
-	if not familiar.PreRecruit then
-		familiar.OnUsedFunctionName = nil
-		AddInteractBlock(familiar, "SnakeFamiliarInRun")
-	end
-	if args.PostCombat or familiar.PreRecruit or not game.FamiliarShouldUseCombatLogic() then
+	familiar.OnUsedFunctionName = nil
+	AddInteractBlock(familiar, "SnakeFamiliarInRun")
+	if args.PostCombat or not game.FamiliarShouldUseCombatLogic() then
 		mod.SnakeFamiliarUnburrowPresentation(familiar)
 	end
 end
@@ -74,6 +72,17 @@ function mod.SnakeFamiliarUnburrowPresentation(familiar)
 		familiar.AIThreadName
 	)
 	familiar.Burrowed = false
+end
+
+function mod.SnakeFamiliarSpecialInteractLockedInRun(familiar)
+	local blockName = "SnakeFamiliarApproach"
+	AddInputBlock({ Name = blockName })
+	game.AddInteractBlock(familiar, blockName)
+	game.HideUseButton(familiar.ObjectId, familiar)
+	mod.SnakeFamiliarBurrowPresentation(familiar)
+	Destroy({ Id = familiar.ObjectId })
+	game.ActiveEnemies[familiar.ObjectId] = nil
+	RemoveInputBlock({ Name = blockName })
 end
 
 function mod.SnakeFamiliarVictoryPresentation(familiar, args)

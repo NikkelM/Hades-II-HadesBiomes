@@ -2925,12 +2925,12 @@ In `MapArt.ChildGroups`, place `Gears_01` between `TerrainAbove` and `Terrain_Ba
 
 #### D_Hub
 
-In this map, we need to change the name for the Cerberus NPC, as it is used in both Hades and Hades II, as well as add Megaera
+In this map, we need to change the name for the Cerberus NPC, as it is used in both Hades and Hades II, as well as add Megaera.
 
 For ID `547487`, change the `Name` property from `NPC_Cerberus_Field_01` to `ModsNikkelMHadesBiomes_NPC_Cerberus_Field_01`.
 
 Add the following after the last entry in the list, take care of the Angle and Location values for Megaera.
-The Impassable tile object is offscreen for when she needs to teleport away
+The Impassable tile object is offscreen for when she needs to teleport away.
 
 ```
 {
@@ -3437,6 +3437,61 @@ For ID `555868`, change the `GroupNames` property to `Lighting_01`.
 In this map, we need to change the name for the CrawlerMiniboss, as it is used in both Hades and Hades II.
 
 For ID `552394`, change the `Name` property from `CrawlerMiniBoss` to `HadesCrawlerMiniBoss`.
+
+#### D_Reprieve01
+
+Add the following after the last entry in the list, take care of the Angle and Location values for Ophis.
+
+```
+{
+	"Active": false,
+	"AllowMovementReaction": false,
+	"Ambient": -1.0,
+	"Angle": 300.0,
+	"AttachToID": 0,
+	"AttachedIDs": [],
+	"CausesOcculsion": false,
+	"Clutter": false,
+	"Collision": true,
+	"Color": {
+		"A": 255,
+		"B": 255,
+		"G": 255,
+		"R": 255
+	},
+	"Comments": null,
+	"CreatesShadows": true,
+	"DataType": "Unit",
+	"DrawVfxOnTop": true,
+	"FlipHorizontal": false,
+	"FlipVertical": false,
+	"GroupNames": [
+		"Standing"
+	],
+	"HelpTextID": null,
+	"Hue": 0.0,
+	"Id": 543940,
+	"IgnoreGridManager": false,
+	"Invert": false,
+	"Location": {
+		"X": 7260.0,
+		"Y": 7900.0
+	},
+	"Name": "ModsNikkelMHadesBiomesSnakeFamiliar",
+	"OffsetZ": 0.0,
+	"ParallaxAmount": 1.0,
+	"Points": [],
+	"Saturation": 0.0,
+	"Scale": 1.0,
+	"SkewAngle": 0.0,
+	"SkewScale": 1.0,
+	"SortIndex": 0,
+	"StopsLight": true,
+	"Tallness": 0.0,
+	"UseBoundsForSortArea": true,
+	"Value": 0.0
+}
+```
 
 ### Surface
 

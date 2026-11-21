@@ -6,7 +6,9 @@ local snakeFamiliarData = {
 	ModsNikkelMHadesBiomesSnakeFamiliar = {
 		InheritFrom = { "BaseFamiliar", },
 		GameStateRequirements = {
-			Force = true,
+			{
+				PathTrue = { "GameState", "FamiliarsUnlocked", "ModsNikkelMHadesBiomesSnakeFamiliar" },
+			},
 		},
 
 		-- AI
@@ -116,12 +118,8 @@ local snakeFamiliarData = {
 			Text = "ModsNikkelMHadesBiomesSnakeFamiliar",
 			-- TODO: Replace with proper icon
 			Icon = "FamiliarIcon_Frog",
-
-			-- TODO:
-			-- UnlockSequenceDuration = 9,
-			-- UnlockStartAnimation = "Familiar_Raven_Pet",
-			-- UnlockEndAnimation = "Familiar_Raven_Victory_Perch_Fast",
-			-- UnlockExitAnimation = "Familiar_Raven_Perch_End",
+			UnlockEndAnimation = "ModsNikkelMHadesBiomesSnakeFamiliar_VictoryRecovery",
+			UnlockExitAnimation = "Enemy_DragonBurrower_Burrow",
 		},
 		GiftGameStateRequirements = {
 			{
@@ -177,6 +175,7 @@ local snakeFamiliarData = {
 		BurrowSound = "/SFX/Enemy Sounds/RangedBurrower/DraconSubmerge",
 
 		-- Teleport VFX
+		SkipFleeTeleportVfx = true,
 		BurrowFx = "DragonBurrowerBurrowFxOut",
 		BurrowPersistentFx = "DragonBurrowerBurrowFxPersistent",
 
