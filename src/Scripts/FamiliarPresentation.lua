@@ -20,20 +20,17 @@ function mod.SnakeFamiliarSpawnPresentation(familiar, args)
 end
 
 function mod.SnakeFamiliarAttackPresentation(familiar, args)
-	args = args or {}
-	local targetId = args.TargetId or familiar.CapturedTargetId
-
 	Stop({ Id = familiar.ObjectId })
-	AngleTowardTarget({ Id = familiar.ObjectId, DestinationId = targetId })
+	AngleTowardTarget({ Id = familiar.ObjectId, DestinationId = args.TargetId })
 	SetAnimation({ Name = familiar.PreAttackAnimation, DestinationId = familiar.ObjectId })
 	game.wait(familiar.PreAttackDuration, familiar.AIThreadName)
 	SetAnimation({ Name = familiar.TripleFireAnimation, DestinationId = familiar.ObjectId })
 	for dartIndex = 1, familiar.DartCount do
-		AngleTowardTarget({ Id = familiar.ObjectId, DestinationId = targetId })
+		AngleTowardTarget({ Id = familiar.ObjectId, DestinationId = args.TargetId })
 		CreateProjectileFromUnit({
 			Name = familiar.Using.Projectile,
 			Id = familiar.ObjectId,
-			DestinationId = targetId,
+			DestinationId = args.TargetId,
 		})
 		if dartIndex < familiar.DartCount then
 			game.wait(familiar.ProjectileInterval, familiar.AIThreadName)
@@ -71,6 +68,10 @@ function mod.SnakeFamiliarBurrowPresentation(familiar)
 end
 
 function mod.SnakeFamiliarUnburrowPresentation(familiar)
+	if not mod.SnakeFamiliarEnsureSafeUnburrowLocation(familiar) then
+		return
+	end
+
 	SetAnimation({ Name = familiar.UnburrowAnimation, DestinationId = familiar.ObjectId })
 	SetAlpha({ Id = familiar.ObjectId, Fraction = 1.0 })
 	game.wait(familiar.UnburrowDuration, familiar.AIThreadName)
@@ -150,8 +151,10 @@ function mod.SnakeFamiliarVictoryPresentation(familiar, args)
 	if familiar.Burrowed then
 		mod.SnakeFamiliarUnburrowPresentation(familiar)
 	end
-	SetAnimation({ Name = familiar.VictoryAnimation, DestinationId = familiar.ObjectId })
-	game.wait(familiar.VictoryRecoveryDuration, familiar.AIThreadName)
+	if not familiar.Burrowed then
+		SetAnimation({ Name = familiar.VictoryAnimation, DestinationId = familiar.ObjectId })
+		game.wait(familiar.VictoryRecoveryDuration, familiar.AIThreadName)
+	end
 	game.ReenableFamiliar(familiar)
 end
 

@@ -15,95 +15,85 @@ local function getSnakeFamiliarTarget(familiar)
 	})
 end
 
-local function isSnakeFamiliarFiringLocationValid(familiar, locationId, targetId, checkSpawnPoint)
-	if locationId <= 0 then
-		return false
-	end
-	if checkSpawnPoint and not game.IsSpawnPointEligible(locationId, {}, game.CurrentRun.CurrentRoom, { CheckRewardPointsUsed = true }) then
-		return false
-	end
-	if IsLocationBlocked({ Id = locationId, CheckUnits = false, PathfindersPreferAvoid = false }) then
-		return false
-	end
-
-	local targetDistance = GetDistance({ Id = locationId, DestinationId = targetId })
-	if targetDistance < familiar.TargetDistanceMin or targetDistance > familiar.TargetDistanceMax then
-		return false
-	end
-	local heroDistance = GetDistance({ Id = locationId, DestinationId = game.CurrentRun.Hero.ObjectId })
-	if heroDistance < familiar.HeroDistanceMin or heroDistance > familiar.HeroDistanceMax then
-		return false
-	end
-
-	return HasLineOfSight({
-		Id = locationId,
-		DestinationId = targetId,
-		StopsProjectiles = true,
-		CheckUnits = false,
-		LineOfSightBuffer = 50,
-		LineOfSightEndBuffer = 50,
-	})
+local function isSnakeFamiliarLocationValid(locationId, targetId)
+	return not IsLocationBlocked({ Id = locationId, CheckUnits = true, PathfindersPreferAvoid = true }) and
+			(targetId == nil or HasLineOfSight({ Id = locationId, DestinationId = targetId, StopsProjectiles = true, CheckUnits = false, }))
 end
 
-local function getSnakeFamiliarMapFiringLocation(familiar, targetId)
-	local candidateIds = game.CombineTablesIPairs(
-		GetIds({ Name = "SpawnPoints" }),
-		GetIdsByType({ Name = "FamiliarPoint" })
-	)
-
-	local bestId = nil
-	local bestScore = nil
-	for _, candidateId in ipairs(candidateIds) do
-		if isSnakeFamiliarFiringLocationValid(familiar, candidateId, targetId, true) then
-			local targetDistance = GetDistance({ Id = candidateId, DestinationId = targetId })
-			local heroDistance = GetDistance({ Id = candidateId, DestinationId = game.CurrentRun.Hero.ObjectId })
-			local score = math.abs(targetDistance - familiar.TargetDistancePreferred) + heroDistance * 0.001
-			if bestScore == nil or score < bestScore then
-				bestId = candidateId
-				bestScore = score
-			end
+local function getClosestValidSnakeFamiliarLocation(locationIds, targetId)
+	local safeLocations = {}
+	for _, locationId in ipairs(locationIds) do
+		if isSnakeFamiliarLocationValid(locationId, targetId) and (targetId == nil or game.IsSpawnPointEligible(locationId, {}, game.CurrentRun.CurrentRoom, { CheckRewardPointsUsed = true })) then
+			table.insert(safeLocations, locationId)
 		end
 	end
-	return bestId
+
+	return #safeLocations > 0 and GetClosest({ Id = game.CurrentRun.Hero.ObjectId, DestinationIds = safeLocations }) or 0
 end
 
-local function createSnakeFamiliarFallbackFiringLocation(familiar, targetId)
-	local angleToHero = GetAngleBetween({ Id = targetId, DestinationId = game.CurrentRun.Hero.ObjectId })
-	for _, angle in ipairs({ angleToHero, angleToHero + 180 }) do
-		local offset = CalcOffset(math.rad(angle), familiar.TargetDistancePreferred)
-		local candidateId = SpawnObstacle({
-			Name = "InvisibleTarget",
-			DestinationId = targetId,
-			OffsetX = offset.X,
-			OffsetY = offset.Y,
-			ForceToValidLocation = true,
-			Group = "Scripting",
-		})
-		if isSnakeFamiliarFiringLocationValid(familiar, candidateId, targetId, false) then
-			familiar.RelocationTargetId = candidateId
-			return candidateId
-		end
-		Destroy({ Id = candidateId })
+local function getSnakeFamiliarLocationNearHero(targetId)
+	local destinationId = getClosestValidSnakeFamiliarLocation(GetIdsByType({ Name = "FamiliarPoint" }), targetId)
+	if destinationId <= 0 then
+		destinationId = getClosestValidSnakeFamiliarLocation(GetIds({ Name = "SpawnPoints" }), targetId)
+	end
+	if destinationId > 0 then
+		return destinationId
+	end
+	if isSnakeFamiliarLocationValid(game.CurrentRun.Hero.ObjectId, targetId) then
+		return game.CurrentRun.Hero.ObjectId
 	end
 end
 
 local function getSnakeFamiliarFiringLocation(familiar, targetId)
-	local firingLocationId = getSnakeFamiliarMapFiringLocation(familiar, targetId) or
-			createSnakeFamiliarFallbackFiringLocation(familiar, targetId)
+	local closestBetweenDistance = GetDistance({ Id = game.CurrentRun.Hero.ObjectId, DestinationId = targetId }) / 2
+	local closestTargetDistance = math.huge
+	local closestBetweenId, closestTargetId
+
+	for _, pointId in ipairs(GetIdsByType({ Names = { "EnemyPoint", "EnemyPointMelee", "EnemyPointRanged", "EnemyPointSupport" } })) do
+		if game.IsSpawnPointEligible(pointId, {}, game.CurrentRun.CurrentRoom, { CheckRewardPointsUsed = true }) and isSnakeFamiliarLocationValid(pointId, targetId) then
+			local midpointDistance = GetDistance({ Id = pointId, DestinationIds = { game.CurrentRun.Hero.ObjectId, targetId } })
+			if midpointDistance <= closestBetweenDistance then
+				closestBetweenId = pointId
+				closestBetweenDistance = midpointDistance
+			end
+			local targetDistance = GetDistance({ Id = pointId, DestinationId = targetId })
+			if targetDistance < closestTargetDistance then
+				closestTargetId = pointId
+				closestTargetDistance = targetDistance
+			end
+		end
+	end
+
+	local firingLocationId = closestBetweenId or closestTargetId or getSnakeFamiliarLocationNearHero(targetId)
 	if firingLocationId ~= nil then
 		return firingLocationId
 	end
-
-	if isSnakeFamiliarFiringLocationValid(familiar, familiar.ObjectId, targetId, false) then
+	if isSnakeFamiliarLocationValid(familiar.ObjectId, targetId) then
 		return familiar.ObjectId
 	end
+
+	return nil
 end
 
-local function clearSnakeFamiliarRelocationTarget(familiar)
-	if familiar.RelocationTargetId ~= nil then
-		Destroy({ Id = familiar.RelocationTargetId })
-		familiar.RelocationTargetId = nil
+local function teleportSnakeFamiliarNearHero(familiar)
+	local destinationId = getSnakeFamiliarLocationNearHero()
+	if destinationId == nil then
+		return false
 	end
+	Teleport({ Id = familiar.ObjectId, DestinationId = destinationId })
+	return true
+end
+
+function mod.SnakeFamiliarEnsureSafeUnburrowLocation(familiar)
+	if game.CurrentHubRoom ~= nil or familiar.PreRecruit or not IsLocationBlocked({ Id = familiar.ObjectId, CheckUnits = true, PathfindersPreferAvoid = true }) then
+		return true
+	end
+
+	if game.FamiliarShouldUseCombatLogic() then
+		return false
+	end
+
+	return teleportSnakeFamiliarNearHero(familiar)
 end
 
 local function isSnakeFamiliarAttackTargetValid(familiar, targetId)
@@ -118,40 +108,20 @@ local function snakeFamiliarTryAttack(familiar)
 	end
 
 	local targetId = getSnakeFamiliarTarget(familiar)
-	if targetId <= 0 then
-		return false
-	end
-	local firingLocationId = getSnakeFamiliarFiringLocation(familiar, targetId)
-	if firingLocationId == nil then
-		return false
-	end
-
-	familiar.CapturedTargetId = targetId
-	mod.SnakeFamiliarMoveToLocation(familiar, {
-		Id = firingLocationId,
-		KeepAIAlive = true,
-	})
-	clearSnakeFamiliarRelocationTarget(familiar)
-
-	if not isSnakeFamiliarAttackTargetValid(familiar, targetId) then
-		if game.IsAIActive(familiar) and game.FamiliarShouldUseCombatLogic() and not familiar.Burrowed then
-			mod.SnakeFamiliarBurrowPresentation(familiar)
+	local firingLocationId = targetId > 0 and getSnakeFamiliarFiringLocation(familiar, targetId)
+	if firingLocationId then
+		mod.SnakeFamiliarMoveToLocation(familiar, { Id = firingLocationId, KeepAIAlive = true })
+		if not familiar.Burrowed and isSnakeFamiliarAttackTargetValid(familiar, targetId) then
+			mod.SnakeFamiliarAttackPresentation(familiar, { TargetId = targetId })
+			return true
 		end
-		familiar.CapturedTargetId = nil
-		return false
 	end
 
-	if not isSnakeFamiliarAttackTargetValid(familiar, targetId) then
-		if game.IsAIActive(familiar) and game.FamiliarShouldUseCombatLogic() and not familiar.Burrowed then
-			mod.SnakeFamiliarBurrowPresentation(familiar)
-		end
-		familiar.CapturedTargetId = nil
-		return false
+	if familiar.Burrowed and game.IsAIActive(familiar) and game.FamiliarShouldUseCombatLogic() and teleportSnakeFamiliarNearHero(familiar) then
+		mod.SnakeFamiliarUnburrowPresentation(familiar)
 	end
 
-	mod.SnakeFamiliarAttackPresentation(familiar, { TargetId = targetId })
-	familiar.CapturedTargetId = nil
-	return true
+	return false
 end
 
 function mod.SnakeFamiliarAI(familiar, args)
@@ -167,11 +137,10 @@ function mod.SnakeFamiliarAI(familiar, args)
 		if game.CurrentHubRoom ~= nil then
 			game.wait(0.2, familiar.AIThreadName)
 		elseif game.FamiliarShouldUseCombatLogic() then
-			if not familiar.Burrowed then
-				mod.SnakeFamiliarBurrowPresentation(familiar)
-			end
-
 			if attackDelay ~= nil then
+				if not familiar.Burrowed then
+					mod.SnakeFamiliarBurrowPresentation(familiar)
+				end
 				game.wait(attackDelay, familiar.AIThreadName)
 				attackDelay = nil
 			end
@@ -195,8 +164,6 @@ function mod.SnakeFamiliarAI(familiar, args)
 		end
 	end
 
-	clearSnakeFamiliarRelocationTarget(familiar)
-	familiar.CapturedTargetId = nil
 	familiar.AIBehavior = nil
 end
 
@@ -209,8 +176,6 @@ function mod.SnakeFamiliarStopAI(familiar)
 	game.killTaggedThreads(familiar.AIThreadName)
 	game.killWaitUntilThreads(familiar.AINotifyName)
 	CancelNotify({ Name = familiar.AINotifyName })
-	clearSnakeFamiliarRelocationTarget(familiar)
-	familiar.CapturedTargetId = nil
 	game.wait(0.02)
 end
 
