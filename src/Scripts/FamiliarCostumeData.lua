@@ -88,7 +88,7 @@ local costumes = {
 		IconScale = 1.1,
 		GrannyTexture = "ModsNikkelMHadesBiomesSnakeFamiliar/SnakeDelphic_Color",
 		Cost = {
-			CosmeticsPoints = 2000,
+			CosmeticsPoints = 1800,
 			ModsNikkelMHadesBiomes_BossResourceElysium = 2,
 		},
 		PreRevealVoiceLines = {
@@ -140,7 +140,7 @@ local costumes = {
 		IconScale = 1.1,
 		GrannyTexture = "ModsNikkelMHadesBiomesSnakeFamiliar/SnakePuppet_Color",
 		Cost = {
-			CosmeticsPoints = 2800,
+			CosmeticsPoints = 2400,
 			ModsNikkelMHadesBiomes_CropStyx = 2,
 		},
 		PreRevealVoiceLines = {
@@ -192,12 +192,64 @@ local costumes = {
 		IconScale = 1.1,
 		GrannyTexture = "ModsNikkelMHadesBiomesSnakeFamiliar/SnakeLernaean_Color",
 		Cost = {
-			CosmeticsPoints = 1800,
+			CosmeticsPoints = 1600,
 			ModsNikkelMHadesBiomes_BossResourceAsphodel = 3,
 		},
 		PreRevealVoiceLines = {
 			{ GlobalVoiceLines = "FamiliarAngryCostumeUnlocked" },
 			{ GlobalVoiceLines = "FamiliarMiscCostumeUnlocked" }
+		},
+		SwitchCostumeVoiceLines = {
+			{ GlobalVoiceLines = "FamiliarMiscSwitchCostumeVoiceLines" },
+		},
+	},
+	{
+		Id = "ModsNikkelMHadesBiomes_FamiliarCostume_SnakeRegal",
+		FamiliarName = "ModsNikkelMHadesBiomesSnakeFamiliar",
+		Name = {
+			-- de = "Regal",
+			-- el = "Regal",
+			en = "Regal",
+			-- es = "Regal",
+			-- fr = "« Regal »",
+			-- it = "Regal",
+			-- ja = "Regal",
+			-- ko = "Regal",
+			-- pl = "Regal",
+			-- ["pt-BR"] = "Regal",
+			-- ru = "Regal",
+			-- tr = "Regal",
+			-- uk = "Regal",
+			-- ["zh-CN"] = "Regal",
+			-- ["zh-TW"] = "Regal",
+		},
+		Description = {
+			-- de = "{$Keywords.FamiliarCostume}: Stately and imposing appearance.",
+			-- el = "{$Keywords.FamiliarCostume}: Stately and imposing appearance.",
+			en = "{$Keywords.FamiliarCostume}: Stately and imposing appearance.",
+			-- es = "{$Keywords.FamiliarCostume}. Stately and imposing appearance.",
+			-- fr = "{$Keywords.FamiliarCostume} : Stately and imposing appearance.",
+			-- it = "{$Keywords.FamiliarCostume}: Stately and imposing appearance.",
+			-- ja = "{$Keywords.FamiliarCostume}：Stately and imposing appearance.",
+			-- ko = "{$Keywords.FamiliarCostume}: Stately and imposing appearance.",
+			-- pl = "{$Keywords.FamiliarCostume}: Stately and imposing appearance.",
+			-- ["pt-BR"] = "{$Keywords.FamiliarCostume}: Stately and imposing appearance.",
+			-- ru = "{$Keywords.FamiliarCostume}: Stately and imposing appearance.",
+			-- tr = "{$Keywords.FamiliarCostume}: Stately and imposing appearance.",
+			-- uk = "{$Keywords.FamiliarCostume}: Stately and imposing appearance.",
+			-- ["zh-CN"] = "{$Keywords.FamiliarCostume}：Stately and imposing appearance.",
+			-- ["zh-TW"] = "{$Keywords.FamiliarCostume}：Stately and imposing appearance.",
+		},
+		IconPath = "GUI\\Screens\\FamiliarIcons\\skin_frog06",
+		IconScale = 1.1,
+		GrannyTexture = "ModsNikkelMHadesBiomesSnakeFamiliar/SnakeRegal_Color",
+		Cost = {
+			CosmeticsPoints = 2600,
+			ModsNikkelMHadesBiomes_OreStyx = 7,
+		},
+		PreRevealVoiceLines = {
+			{ GlobalVoiceLines = "FamiliarCoolCostumeUnlocked" },
+			{ GlobalVoiceLines = "FamiliarMiscCostumeUnlocked" },
 		},
 		SwitchCostumeVoiceLines = {
 			{ GlobalVoiceLines = "FamiliarMiscSwitchCostumeVoiceLines" },
