@@ -1,5 +1,4 @@
 -- #region SnakeFamiliar Costumes
--- TODO: Replace the icons
 local costumes = {
 	{
 		Id = "ModsNikkelMHadesBiomes_FamiliarCostume_SnakeDefault",
@@ -38,7 +37,7 @@ local costumes = {
 			["zh-CN"] = "{$Keywords.FamiliarCostume}：在大多数人眼中，是“正常”的样貌。",
 			["zh-TW"] = "{$Keywords.FamiliarCostume}：多數人眼中的標準樣貌。",
 		},
-		IconPath = "GUI\\Screens\\FamiliarIcons\\skin_frog01",
+		IconPath = "GUIModded\\Screens\\FamiliarIcons\\skin_snake01",
 		IconScale = 1.1,
 		GrannyModel = "Dracon_Mesh",
 		GrannyTexture = "ModsNikkelMHadesBiomesSnakeFamiliar/SnakeFamiliar_Color",
@@ -84,7 +83,7 @@ local costumes = {
 			-- ["zh-CN"] = "{$Keywords.FamiliarCostume}：Cryptic and all-knowing appearance.",
 			-- ["zh-TW"] = "{$Keywords.FamiliarCostume}：Cryptic and all-knowing appearance.",
 		},
-		IconPath = "GUI\\Screens\\FamiliarIcons\\skin_frog02",
+		IconPath = "GUIModded\\Screens\\FamiliarIcons\\skin_snake02",
 		IconScale = 1.1,
 		GrannyTexture = "ModsNikkelMHadesBiomesSnakeFamiliar/SnakeDelphic_Color",
 		Cost = {
@@ -136,7 +135,7 @@ local costumes = {
 			["zh-CN"] = "{$Keywords.FamiliarCostume}：可爱而人畜无害的样貌。",
 			["zh-TW"] = "{$Keywords.FamiliarCostume}：惹人喜愛且無害的樣貌。",
 		},
-		IconPath = "GUI\\Screens\\FamiliarIcons\\skin_frog04",
+		IconPath = "GUIModded\\Screens\\FamiliarIcons\\skin_snake03",
 		IconScale = 1.1,
 		GrannyTexture = "ModsNikkelMHadesBiomesSnakeFamiliar/SnakePuppet_Color",
 		Cost = {
@@ -188,7 +187,7 @@ local costumes = {
 			-- ["zh-CN"] = "{$Keywords.FamiliarCostume}：Multi-faceted and bony appearance.",
 			-- ["zh-TW"] = "{$Keywords.FamiliarCostume}：Multi-faceted and bony appearance.",
 		},
-		IconPath = "GUI\\Screens\\FamiliarIcons\\skin_frog03",
+		IconPath = "GUIModded\\Screens\\FamiliarIcons\\skin_snake04",
 		IconScale = 1.1,
 		GrannyTexture = "ModsNikkelMHadesBiomesSnakeFamiliar/SnakeLernaean_Color",
 		Cost = {
@@ -240,7 +239,7 @@ local costumes = {
 			-- ["zh-CN"] = "{$Keywords.FamiliarCostume}：Stately and imposing appearance.",
 			-- ["zh-TW"] = "{$Keywords.FamiliarCostume}：Stately and imposing appearance.",
 		},
-		IconPath = "GUI\\Screens\\FamiliarIcons\\skin_frog06",
+		IconPath = "GUIModded\\Screens\\FamiliarIcons\\skin_snake05",
 		IconScale = 1.1,
 		GrannyTexture = "ModsNikkelMHadesBiomesSnakeFamiliar/SnakeRegal_Color",
 		Cost = {
@@ -292,7 +291,7 @@ local costumes = {
 			["zh-CN"] = "{$Keywords.FamiliarCostume}：黑暗而邪恶的样貌。",
 			["zh-TW"] = "{$Keywords.FamiliarCostume}：黑暗且邪惡至極的樣貌。",
 		},
-		IconPath = "GUI\\Screens\\FamiliarIcons\\skin_frog05",
+		IconPath = "GUIModded\\Screens\\FamiliarIcons\\skin_snake06",
 		IconScale = 1.1,
 		GrannyTexture = "ModsNikkelMHadesBiomesSnakeFamiliar/SnakeNightmare_Color",
 		Outline = {
