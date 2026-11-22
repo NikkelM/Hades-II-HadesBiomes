@@ -40,7 +40,6 @@ local snakeFamiliarData = {
 		IdleAnimation = "ModsNikkelMHadesBiomesSnakeFamiliar_Idle",
 		HappyAnimation = "ModsNikkelMHadesBiomesSnakeFamiliar_Idle",
 		PetAnimation = "ModsNikkelMHadesBiomesSnakeFamiliar_Pet",
-		FleeAnimation = "Enemy_DragonBurrower_Burrow",
 		StartNewRunAnimation = "Enemy_DragonBurrower_Burrow",
 		HiddenAnimation = "Enemy_DragonBurrower_Hidden",
 		BurrowAnimation = "Enemy_DragonBurrower_Burrow",

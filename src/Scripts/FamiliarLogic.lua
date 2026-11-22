@@ -127,16 +127,18 @@ end
 function mod.SnakeFamiliarAI(familiar, args)
 	args = args or {}
 
-	if args.Equipping and game.CurrentHubRoom and game.CurrentHubRoom.Name == "Hub_PreRun" then
-		-- Use the same equip destination as Raki and Gale
-		mod.SnakeFamiliarMoveToLocation(familiar, { Id = 589725, KeepAIAlive = true })
+	if game.CurrentHubRoom ~= nil then
+		if args.Equipping then
+			-- Use the same equip destination as Raki and Gale
+			mod.SnakeFamiliarMoveToLocation(familiar, { Id = 589725, KeepAIAlive = true })
+		end
+		familiar.AIBehavior = nil
+		return
 	end
 
 	local attackDelay = args.InitialDelay or familiar.InitialAttackDelay
 	while game.IsAIActive(familiar) do
-		if game.CurrentHubRoom ~= nil then
-			game.wait(0.2, familiar.AIThreadName)
-		elseif game.FamiliarShouldUseCombatLogic() then
+		if game.FamiliarShouldUseCombatLogic() then
 			if attackDelay ~= nil then
 				if not familiar.Burrowed then
 					mod.SnakeFamiliarBurrowPresentation(familiar)
@@ -174,8 +176,6 @@ function mod.SnakeFamiliarStopAI(familiar)
 	familiar.AIBehavior = nil
 
 	game.killTaggedThreads(familiar.AIThreadName)
-	game.killWaitUntilThreads(familiar.AINotifyName)
-	CancelNotify({ Name = familiar.AINotifyName })
 	game.wait(0.02)
 end
 
@@ -192,12 +192,8 @@ function mod.SnakeFamiliarMoveToLocation(familiar, args)
 	Teleport({
 		Id = familiar.ObjectId,
 		DestinationId = destinationId,
-		OffsetX = args.OffsetX,
-		OffsetY = args.OffsetY,
 	})
-	if not args.KeepBurrowedOnFinish then
-		mod.SnakeFamiliarUnburrowPresentation(familiar)
-	end
+	mod.SnakeFamiliarUnburrowPresentation(familiar)
 end
 
 -- Vanilla familiars have their default costume as part of their default model, SnakeFamiliar would use the "enemy" texture if we don't do this
