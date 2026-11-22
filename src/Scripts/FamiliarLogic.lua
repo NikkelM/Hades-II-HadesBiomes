@@ -185,7 +185,6 @@ function mod.SnakeFamiliarMoveToLocation(familiar, args)
 
 	if not args.KeepAIAlive then
 		mod.SnakeFamiliarStopAI(familiar)
-		game.RemoveInteractBlock(familiar, "SnakeFamiliarInRun")
 	end
 	if not familiar.Burrowed then
 		mod.SnakeFamiliarBurrowPresentation(familiar)

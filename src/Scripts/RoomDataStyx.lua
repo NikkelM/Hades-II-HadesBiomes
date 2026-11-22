@@ -1121,9 +1121,6 @@ local roomModifications = {
 					OverwriteSelf = {
 						OnUsedFunctionName = "nil",
 						SpecialInteractFunctionName = _PLUGIN.guid .. "." .. "SnakeFamiliarSpecialInteractLockedInRun",
-						SpecialInteractGameStateRequirements = {
-							NamedRequirementsFalse = { "ModsNikkelMHadesBiomes_SnakeFamiliarReadyToRecruit" },
-						},
 						PreRecruit = true,
 						DistanceTriggers = {
 							{

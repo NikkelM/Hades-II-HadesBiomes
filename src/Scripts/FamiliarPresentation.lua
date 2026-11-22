@@ -12,8 +12,6 @@ function mod.SnakeFamiliarSpawnPresentation(familiar, args)
 	SetAnimation({ Name = familiar.HiddenAnimation, DestinationId = familiar.ObjectId })
 	SetAlpha({ Id = familiar.ObjectId, Fraction = 0.0 })
 	familiar.Burrowed = true
-	familiar.OnUsedFunctionName = nil
-	AddInteractBlock(familiar, "SnakeFamiliarInRun")
 	if args.PostCombat or not game.FamiliarShouldUseCombatLogic() then
 		mod.SnakeFamiliarUnburrowPresentation(familiar)
 	end
@@ -85,15 +83,15 @@ end
 
 function mod.SnakeFamiliarSpecialInteractLockedInRun(familiar)
 	local blockName = "SnakeFamiliarApproach"
+	UseableOff({ Id = familiar.ObjectId })
+	game.thread(game.HideUseButton, familiar.ObjectId, familiar)
 	AddInputBlock({ Name = blockName })
-	game.AddInteractBlock(familiar, blockName)
-	game.HideUseButton(familiar.ObjectId, familiar)
 
 	local heroId = game.CurrentRun.Hero.ObjectId
 	Stop({ Id = heroId })
 	Halt({ Id = heroId })
 	CancelWeaponFireRequests({ Id = heroId })
-	local offset = game.CalcOffset(math.rad(GetAngle({ Id = familiar.ObjectId })), 110)
+	local offset = game.CalcOffset(math.rad(GetAngle({ Id = familiar.ObjectId })), 90)
 	local petPointId = SpawnObstacle({
 		Name = "InvisibleTarget",
 		DestinationId = familiar.ObjectId,
@@ -116,18 +114,65 @@ function mod.SnakeFamiliarSpecialInteractLockedInRun(familiar)
 	SetAnimation({ Name = unequipAnimation, DestinationId = heroId })
 	game.wait(0.45)
 
-	local leanStartTime = 0.9
-	local burrowStartTime = 3.35
 	SetAnimation({ Name = "ModsNikkelMHadesBiomes_MelinoePetOphis", DestinationId = heroId })
 	game.thread(game.PlayVoiceLines, familiar.InteractVoiceLines)
 
-	game.wait(leanStartTime)
+	game.wait(0.9)
 	SetAnimation({ Name = familiar.PetAnimation, DestinationId = familiar.ObjectId })
-	game.wait(burrowStartTime - leanStartTime)
+	game.wait(2.45)
 
 	game.thread(mod.SnakeFamiliarFledPresentation, familiar)
 	game.wait(1.25)
 	RemoveInputBlock({ Name = blockName })
+end
+
+function mod.SnakeFamiliarSpecialInteractUnlockedInHub(familiar)
+	local blockName = "SnakeFamiliarPet"
+	UseableOff({ Id = familiar.ObjectId })
+	game.thread(game.HideUseButton, familiar.ObjectId, familiar)
+	AddInputBlock({ Name = blockName })
+
+	local heroId = game.CurrentRun.Hero.ObjectId
+	Stop({ Id = heroId })
+	Halt({ Id = heroId })
+	CancelWeaponFireRequests({ Id = heroId })
+	local angle = GetAngleBetween({ Id = familiar.ObjectId, DestinationId = heroId })
+	local offset = game.CalcOffset(math.rad(angle), 90)
+	local petPointId = SpawnObstacle({
+		Name = "InvisibleTarget",
+		DestinationId = familiar.ObjectId,
+		OffsetX = offset.X,
+		OffsetY = offset.Y * 0.5,
+	})
+	local notifyDistance = 10
+	local petDistance = GetDistance({ Id = familiar.ObjectId, DestinationId = petPointId })
+	if GetDistance({ Id = familiar.ObjectId, DestinationId = heroId }) > petDistance + notifyDistance then
+		game.MoveHeroToRoomPosition({
+			DestinationId = petPointId,
+			DisableCollision = true,
+			SuccessDistance = 32,
+			NotifyDistance = notifyDistance,
+			ContinueToGoal = true,
+		})
+		game.wait(0.3)
+	end
+	Destroy({ Id = petPointId })
+	AngleTowardTarget({ Id = heroId, DestinationId = familiar.ObjectId })
+	AngleTowardTarget({ Id = familiar.ObjectId, DestinationId = heroId })
+	local unequipAnimation = game.GetEquippedWeaponValue("UnequipAnimation") or "MelinoeIdleWeaponless"
+	SetAnimation({ Name = unequipAnimation, DestinationId = heroId })
+	game.wait(0.45)
+
+	SetAnimation({ Name = "ModsNikkelMHadesBiomes_MelinoePetOphis", DestinationId = heroId })
+	game.thread(game.PlayVoiceLines, familiar.InteractVoiceLines)
+
+	game.wait(0.9)
+	SetAnimation({ Name = familiar.PetAnimation, DestinationId = familiar.ObjectId })
+	game.wait(3.7)
+
+	RemoveInputBlock({ Name = blockName })
+	game.wait(2.05, game.RoomThreadName)
+	UseableOn({ Id = familiar.ObjectId })
 end
 
 function mod.SnakeFamiliarFledPresentation(familiar)

@@ -177,6 +177,11 @@ local snakeFamiliarData = {
 		},
 
 		-- Interaction
+		SpecialInteractCooldown = 30,
+		SpecialInteractFunctionName = _PLUGIN.guid .. "." .. "SnakeFamiliarSpecialInteractUnlockedInHub",
+		SpecialInteractGameStateRequirements = {
+			NamedRequirementsFalse = { "ModsNikkelMHadesBiomes_SnakeFamiliarReadyToRecruit" },
+		},
 		InteractVoiceLines = {
 			{
 				PreLineWait = 0.4,
