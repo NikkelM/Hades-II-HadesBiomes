@@ -315,8 +315,11 @@ local costumes = {
 		},
 	},
 }
+
+mod.ModdedFamiliarCostumeIds = {}
 game.ScreenData.FamiliarCostumeShop.ItemCategories.ModsNikkelMHadesBiomesSnakeFamiliar = {}
 for _, costume in ipairs(costumes) do
 	CosmeticsAPI.RegisterFamiliarCostume(costume)
+	table.insert(mod.ModdedFamiliarCostumeIds, costume.Id)
 end
 -- #endregion
