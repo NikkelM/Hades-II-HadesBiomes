@@ -56,6 +56,35 @@ local addAnimations = {
 		InheritFrom = "DragonBurrowerBurrowFxOut_NoDirt",
 		Scale = 0.3,
 	},
+	{
+		Name = "ModsNikkelMHadesBiomesSnakeDartTrail",
+		InheritFrom = "DragonBurrowerRangedTrail",
+		ScaleMin = 0.208,
+		ScaleMax = 0.485,
+	},
+	{
+		Name = "ModsNikkelMHadesBiomesSnakeDartLoop",
+		InheritFrom = "DragonBurrowerRanged",
+		Scale = 0.45,
+		VisualFx = "ModsNikkelMHadesBiomesSnakeDartTrail",
+	},
+	{
+		Name = "ModsNikkelMHadesBiomesSnakeDartIn",
+		InheritFrom = "DragonBurrowerRangedIn",
+		Scale = 0.45,
+		ChainTo = "ModsNikkelMHadesBiomesSnakeDartLoop",
+	},
+	{
+		Name = "ModsNikkelMHadesBiomesSnakeDartDissipate",
+		InheritFrom = "DragonBurrowerRangedDissipate",
+		Scale = 0.45,
+	},
+	{
+		Name = "ModsNikkelMHadesBiomesSnakeDartGlow",
+		InheritFrom = "DragonBurrowerRangedGlow",
+		ScaleMin = 0.228,
+		ScaleMax = 0.277,
+	},
 }
 
 sjson.hook(hadesTwoEnemyTyphonVFXFile, function(data)
