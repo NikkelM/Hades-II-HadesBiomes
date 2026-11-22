@@ -37,24 +37,24 @@ local addAnimations = {
 		InheritFrom = "DragonBurrowerBurrowFxIn",
 		ChainTo = "ModsNikkelMHadesBiomesSnakeFamiliar_BurrowFxPersistent",
 		VisualFx = "ModsNikkelMHadesBiomesSnakeFamiliar_BurrowDirt",
-		Scale = 0.3,
+		Scale = 0.4,
 	},
 	{
 		Name = "ModsNikkelMHadesBiomesSnakeFamiliar_BurrowFxPersistent",
 		InheritFrom = "DragonBurrowerBurrowFxPersistent",
 		ChainTo = "ModsNikkelMHadesBiomesSnakeFamiliar_BurrowFxOut_NoDirt",
-		Scale = 0.3,
+		Scale = 0.4,
 	},
 	{
 		Name = "ModsNikkelMHadesBiomesSnakeFamiliar_BurrowFxOut",
 		InheritFrom = "DragonBurrowerBurrowFxOut",
 		VisualFx = "ModsNikkelMHadesBiomesSnakeFamiliar_BurrowDirt",
-		Scale = 0.3,
+		Scale = 0.4,
 	},
 	{
 		Name = "ModsNikkelMHadesBiomesSnakeFamiliar_BurrowFxOut_NoDirt",
 		InheritFrom = "DragonBurrowerBurrowFxOut_NoDirt",
-		Scale = 0.3,
+		Scale = 0.4,
 	},
 	{
 		Name = "ModsNikkelMHadesBiomesSnakeDartTrail",
