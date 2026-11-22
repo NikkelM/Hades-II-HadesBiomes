@@ -302,6 +302,18 @@ local addAnimations = {
 		EaseOut = 0,
 		HoldLastFrame = false,
 	},
+	ModsNikkelMHadesBiomes_FamiliarShopIcon_SnakeBloodBond = {
+		Name = "ModsNikkelMHadesBiomes_FamiliarShopIcon_SnakeBloodBond",
+		FilePath = "GUIModded\\Screens\\FamiliarIcons\\snake_damageresistance",
+	},
+	ModsNikkelMHadesBiomes_FamiliarShopIcon_SnakeProsperousBond = {
+		Name = "ModsNikkelMHadesBiomes_FamiliarShopIcon_SnakeProsperousBond",
+		FilePath = "GUIModded\\Screens\\FamiliarIcons\\snake_bonusgold",
+	},
+	ModsNikkelMHadesBiomes_FamiliarShopIcon_SnakeToxicBond = {
+		Name = "ModsNikkelMHadesBiomes_FamiliarShopIcon_SnakeToxicBond",
+		FilePath = "GUIModded\\Screens\\FamiliarIcons\\snake_venomstacks",
+	},
 	-- #endregion
 }
 

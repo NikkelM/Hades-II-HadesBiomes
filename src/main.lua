@@ -315,6 +315,7 @@ local function on_ready()
 
 			import "Game/Animations/Enemy_1Base_VFX.sjson.lua"
 			import "Game/Animations/Enemy_Ephyra_VFX.sjson.lua"
+			import "Game/Animations/Enemy_Typhon_VFX.sjson.lua"
 			import "Game/Animations/Melinoe_Spell_VFX.sjson.lua"
 			import "Game/Animations/Melinoe_Zeus_VFX.sjson.lua"
 			import "Game/Animations/Obstacle_Asphodel_VFX.sjson.lua"
@@ -427,7 +428,9 @@ local function on_ready()
 			import "Scripts/CreditsData.lua"
 			import "Scripts/DeathLoopData.lua"
 			import "Scripts/EffectData.lua"
+			-- Needs to be before FamiliarCostumeData so that the familiar is registered before its costumes
 			import "Scripts/FamiliarData.lua"
+			import "Scripts/FamiliarCostumeData.lua"
 			import "Scripts/GameStatsData.lua"
 			import "Scripts/GardenData.lua"
 			import "Scripts/GhostAdminData_Items.lua"

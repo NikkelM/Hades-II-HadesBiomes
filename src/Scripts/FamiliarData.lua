@@ -49,7 +49,7 @@ local snakeFamiliarData = {
 		StartNewRunAnimation = "Enemy_DragonBurrower_Burrow",
 		HiddenAnimation = "Enemy_DragonBurrower_Hidden",
 		BurrowAnimation = "Enemy_DragonBurrower_Burrow",
-		UnburrowAnimation = "Enemy_DragonBurrower_Unburrow",
+		UnburrowAnimation = "ModsNikkelMHadesBiomesSnakeFamiliar_Unburrow",
 		PreAttackAnimation = "Enemy_DragonBurrower_RangedPreFire",
 		TripleFireAnimation = "ModsNikkelMHadesBiomesSnakeFamiliar_RangedFire_Triple",
 		PostAttackAnimation = "ModsNikkelMHadesBiomesSnakeFamiliar_RangedPostFire",
@@ -62,7 +62,7 @@ local snakeFamiliarData = {
 			SpawnArgs = {
 				Name = "FamiliarKit",
 				Group = "Terrain_01_Decor02",
-				LocationX = 4253,
+				LocationX = 4251,
 				LocationY = 6473,
 			},
 			Decorations = {
@@ -111,7 +111,7 @@ local snakeFamiliarData = {
 		TurnInPlaceAnimation = "ModsNikkelMHadesBiomesSnakeFamiliar_Idle",
 
 		-- Gifting / Recruiting / Costuming
-		GrannyTexture = "ModsNikkelMHadesBiomesSnakeFamiliar/SnakeFamiliar_Color",
+		DefaultCostume = "ModsNikkelMHadesBiomes_FamiliarCostume_SnakeDefault",
 		FamiliarScreenAnimationName = "ModsNikkelMHadesBiomes_FamiliarScreenSnakeIn",
 		FamiliarScreenAnimationOutName = "ModsNikkelMHadesBiomes_FamiliarScreenSnakeOut",
 		GiftFunctionName = "FamiliarRecruitPresentation",
@@ -129,6 +129,14 @@ local snakeFamiliarData = {
 			},
 		},
 		SetupEvents = {
+			{
+				FunctionName = _PLUGIN.guid .. "." .. "SnakeFamiliarSetupCostume",
+				GameStateRequirements = {
+					{
+						PathFalse = { "MapState", "CosmeticPresentationActive" },
+					},
+				},
+			},
 			{
 				-- Ophis not fully upgraded
 				FunctionName = "OverwriteSelf",
@@ -219,13 +227,20 @@ local snakeFamiliarData = {
 			},
 		},
 
+		-- TODO:
+		-- Map Marker
+		-- MarkerIdleAnimation = "FrogMarkerIdle",
+		-- MarkerJumpAnimation = "FrogMarkerJump",
+		-- MarkerModel = "FrogMarker_Mesh",
+		-- MarkerMoveAnimation = "FrogMarkerMove",
+
 		-- Sounds
 		BurrowSound = "/SFX/Enemy Sounds/RangedBurrower/DraconSubmerge",
 
 		-- Teleport VFX
 		SkipFleeTeleportVfx = true,
-		BurrowFx = "DragonBurrowerBurrowFxOut",
-		BurrowPersistentFx = "DragonBurrowerBurrowFxPersistent",
+		BurrowFx = "ModsNikkelMHadesBiomesSnakeFamiliar_BurrowFxOut",
+		BurrowPersistentFx = "ModsNikkelMHadesBiomesSnakeFamiliar_BurrowFxPersistent",
 
 		-- Text
 		AlwaysShowDefaultUseText = true,
@@ -345,7 +360,6 @@ game.GameData.AllSnakeFamiliarUpgrades = {
 	"ModsNikkelMHadesBiomesSnakeToxicBond3",
 }
 
--- TODO: Replace the Frinos icons with the Ophis icons
 game.OverwriteTableKeys(game.FamiliarShopItemData, {
 	ModsNikkelMHadesBiomesBaseSnakeUpgrade = {
 		DebugOnly = true,
@@ -354,7 +368,7 @@ game.OverwriteTableKeys(game.FamiliarShopItemData, {
 	-- Damage Resistance
 	ModsNikkelMHadesBiomesSnakeBloodBond = {
 		InheritFrom = { "ModsNikkelMHadesBiomesBaseSnakeUpgrade" },
-		Icon = "FamiliarShopIcon_FrogHealthBonus",
+		Icon = "ModsNikkelMHadesBiomes_FamiliarShopIcon_SnakeBloodBond",
 		ShowLastInGroup = "ModsNikkelMHadesBiomesSnakeBloodBond",
 		IncreaseTraitLevel = "ModsNikkelMHadesBiomesSnakeDamageResistanceBonus",
 	},
@@ -375,7 +389,7 @@ game.OverwriteTableKeys(game.FamiliarShopItemData, {
 	-- Bonus Gold
 	ModsNikkelMHadesBiomesSnakeProsperousBond = {
 		InheritFrom = { "ModsNikkelMHadesBiomesBaseSnakeUpgrade" },
-		Icon = "FamiliarShopIcon_FrogUses",
+		Icon = "ModsNikkelMHadesBiomes_FamiliarShopIcon_SnakeProsperousBond",
 		ShowLastInGroup = "ModsNikkelMHadesBiomesSnakeProsperousBond",
 		IncreaseTraitLevel = "ModsNikkelMHadesBiomesSnakeGoldBonus",
 	},
@@ -396,7 +410,7 @@ game.OverwriteTableKeys(game.FamiliarShopItemData, {
 	-- Poison/Slow Stacks
 	ModsNikkelMHadesBiomesSnakeToxicBond = {
 		InheritFrom = { "ModsNikkelMHadesBiomesBaseSnakeUpgrade" },
-		Icon = "FamiliarShopIcon_FrogDamage",
+		Icon = "ModsNikkelMHadesBiomes_FamiliarShopIcon_SnakeToxicBond",
 		ShowLastInGroup = "ModsNikkelMHadesBiomesSnakeToxicBond",
 		IncreaseTraitLevel = "ModsNikkelMHadesBiomesSnakePoisonStacks",
 	},

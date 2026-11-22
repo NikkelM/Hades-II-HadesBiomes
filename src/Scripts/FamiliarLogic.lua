@@ -235,3 +235,10 @@ function mod.SnakeFamiliarMoveToLocation(familiar, args)
 		mod.SnakeFamiliarUnburrowPresentation(familiar)
 	end
 end
+
+-- Vanilla familiars have their default costume as part of their default model, SnakeFamiliar would use the "enemy" texture if we don't do this
+function mod.SnakeFamiliarSetupCostume(familiar, args)
+	local costumes = game.GameState.FamiliarCostumes
+	costumes[familiar.Name] = costumes[familiar.Name] or familiar.DefaultCostume
+	game.SetupFamiliarCostume(familiar, args)
+end

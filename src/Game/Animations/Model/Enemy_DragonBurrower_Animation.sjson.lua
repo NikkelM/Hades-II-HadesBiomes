@@ -82,6 +82,11 @@ local addAnimations = {
 			},
 		},
 	},
+	{
+		Name = "ModsNikkelMHadesBiomesSnakeFamiliar_Unburrow",
+		InheritFrom = "Enemy_DragonBurrower_Unburrow",
+		CreateAnimation = "ModsNikkelMHadesBiomesSnakeFamiliar_BurrowFxIn",
+	},
 }
 
 sjson.hook(animationsFile, function(data)
