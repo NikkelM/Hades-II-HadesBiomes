@@ -276,6 +276,10 @@ game.OverwriteTableKeys(game.TraitData, {
 		InheritFrom = { "FamiliarTrait", },
 		-- TODO: Replace with proper icon
 		Icon = "FamiliarIcon_Frog",
+		StatLines = {
+			"ModsNikkelMHadesBiomesSnakeDamageTakenStatLine",
+			"ModsNikkelMHadesBiomesSnakeGoldEarnedStatLine",
+		},
 		-- TODO: Test
 		CirceBonusStacks = 2,
 		AddIncomingDamageModifiers = {
@@ -294,6 +298,40 @@ game.OverwriteTableKeys(game.TraitData, {
 				Key = "ReportedDamageResistance",
 				ExtractAs = "DamageResistance",
 				Format = "NegativePercentDelta",
+			},
+			{
+				External = true,
+				BaseType = "TraitData",
+				BaseName = "ModsNikkelMHadesBiomesSnakePoisonStacks",
+				BaseProperty = { "ModsNikkelMHadesBiomesSnakeVenomDamagePerStack" },
+				ExtractAs = "VenomDamagePerHit",
+				Multiplier = "VenomStacksPerHit",
+				SkipAutoExtract = true,
+			},
+			{
+				External = true,
+				BaseType = "TraitData",
+				BaseName = "ModsNikkelMHadesBiomesSnakePoisonStacks",
+				BaseProperty = { "ModsNikkelMHadesBiomesSnakeVenomStacksPerHit" },
+				ExtractAs = "VenomStacksPerHit",
+				SkipAutoExtract = true,
+			},
+			{
+				External = true,
+				BaseType = "TraitData",
+				BaseName = "ModsNikkelMHadesBiomesSnakePoisonStacks",
+				BaseProperty = { "ModsNikkelMHadesBiomesSnakeVenomDuration" },
+				ExtractAs = "VenomDuration",
+				SkipAutoExtract = true,
+			},
+			{
+				External = true,
+				BaseType = "TraitData",
+				BaseName = "ModsNikkelMHadesBiomesSnakeGoldBonus",
+				BaseProperty = { "MoneyMultiplier" },
+				ExtractAs = "MoneyRewardIncrease",
+				Format = "PercentDelta",
+				SkipAutoExtract = true,
 			},
 		},
 	},
@@ -316,6 +354,7 @@ game.OverwriteTableKeys(game.TraitData, {
 	},
 	ModsNikkelMHadesBiomesSnakePoisonStacks = {
 		Hidden = true,
+		ModsNikkelMHadesBiomesSnakeVenomDamagePerStack = game.EffectData.ModsNikkelMHadesBiomesSnakeVenom.DataProperties.Amount,
 		ModsNikkelMHadesBiomesSnakeVenomStacksPerHit = {
 			BaseValue = 1,
 			AbsoluteStackValues = {

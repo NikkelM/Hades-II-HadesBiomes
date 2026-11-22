@@ -21,7 +21,7 @@
 	"ModsNikkelMHadesBiomes_BossResourceStyx",
 ]] --
 
--- In total, as of 2026-11-19: 65 cosmetics
+-- In total, as of 2026-11-19: 65 cosmetics + 5 animal familiar skins
 -- Last added: Altar of Ashes, Deathly
 
 local function registerShopCosmetics(cosmetics)

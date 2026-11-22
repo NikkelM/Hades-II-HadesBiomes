@@ -40,16 +40,17 @@ It is highly recommended that you complete the main story of the first Hades gam
 - Start playing at any time - the mod integrates seemlessly into the main game, and can be used on a fresh file as well as after completing the epilogue.
 - Journey through the original four regions of Hades as Melinoë: Tartarus, Asphodel, Elysium and the Temple of Styx.
 - Discover and overcome the challenge of fighting all of the original game's enemies and bosses using Melinoë's unique abilities and weapons.
-- Relive Zagreus' story by escaping to the Surface, forging bonds with your brother's old friends, and conversing with the Fury Sisters, the Champions of Elysium and [REDACTED] himself.
-- Receive a multitude of **entirely new boons** and effects offered to you by Sisyphus, Eurydice, Patroclus... and other familiar faces that you will now be able to meet along the way!
-- Collect **30+** new resources specific to the new regions, use them for unlocks in this and other mods (see section below), and trade them with the Broker.
-- Unlock **28** new musical tracks from Hades' original soundtrack through the [Hades OST for the Music Maker](https://thunderstore.io/c/hades-ii/p/NikkelM/Hades_OST_for_the_Music_Maker/) mod integration (automatically installed with this mod).
-- Decorate the Crossroads with **60+** new cosmetics, including new **Cauldrons**, **Arcana Card Backs**, and **Chthonic Chids** inspired by characters you meet during Zagreus' Journey.
-- Discover and complete **45+** new Minor Prophecies at the Fated List.
-- Complete **24** new testaments by clearing the new bosses using each of your weapons with new fear levels.
-- Discover and perform **20+** new incantations to unlock gameplay features and progress story events in Zagreus' Journey (use the mod config if you want to immediately unlock all of them).
+- Relive Zagreus' story by escaping to the Surface, forging bonds with your brother's old friends and benefactors, and speaking with the Fury Sisters, the Champions of Elysium, [REDACTED] himself, and many more.
+- Recruit a **new animal familiar** to aid you on your journey - both in the Nightmare Realm and on Melinoë's own quest to the Underworld and Surface.
 - Unlock **ten** of the original game's keepsakes and companions by forging relationships with Sisyphus, Eurydice, Patroclus, Orpheus, Megaera and Thanatos through the [Shared Keepsake Port](https://thunderstore.io/c/hades-ii/p/zannc/SharedKeepsakePort/) mod integration (automatically installed with this mod).
+- Receive a multitude of **entirely new boons** and effects offered to you by Sisyphus, Eurydice, Patroclus... and other familiar faces that you will now be able to meet along the way!
+- Discover and perform **20+** new incantations to unlock gameplay features and progress story events in Zagreus' Journey (use the mod config if you want to immediately unlock all of them).
+- Discover and complete **45+** new Minor Prophecies at the Fated List.
+- Decorate the Crossroads with **70+** new cosmetics, including new **Cauldrons**, **Arcana Card Backs**, and **Chthonic Chids** inspired by characters you meet during Zagreus' Journey.
+- Complete **24** new testaments by clearing the new bosses using each of your weapons with new fear levels.
+- Unlock **28** new musical tracks from Hades' original soundtrack through the [Hades OST for the Music Maker](https://thunderstore.io/c/hades-ii/p/NikkelM/Hades_OST_for_the_Music_Maker/) mod integration (automatically installed with this mod).
 - Challenge yourself with a set of new **Chaos Trials**, including randomized "Chaos Within" trials in the spirit of (Great) Chaos Above and Below.
+- Collect **30+** new resources specific to the new regions, use them for unlocks in this and other mods (see section below), and trade them with the Broker.
 - Advance through **50** new cosmetic-only ranks at the Spirit Mixer, from the lowly "_Alpha Warden_" to the feared "_Unseen One_".
 - Earn a new set of **three statues** from Commander Schelemeus by escaping the Nightmare Realm at progressively higher fear.
 - The four new regions can also appear in **Dream Dives** (but you can use the mod config to exclude them if you so wish).

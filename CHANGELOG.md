@@ -4,6 +4,7 @@
 
 <!--Releasenotes start-->
 ### Patch Highlights:
+- Recruit **Ophis**, a new slithering animal familiar that you can encounter in the Nightmare Realm! Ophis uses **Venom Darts** to slow and damage enemies over time. Also adds **five** alternate skins for Ophis, created by @burn on the community [Discord](https://discord.gg/KuMbyrN).
 - You can now meet **Achilles** in Asphodel, and advance his and Patroclus' storyline.
 - Added **companions** from the first game to the mod. Your friends may now give these to you once you advance your relationships with them accordingly. Dusa's companion is not unlockable yet, but will be in the future.
 - You may now naturally encounter **Artemis** and **Athena** in Zagreus' Journey, and they will use their dialogues from the first game when you speak to one of them.
