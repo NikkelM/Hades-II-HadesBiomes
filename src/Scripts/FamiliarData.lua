@@ -111,8 +111,7 @@ local snakeFamiliarData = {
 		GiftFunctionName = "FamiliarRecruitPresentation",
 		GiftFunctionArgs = {
 			Text = "ModsNikkelMHadesBiomesSnakeFamiliar",
-			-- TODO: Replace with proper icon
-			Icon = "FamiliarIcon_Frog",
+			Icon = "ModsNikkelMHadesBiomes_FamiliarIcon_Snake",
 			UnlockStartAnimation = "ModsNikkelMHadesBiomesSnakeFamiliar_Pet",
 			UnlockEndAnimation = "ModsNikkelMHadesBiomesSnakeFamiliar_VictoryRecovery",
 			UnlockExitAnimation = "Enemy_DragonBurrower_Burrow",
@@ -273,8 +272,7 @@ table.insert(game.FamiliarOrderData, "ModsNikkelMHadesBiomesSnakeFamiliar")
 game.OverwriteTableKeys(game.TraitData, {
 	ModsNikkelMHadesBiomesSnakeDamageResistanceBonus = {
 		InheritFrom = { "FamiliarTrait", },
-		-- TODO: Replace with proper icon
-		Icon = "FamiliarIcon_Frog",
+		Icon = "ModsNikkelMHadesBiomes_FamiliarIcon_Snake",
 		StatLines = {
 			"ModsNikkelMHadesBiomesSnakeDamageTakenStatLine",
 			"ModsNikkelMHadesBiomesSnakeGoldEarnedStatLine",
