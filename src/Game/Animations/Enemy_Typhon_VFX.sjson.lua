@@ -40,6 +40,12 @@ local addAnimations = {
 		Scale = 0.4,
 	},
 	{
+		Name = "ModsNikkelMHadesBiomesSnakeFamiliar_BurrowFxIn_NoDecal",
+		InheritFrom = "ModsNikkelMHadesBiomesSnakeFamiliar_BurrowFxIn",
+		Alpha = 0,
+		ChainTo = "null",
+	},
+	{
 		Name = "ModsNikkelMHadesBiomesSnakeFamiliar_BurrowFxPersistent",
 		InheritFrom = "DragonBurrowerBurrowFxPersistent",
 		ChainTo = "ModsNikkelMHadesBiomesSnakeFamiliar_BurrowFxOut_NoDirt",
@@ -50,6 +56,11 @@ local addAnimations = {
 		InheritFrom = "DragonBurrowerBurrowFxOut",
 		VisualFx = "ModsNikkelMHadesBiomesSnakeFamiliar_BurrowDirt",
 		Scale = 0.4,
+	},
+	{
+		Name = "ModsNikkelMHadesBiomesSnakeFamiliar_BurrowFxOut_NoDecal",
+		InheritFrom = "ModsNikkelMHadesBiomesSnakeFamiliar_BurrowFxOut",
+		Alpha = 0,
 	},
 	{
 		Name = "ModsNikkelMHadesBiomesSnakeFamiliar_BurrowFxOut_NoDirt",

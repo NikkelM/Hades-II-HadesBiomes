@@ -4,7 +4,10 @@ function mod.SnakeFamiliarSpawnPresentation(familiar, args)
 	if game.CurrentHubRoom ~= nil or familiar.PreRecruit then
 		SetAnimation({ Name = familiar.IdleAnimation, DestinationId = familiar.ObjectId })
 		SetAlpha({ Id = familiar.ObjectId, Fraction = 1.0 })
-		CreateAnimation({ Name = familiar.BurrowPersistentFx, DestinationId = familiar.ObjectId })
+		familiar.AtHabitat = game.CurrentHubRoom ~= nil and not familiar.StartingAsEquippedFamiliar
+		if not familiar.AtHabitat then
+			CreateAnimation({ Name = familiar.BurrowPersistentFx, DestinationId = familiar.ObjectId })
+		end
 		familiar.Burrowed = false
 		return
 	end
@@ -47,12 +50,15 @@ function mod.SnakeFamiliarPostAttackPresentation(familiar)
 end
 
 function mod.SnakeFamiliarBurrowEffects(familiar, preventDecalChain)
-	StopAnimation({
-		Name = familiar.BurrowPersistentFx,
-		DestinationId = familiar.ObjectId,
-		PreventChain = preventDecalChain,
-	})
-	CreateAnimation({ Name = familiar.BurrowFx, DestinationId = familiar.ObjectId })
+	if not familiar.AtHabitat then
+		StopAnimation({
+			Name = familiar.BurrowPersistentFx,
+			DestinationId = familiar.ObjectId,
+			PreventChain = preventDecalChain,
+		})
+	end
+	local burrowFx = familiar.AtHabitat and familiar.HabitatBurrowFx or familiar.BurrowFx
+	CreateAnimation({ Name = burrowFx, DestinationId = familiar.ObjectId })
 	PlaySound({ Name = familiar.BurrowSound, Id = familiar.ObjectId })
 end
 
@@ -70,7 +76,8 @@ function mod.SnakeFamiliarUnburrowPresentation(familiar)
 		return
 	end
 
-	SetAnimation({ Name = familiar.UnburrowAnimation, DestinationId = familiar.ObjectId })
+	local unburrowAnimation = familiar.AtHabitat and familiar.HabitatUnburrowAnimation or familiar.UnburrowAnimation
+	SetAnimation({ Name = unburrowAnimation, DestinationId = familiar.ObjectId })
 	SetAlpha({ Id = familiar.ObjectId, Fraction = 1.0 })
 	game.wait(familiar.UnburrowDuration, familiar.AIThreadName)
 	SetAnimation({ Name = familiar.IdleAnimation, DestinationId = familiar.ObjectId })

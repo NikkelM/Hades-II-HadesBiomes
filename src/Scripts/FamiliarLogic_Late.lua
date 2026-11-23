@@ -7,18 +7,20 @@ modutil.mod.Path.Context.Wrap.Static("AssignFamiliarKits", function()
 				local kit = game.FamiliarData[familiarName].ModsNikkelMHadesBiomes_CrossroadsKit
 				if kit ~= nil then
 					for _, decoration in ipairs(kit.Decorations or {}) do
-						local id = SpawnObstacle(decoration.SpawnArgs)
-						if decoration.Scale ~= nil then
-							SetScale({ Id = id, Fraction = decoration.Scale })
-						end
-						if decoration.Color ~= nil then
-							SetColor({ Id = id, Color = decoration.Color })
-						end
-						if decoration.HSV ~= nil then
-							SetHSV({ Id = id, HSV = decoration.HSV, ValueChangeType = "Absolute" })
-						end
-						if decoration.Ambient ~= nil then
-							SetThingProperty({ DestinationId = id, Property = "Ambient", Value = decoration.Ambient })
+						if decoration.GameStateRequirements == nil or game.IsGameStateEligible(decoration, decoration.GameStateRequirements) then
+							local id = SpawnObstacle(decoration.SpawnArgs)
+							if decoration.Scale ~= nil then
+								SetScale({ Id = id, Fraction = decoration.Scale })
+							end
+							if decoration.Color ~= nil then
+								SetColor({ Id = id, Color = decoration.Color })
+							end
+							if decoration.HSV ~= nil then
+								SetHSV({ Id = id, HSV = decoration.HSV, ValueChangeType = "Absolute" })
+							end
+							if decoration.Ambient ~= nil then
+								SetThingProperty({ DestinationId = id, Property = "Ambient", Value = decoration.Ambient })
+							end
 						end
 					end
 					table.insert(kitIds, index, SpawnObstacle(kit.SpawnArgs))

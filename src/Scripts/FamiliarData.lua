@@ -44,6 +44,7 @@ local snakeFamiliarData = {
 		HiddenAnimation = "Enemy_DragonBurrower_Hidden",
 		BurrowAnimation = "Enemy_DragonBurrower_Burrow",
 		UnburrowAnimation = "ModsNikkelMHadesBiomesSnakeFamiliar_Unburrow",
+		HabitatUnburrowAnimation = "ModsNikkelMHadesBiomesSnakeFamiliar_Unburrow_NoDecal",
 		PreAttackAnimation = "Enemy_DragonBurrower_RangedPreFire",
 		TripleFireAnimation = "ModsNikkelMHadesBiomesSnakeFamiliar_RangedFire_Triple",
 		PostAttackAnimation = "ModsNikkelMHadesBiomesSnakeFamiliar_RangedPostFire",
@@ -80,6 +81,20 @@ local snakeFamiliarData = {
 						LocationY = 6475,
 					},
 					Scale = 0.188,
+				},
+				{
+					SpawnArgs = {
+						Name = "ModsNikkelMHadesBiomes_CrossroadsSnakebed01",
+						Group = "Terrain_01_Decor02",
+						LocationX = 4256,
+						LocationY = 6475,
+					},
+					Scale = 1.1,
+					GameStateRequirements = {
+						{
+							PathTrue = { "GameState", "FamiliarsUnlocked", "ModsNikkelMHadesBiomesSnakeFamiliar" },
+						},
+					},
 				},
 			},
 		},
@@ -238,6 +253,7 @@ local snakeFamiliarData = {
 		-- Teleport VFX
 		SkipFleeTeleportVfx = true,
 		BurrowFx = "ModsNikkelMHadesBiomesSnakeFamiliar_BurrowFxOut",
+		HabitatBurrowFx = "ModsNikkelMHadesBiomesSnakeFamiliar_BurrowFxOut_NoDecal",
 		BurrowPersistentFx = "ModsNikkelMHadesBiomesSnakeFamiliar_BurrowFxPersistent",
 
 		-- Text

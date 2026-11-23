@@ -193,6 +193,7 @@ function mod.SnakeFamiliarMoveToLocation(familiar, args)
 		Id = familiar.ObjectId,
 		DestinationId = destinationId,
 	})
+	familiar.AtHabitat = game.CurrentHubRoom ~= nil and destinationId == familiar.KitId
 	mod.SnakeFamiliarUnburrowPresentation(familiar)
 end
 
