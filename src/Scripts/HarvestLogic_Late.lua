@@ -10,7 +10,8 @@ modutil.mod.Path.Context.Wrap("SetupHarvestPoints", function(currentRoom, harves
 	-- To replace which Ids get used to place the current harvest point
 	modutil.mod.Path.Wrap("GetInactiveIdsByType", function(base, args)
 		-- Only use different logic if we are in a modded run, but not in Chaos, as that has proper harvest point placements
-		if game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and game.CurrentRun.CurrentRoom and game.CurrentRun.CurrentRoom.RoomSetName ~= "Chaos" then
+		local ids = base(args)
+		if #ids == 0 and game.CurrentRun.ModsNikkelMHadesBiomesIsModdedRun and game.CurrentRun.CurrentRoom and game.CurrentRun.CurrentRoom.RoomSetName ~= "Chaos" then
 			if game.Contains({ "HarvestPoint", "ShovelPoint", "PickaxePoint", "ExorcismPoint" }, args.Name) then
 				local innerCurrentRoom = game.CurrentRun.CurrentRoom
 				local eligibleIds = {}
@@ -97,7 +98,7 @@ modutil.mod.Path.Context.Wrap("SetupHarvestPoints", function(currentRoom, harves
 			end
 		end
 
-		return base(args)
+		return ids
 	end)
 
 	-- For our modded harvest points, we need to spawn a new obstacle, as we don't use the preset Ids
