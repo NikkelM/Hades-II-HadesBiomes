@@ -1,4 +1,13 @@
 modutil.mod.Path.Context.Wrap.Static("AssignFamiliarKits", function()
+	modutil.mod.Path.Wrap("GetClosest", function(base, args)
+		-- For Ophis, prevent him spawning on the stairs
+		if args.Id == 40012 and args.DestinationName == "SpawnPoints" and game.GameState.EquippedFamiliar == "ModsNikkelMHadesBiomesSnakeFamiliar" then
+			return 589707
+		end
+
+		return base(args)
+	end)
+
 	modutil.mod.Path.Wrap("LoadPackages", function(base, args)
 		if args.Names == game.FamiliarOrderData then
 			-- Vanilla has already collected and sorted its kit IDs
