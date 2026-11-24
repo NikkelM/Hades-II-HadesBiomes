@@ -1487,6 +1487,8 @@ mod.HeadMarkerEffectVfxes = {
 	ZeusEchoDebuff = true,
 	-- Skyfall Hex
 	SorceryDebuffMoonLoopIn = true,
+	-- Ophis Venom
+	ModsNikkelMHadesBiomesSnakeVenomFx = true,
 }
 mod.DefaultModdedEnemyHeadVfxOffsetZ = 120
 

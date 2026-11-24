@@ -1099,6 +1099,9 @@ local roomModifications = {
 						PathFalse = { "GameState", "FamiliarsUnlocked", "ModsNikkelMHadesBiomesSnakeFamiliar" },
 					},
 					{
+						PathTrue = { "GameState", "WorldUpgradesAdded", "WorldUpgradeBreakableValue1" },
+					},
+					{
 						Path = { "GameState", "RoomsEntered", "D_Reprieve01" },
 						Comparison = ">=",
 						Value = 3,

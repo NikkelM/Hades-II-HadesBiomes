@@ -61,6 +61,15 @@ local newIcons = {
 		TexturePath = "GUIModded\\Screens\\RunHistory\\BiomeStyx",
 	},
 	-- #endregion
+	-- #region Familiars
+	ModsNikkelMHadesBiomesGoldenUrnIcon = {
+		TexturePath = "GUIModded\\Icons\\GoldUrn",
+		UseTooltip = true,
+	},
+	ModsNikkelMHadesBiomesGoldenUrnIconNoTooltip = {
+		TexturePath = "GUIModded\\Icons\\GoldUrn",
+	},
+	-- #endregion
 }
 for iconName, iconData in pairs(newIcons) do
 	game.IconData[iconName] = game.IconData[iconName] or iconData
