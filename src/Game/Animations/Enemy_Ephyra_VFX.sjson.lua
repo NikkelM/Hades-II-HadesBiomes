@@ -6,7 +6,7 @@ local addAnimations = {
 		Name = "ModsNikkelMHadesBiomesSnakeVenomFx",
 		InheritFrom = "PoisonStatusFx",
 		GrannyAttachedMarkerLocation = "head_fxMarker_00_M_JNT",
-		OffsetZ = 100,
+		OffsetZ = 70,
 		ChainTo = "ModsNikkelMHadesBiomesSnakeVenomFxDissipate",
 		Sound = "null",
 	},
@@ -14,7 +14,7 @@ local addAnimations = {
 		Name = "ModsNikkelMHadesBiomesSnakeVenomFxDissipate",
 		InheritFrom = "PoisonStatusFxDissipate",
 		GrannyAttachedMarkerLocation = "head_fxMarker_00_M_JNT",
-		OffsetZ = 100,
+		OffsetZ = 70,
 		Sound = "null",
 	},
 }
