@@ -4597,7 +4597,8 @@ local preRunCosmetics = {
 		FlavorText = {
 			-- de = "Land-Dracons are often misunderstood as being enemies of the Unseen, but once approached with care reveal their sensitive nature.",
 			-- el = "Land-Dracons are often misunderstood as being enemies of the Unseen, but once approached with care reveal their sensitive nature.",
-			en = "Land-Dracons are often misunderstood as being enemies of the Unseen, but once approached with care reveal their sensitive nature.",
+			en =
+			"Land-Dracons are often misunderstood as being enemies of the Unseen, but once approached with care reveal their sensitive nature.",
 			-- es = "Land-Dracons are often misunderstood as being enemies of the Unseen, but once approached with care reveal their sensitive nature.",
 			-- fr = "Land-Dracons are often misunderstood as being enemies of the Unseen, but once approached with care reveal their sensitive nature.",
 			-- it = "Land-Dracons are often misunderstood as being enemies of the Unseen, but once approached with care reveal their sensitive nature.",
@@ -6791,6 +6792,20 @@ CosmeticsAPI.RegisterCardBack({
 	CardBackPath = "NikkelM-HadesBiomesCosmeticsCardbacks\\GUI\\Screens\\Cardback\\CardBackGodsHermes",
 })
 -- #endregion
+
+-- #region Vanilla Packs
+-- #region Familiars Pack
+CosmeticsAPI.RegisterCardBack({
+	Id = _PLUGIN.guid .. "." .. "Cosmetic_Arcana_Familiars_Ophis",
+	PackId = "Cosmetic_CardDeck05",
+	DeckArtPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Arcana\\Arcana_Familiars\\Deck_Ophis",
+	DeckArtMouseoverPath =
+	"NikkelM-HadesBiomesCosmetics\\Crossroads\\Assets\\Arcana\\Arcana_Familiars\\DeckMouseover_Ophis",
+	CardBackPath = "NikkelM-HadesBiomesCosmeticsCardbacks\\GUI\\Screens\\Cardback\\CardBackFamiliarsOphis",
+})
+-- #endregion
+-- #endregion
+
 -- #endregion
 
 -- #region Chthonic Chids

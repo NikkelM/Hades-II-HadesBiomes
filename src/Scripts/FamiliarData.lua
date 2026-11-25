@@ -89,7 +89,7 @@ local snakeFamiliarData = {
 						LocationX = 4256,
 						LocationY = 6475,
 					},
-					Scale = 1.1,
+					Ambient = 0.2,
 					GameStateRequirements = {
 						{
 							PathTrue = { "GameState", "FamiliarsUnlocked", "ModsNikkelMHadesBiomesSnakeFamiliar" },

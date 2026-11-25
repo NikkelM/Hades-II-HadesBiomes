@@ -1,11 +1,13 @@
 modutil.mod.Path.Context.Wrap.Static("AssignFamiliarKits", function()
 	modutil.mod.Path.Wrap("GetClosest", function(base, args)
+		local destinationId = base(args)
+
 		-- For Ophis, prevent him spawning on the stairs
-		if args.Id == 40012 and args.DestinationName == "SpawnPoints" and game.GameState.EquippedFamiliar == "ModsNikkelMHadesBiomesSnakeFamiliar" then
+		if destinationId == 589709 and args.DestinationName == "SpawnPoints" and game.GameState.EquippedFamiliar == "ModsNikkelMHadesBiomesSnakeFamiliar" then
 			return 589707
 		end
 
-		return base(args)
+		return destinationId
 	end)
 
 	modutil.mod.Path.Wrap("LoadPackages", function(base, args)
