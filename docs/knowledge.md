@@ -713,6 +713,59 @@ Take special note of the ID entry:
 },
 ```
 
+Add the following after the last entry in the list, which will be used by Familiars when spawning on the map.
+
+```text
+{
+	"Active": true,
+	"AllowMovementReaction": false,
+	"Ambient": -1.0,
+	"Angle": 0.0,
+	"AttachToID": 0,
+	"AttachedIDs": [],
+	"CausesOcculsion": false,
+	"Clutter": false,
+	"Collision": true,
+	"Color": {
+		"A": 255,
+		"B": 255,
+		"G": 255,
+		"R": 255
+	},
+	"Comments": null,
+	"CreatesShadows": true,
+	"DataType": "Obstacle",
+	"DrawVfxOnTop": true,
+	"FlipHorizontal": false,
+	"FlipVertical": false,
+	"GroupNames": [
+		"Scripting"
+	],
+	"HelpTextID": null,
+	"Hue": 0.0,
+	"Id": 553378,
+	"IgnoreGridManager": false,
+	"Invert": false,
+	"Location": {
+		"X": 2459.501220703125,
+		"Y": 5350.74365234375
+	},
+	"Name": "FamiliarPoint",
+	"OffsetZ": 0.0,
+	"ParallaxAmount": 1.0,
+	"Points": [],
+	"Saturation": 0.0,
+	"Scale": 1.0,
+	"SkewAngle": 0.0,
+	"SkewScale": 1.0,
+	"SortIndex": 0,
+	"StopsLight": true,
+	"Tallness": 0.0,
+	"UseBoundsForSortArea": true,
+	"Value": 0.0
+}
+```
+
 Additionally, the new `Terrain_04` and `Terrain_05` groups must be added to the `RoomOpening.map_text` file, in the correct positions:
 
 ```text

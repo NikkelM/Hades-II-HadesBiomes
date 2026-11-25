@@ -81,6 +81,7 @@ Other fixes and improvements:
 - Balancing: Reduced the amount of rerolls given by "Good Riddance" from 5 to 4.
 - Balancing: Owning "God of the Dead" now makes "Success Rate" from Hermes eligible.
 - Balancing: Progressing mastery of the Lyre in Orpheus' chamber is now quicker.
+- Fixed: Familiars often spawn out of bounds in the opening room of a run.
 - Fixed: When receiving a blessing from Sisyphus outside of his encounter (through other mods), they can spawn out of bounds.
 - Fixed: While spawning, Brimstones and Voidstones pop in instead of fading like other enemies.
 - Fixed: The small crystals attached to Brimstones and Voidstones don't react to the enemy taking damage.
