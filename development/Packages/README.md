@@ -69,15 +69,6 @@ Add `--pack` to run `deppth2 hpk -c BC7` and copy the generated `.pkg` and `.pkg
 python development\Packages\Z_Generate720pSources.py --pack
 ```
 
-## Building the Familiar Skins package
-
-Install the dependencies, then run the build script from the repository root:
-
-```powershell
-python -m pip install pillow lz4 etcpak
-python .\development\Packages\build_pkg.py ModsNikkelMHadesBiomesSnakeFamiliar
-```
-
 ## For Original Biome Packages
 
 For the original biome packages in the "Original Biomes" subfolder, they already have the manifests and atlases set up, as extracted from the Hades game files.

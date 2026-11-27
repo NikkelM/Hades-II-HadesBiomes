@@ -399,23 +399,6 @@ end
 mod.AddTableKeysSkipDupes(game.CodexOrdering, hadesCodexOrdering)
 mod.AddTableKeysSkipDupes(game.CodexData, hadesCodexData)
 
--- #region Entirely new entries
-game.CodexData.Familiars.Entries.ModsNikkelMHadesBiomesSnakeFamiliar = {
-	Entries = {
-		{
-			UnlockGameStateRequirements = {
-				{
-					PathTrue = { "GameState", "FamiliarsUnlocked", "ModsNikkelMHadesBiomesSnakeFamiliar" },
-				},
-			},
-			Text = "ModsNikkelMHadesBiomes_CodexData_Ophis_01",
-		},
-	},
-	Image = "ModsNikkelMHadesBiomes_Codex_Portrait_SnakeFamiliar",
-}
-table.insert(game.CodexOrdering.Familiars, "ModsNikkelMHadesBiomesSnakeFamiliar")
--- #endregion
-
 -- Modifications to the tab layout of the Codex, as we need to squish them left to ensure our new tab doesn't go beyond the overlayed area
 game.ScreenData.Codex.ChapterX = 405
 game.ScreenData.Codex.ChapterSpacingX = 84

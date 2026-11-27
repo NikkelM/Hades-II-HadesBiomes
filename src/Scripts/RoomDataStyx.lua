@@ -1120,7 +1120,7 @@ local roomModifications = {
 					SkipAISetup = true,
 					OverwriteSelf = {
 						OnUsedFunctionName = "nil",
-						SpecialInteractFunctionName = _PLUGIN.guid .. "." .. "SnakeFamiliarSpecialInteractLockedInRun",
+						SpecialInteractFunctionName = "NikkelM-Dracon_Familiar" .. "." .. "SnakeFamiliarSpecialInteractLockedInRun",
 						PreRecruit = true,
 						DistanceTriggers = {
 							{

@@ -27,7 +27,6 @@ local hadesExpireProjectileExcludeProjectileNames = {
 	"HadesCastBeam",
 	"HadesCastBeamNoTracking",
 	"HadesCerberusAssist",
-	"ModsNikkelMHadesBiomesSnakeDart",
 }
 
 game.WeaponSets.ExpireProjectileExcludeProjectileNames = game.CombineTablesIPairs(
@@ -37,4 +36,3 @@ game.WeaponSets.ExpireProjectileExcludeProjectileNames = game.CombineTablesIPair
 
 game.UnitSets.PlayerSummons.TrainingMeleeSummon = true
 game.UnitSets.PlayerSummons.DusaSummon = true
-game.UnitSets.PlayerSummons.ModsNikkelMHadesBiomesSnakeFamiliar = true

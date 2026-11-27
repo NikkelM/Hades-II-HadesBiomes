@@ -234,16 +234,6 @@ modutil.mod.Path.Wrap("StartEncounterEffects", function(base, encounter)
 end)
 
 modutil.mod.Path.Wrap("LeaveRoom", function(base, currentRun, door)
-	if game.HeroHasTrait("ModsNikkelMHadesBiomesSnakeGoldBonus") then
-		for _, urnId in ipairs(currentRun.CurrentRoom.HighValueBreakableIds or {}) do
-			local urn = game.ActiveEnemies[urnId] or game.MapState.ActiveObstacles[urnId]
-			if urn ~= nil and not urn.Destroyed then
-				urn.OnKillGlobalVoiceLines = nil
-				game.Kill(urn)
-			end
-		end
-	end
-
 	-- For Styx D_Hub, we need to regenerate the Shop encounter when re-entering the room
 	if currentRun.ModsNikkelMHadesBiomesIsModdedRun and door.Room ~= nil and door.Room.ModsNikkelMHadesBiomesOnReloadStripEncounter and door.Room.TimesVisited ~= nil and door.Room.TimesVisited > 0 then
 		door.Room.Encounter = nil

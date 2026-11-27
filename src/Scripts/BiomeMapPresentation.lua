@@ -117,6 +117,10 @@ function mod.ModsNikkelMHadesBiomesBiomeMapPresentation(source, args)
 			DestinationId = familiarId
 		})
 		SetAnimation({ Name = game.MapState.FamiliarUnit.MarkerIdleAnimation, DestinationId = familiarId })
+		-- For SnakeFamiliar/Ophis
+		if game.MapState.FamiliarUnit.MarkerTexture ~= nil then
+			SetThingProperty({ Property = "GrannyTexture", Value = game.MapState.FamiliarUnit.MarkerTexture, DestinationId = familiarId })
+		end
 		table.insert(playerTeamIds, familiarId)
 	end
 

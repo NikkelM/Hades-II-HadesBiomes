@@ -57,11 +57,6 @@ local newDamageSourceMappings = {
 	ModsNikkelMHadesBiomesRubbleFall = "Traps",
 	ModsNikkelMHadesBiomesRubbleFallLarge = "Traps",
 	-- #endregion
-
-	-- #region FAMILIARS
-	ModsNikkelMHadesBiomesSnakeDart = "ModsNikkelMHadesBiomesSnakeFamiliar",
-	ModsNikkelMHadesBiomesSnakeVenom = "ModsNikkelMHadesBiomesSnakeFamiliar",
-	-- #endregion
 }
 mod.AddTableKeysSkipDupes(game.ScreenData.RunClear.DamageSourceMap, newDamageSourceMappings)
 -- #endregion

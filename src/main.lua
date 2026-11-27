@@ -303,7 +303,6 @@ local function on_ready()
 			DebugLogScriptImportProgress("MapGroups SJSON")
 
 			-- SJSON changes
-			import "Game/Animations/Model/Enemy_DragonBurrower_Animation.sjson.lua"
 			import "Game/Animations/Model/Enemy_HadesTombstone_Animation.sjson.lua"
 			import "Game/Animations/Model/Hero_Melinoe_Animation_Personality.sjson.lua"
 			DebugLogScriptImportProgress("Model Animation SJSON")
@@ -314,8 +313,6 @@ local function on_ready()
 			DebugLogScriptImportProgress("GUI SJSON")
 
 			import "Game/Animations/Enemy_1Base_VFX.sjson.lua"
-			import "Game/Animations/Enemy_Ephyra_VFX.sjson.lua"
-			import "Game/Animations/Enemy_Typhon_VFX.sjson.lua"
 			import "Game/Animations/Melinoe_Spell_VFX.sjson.lua"
 			import "Game/Animations/Melinoe_Zeus_VFX.sjson.lua"
 			import "Game/Animations/Obstacle_Asphodel_VFX.sjson.lua"
@@ -332,7 +329,6 @@ local function on_ready()
 			import "Game/Weapons/EnemyWeapons.sjson.lua"
 
 			import "Game/Projectiles/EnemyProjectiles.sjson.lua"
-			import "Game/Projectiles/Familiar_Projectiles.sjson.lua"
 			DebugLogScriptImportProgress("Projectile SJSON")
 
 			import "Game/Obstacles/AmbienceGenerators.sjson.lua"
@@ -428,9 +424,7 @@ local function on_ready()
 			import "Scripts/CreditsData.lua"
 			import "Scripts/DeathLoopData.lua"
 			import "Scripts/EffectData.lua"
-			-- Needs to be before FamiliarCostumeData so that the familiar is registered before its costumes
 			import "Scripts/FamiliarData.lua"
-			import "Scripts/FamiliarCostumeData.lua"
 			import "Scripts/GameStatsData.lua"
 			import "Scripts/GardenData.lua"
 			import "Scripts/GhostAdminData_Items.lua"
@@ -522,8 +516,6 @@ local function on_ready()
 			import "Scripts/EncounterPresentation.lua"
 			import "Scripts/EventLogic.lua"
 			import "Scripts/EventPresentation.lua"
-			import "Scripts/FamiliarLogic.lua"
-			import "Scripts/FamiliarPresentation.lua"
 			import "Scripts/FlashbackPresentation.lua"
 			import "Scripts/GameStatsLogic.lua"
 			import "Scripts/GardenLogic.lua"
@@ -642,8 +634,6 @@ local function on_ready_late()
 	import "Scripts/EffectLogic_Late.lua"
 	import "Scripts/EffectPresentation_Late.lua"
 	import "Scripts/EventPresentation_Late.lua"
-	import "Scripts/FamiliarLogic_Late.lua"
-	import "Scripts/FamiliarPresentation_Late.lua"
 	import "Scripts/GhostLogic_Late.lua"
 	import "Scripts/HarvestLogic_Late.lua"
 	import "Scripts/HarvestPresentation_Late.lua"
@@ -662,6 +652,7 @@ local function on_ready_late()
 	import "Scripts/WeaponUpgradeLogic_Late.lua"
 
 	import "Scripts/Meta/PonyMenuLogic_Late.lua"
+	import "Scripts/DraconFamiliarIntegration.lua"
 
 	mod.FinishedLoading = true
 end

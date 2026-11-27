@@ -859,15 +859,6 @@ mod.HadesPortraitAnimationAdditions = {
 		FilePath = "Portraits\\ModsNikkelMHadesBiomesCodex\\CodexPortrait_ThiefImpulseMineLayer",
 	},
 	-- #endregion
-	-- #region Familiars
-	{
-		Name = "ModsNikkelMHadesBiomes_Codex_Portrait_SnakeFamiliar",
-		InheritFrom = "Codex_Portrait_Base_01",
-		FilePath = "Portraits\\ModsNikkelMHadesBiomesCodex\\CodexPortrait_SnakeFamiliar",
-		StartFrame = 1,
-		EndFrame = 1,
-	},
-	-- #endregion
 	-- #endregion
 	-- #region Misc
 	{
