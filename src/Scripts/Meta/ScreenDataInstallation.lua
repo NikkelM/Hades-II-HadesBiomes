@@ -116,4 +116,5 @@ local updateDescriptionText = game.ScreenData.ModsNikkelMHadesBiomesUpdateSucces
 		.DescriptionText
 updateDescriptionText.OffsetX = -400
 updateDescriptionText.TextArgs.Justification = "Left"
+updateDescriptionText.TextArgs.LineSpacingBottom = 2
 -- #endregion

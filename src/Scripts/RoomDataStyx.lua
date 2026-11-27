@@ -1091,6 +1091,51 @@ local roomModifications = {
 		StartUnthreadedEvents = {
 			[1] = { FunctionName = _PLUGIN.guid .. "." .. "SpawnConsumables", },
 		},
+		StartThreadedEvents = {
+			{
+				FunctionName = "ActivateFamiliar",
+				GameStateRequirements = {
+					{
+						PathFalse = { "GameState", "FamiliarsUnlocked", "ModsNikkelMHadesBiomesSnakeFamiliar" },
+					},
+					{
+						Path = { "GameState", "RoomsEntered", "D_Reprieve01" },
+						Comparison = ">=",
+						Value = 3,
+					},
+					{
+						Path = { "GameState", "FamiliarsUnlocked" },
+						CountOf = { "FrogFamiliar", "RavenFamiliar", "CatFamiliar", "HoundFamiliar", "PolecatFamiliar" },
+						Comparison = ">=",
+						Value = 2,
+					},
+					{
+						Path = { "CurrentRun" },
+						HasNone = { "ActiveBounty", "IsDreamRun" },
+					},
+				},
+				Args = {
+					Id = 543940,
+					Name = "ModsNikkelMHadesBiomesSnakeFamiliar",
+					SkipAISetup = true,
+					OverwriteSelf = {
+						OnUsedFunctionName = "nil",
+						SpecialInteractFunctionName = "NikkelM-Dracon_Familiar" .. "." .. "SnakeFamiliarSpecialInteractLockedInRun",
+						PreRecruit = true,
+						DistanceTriggers = {
+							{
+								WithinDistance = 300,
+								FunctionName = "GenericPresentation",
+								Args = {
+									SetAnimation = "ModsNikkelMHadesBiomesSnakeFamiliar_VictoryRecovery",
+									VoiceLines = { GlobalVoiceLines = "ModsNikkelMHadesBiomes_SnakeReactionVoiceLines" },
+								},
+							},
+						},
+					},
+				},
+			},
+		},
 		DisableRewardMagnetisim = true,
 		SuppressRewardSpawnSounds = false,
 

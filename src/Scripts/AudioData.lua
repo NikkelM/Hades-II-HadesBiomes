@@ -366,6 +366,13 @@ game.GlobalVoiceLines.SkellySummonTauntVoiceLines = game.GlobalVoiceLines.Skelly
 game.GlobalVoiceLines.SkellySummonExitReactionVoiceLines = game.GlobalVoiceLines.SkellySummonExitReactionVoiceLines or
 		mod.GlobalVoiceLines.SkellySummonExitReactionVoiceLines
 
+game.GlobalVoiceLines.ModsNikkelMHadesBiomes_SnakeReactionVoiceLines = game.GlobalVoiceLines
+		.ModsNikkelMHadesBiomes_SnakeReactionVoiceLines or
+		mod.GlobalVoiceLines.ModsNikkelMHadesBiomes_SnakeReactionVoiceLines
+game.GlobalVoiceLines.ModsNikkelMHadesBiomes_SnakeFamiliarFledVoiceLines = game.GlobalVoiceLines
+		.ModsNikkelMHadesBiomes_SnakeFamiliarFledVoiceLines or
+		mod.GlobalVoiceLines.ModsNikkelMHadesBiomes_SnakeFamiliarFledVoiceLines
+
 table.insert(game.GlobalVoiceLines.CombatResolvedVoiceLines, mod.GlobalVoiceLines.SkellySummonCombatResolvedVoiceLines)
 table.insert(game.GlobalVoiceLines.CombatResolvedVoiceLines, mod.GlobalVoiceLines.DusaSummonCombatResolvedVoiceLines)
 
@@ -395,6 +402,9 @@ if game.GlobalVoiceLines.HarvestPointFoundVoiceLines then
 		IsNone = { "Surface" },
 	})
 end
+
+-- Allow FamiliarRecruitedVoiceLines in the D_Reprieve01 room for SnakeFamiliar
+table.insert(game.GlobalVoiceLines.FamiliarRecruitedVoiceLines[3].GameStateRequirements[1].IsAny, "D_Reprieve01")
 -- #endregion
 
 -- #region Modifications to vanilla voiceline requirements

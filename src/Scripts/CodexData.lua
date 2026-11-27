@@ -37,7 +37,8 @@ local hadesCodexOrdering = {
 		-- Locations
 		"Tartarus", "Asphodel", "Elysium", "Styx", "Challenge", "Surface",
 		-- NPCs
-		"ModsNikkelMHadesBiomes_NPC_Achilles_01", "NPC_Sisyphus_01", "NPC_Orpheus_01", "NPC_Eurydice_01", "NPC_Patroclus_01", "NPC_Thanatos_01",
+		"ModsNikkelMHadesBiomes_NPC_Achilles_01", "NPC_Sisyphus_01", "NPC_Orpheus_01", "NPC_Eurydice_01", "NPC_Patroclus_01",
+		"NPC_Thanatos_01",
 		-- Companions
 		"FuryAssistTrait", "ThanatosAssistTrait", "SisyphusAssistTrait", "SkellyAssistTrait",
 		-- "DusaAssistTrait",
@@ -124,7 +125,8 @@ for oldName, newName in pairs(mod.EnemyNameMappings) do
 	mod.UpdatePropertyName(hadesEnemyCodexGroups, oldName, newName, {}, "hadesEnemyCodexGroups")
 	mod.UpdateField(hadesEnemyCodexGroups, oldName, newName, { "*" }, "hadesEnemyCodexGroups")
 end
-hadesCodexData.OtherDenizens.Entries.ModsNikkelMHadesBiomes_NPC_Achilles_01 =	hadesCodexData.OtherDenizens.Entries.NPC_Achilles_01
+hadesCodexData.OtherDenizens.Entries.ModsNikkelMHadesBiomes_NPC_Achilles_01 = hadesCodexData.OtherDenizens.Entries
+		.NPC_Achilles_01
 hadesCodexData.OtherDenizens.Entries.NPC_Achilles_01 = nil
 
 for oldName, newName in pairs(mod.HadesCodexTextNameMappings) do
@@ -132,13 +134,20 @@ for oldName, newName in pairs(mod.HadesCodexTextNameMappings) do
 end
 
 -- Romance/Custom Relationship/Locked entries
-hadesCodexData.ChthonicGods.Entries.NPC_FurySister_01.Entries[4].CustomUnlockText = "ModsNikkelMHadesBiomes_Codex_Custom_Relationship_Requirement"
-hadesCodexData.ChthonicGods.Entries.NPC_Thanatos_01.Entries[4].CustomUnlockText = "ModsNikkelMHadesBiomes_Codex_Custom_Relationship_Requirement"
-hadesCodexData.OtherDenizens.Entries.ModsNikkelMHadesBiomes_NPC_Achilles_01.Entries[4].CustomUnlockText = "ModsNikkelMHadesBiomes_Codex_Custom_Relationship_Requirement"
-hadesCodexData.OtherDenizens.Entries.NPC_Sisyphus_01.Entries[4].CustomUnlockText = "ModsNikkelMHadesBiomes_Codex_Custom_Relationship_Requirement"
-hadesCodexData.OtherDenizens.Entries.NPC_Orpheus_01.Entries[4].CustomUnlockText = "ModsNikkelMHadesBiomes_Codex_Custom_Relationship_Requirement"
-hadesCodexData.OtherDenizens.Entries.NPC_Eurydice_01.Entries[4].CustomUnlockText = "ModsNikkelMHadesBiomes_Codex_Custom_Relationship_Requirement"
-hadesCodexData.OtherDenizens.Entries.NPC_Patroclus_01.Entries[4].CustomUnlockText = "ModsNikkelMHadesBiomes_Codex_Custom_Relationship_Requirement"
+hadesCodexData.ChthonicGods.Entries.NPC_FurySister_01.Entries[4].CustomUnlockText =
+"ModsNikkelMHadesBiomes_Codex_Custom_Relationship_Requirement"
+hadesCodexData.ChthonicGods.Entries.NPC_Thanatos_01.Entries[4].CustomUnlockText =
+"ModsNikkelMHadesBiomes_Codex_Custom_Relationship_Requirement"
+hadesCodexData.OtherDenizens.Entries.ModsNikkelMHadesBiomes_NPC_Achilles_01.Entries[4].CustomUnlockText =
+"ModsNikkelMHadesBiomes_Codex_Custom_Relationship_Requirement"
+hadesCodexData.OtherDenizens.Entries.NPC_Sisyphus_01.Entries[4].CustomUnlockText =
+"ModsNikkelMHadesBiomes_Codex_Custom_Relationship_Requirement"
+hadesCodexData.OtherDenizens.Entries.NPC_Orpheus_01.Entries[4].CustomUnlockText =
+"ModsNikkelMHadesBiomes_Codex_Custom_Relationship_Requirement"
+hadesCodexData.OtherDenizens.Entries.NPC_Eurydice_01.Entries[4].CustomUnlockText =
+"ModsNikkelMHadesBiomes_Codex_Custom_Relationship_Requirement"
+hadesCodexData.OtherDenizens.Entries.NPC_Patroclus_01.Entries[4].CustomUnlockText =
+"ModsNikkelMHadesBiomes_Codex_Custom_Relationship_Requirement"
 -- hadesCodexData.OtherDenizens.Entries.NPC_Dusa_01.Entries[4].CustomUnlockText = "ModsNikkelMHadesBiomes_Codex_Custom_Relationship_Requirement"
 
 hadesCodexData.OtherDenizens.Entries.ModsNikkelMHadesBiomes_NPC_Achilles_01.Entries[2].UnlockThreshold = nil

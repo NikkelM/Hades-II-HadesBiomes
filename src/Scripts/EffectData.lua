@@ -4,6 +4,7 @@ game.EffectData.StyxPoison = {
 	OnApplyFunctionName = _PLUGIN.guid .. "." .. "StyxPoisonApply",
 	OnClearFunctionName = _PLUGIN.guid .. "." .. "StyxPoisonClear",
 }
+
 game.WeaponEffectData.ModsNikkelMHadesBiomesAttackSuperLowGrip = {
 	EffectName = "ModsNikkelMHadesBiomesAttackSuperLowGrip",
 	DataProperties = {

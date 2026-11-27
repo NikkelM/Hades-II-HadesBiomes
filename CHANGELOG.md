@@ -4,6 +4,7 @@
 
 <!--Releasenotes start-->
 ### Patch Highlights:
+- Recruit **Ophis**, a new slithering animal familiar that you can encounter in the Nightmare Realm! Ophis uses **Venom Darts** to slow and damage enemies over time. Also adds **five** alternate forms for Ophis, created by @burn on the community [Discord](https://discord.gg/KuMbyrN).
 - You can now meet **Achilles** in Asphodel, and advance his and Patroclus' storyline.
 - Added **companions** from the first game to the mod. Your friends may now give these to you once you advance your relationships with them accordingly. Dusa's companion is not unlockable yet, but will be in the future.
 - You may now naturally encounter **Artemis** and **Athena** in Zagreus' Journey, and they will use their dialogues from the first game when you speak to one of them.
@@ -80,6 +81,7 @@ Other fixes and improvements:
 - Balancing: Reduced the amount of rerolls given by "Good Riddance" from 5 to 4.
 - Balancing: Owning "God of the Dead" now makes "Success Rate" from Hermes eligible.
 - Balancing: Progressing mastery of the Lyre in Orpheus' chamber is now quicker.
+- Fixed: Familiars often spawn out of bounds in the opening room of a run.
 - Fixed: When receiving a blessing from Sisyphus outside of his encounter (through other mods), they can spawn out of bounds.
 - Fixed: While spawning, Brimstones and Voidstones pop in instead of fading like other enemies.
 - Fixed: The small crystals attached to Brimstones and Voidstones don't react to the enemy taking damage.

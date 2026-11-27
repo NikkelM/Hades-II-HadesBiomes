@@ -26,6 +26,7 @@ local hadesTwoScreenVFXModifications = {
 
 -- These need to be added before the others, as they are inherited from
 local addParentAnimations = {
+	-- #region Main Menu
 	ModsNikkelMHadesBiomes_MainMenuMashupX_Early = {
 		Name = "ModsNikkelMHadesBiomes_MainMenuMashupX_Early",
 		FilePath = "NikkelM-HadesBiomesMainMenu\\Screens\\Logo\\MashupX",
@@ -76,6 +77,7 @@ local addParentAnimations = {
 		EaseIn = -7.25333,
 		EaseOut = 1,
 	},
+	-- #endregion
 }
 
 local addAnimations = {

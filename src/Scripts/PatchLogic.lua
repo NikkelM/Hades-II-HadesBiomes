@@ -24,6 +24,10 @@ modutil.mod.Path.Wrap("DoPatches", function(base)
 					game.GameState.WorldUpgradesRevealed[cosmeticName] = true
 				end
 			end
+
+			for _, costumeName in ipairs(mod.ModdedFamiliarCostumeIds) do
+				game.UnlockWorldUpgrade(costumeName)
+			end
 			mod.DebugPrint("Permanently unlocked all cosmetics!", 3)
 		end
 

@@ -21,7 +21,7 @@
 	"ModsNikkelMHadesBiomes_BossResourceStyx",
 ]] --
 
--- In total, as of 2026-11-19: 65 cosmetics
+-- In total, as of 2026-11-19: 65 cosmetics + 5 animal familiar skins
 -- Last added: Altar of Ashes, Deathly
 
 local function registerShopCosmetics(cosmetics)
@@ -4642,7 +4642,7 @@ local preRunCosmetics = {
 			-- "Recovered from the belongings of your brother Zagreus in his bedchamber, this charm was given to him by his mentor and friend Achilles.",
 		},
 		CosmeticsGroup = "Cosmetic_ExitCharm",
-		InsertAfterCosmetic = "Cosmetic_ExitCharm05",
+		InsertAfterCosmetic = _PLUGIN.guid .. "." .. "Cosmetic_ExitCharm_SnakeFamiliar",
 		ShopCategory = "CosmeticsShop_PreRun",
 		ActivateIds = { 589859, 589860 },
 		IconPath = "NikkelM-HadesBiomesCosmetics\\Crossroads\\Icons\\PreRun\\ExitCharm_Achilles_Icon",
@@ -6719,6 +6719,7 @@ CosmeticsAPI.RegisterCardBack({
 	CardBackPath = "NikkelM-HadesBiomesCosmeticsCardbacks\\GUI\\Screens\\Cardback\\CardBackGodsHermes",
 })
 -- #endregion
+
 -- #endregion
 
 -- #region Chthonic Chids

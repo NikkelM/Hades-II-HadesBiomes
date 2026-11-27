@@ -424,6 +424,7 @@ local function on_ready()
 			import "Scripts/CreditsData.lua"
 			import "Scripts/DeathLoopData.lua"
 			import "Scripts/EffectData.lua"
+			import "Scripts/FamiliarData.lua"
 			import "Scripts/GameStatsData.lua"
 			import "Scripts/GardenData.lua"
 			import "Scripts/GhostAdminData_Items.lua"
@@ -515,7 +516,6 @@ local function on_ready()
 			import "Scripts/EncounterPresentation.lua"
 			import "Scripts/EventLogic.lua"
 			import "Scripts/EventPresentation.lua"
-			import "Scripts/FamiliarData.lua"
 			import "Scripts/FlashbackPresentation.lua"
 			import "Scripts/GameStatsLogic.lua"
 			import "Scripts/GardenLogic.lua"
@@ -652,6 +652,7 @@ local function on_ready_late()
 	import "Scripts/WeaponUpgradeLogic_Late.lua"
 
 	import "Scripts/Meta/PonyMenuLogic_Late.lua"
+	import "Scripts/DraconFamiliarIntegration.lua"
 
 	mod.FinishedLoading = true
 end

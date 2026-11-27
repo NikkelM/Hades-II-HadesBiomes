@@ -3801,6 +3801,36 @@ mod.GlobalVoiceLines = mod.GlobalVoiceLines or {
 		{ Cue = "/VO/Skelly_0452" },
 	},
 	-- #endregion
+	-- #region Familiars
+	ModsNikkelMHadesBiomes_SnakeReactionVoiceLines = {
+		UsePlayerSource = true,
+		PreLineWait = 0.55,
+		PlayOnce = true,
+		PlayOnceContext = "ModsNikkelMHadesBiomes_SnakeSightedVO",
+		GameStateRequirements = {},
+		{ Cue = "/VO/Melinoe_1958", Text = "Oh?" },
+	},
+	ModsNikkelMHadesBiomes_SnakeFamiliarFledVoiceLines = {
+		{
+			BreakIfPlayed = true,
+			RandomRemaining = true,
+			PreLineWait = 0.75,
+			PlayOnce = true,
+			PlayOnceContext = "ModsNikkelMHadesBiomes_SnakeFledVO",
+			{ Cue = "/VO/Melinoe_0990", Text = "Must want something to eat..." },
+		},
+		{
+			BreakIfPlayed = true,
+			RandomRemaining = true,
+			PreLineWait = 0.75,
+			SuccessiveChanceToPlayAll = 0.25,
+			{ Cue = "/VO/Melinoe_0989",      Text = "Again?" },
+			{ Cue = "/VO/Melinoe_0990",      Text = "Must want something to eat..." },
+			{ Cue = "/VO/MelinoeField_2822", Text = "Bounded off." },
+			{ Cue = "/VO/MelinoeField_2823", Text = "See you around." },
+		},
+	},
+	-- #endregion
 }
 
 mod.HeroVoiceLines = mod.HeroVoiceLines or {

@@ -9,7 +9,7 @@ local nighmareFearActive = mod.IsOtherModActive("ReadEmAndWeep-Nightmare_Fear")
 local dreamDiveTweaksActive = mod.IsOtherModActive("zerp-DreamDiveTweaks")
 
 -- #region The order of the quests in the Quest log, these will be appended to the end of the vanilla list
--- Current number of quests: 46 (43 base + one Dream Dive Tweaks + one flipped + one nightmare)
+-- Current number of quests: 47 (44 base + one Dream Dive Tweaks + one flipped + one nightmare)
 local newQuestOrderData = {
 	-- key / mission-critical
 	"ModsNikkelMHadesBiomes_QuestReuniteAchillesPatroclus",
@@ -43,6 +43,7 @@ local newQuestOrderData = {
 	-- boons & character traits
 	"ModsNikkelMHadesBiomes_QuestKeepsakesQuest",
 	"ModsNikkelMHadesBiomes_QuestCompanionUses",
+	"ModsNikkelMHadesBiomes_QuestClearedWithSnakeFamiliar",
 	"ModsNikkelMHadesBiomes_QuestSisyphusUpgrades",
 	"ModsNikkelMHadesBiomes_QuestBouldyUpgrades",
 	"ModsNikkelMHadesBiomes_QuestOrpheusUpgrades",
@@ -1541,6 +1542,37 @@ local newQuestData = {
 		CompleteGameStateRequirements = {
 			{
 				PathTrue = { "GameState", "TextLinesRecord", "PoseidonFishQuestComplete" },
+			},
+		},
+	},
+	-- Clear any run with Ophis/SnakeFamiliar
+	ModsNikkelMHadesBiomes_QuestClearedWithSnakeFamiliar = {
+		InheritFrom = { "DefaultQuestItem", "DefaultNatureQuest" },
+		RewardResourceName = "Mixer5Common",
+		RewardResourceAmount = 1,
+		UnlockGameStateRequirements = {
+			{
+				Path = { "GameState", "ClearedRunsCache" },
+				Comparison = ">=",
+				Value = 2,
+			},
+			{
+				PathTrue = { "GameState", "FamiliarsUnlocked", "ModsNikkelMHadesBiomesSnakeFamiliar" },
+			},
+		},
+		CompleteGameStateRequirements = {
+			{
+				PathTrue = { "GameState", "ClearedWithFamiliars", "ModsNikkelMHadesBiomesSnakeFamiliar" },
+			},
+		},
+		CashedOutVoiceLines = {
+			{
+				PreLineWait = 0.4,
+				Cooldowns = { { Name = "MorosProphecyFulfilledSpeech", Time = 3 }, },
+				SkipAnim = true,
+				RequiredSourceValueFalse = "InPartnerConversation",
+				ObjectType = "NPC_Moros_01",
+				{ Cue = "/VO/Moros_0624", Text = "Your Animal Familiars shall follow you to the very end." },
 			},
 		},
 	},
