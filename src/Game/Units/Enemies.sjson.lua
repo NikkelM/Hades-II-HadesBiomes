@@ -232,7 +232,6 @@ local enemyAdditions = {
 		},
 	},
 	--#endregion
-
 }
 
 local enemyKeyReplacements = {}

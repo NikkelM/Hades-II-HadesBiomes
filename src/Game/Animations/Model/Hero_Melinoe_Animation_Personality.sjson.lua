@@ -1,4 +1,4 @@
--- Map conversation animations for Zagreus to animations that exist for Melinoe and add new animations
+-- Map conversation animations for Zagreus to animations that exist for Melinoe
 
 local animationsFile = rom.path.combine(rom.paths.Content(),
 	"Game/Animations/Model/Hero_Melinoe_Animation_Personality.sjson")
@@ -925,7 +925,6 @@ local newData = {
 	},
 	-- #endregion
 	-- #endregion
-
 }
 
 sjson.hook(animationsFile, function(data)
